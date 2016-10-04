@@ -1,9 +1,0 @@
-1. Run all of the examples, compare to old outputs, generate XML and IVY.
-
-   ./run-probs /home/mccune/bin outx problem-sets-all >& err
-   ./compare out outx problem-sets-all
-   ./rename outx out problem-sets-all
-   ./group-to-xml /home/mccune/bin/ problem-sets-all
-   ./group-to-ivy /home/mccune/bin/ problem-sets-all
-
-2. Update version in index.html.

@@ -1,9 +1,0 @@
-formulas(goals).
-
-  all a all x all b (  A(a,x,b) ->  B(a,x,b)).
-% all a all x all b (  B(a,x,b) ->  C(a,x,b)).
-% all a all x all b (  C(a,x,b) ->  D(a,x,b)).
-% all a all x all b (  B(a,x,b) -> CS(a,x,b)).
-% all a all x all b ( CS(a,x,b) ->  D(a,x,b)).
-
-end_of_list.

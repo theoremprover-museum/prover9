@@ -1,9 +1,0 @@
-#!/bin/csh
-
-foreach i ( [A-Z]*.in )
-
-    echo Starting $i
-
-    prover9 -f gt.in $i > $i:r-gt.outu
-
-end

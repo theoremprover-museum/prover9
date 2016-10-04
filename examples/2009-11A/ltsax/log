@@ -1,6 +1,0 @@
-ERROR, not in the go file: a2
-ERROR, not in the HTML file: a2.$out, <blockquote><tt>prover9 -f <a href="a2.in">a2.in</a> &gt; <a href="a2.out">a2.out</a></tt></blockquote>
-
-errors=2, file index.html not changed
-partly constructed HTML in index.html.work
-

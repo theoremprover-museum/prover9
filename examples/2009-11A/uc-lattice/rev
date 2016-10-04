@@ -1,6 +1,0 @@
-
-formulas(goals).
-
-all x all y (x ^ y = x -> x' v y' = x').  % order reversibility
-
-end_of_list.

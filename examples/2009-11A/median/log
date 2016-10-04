@@ -1,8 +1,0 @@
-ERROR, not in the go file: dep-2b
-ERROR, not in the go file: dist-long-short
-ERROR, not in the HTML file: dep-2b.$out, <blockquote><tt>prover9 -f <a href="dep-2b.in">dep-2b.in</a> &gt; <a href="dep-2b.out">dep-2b.out</a></tt></blockquote>
-ERROR, not in the HTML file: dist-long-short.$out, <blockquote><tt>prover9 -f <a href="dist-long-short.in">dist-long-short.in</a> &gt; <a href="dist-long-short.out">dist-long-short.out</a></tt></blockquote>
-
-errors=4, file index.html not changed
-partly constructed HTML in index.html.work
-
