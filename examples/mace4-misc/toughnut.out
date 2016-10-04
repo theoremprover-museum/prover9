@@ -1,0 +1,126 @@
+============================== Mace4 =================================
+Mace4 (32) version 2009-11A, November 2009.
+Process 4317 was started by mccune on cleo,
+Tue Nov  3 09:38:31 2009
+The command was "/home/mccune/LADR/bin/mace4 -f toughnut.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file toughnut.in
+
+assign(domain_size,8).
+    % assign(domain_size, 8) -> assign(start_size, 8).
+    % assign(domain_size, 8) -> assign(end_size, 8).
+
+formulas(assumptions).
+(all x all y (G5(x,y) <-> x = 0 & y = 0 | x = 7 & y = 7)).
+end_of_list.
+
+formulas(assumptions).
+-G3(0,y).
+-G4(x,0).
+-G1(7,y).
+-G2(x,7).
+S(0,1).
+S(1,2).
+S(2,3).
+S(3,4).
+S(4,5).
+S(5,6).
+S(6,7).
+-S(x,y) | L(x,y).
+-L(x,y) | -L(y,z) | L(x,z).
+-L(x,y) | -L(y,z) | -S(x,z).
+-L(x,y) | x != y.
+G1(x,y) | G2(x,y) | G3(x,y) | G4(x,y) | G5(x,y).
+-G1(x,y) | -G2(x,y).
+-G1(x,y) | -G3(x,y).
+-G1(x,y) | -G4(x,y).
+-G1(x,y) | -G5(x,y).
+-G2(x,y) | -G3(x,y).
+-G2(x,y) | -G4(x,y).
+-G2(x,y) | -G5(x,y).
+-G3(x,y) | -G4(x,y).
+-G3(x,y) | -G5(x,y).
+-G4(x,y) | -G5(x,y).
+-S(x1,x2) | -G1(x1,y) | G3(x2,y).
+-S(x1,x2) | G1(x1,y) | -G3(x2,y).
+-S(y1,y2) | -G2(x,y1) | G4(x,y2).
+-S(y1,y2) | G2(x,y1) | -G4(x,y2).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 (all x all y (G5(x,y) <-> x = 0 & y = 0 | x = 7 & y = 7)) # label(non_clause).  [assumption].
+
+============================== end of process non-clausal formulas ===
+
+============================== CLAUSES FOR SEARCH ====================
+
+formulas(mace4_clauses).
+-G5(x,y) | 0 = x | 7 = x.
+-G5(x,y) | 0 = x | 7 = y.
+-G5(x,y) | 0 = y | 7 = x.
+-G5(x,y) | 0 = y | 7 = y.
+G5(x,y) | 0 != x | 0 != y.
+G5(x,y) | 7 != x | 7 != y.
+-G3(0,x).
+-G4(x,0).
+-G1(7,x).
+-G2(x,7).
+S(0,1).
+S(1,2).
+S(2,3).
+S(3,4).
+S(4,5).
+S(5,6).
+S(6,7).
+-S(x,y) | L(x,y).
+-L(x,y) | -L(y,z) | L(x,z).
+-L(x,y) | -L(y,z) | -S(x,z).
+-L(x,y) | x != y.
+G1(x,y) | G2(x,y) | G3(x,y) | G4(x,y) | G5(x,y).
+-G1(x,y) | -G2(x,y).
+-G1(x,y) | -G3(x,y).
+-G1(x,y) | -G4(x,y).
+-G1(x,y) | -G5(x,y).
+-G2(x,y) | -G3(x,y).
+-G2(x,y) | -G4(x,y).
+-G2(x,y) | -G5(x,y).
+-G3(x,y) | -G4(x,y).
+-G3(x,y) | -G5(x,y).
+-G4(x,y) | -G5(x,y).
+-S(x,y) | -G1(x,z) | G3(y,z).
+-S(x,y) | G1(x,z) | -G3(y,z).
+-S(x,y) | -G2(z,x) | G4(z,y).
+-S(x,y) | G2(z,x) | -G4(z,y).
+end_of_list.
+
+============================== end of clauses for search =============
+
+% The largest natural number in the input is 7.
+
+============================== DOMAIN SIZE 8 =========================
+
+============================== STATISTICS ============================
+
+For domain size 8.
+
+Current CPU time: 0.00 seconds (total CPU time: 6.25 seconds).
+Ground clauses: seen=4327, kept=1175.
+Selections=165745, assignments=331490, propagations=7767377, current_models=0.
+Rewrite_terms=0, rewrite_bools=26041281, indexes=0.
+Rules_from_neg_clauses=0, cross_offs=0.
+
+============================== end of statistics =====================
+
+User_CPU=6.25, System_CPU=0.06, Wall_clock=7.
+
+Exiting with failure.
+
+Process 4317 exit (exhausted) Tue Nov  3 09:38:38 2009
+The process finished Tue Nov  3 09:38:38 2009

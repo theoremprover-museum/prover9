@@ -1,0 +1,6755 @@
+============================== prooftrans ============================
+Prover9 (32) version 2008-05A, May 2008.
+Process 12529 was started by mccune on cleo,
+Wed May  7 11:30:33 2008
+The command was "/home/mccune/LADR/bin/prover9 -f oml6.in".
+============================== end of head ===========================
+
+============================== end of input ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.21 (+ 0.00) seconds: cc.
+% Length of proof is 17.
+% Level of proof is 6.
+% Maximum clause weight is 37.
+% Given clauses 74.
+
+c 8  c(c(x)) = x # answer(cc) # label(non_clause) # label(goal)
+i goal
+e
+c 15  f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(f(y,y),z)),z))) = y # label(OML_Sh)
+i assumption
+e
+c 16  x v y = f(f(x,x),f(y,y)) # label(Def_join)
+i assumption
+e
+c 17  f(f(x,x),f(y,y)) = x v y
+i copy
+p 16
+i (flip)
+e
+c 20  c(x) = f(x,x) # label(Def_complement)
+i assumption
+e
+c 21  f(x,x) = c(x)
+i copy
+p 20
+i (flip)
+e
+c 31  c(c(c14)) != c14 # answer(cc)
+i deny
+p 8
+e
+c 41  f(c(x),c(y)) = x v y
+i back_rewrite
+p 17
+i rewrite
+p 21
+p 21
+e
+c 42  f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(c(y),z)),z))) = y
+i back_rewrite
+p 15
+i rewrite
+p 21
+e
+c 45  c(c(x)) = x v x
+i para
+p 41
+p 21
+i (flip)
+e
+c 51  c14 v c14 != c14 # answer(cc)
+i back_rewrite
+p 31
+i rewrite
+p 45
+e
+c 52  f(f(f(c(x),f(x,y)),z),f(x,f(f(y,f(c(x),y)),y))) = x
+i para
+p 21
+p 42
+e
+c 62  f(f(x,y),f(x,f(f(f(f(z,f(c(x),z)),z),f(c(x),f(f(z,f(c(x),z)),z))),f(f(z,f(c(x),z)),z)))) = x
+i para
+p 42
+p 42
+e
+c 1623  f(f(x,y),f(y,f(f(z,f(c(y),z)),z))) = y
+i para
+p 62
+p 42
+e
+c 1625  f(c(x),f(x,f(f(y,f(c(x),y)),y))) = x
+i para
+p 62
+p 52
+e
+c 1739  x v x = x
+i para
+p 1625
+p 1625
+i rewrite
+p 1623
+p 21
+p 21
+p 45
+e
+c 1740  $F # answer(cc)
+i resolve
+p 1739
+p 51
+e
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 2 at 0.21 (+ 0.00) seconds: idempotence_meet.
+% Length of proof is 22.
+% Level of proof is 6.
+% Maximum clause weight is 37.
+% Given clauses 74.
+
+c 7  x ^ x = x # answer(idempotence_meet) # label(non_clause) # label(goal)
+i goal
+e
+c 15  f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(f(y,y),z)),z))) = y # label(OML_Sh)
+i assumption
+e
+c 16  x v y = f(f(x,x),f(y,y)) # label(Def_join)
+i assumption
+e
+c 17  f(f(x,x),f(y,y)) = x v y
+i copy
+p 16
+i (flip)
+e
+c 18  x ^ y = f(f(x,y),f(x,y)) # label(Def_meet)
+i assumption
+e
+c 19  f(f(x,y),f(x,y)) = x ^ y
+i copy
+p 18
+i (flip)
+e
+c 20  c(x) = f(x,x) # label(Def_complement)
+i assumption
+e
+c 21  f(x,x) = c(x)
+i copy
+p 20
+i (flip)
+e
+c 30  c13 ^ c13 != c13 # answer(idempotence_meet)
+i deny
+p 7
+e
+c 40  c(f(x,y)) = x ^ y
+i back_rewrite
+p 19
+i rewrite
+p 21
+e
+c 41  f(c(x),c(y)) = x v y
+i back_rewrite
+p 17
+i rewrite
+p 21
+p 21
+e
+c 42  f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(c(y),z)),z))) = y
+i back_rewrite
+p 15
+i rewrite
+p 21
+e
+c 43  x ^ x = c(c(x))
+i para
+p 21
+p 40
+i (flip)
+e
+c 44  c(c(c13)) != c13 # answer(idempotence_meet)
+i back_rewrite
+p 30
+i rewrite
+p 43
+e
+c 45  c(c(x)) = x v x
+i para
+p 41
+p 21
+i (flip)
+e
+c 49  c13 v c13 != c13 # answer(idempotence_meet)
+i back_rewrite
+p 44
+i rewrite
+p 45
+e
+c 52  f(f(f(c(x),f(x,y)),z),f(x,f(f(y,f(c(x),y)),y))) = x
+i para
+p 21
+p 42
+e
+c 62  f(f(x,y),f(x,f(f(f(f(z,f(c(x),z)),z),f(c(x),f(f(z,f(c(x),z)),z))),f(f(z,f(c(x),z)),z)))) = x
+i para
+p 42
+p 42
+e
+c 1623  f(f(x,y),f(y,f(f(z,f(c(y),z)),z))) = y
+i para
+p 62
+p 42
+e
+c 1625  f(c(x),f(x,f(f(y,f(c(x),y)),y))) = x
+i para
+p 62
+p 52
+e
+c 1739  x v x = x
+i para
+p 1625
+p 1625
+i rewrite
+p 1623
+p 21
+p 21
+p 45
+e
+c 1741  $F # answer(idempotence_meet)
+i resolve
+p 1739
+p 49
+e
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 3 at 0.22 (+ 0.00) seconds: idempotence_join.
+% Length of proof is 16.
+% Level of proof is 6.
+% Maximum clause weight is 37.
+% Given clauses 74.
+
+c 6  x v x = x # answer(idempotence_join) # label(non_clause) # label(goal)
+i goal
+e
+c 15  f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(f(y,y),z)),z))) = y # label(OML_Sh)
+i assumption
+e
+c 16  x v y = f(f(x,x),f(y,y)) # label(Def_join)
+i assumption
+e
+c 17  f(f(x,x),f(y,y)) = x v y
+i copy
+p 16
+i (flip)
+e
+c 20  c(x) = f(x,x) # label(Def_complement)
+i assumption
+e
+c 21  f(x,x) = c(x)
+i copy
+p 20
+i (flip)
+e
+c 29  c12 v c12 != c12 # answer(idempotence_join)
+i deny
+p 6
+e
+c 41  f(c(x),c(y)) = x v y
+i back_rewrite
+p 17
+i rewrite
+p 21
+p 21
+e
+c 42  f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(c(y),z)),z))) = y
+i back_rewrite
+p 15
+i rewrite
+p 21
+e
+c 45  c(c(x)) = x v x
+i para
+p 41
+p 21
+i (flip)
+e
+c 52  f(f(f(c(x),f(x,y)),z),f(x,f(f(y,f(c(x),y)),y))) = x
+i para
+p 21
+p 42
+e
+c 62  f(f(x,y),f(x,f(f(f(f(z,f(c(x),z)),z),f(c(x),f(f(z,f(c(x),z)),z))),f(f(z,f(c(x),z)),z)))) = x
+i para
+p 42
+p 42
+e
+c 1623  f(f(x,y),f(y,f(f(z,f(c(y),z)),z))) = y
+i para
+p 62
+p 42
+e
+c 1625  f(c(x),f(x,f(f(y,f(c(x),y)),y))) = x
+i para
+p 62
+p 52
+e
+c 1739  x v x = x
+i para
+p 1625
+p 1625
+i rewrite
+p 1623
+p 21
+p 21
+p 45
+e
+c 1742  $F # answer(idempotence_join)
+i resolve
+p 1739
+p 29
+e
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 4 at 0.30 (+ 0.00) seconds: DM.
+% Length of proof is 24.
+% Level of proof is 7.
+% Maximum clause weight is 37.
+% Given clauses 74.
+
+c 4  x ^ y = c(c(x) v c(y)) # answer(DM) # label(non_clause) # label(goal)
+i goal
+e
+c 15  f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(f(y,y),z)),z))) = y # label(OML_Sh)
+i assumption
+e
+c 16  x v y = f(f(x,x),f(y,y)) # label(Def_join)
+i assumption
+e
+c 17  f(f(x,x),f(y,y)) = x v y
+i copy
+p 16
+i (flip)
+e
+c 18  x ^ y = f(f(x,y),f(x,y)) # label(Def_meet)
+i assumption
+e
+c 19  f(f(x,y),f(x,y)) = x ^ y
+i copy
+p 18
+i (flip)
+e
+c 20  c(x) = f(x,x) # label(Def_complement)
+i assumption
+e
+c 21  f(x,x) = c(x)
+i copy
+p 20
+i (flip)
+e
+c 26  c(c(c8) v c(c9)) != c8 ^ c9 # answer(DM)
+i deny
+p 4
+e
+c 27  c8 ^ c9 != c(c(c8) v c(c9)) # answer(DM)
+i copy
+p 26
+i (flip)
+e
+c 40  c(f(x,y)) = x ^ y
+i back_rewrite
+p 19
+i rewrite
+p 21
+e
+c 41  f(c(x),c(y)) = x v y
+i back_rewrite
+p 17
+i rewrite
+p 21
+p 21
+e
+c 42  f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(c(y),z)),z))) = y
+i back_rewrite
+p 15
+i rewrite
+p 21
+e
+c 45  c(c(x)) = x v x
+i para
+p 41
+p 21
+i (flip)
+e
+c 46  c(x) ^ c(y) = c(x v y)
+i para
+p 41
+p 40
+i (flip)
+e
+c 52  f(f(f(c(x),f(x,y)),z),f(x,f(f(y,f(c(x),y)),y))) = x
+i para
+p 21
+p 42
+e
+c 62  f(f(x,y),f(x,f(f(f(f(z,f(c(x),z)),z),f(c(x),f(f(z,f(c(x),z)),z))),f(f(z,f(c(x),z)),z)))) = x
+i para
+p 42
+p 42
+e
+c 72  (x v x) ^ c(y) = c(c(x) v y)
+i para
+p 45
+p 46
+e
+c 95  (x v x) ^ (y v y) = c(c(x) v c(y))
+i para
+p 45
+p 72
+e
+c 1623  f(f(x,y),f(y,f(f(z,f(c(y),z)),z))) = y
+i para
+p 62
+p 42
+e
+c 1625  f(c(x),f(x,f(f(y,f(c(x),y)),y))) = x
+i para
+p 62
+p 52
+e
+c 1739  x v x = x
+i para
+p 1625
+p 1625
+i rewrite
+p 1623
+p 21
+p 21
+p 45
+e
+c 2374  x ^ y = c(c(x) v c(y))
+i back_rewrite
+p 95
+i rewrite
+p 1739
+p 1739
+e
+c 2375  $F # answer(DM)
+i resolve
+p 2374
+p 27
+e
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 5 at 0.30 (+ 0.00) seconds: DEF_SS.
+% Length of proof is 19.
+% Level of proof is 7.
+% Maximum clause weight is 37.
+% Given clauses 74.
+
+c 5  f(x,y) = c(x) v c(y) # answer(DEF_SS) # label(non_clause) # label(goal)
+i goal
+e
+c 15  f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(f(y,y),z)),z))) = y # label(OML_Sh)
+i assumption
+e
+c 16  x v y = f(f(x,x),f(y,y)) # label(Def_join)
+i assumption
+e
+c 17  f(f(x,x),f(y,y)) = x v y
+i copy
+p 16
+i (flip)
+e
+c 20  c(x) = f(x,x) # label(Def_complement)
+i assumption
+e
+c 21  f(x,x) = c(x)
+i copy
+p 20
+i (flip)
+e
+c 28  f(c10,c11) != c(c10) v c(c11) # answer(DEF_SS)
+i deny
+p 5
+e
+c 41  f(c(x),c(y)) = x v y
+i back_rewrite
+p 17
+i rewrite
+p 21
+p 21
+e
+c 42  f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(c(y),z)),z))) = y
+i back_rewrite
+p 15
+i rewrite
+p 21
+e
+c 45  c(c(x)) = x v x
+i para
+p 41
+p 21
+i (flip)
+e
+c 52  f(f(f(c(x),f(x,y)),z),f(x,f(f(y,f(c(x),y)),y))) = x
+i para
+p 21
+p 42
+e
+c 62  f(f(x,y),f(x,f(f(f(f(z,f(c(x),z)),z),f(c(x),f(f(z,f(c(x),z)),z))),f(f(z,f(c(x),z)),z)))) = x
+i para
+p 42
+p 42
+e
+c 65  f(x v x,c(y)) = c(x) v y
+i para
+p 45
+p 41
+e
+c 77  f(x v x,y v y) = c(x) v c(y)
+i para
+p 45
+p 65
+e
+c 1623  f(f(x,y),f(y,f(f(z,f(c(y),z)),z))) = y
+i para
+p 62
+p 42
+e
+c 1625  f(c(x),f(x,f(f(y,f(c(x),y)),y))) = x
+i para
+p 62
+p 52
+e
+c 1739  x v x = x
+i para
+p 1625
+p 1625
+i rewrite
+p 1623
+p 21
+p 21
+p 45
+e
+c 2384  f(x,y) = c(x) v c(y)
+i back_rewrite
+p 77
+i rewrite
+p 1739
+p 1739
+e
+c 2385  $F # answer(DEF_SS)
+i resolve
+p 2384
+p 28
+e
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 6 at 0.46 (+ 0.00) seconds: B1.
+% Length of proof is 57.
+% Level of proof is 15.
+% Maximum clause weight is 37.
+% Given clauses 97.
+
+c 1  x v (x ^ y) = x # answer(B1) # label(non_clause) # label(goal)
+i goal
+e
+c 15  f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(f(y,y),z)),z))) = y # label(OML_Sh)
+i assumption
+e
+c 16  x v y = f(f(x,x),f(y,y)) # label(Def_join)
+i assumption
+e
+c 17  f(f(x,x),f(y,y)) = x v y
+i copy
+p 16
+i (flip)
+e
+c 18  x ^ y = f(f(x,y),f(x,y)) # label(Def_meet)
+i assumption
+e
+c 19  f(f(x,y),f(x,y)) = x ^ y
+i copy
+p 18
+i (flip)
+e
+c 20  c(x) = f(x,x) # label(Def_complement)
+i assumption
+e
+c 21  f(x,x) = c(x)
+i copy
+p 20
+i (flip)
+e
+c 22  c1 v (c1 ^ c2) != c1 # answer(B1)
+i deny
+p 1
+e
+c 40  c(f(x,y)) = x ^ y
+i back_rewrite
+p 19
+i rewrite
+p 21
+e
+c 41  f(c(x),c(y)) = x v y
+i back_rewrite
+p 17
+i rewrite
+p 21
+p 21
+e
+c 42  f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(c(y),z)),z))) = y
+i back_rewrite
+p 15
+i rewrite
+p 21
+e
+c 43  x ^ x = c(c(x))
+i para
+p 21
+p 40
+i (flip)
+e
+c 45  c(c(x)) = x v x
+i para
+p 41
+p 21
+i (flip)
+e
+c 46  c(x) ^ c(y) = c(x v y)
+i para
+p 41
+p 40
+i (flip)
+e
+c 50  x ^ x = x v x
+i back_rewrite
+p 43
+i rewrite
+p 45
+e
+c 52  f(f(f(c(x),f(x,y)),z),f(x,f(f(y,f(c(x),y)),y))) = x
+i para
+p 21
+p 42
+e
+c 53  f(f(f(f(x,y),c(y)),z),f(y,f(f(y,f(c(y),y)),y))) = y
+i para
+p 21
+p 42
+e
+c 54  f(f(x v x,y),f(x,f(f(x,f(c(x),x)),x))) = x
+i para
+p 21
+p 42
+i rewrite
+p 21
+p 45
+e
+c 55  f(f(x,y) ^ f(y,z),f(y,f(f(z,f(c(y),z)),z))) = y
+i para
+p 21
+p 42
+i rewrite
+p 40
+e
+c 59  f(f(f(x v y,f(c(y),z)),u),f(c(y),f(f(z,f(y v y,z)),z))) = c(y)
+i para
+p 41
+p 42
+i rewrite
+p 45
+e
+c 62  f(f(x,y),f(x,f(f(f(f(z,f(c(x),z)),z),f(c(x),f(f(z,f(c(x),z)),z))),f(f(z,f(c(x),z)),z)))) = x
+i para
+p 42
+p 42
+e
+c 65  f(x v x,c(y)) = c(x) v y
+i para
+p 45
+p 41
+e
+c 72  (x v x) ^ c(y) = c(c(x) v y)
+i para
+p 45
+p 46
+e
+c 77  f(x v x,y v y) = c(x) v c(y)
+i para
+p 45
+p 65
+e
+c 95  (x v x) ^ (y v y) = c(c(x) v c(y))
+i para
+p 45
+p 72
+e
+c 158  f(x,f(c(x),f(f(y,f(x v x,y)),y))) = c(x)
+i para
+p 53
+p 42
+i rewrite
+p 45
+e
+c 203  f(c(x) v y,f(x,f(f(x,f(c(x),x)),x))) = x
+i para
+p 65
+p 54
+e
+c 776  f((x v x) v y,f(c(x),f(f(c(x),c(x) v x),c(x)))) = c(x)
+i para
+p 41
+p 203
+i rewrite
+p 45
+e
+c 785  f(c(x),f(x v x,f(f(f(x,f(f(x,f(c(x),x)),x)),x),f(x,f(f(x,f(c(x),x)),x))))) = x v x
+i para
+p 203
+p 158
+i rewrite
+p 45
+p 45
+e
+c 1623  f(f(x,y),f(y,f(f(z,f(c(y),z)),z))) = y
+i para
+p 62
+p 42
+e
+c 1625  f(c(x),f(x,f(f(y,f(c(x),y)),y))) = x
+i para
+p 62
+p 52
+e
+c 1628  f(x v y,f(c(y),f(f(z,f(y v y,z)),z))) = c(y)
+i para
+p 62
+p 59
+e
+c 1630  f(c(x),f(x v x,x)) = x v x
+i back_rewrite
+p 785
+i rewrite
+p 1623
+e
+c 1647  f((x v x) ^ f(f(x v x,x),y),f(f(x v x,x),f(f(y,f((x v x) ^ x,y)),y))) = f(x v x,x)
+i para
+p 1630
+p 55
+i rewrite
+p 40
+e
+c 1693  f(c(x),f(x,f(f(c(y),x v y),c(y)))) = x
+i para
+p 41
+p 1625
+e
+c 1739  x v x = x
+i para
+p 1625
+p 1625
+i rewrite
+p 1623
+p 21
+p 21
+p 45
+e
+c 1787  f(x ^ f(c(x),y),f(c(x),f(f(y,f(x,y)),y))) = c(x)
+i back_rewrite
+p 1647
+i rewrite
+p 1739
+p 1739
+p 21
+p 1739
+p 21
+p 1739
+p 50
+p 1739
+p 1739
+p 21
+e
+c 1798  f(x v y,f(c(y),f(f(z,f(y,z)),z))) = c(y)
+i back_rewrite
+p 1628
+i rewrite
+p 1739
+e
+c 2130  f(x v y,f(c(x),f(f(c(x),c(x) v x),c(x)))) = c(x)
+i back_rewrite
+p 776
+i rewrite
+p 1739
+e
+c 2374  x ^ y = c(c(x) v c(y))
+i back_rewrite
+p 95
+i rewrite
+p 1739
+p 1739
+e
+c 2384  f(x,y) = c(x) v c(y)
+i back_rewrite
+p 77
+i rewrite
+p 1739
+p 1739
+e
+c 2392  c(c(x)) = x
+i back_rewrite
+p 45
+i rewrite
+p 1739
+e
+c 2410  (c(x) v c(x v c(y))) v c(x v c(c(c(y) v c(c(x) v c(y))) v c(y))) = c(x)
+i back_rewrite
+p 1787
+i rewrite
+p 2384
+p 2392
+p 2374
+p 2384
+p 2384
+p 2384
+p 2384
+p 2392
+p 2384
+p 2392
+e
+c 2441  c1 v c(c(c1) v c(c2)) != c1 # answer(B1)
+i back_rewrite
+p 22
+i rewrite
+p 2374
+e
+c 2450  c(x v y) v c(x v c(c(x v c(c(x) v x)) v x)) = c(x)
+i back_rewrite
+p 2130
+i rewrite
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+e
+c 2454  c(x v y) v c(y v c(c(c(z) v c(c(y) v c(z))) v c(z))) = c(y)
+i back_rewrite
+p 1798
+i rewrite
+p 2384
+p 2384
+p 2384
+p 2384
+p 2392
+p 2384
+e
+c 2465  x v c(c(x) v c(c(y v c(x v y)) v y)) = x
+i back_rewrite
+p 1693
+i rewrite
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2384
+p 2392
+e
+c 2479  c(x v c(c(x v c(c(x) v x)) v x)) = c(x)
+i para
+p 2450
+p 1739
+i (flip)
+e
+c 2481  c(x v y) v c(x) = c(x)
+i para
+p 2450
+p 2384
+i rewrite
+p 2384
+p 2479
+e
+c 2486  c(c(x) v y) v x = x
+i para
+p 2392
+p 2481
+i rewrite
+p 2392
+e
+c 2487  x v (x v y) = x v y
+i para
+p 2481
+p 2481
+i rewrite
+p 2392
+p 2392
+p 2392
+e
+c 2511  (c(x) v c(x v y)) v c(x v c(c(y v c(c(x) v y)) v y)) = c(x)
+i para
+p 2392
+p 2410
+i rewrite
+p 2392
+p 2392
+p 2392
+e
+c 2513  (c(x) v c(x v c(y))) v c(x) = c(x) v c(x v c(y))
+i para
+p 2410
+p 2465
+i rewrite
+p 2392
+p 2454
+p 2392
+p 2486
+e
+c 2517  c(x) v c(x v c(y)) = c(x)
+i para
+p 2410
+p 2487
+i rewrite
+p 2513
+p 2511
+e
+c 2526  x v c(c(x) v c(y)) = x
+i para
+p 2392
+p 2517
+i rewrite
+p 2392
+e
+c 2527  $F # answer(B1)
+i resolve
+p 2526
+p 2441
+e
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 7 at 0.84 (+ 0.00) seconds: 1.
+% Length of proof is 111.
+% Level of proof is 27.
+% Maximum clause weight is 37.
+% Given clauses 207.
+
+c 11  x v c(x) = y v c(y) # answer(1) # label(non_clause) # label(goal)
+i goal
+e
+c 15  f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(f(y,y),z)),z))) = y # label(OML_Sh)
+i assumption
+e
+c 16  x v y = f(f(x,x),f(y,y)) # label(Def_join)
+i assumption
+e
+c 17  f(f(x,x),f(y,y)) = x v y
+i copy
+p 16
+i (flip)
+e
+c 18  x ^ y = f(f(x,y),f(x,y)) # label(Def_meet)
+i assumption
+e
+c 19  f(f(x,y),f(x,y)) = x ^ y
+i copy
+p 18
+i (flip)
+e
+c 20  c(x) = f(x,x) # label(Def_complement)
+i assumption
+e
+c 21  f(x,x) = c(x)
+i copy
+p 20
+i (flip)
+e
+c 34  c19 v c(c19) != c20 v c(c20) # answer(1)
+i deny
+p 11
+e
+c 35  c20 v c(c20) != c19 v c(c19) # answer(1)
+i copy
+p 34
+i (flip)
+e
+c 40  c(f(x,y)) = x ^ y
+i back_rewrite
+p 19
+i rewrite
+p 21
+e
+c 41  f(c(x),c(y)) = x v y
+i back_rewrite
+p 17
+i rewrite
+p 21
+p 21
+e
+c 42  f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(c(y),z)),z))) = y
+i back_rewrite
+p 15
+i rewrite
+p 21
+e
+c 43  x ^ x = c(c(x))
+i para
+p 21
+p 40
+i (flip)
+e
+c 45  c(c(x)) = x v x
+i para
+p 41
+p 21
+i (flip)
+e
+c 46  c(x) ^ c(y) = c(x v y)
+i para
+p 41
+p 40
+i (flip)
+e
+c 50  x ^ x = x v x
+i back_rewrite
+p 43
+i rewrite
+p 45
+e
+c 52  f(f(f(c(x),f(x,y)),z),f(x,f(f(y,f(c(x),y)),y))) = x
+i para
+p 21
+p 42
+e
+c 53  f(f(f(f(x,y),c(y)),z),f(y,f(f(y,f(c(y),y)),y))) = y
+i para
+p 21
+p 42
+e
+c 54  f(f(x v x,y),f(x,f(f(x,f(c(x),x)),x))) = x
+i para
+p 21
+p 42
+i rewrite
+p 21
+p 45
+e
+c 55  f(f(x,y) ^ f(y,z),f(y,f(f(z,f(c(y),z)),z))) = y
+i para
+p 21
+p 42
+i rewrite
+p 40
+e
+c 59  f(f(f(x v y,f(c(y),z)),u),f(c(y),f(f(z,f(y v y,z)),z))) = c(y)
+i para
+p 41
+p 42
+i rewrite
+p 45
+e
+c 61  f(f(f(f(x,y),f(y,c(z))),u),f(y,f(f(c(z),y v z),c(z)))) = y
+i para
+p 41
+p 42
+e
+c 62  f(f(x,y),f(x,f(f(f(f(z,f(c(x),z)),z),f(c(x),f(f(z,f(c(x),z)),z))),f(f(z,f(c(x),z)),z)))) = x
+i para
+p 42
+p 42
+e
+c 65  f(x v x,c(y)) = c(x) v y
+i para
+p 45
+p 41
+e
+c 66  f(c(x),y v y) = x v c(y)
+i para
+p 45
+p 41
+e
+c 68  c(x v x) = c(x) v c(x)
+i para
+p 45
+p 45
+e
+c 72  (x v x) ^ c(y) = c(c(x) v y)
+i para
+p 45
+p 46
+e
+c 77  f(x v x,y v y) = c(x) v c(y)
+i para
+p 45
+p 65
+e
+c 95  (x v x) ^ (y v y) = c(c(x) v c(y))
+i para
+p 45
+p 72
+e
+c 158  f(x,f(c(x),f(f(y,f(x v x,y)),y))) = c(x)
+i para
+p 53
+p 42
+i rewrite
+p 45
+e
+c 203  f(c(x) v y,f(x,f(f(x,f(c(x),x)),x))) = x
+i para
+p 65
+p 54
+e
+c 304  f(f(x,y v y) ^ (c(y) v z),f(y v y,f(f(c(z),(y v y) v z),c(z)))) = y v y
+i para
+p 65
+p 55
+i rewrite
+p 68
+p 65
+p 45
+e
+c 776  f((x v x) v y,f(c(x),f(f(c(x),c(x) v x),c(x)))) = c(x)
+i para
+p 41
+p 203
+i rewrite
+p 45
+e
+c 785  f(c(x),f(x v x,f(f(f(x,f(f(x,f(c(x),x)),x)),x),f(x,f(f(x,f(c(x),x)),x))))) = x v x
+i para
+p 203
+p 158
+i rewrite
+p 45
+p 45
+e
+c 1263  f(f(f(x v c(y),c(y) v z),u),f(y v y,f(f(c(z),(y v y) v z),c(z)))) = y v y
+i para
+p 66
+p 61
+i rewrite
+p 65
+e
+c 1623  f(f(x,y),f(y,f(f(z,f(c(y),z)),z))) = y
+i para
+p 62
+p 42
+e
+c 1625  f(c(x),f(x,f(f(y,f(c(x),y)),y))) = x
+i para
+p 62
+p 52
+e
+c 1628  f(x v y,f(c(y),f(f(z,f(y v y,z)),z))) = c(y)
+i para
+p 62
+p 59
+e
+c 1630  f(c(x),f(x v x,x)) = x v x
+i back_rewrite
+p 785
+i rewrite
+p 1623
+e
+c 1647  f((x v x) ^ f(f(x v x,x),y),f(f(x v x,x),f(f(y,f((x v x) ^ x,y)),y))) = f(x v x,x)
+i para
+p 1630
+p 55
+i rewrite
+p 40
+e
+c 1648  f(f(x,c(y)) ^ (y v y),f(c(y),f(f(f(y v y,y),f(y v y,f(y v y,y))),f(y v y,y)))) = c(y)
+i para
+p 1630
+p 55
+i rewrite
+p 45
+e
+c 1693  f(c(x),f(x,f(f(c(y),x v y),c(y)))) = x
+i para
+p 41
+p 1625
+e
+c 1739  x v x = x
+i para
+p 1625
+p 1625
+i rewrite
+p 1623
+p 21
+p 21
+p 45
+e
+c 1786  f(f(x,c(y)) ^ y,f(c(y),f(f(c(y),f(y,c(y))),c(y)))) = c(y)
+i back_rewrite
+p 1648
+i rewrite
+p 1739
+p 1739
+p 21
+p 1739
+p 1739
+p 21
+p 1739
+p 21
+e
+c 1787  f(x ^ f(c(x),y),f(c(x),f(f(y,f(x,y)),y))) = c(x)
+i back_rewrite
+p 1647
+i rewrite
+p 1739
+p 1739
+p 21
+p 1739
+p 21
+p 1739
+p 50
+p 1739
+p 1739
+p 21
+e
+c 1798  f(x v y,f(c(y),f(f(z,f(y,z)),z))) = c(y)
+i back_rewrite
+p 1628
+i rewrite
+p 1739
+e
+c 1958  f(f(f(x v c(y),c(y) v z),u),f(y,f(f(c(z),y v z),c(z)))) = y
+i back_rewrite
+p 1263
+i rewrite
+p 1739
+p 1739
+p 1739
+e
+c 2130  f(x v y,f(c(x),f(f(c(x),c(x) v x),c(x)))) = c(x)
+i back_rewrite
+p 776
+i rewrite
+p 1739
+e
+c 2302  f(f(x,y) ^ (c(y) v z),f(y,f(f(c(z),y v z),c(z)))) = y
+i back_rewrite
+p 304
+i rewrite
+p 1739
+p 1739
+p 1739
+p 1739
+e
+c 2374  x ^ y = c(c(x) v c(y))
+i back_rewrite
+p 95
+i rewrite
+p 1739
+p 1739
+e
+c 2384  f(x,y) = c(x) v c(y)
+i back_rewrite
+p 77
+i rewrite
+p 1739
+p 1739
+e
+c 2392  c(c(x)) = x
+i back_rewrite
+p 45
+i rewrite
+p 1739
+e
+c 2400  (c(c(x) v c(y)) v c(c(y) v z)) v c(c(y) v c(c(z v c(y v z)) v z)) = y
+i back_rewrite
+p 2302
+i rewrite
+p 2384
+p 2374
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2384
+p 2392
+e
+c 2410  (c(x) v c(x v c(y))) v c(x v c(c(c(y) v c(c(x) v c(y))) v c(y))) = c(x)
+i back_rewrite
+p 1787
+i rewrite
+p 2384
+p 2392
+p 2374
+p 2384
+p 2384
+p 2384
+p 2384
+p 2392
+p 2384
+p 2392
+e
+c 2411  (c(c(x) v y) v c(y)) v c(y v c(c(y v c(c(y) v y)) v y)) = c(y)
+i back_rewrite
+p 1786
+i rewrite
+p 2384
+p 2392
+p 2374
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2392
+e
+c 2450  c(x v y) v c(x v c(c(x v c(c(x) v x)) v x)) = c(x)
+i back_rewrite
+p 2130
+i rewrite
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+e
+c 2453  c(c(c(x v c(y)) v c(c(y) v z)) v c(u)) v c(c(y) v c(c(z v c(y v z)) v z)) = y
+i back_rewrite
+p 1958
+i rewrite
+p 2384
+p 2384
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2384
+e
+c 2454  c(x v y) v c(y v c(c(c(z) v c(c(y) v c(z))) v c(z))) = c(y)
+i back_rewrite
+p 1798
+i rewrite
+p 2384
+p 2384
+p 2384
+p 2384
+p 2392
+p 2384
+e
+c 2465  x v c(c(x) v c(c(y v c(x v y)) v y)) = x
+i back_rewrite
+p 1693
+i rewrite
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2384
+p 2392
+e
+c 2479  c(x v c(c(x v c(c(x) v x)) v x)) = c(x)
+i para
+p 2450
+p 1739
+i (flip)
+e
+c 2481  c(x v y) v c(x) = c(x)
+i para
+p 2450
+p 2384
+i rewrite
+p 2384
+p 2479
+e
+c 2485  (c(c(x) v y) v c(y)) v c(y) = c(y)
+i back_rewrite
+p 2411
+i rewrite
+p 2479
+e
+c 2486  c(c(x) v y) v x = x
+i para
+p 2392
+p 2481
+i rewrite
+p 2392
+e
+c 2487  x v (x v y) = x v y
+i para
+p 2481
+p 2481
+i rewrite
+p 2392
+p 2392
+p 2392
+e
+c 2492  c(x) v c(c(c(y) v c(x)) v c(c(x) v z)) = c(c(c(y) v c(x)) v c(c(x) v z))
+i para
+p 2400
+p 2481
+e
+c 2500  (c(c(x) v c(y)) v y) v y = y
+i para
+p 2392
+p 2485
+i rewrite
+p 2392
+p 2392
+e
+c 2507  (c(x v c(y)) v y) v y = y
+i para
+p 2392
+p 2500
+e
+c 2511  (c(x) v c(x v y)) v c(x v c(c(y v c(c(x) v y)) v y)) = c(x)
+i para
+p 2392
+p 2410
+i rewrite
+p 2392
+p 2392
+p 2392
+e
+c 2513  (c(x) v c(x v c(y))) v c(x) = c(x) v c(x v c(y))
+i para
+p 2410
+p 2465
+i rewrite
+p 2392
+p 2454
+p 2392
+p 2486
+e
+c 2517  c(x) v c(x v c(y)) = c(x)
+i para
+p 2410
+p 2487
+i rewrite
+p 2513
+p 2511
+e
+c 2528  c(x) v c(x v y) = c(x)
+i para
+p 2392
+p 2517
+e
+c 2529  (x v y) v x = x v y
+i para
+p 2481
+p 2517
+i rewrite
+p 2392
+p 2392
+p 2392
+e
+c 2533  x v c(c(x) v y) = x
+i para
+p 2486
+p 2529
+i rewrite
+p 2486
+e
+c 2552  c((c(x) v y) v c(z)) v c(c(x) v c(c(y v c(x v y)) v y)) = x
+i para
+p 2481
+p 2453
+i rewrite
+p 2392
+e
+c 2553  c(x v c(y)) v c(c(y) v c(c(z v c(y v z)) v z)) = y
+i para
+p 2481
+p 2453
+i rewrite
+p 2392
+e
+c 2560  c(c(x) v c(c(y v c(x v y)) v y)) = x
+i para
+p 2453
+p 2507
+i rewrite
+p 2533
+i (flip)
+e
+c 2574  c(x v c(y)) v y = y
+i back_rewrite
+p 2553
+i rewrite
+p 2560
+e
+c 2575  c((c(x) v y) v c(z)) v x = x
+i back_rewrite
+p 2552
+i rewrite
+p 2560
+e
+c 2583  c(x v y) v c(y) = c(y)
+i para
+p 2392
+p 2574
+e
+c 2585  x v c(y v c(x)) = x
+i para
+p 2574
+p 2529
+i rewrite
+p 2574
+e
+c 2591  x v (y v x) = y v x
+i para
+p 2583
+p 2481
+i rewrite
+p 2392
+p 2392
+p 2392
+e
+c 2599  c((c(x) v y) v z) v x = x
+i para
+p 2392
+p 2575
+e
+c 2612  c(c(x) v y) v (x v z) = x v z
+i para
+p 2481
+p 2599
+e
+c 2614  x v c((c(x) v y) v z) = x
+i para
+p 2599
+p 2529
+i rewrite
+p 2599
+e
+c 2618  c((x v c(y)) v z) v y = y
+i para
+p 2591
+p 2599
+e
+c 2619  c(x v (c(y) v z)) v y = y
+i para
+p 2591
+p 2599
+e
+c 2645  (x v y) v c(c(x) v z) = x v y
+i para
+p 2481
+p 2614
+e
+c 2649  x v c((y v c(x)) v z) = x
+i para
+p 2591
+p 2614
+e
+c 2650  x v c(y v (c(x) v z)) = x
+i para
+p 2591
+p 2614
+e
+c 2656  c(x v (y v c(z))) v z = z
+i para
+p 2591
+p 2618
+e
+c 2660  c(x v (y v z)) v c(y) = c(y)
+i para
+p 2392
+p 2619
+e
+c 2674  x v c(y v (z v c(x))) = x
+i para
+p 2591
+p 2649
+e
+c 2675  x v c(c(c(y) v x) v c(x v z)) = c(c(c(y) v x) v c(x v z))
+i para
+p 2392
+p 2492
+i rewrite
+p 2392
+p 2392
+p 2392
+p 2392
+e
+c 2698  (x v y) v c(z v c(x)) = x v y
+i para
+p 2481
+p 2650
+e
+c 2706  c(x v (y v z)) v c(z) = c(z)
+i para
+p 2392
+p 2656
+e
+c 2737  x v (y v (x v z)) = y v (x v z)
+i para
+p 2660
+p 2481
+i rewrite
+p 2392
+p 2392
+p 2392
+e
+c 2746  c(c(x v y) v x) v c(x v y) = c(x)
+i para
+p 2528
+p 2560
+i rewrite
+p 2392
+p 2392
+p 2675
+p 2392
+e
+c 2765  (x v (y v z)) v z = x v (y v z)
+i para
+p 2706
+p 2533
+i rewrite
+p 2392
+e
+c 2781  c((x v (y v c(z))) v u) v z = z
+i para
+p 2656
+p 2612
+i rewrite
+p 2392
+p 2656
+e
+c 2842  x v c((y v (z v c(x))) v u) = x
+i para
+p 2656
+p 2645
+i rewrite
+p 2392
+p 2656
+e
+c 4044  c(x v c(x v y)) v x = x v y
+i para
+p 2481
+p 2746
+i rewrite
+p 2392
+p 2481
+p 2392
+p 2392
+e
+c 4089  c(x) v x = x v c(x)
+i para
+p 2585
+p 4044
+e
+c 4091  x v (y v c(x)) = x v c(x)
+i para
+p 2674
+p 4044
+i rewrite
+p 4089
+i (flip)
+e
+c 4094  (x v y) v c(x v y) = (x v y) v c(x)
+i para
+p 2698
+p 4044
+i rewrite
+p 4089
+e
+c 4130  (x v y) v c(x) = x v c(x)
+i para
+p 4089
+p 2737
+i rewrite
+p 4094
+p 4091
+p 4089
+p 4094
+i (flip)
+e
+c 4132  (x v c(x)) v y = x v c(x)
+i para
+p 4089
+p 2765
+i rewrite
+p 4094
+p 4130
+p 4089
+p 4094
+p 4130
+e
+c 4133  c(x v c(x)) v y = y
+i para
+p 4089
+p 2781
+i rewrite
+p 4094
+p 4130
+p 4132
+e
+c 4134  x v c(y v c(y)) = x
+i para
+p 4089
+p 2842
+i rewrite
+p 4094
+p 4130
+p 4132
+e
+c 4207  x v c(x) = y v c(y)
+i para
+p 4133
+p 2746
+i rewrite
+p 4134
+p 2392
+p 4133
+p 2392
+e
+c 4208  $F # answer(1)
+i resolve
+p 4207
+p 35
+e
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 8 at 0.84 (+ 0.00) seconds: 0.
+% Length of proof is 113.
+% Level of proof is 27.
+% Maximum clause weight is 37.
+% Given clauses 208.
+
+c 12  x ^ c(x) = y ^ c(y) # answer(0) # label(non_clause) # label(goal)
+i goal
+e
+c 15  f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(f(y,y),z)),z))) = y # label(OML_Sh)
+i assumption
+e
+c 16  x v y = f(f(x,x),f(y,y)) # label(Def_join)
+i assumption
+e
+c 17  f(f(x,x),f(y,y)) = x v y
+i copy
+p 16
+i (flip)
+e
+c 18  x ^ y = f(f(x,y),f(x,y)) # label(Def_meet)
+i assumption
+e
+c 19  f(f(x,y),f(x,y)) = x ^ y
+i copy
+p 18
+i (flip)
+e
+c 20  c(x) = f(x,x) # label(Def_complement)
+i assumption
+e
+c 21  f(x,x) = c(x)
+i copy
+p 20
+i (flip)
+e
+c 36  c21 ^ c(c21) != c22 ^ c(c22) # answer(0)
+i deny
+p 12
+e
+c 37  c22 ^ c(c22) != c21 ^ c(c21) # answer(0)
+i copy
+p 36
+i (flip)
+e
+c 40  c(f(x,y)) = x ^ y
+i back_rewrite
+p 19
+i rewrite
+p 21
+e
+c 41  f(c(x),c(y)) = x v y
+i back_rewrite
+p 17
+i rewrite
+p 21
+p 21
+e
+c 42  f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(c(y),z)),z))) = y
+i back_rewrite
+p 15
+i rewrite
+p 21
+e
+c 43  x ^ x = c(c(x))
+i para
+p 21
+p 40
+i (flip)
+e
+c 45  c(c(x)) = x v x
+i para
+p 41
+p 21
+i (flip)
+e
+c 46  c(x) ^ c(y) = c(x v y)
+i para
+p 41
+p 40
+i (flip)
+e
+c 50  x ^ x = x v x
+i back_rewrite
+p 43
+i rewrite
+p 45
+e
+c 52  f(f(f(c(x),f(x,y)),z),f(x,f(f(y,f(c(x),y)),y))) = x
+i para
+p 21
+p 42
+e
+c 53  f(f(f(f(x,y),c(y)),z),f(y,f(f(y,f(c(y),y)),y))) = y
+i para
+p 21
+p 42
+e
+c 54  f(f(x v x,y),f(x,f(f(x,f(c(x),x)),x))) = x
+i para
+p 21
+p 42
+i rewrite
+p 21
+p 45
+e
+c 55  f(f(x,y) ^ f(y,z),f(y,f(f(z,f(c(y),z)),z))) = y
+i para
+p 21
+p 42
+i rewrite
+p 40
+e
+c 59  f(f(f(x v y,f(c(y),z)),u),f(c(y),f(f(z,f(y v y,z)),z))) = c(y)
+i para
+p 41
+p 42
+i rewrite
+p 45
+e
+c 61  f(f(f(f(x,y),f(y,c(z))),u),f(y,f(f(c(z),y v z),c(z)))) = y
+i para
+p 41
+p 42
+e
+c 62  f(f(x,y),f(x,f(f(f(f(z,f(c(x),z)),z),f(c(x),f(f(z,f(c(x),z)),z))),f(f(z,f(c(x),z)),z)))) = x
+i para
+p 42
+p 42
+e
+c 65  f(x v x,c(y)) = c(x) v y
+i para
+p 45
+p 41
+e
+c 66  f(c(x),y v y) = x v c(y)
+i para
+p 45
+p 41
+e
+c 68  c(x v x) = c(x) v c(x)
+i para
+p 45
+p 45
+e
+c 72  (x v x) ^ c(y) = c(c(x) v y)
+i para
+p 45
+p 46
+e
+c 77  f(x v x,y v y) = c(x) v c(y)
+i para
+p 45
+p 65
+e
+c 95  (x v x) ^ (y v y) = c(c(x) v c(y))
+i para
+p 45
+p 72
+e
+c 158  f(x,f(c(x),f(f(y,f(x v x,y)),y))) = c(x)
+i para
+p 53
+p 42
+i rewrite
+p 45
+e
+c 203  f(c(x) v y,f(x,f(f(x,f(c(x),x)),x))) = x
+i para
+p 65
+p 54
+e
+c 304  f(f(x,y v y) ^ (c(y) v z),f(y v y,f(f(c(z),(y v y) v z),c(z)))) = y v y
+i para
+p 65
+p 55
+i rewrite
+p 68
+p 65
+p 45
+e
+c 776  f((x v x) v y,f(c(x),f(f(c(x),c(x) v x),c(x)))) = c(x)
+i para
+p 41
+p 203
+i rewrite
+p 45
+e
+c 785  f(c(x),f(x v x,f(f(f(x,f(f(x,f(c(x),x)),x)),x),f(x,f(f(x,f(c(x),x)),x))))) = x v x
+i para
+p 203
+p 158
+i rewrite
+p 45
+p 45
+e
+c 1263  f(f(f(x v c(y),c(y) v z),u),f(y v y,f(f(c(z),(y v y) v z),c(z)))) = y v y
+i para
+p 66
+p 61
+i rewrite
+p 65
+e
+c 1623  f(f(x,y),f(y,f(f(z,f(c(y),z)),z))) = y
+i para
+p 62
+p 42
+e
+c 1625  f(c(x),f(x,f(f(y,f(c(x),y)),y))) = x
+i para
+p 62
+p 52
+e
+c 1628  f(x v y,f(c(y),f(f(z,f(y v y,z)),z))) = c(y)
+i para
+p 62
+p 59
+e
+c 1630  f(c(x),f(x v x,x)) = x v x
+i back_rewrite
+p 785
+i rewrite
+p 1623
+e
+c 1647  f((x v x) ^ f(f(x v x,x),y),f(f(x v x,x),f(f(y,f((x v x) ^ x,y)),y))) = f(x v x,x)
+i para
+p 1630
+p 55
+i rewrite
+p 40
+e
+c 1648  f(f(x,c(y)) ^ (y v y),f(c(y),f(f(f(y v y,y),f(y v y,f(y v y,y))),f(y v y,y)))) = c(y)
+i para
+p 1630
+p 55
+i rewrite
+p 45
+e
+c 1693  f(c(x),f(x,f(f(c(y),x v y),c(y)))) = x
+i para
+p 41
+p 1625
+e
+c 1739  x v x = x
+i para
+p 1625
+p 1625
+i rewrite
+p 1623
+p 21
+p 21
+p 45
+e
+c 1786  f(f(x,c(y)) ^ y,f(c(y),f(f(c(y),f(y,c(y))),c(y)))) = c(y)
+i back_rewrite
+p 1648
+i rewrite
+p 1739
+p 1739
+p 21
+p 1739
+p 1739
+p 21
+p 1739
+p 21
+e
+c 1787  f(x ^ f(c(x),y),f(c(x),f(f(y,f(x,y)),y))) = c(x)
+i back_rewrite
+p 1647
+i rewrite
+p 1739
+p 1739
+p 21
+p 1739
+p 21
+p 1739
+p 50
+p 1739
+p 1739
+p 21
+e
+c 1798  f(x v y,f(c(y),f(f(z,f(y,z)),z))) = c(y)
+i back_rewrite
+p 1628
+i rewrite
+p 1739
+e
+c 1958  f(f(f(x v c(y),c(y) v z),u),f(y,f(f(c(z),y v z),c(z)))) = y
+i back_rewrite
+p 1263
+i rewrite
+p 1739
+p 1739
+p 1739
+e
+c 2130  f(x v y,f(c(x),f(f(c(x),c(x) v x),c(x)))) = c(x)
+i back_rewrite
+p 776
+i rewrite
+p 1739
+e
+c 2302  f(f(x,y) ^ (c(y) v z),f(y,f(f(c(z),y v z),c(z)))) = y
+i back_rewrite
+p 304
+i rewrite
+p 1739
+p 1739
+p 1739
+p 1739
+e
+c 2374  x ^ y = c(c(x) v c(y))
+i back_rewrite
+p 95
+i rewrite
+p 1739
+p 1739
+e
+c 2384  f(x,y) = c(x) v c(y)
+i back_rewrite
+p 77
+i rewrite
+p 1739
+p 1739
+e
+c 2392  c(c(x)) = x
+i back_rewrite
+p 45
+i rewrite
+p 1739
+e
+c 2400  (c(c(x) v c(y)) v c(c(y) v z)) v c(c(y) v c(c(z v c(y v z)) v z)) = y
+i back_rewrite
+p 2302
+i rewrite
+p 2384
+p 2374
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2384
+p 2392
+e
+c 2410  (c(x) v c(x v c(y))) v c(x v c(c(c(y) v c(c(x) v c(y))) v c(y))) = c(x)
+i back_rewrite
+p 1787
+i rewrite
+p 2384
+p 2392
+p 2374
+p 2384
+p 2384
+p 2384
+p 2384
+p 2392
+p 2384
+p 2392
+e
+c 2411  (c(c(x) v y) v c(y)) v c(y v c(c(y v c(c(y) v y)) v y)) = c(y)
+i back_rewrite
+p 1786
+i rewrite
+p 2384
+p 2392
+p 2374
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2392
+e
+c 2438  c(c(c22) v c22) != c(c(c21) v c21) # answer(0)
+i back_rewrite
+p 37
+i rewrite
+p 2374
+p 2392
+p 2374
+p 2392
+e
+c 2450  c(x v y) v c(x v c(c(x v c(c(x) v x)) v x)) = c(x)
+i back_rewrite
+p 2130
+i rewrite
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+e
+c 2453  c(c(c(x v c(y)) v c(c(y) v z)) v c(u)) v c(c(y) v c(c(z v c(y v z)) v z)) = y
+i back_rewrite
+p 1958
+i rewrite
+p 2384
+p 2384
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2384
+e
+c 2454  c(x v y) v c(y v c(c(c(z) v c(c(y) v c(z))) v c(z))) = c(y)
+i back_rewrite
+p 1798
+i rewrite
+p 2384
+p 2384
+p 2384
+p 2384
+p 2392
+p 2384
+e
+c 2465  x v c(c(x) v c(c(y v c(x v y)) v y)) = x
+i back_rewrite
+p 1693
+i rewrite
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2384
+p 2392
+e
+c 2479  c(x v c(c(x v c(c(x) v x)) v x)) = c(x)
+i para
+p 2450
+p 1739
+i (flip)
+e
+c 2481  c(x v y) v c(x) = c(x)
+i para
+p 2450
+p 2384
+i rewrite
+p 2384
+p 2479
+e
+c 2485  (c(c(x) v y) v c(y)) v c(y) = c(y)
+i back_rewrite
+p 2411
+i rewrite
+p 2479
+e
+c 2486  c(c(x) v y) v x = x
+i para
+p 2392
+p 2481
+i rewrite
+p 2392
+e
+c 2487  x v (x v y) = x v y
+i para
+p 2481
+p 2481
+i rewrite
+p 2392
+p 2392
+p 2392
+e
+c 2492  c(x) v c(c(c(y) v c(x)) v c(c(x) v z)) = c(c(c(y) v c(x)) v c(c(x) v z))
+i para
+p 2400
+p 2481
+e
+c 2500  (c(c(x) v c(y)) v y) v y = y
+i para
+p 2392
+p 2485
+i rewrite
+p 2392
+p 2392
+e
+c 2507  (c(x v c(y)) v y) v y = y
+i para
+p 2392
+p 2500
+e
+c 2511  (c(x) v c(x v y)) v c(x v c(c(y v c(c(x) v y)) v y)) = c(x)
+i para
+p 2392
+p 2410
+i rewrite
+p 2392
+p 2392
+p 2392
+e
+c 2513  (c(x) v c(x v c(y))) v c(x) = c(x) v c(x v c(y))
+i para
+p 2410
+p 2465
+i rewrite
+p 2392
+p 2454
+p 2392
+p 2486
+e
+c 2517  c(x) v c(x v c(y)) = c(x)
+i para
+p 2410
+p 2487
+i rewrite
+p 2513
+p 2511
+e
+c 2528  c(x) v c(x v y) = c(x)
+i para
+p 2392
+p 2517
+e
+c 2529  (x v y) v x = x v y
+i para
+p 2481
+p 2517
+i rewrite
+p 2392
+p 2392
+p 2392
+e
+c 2533  x v c(c(x) v y) = x
+i para
+p 2486
+p 2529
+i rewrite
+p 2486
+e
+c 2552  c((c(x) v y) v c(z)) v c(c(x) v c(c(y v c(x v y)) v y)) = x
+i para
+p 2481
+p 2453
+i rewrite
+p 2392
+e
+c 2553  c(x v c(y)) v c(c(y) v c(c(z v c(y v z)) v z)) = y
+i para
+p 2481
+p 2453
+i rewrite
+p 2392
+e
+c 2560  c(c(x) v c(c(y v c(x v y)) v y)) = x
+i para
+p 2453
+p 2507
+i rewrite
+p 2533
+i (flip)
+e
+c 2574  c(x v c(y)) v y = y
+i back_rewrite
+p 2553
+i rewrite
+p 2560
+e
+c 2575  c((c(x) v y) v c(z)) v x = x
+i back_rewrite
+p 2552
+i rewrite
+p 2560
+e
+c 2583  c(x v y) v c(y) = c(y)
+i para
+p 2392
+p 2574
+e
+c 2585  x v c(y v c(x)) = x
+i para
+p 2574
+p 2529
+i rewrite
+p 2574
+e
+c 2591  x v (y v x) = y v x
+i para
+p 2583
+p 2481
+i rewrite
+p 2392
+p 2392
+p 2392
+e
+c 2599  c((c(x) v y) v z) v x = x
+i para
+p 2392
+p 2575
+e
+c 2612  c(c(x) v y) v (x v z) = x v z
+i para
+p 2481
+p 2599
+e
+c 2614  x v c((c(x) v y) v z) = x
+i para
+p 2599
+p 2529
+i rewrite
+p 2599
+e
+c 2618  c((x v c(y)) v z) v y = y
+i para
+p 2591
+p 2599
+e
+c 2619  c(x v (c(y) v z)) v y = y
+i para
+p 2591
+p 2599
+e
+c 2645  (x v y) v c(c(x) v z) = x v y
+i para
+p 2481
+p 2614
+e
+c 2649  x v c((y v c(x)) v z) = x
+i para
+p 2591
+p 2614
+e
+c 2650  x v c(y v (c(x) v z)) = x
+i para
+p 2591
+p 2614
+e
+c 2656  c(x v (y v c(z))) v z = z
+i para
+p 2591
+p 2618
+e
+c 2660  c(x v (y v z)) v c(y) = c(y)
+i para
+p 2392
+p 2619
+e
+c 2674  x v c(y v (z v c(x))) = x
+i para
+p 2591
+p 2649
+e
+c 2675  x v c(c(c(y) v x) v c(x v z)) = c(c(c(y) v x) v c(x v z))
+i para
+p 2392
+p 2492
+i rewrite
+p 2392
+p 2392
+p 2392
+p 2392
+e
+c 2698  (x v y) v c(z v c(x)) = x v y
+i para
+p 2481
+p 2650
+e
+c 2706  c(x v (y v z)) v c(z) = c(z)
+i para
+p 2392
+p 2656
+e
+c 2737  x v (y v (x v z)) = y v (x v z)
+i para
+p 2660
+p 2481
+i rewrite
+p 2392
+p 2392
+p 2392
+e
+c 2746  c(c(x v y) v x) v c(x v y) = c(x)
+i para
+p 2528
+p 2560
+i rewrite
+p 2392
+p 2392
+p 2675
+p 2392
+e
+c 2765  (x v (y v z)) v z = x v (y v z)
+i para
+p 2706
+p 2533
+i rewrite
+p 2392
+e
+c 2781  c((x v (y v c(z))) v u) v z = z
+i para
+p 2656
+p 2612
+i rewrite
+p 2392
+p 2656
+e
+c 2842  x v c((y v (z v c(x))) v u) = x
+i para
+p 2656
+p 2645
+i rewrite
+p 2392
+p 2656
+e
+c 4044  c(x v c(x v y)) v x = x v y
+i para
+p 2481
+p 2746
+i rewrite
+p 2392
+p 2481
+p 2392
+p 2392
+e
+c 4089  c(x) v x = x v c(x)
+i para
+p 2585
+p 4044
+e
+c 4091  x v (y v c(x)) = x v c(x)
+i para
+p 2674
+p 4044
+i rewrite
+p 4089
+i (flip)
+e
+c 4094  (x v y) v c(x v y) = (x v y) v c(x)
+i para
+p 2698
+p 4044
+i rewrite
+p 4089
+e
+c 4129  c(c22 v c(c22)) != c(c21 v c(c21)) # answer(0)
+i back_rewrite
+p 2438
+i rewrite
+p 4089
+p 4089
+e
+c 4130  (x v y) v c(x) = x v c(x)
+i para
+p 4089
+p 2737
+i rewrite
+p 4094
+p 4091
+p 4089
+p 4094
+i (flip)
+e
+c 4132  (x v c(x)) v y = x v c(x)
+i para
+p 4089
+p 2765
+i rewrite
+p 4094
+p 4130
+p 4089
+p 4094
+p 4130
+e
+c 4133  c(x v c(x)) v y = y
+i para
+p 4089
+p 2781
+i rewrite
+p 4094
+p 4130
+p 4132
+e
+c 4134  x v c(y v c(y)) = x
+i para
+p 4089
+p 2842
+i rewrite
+p 4094
+p 4130
+p 4132
+e
+c 4209  c(x v c(x)) = c(y v c(y))
+i para
+p 4134
+p 4133
+e
+c 4210  $F # answer(0)
+i resolve
+p 4209
+p 4129
+e
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 9 at 1.36 (+ 0.01) seconds: commutativity_meet.
+% Length of proof is 82.
+% Level of proof is 23.
+% Maximum clause weight is 37.
+% Given clauses 267.
+
+c 10  x v y = y v x # answer(commutativity_meet) # label(non_clause) # label(goal)
+i goal
+e
+c 15  f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(f(y,y),z)),z))) = y # label(OML_Sh)
+i assumption
+e
+c 16  x v y = f(f(x,x),f(y,y)) # label(Def_join)
+i assumption
+e
+c 17  f(f(x,x),f(y,y)) = x v y
+i copy
+p 16
+i (flip)
+e
+c 18  x ^ y = f(f(x,y),f(x,y)) # label(Def_meet)
+i assumption
+e
+c 19  f(f(x,y),f(x,y)) = x ^ y
+i copy
+p 18
+i (flip)
+e
+c 20  c(x) = f(x,x) # label(Def_complement)
+i assumption
+e
+c 21  f(x,x) = c(x)
+i copy
+p 20
+i (flip)
+e
+c 33  c18 v c17 != c17 v c18 # answer(commutativity_meet)
+i deny
+p 10
+e
+c 40  c(f(x,y)) = x ^ y
+i back_rewrite
+p 19
+i rewrite
+p 21
+e
+c 41  f(c(x),c(y)) = x v y
+i back_rewrite
+p 17
+i rewrite
+p 21
+p 21
+e
+c 42  f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(c(y),z)),z))) = y
+i back_rewrite
+p 15
+i rewrite
+p 21
+e
+c 43  x ^ x = c(c(x))
+i para
+p 21
+p 40
+i (flip)
+e
+c 45  c(c(x)) = x v x
+i para
+p 41
+p 21
+i (flip)
+e
+c 46  c(x) ^ c(y) = c(x v y)
+i para
+p 41
+p 40
+i (flip)
+e
+c 50  x ^ x = x v x
+i back_rewrite
+p 43
+i rewrite
+p 45
+e
+c 52  f(f(f(c(x),f(x,y)),z),f(x,f(f(y,f(c(x),y)),y))) = x
+i para
+p 21
+p 42
+e
+c 53  f(f(f(f(x,y),c(y)),z),f(y,f(f(y,f(c(y),y)),y))) = y
+i para
+p 21
+p 42
+e
+c 54  f(f(x v x,y),f(x,f(f(x,f(c(x),x)),x))) = x
+i para
+p 21
+p 42
+i rewrite
+p 21
+p 45
+e
+c 55  f(f(x,y) ^ f(y,z),f(y,f(f(z,f(c(y),z)),z))) = y
+i para
+p 21
+p 42
+i rewrite
+p 40
+e
+c 59  f(f(f(x v y,f(c(y),z)),u),f(c(y),f(f(z,f(y v y,z)),z))) = c(y)
+i para
+p 41
+p 42
+i rewrite
+p 45
+e
+c 61  f(f(f(f(x,y),f(y,c(z))),u),f(y,f(f(c(z),y v z),c(z)))) = y
+i para
+p 41
+p 42
+e
+c 62  f(f(x,y),f(x,f(f(f(f(z,f(c(x),z)),z),f(c(x),f(f(z,f(c(x),z)),z))),f(f(z,f(c(x),z)),z)))) = x
+i para
+p 42
+p 42
+e
+c 65  f(x v x,c(y)) = c(x) v y
+i para
+p 45
+p 41
+e
+c 66  f(c(x),y v y) = x v c(y)
+i para
+p 45
+p 41
+e
+c 68  c(x v x) = c(x) v c(x)
+i para
+p 45
+p 45
+e
+c 72  (x v x) ^ c(y) = c(c(x) v y)
+i para
+p 45
+p 46
+e
+c 77  f(x v x,y v y) = c(x) v c(y)
+i para
+p 45
+p 65
+e
+c 95  (x v x) ^ (y v y) = c(c(x) v c(y))
+i para
+p 45
+p 72
+e
+c 158  f(x,f(c(x),f(f(y,f(x v x,y)),y))) = c(x)
+i para
+p 53
+p 42
+i rewrite
+p 45
+e
+c 203  f(c(x) v y,f(x,f(f(x,f(c(x),x)),x))) = x
+i para
+p 65
+p 54
+e
+c 304  f(f(x,y v y) ^ (c(y) v z),f(y v y,f(f(c(z),(y v y) v z),c(z)))) = y v y
+i para
+p 65
+p 55
+i rewrite
+p 68
+p 65
+p 45
+e
+c 776  f((x v x) v y,f(c(x),f(f(c(x),c(x) v x),c(x)))) = c(x)
+i para
+p 41
+p 203
+i rewrite
+p 45
+e
+c 785  f(c(x),f(x v x,f(f(f(x,f(f(x,f(c(x),x)),x)),x),f(x,f(f(x,f(c(x),x)),x))))) = x v x
+i para
+p 203
+p 158
+i rewrite
+p 45
+p 45
+e
+c 1263  f(f(f(x v c(y),c(y) v z),u),f(y v y,f(f(c(z),(y v y) v z),c(z)))) = y v y
+i para
+p 66
+p 61
+i rewrite
+p 65
+e
+c 1623  f(f(x,y),f(y,f(f(z,f(c(y),z)),z))) = y
+i para
+p 62
+p 42
+e
+c 1625  f(c(x),f(x,f(f(y,f(c(x),y)),y))) = x
+i para
+p 62
+p 52
+e
+c 1628  f(x v y,f(c(y),f(f(z,f(y v y,z)),z))) = c(y)
+i para
+p 62
+p 59
+e
+c 1630  f(c(x),f(x v x,x)) = x v x
+i back_rewrite
+p 785
+i rewrite
+p 1623
+e
+c 1647  f((x v x) ^ f(f(x v x,x),y),f(f(x v x,x),f(f(y,f((x v x) ^ x,y)),y))) = f(x v x,x)
+i para
+p 1630
+p 55
+i rewrite
+p 40
+e
+c 1648  f(f(x,c(y)) ^ (y v y),f(c(y),f(f(f(y v y,y),f(y v y,f(y v y,y))),f(y v y,y)))) = c(y)
+i para
+p 1630
+p 55
+i rewrite
+p 45
+e
+c 1693  f(c(x),f(x,f(f(c(y),x v y),c(y)))) = x
+i para
+p 41
+p 1625
+e
+c 1739  x v x = x
+i para
+p 1625
+p 1625
+i rewrite
+p 1623
+p 21
+p 21
+p 45
+e
+c 1786  f(f(x,c(y)) ^ y,f(c(y),f(f(c(y),f(y,c(y))),c(y)))) = c(y)
+i back_rewrite
+p 1648
+i rewrite
+p 1739
+p 1739
+p 21
+p 1739
+p 1739
+p 21
+p 1739
+p 21
+e
+c 1787  f(x ^ f(c(x),y),f(c(x),f(f(y,f(x,y)),y))) = c(x)
+i back_rewrite
+p 1647
+i rewrite
+p 1739
+p 1739
+p 21
+p 1739
+p 21
+p 1739
+p 50
+p 1739
+p 1739
+p 21
+e
+c 1798  f(x v y,f(c(y),f(f(z,f(y,z)),z))) = c(y)
+i back_rewrite
+p 1628
+i rewrite
+p 1739
+e
+c 1958  f(f(f(x v c(y),c(y) v z),u),f(y,f(f(c(z),y v z),c(z)))) = y
+i back_rewrite
+p 1263
+i rewrite
+p 1739
+p 1739
+p 1739
+e
+c 2130  f(x v y,f(c(x),f(f(c(x),c(x) v x),c(x)))) = c(x)
+i back_rewrite
+p 776
+i rewrite
+p 1739
+e
+c 2302  f(f(x,y) ^ (c(y) v z),f(y,f(f(c(z),y v z),c(z)))) = y
+i back_rewrite
+p 304
+i rewrite
+p 1739
+p 1739
+p 1739
+p 1739
+e
+c 2374  x ^ y = c(c(x) v c(y))
+i back_rewrite
+p 95
+i rewrite
+p 1739
+p 1739
+e
+c 2384  f(x,y) = c(x) v c(y)
+i back_rewrite
+p 77
+i rewrite
+p 1739
+p 1739
+e
+c 2392  c(c(x)) = x
+i back_rewrite
+p 45
+i rewrite
+p 1739
+e
+c 2400  (c(c(x) v c(y)) v c(c(y) v z)) v c(c(y) v c(c(z v c(y v z)) v z)) = y
+i back_rewrite
+p 2302
+i rewrite
+p 2384
+p 2374
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2384
+p 2392
+e
+c 2410  (c(x) v c(x v c(y))) v c(x v c(c(c(y) v c(c(x) v c(y))) v c(y))) = c(x)
+i back_rewrite
+p 1787
+i rewrite
+p 2384
+p 2392
+p 2374
+p 2384
+p 2384
+p 2384
+p 2384
+p 2392
+p 2384
+p 2392
+e
+c 2411  (c(c(x) v y) v c(y)) v c(y v c(c(y v c(c(y) v y)) v y)) = c(y)
+i back_rewrite
+p 1786
+i rewrite
+p 2384
+p 2392
+p 2374
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2392
+e
+c 2450  c(x v y) v c(x v c(c(x v c(c(x) v x)) v x)) = c(x)
+i back_rewrite
+p 2130
+i rewrite
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+e
+c 2453  c(c(c(x v c(y)) v c(c(y) v z)) v c(u)) v c(c(y) v c(c(z v c(y v z)) v z)) = y
+i back_rewrite
+p 1958
+i rewrite
+p 2384
+p 2384
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2384
+e
+c 2454  c(x v y) v c(y v c(c(c(z) v c(c(y) v c(z))) v c(z))) = c(y)
+i back_rewrite
+p 1798
+i rewrite
+p 2384
+p 2384
+p 2384
+p 2384
+p 2392
+p 2384
+e
+c 2465  x v c(c(x) v c(c(y v c(x v y)) v y)) = x
+i back_rewrite
+p 1693
+i rewrite
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2384
+p 2392
+e
+c 2479  c(x v c(c(x v c(c(x) v x)) v x)) = c(x)
+i para
+p 2450
+p 1739
+i (flip)
+e
+c 2481  c(x v y) v c(x) = c(x)
+i para
+p 2450
+p 2384
+i rewrite
+p 2384
+p 2479
+e
+c 2485  (c(c(x) v y) v c(y)) v c(y) = c(y)
+i back_rewrite
+p 2411
+i rewrite
+p 2479
+e
+c 2486  c(c(x) v y) v x = x
+i para
+p 2392
+p 2481
+i rewrite
+p 2392
+e
+c 2487  x v (x v y) = x v y
+i para
+p 2481
+p 2481
+i rewrite
+p 2392
+p 2392
+p 2392
+e
+c 2492  c(x) v c(c(c(y) v c(x)) v c(c(x) v z)) = c(c(c(y) v c(x)) v c(c(x) v z))
+i para
+p 2400
+p 2481
+e
+c 2500  (c(c(x) v c(y)) v y) v y = y
+i para
+p 2392
+p 2485
+i rewrite
+p 2392
+p 2392
+e
+c 2507  (c(x v c(y)) v y) v y = y
+i para
+p 2392
+p 2500
+e
+c 2511  (c(x) v c(x v y)) v c(x v c(c(y v c(c(x) v y)) v y)) = c(x)
+i para
+p 2392
+p 2410
+i rewrite
+p 2392
+p 2392
+p 2392
+e
+c 2513  (c(x) v c(x v c(y))) v c(x) = c(x) v c(x v c(y))
+i para
+p 2410
+p 2465
+i rewrite
+p 2392
+p 2454
+p 2392
+p 2486
+e
+c 2517  c(x) v c(x v c(y)) = c(x)
+i para
+p 2410
+p 2487
+i rewrite
+p 2513
+p 2511
+e
+c 2529  (x v y) v x = x v y
+i para
+p 2481
+p 2517
+i rewrite
+p 2392
+p 2392
+p 2392
+e
+c 2533  x v c(c(x) v y) = x
+i para
+p 2486
+p 2529
+i rewrite
+p 2486
+e
+c 2553  c(x v c(y)) v c(c(y) v c(c(z v c(y v z)) v z)) = y
+i para
+p 2481
+p 2453
+i rewrite
+p 2392
+e
+c 2560  c(c(x) v c(c(y v c(x v y)) v y)) = x
+i para
+p 2453
+p 2507
+i rewrite
+p 2533
+i (flip)
+e
+c 2574  c(x v c(y)) v y = y
+i back_rewrite
+p 2553
+i rewrite
+p 2560
+e
+c 2585  x v c(y v c(x)) = x
+i para
+p 2574
+p 2529
+i rewrite
+p 2574
+e
+c 2590  c(x) v c(y v x) = c(x)
+i para
+p 2392
+p 2585
+e
+c 2677  c(x v y) v c(c(c(z) v c(x v y)) v x) = c(c(c(z) v c(x v y)) v x)
+i para
+p 2481
+p 2492
+i rewrite
+p 2392
+p 2481
+p 2392
+e
+c 5628  c(x v y) v c(y v x) = c(y v x)
+i para
+p 2585
+p 2677
+i rewrite
+p 2392
+p 2392
+p 2392
+p 2590
+p 2392
+e
+c 5749  (x v y) v (y v x) = y v x
+i para
+p 5628
+p 2481
+i rewrite
+p 2392
+p 2392
+p 2392
+e
+c 5751  x v y = y v x
+i para
+p 5628
+p 2533
+i rewrite
+p 2392
+p 5749
+e
+c 5752  $F # answer(commutativity_meet)
+i resolve
+p 5751
+p 33
+e
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 10 at 1.36 (+ 0.01) seconds: commutativity_join.
+% Length of proof is 82.
+% Level of proof is 23.
+% Maximum clause weight is 37.
+% Given clauses 267.
+
+c 9  x v y = y v x # answer(commutativity_join) # label(non_clause) # label(goal)
+i goal
+e
+c 15  f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(f(y,y),z)),z))) = y # label(OML_Sh)
+i assumption
+e
+c 16  x v y = f(f(x,x),f(y,y)) # label(Def_join)
+i assumption
+e
+c 17  f(f(x,x),f(y,y)) = x v y
+i copy
+p 16
+i (flip)
+e
+c 18  x ^ y = f(f(x,y),f(x,y)) # label(Def_meet)
+i assumption
+e
+c 19  f(f(x,y),f(x,y)) = x ^ y
+i copy
+p 18
+i (flip)
+e
+c 20  c(x) = f(x,x) # label(Def_complement)
+i assumption
+e
+c 21  f(x,x) = c(x)
+i copy
+p 20
+i (flip)
+e
+c 32  c16 v c15 != c15 v c16 # answer(commutativity_join)
+i deny
+p 9
+e
+c 40  c(f(x,y)) = x ^ y
+i back_rewrite
+p 19
+i rewrite
+p 21
+e
+c 41  f(c(x),c(y)) = x v y
+i back_rewrite
+p 17
+i rewrite
+p 21
+p 21
+e
+c 42  f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(c(y),z)),z))) = y
+i back_rewrite
+p 15
+i rewrite
+p 21
+e
+c 43  x ^ x = c(c(x))
+i para
+p 21
+p 40
+i (flip)
+e
+c 45  c(c(x)) = x v x
+i para
+p 41
+p 21
+i (flip)
+e
+c 46  c(x) ^ c(y) = c(x v y)
+i para
+p 41
+p 40
+i (flip)
+e
+c 50  x ^ x = x v x
+i back_rewrite
+p 43
+i rewrite
+p 45
+e
+c 52  f(f(f(c(x),f(x,y)),z),f(x,f(f(y,f(c(x),y)),y))) = x
+i para
+p 21
+p 42
+e
+c 53  f(f(f(f(x,y),c(y)),z),f(y,f(f(y,f(c(y),y)),y))) = y
+i para
+p 21
+p 42
+e
+c 54  f(f(x v x,y),f(x,f(f(x,f(c(x),x)),x))) = x
+i para
+p 21
+p 42
+i rewrite
+p 21
+p 45
+e
+c 55  f(f(x,y) ^ f(y,z),f(y,f(f(z,f(c(y),z)),z))) = y
+i para
+p 21
+p 42
+i rewrite
+p 40
+e
+c 59  f(f(f(x v y,f(c(y),z)),u),f(c(y),f(f(z,f(y v y,z)),z))) = c(y)
+i para
+p 41
+p 42
+i rewrite
+p 45
+e
+c 61  f(f(f(f(x,y),f(y,c(z))),u),f(y,f(f(c(z),y v z),c(z)))) = y
+i para
+p 41
+p 42
+e
+c 62  f(f(x,y),f(x,f(f(f(f(z,f(c(x),z)),z),f(c(x),f(f(z,f(c(x),z)),z))),f(f(z,f(c(x),z)),z)))) = x
+i para
+p 42
+p 42
+e
+c 65  f(x v x,c(y)) = c(x) v y
+i para
+p 45
+p 41
+e
+c 66  f(c(x),y v y) = x v c(y)
+i para
+p 45
+p 41
+e
+c 68  c(x v x) = c(x) v c(x)
+i para
+p 45
+p 45
+e
+c 72  (x v x) ^ c(y) = c(c(x) v y)
+i para
+p 45
+p 46
+e
+c 77  f(x v x,y v y) = c(x) v c(y)
+i para
+p 45
+p 65
+e
+c 95  (x v x) ^ (y v y) = c(c(x) v c(y))
+i para
+p 45
+p 72
+e
+c 158  f(x,f(c(x),f(f(y,f(x v x,y)),y))) = c(x)
+i para
+p 53
+p 42
+i rewrite
+p 45
+e
+c 203  f(c(x) v y,f(x,f(f(x,f(c(x),x)),x))) = x
+i para
+p 65
+p 54
+e
+c 304  f(f(x,y v y) ^ (c(y) v z),f(y v y,f(f(c(z),(y v y) v z),c(z)))) = y v y
+i para
+p 65
+p 55
+i rewrite
+p 68
+p 65
+p 45
+e
+c 776  f((x v x) v y,f(c(x),f(f(c(x),c(x) v x),c(x)))) = c(x)
+i para
+p 41
+p 203
+i rewrite
+p 45
+e
+c 785  f(c(x),f(x v x,f(f(f(x,f(f(x,f(c(x),x)),x)),x),f(x,f(f(x,f(c(x),x)),x))))) = x v x
+i para
+p 203
+p 158
+i rewrite
+p 45
+p 45
+e
+c 1263  f(f(f(x v c(y),c(y) v z),u),f(y v y,f(f(c(z),(y v y) v z),c(z)))) = y v y
+i para
+p 66
+p 61
+i rewrite
+p 65
+e
+c 1623  f(f(x,y),f(y,f(f(z,f(c(y),z)),z))) = y
+i para
+p 62
+p 42
+e
+c 1625  f(c(x),f(x,f(f(y,f(c(x),y)),y))) = x
+i para
+p 62
+p 52
+e
+c 1628  f(x v y,f(c(y),f(f(z,f(y v y,z)),z))) = c(y)
+i para
+p 62
+p 59
+e
+c 1630  f(c(x),f(x v x,x)) = x v x
+i back_rewrite
+p 785
+i rewrite
+p 1623
+e
+c 1647  f((x v x) ^ f(f(x v x,x),y),f(f(x v x,x),f(f(y,f((x v x) ^ x,y)),y))) = f(x v x,x)
+i para
+p 1630
+p 55
+i rewrite
+p 40
+e
+c 1648  f(f(x,c(y)) ^ (y v y),f(c(y),f(f(f(y v y,y),f(y v y,f(y v y,y))),f(y v y,y)))) = c(y)
+i para
+p 1630
+p 55
+i rewrite
+p 45
+e
+c 1693  f(c(x),f(x,f(f(c(y),x v y),c(y)))) = x
+i para
+p 41
+p 1625
+e
+c 1739  x v x = x
+i para
+p 1625
+p 1625
+i rewrite
+p 1623
+p 21
+p 21
+p 45
+e
+c 1786  f(f(x,c(y)) ^ y,f(c(y),f(f(c(y),f(y,c(y))),c(y)))) = c(y)
+i back_rewrite
+p 1648
+i rewrite
+p 1739
+p 1739
+p 21
+p 1739
+p 1739
+p 21
+p 1739
+p 21
+e
+c 1787  f(x ^ f(c(x),y),f(c(x),f(f(y,f(x,y)),y))) = c(x)
+i back_rewrite
+p 1647
+i rewrite
+p 1739
+p 1739
+p 21
+p 1739
+p 21
+p 1739
+p 50
+p 1739
+p 1739
+p 21
+e
+c 1798  f(x v y,f(c(y),f(f(z,f(y,z)),z))) = c(y)
+i back_rewrite
+p 1628
+i rewrite
+p 1739
+e
+c 1958  f(f(f(x v c(y),c(y) v z),u),f(y,f(f(c(z),y v z),c(z)))) = y
+i back_rewrite
+p 1263
+i rewrite
+p 1739
+p 1739
+p 1739
+e
+c 2130  f(x v y,f(c(x),f(f(c(x),c(x) v x),c(x)))) = c(x)
+i back_rewrite
+p 776
+i rewrite
+p 1739
+e
+c 2302  f(f(x,y) ^ (c(y) v z),f(y,f(f(c(z),y v z),c(z)))) = y
+i back_rewrite
+p 304
+i rewrite
+p 1739
+p 1739
+p 1739
+p 1739
+e
+c 2374  x ^ y = c(c(x) v c(y))
+i back_rewrite
+p 95
+i rewrite
+p 1739
+p 1739
+e
+c 2384  f(x,y) = c(x) v c(y)
+i back_rewrite
+p 77
+i rewrite
+p 1739
+p 1739
+e
+c 2392  c(c(x)) = x
+i back_rewrite
+p 45
+i rewrite
+p 1739
+e
+c 2400  (c(c(x) v c(y)) v c(c(y) v z)) v c(c(y) v c(c(z v c(y v z)) v z)) = y
+i back_rewrite
+p 2302
+i rewrite
+p 2384
+p 2374
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2384
+p 2392
+e
+c 2410  (c(x) v c(x v c(y))) v c(x v c(c(c(y) v c(c(x) v c(y))) v c(y))) = c(x)
+i back_rewrite
+p 1787
+i rewrite
+p 2384
+p 2392
+p 2374
+p 2384
+p 2384
+p 2384
+p 2384
+p 2392
+p 2384
+p 2392
+e
+c 2411  (c(c(x) v y) v c(y)) v c(y v c(c(y v c(c(y) v y)) v y)) = c(y)
+i back_rewrite
+p 1786
+i rewrite
+p 2384
+p 2392
+p 2374
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2392
+e
+c 2450  c(x v y) v c(x v c(c(x v c(c(x) v x)) v x)) = c(x)
+i back_rewrite
+p 2130
+i rewrite
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+e
+c 2453  c(c(c(x v c(y)) v c(c(y) v z)) v c(u)) v c(c(y) v c(c(z v c(y v z)) v z)) = y
+i back_rewrite
+p 1958
+i rewrite
+p 2384
+p 2384
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2384
+e
+c 2454  c(x v y) v c(y v c(c(c(z) v c(c(y) v c(z))) v c(z))) = c(y)
+i back_rewrite
+p 1798
+i rewrite
+p 2384
+p 2384
+p 2384
+p 2384
+p 2392
+p 2384
+e
+c 2465  x v c(c(x) v c(c(y v c(x v y)) v y)) = x
+i back_rewrite
+p 1693
+i rewrite
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2384
+p 2392
+e
+c 2479  c(x v c(c(x v c(c(x) v x)) v x)) = c(x)
+i para
+p 2450
+p 1739
+i (flip)
+e
+c 2481  c(x v y) v c(x) = c(x)
+i para
+p 2450
+p 2384
+i rewrite
+p 2384
+p 2479
+e
+c 2485  (c(c(x) v y) v c(y)) v c(y) = c(y)
+i back_rewrite
+p 2411
+i rewrite
+p 2479
+e
+c 2486  c(c(x) v y) v x = x
+i para
+p 2392
+p 2481
+i rewrite
+p 2392
+e
+c 2487  x v (x v y) = x v y
+i para
+p 2481
+p 2481
+i rewrite
+p 2392
+p 2392
+p 2392
+e
+c 2492  c(x) v c(c(c(y) v c(x)) v c(c(x) v z)) = c(c(c(y) v c(x)) v c(c(x) v z))
+i para
+p 2400
+p 2481
+e
+c 2500  (c(c(x) v c(y)) v y) v y = y
+i para
+p 2392
+p 2485
+i rewrite
+p 2392
+p 2392
+e
+c 2507  (c(x v c(y)) v y) v y = y
+i para
+p 2392
+p 2500
+e
+c 2511  (c(x) v c(x v y)) v c(x v c(c(y v c(c(x) v y)) v y)) = c(x)
+i para
+p 2392
+p 2410
+i rewrite
+p 2392
+p 2392
+p 2392
+e
+c 2513  (c(x) v c(x v c(y))) v c(x) = c(x) v c(x v c(y))
+i para
+p 2410
+p 2465
+i rewrite
+p 2392
+p 2454
+p 2392
+p 2486
+e
+c 2517  c(x) v c(x v c(y)) = c(x)
+i para
+p 2410
+p 2487
+i rewrite
+p 2513
+p 2511
+e
+c 2529  (x v y) v x = x v y
+i para
+p 2481
+p 2517
+i rewrite
+p 2392
+p 2392
+p 2392
+e
+c 2533  x v c(c(x) v y) = x
+i para
+p 2486
+p 2529
+i rewrite
+p 2486
+e
+c 2553  c(x v c(y)) v c(c(y) v c(c(z v c(y v z)) v z)) = y
+i para
+p 2481
+p 2453
+i rewrite
+p 2392
+e
+c 2560  c(c(x) v c(c(y v c(x v y)) v y)) = x
+i para
+p 2453
+p 2507
+i rewrite
+p 2533
+i (flip)
+e
+c 2574  c(x v c(y)) v y = y
+i back_rewrite
+p 2553
+i rewrite
+p 2560
+e
+c 2585  x v c(y v c(x)) = x
+i para
+p 2574
+p 2529
+i rewrite
+p 2574
+e
+c 2590  c(x) v c(y v x) = c(x)
+i para
+p 2392
+p 2585
+e
+c 2677  c(x v y) v c(c(c(z) v c(x v y)) v x) = c(c(c(z) v c(x v y)) v x)
+i para
+p 2481
+p 2492
+i rewrite
+p 2392
+p 2481
+p 2392
+e
+c 5628  c(x v y) v c(y v x) = c(y v x)
+i para
+p 2585
+p 2677
+i rewrite
+p 2392
+p 2392
+p 2392
+p 2590
+p 2392
+e
+c 5749  (x v y) v (y v x) = y v x
+i para
+p 5628
+p 2481
+i rewrite
+p 2392
+p 2392
+p 2392
+e
+c 5751  x v y = y v x
+i para
+p 5628
+p 2533
+i rewrite
+p 2392
+p 5749
+e
+c 5753  $F # answer(commutativity_join)
+i resolve
+p 5751
+p 32
+e
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 11 at 1.40 (+ 0.01) seconds: OM.
+% Length of proof is 88.
+% Level of proof is 24.
+% Maximum clause weight is 37.
+% Given clauses 267.
+
+c 2  x v (c(x) ^ (x v y)) = x v y # answer(OM) # label(non_clause) # label(goal)
+i goal
+e
+c 15  f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(f(y,y),z)),z))) = y # label(OML_Sh)
+i assumption
+e
+c 16  x v y = f(f(x,x),f(y,y)) # label(Def_join)
+i assumption
+e
+c 17  f(f(x,x),f(y,y)) = x v y
+i copy
+p 16
+i (flip)
+e
+c 18  x ^ y = f(f(x,y),f(x,y)) # label(Def_meet)
+i assumption
+e
+c 19  f(f(x,y),f(x,y)) = x ^ y
+i copy
+p 18
+i (flip)
+e
+c 20  c(x) = f(x,x) # label(Def_complement)
+i assumption
+e
+c 21  f(x,x) = c(x)
+i copy
+p 20
+i (flip)
+e
+c 23  c3 v (c(c3) ^ (c3 v c4)) != c3 v c4 # answer(OM)
+i deny
+p 2
+e
+c 40  c(f(x,y)) = x ^ y
+i back_rewrite
+p 19
+i rewrite
+p 21
+e
+c 41  f(c(x),c(y)) = x v y
+i back_rewrite
+p 17
+i rewrite
+p 21
+p 21
+e
+c 42  f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(c(y),z)),z))) = y
+i back_rewrite
+p 15
+i rewrite
+p 21
+e
+c 43  x ^ x = c(c(x))
+i para
+p 21
+p 40
+i (flip)
+e
+c 45  c(c(x)) = x v x
+i para
+p 41
+p 21
+i (flip)
+e
+c 46  c(x) ^ c(y) = c(x v y)
+i para
+p 41
+p 40
+i (flip)
+e
+c 50  x ^ x = x v x
+i back_rewrite
+p 43
+i rewrite
+p 45
+e
+c 52  f(f(f(c(x),f(x,y)),z),f(x,f(f(y,f(c(x),y)),y))) = x
+i para
+p 21
+p 42
+e
+c 53  f(f(f(f(x,y),c(y)),z),f(y,f(f(y,f(c(y),y)),y))) = y
+i para
+p 21
+p 42
+e
+c 54  f(f(x v x,y),f(x,f(f(x,f(c(x),x)),x))) = x
+i para
+p 21
+p 42
+i rewrite
+p 21
+p 45
+e
+c 55  f(f(x,y) ^ f(y,z),f(y,f(f(z,f(c(y),z)),z))) = y
+i para
+p 21
+p 42
+i rewrite
+p 40
+e
+c 59  f(f(f(x v y,f(c(y),z)),u),f(c(y),f(f(z,f(y v y,z)),z))) = c(y)
+i para
+p 41
+p 42
+i rewrite
+p 45
+e
+c 61  f(f(f(f(x,y),f(y,c(z))),u),f(y,f(f(c(z),y v z),c(z)))) = y
+i para
+p 41
+p 42
+e
+c 62  f(f(x,y),f(x,f(f(f(f(z,f(c(x),z)),z),f(c(x),f(f(z,f(c(x),z)),z))),f(f(z,f(c(x),z)),z)))) = x
+i para
+p 42
+p 42
+e
+c 65  f(x v x,c(y)) = c(x) v y
+i para
+p 45
+p 41
+e
+c 66  f(c(x),y v y) = x v c(y)
+i para
+p 45
+p 41
+e
+c 68  c(x v x) = c(x) v c(x)
+i para
+p 45
+p 45
+e
+c 72  (x v x) ^ c(y) = c(c(x) v y)
+i para
+p 45
+p 46
+e
+c 77  f(x v x,y v y) = c(x) v c(y)
+i para
+p 45
+p 65
+e
+c 95  (x v x) ^ (y v y) = c(c(x) v c(y))
+i para
+p 45
+p 72
+e
+c 158  f(x,f(c(x),f(f(y,f(x v x,y)),y))) = c(x)
+i para
+p 53
+p 42
+i rewrite
+p 45
+e
+c 203  f(c(x) v y,f(x,f(f(x,f(c(x),x)),x))) = x
+i para
+p 65
+p 54
+e
+c 304  f(f(x,y v y) ^ (c(y) v z),f(y v y,f(f(c(z),(y v y) v z),c(z)))) = y v y
+i para
+p 65
+p 55
+i rewrite
+p 68
+p 65
+p 45
+e
+c 776  f((x v x) v y,f(c(x),f(f(c(x),c(x) v x),c(x)))) = c(x)
+i para
+p 41
+p 203
+i rewrite
+p 45
+e
+c 785  f(c(x),f(x v x,f(f(f(x,f(f(x,f(c(x),x)),x)),x),f(x,f(f(x,f(c(x),x)),x))))) = x v x
+i para
+p 203
+p 158
+i rewrite
+p 45
+p 45
+e
+c 1263  f(f(f(x v c(y),c(y) v z),u),f(y v y,f(f(c(z),(y v y) v z),c(z)))) = y v y
+i para
+p 66
+p 61
+i rewrite
+p 65
+e
+c 1623  f(f(x,y),f(y,f(f(z,f(c(y),z)),z))) = y
+i para
+p 62
+p 42
+e
+c 1625  f(c(x),f(x,f(f(y,f(c(x),y)),y))) = x
+i para
+p 62
+p 52
+e
+c 1628  f(x v y,f(c(y),f(f(z,f(y v y,z)),z))) = c(y)
+i para
+p 62
+p 59
+e
+c 1630  f(c(x),f(x v x,x)) = x v x
+i back_rewrite
+p 785
+i rewrite
+p 1623
+e
+c 1647  f((x v x) ^ f(f(x v x,x),y),f(f(x v x,x),f(f(y,f((x v x) ^ x,y)),y))) = f(x v x,x)
+i para
+p 1630
+p 55
+i rewrite
+p 40
+e
+c 1648  f(f(x,c(y)) ^ (y v y),f(c(y),f(f(f(y v y,y),f(y v y,f(y v y,y))),f(y v y,y)))) = c(y)
+i para
+p 1630
+p 55
+i rewrite
+p 45
+e
+c 1693  f(c(x),f(x,f(f(c(y),x v y),c(y)))) = x
+i para
+p 41
+p 1625
+e
+c 1739  x v x = x
+i para
+p 1625
+p 1625
+i rewrite
+p 1623
+p 21
+p 21
+p 45
+e
+c 1786  f(f(x,c(y)) ^ y,f(c(y),f(f(c(y),f(y,c(y))),c(y)))) = c(y)
+i back_rewrite
+p 1648
+i rewrite
+p 1739
+p 1739
+p 21
+p 1739
+p 1739
+p 21
+p 1739
+p 21
+e
+c 1787  f(x ^ f(c(x),y),f(c(x),f(f(y,f(x,y)),y))) = c(x)
+i back_rewrite
+p 1647
+i rewrite
+p 1739
+p 1739
+p 21
+p 1739
+p 21
+p 1739
+p 50
+p 1739
+p 1739
+p 21
+e
+c 1798  f(x v y,f(c(y),f(f(z,f(y,z)),z))) = c(y)
+i back_rewrite
+p 1628
+i rewrite
+p 1739
+e
+c 1958  f(f(f(x v c(y),c(y) v z),u),f(y,f(f(c(z),y v z),c(z)))) = y
+i back_rewrite
+p 1263
+i rewrite
+p 1739
+p 1739
+p 1739
+e
+c 2130  f(x v y,f(c(x),f(f(c(x),c(x) v x),c(x)))) = c(x)
+i back_rewrite
+p 776
+i rewrite
+p 1739
+e
+c 2302  f(f(x,y) ^ (c(y) v z),f(y,f(f(c(z),y v z),c(z)))) = y
+i back_rewrite
+p 304
+i rewrite
+p 1739
+p 1739
+p 1739
+p 1739
+e
+c 2374  x ^ y = c(c(x) v c(y))
+i back_rewrite
+p 95
+i rewrite
+p 1739
+p 1739
+e
+c 2384  f(x,y) = c(x) v c(y)
+i back_rewrite
+p 77
+i rewrite
+p 1739
+p 1739
+e
+c 2392  c(c(x)) = x
+i back_rewrite
+p 45
+i rewrite
+p 1739
+e
+c 2400  (c(c(x) v c(y)) v c(c(y) v z)) v c(c(y) v c(c(z v c(y v z)) v z)) = y
+i back_rewrite
+p 2302
+i rewrite
+p 2384
+p 2374
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2384
+p 2392
+e
+c 2410  (c(x) v c(x v c(y))) v c(x v c(c(c(y) v c(c(x) v c(y))) v c(y))) = c(x)
+i back_rewrite
+p 1787
+i rewrite
+p 2384
+p 2392
+p 2374
+p 2384
+p 2384
+p 2384
+p 2384
+p 2392
+p 2384
+p 2392
+e
+c 2411  (c(c(x) v y) v c(y)) v c(y v c(c(y v c(c(y) v y)) v y)) = c(y)
+i back_rewrite
+p 1786
+i rewrite
+p 2384
+p 2392
+p 2374
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2392
+e
+c 2440  c3 v c(c3 v c(c3 v c4)) != c3 v c4 # answer(OM)
+i back_rewrite
+p 23
+i rewrite
+p 2374
+p 2392
+e
+c 2450  c(x v y) v c(x v c(c(x v c(c(x) v x)) v x)) = c(x)
+i back_rewrite
+p 2130
+i rewrite
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+e
+c 2453  c(c(c(x v c(y)) v c(c(y) v z)) v c(u)) v c(c(y) v c(c(z v c(y v z)) v z)) = y
+i back_rewrite
+p 1958
+i rewrite
+p 2384
+p 2384
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2384
+e
+c 2454  c(x v y) v c(y v c(c(c(z) v c(c(y) v c(z))) v c(z))) = c(y)
+i back_rewrite
+p 1798
+i rewrite
+p 2384
+p 2384
+p 2384
+p 2384
+p 2392
+p 2384
+e
+c 2465  x v c(c(x) v c(c(y v c(x v y)) v y)) = x
+i back_rewrite
+p 1693
+i rewrite
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2384
+p 2392
+e
+c 2479  c(x v c(c(x v c(c(x) v x)) v x)) = c(x)
+i para
+p 2450
+p 1739
+i (flip)
+e
+c 2481  c(x v y) v c(x) = c(x)
+i para
+p 2450
+p 2384
+i rewrite
+p 2384
+p 2479
+e
+c 2485  (c(c(x) v y) v c(y)) v c(y) = c(y)
+i back_rewrite
+p 2411
+i rewrite
+p 2479
+e
+c 2486  c(c(x) v y) v x = x
+i para
+p 2392
+p 2481
+i rewrite
+p 2392
+e
+c 2487  x v (x v y) = x v y
+i para
+p 2481
+p 2481
+i rewrite
+p 2392
+p 2392
+p 2392
+e
+c 2492  c(x) v c(c(c(y) v c(x)) v c(c(x) v z)) = c(c(c(y) v c(x)) v c(c(x) v z))
+i para
+p 2400
+p 2481
+e
+c 2500  (c(c(x) v c(y)) v y) v y = y
+i para
+p 2392
+p 2485
+i rewrite
+p 2392
+p 2392
+e
+c 2507  (c(x v c(y)) v y) v y = y
+i para
+p 2392
+p 2500
+e
+c 2511  (c(x) v c(x v y)) v c(x v c(c(y v c(c(x) v y)) v y)) = c(x)
+i para
+p 2392
+p 2410
+i rewrite
+p 2392
+p 2392
+p 2392
+e
+c 2513  (c(x) v c(x v c(y))) v c(x) = c(x) v c(x v c(y))
+i para
+p 2410
+p 2465
+i rewrite
+p 2392
+p 2454
+p 2392
+p 2486
+e
+c 2517  c(x) v c(x v c(y)) = c(x)
+i para
+p 2410
+p 2487
+i rewrite
+p 2513
+p 2511
+e
+c 2528  c(x) v c(x v y) = c(x)
+i para
+p 2392
+p 2517
+e
+c 2529  (x v y) v x = x v y
+i para
+p 2481
+p 2517
+i rewrite
+p 2392
+p 2392
+p 2392
+e
+c 2533  x v c(c(x) v y) = x
+i para
+p 2486
+p 2529
+i rewrite
+p 2486
+e
+c 2553  c(x v c(y)) v c(c(y) v c(c(z v c(y v z)) v z)) = y
+i para
+p 2481
+p 2453
+i rewrite
+p 2392
+e
+c 2560  c(c(x) v c(c(y v c(x v y)) v y)) = x
+i para
+p 2453
+p 2507
+i rewrite
+p 2533
+i (flip)
+e
+c 2574  c(x v c(y)) v y = y
+i back_rewrite
+p 2553
+i rewrite
+p 2560
+e
+c 2585  x v c(y v c(x)) = x
+i para
+p 2574
+p 2529
+i rewrite
+p 2574
+e
+c 2590  c(x) v c(y v x) = c(x)
+i para
+p 2392
+p 2585
+e
+c 2675  x v c(c(c(y) v x) v c(x v z)) = c(c(c(y) v x) v c(x v z))
+i para
+p 2392
+p 2492
+i rewrite
+p 2392
+p 2392
+p 2392
+p 2392
+e
+c 2677  c(x v y) v c(c(c(z) v c(x v y)) v x) = c(c(c(z) v c(x v y)) v x)
+i para
+p 2481
+p 2492
+i rewrite
+p 2392
+p 2481
+p 2392
+e
+c 2746  c(c(x v y) v x) v c(x v y) = c(x)
+i para
+p 2528
+p 2560
+i rewrite
+p 2392
+p 2392
+p 2675
+p 2392
+e
+c 4088  x v c(c(x v y) v x) = x v y
+i para
+p 2746
+p 2746
+i rewrite
+p 2392
+p 2392
+e
+c 5628  c(x v y) v c(y v x) = c(y v x)
+i para
+p 2585
+p 2677
+i rewrite
+p 2392
+p 2392
+p 2392
+p 2590
+p 2392
+e
+c 5749  (x v y) v (y v x) = y v x
+i para
+p 5628
+p 2481
+i rewrite
+p 2392
+p 2392
+p 2392
+e
+c 5751  x v y = y v x
+i para
+p 5628
+p 2533
+i rewrite
+p 2392
+p 5749
+e
+c 5872  x v c(x v c(x v y)) = x v y
+i back_rewrite
+p 4088
+i rewrite
+p 5751
+e
+c 5873  $F # answer(OM)
+i resolve
+p 5872
+p 2440
+e
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 12 at 6.60 (+ 0.05) seconds: AJ.
+% Length of proof is 111.
+% Level of proof is 29.
+% Maximum clause weight is 37.
+% Given clauses 444.
+
+c 3  x v (y v z) = y v (x v z) # answer(AJ) # label(non_clause) # label(goal)
+i goal
+e
+c 15  f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(f(y,y),z)),z))) = y # label(OML_Sh)
+i assumption
+e
+c 16  x v y = f(f(x,x),f(y,y)) # label(Def_join)
+i assumption
+e
+c 17  f(f(x,x),f(y,y)) = x v y
+i copy
+p 16
+i (flip)
+e
+c 18  x ^ y = f(f(x,y),f(x,y)) # label(Def_meet)
+i assumption
+e
+c 19  f(f(x,y),f(x,y)) = x ^ y
+i copy
+p 18
+i (flip)
+e
+c 20  c(x) = f(x,x) # label(Def_complement)
+i assumption
+e
+c 21  f(x,x) = c(x)
+i copy
+p 20
+i (flip)
+e
+c 24  c5 v (c6 v c7) != c6 v (c5 v c7) # answer(AJ)
+i deny
+p 3
+e
+c 25  c6 v (c5 v c7) != c5 v (c6 v c7) # answer(AJ)
+i copy
+p 24
+i (flip)
+e
+c 40  c(f(x,y)) = x ^ y
+i back_rewrite
+p 19
+i rewrite
+p 21
+e
+c 41  f(c(x),c(y)) = x v y
+i back_rewrite
+p 17
+i rewrite
+p 21
+p 21
+e
+c 42  f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(c(y),z)),z))) = y
+i back_rewrite
+p 15
+i rewrite
+p 21
+e
+c 43  x ^ x = c(c(x))
+i para
+p 21
+p 40
+i (flip)
+e
+c 45  c(c(x)) = x v x
+i para
+p 41
+p 21
+i (flip)
+e
+c 46  c(x) ^ c(y) = c(x v y)
+i para
+p 41
+p 40
+i (flip)
+e
+c 50  x ^ x = x v x
+i back_rewrite
+p 43
+i rewrite
+p 45
+e
+c 52  f(f(f(c(x),f(x,y)),z),f(x,f(f(y,f(c(x),y)),y))) = x
+i para
+p 21
+p 42
+e
+c 53  f(f(f(f(x,y),c(y)),z),f(y,f(f(y,f(c(y),y)),y))) = y
+i para
+p 21
+p 42
+e
+c 54  f(f(x v x,y),f(x,f(f(x,f(c(x),x)),x))) = x
+i para
+p 21
+p 42
+i rewrite
+p 21
+p 45
+e
+c 55  f(f(x,y) ^ f(y,z),f(y,f(f(z,f(c(y),z)),z))) = y
+i para
+p 21
+p 42
+i rewrite
+p 40
+e
+c 59  f(f(f(x v y,f(c(y),z)),u),f(c(y),f(f(z,f(y v y,z)),z))) = c(y)
+i para
+p 41
+p 42
+i rewrite
+p 45
+e
+c 61  f(f(f(f(x,y),f(y,c(z))),u),f(y,f(f(c(z),y v z),c(z)))) = y
+i para
+p 41
+p 42
+e
+c 62  f(f(x,y),f(x,f(f(f(f(z,f(c(x),z)),z),f(c(x),f(f(z,f(c(x),z)),z))),f(f(z,f(c(x),z)),z)))) = x
+i para
+p 42
+p 42
+e
+c 65  f(x v x,c(y)) = c(x) v y
+i para
+p 45
+p 41
+e
+c 66  f(c(x),y v y) = x v c(y)
+i para
+p 45
+p 41
+e
+c 68  c(x v x) = c(x) v c(x)
+i para
+p 45
+p 45
+e
+c 72  (x v x) ^ c(y) = c(c(x) v y)
+i para
+p 45
+p 46
+e
+c 77  f(x v x,y v y) = c(x) v c(y)
+i para
+p 45
+p 65
+e
+c 95  (x v x) ^ (y v y) = c(c(x) v c(y))
+i para
+p 45
+p 72
+e
+c 158  f(x,f(c(x),f(f(y,f(x v x,y)),y))) = c(x)
+i para
+p 53
+p 42
+i rewrite
+p 45
+e
+c 203  f(c(x) v y,f(x,f(f(x,f(c(x),x)),x))) = x
+i para
+p 65
+p 54
+e
+c 304  f(f(x,y v y) ^ (c(y) v z),f(y v y,f(f(c(z),(y v y) v z),c(z)))) = y v y
+i para
+p 65
+p 55
+i rewrite
+p 68
+p 65
+p 45
+e
+c 776  f((x v x) v y,f(c(x),f(f(c(x),c(x) v x),c(x)))) = c(x)
+i para
+p 41
+p 203
+i rewrite
+p 45
+e
+c 785  f(c(x),f(x v x,f(f(f(x,f(f(x,f(c(x),x)),x)),x),f(x,f(f(x,f(c(x),x)),x))))) = x v x
+i para
+p 203
+p 158
+i rewrite
+p 45
+p 45
+e
+c 1263  f(f(f(x v c(y),c(y) v z),u),f(y v y,f(f(c(z),(y v y) v z),c(z)))) = y v y
+i para
+p 66
+p 61
+i rewrite
+p 65
+e
+c 1623  f(f(x,y),f(y,f(f(z,f(c(y),z)),z))) = y
+i para
+p 62
+p 42
+e
+c 1625  f(c(x),f(x,f(f(y,f(c(x),y)),y))) = x
+i para
+p 62
+p 52
+e
+c 1628  f(x v y,f(c(y),f(f(z,f(y v y,z)),z))) = c(y)
+i para
+p 62
+p 59
+e
+c 1630  f(c(x),f(x v x,x)) = x v x
+i back_rewrite
+p 785
+i rewrite
+p 1623
+e
+c 1647  f((x v x) ^ f(f(x v x,x),y),f(f(x v x,x),f(f(y,f((x v x) ^ x,y)),y))) = f(x v x,x)
+i para
+p 1630
+p 55
+i rewrite
+p 40
+e
+c 1648  f(f(x,c(y)) ^ (y v y),f(c(y),f(f(f(y v y,y),f(y v y,f(y v y,y))),f(y v y,y)))) = c(y)
+i para
+p 1630
+p 55
+i rewrite
+p 45
+e
+c 1693  f(c(x),f(x,f(f(c(y),x v y),c(y)))) = x
+i para
+p 41
+p 1625
+e
+c 1739  x v x = x
+i para
+p 1625
+p 1625
+i rewrite
+p 1623
+p 21
+p 21
+p 45
+e
+c 1786  f(f(x,c(y)) ^ y,f(c(y),f(f(c(y),f(y,c(y))),c(y)))) = c(y)
+i back_rewrite
+p 1648
+i rewrite
+p 1739
+p 1739
+p 21
+p 1739
+p 1739
+p 21
+p 1739
+p 21
+e
+c 1787  f(x ^ f(c(x),y),f(c(x),f(f(y,f(x,y)),y))) = c(x)
+i back_rewrite
+p 1647
+i rewrite
+p 1739
+p 1739
+p 21
+p 1739
+p 21
+p 1739
+p 50
+p 1739
+p 1739
+p 21
+e
+c 1798  f(x v y,f(c(y),f(f(z,f(y,z)),z))) = c(y)
+i back_rewrite
+p 1628
+i rewrite
+p 1739
+e
+c 1958  f(f(f(x v c(y),c(y) v z),u),f(y,f(f(c(z),y v z),c(z)))) = y
+i back_rewrite
+p 1263
+i rewrite
+p 1739
+p 1739
+p 1739
+e
+c 2130  f(x v y,f(c(x),f(f(c(x),c(x) v x),c(x)))) = c(x)
+i back_rewrite
+p 776
+i rewrite
+p 1739
+e
+c 2302  f(f(x,y) ^ (c(y) v z),f(y,f(f(c(z),y v z),c(z)))) = y
+i back_rewrite
+p 304
+i rewrite
+p 1739
+p 1739
+p 1739
+p 1739
+e
+c 2374  x ^ y = c(c(x) v c(y))
+i back_rewrite
+p 95
+i rewrite
+p 1739
+p 1739
+e
+c 2384  f(x,y) = c(x) v c(y)
+i back_rewrite
+p 77
+i rewrite
+p 1739
+p 1739
+e
+c 2392  c(c(x)) = x
+i back_rewrite
+p 45
+i rewrite
+p 1739
+e
+c 2400  (c(c(x) v c(y)) v c(c(y) v z)) v c(c(y) v c(c(z v c(y v z)) v z)) = y
+i back_rewrite
+p 2302
+i rewrite
+p 2384
+p 2374
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2384
+p 2392
+e
+c 2410  (c(x) v c(x v c(y))) v c(x v c(c(c(y) v c(c(x) v c(y))) v c(y))) = c(x)
+i back_rewrite
+p 1787
+i rewrite
+p 2384
+p 2392
+p 2374
+p 2384
+p 2384
+p 2384
+p 2384
+p 2392
+p 2384
+p 2392
+e
+c 2411  (c(c(x) v y) v c(y)) v c(y v c(c(y v c(c(y) v y)) v y)) = c(y)
+i back_rewrite
+p 1786
+i rewrite
+p 2384
+p 2392
+p 2374
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2392
+e
+c 2450  c(x v y) v c(x v c(c(x v c(c(x) v x)) v x)) = c(x)
+i back_rewrite
+p 2130
+i rewrite
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+e
+c 2453  c(c(c(x v c(y)) v c(c(y) v z)) v c(u)) v c(c(y) v c(c(z v c(y v z)) v z)) = y
+i back_rewrite
+p 1958
+i rewrite
+p 2384
+p 2384
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2384
+e
+c 2454  c(x v y) v c(y v c(c(c(z) v c(c(y) v c(z))) v c(z))) = c(y)
+i back_rewrite
+p 1798
+i rewrite
+p 2384
+p 2384
+p 2384
+p 2384
+p 2392
+p 2384
+e
+c 2465  x v c(c(x) v c(c(y v c(x v y)) v y)) = x
+i back_rewrite
+p 1693
+i rewrite
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2384
+p 2392
+e
+c 2479  c(x v c(c(x v c(c(x) v x)) v x)) = c(x)
+i para
+p 2450
+p 1739
+i (flip)
+e
+c 2481  c(x v y) v c(x) = c(x)
+i para
+p 2450
+p 2384
+i rewrite
+p 2384
+p 2479
+e
+c 2485  (c(c(x) v y) v c(y)) v c(y) = c(y)
+i back_rewrite
+p 2411
+i rewrite
+p 2479
+e
+c 2486  c(c(x) v y) v x = x
+i para
+p 2392
+p 2481
+i rewrite
+p 2392
+e
+c 2487  x v (x v y) = x v y
+i para
+p 2481
+p 2481
+i rewrite
+p 2392
+p 2392
+p 2392
+e
+c 2492  c(x) v c(c(c(y) v c(x)) v c(c(x) v z)) = c(c(c(y) v c(x)) v c(c(x) v z))
+i para
+p 2400
+p 2481
+e
+c 2500  (c(c(x) v c(y)) v y) v y = y
+i para
+p 2392
+p 2485
+i rewrite
+p 2392
+p 2392
+e
+c 2507  (c(x v c(y)) v y) v y = y
+i para
+p 2392
+p 2500
+e
+c 2511  (c(x) v c(x v y)) v c(x v c(c(y v c(c(x) v y)) v y)) = c(x)
+i para
+p 2392
+p 2410
+i rewrite
+p 2392
+p 2392
+p 2392
+e
+c 2513  (c(x) v c(x v c(y))) v c(x) = c(x) v c(x v c(y))
+i para
+p 2410
+p 2465
+i rewrite
+p 2392
+p 2454
+p 2392
+p 2486
+e
+c 2517  c(x) v c(x v c(y)) = c(x)
+i para
+p 2410
+p 2487
+i rewrite
+p 2513
+p 2511
+e
+c 2529  (x v y) v x = x v y
+i para
+p 2481
+p 2517
+i rewrite
+p 2392
+p 2392
+p 2392
+e
+c 2533  x v c(c(x) v y) = x
+i para
+p 2486
+p 2529
+i rewrite
+p 2486
+e
+c 2552  c((c(x) v y) v c(z)) v c(c(x) v c(c(y v c(x v y)) v y)) = x
+i para
+p 2481
+p 2453
+i rewrite
+p 2392
+e
+c 2553  c(x v c(y)) v c(c(y) v c(c(z v c(y v z)) v z)) = y
+i para
+p 2481
+p 2453
+i rewrite
+p 2392
+e
+c 2560  c(c(x) v c(c(y v c(x v y)) v y)) = x
+i para
+p 2453
+p 2507
+i rewrite
+p 2533
+i (flip)
+e
+c 2574  c(x v c(y)) v y = y
+i back_rewrite
+p 2553
+i rewrite
+p 2560
+e
+c 2575  c((c(x) v y) v c(z)) v x = x
+i back_rewrite
+p 2552
+i rewrite
+p 2560
+e
+c 2583  c(x v y) v c(y) = c(y)
+i para
+p 2392
+p 2574
+e
+c 2585  x v c(y v c(x)) = x
+i para
+p 2574
+p 2529
+i rewrite
+p 2574
+e
+c 2590  c(x) v c(y v x) = c(x)
+i para
+p 2392
+p 2585
+e
+c 2591  x v (y v x) = y v x
+i para
+p 2583
+p 2481
+i rewrite
+p 2392
+p 2392
+p 2392
+e
+c 2599  c((c(x) v y) v z) v x = x
+i para
+p 2392
+p 2575
+e
+c 2612  c(c(x) v y) v (x v z) = x v z
+i para
+p 2481
+p 2599
+e
+c 2614  x v c((c(x) v y) v z) = x
+i para
+p 2599
+p 2529
+i rewrite
+p 2599
+e
+c 2617  c(c(x) v y) v (z v x) = z v x
+i para
+p 2583
+p 2599
+e
+c 2618  c((x v c(y)) v z) v y = y
+i para
+p 2591
+p 2599
+e
+c 2619  c(x v (c(y) v z)) v y = y
+i para
+p 2591
+p 2599
+e
+c 2650  x v c(y v (c(x) v z)) = x
+i para
+p 2591
+p 2614
+e
+c 2656  c(x v (y v c(z))) v z = z
+i para
+p 2591
+p 2618
+e
+c 2660  c(x v (y v z)) v c(y) = c(y)
+i para
+p 2392
+p 2619
+e
+c 2677  c(x v y) v c(c(c(z) v c(x v y)) v x) = c(c(c(z) v c(x v y)) v x)
+i para
+p 2481
+p 2492
+i rewrite
+p 2392
+p 2481
+p 2392
+e
+c 2697  c(x) v c(y v (x v z)) = c(x)
+i para
+p 2392
+p 2650
+e
+c 2706  c(x v (y v z)) v c(z) = c(z)
+i para
+p 2392
+p 2656
+e
+c 2737  x v (y v (x v z)) = y v (x v z)
+i para
+p 2660
+p 2481
+i rewrite
+p 2392
+p 2392
+p 2392
+e
+c 2764  x v (y v (z v x)) = y v (z v x)
+i para
+p 2706
+p 2481
+i rewrite
+p 2392
+p 2392
+p 2392
+e
+c 5628  c(x v y) v c(y v x) = c(y v x)
+i para
+p 2585
+p 2677
+i rewrite
+p 2392
+p 2392
+p 2392
+p 2590
+p 2392
+e
+c 5636  c(x v (y v z)) v c(y v x) = c(y v x)
+i para
+p 2650
+p 2677
+i rewrite
+p 2392
+p 2392
+p 2392
+p 2697
+p 2392
+e
+c 5749  (x v y) v (y v x) = y v x
+i para
+p 5628
+p 2481
+i rewrite
+p 2392
+p 2392
+p 2392
+e
+c 5751  x v y = y v x
+i para
+p 5628
+p 2533
+i rewrite
+p 2392
+p 5749
+e
+c 5754  (x v y) v c(c(y v x) v z) = x v y
+i para
+p 5628
+p 2599
+i rewrite
+p 5751
+e
+c 12548  (x v (y v z)) v (y v x) = x v (y v z)
+i para
+p 5636
+p 2533
+i rewrite
+p 2392
+e
+c 12684  (x v y) v ((x v z) v y) = (x v z) v y
+i para
+p 5636
+p 5754
+i rewrite
+p 2392
+p 5751
+e
+c 12718  c(c(x v y) v z) v (y v (x v u)) = y v (x v u)
+i para
+p 12548
+p 2617
+i rewrite
+p 12548
+e
+c 12728  (x v y) v (x v (y v z)) = x v (y v z)
+i para
+p 2737
+p 12548
+i rewrite
+p 5751
+p 2737
+e
+c 12730  (x v y) v (x v (z v y)) = x v (z v y)
+i para
+p 2764
+p 12548
+i rewrite
+p 5751
+p 2764
+e
+c 13101  (x v y) v (x v z) = (x v y) v z
+i para
+p 12684
+p 12548
+i rewrite
+p 12730
+p 12684
+e
+c 14172  (x v y) v (y v z) = x v (y v z)
+i back_rewrite
+p 12728
+i rewrite
+p 13101
+e
+c 14240  (x v y) v z = x v (y v z)
+i para
+p 2591
+p 13101
+i rewrite
+p 14172
+p 2591
+i (flip)
+e
+c 14251  x v (y v z) = y v (x v z)
+i para
+p 13101
+p 2612
+i rewrite
+p 14240
+p 2737
+p 12718
+p 14240
+e
+c 14252  $F # answer(AJ)
+i resolve
+p 14251
+p 25
+e
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 13 at 7.51 (+ 0.05) seconds: assoc_meet.
+% Length of proof is 107.
+% Level of proof is 28.
+% Maximum clause weight is 37.
+% Given clauses 444.
+
+c 14  (x ^ y) ^ z = x ^ (y ^ z) # answer(assoc_meet) # label(non_clause) # label(goal)
+i goal
+e
+c 15  f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(f(y,y),z)),z))) = y # label(OML_Sh)
+i assumption
+e
+c 16  x v y = f(f(x,x),f(y,y)) # label(Def_join)
+i assumption
+e
+c 17  f(f(x,x),f(y,y)) = x v y
+i copy
+p 16
+i (flip)
+e
+c 18  x ^ y = f(f(x,y),f(x,y)) # label(Def_meet)
+i assumption
+e
+c 19  f(f(x,y),f(x,y)) = x ^ y
+i copy
+p 18
+i (flip)
+e
+c 20  c(x) = f(x,x) # label(Def_complement)
+i assumption
+e
+c 21  f(x,x) = c(x)
+i copy
+p 20
+i (flip)
+e
+c 39  (c26 ^ c27) ^ c28 != c26 ^ (c27 ^ c28) # answer(assoc_meet)
+i deny
+p 14
+e
+c 40  c(f(x,y)) = x ^ y
+i back_rewrite
+p 19
+i rewrite
+p 21
+e
+c 41  f(c(x),c(y)) = x v y
+i back_rewrite
+p 17
+i rewrite
+p 21
+p 21
+e
+c 42  f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(c(y),z)),z))) = y
+i back_rewrite
+p 15
+i rewrite
+p 21
+e
+c 43  x ^ x = c(c(x))
+i para
+p 21
+p 40
+i (flip)
+e
+c 45  c(c(x)) = x v x
+i para
+p 41
+p 21
+i (flip)
+e
+c 46  c(x) ^ c(y) = c(x v y)
+i para
+p 41
+p 40
+i (flip)
+e
+c 50  x ^ x = x v x
+i back_rewrite
+p 43
+i rewrite
+p 45
+e
+c 52  f(f(f(c(x),f(x,y)),z),f(x,f(f(y,f(c(x),y)),y))) = x
+i para
+p 21
+p 42
+e
+c 53  f(f(f(f(x,y),c(y)),z),f(y,f(f(y,f(c(y),y)),y))) = y
+i para
+p 21
+p 42
+e
+c 54  f(f(x v x,y),f(x,f(f(x,f(c(x),x)),x))) = x
+i para
+p 21
+p 42
+i rewrite
+p 21
+p 45
+e
+c 55  f(f(x,y) ^ f(y,z),f(y,f(f(z,f(c(y),z)),z))) = y
+i para
+p 21
+p 42
+i rewrite
+p 40
+e
+c 59  f(f(f(x v y,f(c(y),z)),u),f(c(y),f(f(z,f(y v y,z)),z))) = c(y)
+i para
+p 41
+p 42
+i rewrite
+p 45
+e
+c 61  f(f(f(f(x,y),f(y,c(z))),u),f(y,f(f(c(z),y v z),c(z)))) = y
+i para
+p 41
+p 42
+e
+c 62  f(f(x,y),f(x,f(f(f(f(z,f(c(x),z)),z),f(c(x),f(f(z,f(c(x),z)),z))),f(f(z,f(c(x),z)),z)))) = x
+i para
+p 42
+p 42
+e
+c 65  f(x v x,c(y)) = c(x) v y
+i para
+p 45
+p 41
+e
+c 66  f(c(x),y v y) = x v c(y)
+i para
+p 45
+p 41
+e
+c 68  c(x v x) = c(x) v c(x)
+i para
+p 45
+p 45
+e
+c 72  (x v x) ^ c(y) = c(c(x) v y)
+i para
+p 45
+p 46
+e
+c 77  f(x v x,y v y) = c(x) v c(y)
+i para
+p 45
+p 65
+e
+c 95  (x v x) ^ (y v y) = c(c(x) v c(y))
+i para
+p 45
+p 72
+e
+c 158  f(x,f(c(x),f(f(y,f(x v x,y)),y))) = c(x)
+i para
+p 53
+p 42
+i rewrite
+p 45
+e
+c 203  f(c(x) v y,f(x,f(f(x,f(c(x),x)),x))) = x
+i para
+p 65
+p 54
+e
+c 304  f(f(x,y v y) ^ (c(y) v z),f(y v y,f(f(c(z),(y v y) v z),c(z)))) = y v y
+i para
+p 65
+p 55
+i rewrite
+p 68
+p 65
+p 45
+e
+c 776  f((x v x) v y,f(c(x),f(f(c(x),c(x) v x),c(x)))) = c(x)
+i para
+p 41
+p 203
+i rewrite
+p 45
+e
+c 785  f(c(x),f(x v x,f(f(f(x,f(f(x,f(c(x),x)),x)),x),f(x,f(f(x,f(c(x),x)),x))))) = x v x
+i para
+p 203
+p 158
+i rewrite
+p 45
+p 45
+e
+c 1263  f(f(f(x v c(y),c(y) v z),u),f(y v y,f(f(c(z),(y v y) v z),c(z)))) = y v y
+i para
+p 66
+p 61
+i rewrite
+p 65
+e
+c 1623  f(f(x,y),f(y,f(f(z,f(c(y),z)),z))) = y
+i para
+p 62
+p 42
+e
+c 1625  f(c(x),f(x,f(f(y,f(c(x),y)),y))) = x
+i para
+p 62
+p 52
+e
+c 1628  f(x v y,f(c(y),f(f(z,f(y v y,z)),z))) = c(y)
+i para
+p 62
+p 59
+e
+c 1630  f(c(x),f(x v x,x)) = x v x
+i back_rewrite
+p 785
+i rewrite
+p 1623
+e
+c 1647  f((x v x) ^ f(f(x v x,x),y),f(f(x v x,x),f(f(y,f((x v x) ^ x,y)),y))) = f(x v x,x)
+i para
+p 1630
+p 55
+i rewrite
+p 40
+e
+c 1648  f(f(x,c(y)) ^ (y v y),f(c(y),f(f(f(y v y,y),f(y v y,f(y v y,y))),f(y v y,y)))) = c(y)
+i para
+p 1630
+p 55
+i rewrite
+p 45
+e
+c 1693  f(c(x),f(x,f(f(c(y),x v y),c(y)))) = x
+i para
+p 41
+p 1625
+e
+c 1739  x v x = x
+i para
+p 1625
+p 1625
+i rewrite
+p 1623
+p 21
+p 21
+p 45
+e
+c 1786  f(f(x,c(y)) ^ y,f(c(y),f(f(c(y),f(y,c(y))),c(y)))) = c(y)
+i back_rewrite
+p 1648
+i rewrite
+p 1739
+p 1739
+p 21
+p 1739
+p 1739
+p 21
+p 1739
+p 21
+e
+c 1787  f(x ^ f(c(x),y),f(c(x),f(f(y,f(x,y)),y))) = c(x)
+i back_rewrite
+p 1647
+i rewrite
+p 1739
+p 1739
+p 21
+p 1739
+p 21
+p 1739
+p 50
+p 1739
+p 1739
+p 21
+e
+c 1798  f(x v y,f(c(y),f(f(z,f(y,z)),z))) = c(y)
+i back_rewrite
+p 1628
+i rewrite
+p 1739
+e
+c 1958  f(f(f(x v c(y),c(y) v z),u),f(y,f(f(c(z),y v z),c(z)))) = y
+i back_rewrite
+p 1263
+i rewrite
+p 1739
+p 1739
+p 1739
+e
+c 2130  f(x v y,f(c(x),f(f(c(x),c(x) v x),c(x)))) = c(x)
+i back_rewrite
+p 776
+i rewrite
+p 1739
+e
+c 2302  f(f(x,y) ^ (c(y) v z),f(y,f(f(c(z),y v z),c(z)))) = y
+i back_rewrite
+p 304
+i rewrite
+p 1739
+p 1739
+p 1739
+p 1739
+e
+c 2374  x ^ y = c(c(x) v c(y))
+i back_rewrite
+p 95
+i rewrite
+p 1739
+p 1739
+e
+c 2384  f(x,y) = c(x) v c(y)
+i back_rewrite
+p 77
+i rewrite
+p 1739
+p 1739
+e
+c 2392  c(c(x)) = x
+i back_rewrite
+p 45
+i rewrite
+p 1739
+e
+c 2400  (c(c(x) v c(y)) v c(c(y) v z)) v c(c(y) v c(c(z v c(y v z)) v z)) = y
+i back_rewrite
+p 2302
+i rewrite
+p 2384
+p 2374
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2384
+p 2392
+e
+c 2410  (c(x) v c(x v c(y))) v c(x v c(c(c(y) v c(c(x) v c(y))) v c(y))) = c(x)
+i back_rewrite
+p 1787
+i rewrite
+p 2384
+p 2392
+p 2374
+p 2384
+p 2384
+p 2384
+p 2384
+p 2392
+p 2384
+p 2392
+e
+c 2411  (c(c(x) v y) v c(y)) v c(y v c(c(y v c(c(y) v y)) v y)) = c(y)
+i back_rewrite
+p 1786
+i rewrite
+p 2384
+p 2392
+p 2374
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2392
+e
+c 2437  c((c(c26) v c(c27)) v c(c28)) != c(c(c26) v (c(c27) v c(c28))) # answer(assoc_meet)
+i back_rewrite
+p 39
+i rewrite
+p 2374
+p 2374
+p 2392
+p 2374
+p 2374
+p 2392
+e
+c 2450  c(x v y) v c(x v c(c(x v c(c(x) v x)) v x)) = c(x)
+i back_rewrite
+p 2130
+i rewrite
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+e
+c 2453  c(c(c(x v c(y)) v c(c(y) v z)) v c(u)) v c(c(y) v c(c(z v c(y v z)) v z)) = y
+i back_rewrite
+p 1958
+i rewrite
+p 2384
+p 2384
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2384
+e
+c 2454  c(x v y) v c(y v c(c(c(z) v c(c(y) v c(z))) v c(z))) = c(y)
+i back_rewrite
+p 1798
+i rewrite
+p 2384
+p 2384
+p 2384
+p 2384
+p 2392
+p 2384
+e
+c 2465  x v c(c(x) v c(c(y v c(x v y)) v y)) = x
+i back_rewrite
+p 1693
+i rewrite
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2384
+p 2392
+e
+c 2479  c(x v c(c(x v c(c(x) v x)) v x)) = c(x)
+i para
+p 2450
+p 1739
+i (flip)
+e
+c 2481  c(x v y) v c(x) = c(x)
+i para
+p 2450
+p 2384
+i rewrite
+p 2384
+p 2479
+e
+c 2485  (c(c(x) v y) v c(y)) v c(y) = c(y)
+i back_rewrite
+p 2411
+i rewrite
+p 2479
+e
+c 2486  c(c(x) v y) v x = x
+i para
+p 2392
+p 2481
+i rewrite
+p 2392
+e
+c 2487  x v (x v y) = x v y
+i para
+p 2481
+p 2481
+i rewrite
+p 2392
+p 2392
+p 2392
+e
+c 2492  c(x) v c(c(c(y) v c(x)) v c(c(x) v z)) = c(c(c(y) v c(x)) v c(c(x) v z))
+i para
+p 2400
+p 2481
+e
+c 2500  (c(c(x) v c(y)) v y) v y = y
+i para
+p 2392
+p 2485
+i rewrite
+p 2392
+p 2392
+e
+c 2507  (c(x v c(y)) v y) v y = y
+i para
+p 2392
+p 2500
+e
+c 2511  (c(x) v c(x v y)) v c(x v c(c(y v c(c(x) v y)) v y)) = c(x)
+i para
+p 2392
+p 2410
+i rewrite
+p 2392
+p 2392
+p 2392
+e
+c 2513  (c(x) v c(x v c(y))) v c(x) = c(x) v c(x v c(y))
+i para
+p 2410
+p 2465
+i rewrite
+p 2392
+p 2454
+p 2392
+p 2486
+e
+c 2517  c(x) v c(x v c(y)) = c(x)
+i para
+p 2410
+p 2487
+i rewrite
+p 2513
+p 2511
+e
+c 2529  (x v y) v x = x v y
+i para
+p 2481
+p 2517
+i rewrite
+p 2392
+p 2392
+p 2392
+e
+c 2533  x v c(c(x) v y) = x
+i para
+p 2486
+p 2529
+i rewrite
+p 2486
+e
+c 2552  c((c(x) v y) v c(z)) v c(c(x) v c(c(y v c(x v y)) v y)) = x
+i para
+p 2481
+p 2453
+i rewrite
+p 2392
+e
+c 2553  c(x v c(y)) v c(c(y) v c(c(z v c(y v z)) v z)) = y
+i para
+p 2481
+p 2453
+i rewrite
+p 2392
+e
+c 2560  c(c(x) v c(c(y v c(x v y)) v y)) = x
+i para
+p 2453
+p 2507
+i rewrite
+p 2533
+i (flip)
+e
+c 2574  c(x v c(y)) v y = y
+i back_rewrite
+p 2553
+i rewrite
+p 2560
+e
+c 2575  c((c(x) v y) v c(z)) v x = x
+i back_rewrite
+p 2552
+i rewrite
+p 2560
+e
+c 2583  c(x v y) v c(y) = c(y)
+i para
+p 2392
+p 2574
+e
+c 2585  x v c(y v c(x)) = x
+i para
+p 2574
+p 2529
+i rewrite
+p 2574
+e
+c 2590  c(x) v c(y v x) = c(x)
+i para
+p 2392
+p 2585
+e
+c 2591  x v (y v x) = y v x
+i para
+p 2583
+p 2481
+i rewrite
+p 2392
+p 2392
+p 2392
+e
+c 2599  c((c(x) v y) v z) v x = x
+i para
+p 2392
+p 2575
+e
+c 2614  x v c((c(x) v y) v z) = x
+i para
+p 2599
+p 2529
+i rewrite
+p 2599
+e
+c 2618  c((x v c(y)) v z) v y = y
+i para
+p 2591
+p 2599
+e
+c 2619  c(x v (c(y) v z)) v y = y
+i para
+p 2591
+p 2599
+e
+c 2650  x v c(y v (c(x) v z)) = x
+i para
+p 2591
+p 2614
+e
+c 2656  c(x v (y v c(z))) v z = z
+i para
+p 2591
+p 2618
+e
+c 2660  c(x v (y v z)) v c(y) = c(y)
+i para
+p 2392
+p 2619
+e
+c 2677  c(x v y) v c(c(c(z) v c(x v y)) v x) = c(c(c(z) v c(x v y)) v x)
+i para
+p 2481
+p 2492
+i rewrite
+p 2392
+p 2481
+p 2392
+e
+c 2697  c(x) v c(y v (x v z)) = c(x)
+i para
+p 2392
+p 2650
+e
+c 2706  c(x v (y v z)) v c(z) = c(z)
+i para
+p 2392
+p 2656
+e
+c 2737  x v (y v (x v z)) = y v (x v z)
+i para
+p 2660
+p 2481
+i rewrite
+p 2392
+p 2392
+p 2392
+e
+c 2764  x v (y v (z v x)) = y v (z v x)
+i para
+p 2706
+p 2481
+i rewrite
+p 2392
+p 2392
+p 2392
+e
+c 5628  c(x v y) v c(y v x) = c(y v x)
+i para
+p 2585
+p 2677
+i rewrite
+p 2392
+p 2392
+p 2392
+p 2590
+p 2392
+e
+c 5636  c(x v (y v z)) v c(y v x) = c(y v x)
+i para
+p 2650
+p 2677
+i rewrite
+p 2392
+p 2392
+p 2392
+p 2697
+p 2392
+e
+c 5749  (x v y) v (y v x) = y v x
+i para
+p 5628
+p 2481
+i rewrite
+p 2392
+p 2392
+p 2392
+e
+c 5751  x v y = y v x
+i para
+p 5628
+p 2533
+i rewrite
+p 2392
+p 5749
+e
+c 5754  (x v y) v c(c(y v x) v z) = x v y
+i para
+p 5628
+p 2599
+i rewrite
+p 5751
+e
+c 12548  (x v (y v z)) v (y v x) = x v (y v z)
+i para
+p 5636
+p 2533
+i rewrite
+p 2392
+e
+c 12684  (x v y) v ((x v z) v y) = (x v z) v y
+i para
+p 5636
+p 5754
+i rewrite
+p 2392
+p 5751
+e
+c 12728  (x v y) v (x v (y v z)) = x v (y v z)
+i para
+p 2737
+p 12548
+i rewrite
+p 5751
+p 2737
+e
+c 12730  (x v y) v (x v (z v y)) = x v (z v y)
+i para
+p 2764
+p 12548
+i rewrite
+p 5751
+p 2764
+e
+c 13101  (x v y) v (x v z) = (x v y) v z
+i para
+p 12684
+p 12548
+i rewrite
+p 12730
+p 12684
+e
+c 14172  (x v y) v (y v z) = x v (y v z)
+i back_rewrite
+p 12728
+i rewrite
+p 13101
+e
+c 14240  (x v y) v z = x v (y v z)
+i para
+p 2591
+p 13101
+i rewrite
+p 14172
+p 2591
+i (flip)
+e
+c 15060  $F # answer(assoc_meet)
+i back_rewrite
+p 2437
+i rewrite
+p 14240
+i (flip)
+e
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 14 at 7.52 (+ 0.05) seconds: assoc_join.
+% Length of proof is 111.
+% Level of proof is 29.
+% Maximum clause weight is 37.
+% Given clauses 444.
+
+c 13  (x v y) v z = x v (y v z) # answer(assoc_join) # label(non_clause) # label(goal)
+i goal
+e
+c 15  f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(f(y,y),z)),z))) = y # label(OML_Sh)
+i assumption
+e
+c 16  x v y = f(f(x,x),f(y,y)) # label(Def_join)
+i assumption
+e
+c 17  f(f(x,x),f(y,y)) = x v y
+i copy
+p 16
+i (flip)
+e
+c 18  x ^ y = f(f(x,y),f(x,y)) # label(Def_meet)
+i assumption
+e
+c 19  f(f(x,y),f(x,y)) = x ^ y
+i copy
+p 18
+i (flip)
+e
+c 20  c(x) = f(x,x) # label(Def_complement)
+i assumption
+e
+c 21  f(x,x) = c(x)
+i copy
+p 20
+i (flip)
+e
+c 38  (c23 v c24) v c25 != c23 v (c24 v c25) # answer(assoc_join)
+i deny
+p 13
+e
+c 40  c(f(x,y)) = x ^ y
+i back_rewrite
+p 19
+i rewrite
+p 21
+e
+c 41  f(c(x),c(y)) = x v y
+i back_rewrite
+p 17
+i rewrite
+p 21
+p 21
+e
+c 42  f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(c(y),z)),z))) = y
+i back_rewrite
+p 15
+i rewrite
+p 21
+e
+c 43  x ^ x = c(c(x))
+i para
+p 21
+p 40
+i (flip)
+e
+c 45  c(c(x)) = x v x
+i para
+p 41
+p 21
+i (flip)
+e
+c 46  c(x) ^ c(y) = c(x v y)
+i para
+p 41
+p 40
+i (flip)
+e
+c 50  x ^ x = x v x
+i back_rewrite
+p 43
+i rewrite
+p 45
+e
+c 52  f(f(f(c(x),f(x,y)),z),f(x,f(f(y,f(c(x),y)),y))) = x
+i para
+p 21
+p 42
+e
+c 53  f(f(f(f(x,y),c(y)),z),f(y,f(f(y,f(c(y),y)),y))) = y
+i para
+p 21
+p 42
+e
+c 54  f(f(x v x,y),f(x,f(f(x,f(c(x),x)),x))) = x
+i para
+p 21
+p 42
+i rewrite
+p 21
+p 45
+e
+c 55  f(f(x,y) ^ f(y,z),f(y,f(f(z,f(c(y),z)),z))) = y
+i para
+p 21
+p 42
+i rewrite
+p 40
+e
+c 59  f(f(f(x v y,f(c(y),z)),u),f(c(y),f(f(z,f(y v y,z)),z))) = c(y)
+i para
+p 41
+p 42
+i rewrite
+p 45
+e
+c 61  f(f(f(f(x,y),f(y,c(z))),u),f(y,f(f(c(z),y v z),c(z)))) = y
+i para
+p 41
+p 42
+e
+c 62  f(f(x,y),f(x,f(f(f(f(z,f(c(x),z)),z),f(c(x),f(f(z,f(c(x),z)),z))),f(f(z,f(c(x),z)),z)))) = x
+i para
+p 42
+p 42
+e
+c 65  f(x v x,c(y)) = c(x) v y
+i para
+p 45
+p 41
+e
+c 66  f(c(x),y v y) = x v c(y)
+i para
+p 45
+p 41
+e
+c 68  c(x v x) = c(x) v c(x)
+i para
+p 45
+p 45
+e
+c 72  (x v x) ^ c(y) = c(c(x) v y)
+i para
+p 45
+p 46
+e
+c 77  f(x v x,y v y) = c(x) v c(y)
+i para
+p 45
+p 65
+e
+c 95  (x v x) ^ (y v y) = c(c(x) v c(y))
+i para
+p 45
+p 72
+e
+c 158  f(x,f(c(x),f(f(y,f(x v x,y)),y))) = c(x)
+i para
+p 53
+p 42
+i rewrite
+p 45
+e
+c 203  f(c(x) v y,f(x,f(f(x,f(c(x),x)),x))) = x
+i para
+p 65
+p 54
+e
+c 304  f(f(x,y v y) ^ (c(y) v z),f(y v y,f(f(c(z),(y v y) v z),c(z)))) = y v y
+i para
+p 65
+p 55
+i rewrite
+p 68
+p 65
+p 45
+e
+c 776  f((x v x) v y,f(c(x),f(f(c(x),c(x) v x),c(x)))) = c(x)
+i para
+p 41
+p 203
+i rewrite
+p 45
+e
+c 785  f(c(x),f(x v x,f(f(f(x,f(f(x,f(c(x),x)),x)),x),f(x,f(f(x,f(c(x),x)),x))))) = x v x
+i para
+p 203
+p 158
+i rewrite
+p 45
+p 45
+e
+c 1263  f(f(f(x v c(y),c(y) v z),u),f(y v y,f(f(c(z),(y v y) v z),c(z)))) = y v y
+i para
+p 66
+p 61
+i rewrite
+p 65
+e
+c 1623  f(f(x,y),f(y,f(f(z,f(c(y),z)),z))) = y
+i para
+p 62
+p 42
+e
+c 1625  f(c(x),f(x,f(f(y,f(c(x),y)),y))) = x
+i para
+p 62
+p 52
+e
+c 1628  f(x v y,f(c(y),f(f(z,f(y v y,z)),z))) = c(y)
+i para
+p 62
+p 59
+e
+c 1630  f(c(x),f(x v x,x)) = x v x
+i back_rewrite
+p 785
+i rewrite
+p 1623
+e
+c 1647  f((x v x) ^ f(f(x v x,x),y),f(f(x v x,x),f(f(y,f((x v x) ^ x,y)),y))) = f(x v x,x)
+i para
+p 1630
+p 55
+i rewrite
+p 40
+e
+c 1648  f(f(x,c(y)) ^ (y v y),f(c(y),f(f(f(y v y,y),f(y v y,f(y v y,y))),f(y v y,y)))) = c(y)
+i para
+p 1630
+p 55
+i rewrite
+p 45
+e
+c 1693  f(c(x),f(x,f(f(c(y),x v y),c(y)))) = x
+i para
+p 41
+p 1625
+e
+c 1739  x v x = x
+i para
+p 1625
+p 1625
+i rewrite
+p 1623
+p 21
+p 21
+p 45
+e
+c 1786  f(f(x,c(y)) ^ y,f(c(y),f(f(c(y),f(y,c(y))),c(y)))) = c(y)
+i back_rewrite
+p 1648
+i rewrite
+p 1739
+p 1739
+p 21
+p 1739
+p 1739
+p 21
+p 1739
+p 21
+e
+c 1787  f(x ^ f(c(x),y),f(c(x),f(f(y,f(x,y)),y))) = c(x)
+i back_rewrite
+p 1647
+i rewrite
+p 1739
+p 1739
+p 21
+p 1739
+p 21
+p 1739
+p 50
+p 1739
+p 1739
+p 21
+e
+c 1798  f(x v y,f(c(y),f(f(z,f(y,z)),z))) = c(y)
+i back_rewrite
+p 1628
+i rewrite
+p 1739
+e
+c 1958  f(f(f(x v c(y),c(y) v z),u),f(y,f(f(c(z),y v z),c(z)))) = y
+i back_rewrite
+p 1263
+i rewrite
+p 1739
+p 1739
+p 1739
+e
+c 2130  f(x v y,f(c(x),f(f(c(x),c(x) v x),c(x)))) = c(x)
+i back_rewrite
+p 776
+i rewrite
+p 1739
+e
+c 2302  f(f(x,y) ^ (c(y) v z),f(y,f(f(c(z),y v z),c(z)))) = y
+i back_rewrite
+p 304
+i rewrite
+p 1739
+p 1739
+p 1739
+p 1739
+e
+c 2374  x ^ y = c(c(x) v c(y))
+i back_rewrite
+p 95
+i rewrite
+p 1739
+p 1739
+e
+c 2384  f(x,y) = c(x) v c(y)
+i back_rewrite
+p 77
+i rewrite
+p 1739
+p 1739
+e
+c 2392  c(c(x)) = x
+i back_rewrite
+p 45
+i rewrite
+p 1739
+e
+c 2400  (c(c(x) v c(y)) v c(c(y) v z)) v c(c(y) v c(c(z v c(y v z)) v z)) = y
+i back_rewrite
+p 2302
+i rewrite
+p 2384
+p 2374
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2384
+p 2392
+e
+c 2410  (c(x) v c(x v c(y))) v c(x v c(c(c(y) v c(c(x) v c(y))) v c(y))) = c(x)
+i back_rewrite
+p 1787
+i rewrite
+p 2384
+p 2392
+p 2374
+p 2384
+p 2384
+p 2384
+p 2384
+p 2392
+p 2384
+p 2392
+e
+c 2411  (c(c(x) v y) v c(y)) v c(y v c(c(y v c(c(y) v y)) v y)) = c(y)
+i back_rewrite
+p 1786
+i rewrite
+p 2384
+p 2392
+p 2374
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2392
+e
+c 2450  c(x v y) v c(x v c(c(x v c(c(x) v x)) v x)) = c(x)
+i back_rewrite
+p 2130
+i rewrite
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+e
+c 2453  c(c(c(x v c(y)) v c(c(y) v z)) v c(u)) v c(c(y) v c(c(z v c(y v z)) v z)) = y
+i back_rewrite
+p 1958
+i rewrite
+p 2384
+p 2384
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2384
+e
+c 2454  c(x v y) v c(y v c(c(c(z) v c(c(y) v c(z))) v c(z))) = c(y)
+i back_rewrite
+p 1798
+i rewrite
+p 2384
+p 2384
+p 2384
+p 2384
+p 2392
+p 2384
+e
+c 2465  x v c(c(x) v c(c(y v c(x v y)) v y)) = x
+i back_rewrite
+p 1693
+i rewrite
+p 2384
+p 2392
+p 2384
+p 2392
+p 2384
+p 2384
+p 2392
+e
+c 2479  c(x v c(c(x v c(c(x) v x)) v x)) = c(x)
+i para
+p 2450
+p 1739
+i (flip)
+e
+c 2481  c(x v y) v c(x) = c(x)
+i para
+p 2450
+p 2384
+i rewrite
+p 2384
+p 2479
+e
+c 2485  (c(c(x) v y) v c(y)) v c(y) = c(y)
+i back_rewrite
+p 2411
+i rewrite
+p 2479
+e
+c 2486  c(c(x) v y) v x = x
+i para
+p 2392
+p 2481
+i rewrite
+p 2392
+e
+c 2487  x v (x v y) = x v y
+i para
+p 2481
+p 2481
+i rewrite
+p 2392
+p 2392
+p 2392
+e
+c 2492  c(x) v c(c(c(y) v c(x)) v c(c(x) v z)) = c(c(c(y) v c(x)) v c(c(x) v z))
+i para
+p 2400
+p 2481
+e
+c 2500  (c(c(x) v c(y)) v y) v y = y
+i para
+p 2392
+p 2485
+i rewrite
+p 2392
+p 2392
+e
+c 2507  (c(x v c(y)) v y) v y = y
+i para
+p 2392
+p 2500
+e
+c 2511  (c(x) v c(x v y)) v c(x v c(c(y v c(c(x) v y)) v y)) = c(x)
+i para
+p 2392
+p 2410
+i rewrite
+p 2392
+p 2392
+p 2392
+e
+c 2513  (c(x) v c(x v c(y))) v c(x) = c(x) v c(x v c(y))
+i para
+p 2410
+p 2465
+i rewrite
+p 2392
+p 2454
+p 2392
+p 2486
+e
+c 2517  c(x) v c(x v c(y)) = c(x)
+i para
+p 2410
+p 2487
+i rewrite
+p 2513
+p 2511
+e
+c 2529  (x v y) v x = x v y
+i para
+p 2481
+p 2517
+i rewrite
+p 2392
+p 2392
+p 2392
+e
+c 2533  x v c(c(x) v y) = x
+i para
+p 2486
+p 2529
+i rewrite
+p 2486
+e
+c 2552  c((c(x) v y) v c(z)) v c(c(x) v c(c(y v c(x v y)) v y)) = x
+i para
+p 2481
+p 2453
+i rewrite
+p 2392
+e
+c 2553  c(x v c(y)) v c(c(y) v c(c(z v c(y v z)) v z)) = y
+i para
+p 2481
+p 2453
+i rewrite
+p 2392
+e
+c 2560  c(c(x) v c(c(y v c(x v y)) v y)) = x
+i para
+p 2453
+p 2507
+i rewrite
+p 2533
+i (flip)
+e
+c 2574  c(x v c(y)) v y = y
+i back_rewrite
+p 2553
+i rewrite
+p 2560
+e
+c 2575  c((c(x) v y) v c(z)) v x = x
+i back_rewrite
+p 2552
+i rewrite
+p 2560
+e
+c 2583  c(x v y) v c(y) = c(y)
+i para
+p 2392
+p 2574
+e
+c 2585  x v c(y v c(x)) = x
+i para
+p 2574
+p 2529
+i rewrite
+p 2574
+e
+c 2590  c(x) v c(y v x) = c(x)
+i para
+p 2392
+p 2585
+e
+c 2591  x v (y v x) = y v x
+i para
+p 2583
+p 2481
+i rewrite
+p 2392
+p 2392
+p 2392
+e
+c 2599  c((c(x) v y) v z) v x = x
+i para
+p 2392
+p 2575
+e
+c 2612  c(c(x) v y) v (x v z) = x v z
+i para
+p 2481
+p 2599
+e
+c 2614  x v c((c(x) v y) v z) = x
+i para
+p 2599
+p 2529
+i rewrite
+p 2599
+e
+c 2617  c(c(x) v y) v (z v x) = z v x
+i para
+p 2583
+p 2599
+e
+c 2618  c((x v c(y)) v z) v y = y
+i para
+p 2591
+p 2599
+e
+c 2619  c(x v (c(y) v z)) v y = y
+i para
+p 2591
+p 2599
+e
+c 2650  x v c(y v (c(x) v z)) = x
+i para
+p 2591
+p 2614
+e
+c 2656  c(x v (y v c(z))) v z = z
+i para
+p 2591
+p 2618
+e
+c 2660  c(x v (y v z)) v c(y) = c(y)
+i para
+p 2392
+p 2619
+e
+c 2677  c(x v y) v c(c(c(z) v c(x v y)) v x) = c(c(c(z) v c(x v y)) v x)
+i para
+p 2481
+p 2492
+i rewrite
+p 2392
+p 2481
+p 2392
+e
+c 2697  c(x) v c(y v (x v z)) = c(x)
+i para
+p 2392
+p 2650
+e
+c 2706  c(x v (y v z)) v c(z) = c(z)
+i para
+p 2392
+p 2656
+e
+c 2737  x v (y v (x v z)) = y v (x v z)
+i para
+p 2660
+p 2481
+i rewrite
+p 2392
+p 2392
+p 2392
+e
+c 2764  x v (y v (z v x)) = y v (z v x)
+i para
+p 2706
+p 2481
+i rewrite
+p 2392
+p 2392
+p 2392
+e
+c 5628  c(x v y) v c(y v x) = c(y v x)
+i para
+p 2585
+p 2677
+i rewrite
+p 2392
+p 2392
+p 2392
+p 2590
+p 2392
+e
+c 5636  c(x v (y v z)) v c(y v x) = c(y v x)
+i para
+p 2650
+p 2677
+i rewrite
+p 2392
+p 2392
+p 2392
+p 2697
+p 2392
+e
+c 5749  (x v y) v (y v x) = y v x
+i para
+p 5628
+p 2481
+i rewrite
+p 2392
+p 2392
+p 2392
+e
+c 5751  x v y = y v x
+i para
+p 5628
+p 2533
+i rewrite
+p 2392
+p 5749
+e
+c 5754  (x v y) v c(c(y v x) v z) = x v y
+i para
+p 5628
+p 2599
+i rewrite
+p 5751
+e
+c 6160  c25 v (c23 v c24) != c23 v (c24 v c25) # answer(assoc_join)
+i back_rewrite
+p 38
+i rewrite
+p 5751
+e
+c 12548  (x v (y v z)) v (y v x) = x v (y v z)
+i para
+p 5636
+p 2533
+i rewrite
+p 2392
+e
+c 12684  (x v y) v ((x v z) v y) = (x v z) v y
+i para
+p 5636
+p 5754
+i rewrite
+p 2392
+p 5751
+e
+c 12718  c(c(x v y) v z) v (y v (x v u)) = y v (x v u)
+i para
+p 12548
+p 2617
+i rewrite
+p 12548
+e
+c 12728  (x v y) v (x v (y v z)) = x v (y v z)
+i para
+p 2737
+p 12548
+i rewrite
+p 5751
+p 2737
+e
+c 12730  (x v y) v (x v (z v y)) = x v (z v y)
+i para
+p 2764
+p 12548
+i rewrite
+p 5751
+p 2764
+e
+c 13101  (x v y) v (x v z) = (x v y) v z
+i para
+p 12684
+p 12548
+i rewrite
+p 12730
+p 12684
+e
+c 14172  (x v y) v (y v z) = x v (y v z)
+i back_rewrite
+p 12728
+i rewrite
+p 13101
+e
+c 14240  (x v y) v z = x v (y v z)
+i para
+p 2591
+p 13101
+i rewrite
+p 14172
+p 2591
+i (flip)
+e
+c 14251  x v (y v z) = y v (x v z)
+i para
+p 13101
+p 2612
+i rewrite
+p 14240
+p 2737
+p 12718
+p 14240
+e
+c 15086  $F # answer(assoc_join)
+i back_rewrite
+p 6160
+i rewrite
+p 14251
+p 5751
+i (flip)
+e
+
+============================== end of proof ==========================

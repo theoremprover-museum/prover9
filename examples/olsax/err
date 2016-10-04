@@ -1,0 +1,52 @@
+-------- Proof 1 -------- B_SS.
+-------- Proof 2 -------- ONE_SS.
+-------- Proof 3 -------- A_SS.
+
+THEOREM PROVED
+
+------ process 21234 exit (max_proofs) ------
+-------- Proof 1 -------- B_SS.
+-------- Proof 2 -------- OM_SS.
+-------- Proof 3 -------- A_SS.
+
+THEOREM PROVED
+
+------ process 21237 exit (max_proofs) ------
+-------- Proof 1 -------- AJ.
+-------- Proof 2 -------- B1.
+-------- Proof 3 -------- DM.
+-------- Proof 4 -------- CC.
+-------- Proof 5 -------- MOD.
+-------- Proof 6 -------- DEF_SS.
+-------- Proof 7 -------- ONE.
+
+THEOREM PROVED
+
+------ process 21275 exit (max_proofs) ------
+-------- Proof 1 -------- DEF_C.
+-------- Proof 2 -------- DEF_M.
+-------- Proof 3 -------- DEF_J.
+-------- Proof 4 -------- MOD_SS.
+-------- Proof 5 -------- B_SS.
+-------- Proof 6 -------- A_SS.
+-------- Proof 7 -------- ONE_SS.
+
+THEOREM PROVED
+
+------ process 21277 exit (max_proofs) ------
+-------- Proof 1 -------- CC.
+-------- Proof 2 -------- ONE.
+
+THEOREM PROVED
+
+------ process 21279 exit (max_proofs) ------
+-------- Proof 1 -------- CC.
+-------- Proof 2 -------- B1.
+Demod_limit (see stdout)
+-------- Proof 3 -------- MOD.
+-------- Proof 4 -------- DIST1.
+
+THEOREM PROVED
+
+------ process 21281 exit (max_proofs) ------
+

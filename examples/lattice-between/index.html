@@ -1,0 +1,78 @@
+<HTML>
+<HEAD>
+<TITLE>Prover9 Examples: Ternary Relations in Lattices
+</TITLE>
+</HEAD>
+
+<BODY BGCOLOR=white>
+<H1>Prover9 Examples: Ternary Relations in Lattices
+</H1>
+
+These theorems are based on the following paper.
+<UL>
+<LI>
+  R. Padmanabhan, "On Some Ternary Relations in Lattices",
+  <I>Colloquium Mathematicum</I> 15:195-198, 1966.
+</UL>
+This work is part of an ongoing project of Padmanabhan, Veroff, and McCune.
+
+<HR>
+
+A implies B.
+
+<!-- job ab -->
+<blockquote><tt>prover9 -f <a href="head.in">head.in</a> <a href="ab.in">ab.in</a> &gt; <a href="ab.out">ab.out</a> ; ### ( <a href="ab.out.xml">ab.out.xml</a> )</tt></blockquote>
+
+
+B implies C.
+
+<!-- job bc -->
+<blockquote><tt>prover9 -f <a href="head.in">head.in</a> <a href="bc.in">bc.in</a> &gt; <a href="bc.out">bc.out</a> ; ### ( <a href="bc.out.xml">bc.out.xml</a> )</tt></blockquote>
+
+
+B implies CS.
+
+<!-- job bcs -->
+<blockquote><tt>prover9 -f <a href="head.in">head.in</a> <a href="bcs.in">bcs.in</a> &gt; <a href="bcs.out">bcs.out</a> ; ### ( <a href="bcs.out.xml">bcs.out.xml</a> )</tt></blockquote>
+
+
+C implies D.
+
+<!-- job cd -->
+<blockquote><tt>prover9 -f <a href="head.in">head.in</a> <a href="cd.in">cd.in</a> &gt; <a href="cd.out">cd.out</a> ; ### ( <a href="cd.out.xml">cd.out.xml</a> )</tt></blockquote>
+
+
+CS implies D.
+
+<!-- job csd -->
+<blockquote><tt>prover9 -f <a href="head.in">head.in</a> <a href="csd.in">csd.in</a> &gt; <a href="csd.out">csd.out</a> ; ### ( <a href="csd.out.xml">csd.out.xml</a> )</tt></blockquote>
+
+
+Theorem 2, 1 implies 2.
+
+<!-- job t2_12 -->
+<blockquote><tt>prover9 -f <a href="head.in">head.in</a> <a href="t2_12.in">t2_12.in</a> &gt; <a href="t2_12.out">t2_12.out</a> ; ### ( <a href="t2_12.out.xml">t2_12.out.xml</a> )</tt></blockquote>
+
+
+Theorem 2, 2 implies 3.
+
+<!-- job t2_23 -->
+<blockquote><tt>prover9 -f <a href="head.in">head.in</a> <a href="t2_23.in">t2_23.in</a> &gt; <a href="t2_23.out">t2_23.out</a> ; ### ( <a href="t2_23.out.xml">t2_23.out.xml</a> )</tt></blockquote>
+
+
+Theorem 3, 1 implies 2.
+
+<!-- job t3_12 -->
+<blockquote><tt>prover9 -f <a href="head.in">head.in</a> <a href="t3_12.in">t3_12.in</a> &gt; <a href="t3_12.out">t3_12.out</a> ; ### ( <a href="t3_12.out.xml">t3_12.out.xml</a> )</tt></blockquote>
+
+
+Theorem 4, 1 implies 2.
+
+<!-- job t4_12 -->
+<blockquote><tt>prover9 -f <a href="head.in">head.in</a> <a href="t4_12.in">t4_12.in</a> &gt; <a href="t4_12.out">t4_12.out</a> ; ### ( <a href="t4_12.out.xml">t4_12.out.xml</a> )</tt></blockquote>
+
+
+
+
+</BODY>
+</HTML>

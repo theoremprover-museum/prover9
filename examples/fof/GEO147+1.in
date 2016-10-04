@@ -1,0 +1,358 @@
+assign(max_seconds, 30).
+
+%------------------------------------------------------------------------------
+% File     : GEO147+1 : TPTP v3.0.1. Released v2.4.0.
+% Domain   : Geometry (Oriented curves)
+% Problem  : Meeting is possible only if there is a common position
+% Version  : [EHK99] axioms.
+% English  : 
+
+% Refs     : [KE99]  Kulik & Eschenbach (1999), A Geometry of Oriented Curv
+%          : [EHK99] Eschenbach et al. (1999), Representing Simple Trajecto
+% Source   : [EHK99]
+% Names    : T13 [EHK99]
+
+% Status   : Theorem
+% Rating   : 0.22 v2.7.0, 0.17 v2.5.0, 0.00 v2.4.0
+% Syntax   : Number of formulae    :   37 (   3 unit)
+%            Number of atoms       :  135 (  17 equality)
+%            Maximal formula depth :   12 (   7 average)
+%            Number of connectives :  107 (   9 ~  ;  10  |;  42  &)
+%                                         (  24 <=>;  22 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :   16 (   0 propositional; 1-4 arity)
+%            Number of functors    :    5 (   0 constant; 1-2 arity)
+%            Number of variables   :  121 (   0 singleton; 105 !;  16 ?)
+%            Maximal term depth    :    3 (   1 average)
+
+% Comments : 
+%          : tptp2X -f mace4 GEO147+1.p 
+%------------------------------------------------------------------------------
+%----NOTE WELL: conjecture has been negated
+set(prolog_style_variables).
+formulas(assumptions).
+
+% part_of_defn, axiom.
+    ( all C 
+    ( all C1 
+      ( part_of(C1,C)
+     <-> ( all P 
+          ( incident_c(P,C1)
+          -> incident_c(P,C) ) ) ) ) ).
+
+% sum_defn, axiom.
+    ( all C 
+    ( all C1 
+    ( all C2 
+      ( C = sum(C1,C2)
+     <-> ( all Q 
+          ( incident_c(Q,C)
+         <-> ( incident_c(Q,C1)
+             | incident_c(Q,C2) ) ) ) ) ) ) ).
+
+% end_point_defn, axiom.
+    ( all P 
+    ( all C 
+      ( end_point(P,C)
+     <-> ( incident_c(P,C)
+         & ( all C1 
+          ( all C2 
+            ( ( part_of(C1,C)
+               & part_of(C2,C)
+               & incident_c(P,C1)
+               & incident_c(P,C2) )
+            -> ( part_of(C1,C2)
+               | part_of(C2,C1) ) ) ) ) ) ) ) ).
+
+% inner_point_defn, axiom.
+    ( all P 
+    ( all C 
+      ( inner_point(P,C)
+     <-> ( incident_c(P,C)
+         & -(end_point(P,C)) ) ) ) ).
+
+% meet_defn, axiom.
+    ( all P 
+    ( all C 
+    ( all C1 
+      ( meet(P,C,C1)
+     <-> ( incident_c(P,C)
+         & incident_c(P,C1)
+         & ( all Q 
+            ( ( incident_c(Q,C)
+               & incident_c(Q,C1) )
+            -> ( end_point(Q,C)
+               & end_point(Q,C1) ) ) ) ) ) ) ) ).
+
+% closed_defn, axiom.
+    ( all C 
+      ( closed(C)
+     <-> -(( ( exists P end_point(P,C) ) )) ) ).
+
+% open_defn, axiom.
+    ( all C 
+      ( open(C)
+     <-> ( exists P end_point(P,C) ) ) ).
+
+% c1, axiom.
+    ( all C 
+    ( all C1 
+      ( ( part_of(C1,C)
+         & -(C1 = C) )
+      -> open(C1) ) ) ).
+
+% c2, axiom.
+    ( all C 
+    ( all C1 
+    ( all C2 
+    ( all C3 
+      ( ( part_of(C1,C)
+         & part_of(C2,C)
+         & part_of(C3,C)
+         & ( exists P 
+            ( end_point(P,C1)
+             & end_point(P,C2)
+             & end_point(P,C3) ) ) )
+      -> ( part_of(C2,C3)
+         | part_of(C3,C2)
+         | part_of(C1,C2)
+         | part_of(C2,C1)
+         | part_of(C1,C3)
+         | part_of(C3,C1) ) ) ) ) ) ).
+
+% c3, axiom.
+    ( all C 
+    ( exists P inner_point(P,C) ) ).
+
+% c4, axiom.
+    ( all C 
+    ( all P 
+      ( inner_point(P,C)
+      -> ( exists C1 
+        ( exists C2 
+          ( meet(P,C1,C2)
+           & C = sum(C1,C2) ) ) ) ) ) ).
+
+% c5, axiom.
+    ( all C 
+    ( all P 
+    ( all Q 
+    ( all R 
+      ( ( end_point(P,C)
+         & end_point(Q,C)
+         & end_point(R,C) )
+      -> ( P = Q
+         | P = R
+         | Q = R ) ) ) ) ) ).
+
+% c6, axiom.
+    ( all C 
+    ( all P 
+      ( end_point(P,C)
+      -> ( exists Q 
+          ( end_point(Q,C)
+           & -(P = Q) ) ) ) ) ).
+
+% c7, axiom.
+    ( all C 
+    ( all C1 
+    ( all C2 
+    ( all P 
+      ( ( closed(C)
+         & meet(P,C1,C2)
+         & C = sum(C1,C2) )
+      -> ( all Q 
+          ( end_point(Q,C1)
+          -> meet(Q,C1,C2) ) ) ) ) ) ) ).
+
+% c8, axiom.
+    ( all C1 
+    ( all C2 
+      ( ( exists P meet(P,C1,C2) )
+      -> ( exists C C = sum(C1,C2) ) ) ) ).
+
+% c9, axiom.
+    ( all C 
+    ( all C1 
+      ( ( all P 
+          ( incident_c(P,C)
+         <-> incident_c(P,C1) ) )
+      -> C = C1 ) ) ).
+
+% between_c_defn, axiom.
+    ( all C 
+    ( all P 
+    ( all Q 
+    ( all R 
+      ( between_c(C,P,Q,R)
+     <-> ( -(P = R)
+         & ( exists Cpp 
+            ( part_of(Cpp,C)
+             & end_point(P,Cpp)
+             & end_point(R,Cpp)
+             & inner_point(Q,Cpp) ) ) ) ) ) ) ) ).
+
+% between_o_defn, axiom.
+    ( all O 
+    ( all P 
+    ( all Q 
+    ( all R 
+      ( between_o(O,P,Q,R)
+     <-> ( ( ordered_by(O,P,Q)
+           & ordered_by(O,Q,R) )
+         | ( ordered_by(O,R,Q)
+           & ordered_by(O,Q,P) ) ) ) ) ) ) ).
+
+% start_point_defn, axiom.
+    ( all P 
+    ( all O 
+      ( start_point(P,O)
+     <-> ( incident_o(P,O)
+         & ( all Q 
+            ( ( -(P = Q)
+               & incident_o(Q,O) )
+            -> ordered_by(O,P,Q) ) ) ) ) ) ).
+
+% finish_point_defn, axiom.
+    ( all P 
+    ( all O 
+      ( finish_point(P,O)
+     <-> ( incident_o(P,O)
+         & ( all Q 
+            ( ( -(P = Q)
+               & incident_o(Q,O) )
+            -> ordered_by(O,Q,P) ) ) ) ) ) ).
+
+% o1, axiom.
+    ( all O 
+    ( all P 
+    ( all Q 
+      ( ordered_by(O,P,Q)
+      -> ( incident_o(P,O)
+         & incident_o(Q,O) ) ) ) ) ).
+
+% o2, axiom.
+    ( all O 
+    ( exists C 
+      ( open(C)
+       & ( all P 
+          ( incident_o(P,O)
+         <-> incident_c(P,C) ) ) ) ) ).
+
+% o3, axiom.
+    ( all P 
+    ( all Q 
+    ( all R 
+    ( all O 
+      ( between_o(O,P,Q,R)
+     <-> ( exists C 
+          ( ( all P 
+              ( incident_o(P,O)
+             <-> incident_c(P,C) ) )
+           & between_c(C,P,Q,R) ) ) ) ) ) ) ).
+
+% o4, axiom.
+    ( all O 
+    ( exists P start_point(P,O) ) ).
+
+% o5, axiom.
+    ( all P 
+    ( all Q 
+    ( all C 
+      ( ( open(C)
+         & -(P = Q)
+         & incident_c(P,C)
+         & incident_c(Q,C) )
+      -> ( exists O 
+          ( ( all R 
+              ( incident_o(R,O)
+             <-> incident_c(R,C) ) )
+           & ordered_by(O,P,Q) ) ) ) ) ) ).
+
+% o6, axiom.
+    ( all O1 
+    ( all O2 
+      ( ( all P 
+        ( all Q 
+          ( ordered_by(O1,P,Q)
+         <-> ordered_by(O2,P,Q) ) ) )
+      -> O1 = O2 ) ) ).
+
+% underlying_curve_defn, axiom.
+    ( all C 
+    ( all O 
+      ( C = underlying_curve(O)
+     <-> ( all P 
+          ( incident_o(P,O)
+         <-> incident_c(P,C) ) ) ) ) ).
+
+% connect_defn, axiom.
+    ( all X 
+    ( all Y 
+    ( all P 
+      ( connect(X,Y,P)
+     <-> once(at_the_same_time(at(X,P),at(Y,P))) ) ) ) ).
+
+% symmetry_of_at_the_same_time, axiom.
+    ( all A 
+    ( all B 
+      ( once(at_the_same_time(A,B))
+     <-> once(at_the_same_time(B,A)) ) ) ).
+
+% assciativity_of_at_the_same_time, axiom.
+    ( all A 
+    ( all B 
+    ( all C 
+      ( once(at_the_same_time(at_the_same_time(A,B),C))
+     <-> once(at_the_same_time(A,at_the_same_time(B,C))) ) ) ) ).
+
+% idempotence_of_at_the_same_time, axiom.
+    ( all A 
+      ( once(A)
+      -> once(at_the_same_time(A,A)) ) ).
+
+% conjunction_at_the_same_time, axiom.
+    ( all A 
+    ( all B 
+      ( once(at_the_same_time(A,B))
+      -> ( once(A)
+         & once(B) ) ) ) ).
+
+% at_on_trajectory, axiom.
+    ( all X 
+    ( all P 
+      ( once(at(X,P))
+     <-> incident_o(P,trajectory_of(X)) ) ) ).
+
+% trajectories_are_oriented_curves, axiom.
+    ( all X 
+    ( exists O trajectory_of(X) = O ) ).
+
+% homogeneous_behaviour, axiom.
+    ( all P1 
+    ( all P2 
+    ( all Q1 
+    ( all Q2 
+    ( all X 
+    ( all Y 
+      ( ( once(at_the_same_time(at(X,P1),at(Y,P2)))
+         & once(at_the_same_time(at(X,Q1),at(Y,Q2))) )
+      -> -(( ordered_by(trajectory_of(X),P1,Q1)
+           & ordered_by(trajectory_of(Y),Q2,P2) )) ) ) ) ) ) ) ).
+
+% localization, axiom.
+    ( all A 
+      ( once(A)
+      -> ( all X 
+        ( exists P once(at_the_same_time(A,at(X,P))) ) ) ) ).
+
+% t13, negated_conjecture.
+    -(( ( all P 
+        ( all X 
+        ( all Y 
+          ( connect(X,Y,P)
+          -> ( incident_o(P,trajectory_of(X))
+             & incident_o(P,trajectory_of(Y)) ) ) ) ) ) )).
+end_of_list.
+
+%------------------------------------------------------------------------------

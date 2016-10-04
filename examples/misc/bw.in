@@ -1,0 +1,31 @@
+assign(max_seconds, 30).
+
+assign(order, kbo).  % It works with the default (lpo) but it takes longer.
+
+formulas(assumptions).
+
+% combinators B and W
+
+  a(a(a(B,x),y),z) = a(x,a(y,z)) # label(B).
+  a(a(W,x),y) = a(a(x,y),y) # label(W).
+
+end_of_list.
+
+formulas(goals).
+
+  % existence of a fixed point combinator
+
+  (exists Q all x (a(Q,x) = a(x,a(Q,x)))) # label(fixed_point_combinator).
+
+end_of_list.
+
+% Here is a different way of specifying the goal, which tells us
+% what the fixed point combinator is.  We use an answer attribute.
+% Unfortunately, answer attributes are not allowed on non-clausal
+% (e.g., goal) formulas, so we deny the goal and state it as an assumption.
+% Note that this introduces the Skolem function f.
+%
+% formulas(assumptions).
+% a(x,f(x)) != a(f(x),a(x,f(x))) # answer(x).
+% end_of_list.
+

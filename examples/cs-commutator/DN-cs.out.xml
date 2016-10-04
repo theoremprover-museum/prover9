@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE proofs SYSTEM "proof3.dtd">
+
+<?xml-stylesheet type="text/xsl" href="proof3.xsl"?>
+
+<proofs number_of_proofs="1">
+
+<source>DN-cs.out</source>
+
+<heading><![CDATA[
+Prover9 (32) version 2009-11A, November 2009.
+Process 5101 was started by mccune on cleo,
+Tue Nov  3 09:42:01 2009
+The command was "/home/mccune/LADR/bin/prover9 -f cs.in DN.in".
+]]></heading>
+
+<proof number="1" length="14" max_count="23">
+
+<comments><![CDATA[
+% Proof 1 at 0.04 (+ 0.00) seconds: N.
+% Length of proof is 14.
+% Level of proof is 4.
+% Maximum clause weight is 23.000.
+% Given clauses 54.
+
+]]></comments>
+
+  <clause id="1" type="assumption">
+    <literal><![CDATA[
+      x * y != x * z
+    ]]></literal>
+    <literal><![CDATA[
+      y = z
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="2" type="assumption">
+    <literal><![CDATA[
+      x * y != z * y
+    ]]></literal>
+    <literal><![CDATA[
+      x = z
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="3" type="assumption">
+    <literal><![CDATA[
+      (x * y) * z = x * y * z
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="4" type="assumption">
+    <literal><![CDATA[
+      x * y * (y @ x) = y * x
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="5" type="assumption">
+    <literal><![CDATA[
+      (x @ y) * (z @ y) = x * z @ y
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="6">
+    <literal><![CDATA[
+      x * y @ z = (x @ z) * (y @ z)
+    ]]></literal>
+    <justification jstring="[copy(5),flip(a)].">
+      <j1 rule="copy" parents="5"/>
+      <j2 rule="flip"/>
+    </justification>
+  </clause>
+
+  <clause id="7" type="assumption">
+    <literal><![CDATA[
+      (A @ B) * C != C * (A @ B)
+    ]]></literal>
+    <attribute><![CDATA[
+      answer(N)
+    ]]></attribute>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="8">
+    <literal><![CDATA[
+      x * y * z != x * y * u
+    ]]></literal>
+    <literal><![CDATA[
+      z = u
+    ]]></literal>
+    <justification jstring="[para(3(a,1),1(a,1)),rewrite([3(4)])].">
+      <j1 rule="para" parents="3 1"/>
+      <j2 rule="rewrite" parents="3"/>
+    </justification>
+  </clause>
+
+  <clause id="14">
+    <literal><![CDATA[
+      x * y * (y @ x) * z = y * x * z
+    ]]></literal>
+    <justification jstring="[para(4(a,1),3(a,1,1)),rewrite([3(2),3(5)]),flip(a)].">
+      <j1 rule="para" parents="4 3"/>
+      <j2 rule="rewrite" parents="3 3"/>
+      <j2 rule="flip"/>
+    </justification>
+  </clause>
+
+  <clause id="16">
+    <literal><![CDATA[
+      x * y * z * (y @ x) * (z @ x) = y * z * x
+    ]]></literal>
+    <justification jstring="[para(3(a,1),4(a,1,2)),rewrite([6(2),3(8)])].">
+      <j1 rule="para" parents="3 4"/>
+      <j2 rule="rewrite" parents="6 3"/>
+    </justification>
+  </clause>
+
+  <clause id="18">
+    <literal><![CDATA[
+      (A @ B) * C * x != C * (A @ B) * x
+    ]]></literal>
+    <attribute><![CDATA[
+      answer(N)
+    ]]></attribute>
+    <justification jstring="[ur(2,b,7,a),rewrite([3(6),3(12)])].">
+      <j1 rule="ur" parents="2 7"/>
+      <j2 rule="rewrite" parents="3 3"/>
+    </justification>
+  </clause>
+
+  <clause id="24">
+    <literal><![CDATA[
+      x * y * (A @ B) * C * z != x * y * C * (A @ B) * z
+    ]]></literal>
+    <attribute><![CDATA[
+      answer(N)
+    ]]></attribute>
+    <justification jstring="[ur(8,b,18,a)].">
+      <j1 rule="ur" parents="8 18"/>
+    </justification>
+  </clause>
+
+  <clause id="209">
+    <literal><![CDATA[
+      B * A * C * (A @ B) * x != A * B * C * x
+    ]]></literal>
+    <attribute><![CDATA[
+      answer(N)
+    ]]></attribute>
+    <justification jstring="[para(14(a,1),24(a,1)),flip(a)].">
+      <j1 rule="para" parents="14 24"/>
+      <j2 rule="flip"/>
+    </justification>
+  </clause>
+
+  <clause id="219">
+    <literal><![CDATA[
+      $F
+    ]]></literal>
+    <attribute><![CDATA[
+      answer(N)
+    ]]></attribute>
+    <justification jstring="[para(4(a,1),209(a,2,2)),rewrite([16(13)]),xx(a)].">
+      <j1 rule="para" parents="4 209"/>
+      <j2 rule="rewrite" parents="16"/>
+      <j2 rule="xx"/>
+    </justification>
+  </clause>
+
+</proof>
+
+</proofs>

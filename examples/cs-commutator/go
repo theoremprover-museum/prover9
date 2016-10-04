@@ -1,0 +1,107 @@
+#!/bin/csh
+
+
+if ($#argv != 2) then
+	echo "need 2 args: bin-directory ouput-extension"
+	exit(1)
+endif
+
+set d=$1
+
+set out=$2
+
+# job AD-gt
+
+$d/prover9 -f gt.in AD.in > AD-gt.$out
+
+# job AD-cs
+
+$d/prover9 -f cs.in AD.in > AD-cs.$out
+
+# job AE-gt
+
+$d/prover9 -f gt.in AE.in > AE-gt.$out
+
+# job AE-cs
+
+$d/prover9 -f cs.in AE.in > AE-cs.$out
+
+# job AN-gt
+
+$d/prover9 -f gt.in AN.in > AN-gt.$out
+
+# job AN-cs
+
+$d/prover9 -f cs.in AN.in > AN-cs.$out
+
+# job DA-gt
+
+$d/prover9 -f gt.in DA.in > DA-gt.$out
+
+# job DA-cs
+
+$d/prover9 -f cs.in DA.in > DA-cs.$out
+
+# job DE-gt
+
+$d/prover9 -f gt.in DE.in > DE-gt.$out
+
+# job DE-cs
+
+$d/prover9 -f cs.in DE.in > DE-cs.$out
+
+# job DN-gt
+
+$d/prover9 -f gt.in DN.in > DN-gt.$out
+
+# job DN-cs
+
+$d/prover9 -f cs.in DN.in > DN-cs.$out
+
+# job EA-gt
+
+$d/prover9 -f gt.in EA.in > EA-gt.$out
+
+# job EA-cs
+
+$d/prover9 -f cs.in EA.in > EA-cs.$out
+
+# job ED-gt
+
+$d/prover9 -f gt.in ED.in > ED-gt.$out
+
+# job ED-cs
+
+$d/prover9 -f cs.in ED.in > ED-cs.$out
+
+# job EN-gt
+
+$d/prover9 -f gt.in EN.in > EN-gt.$out
+
+# job EN-cs
+
+$d/prover9 -f cs.in EN.in > EN-cs.$out
+
+# job NA-gt
+
+$d/prover9 -f gt.in NA.in > NA-gt.$out
+
+# job NA-cs
+
+$d/prover9 -f cs.in NA.in > NA-cs.$out
+
+# job ND-gt
+
+$d/prover9 -f gt.in ND.in > ND-gt.$out
+
+# job ND-cs
+
+$d/prover9 -f cs.in ND.in > ND-cs.$out
+
+# job NE-gt
+
+$d/prover9 -f gt.in NE.in > NE-gt.$out
+
+# job NE-cs
+
+$d/prover9 -f cs.in NE.in > NE-cs.$out

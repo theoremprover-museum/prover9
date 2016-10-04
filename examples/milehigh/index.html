@@ -1,0 +1,99 @@
+<HTML>
+
+<HEAD>
+<TITLE>Milehigh Examples</TITLE>
+</HEAD>
+
+<BODY BGCOLOR=white>
+
+<H1>Milehigh Examples</H1>
+
+Prover9 (and Mace4) examples from 
+<A HREF="../../milehigh_mccune.pdf">a talk on Prover9</A> at
+
+<blockquote>
+<A HREF="http://www.math.du.edu/milehigh/">
+The Milehigh Conference on Quasigroups, Loops, and Nonassociative Systems</A>,
+</blockquote>
+
+July 2005.
+
+<p />
+These examples have been updated for version March-2006 of Prover9/Mace4.
+
+<hr>
+
+<!-- ================================================================= -->
+
+
+<h3>Nonassociative Ring</h3>
+Left, flexible -&gt; right
+
+<!-- job na-ring-1 -->
+<blockquote><tt>prover9 -f <a href="na-ring-1.in">na-ring-1.in</a> &gt; <a href="na-ring-1.out">na-ring-1.out</a> ; ### ( <a href="na-ring-1.out.xml">na-ring-1.out.xml</a> )</tt></blockquote>
+
+
+Counterexample to left -&gt; right
+
+<!-- job na-ring-2 -->
+<blockquote><tt>mace4 -c -N20 -f <a href="na-ring-2.in">na-ring-2.in</a> &gt; <a href="na-ring-2.out">na-ring-2.out</a> ; ### ( <a href="na-ring-2.out.xml">na-ring-2.out.xml</a> )</tt></blockquote>
+
+
+Left, flexible -&gt; right (with associator)
+
+<!-- job na-ring-3 -->
+<blockquote><tt>prover9 -f <a href="na-ring-3.in">na-ring-3.in</a> &gt; <a href="na-ring-3.out">na-ring-3.out</a> ; ### ( <a href="na-ring-3.out.xml">na-ring-3.out.xml</a> )</tt></blockquote>
+
+
+<hr>
+<h3>xxx=x Rings are Commutative</h3>
+
+<!-- job x3-ring -->
+<blockquote><tt>prover9 -f <a href="x3-ring.in">x3-ring.in</a> &gt; <a href="x3-ring.out">x3-ring.out</a> ; ### ( <a href="x3-ring.out.xml">x3-ring.out.xml</a> )</tt></blockquote>
+
+
+<hr>
+<h3>Padmanabhan Example</h3>
+A Ring model of K
+
+<!-- job rp-ident -->
+<blockquote><tt>prover9 -f <a href="rp-ident.in">rp-ident.in</a> &gt; <a href="rp-ident.out">rp-ident.out</a> ; ### ( <a href="rp-ident.out.xml">rp-ident.out.xml</a> )</tt></blockquote>
+
+
+First-order proof of the identity in question
+
+<!-- job rp-ring -->
+<blockquote><tt>mace4 -f <a href="rp-ring.in">rp-ring.in</a> &gt; <a href="rp-ring.out">rp-ring.out</a> ; ### ( <a href="rp-ring.out.xml">rp-ring.out.xml</a> )</tt></blockquote>
+
+
+<hr>
+<h3>GT Single Axiom Counterexamples</h3>
+An easy candidate; no additional constraints
+
+<!-- job cand3 -->
+<blockquote><tt>mace4 -f <a href="cand3.in">cand3.in</a> &gt; <a href="cand3.out">cand3.out</a> ; ### ( <a href="cand3.out.xml">cand3.out.xml</a> )</tt></blockquote>
+
+
+A candidate with inverse loop constraints
+
+<!-- job cand10 -->
+<blockquote><tt>mace4 -f <a href="cand10.in">cand10.in</a> &gt; <a href="cand10.out">cand10.out</a> ; ### ( <a href="cand10.out.xml">cand10.out.xml</a> )</tt></blockquote>
+
+
+A candidate with ring constraints
+
+<!-- job cand23 -->
+<blockquote><tt>mace4 -f <a href="cand23.in">cand23.in</a> &gt; <a href="cand23.out">cand23.out</a> ; ### ( <a href="cand23.out.xml">cand23.out.xml</a> )</tt></blockquote>
+
+
+A 4-variable single axiom
+
+<!-- job gtsax -->
+<blockquote><tt>prover9 -f <a href="gtsax.in">gtsax.in</a> &gt; <a href="gtsax.out">gtsax.out</a> ; ### ( <a href="gtsax.out.xml">gtsax.out.xml</a> )</tt></blockquote>
+
+
+
+<!-- ================================================================= -->
+
+</BODY>
+</HTML>

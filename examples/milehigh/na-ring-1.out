@@ -1,0 +1,371 @@
+============================== Prover9 ===============================
+Prover9 (32) version 2009-11A, November 2009.
+Process 4292 was started by mccune on cleo,
+Tue Nov  3 09:37:03 2009
+The command was "/home/mccune/LADR/bin/prover9 -f na-ring-1.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file na-ring-1.in
+
+assign(max_seconds,30).
+
+formulas(sos).
+x + 0 = x.
+x + -x = 0.
+(x + y) + z = x + (y + z).
+x + y = y + x.
+x * (y + z) = (x * y) + (x * z).
+(x + y) * z = (x * z) + (y * z).
+(x * x) * y = x * (x * y) # label(left).
+(x * y) * x = x * (y * x) # label(flexible).
+end_of_list.
+
+formulas(goals).
+(y * x) * x = y * (x * x) # label(right).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 (y * x) * x = y * (x * x) # label(right) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+x + 0 = x.  [assumption].
+x + -x = 0.  [assumption].
+(x + y) + z = x + (y + z).  [assumption].
+x + y = y + x.  [assumption].
+x * (y + z) = (x * y) + (x * z).  [assumption].
+(x + y) * z = (x * z) + (y * z).  [assumption].
+(x * x) * y = x * (x * y) # label(left).  [assumption].
+(x * y) * x = x * (y * x) # label(flexible).  [assumption].
+(c1 * c2) * c2 != c1 * (c2 * c2) # label(right).  [deny(1)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Auto_denials:
+  % copying label right to answer in negative clause
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ = ]).
+Function symbol precedence:  function_order([ 0, c1, c2, *, +, - ]).
+After inverse_order: Function symbol precedence:  function_order([ 0, c1, c2, +, -, * ]).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(paramodulation).  % (positive equality literals)
+
+Auto_process settings:  (no changes).
+
+kept:      2 x + 0 = x.  [assumption].
+kept:      3 x + -x = 0.  [assumption].
+kept:      4 (x + y) + z = x + (y + z).  [assumption].
+
+% Operation + is commutative; C redundancy checks enabled.
+kept:      5 x + y = y + x.  [assumption].
+kept:      6 x * (y + z) = (x * y) + (x * z).  [assumption].
+kept:      7 (x + y) * z = (x * z) + (y * z).  [assumption].
+kept:      8 (x * x) * y = x * (x * y) # label(left).  [assumption].
+kept:      9 (x * y) * x = x * (y * x) # label(flexible).  [assumption].
+kept:      10 (c1 * c2) * c2 != c1 * (c2 * c2) # label(right) # answer(right).  [deny(1)].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+2 x + 0 = x.  [assumption].
+3 x + -x = 0.  [assumption].
+4 (x + y) + z = x + (y + z).  [assumption].
+5 x + y = y + x.  [assumption].
+6 x * (y + z) = (x * y) + (x * z).  [assumption].
+7 (x + y) * z = (x * z) + (y * z).  [assumption].
+8 (x * x) * y = x * (x * y) # label(left).  [assumption].
+9 (x * y) * x = x * (y * x) # label(flexible).  [assumption].
+10 (c1 * c2) * c2 != c1 * (c2 * c2) # label(right) # answer(right).  [deny(1)].
+end_of_list.
+
+formulas(demodulators).
+2 x + 0 = x.  [assumption].
+3 x + -x = 0.  [assumption].
+4 (x + y) + z = x + (y + z).  [assumption].
+5 x + y = y + x.  [assumption].
+        % (lex-dep)
+6 x * (y + z) = (x * y) + (x * z).  [assumption].
+7 (x + y) * z = (x * z) + (y * z).  [assumption].
+8 (x * x) * y = x * (x * y) # label(left).  [assumption].
+9 (x * y) * x = x * (y * x) # label(flexible).  [assumption].
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.01 seconds.
+
+given #1 (I,wt=5): 2 x + 0 = x.  [assumption].
+
+given #2 (I,wt=6): 3 x + -x = 0.  [assumption].
+
+given #3 (I,wt=11): 4 (x + y) + z = x + (y + z).  [assumption].
+
+given #4 (I,wt=7): 5 x + y = y + x.  [assumption].
+
+% Operation + is associative-commutative; CAC redundancy checks enabled.
+
+given #5 (I,wt=13): 6 x * (y + z) = (x * y) + (x * z).  [assumption].
+
+given #6 (I,wt=13): 7 (x + y) * z = (x * z) + (y * z).  [assumption].
+
+given #7 (I,wt=11): 8 (x * x) * y = x * (x * y) # label(left).  [assumption].
+
+given #8 (I,wt=11): 9 (x * y) * x = x * (y * x) # label(flexible).  [assumption].
+
+given #9 (I,wt=11): 10 (c1 * c2) * c2 != c1 * (c2 * c2) # label(right) # answer(right).  [deny(1)].
+
+given #10 (A,wt=10): 13 x + (y + -(x + y)) = 0.  [para(4(a,1),3(a,1))].
+
+given #11 (T,wt=4): 28 -0 = 0.  [para(3(a,1),13(a,1,2,2,1)),rewrite([17(5)])].
+
+given #12 (T,wt=5): 15 0 + x = x.  [para(5(a,1),2(a,1))].
+
+given #13 (T,wt=8): 17 x + (-x + y) = y.  [back_rewrite(14),rewrite([15(5)])].
+
+given #14 (T,wt=5): 36 --x = x.  [para(3(a,1),17(a,1,2)),rewrite([2(2)]),flip(a)].
+
+given #15 (A,wt=11): 16 x + (y + z) = y + (x + z).  [para(5(a,1),4(a,1,1)),rewrite([4(2)])].
+
+given #16 (T,wt=8): 37 x + (y + -x) = y.  [para(5(a,1),17(a,1,2))].
+
+given #17 (T,wt=8): 48 -x + (y + x) = y.  [para(36(a,1),37(a,1,2,2))].
+
+given #18 (T,wt=9): 40 x + -(-y + x) = y.  [para(13(a,1),17(a,1,2)),rewrite([2(2)]),flip(a)].
+
+given #19 (T,wt=9): 56 x + -(x + y) = -y.  [para(48(a,1),48(a,1,2)),rewrite([5(3)])].
+
+given #20 (A,wt=11): 18 (x * y) + (x * 0) = x * y.  [para(2(a,1),6(a,1,2)),flip(a)].
+
+given #21 (T,wt=10): 73 -(x + y) = -y + -x.  [para(48(a,1),56(a,1,2,1)),flip(a)].
+
+given #22 (T,wt=11): 20 (x * y) + (0 * y) = x * y.  [para(2(a,1),7(a,1,1)),flip(a)].
+
+given #23 (T,wt=11): 34 (x * 0) + (x * y) = x * y.  [para(15(a,1),6(a,1,2)),flip(a)].
+
+given #24 (T,wt=5): 97 x * 0 = 0.  [para(34(a,1),48(a,1,2)),rewrite([5(4),3(4)]),flip(a)].
+
+given #25 (A,wt=12): 21 (x * y) + (-x * y) = 0 * y.  [para(3(a,1),7(a,1,1)),flip(a)].
+
+given #26 (T,wt=9): 99 0 * (0 * x) = 0 * x.  [para(97(a,1),8(a,1,1)),flip(a)].
+
+given #27 (T,wt=9): 100 x * (0 * x) = 0 * x.  [para(97(a,1),9(a,1,1)),flip(a)].
+
+given #28 (T,wt=10): 98 (x * y) + (x * -y) = 0.  [back_rewrite(19),rewrite([97(6)])].
+
+given #29 (T,wt=9): 125 -(x * -y) = x * y.  [para(98(a,1),48(a,1,2)),rewrite([5(5),15(5)])].
+
+given #30 (A,wt=47): 22 (x * (x * y)) + ((z * (z * y)) + (((z * x) * y) + ((x * z) * y))) = (x * (x * y)) + ((z * (x * y)) + ((x * (z * y)) + (z * (z * y)))).  [para(6(a,1),8(a,1,1)),rewrite([7(2),7(5),4(7),7(8),8(2),7(8),7(8),8(8),5(9),16(10),7(14),6(16),7(14),7(19),4(22)])].
+
+given #31 (T,wt=9): 130 x * -y = -(x * y).  [para(125(a,1),36(a,1,1)),flip(a)].
+
+given #32 (T,wt=10): 116 -x * (0 * x) = 0 * x.  [para(100(a,1),21(a,1,1)),rewrite([110(7),99(8)])].
+
+given #33 (T,wt=11): 35 (0 * x) + (y * x) = y * x.  [para(15(a,1),7(a,1,1)),flip(a)].
+
+given #34 (T,wt=5): 181 0 * x = 0.  [para(35(a,1),48(a,1,2)),rewrite([5(4),3(4)]),flip(a)].
+
+given #35 (A,wt=47): 23 (x * (x * y)) + ((z * (z * y)) + (((x * z) * y) + ((z * x) * y))) = (x * (x * y)) + ((z * (x * y)) + ((x * (z * y)) + (z * (z * y)))).  [para(7(a,1),8(a,1,1)),rewrite([6(2),6(5),4(7),7(8),8(2),7(8),7(8),8(8),5(9),16(10),7(14),6(16),7(14),7(19),4(22)])].
+
+given #36 (T,wt=9): 184 -(-x * y) = x * y.  [back_rewrite(108),rewrite([181(2),15(5)])].
+
+given #37 (T,wt=9): 208 -x * y = -(x * y).  [para(184(a,1),36(a,1,1)),flip(a)].
+
+given #38 (T,wt=12): 43 x + (y + (-x + z)) = y + z.  [para(16(a,1),17(a,1,2))].
+
+given #39 (T,wt=12): 45 x + (y + (z + -x)) = y + z.  [para(4(a,1),37(a,1,2))].
+
+given #40 (A,wt=19): 24 (x * (x * (x * x))) * y = x * (x * (x * (x * y))).  [para(8(a,1),8(a,1,1)),rewrite([8(7),8(8)])].
+
+given #41 (T,wt=12): 49 -x + (y + (x + z)) = y + z.  [para(48(a,1),4(a,1,1)),rewrite([4(4)]),flip(a)].
+
+given #42 (T,wt=12): 50 -x + (y + (z + x)) = y + z.  [para(4(a,1),48(a,1,2))].
+
+given #43 (T,wt=16): 211 x + (y + (z + (-x + u))) = y + (z + u).  [para(4(a,1),43(a,1,2)),rewrite([4(7)])].
+
+given #44 (T,wt=16): 212 x + (y + (z + (u + -x))) = y + (z + u).  [para(4(a,1),45(a,1,2,2))].
+
+given #45 (A,wt=47): 25 (x * (y * x)) + (((z * y) * x) + (((x * y) * z) + (z * (y * z)))) = (x * (y * x)) + ((z * (y * x)) + ((x * (y * z)) + (z * (y * z)))).  [para(9(a,1),6(a,1)),rewrite([6(3),6(5),7(3),7(8),4(11),7(13),7(15),9(13),7(18),7(20),9(20),4(22)]),flip(a)].
+
+given #46 (T,wt=16): 222 -x + (y + (z + (x + u))) = y + (z + u).  [para(4(a,1),49(a,1,2)),rewrite([4(7)])].
+
+given #47 (T,wt=16): 227 -x + (y + (z + (u + x))) = y + (z + u).  [para(4(a,1),50(a,1,2,2))].
+
+given #48 (T,wt=19): 26 (x * (x * y)) * (x * x) = x * (x * (y * (x * x))).  [para(8(a,1),9(a,1,1)),rewrite([8(8)])].
+
+given #49 (T,wt=19): 27 (x * (y * x)) * (x * y) = (x * y) * (x * (x * y)).  [para(9(a,1),9(a,1,1))].
+
+given #50 (A,wt=51): 132 (x * (x * y)) + ((z * (z * y)) + (((z * x) * y) + (((x * z) * y) + u))) = (x * (x * y)) + ((z * (x * y)) + ((x * (z * y)) + ((z * (z * y)) + u))).  [para(22(a,1),4(a,1,1)),rewrite([4(12),4(11),4(10),4(23),4(22)]),flip(a)].
+
+given #51 (T,wt=20): 230 x + (y + (z + (u + (-x + w)))) = y + (z + (u + w)).  [para(4(a,1),211(a,1,2,2)),rewrite([4(8)])].
+
+given #52 (T,wt=20): 231 x + (y + (z + (u + (w + -x)))) = y + (z + (u + w)).  [para(4(a,1),212(a,1,2,2,2))].
+
+given #53 (T,wt=20): 265 -x + (y + (z + (u + (x + w)))) = y + (z + (u + w)).  [para(4(a,1),222(a,1,2,2)),rewrite([4(8)])].
+
+given #54 (T,wt=20): 266 -x + (y + (z + (u + (w + x)))) = y + (z + (u + w)).  [para(4(a,1),227(a,1,2,2,2))].
+
+given #55 (A,wt=63): 133 (x * (y * (y * z))) + ((x * (u * (u * z))) + ((x * ((u * y) * z)) + (x * ((y * u) * z)))) = (x * (y * (y * z))) + ((x * (u * (y * z))) + ((x * (y * (u * z))) + (x * (u * (u * z))))).  [para(22(a,1),6(a,1,2)),rewrite([6(12),6(12),6(12),6(27),6(27)]),flip(a)].
+
+given #56 (T,wt=24): 339 x + (y + (z + (u + (w + (-x + v5))))) = y + (z + (u + (w + v5))).  [para(4(a,1),230(a,1,2,2,2)),rewrite([4(9)])].
+
+given #57 (T,wt=24): 340 x + (y + (z + (u + (w + (v5 + -x))))) = y + (z + (u + (w + v5))).  [para(230(a,1),212(a,2,2)),rewrite([4(7),4(6),4(5),4(4),230(8)])].
+
+given #58 (T,wt=24): 341 -x + (y + (z + (u + (w + (v5 + x))))) = y + (z + (u + (w + v5))).  [para(230(a,1),227(a,2,2)),rewrite([4(7),4(6),4(5),4(4),230(8)])].
+
+given #59 (T,wt=24): 343 -x + (y + (z + (u + (w + (x + v5))))) = y + (z + (u + (w + v5))).  [para(4(a,1),265(a,1,2,2,2)),rewrite([4(9)])].
+
+given #60 (A,wt=95): 134 (x * (x * y)) + ((x * (x * z)) + ((u * (u * y)) + ((u * (u * z)) + (((u * x) * y) + (((u * x) * z) + (((x * u) * y) + ((x * u) * z))))))) = (x * (x * y)) + ((x * (x * z)) + ((u * (x * y)) + ((u * (x * z)) + ((x * (u * y)) + ((x * (u * z)) + ((u * (u * y)) + (u * (u * z)))))))).  [para(6(a,1),22(a,1,1,2)),rewrite([6(4),6(7),6(9),6(13),6(18),4(21),4(22),4(23),6(25),6(27),6(30),6(32),6(35),6(37),6(40),6(42),4(44),4(45),4(46)])].
+
+given #61 (T,wt=27): 272 (x * (y * (y * x))) * (x * (y * y)) = (x * (y * y)) * (x * (x * (y * y))).  [para(8(a,1),27(a,1,1,2))].
+
+given #62 (T,wt=27): 274 (x * (x * (y * x))) * (x * (x * y)) = (x * (x * y)) * (x * (x * (x * y))).  [para(9(a,1),27(a,1,1,2))].
+
+given #63 (T,wt=27): 426 (x * (x * x)) * (x * (x * (x * x))) = x * (x * (x * (x * (x * (x * x))))).  [para(272(a,1),24(a,1))].
+
+Demod_increase_limit: ((y * (y * (y * (y * (y * (y * y)))))) + (((z * (y * y)) * (y * (y * (y * y)))) + (((y * (z * y)) * (y * (y * (y * y)))) + (((z * (z * y)) * (y * (y * (y * y)))) + (((y * (y * z)) * (y * (y * (y * y)))) + (((z * (y * z)) * (y * (y * (y * y)))) + (((y * (z * z)) * (y * (y * (y * y)))) + ((z * (z * z)) * (y * (y * (y * y))))))))))) + ((((y * (y * y)) * (z * (y * (y * y)))) + (((z * (y * y)) * (z * (y * (y * y)))) + (((y * (z * y)) * (z * (y * (y * y)))) + (((z * (z * y)) * (z * (y * (y * y)))) + (((y * (y * z)) * (z * (y * (y * y)))) + (((z * (y * z)) * (z * (y * (y * y)))) + (((y * (z * z)) * (z * (y * (y * y)))) + ((z * (z * z)) * (z * (y * (y * y))))))))))) + ((((y * (y * y)) * (y * (z * (y * y)))) + (((z * (y * y)) * (y * (z * (y * y)))) + (((y * (z * y)) * (y * (z * (y * y)))) + (((z * (z * y)) * (y * (z * (y * y)))) + (((y * (y * z)) * (y * (z * (y * y)))) + (((z * (y * z)) * (y * (z * (y * y)))) + (((y * (z * z)) * (y * (z * (y * y)))) + ((z * (z * z)) * (y * (z * (y * y))))))))))) + ((((y * (y * y)) * (z * (z * (y * y)))) + (((z * (y * y)) * (z * (z * (y * y)))) + (((y * (z * y)) * (z * (z * (y * y)))) + (((z * (z * y)) * (z * (z * (y * y)))) + (((y * (y * z)) * (z * (z * (y * y)))) + (((z * (y * z)) * (z * (z * (y * y)))) + (((y * (z * z)) * (z * (z * (y * y)))) + ((z * (z * z)) * (z * (z * (y * y))))))))))) + ((((y * (y * y)) * (y * (y * (z * y)))) + (((z * (y * y)) * (y * (y * (z * y)))) + (((y * (z * y)) * (y * (y * (z * y)))) + (((z * (z * y)) * (y * (y * (z * y)))) + (((y * (y * z)) * (y * (y * (z * y)))) + (((z * (y * z)) * (y * (y * (z * y)))) + (((y * (z * z)) * (y * (y * (z * y)))) + ((z * (z * z)) * (y * (y * (z * y))))))))))) + ((((y * (y * y)) * (z * (y * (z * y)))) + (((z * (y * y)) * (z * (y * (z * y)))) + (((y * (z * y)) * (z * (y * (z * y)))) + (((z * (z * y)) * (z * (y * (z * y)))) + (((y * (y * z)) * (z * (y * (z * y)))) + (((z * (y * z)) * (z * (y * (z * y)))) + (((y * (z * z)) * (z * (y * (z * y)))) + ((z * (z * z)) * (z * (y * (z * y))))))))))) + ((((y * (y * y)) * (y * (z * (z * y)))) + (((z * (y * y)) * (y * (z * (z * y)))) + (((y * (z * y)) * (y * (z * (z * y)))) + (((z * (z * y)) * (y * (z * (z * y)))) + (((y * (y * z)) * (y * (z * (z * y)))) + (((z * (y * z)) * (y * (z * (z * y)))) + (((y * (z * z)) * (y * (z * (z * y)))) + ((z * (z * z)) * (y * (z * (z * y))))))))))) + ((((y * (y * y)) * (z * (z * (z * y)))) + (((z * (y * y)) * (z * (z * (z * y)))) + (((y * (z * y)) * (z * (z * (z * y)))) + (((z * (z * y)) * (z * (z * (z * y)))) + (((y * (y * z)) * (z * (z * (z * y)))) + (((z * (y * z)) * (z * (z * (z * y)))) + (((y * (z * z)) * (z * (z * (z * y)))) + ((z * (z * z)) * (z * (z * (z * y))))))))))) + ((((y * (y * y)) + ((z * (y * y)) + ((y * (z * y)) + ((z * (z * y)) + ((y * (y * z)) + ((z * (y * z)) + ((y * (z * z)) + (z * (z * z))))))))) * (y * (y * (y * z)))) + (((y * (y * y)) + ((z * (y * y)) + ((y * (z * y)) + ((z * (z * y)) + ((y * (y * z)) + ((z * (y * z)) + ((y * (z * z)) + (z * (z * z))))))))) * ((z * (y * (y * z))) + ((y * (z * (y * z))) + ((z * (z * (y * z))) + ((y * (y * (z * z))) + ((z * (y * (z * z))) + ((y * (z * (z * z))) + (z * (z * (z * z)))))))))))))))))) = (y + z) * ((y + z) * ((y + z) * ((y + z) * ((y + z) * ((y + z) * (y + z)))))).  [para(6(a,1),426(a,1,1,2)),rewrite([7(3),7(6),4(8),6(9),7(3),6(12),7(8),6(15),7(13),7(18),4(21),4(22),4(23),6(28),7(27),7(30),4(32),6(33),7(27),6(36),7(32),6(39),7(37),7(42),4(45),4(46),4(47),6(48),7(27),6(52),7(34),6(56),7(41),6(60),7(48),6(64),7(55),6(68),7(62),6(72),7(69),7(76),4(80),4(81),4(82),4(83),4(84),4(85),4(86),6(87),7(27),426(6),7(30),7(33),7(36),7(39),7(42),7(45),6(138),7(82),7(85),7(88),7(91),7(94),7(97),7(100),6(189),7(137),7(140),7(143),7(146),7(149),7(152),7(155),6(240),7(192),7(195),7(198),7(201),7(204),7(207),7(210),6(291),7(247),7(250),7(253),7(256),7(259),7(262),7(265),6(342),7(302),7(305),7(308),7(311),7(314),7(317),7(320),6(393),7(357),7(360),7(363),7(366),7(369),7(372),7(375),6(444),7(412),7(415),7(418),7(421),7(424),7(427),7(430),6(495)])].
+
+Demod_increase_limit (steps=115, size=1083).
+The most recent kept clause is 449.
+From here on, a short message will be printed
+for each 100 times the limit is hit.
+
+
+given #64 (T,wt=28): 342 x + (y + (z + (u + (w + (v5 + (v6 + -x)))))) = y + (z + (u + (w + (v5 + v6)))).  [para(230(a,1),231(a,2,2,2)),rewrite([4(7),4(6),4(5),4(4),230(8)])].
+
+given #65 (A,wt=63): 135 ((x * (x * y)) * z) + (((u * (u * y)) * z) + ((((u * x) * y) * z) + (((x * u) * y) * z))) = ((x * (x * y)) * z) + (((u * (x * y)) * z) + (((x * (u * y)) * z) + ((u * (u * y)) * z))).  [para(22(a,1),7(a,1,1)),rewrite([7(12),7(12),7(12),7(27),7(27)]),flip(a)].
+
+given #66 (T,wt=28): 344 -x + (y + (z + (u + (w + (v5 + (v6 + x)))))) = y + (z + (u + (w + (v5 + v6)))).  [para(230(a,1),266(a,2,2,2)),rewrite([4(7),4(6),4(5),4(4),230(8)])].
+
+given #67 (T,wt=28): 378 x + (y + (z + (u + (w + (v5 + (-x + v6)))))) = y + (z + (u + (w + (v5 + v6)))).  [para(4(a,1),339(a,1,2,2,2,2)),rewrite([4(10)])].
+
+given #68 (T,wt=28): 383 -x + (y + (z + (u + (w + (v5 + (x + v6)))))) = y + (z + (u + (w + (v5 + v6)))).  [para(341(a,1),4(a,1,1)),rewrite([4(5),4(4),4(3),4(2),4(12),4(11),4(10),4(9),4(8)]),flip(a)].
+
+given #69 (T,wt=31): 267 (x * (x * (y * (x * x)))) * (x * (x * y)) = (x * (x * y)) * (x * (x * (x * (x * y)))).  [para(26(a,1),9(a,1,1)),rewrite([8(13)])].
+
+given #70 (A,wt=63): 136 (x * (x * (x * (x * y)))) + ((z * (z * y)) + (((z * (x * x)) * y) + ((x * (x * z)) * y))) = (x * (x * (x * (x * y)))) + ((z * (x * (x * y))) + ((x * (x * (z * y))) + (z * (z * y)))).  [para(8(a,1),22(a,1,1,2)),rewrite([8(4),8(11),8(18),8(19),8(21),8(25)])].
+
+given #71 (T,wt=31): 273 ((x * y) * (x * (x * y))) * (x * (y * x)) = (x * (y * x)) * ((x * y) * (x * (y * x))).  [para(27(a,1),9(a,1,1))].
+
+given #72 (T,wt=32): 379 x + (y + (z + (u + (w + (v5 + (v6 + (v7 + -x))))))) = y + (z + (u + (w + (v5 + (v6 + v7))))).  [para(339(a,1),231(a,2,2,2)),rewrite([4(8),4(7),4(6),4(5),4(4),339(9)])].
+
+given #73 (T,wt=32): 380 -x + (y + (z + (u + (w + (v5 + (v6 + (v7 + x))))))) = y + (z + (u + (w + (v5 + (v6 + v7))))).  [para(339(a,1),266(a,2,2,2)),rewrite([4(8),4(7),4(6),4(5),4(4),339(9)])].
+
+given #74 (T,wt=32): 457 x + (y + (z + (u + (w + (v5 + (v6 + (-x + v7))))))) = y + (z + (u + (w + (v5 + (v6 + v7))))).  [para(342(a,1),4(a,1,1)),rewrite([4(6),4(5),4(4),4(3),4(2),4(14),4(13),4(12),4(11),4(10),4(9)]),flip(a)].
+
+given #75 (A,wt=63): 137 (x * (x * y)) + ((z * (z * (z * (z * y)))) + (((z * (z * x)) * y) + ((x * (z * z)) * y))) = (x * (x * y)) + ((z * (z * (x * y))) + ((x * (z * (z * y))) + (z * (z * (z * (z * y)))))).  [para(8(a,1),22(a,1,2,1,2)),rewrite([8(6),8(8),8(20),8(22),8(26),8(27)])].
+
+given #76 (T,wt=32): 509 -x + (y + (z + (u + (w + (v5 + (v6 + (x + v7))))))) = y + (z + (u + (w + (v5 + (v6 + v7))))).  [para(344(a,1),4(a,1,1)),rewrite([4(6),4(5),4(4),4(3),4(2),4(14),4(13),4(12),4(11),4(10),4(9)]),flip(a)].
+
+given #77 (T,wt=35): 214 (x * (x * (x * (x * (x * (x * (x * x))))))) * y = x * (x * (x * (x * (x * (x * (x * (x * y))))))).  [para(24(a,1),8(a,1,1)),rewrite([24(15),24(16)])].
+
+given #78 (T,wt=35): 215 (x * (x * (x * (x * y)))) * (x * (x * (x * x))) = x * (x * (x * (x * (y * (x * (x * (x * x))))))).  [para(24(a,1),9(a,1,1)),rewrite([24(16)])].
+
+given #79 (T,wt=35): 228 (x * (x * y)) + (((x * z) * y) + ((z * x) * y)) = (x * (x * y)) + ((z * (x * y)) + (x * (z * y))).  [back_rewrite(226),rewrite([227(23)])].
+
+given #80 (A,wt=63): 142 (x * (x * y)) + (((x * z) * ((x * z) * y)) + (((x * (x * z)) * y) + ((x * (z * x)) * y))) = (x * (x * y)) + ((x * ((x * z) * y)) + (((x * z) * (x * y)) + ((x * z) * ((x * z) * y)))).  [para(9(a,1),22(a,1,2,2,2,1)),rewrite([16(15),5(28),16(29),5(30),4(30),4(29)])].
+
+given #81 (T,wt=27): 627 x + (((y * z) * u) + ((z * y) * u)) = x + ((z * (y * u)) + (y * (z * u))).  [para(228(a,1),49(a,1,2,2)),rewrite([49(13)]),flip(a)].
+
+given #82 (T,wt=23): 736 ((x * y) * z) + ((y * x) * z) = (y * (x * z)) + (x * (y * z)).  [para(627(a,1),15(a,1)),rewrite([15(7)]),flip(a)].
+
+given #83 (T,wt=23): 799 (x * (y * x)) + ((y * x) * x) = (y * (x * x)) + (x * (y * x)).  [para(9(a,1),736(a,1,1))].
+
+given #84 (T,wt=15): 852 x + ((y * z) * z) = x + (y * (z * z)).  [para(799(a,1),49(a,1,2,2)),rewrite([50(10)]),flip(a)].
+
+============================== PROOF =================================
+
+% Proof 1 at 1.90 (+ 0.00) seconds: right.
+% Length of proof is 29.
+% Level of proof is 13.
+% Maximum clause weight is 48.000.
+% Given clauses 84.
+
+1 (y * x) * x = y * (x * x) # label(right) # label(non_clause) # label(goal).  [goal].
+2 x + 0 = x.  [assumption].
+3 x + -x = 0.  [assumption].
+4 (x + y) + z = x + (y + z).  [assumption].
+5 x + y = y + x.  [assumption].
+6 x * (y + z) = (x * y) + (x * z).  [assumption].
+7 (x + y) * z = (x * z) + (y * z).  [assumption].
+8 (x * x) * y = x * (x * y) # label(left).  [assumption].
+9 (x * y) * x = x * (y * x) # label(flexible).  [assumption].
+10 (c1 * c2) * c2 != c1 * (c2 * c2) # label(right) # answer(right).  [deny(1)].
+14 x + (-x + y) = 0 + y.  [para(3(a,1),4(a,1,1)),flip(a)].
+15 0 + x = x.  [para(5(a,1),2(a,1))].
+16 x + (y + z) = y + (x + z).  [para(5(a,1),4(a,1,1)),rewrite([4(2)])].
+17 x + (-x + y) = y.  [back_rewrite(14),rewrite([15(5)])].
+23 (x * (x * y)) + ((z * (z * y)) + (((x * z) * y) + ((z * x) * y))) = (x * (x * y)) + ((z * (x * y)) + ((x * (z * y)) + (z * (z * y)))).  [para(7(a,1),8(a,1,1)),rewrite([6(2),6(5),4(7),7(8),8(2),7(8),7(8),8(8),5(9),16(10),7(14),6(16),7(14),7(19),4(22)])].
+36 --x = x.  [para(3(a,1),17(a,1,2)),rewrite([2(2)]),flip(a)].
+37 x + (y + -x) = y.  [para(5(a,1),17(a,1,2))].
+48 -x + (y + x) = y.  [para(36(a,1),37(a,1,2,2))].
+49 -x + (y + (x + z)) = y + z.  [para(48(a,1),4(a,1,1)),rewrite([4(4)]),flip(a)].
+50 -x + (y + (z + x)) = y + z.  [para(4(a,1),48(a,1,2))].
+226 (x * (x * y)) + (((x * z) * y) + ((z * x) * y)) = -(z * (z * y)) + ((x * (x * y)) + ((z * (x * y)) + ((x * (z * y)) + (z * (z * y))))).  [para(23(a,1),49(a,1,2)),flip(a)].
+227 -x + (y + (z + (u + x))) = y + (z + u).  [para(4(a,1),50(a,1,2,2))].
+228 (x * (x * y)) + (((x * z) * y) + ((z * x) * y)) = (x * (x * y)) + ((z * (x * y)) + (x * (z * y))).  [back_rewrite(226),rewrite([227(23)])].
+627 x + (((y * z) * u) + ((z * y) * u)) = x + ((z * (y * u)) + (y * (z * u))).  [para(228(a,1),49(a,1,2,2)),rewrite([49(13)]),flip(a)].
+736 ((x * y) * z) + ((y * x) * z) = (y * (x * z)) + (x * (y * z)).  [para(627(a,1),15(a,1)),rewrite([15(7)]),flip(a)].
+799 (x * (y * x)) + ((y * x) * x) = (y * (x * x)) + (x * (y * x)).  [para(9(a,1),736(a,1,1))].
+852 x + ((y * z) * z) = x + (y * (z * z)).  [para(799(a,1),49(a,1,2,2)),rewrite([50(10)]),flip(a)].
+881 (x * y) * y = x * (y * y).  [para(852(a,1),15(a,1)),rewrite([15(4)]),flip(a)].
+882 $F # answer(right).  [resolve(881,a,10,a)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=84. Generated=11999. Kept=880. proofs=1.
+Usable=57. Sos=381. Demods=359. Limbo=8, Disabled=442. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=1245.
+Forward_subsumed=9874. Back_subsumed=68.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=737 (2 lex), Back_demodulated=365. Back_unit_deleted=0.
+Demod_attempts=558487. Demod_rewrites=91018.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=2.09.
+User_CPU=1.90, System_CPU=0.00, Wall_clock=2.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 1 proof.
+
+Process 4292 exit (max_proofs) Tue Nov  3 09:37:05 2009

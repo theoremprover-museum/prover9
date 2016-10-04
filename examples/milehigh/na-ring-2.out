@@ -1,0 +1,191 @@
+============================== Mace4 =================================
+Mace4 (32) version 2009-11A, November 2009.
+Process 4294 was started by mccune on cleo,
+Tue Nov  3 09:37:05 2009
+The command was "/home/mccune/LADR/bin/mace4 -c -N20 -f na-ring-2.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file na-ring-2.in
+
+
+formulas(sos).
+x + 0 = x.
+x + -x = 0.
+(x + y) + z = x + (y + z).
+x + y = y + x.
+x * (y + z) = (x * y) + (x * z).
+(x + y) * z = (x * z) + (y * z).
+(x * x) * y = x * (x * y) # label(left).
+end_of_list.
+
+formulas(goals).
+(y * x) * x = y * (x * x) # label(right).
+end_of_list.
+
+% From the command line: assign(end_size, 20).
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 (y * x) * x = y * (x * x) # label(right) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== CLAUSES FOR SEARCH ====================
+
+formulas(mace4_clauses).
+x + 0 = x.
+x + -x = 0.
+(x + y) + z = x + (y + z).
+x + y = y + x.
+x * (y + z) = (x * y) + (x * z).
+(x + y) * z = (x * z) + (y * z).
+(x * x) * y = x * (x * y) # label(left).
+(c1 * c2) * c2 != c1 * (c2 * c2) # label(right).
+end_of_list.
+
+============================== end of clauses for search =============
+
+% The largest natural number in the input is 0.
+
+============================== DOMAIN SIZE 2 =========================
+
+============================== STATISTICS ============================
+
+For domain size 2.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
+Ground clauses: seen=37, kept=29.
+Selections=13, assignments=26, propagations=7, current_models=0.
+Rewrite_terms=274, rewrite_bools=48, indexes=30.
+Rules_from_neg_clauses=4, cross_offs=4.
+
+============================== end of statistics =====================
+
+============================== DOMAIN SIZE 3 =========================
+
+============================== STATISTICS ============================
+
+For domain size 3.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
+Ground clauses: seen=106, kept=100.
+Selections=19, assignments=54, propagations=57, current_models=0.
+Rewrite_terms=1503, rewrite_bools=268, indexes=217.
+Rules_from_neg_clauses=11, cross_offs=24.
+
+============================== end of statistics =====================
+
+============================== DOMAIN SIZE 4 =========================
+
+============================== STATISTICS ============================
+
+For domain size 4.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.01 seconds).
+Ground clauses: seen=233, kept=225.
+Selections=74, assignments=276, propagations=338, current_models=0.
+Rewrite_terms=12001, rewrite_bools=2314, indexes=912.
+Rules_from_neg_clauses=44, cross_offs=156.
+
+============================== end of statistics =====================
+
+============================== DOMAIN SIZE 5 =========================
+
+============================== STATISTICS ============================
+
+For domain size 5.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.01 seconds).
+Ground clauses: seen=436, kept=426.
+Selections=70, assignments=289, propagations=623, current_models=0.
+Rewrite_terms=17889, rewrite_bools=2699, indexes=2409.
+Rules_from_neg_clauses=92, cross_offs=416.
+
+============================== end of statistics =====================
+
+============================== DOMAIN SIZE 6 =========================
+
+============================== STATISTICS ============================
+
+For domain size 6.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.04 seconds).
+Ground clauses: seen=733, kept=721.
+Selections=212, assignments=1099, propagations=2517, current_models=0.
+Rewrite_terms=85316, rewrite_bools=13131, indexes=7938.
+Rules_from_neg_clauses=363, cross_offs=1685.
+
+============================== end of statistics =====================
+
+============================== DOMAIN SIZE 7 =========================
+
+============================== STATISTICS ============================
+
+For domain size 7.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.08 seconds).
+Ground clauses: seen=1142, kept=1128.
+Selections=224, assignments=1215, propagations=4417, current_models=0.
+Rewrite_terms=129197, rewrite_bools=17456, indexes=16083.
+Rules_from_neg_clauses=599, cross_offs=4417.
+
+============================== end of statistics =====================
+
+============================== DOMAIN SIZE 8 =========================
+
+============================== MODEL =================================
+
+interpretation( 8, [number=1, seconds=0], [
+
+        function(c1, [ 1 ]),
+
+        function(c2, [ 2 ]),
+
+        function(-(_), [ 0, 1, 2, 3, 4, 5, 6, 7 ]),
+
+        function(*(_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 1, 1, 1, 1,
+			   0, 4, 4, 0, 1, 5, 5, 1,
+			   0, 4, 4, 0, 0, 4, 4, 0,
+			   0, 1, 1, 0, 4, 5, 5, 4,
+			   0, 1, 1, 0, 5, 4, 4, 5,
+			   0, 5, 5, 0, 5, 0, 0, 5,
+			   0, 5, 5, 0, 4, 1, 1, 4 ]),
+
+        function(+(_,_), [
+			   0, 1, 2, 3, 4, 5, 6, 7,
+			   1, 0, 3, 2, 5, 4, 7, 6,
+			   2, 3, 0, 1, 6, 7, 4, 5,
+			   3, 2, 1, 0, 7, 6, 5, 4,
+			   4, 5, 6, 7, 0, 1, 2, 3,
+			   5, 4, 7, 6, 1, 0, 3, 2,
+			   6, 7, 4, 5, 2, 3, 0, 1,
+			   7, 6, 5, 4, 3, 2, 1, 0 ])
+]).
+
+============================== end of model ==========================
+
+============================== STATISTICS ============================
+
+For domain size 8.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.10 seconds).
+Ground clauses: seen=1681, kept=1665.
+Selections=82, assignments=406, propagations=1408, current_models=1.
+Rewrite_terms=50327, rewrite_bools=7923, indexes=7571.
+Rules_from_neg_clauses=178, cross_offs=2223.
+
+============================== end of statistics =====================
+
+User_CPU=0.10, System_CPU=0.01, Wall_clock=0.
+
+Exiting with 1 model.
+
+Process 4294 exit (max_models) Tue Nov  3 09:37:05 2009
+The process finished Tue Nov  3 09:37:05 2009

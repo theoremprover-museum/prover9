@@ -1,0 +1,470 @@
+============================== Prover9 ===============================
+Prover9 (32) version 2009-11A, November 2009.
+Process 5100 was started by mccune on cleo,
+Tue Nov  3 09:42:01 2009
+The command was "/home/mccune/LADR/bin/prover9 -f gt.in DN.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file gt.in
+
+assign(max_seconds,30).
+op(450,infix,@).
+op(400,infix_right,*).
+assign(eq_defs,fold).
+assign(max_weight,25).
+
+formulas(sos).
+(x * y) * z = x * y * z.
+e * x = x.
+x' * x = e.
+x @ y = x' * y' * x * y.
+end_of_list.
+
+% Reading from file DN.in
+
+
+formulas(sos).
+(x @ z) * (y @ z) = x * y @ z.
+end_of_list.
+
+formulas(sos).
+(A @ B) * C != C * (A @ B) # answer(N).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+(x * y) * z = x * y * z.  [assumption].
+e * x = x.  [assumption].
+x' * x = e.  [assumption].
+x @ y = x' * y' * x * y.  [assumption].
+(x @ y) * (z @ y) = x * z @ y.  [assumption].
+(A @ B) * C != C * (A @ B) # answer(N).  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Auto_denials:  (no changes).
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ = ]).
+Function symbol precedence:  function_order([ e, A, B, C, *, @, ' ]).
+After inverse_order: Function symbol precedence:  function_order([ e, A, B, C, *, ', @ ]).
+Folding symbols: @/2.
+After fold_eq: Function symbol precedence:  function_order([ e, A, B, C, @, *, ' ]).
+
+Auto_inference settings:
+  % set(paramodulation).  % (positive equality literals)
+
+Auto_process settings:  (no changes).
+
+kept:      1 (x * y) * z = x * y * z.  [assumption].
+kept:      2 e * x = x.  [assumption].
+kept:      3 x' * x = e.  [assumption].
+           4 x @ y = x' * y' * x * y.  [assumption].
+kept:      5 x' * y' * x * y = x @ y.  [copy(4),flip(a)].
+kept:      6 (x @ y) * (z @ y) = x * z @ y.  [assumption].
+kept:      7 (A @ B) * C != C * (A @ B) # answer(N).  [assumption].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+1 (x * y) * z = x * y * z.  [assumption].
+2 e * x = x.  [assumption].
+3 x' * x = e.  [assumption].
+5 x' * y' * x * y = x @ y.  [copy(4),flip(a)].
+6 (x @ y) * (z @ y) = x * z @ y.  [assumption].
+7 (A @ B) * C != C * (A @ B) # answer(N).  [assumption].
+end_of_list.
+
+formulas(demodulators).
+1 (x * y) * z = x * y * z.  [assumption].
+2 e * x = x.  [assumption].
+3 x' * x = e.  [assumption].
+5 x' * y' * x * y = x @ y.  [copy(4),flip(a)].
+6 (x @ y) * (z @ y) = x * z @ y.  [assumption].
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.01 seconds.
+
+given #1 (I,wt=11): 1 (x * y) * z = x * y * z.  [assumption].
+
+given #2 (I,wt=5): 2 e * x = x.  [assumption].
+
+given #3 (I,wt=6): 3 x' * x = e.  [assumption].
+
+given #4 (I,wt=13): 5 x' * y' * x * y = x @ y.  [copy(4),flip(a)].
+
+given #5 (I,wt=13): 6 (x @ y) * (z @ y) = x * z @ y.  [assumption].
+
+given #6 (I,wt=11): 7 (A @ B) * C != C * (A @ B) # answer(N).  [assumption].
+
+given #7 (A,wt=8): 8 x' * x * y = y.  [para(3(a,1),1(a,1,1)),rewrite([2(2)]),flip(a)].
+
+given #8 (T,wt=5): 11 e @ x = e.  [para(2(a,1),5(a,1,2,2)),rewrite([3(4),3(4)]),flip(a)].
+
+given #9 (T,wt=4): 28 e' = e.  [para(11(a,1),5(a,2)),rewrite([2(5),3(4),26(4)])].
+
+given #10 (T,wt=5): 20 x @ x = e.  [para(8(a,1),5(a,1,2)),rewrite([3(2)]),flip(a)].
+
+given #11 (T,wt=5): 26 x * e = x.  [back_rewrite(18),rewrite([23(4)])].
+
+given #12 (A,wt=17): 9 x' * y' * x * y * z = (x @ y) * z.  [para(5(a,1),1(a,1,1)),rewrite([1(7),1(6)]),flip(a)].
+
+given #13 (F,wt=17): 44 A' * B' * A * B * C != C * (A @ B) # answer(N).  [para(9(a,2),7(a,1))].
+
+given #14 (T,wt=5): 29 x @ e = e.  [para(28(a,1),5(a,1,2,1)),rewrite([26(4),2(3),3(2)]),flip(a)].
+
+given #15 (T,wt=6): 12 x' @ x = e.  [para(3(a,1),5(a,1,2,2)),rewrite([8(6)]),flip(a)].
+
+given #16 (T,wt=9): 23 x'' * y = x * y.  [para(8(a,1),8(a,1,2))].
+
+given #17 (T,wt=5): 57 x'' = x.  [para(23(a,1),26(a,1)),rewrite([26(2)]),flip(a)].
+
+given #18 (A,wt=19): 10 (x * y)' * z' * x * y * z = x * y @ z.  [para(1(a,1),5(a,1,2,2))].
+
+given #19 (T,wt=6): 52 x * x' = e.  [para(23(a,1),3(a,1))].
+
+given #20 (T,wt=6): 60 x @ x' = e.  [para(57(a,1),12(a,1,1))].
+
+given #21 (T,wt=8): 56 x * x' * y = y.  [para(23(a,1),8(a,1))].
+
+given #22 (T,wt=8): 71 x' @ y = y @ x.  [back_rewrite(62),rewrite([67(6)])].
+
+given #23 (A,wt=17): 14 (x * y @ z) * u = (x @ z) * (y @ z) * u.  [para(6(a,1),1(a,1,1))].
+
+given #24 (F,wt=12): 86 (B' @ A) * C != C * (A @ B) # answer(N).  [para(71(a,2),7(a,1,1))].
+
+given #25 (F,wt=12): 87 C * (B' @ A) != (A @ B) * C # answer(N).  [para(71(a,2),7(a,2,2)),flip(a)].
+
+given #26 (F,wt=13): 110 (B' @ A) * C != C * (B' @ A) # answer(N).  [para(71(a,2),86(a,2,2))].
+
+given #27 (F,wt=17): 109 B * A' * B' * A * C != C * (A @ B) # answer(N).  [para(9(a,2),86(a,1)),rewrite([57(3)])].
+
+given #28 (T,wt=8): 77 x @ y' = y @ x.  [para(60(a,1),6(a,1,2)),rewrite([26(4),75(5)])].
+
+given #29 (T,wt=9): 30 x * y @ x = y @ x.  [para(20(a,1),6(a,1,1)),rewrite([2(3)]),flip(a)].
+
+given #30 (T,wt=9): 31 x * y @ y = x @ y.  [para(20(a,1),6(a,1,2)),rewrite([26(3)]),flip(a)].
+
+given #31 (T,wt=9): 91 x' @ y' = x @ y.  [para(71(a,1),71(a,2))].
+
+given #32 (A,wt=23): 15 (x @ y)' * (z @ y)' * (x * z @ y) = (x @ y) @ (z @ y).  [para(6(a,1),5(a,1,2,2))].
+
+given #33 (F,wt=12): 117 (B @ A') * C != C * (A @ B) # answer(N).  [para(77(a,2),7(a,1,1))].
+
+given #34 (F,wt=12): 118 C * (B @ A') != (A @ B) * C # answer(N).  [para(77(a,2),7(a,2,2)),flip(a)].
+
+given #35 (F,wt=13): 127 (B @ A') * C != C * (B @ A') # answer(N).  [para(77(a,2),86(a,2,2)),rewrite([122(4)])].
+
+given #36 (F,wt=17): 181 B' * A * B * A' * C != C * (A @ B) # answer(N).  [para(9(a,2),117(a,1)),rewrite([57(5)])].
+
+given #37 (T,wt=9): 122 x' @ y = x @ y'.  [para(77(a,1),71(a,1)),flip(a)].
+
+given #38 (T,wt=9): 147 x @ y * x = x @ y.  [para(8(a,1),31(a,1,1)),rewrite([139(5)])].
+
+given #39 (T,wt=10): 50 x' * y @ x = y @ x.  [para(12(a,1),6(a,1,1)),rewrite([2(3)]),flip(a)].
+
+given #40 (T,wt=7): 208 (x @ y) @ x = e.  [para(5(a,1),50(a,1,1)),rewrite([133(6),3(4),11(4)])].
+
+given #41 (A,wt=12): 16 (x * y)' * x * y * z = z.  [para(1(a,1),8(a,1,2))].
+
+given #42 (F,wt=18): 121 A' * B' * A * B * C != C * (B @ A') # answer(N).  [para(77(a,2),44(a,2,2))].
+
+given #43 (F,wt=18): 128 B * A' * B' * A * C != C * (B @ A') # answer(N).  [para(77(a,2),109(a,2,2))].
+
+given #44 (F,wt=18): 182 B' * A * B * A' * C != C * (B @ A') # answer(N).  [para(9(a,2),127(a,1)),rewrite([57(5)])].
+
+given #45 (T,wt=7): 221 (x @ y) @ y = e.  [para(77(a,1),208(a,1,1))].
+
+given #46 (T,wt=8): 217 x' @ (x @ y) = e.  [para(208(a,1),71(a,2))].
+
+given #47 (T,wt=7): 262 x @ (y @ x) = e.  [para(71(a,1),217(a,1,2)),rewrite([57(2)])].
+
+given #48 (T,wt=7): 265 x @ (x @ y) = e.  [para(91(a,1),217(a,1,2)),rewrite([57(2)])].
+
+given #49 (A,wt=14): 22 (x @ y)' * (x * z @ y) = z @ y.  [para(6(a,1),8(a,1,2))].
+
+given #50 (T,wt=8): 218 (x @ y) @ y' = e.  [para(71(a,1),208(a,1,1))].
+
+given #51 (T,wt=8): 220 x @ (x' @ y) = e.  [para(208(a,1),77(a,1)),flip(a)].
+
+given #52 (T,wt=8): 222 (x @ y') @ y = e.  [para(77(a,2),208(a,1,1))].
+
+given #53 (T,wt=8): 225 (x @ y) @ x' = e.  [para(91(a,1),208(a,1,1))].
+
+given #54 (A,wt=12): 24 x' * y * x = y * (y @ x).  [back_rewrite(21),rewrite([23(4)]),flip(a)].
+
+given #55 (T,wt=8): 227 (x' @ y) @ x = e.  [para(122(a,2),208(a,1,1))].
+
+given #56 (T,wt=8): 257 x' @ (y @ x) = e.  [para(221(a,1),71(a,2))].
+
+given #57 (T,wt=8): 258 x @ (y @ x') = e.  [para(221(a,1),77(a,1)),flip(a)].
+
+given #58 (T,wt=9): 223 (x @ y) @ y * x = e.  [para(30(a,1),208(a,1,1))].
+
+given #59 (A,wt=21): 32 x * y' * z' * y * z * u = x * (y @ z) * u.  [para(9(a,1),1(a,2,2)),rewrite([1(7)])].
+
+given #60 (T,wt=9): 224 (x @ y) @ x * y = e.  [para(31(a,1),208(a,1,1))].
+
+given #61 (T,wt=9): 249 (x * y)' * x = y'.  [para(52(a,1),16(a,1,2,2)),rewrite([26(4)])].
+
+given #62 (T,wt=9): 286 (x @ y)' = x' @ y.  [para(52(a,1),22(a,1,2,1)),rewrite([11(4),26(4)])].
+
+given #63 (T,wt=9): 287 (x @ y) * (y @ x) = e.  [para(60(a,1),22(a,2)),rewrite([286(3),91(3),75(4)])].
+
+given #64 (A,wt=13): 35 x' * y * x = (x @ y') * y.  [para(3(a,1),9(a,1,2,2,2)),rewrite([26(5),23(4)])].
+
+given #65 (T,wt=9): 318 (x @ y) @ (y @ x) = e.  [back_rewrite(164),rewrite([286(2),286(4),85(5),3(2),11(2)]),flip(a)].
+
+given #66 (T,wt=9): 412 x * y @ y * x = e.  [para(223(a,1),30(a,2)),rewrite([1(3),352(3)])].
+
+given #67 (T,wt=9): 461 x @ x * y = x @ y.  [back_rewrite(364),rewrite([445(4)])].
+
+given #68 (T,wt=10): 51 x * y' @ y = x @ y.  [para(12(a,1),6(a,1,2)),rewrite([26(3)]),flip(a)].
+
+given #69 (A,wt=22): 38 x' * y * x * (y @ z) = (x @ y') * z' * y * z.  [para(5(a,1),9(a,1,2,2,2)),rewrite([23(6)])].
+
+given #70 (T,wt=10): 75 x * y @ y' = y @ x.  [para(52(a,1),10(a,1,2,2,2)),rewrite([57(4),26(4),67(4)]),flip(a)].
+
+given #71 (T,wt=10): 139 x' @ x * y = y @ x.  [para(30(a,1),71(a,2))].
+
+given #72 (T,wt=10): 150 x' @ y * x = y @ x.  [para(31(a,1),71(a,2))].
+
+given #73 (T,wt=10): 228 (x @ y) @ y' * x = e.  [para(50(a,1),208(a,1,1))].
+
+given #74 (A,wt=12): 40 (x' @ y) * x = x * (y @ x).  [para(5(a,1),9(a,1,2)),rewrite([23(4)]),flip(a)].
+
+given #75 (T,wt=10): 303 (x @ y) @ (x' @ y) = e.  [back_rewrite(162),rewrite([286(2),286(5),57(4),6(4),3(2),11(2)]),flip(a)].
+
+given #76 (T,wt=10): 304 (x' @ y) @ (x @ y) = e.  [back_rewrite(159),rewrite([286(3),57(2),286(3),6(4),52(2),11(2)]),flip(a)].
+
+given #77 (T,wt=10): 330 (x' @ y) @ y * x = e.  [para(147(a,1),218(a,1,1)),rewrite([122(4,R),286(2)])].
+
+given #78 (T,wt=10): 335 (x @ y) @ (y' @ x) = e.  [para(220(a,1),30(a,2)),rewrite([40(3),331(5)])].
+
+given #79 (A,wt=21): 41 x' * y' * x * y * z @ u = (x @ y) * z @ u.  [para(9(a,1),6(a,2,1)),rewrite([6(8)])].
+
+given #80 (T,wt=10): 345 (x' @ y) @ x * y = e.  [para(31(a,1),225(a,1,1)),rewrite([122(4,R),286(2)])].
+
+given #81 (T,wt=10): 381 (x @ y) * (x @ y') = e.  [back_rewrite(337),rewrite([377(6)])].
+
+given #82 (T,wt=10): 398 (x @ y) @ (x @ y') = e.  [para(258(a,1),50(a,2)),rewrite([286(3),91(3),394(5)])].
+
+given #83 (T,wt=10): 408 (x @ y) @ x * y' = e.  [para(71(a,1),223(a,1,1))].
+
+given #84 (A,wt=19): 42 x' * y' * x * y * (z @ y) = x * z @ y.  [para(9(a,2),6(a,1))].
+
+given #85 (T,wt=10): 410 (x @ y) @ x' * y = e.  [para(77(a,1),223(a,1,1))].
+
+given #86 (T,wt=10): 411 (x @ y') @ x * y = e.  [para(77(a,2),223(a,1,1))].
+
+given #87 (T,wt=10): 451 (x @ y) @ y * x' = e.  [para(77(a,1),224(a,1,1))].
+
+given #88 (T,wt=10): 452 (x @ y') @ y * x = e.  [para(77(a,2),224(a,1,1))].
+
+given #89 (A,wt=16): 45 x' * y * x * z = y * (y @ x) * z.  [para(9(a,1),8(a,1,2)),rewrite([23(5)]),flip(a)].
+
+given #90 (T,wt=10): 463 (x * y)' = y' * x'.  [para(8(a,1),249(a,1,1,1)),flip(a)].
+
+given #91 (T,wt=10): 520 (x @ y') * (x @ y) = e.  [para(71(a,1),287(a,1,2))].
+
+given #92 (T,wt=10): 540 x @ y' * x * y = e.  [para(35(a,2),147(a,1,2)),rewrite([258(7)])].
+
+given #93 (T,wt=10): 559 (x' @ y) @ (y @ x) = e.  [para(318(a,1),71(a,2)),rewrite([286(2)])].
+
+given #94 (A,wt=17): 47 x' * y * x * z = (x @ y') * y * z.  [para(8(a,1),9(a,1,2,2,2)),rewrite([23(5)])].
+
+given #95 (T,wt=10): 560 (x @ y') @ (x @ y) = e.  [para(71(a,1),318(a,1,2))].
+
+given #96 (T,wt=10): 567 (x @ y) @ (y @ x') = e.  [para(5(a,1),412(a,1,1)),rewrite([1(6),1(5),54(6)])].
+
+given #97 (T,wt=10): 568 (x @ y') @ (y @ x) = e.  [para(5(a,1),412(a,1,2)),rewrite([1(5),1(4),54(5)])].
+
+given #98 (T,wt=10): 572 x @ y * x * y' = e.  [para(8(a,1),412(a,1,1)),rewrite([1(3)])].
+
+given #99 (A,wt=16): 49 (x' @ y) * x * z = x * (y @ x) * z.  [para(9(a,1),9(a,1,2)),rewrite([23(5)]),flip(a)].
+
+given #100 (T,wt=11): 76 x * y @ x' = y @ x'.  [para(60(a,1),6(a,1,1)),rewrite([2(4)]),flip(a)].
+
+given #101 (T,wt=11): 141 x @ x' * y = y @ x'.  [para(30(a,1),77(a,1)),flip(a)].
+
+given #102 (T,wt=11): 151 x @ y * x' = y @ x'.  [para(31(a,1),77(a,1)),flip(a)].
+
+given #103 (T,wt=11): 154 (x @ y) * (y @ x) * z = z.  [back_rewrite(142),rewrite([150(4)])].
+
+given #104 (A,wt=14): 54 x' * y * x * y' = x @ y'.  [para(23(a,1),5(a,1,2))].
+
+given #105 (T,wt=11): 211 (x @ y) * z @ x = z @ x.  [para(9(a,1),50(a,1,1)),rewrite([133(8),8(6)])].
+
+given #106 (T,wt=9): 1437 x @ (y @ (x @ z)) = e.  [para(24(a,2),211(a,1,1)),rewrite([1425(5),3(2),11(2),1377(4)]),flip(a)].
+
+given #107 (T,wt=9): 1473 x @ ((x @ y) @ z) = e.  [para(71(a,1),1437(a,1,2))].
+
+given #108 (T,wt=9): 1477 x @ (y @ (z @ x)) = e.  [para(77(a,1),1437(a,1,2,2))].
+
+given #109 (A,wt=14): 55 x * y' * x' * y = x' @ y.  [para(23(a,1),5(a,1))].
+
+given #110 (T,wt=9): 1496 x @ ((y @ x) @ z) = e.  [para(77(a,1),1473(a,1,2,1))].
+
+given #111 (T,wt=10): 1470 x @ ((x' @ y) @ z) = e.  [para(1437(a,1),71(a,1)),rewrite([1377(5)]),flip(a)].
+
+given #112 (T,wt=10): 1472 x' @ (y @ (z @ x)) = e.  [para(71(a,1),1437(a,1,2,2))].
+
+given #113 (T,wt=10): 1476 (x @ (y @ z)) @ y' = e.  [para(1437(a,1),77(a,2))].
+
+given #114 (A,wt=18): 58 x' * y * x * y' * z = (x @ y') * z.  [para(23(a,1),9(a,1,2))].
+
+given #115 (T,wt=10): 1478 x @ (y @ (z @ x')) = e.  [para(77(a,2),1437(a,1,2,2))].
+
+given #116 (T,wt=10): 1480 x' @ (y @ (x @ z)) = e.  [para(91(a,1),1437(a,1,2,2))].
+
+given #117 (T,wt=10): 1481 x @ (y @ (x' @ z)) = e.  [para(122(a,1),1437(a,1,2)),rewrite([286(2)])].
+
+given #118 (T,wt=10): 1492 x' @ ((y @ x) @ z) = e.  [para(71(a,1),1473(a,1,2,1))].
+
+given #119 (A,wt=18): 59 (x' @ y) * z = x * y' * x' * y * z.  [para(23(a,1),9(a,1)),flip(a)].
+
+given #120 (T,wt=10): 1495 ((x @ y) @ z) @ x' = e.  [para(1473(a,1),77(a,2))].
+
+given #121 (T,wt=10): 1497 x @ ((y @ x') @ z) = e.  [para(77(a,2),1473(a,1,2,1))].
+
+given #122 (T,wt=10): 1499 x' @ ((x @ y) @ z) = e.  [para(91(a,1),1473(a,1,2,1))].
+
+given #123 (T,wt=10): 1515 (x @ (y @ z)) @ z' = e.  [para(1477(a,1),77(a,2))].
+
+given #124 (A,wt=18): 65 x' * y * z * x = y * z * (y * z @ x).  [para(10(a,1),8(a,1,2)),rewrite([57(3),1(4)]),flip(a)].
+
+given #125 (T,wt=10): 1542 ((x @ y) @ z) @ y' = e.  [para(1496(a,1),77(a,2))].
+
+given #126 (T,wt=11): 216 x * (y @ z) @ y = x @ y.  [para(208(a,1),6(a,1,2)),rewrite([26(3)]),flip(a)].
+
+given #127 (T,wt=11): 254 (x @ y) * z @ y = z @ y.  [para(221(a,1),6(a,1,1)),rewrite([2(3)]),flip(a)].
+
+given #128 (T,wt=11): 255 x * (y @ z) @ z = x @ z.  [para(221(a,1),6(a,1,2)),rewrite([26(3)]),flip(a)].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.27 (+ 0.00) seconds: N.
+% Length of proof is 58.
+% Level of proof is 13.
+% Maximum clause weight is 24.000.
+% Given clauses 128.
+
+1 (x * y) * z = x * y * z.  [assumption].
+2 e * x = x.  [assumption].
+3 x' * x = e.  [assumption].
+4 x @ y = x' * y' * x * y.  [assumption].
+5 x' * y' * x * y = x @ y.  [copy(4),flip(a)].
+6 (x @ y) * (z @ y) = x * z @ y.  [assumption].
+7 (A @ B) * C != C * (A @ B) # answer(N).  [assumption].
+8 x' * x * y = y.  [para(3(a,1),1(a,1,1)),rewrite([2(2)]),flip(a)].
+9 x' * y' * x * y * z = (x @ y) * z.  [para(5(a,1),1(a,1,1)),rewrite([1(7),1(6)]),flip(a)].
+10 (x * y)' * z' * x * y * z = x * y @ z.  [para(1(a,1),5(a,1,2,2))].
+11 e @ x = e.  [para(2(a,1),5(a,1,2,2)),rewrite([3(4),3(4)]),flip(a)].
+12 x' @ x = e.  [para(3(a,1),5(a,1,2,2)),rewrite([8(6)]),flip(a)].
+15 (x @ y)' * (z @ y)' * (x * z @ y) = (x @ y) @ (z @ y).  [para(6(a,1),5(a,1,2,2))].
+16 (x * y)' * x * y * z = z.  [para(1(a,1),8(a,1,2))].
+18 x'' * e = x.  [para(3(a,1),8(a,1,2))].
+20 x @ x = e.  [para(8(a,1),5(a,1,2)),rewrite([3(2)]),flip(a)].
+22 (x @ y)' * (x * z @ y) = z @ y.  [para(6(a,1),8(a,1,2))].
+23 x'' * y = x * y.  [para(8(a,1),8(a,1,2))].
+26 x * e = x.  [back_rewrite(18),rewrite([23(4)])].
+30 x * y @ x = y @ x.  [para(20(a,1),6(a,1,1)),rewrite([2(3)]),flip(a)].
+40 (x' @ y) * x = x * (y @ x).  [para(5(a,1),9(a,1,2)),rewrite([23(4)]),flip(a)].
+42 x' * y' * x * y * (z @ y) = x * z @ y.  [para(9(a,2),6(a,1))].
+47 x' * y * x * z = (x @ y') * y * z.  [para(8(a,1),9(a,1,2,2,2)),rewrite([23(5)])].
+50 x' * y @ x = y @ x.  [para(12(a,1),6(a,1,1)),rewrite([2(3)]),flip(a)].
+51 x * y' @ y = x @ y.  [para(12(a,1),6(a,1,2)),rewrite([26(3)]),flip(a)].
+52 x * x' = e.  [para(23(a,1),3(a,1))].
+57 x'' = x.  [para(23(a,1),26(a,1)),rewrite([26(2)]),flip(a)].
+60 x @ x' = e.  [para(57(a,1),12(a,1,1))].
+62 (x * y')' * y' * x = x @ y.  [para(3(a,1),10(a,1,2,2,2)),rewrite([26(6),51(9)])].
+67 (x * y)' * y * x = y @ x.  [para(8(a,1),10(a,1,2)),rewrite([30(6)])].
+71 x' @ y = y @ x.  [back_rewrite(62),rewrite([67(6)])].
+75 x * y @ y' = y @ x.  [para(52(a,1),10(a,1,2,2,2)),rewrite([57(4),26(4),67(4)]),flip(a)].
+77 x @ y' = y @ x.  [para(60(a,1),6(a,1,2)),rewrite([26(4),75(5)])].
+86 (B' @ A) * C != C * (A @ B) # answer(N).  [para(71(a,2),7(a,1,1))].
+91 x' @ y' = x @ y.  [para(71(a,1),71(a,2))].
+115 (x @ y) * (y @ z') = x * z @ y.  [para(77(a,2),6(a,1,2))].
+122 x' @ y = x @ y'.  [para(77(a,1),71(a,1)),flip(a)].
+127 (B @ A') * C != C * (B @ A') # answer(N).  [para(77(a,2),86(a,2,2)),rewrite([122(4)])].
+133 x * y * z @ y = x * z @ y.  [para(30(a,1),6(a,1,2)),rewrite([6(3)]),flip(a)].
+169 (x' @ y)' * (z @ x)' * (y * z @ x) = (y @ x) @ (z @ x).  [para(71(a,2),15(a,1,1,1))].
+178 (x @ y)' * (z @ y)' * (y @ (x * z)') = (x @ y) @ (z @ y).  [para(77(a,2),15(a,1,2,2))].
+208 (x @ y) @ x = e.  [para(5(a,1),50(a,1,1)),rewrite([133(6),3(4),11(4)])].
+221 (x @ y) @ y = e.  [para(77(a,1),208(a,1,1))].
+249 (x * y)' * x = y'.  [para(52(a,1),16(a,1,2,2)),rewrite([26(4)])].
+255 x * (y @ z) @ z = x @ z.  [para(221(a,1),6(a,1,2)),rewrite([26(3)]),flip(a)].
+286 (x @ y)' = x' @ y.  [para(52(a,1),22(a,1,2,1)),rewrite([11(4),26(4)])].
+287 (x @ y) * (y @ x) = e.  [para(60(a,1),22(a,2)),rewrite([286(3),91(3),75(4)])].
+302 (x @ y) * (z' * y * z @ x) = (y @ x) @ (z @ x).  [back_rewrite(169),rewrite([286(3),57(2),286(3),6(6)])].
+316 (x @ y) @ (z @ y) = (x @ z) @ y.  [back_rewrite(178),rewrite([286(2),286(4),115(8),6(7),5(5)]),flip(a)].
+463 (x * y)' = y' * x'.  [para(8(a,1),249(a,1,1,1)),flip(a)].
+520 (x @ y') * (x @ y) = e.  [para(71(a,1),287(a,1,2))].
+719 (x @ y) * y = y * (x @ y).  [para(71(a,1),40(a,1,1))].
+1207 ((x @ y') @ z') * z * (x @ y) = (x @ y) * z.  [para(520(a,1),47(a,1,2,2)),rewrite([286(3),91(3),26(3)]),flip(a)].
+2006 x' * y * x @ z = y @ z.  [para(255(a,1),5(a,2)),rewrite([463(3),286(2),1(8),719(7),1(10),42(9),6(5)])].
+2075 (x @ y) @ (z @ y) = e.  [back_rewrite(302),rewrite([2006(5),287(3)]),flip(a)].
+2085 (x @ y) @ z = e.  [back_rewrite(316),rewrite([2075(3)]),flip(a)].
+2099 (x @ y) * z = z * (x @ y).  [back_rewrite(1207),rewrite([2085(4),2(4)]),flip(a)].
+2100 $F # answer(N).  [resolve(2099,a,127,a)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=128. Generated=12373. Kept=2098. proofs=1.
+Usable=101. Sos=1367. Demods=1073. Limbo=15, Disabled=620. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=831.
+Forward_subsumed=9444. Back_subsumed=121.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=1572 (2 lex), Back_demodulated=493. Back_unit_deleted=0.
+Demod_attempts=153742. Demod_rewrites=30024.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=1.80.
+User_CPU=0.27, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 1 proof.
+
+Process 5100 exit (max_proofs) Tue Nov  3 09:42:01 2009

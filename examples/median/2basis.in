@@ -1,0 +1,17 @@
+assign(max_seconds, 30).
+
+assign(order, kbo).
+
+formulas(sos).
+
+  f(x,x,y) = x                        # label(majority).
+  f(f(x,w,y),z,w) = f(w,x,f(w,z,y))   # label(associativity2).
+
+end_of_list.
+
+formulas(goals).
+
+  f(x,y,z) = f(z,x,y)                # label(2a).
+  f(x,y,z) = f(x,z,y)                # label(2b).
+
+end_of_list.

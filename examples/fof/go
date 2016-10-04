@@ -1,0 +1,81 @@
+#!/bin/csh
+
+
+if ($#argv != 2) then
+	echo "need 2 args: bin-directory ouput-extension"
+	exit(1)
+endif
+
+set d=$1
+
+set out=$2
+
+# job andrews
+
+$d/fof-prover9 -f andrews.in > andrews.$out
+
+# job ALG033+1
+
+$d/fof-prover9 -f ALG033+1.in > ALG033+1.$out
+
+# job ALG043+1
+
+$d/fof-prover9 -f ALG043+1.in > ALG043+1.$out
+
+# job ALG189+1
+
+$d/fof-prover9 -f ALG189+1.in > ALG189+1.$out
+
+# job GEO146+1
+
+$d/fof-prover9 -f GEO146+1.in > GEO146+1.$out
+
+# job GEO147+1
+
+$d/fof-prover9 -f GEO147+1.in > GEO147+1.$out
+
+# job MGT025+1
+
+$d/fof-prover9 -f MGT025+1.in > MGT025+1.$out
+
+# job MGT063+1
+
+# $d/fof-prover9 -f MGT063+1.in > MGT063+1.$out
+
+# job SET587+3
+
+$d/fof-prover9 -f SET587+3.in > SET587+3.$out
+
+# job SET593+3
+
+$d/fof-prover9 -f SET593+3.in > SET593+3.$out
+
+# job SET598+3
+
+$d/fof-prover9 -f SET598+3.in > SET598+3.$out
+
+# job SET660+3
+
+$d/fof-prover9 -f SET660+3.in > SET660+3.$out
+
+# job SET667+3
+
+$d/fof-prover9 -f SET667+3.in > SET667+3.$out
+
+# job SET668+3
+
+$d/fof-prover9 -f SET668+3.in > SET668+3.$out
+
+# job SWC258+1
+
+$d/fof-prover9 -f SWC258+1.in > SWC258+1.$out
+
+# job SWC339+1
+
+# $d/fof-prover9 -f SWC339+1.in > SWC339+1.$out
+
+# job SYN551+2
+
+$d/fof-prover9 -f SYN551+2.in > SYN551+2.$out
+
+

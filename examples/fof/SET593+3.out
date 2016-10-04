@@ -1,0 +1,645 @@
+============================== FOF-Prover9 ===========================
+FOF-Prover9 (32) version 2009-11A, November 2009.
+Process 23966 was started by mccune on cleo,
+Tue Nov  3 16:59:16 2009
+The command was "/home/mccune/LADR/bin/fof-prover9 -f SET593+3.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file SET593+3.in
+
+assign(max_seconds,30).
+set(prolog_style_variables).
+
+formulas(assumptions).
+(all B all C all D (member(D,union(B,C)) <-> member(D,B) | member(D,C))).
+(all B all C all D (member(D,difference(B,C)) <-> member(D,B) & -member(D,C))).
+(all B all C (subset(B,C) <-> (all D (member(D,B) -> member(D,C))))).
+(all B all C union(B,C) = union(C,B)).
+(all B subset(B,B)).
+(all B all C (B = C <-> (all D (member(D,B) <-> member(D,C))))).
+-(all B all C all D (subset(B,union(C,D)) -> subset(difference(B,C),D) & subset(difference(B,D),C))).
+end_of_list.
+
+============================== end of input ==========================
+
+% clear(auto_denials), because it is incompatiable with FOF reduction.
+
+Attempting problem reduction; original problem has <nnf_size,cnf_max> = <98,47>.
+
+Problem reduction (0.01 sec) gives 2 independent subproblems: ( <160,29> <160,29> ).
+
+Max nnf_size of subproblems is 160; max cnf_max is 29.
+
+============================== FOF REDUCTION MULTISEARCH =============
+
+Subproblem 1 of 2 (negated):
+((all B (all C (all D (member(D,union(B,C)) | - member(D,B))))) & (all B (all C (all D (member(D,union(B,C)) | - member(D,C))))) & (all B (all C (all D (member(D,B) | member(D,C) | - member(D,union(B,C)))))) & (all B (all C (all D (member(D,difference(B,C)) | - member(D,B) | member(D,C))))) & (all B (all C (all D (member(D,B) | - member(D,difference(B,C)))))) & (all B (all C (all D (- member(D,C) | - member(D,difference(B,C)))))) & (all B (all C (subset(B,C) | (exists D (member(D,B) & - member(D,C)))))) & (all B (all C ((all D (- member(D,B) | member(D,C))) | - subset(B,C)))) & (all B (all C ((all D (- member(D,B) | member(D,C))) | (exists D (member(D,B) & - member(D,C)))))) & (all B (all C =(union(C,B),union(B,C)))) & (all B subset(B,B)) & (all B (all C (=(C,B) | (exists D (member(D,B) & - member(D,C))) | (exists D (- member(D,B) & member(D,C)))))) & (all B (all C ((all D (member(D,B) | - member(D,C))) | - =(C,B)))) & (all B (all C ((all D (member(D,B) | - member(D,C))) | (exists D (member(D,B) & - member(D,C))) | (exists D (- member(D,B) & member(D,C)))))) & (all B (all C ((all D (member(D,C) | - member(D,B))) | - =(C,B)))) & (all B (all C ((all D (member(D,C) | - member(D,B))) | (exists D (member(D,B) & - member(D,C))) | (exists D (- member(D,B) & member(D,C)))))) & (exists B (exists C (exists D (subset(B,union(C,D)) & - subset(difference(B,C),D)))))).
+
+Max_seconds is 30 for this subproblem.
+
+Child search process 23967 started.
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+member(A,union(B,C)) | -member(A,B).  [assumption].
+member(A,union(B,C)) | -member(A,C).  [assumption].
+member(A,B) | member(A,C) | -member(A,union(B,C)).  [assumption].
+member(A,difference(B,C)) | -member(A,B) | member(A,C).  [assumption].
+member(A,B) | -member(A,difference(B,C)).  [assumption].
+-member(A,B) | -member(A,difference(C,B)).  [assumption].
+subset(A,B) | member(f1(A,B),A).  [assumption].
+subset(A,B) | -member(f1(A,B),B).  [assumption].
+-member(A,B) | member(A,C) | -subset(B,C).  [assumption].
+-member(A,B) | member(A,C) | member(f2(B,C),B).  [assumption].
+-member(A,B) | member(A,C) | -member(f2(B,C),C).  [assumption].
+union(A,B) = union(B,A).  [assumption].
+subset(A,A).  [assumption].
+A = B | member(f3(B,A),B) | -member(f4(B,A),B).  [assumption].
+A = B | member(f3(B,A),B) | member(f4(B,A),A).  [assumption].
+A = B | -member(f3(B,A),A) | -member(f4(B,A),B).  [assumption].
+A = B | -member(f3(B,A),A) | member(f4(B,A),A).  [assumption].
+member(A,B) | -member(A,C) | C != B.  [assumption].
+member(A,B) | -member(A,C) | member(f5(B,C),B) | -member(f6(B,C),B).  [assumption].
+member(A,B) | -member(A,C) | member(f5(B,C),B) | member(f6(B,C),C).  [assumption].
+member(A,B) | -member(A,C) | -member(f5(B,C),C) | -member(f6(B,C),B).  [assumption].
+member(A,B) | -member(A,C) | -member(f5(B,C),C) | member(f6(B,C),C).  [assumption].
+member(A,B) | -member(A,C) | B != C.  [assumption].
+member(A,B) | -member(A,C) | member(f7(C,B),C) | -member(f8(C,B),C).  [assumption].
+member(A,B) | -member(A,C) | member(f7(C,B),C) | member(f8(C,B),B).  [assumption].
+member(A,B) | -member(A,C) | -member(f7(C,B),B) | -member(f8(C,B),C).  [assumption].
+member(A,B) | -member(A,C) | -member(f7(C,B),B) | member(f8(C,B),B).  [assumption].
+subset(c1,union(c2,c3)).  [assumption].
+-subset(difference(c1,c2),c3).  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ =, member, subset ]).
+Function symbol precedence:  function_order([ c1, c2, c3, union, difference, f1, f2, f3, f4, f5, f6, f7, f8 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(paramodulation).  % (positive equality literals)
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+kept:      1 member(A,union(B,C)) | -member(A,B).  [assumption].
+kept:      2 member(A,union(B,C)) | -member(A,C).  [assumption].
+kept:      3 member(A,B) | member(A,C) | -member(A,union(B,C)).  [assumption].
+kept:      4 member(A,difference(B,C)) | -member(A,B) | member(A,C).  [assumption].
+kept:      5 member(A,B) | -member(A,difference(B,C)).  [assumption].
+kept:      6 -member(A,B) | -member(A,difference(C,B)).  [assumption].
+kept:      7 subset(A,B) | member(f1(A,B),A).  [assumption].
+kept:      8 subset(A,B) | -member(f1(A,B),B).  [assumption].
+kept:      9 -member(A,B) | member(A,C) | -subset(B,C).  [assumption].
+kept:      10 -member(A,B) | member(A,C) | member(f2(B,C),B).  [assumption].
+kept:      11 -member(A,B) | member(A,C) | -member(f2(B,C),C).  [assumption].
+
+% Operation union is commutative; C redundancy checks enabled.
+kept:      12 union(A,B) = union(B,A).  [assumption].
+kept:      13 subset(A,A).  [assumption].
+kept:      14 A = B | member(f3(B,A),B) | -member(f4(B,A),B).  [assumption].
+kept:      15 A = B | member(f3(B,A),B) | member(f4(B,A),A).  [assumption].
+kept:      16 A = B | -member(f3(B,A),A) | -member(f4(B,A),B).  [assumption].
+kept:      17 A = B | -member(f3(B,A),A) | member(f4(B,A),A).  [assumption].
+kept:      18 member(A,B) | -member(A,C) | C != B.  [assumption].
+kept:      19 member(A,B) | -member(A,C) | member(f5(B,C),B) | -member(f6(B,C),B).  [assumption].
+kept:      20 member(A,B) | -member(A,C) | member(f5(B,C),B) | member(f6(B,C),C).  [assumption].
+kept:      21 member(A,B) | -member(A,C) | -member(f5(B,C),C) | -member(f6(B,C),B).  [assumption].
+kept:      22 member(A,B) | -member(A,C) | -member(f5(B,C),C) | member(f6(B,C),C).  [assumption].
+kept:      23 member(A,B) | -member(A,C) | B != C.  [assumption].
+kept:      24 member(A,B) | -member(A,C) | member(f7(C,B),C) | -member(f8(C,B),C).  [assumption].
+kept:      25 member(A,B) | -member(A,C) | member(f7(C,B),C) | member(f8(C,B),B).  [assumption].
+kept:      26 member(A,B) | -member(A,C) | -member(f7(C,B),B) | -member(f8(C,B),C).  [assumption].
+kept:      27 member(A,B) | -member(A,C) | -member(f7(C,B),B) | member(f8(C,B),B).  [assumption].
+kept:      28 subset(c1,union(c2,c3)).  [assumption].
+kept:      29 -subset(difference(c1,c2),c3).  [assumption].
+kept:      30 member(A,B) | -member(A,union(B,B)).  [factor(3,a,b)].
+kept:      31 member(f5(A,B),A) | -member(f5(A,B),B) | -member(f6(A,B),A).  [factor(19,a,c)].
+kept:      32 member(f5(A,B),A) | -member(f5(A,B),B) | member(f6(A,B),B).  [factor(20,a,c)].
+kept:      33 member(f8(A,B),B) | -member(f8(A,B),A) | member(f7(A,B),A).  [factor(24,b,d)].
+kept:      34 member(f8(A,B),B) | -member(f8(A,B),A) | -member(f7(A,B),B).  [factor(26,b,d)].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+1 member(A,union(B,C)) | -member(A,B).  [assumption].
+2 member(A,union(B,C)) | -member(A,C).  [assumption].
+3 member(A,B) | member(A,C) | -member(A,union(B,C)).  [assumption].
+4 member(A,difference(B,C)) | -member(A,B) | member(A,C).  [assumption].
+5 member(A,B) | -member(A,difference(B,C)).  [assumption].
+6 -member(A,B) | -member(A,difference(C,B)).  [assumption].
+7 subset(A,B) | member(f1(A,B),A).  [assumption].
+8 subset(A,B) | -member(f1(A,B),B).  [assumption].
+9 -member(A,B) | member(A,C) | -subset(B,C).  [assumption].
+10 -member(A,B) | member(A,C) | member(f2(B,C),B).  [assumption].
+11 -member(A,B) | member(A,C) | -member(f2(B,C),C).  [assumption].
+12 union(A,B) = union(B,A).  [assumption].
+13 subset(A,A).  [assumption].
+14 A = B | member(f3(B,A),B) | -member(f4(B,A),B).  [assumption].
+15 A = B | member(f3(B,A),B) | member(f4(B,A),A).  [assumption].
+16 A = B | -member(f3(B,A),A) | -member(f4(B,A),B).  [assumption].
+17 A = B | -member(f3(B,A),A) | member(f4(B,A),A).  [assumption].
+18 member(A,B) | -member(A,C) | C != B.  [assumption].
+19 member(A,B) | -member(A,C) | member(f5(B,C),B) | -member(f6(B,C),B).  [assumption].
+20 member(A,B) | -member(A,C) | member(f5(B,C),B) | member(f6(B,C),C).  [assumption].
+21 member(A,B) | -member(A,C) | -member(f5(B,C),C) | -member(f6(B,C),B).  [assumption].
+22 member(A,B) | -member(A,C) | -member(f5(B,C),C) | member(f6(B,C),C).  [assumption].
+23 member(A,B) | -member(A,C) | B != C.  [assumption].
+24 member(A,B) | -member(A,C) | member(f7(C,B),C) | -member(f8(C,B),C).  [assumption].
+25 member(A,B) | -member(A,C) | member(f7(C,B),C) | member(f8(C,B),B).  [assumption].
+26 member(A,B) | -member(A,C) | -member(f7(C,B),B) | -member(f8(C,B),C).  [assumption].
+27 member(A,B) | -member(A,C) | -member(f7(C,B),B) | member(f8(C,B),B).  [assumption].
+28 subset(c1,union(c2,c3)).  [assumption].
+29 -subset(difference(c1,c2),c3).  [assumption].
+30 member(A,B) | -member(A,union(B,B)).  [factor(3,a,b)].
+31 member(f5(A,B),A) | -member(f5(A,B),B) | -member(f6(A,B),A).  [factor(19,a,c)].
+32 member(f5(A,B),A) | -member(f5(A,B),B) | member(f6(A,B),B).  [factor(20,a,c)].
+33 member(f8(A,B),B) | -member(f8(A,B),A) | member(f7(A,B),A).  [factor(24,b,d)].
+34 member(f8(A,B),B) | -member(f8(A,B),A) | -member(f7(A,B),B).  [factor(26,b,d)].
+end_of_list.
+
+formulas(demodulators).
+12 union(A,B) = union(B,A).  [assumption].
+        % (lex-dep)
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.00 seconds.
+
+given #1 (I,wt=8): 1 member(A,union(B,C)) | -member(A,B).  [assumption].
+
+given #2 (I,wt=8): 2 member(A,union(B,C)) | -member(A,C).  [assumption].
+
+given #3 (I,wt=11): 3 member(A,B) | member(A,C) | -member(A,union(B,C)).  [assumption].
+
+given #4 (I,wt=11): 4 member(A,difference(B,C)) | -member(A,B) | member(A,C).  [assumption].
+
+given #5 (I,wt=8): 5 member(A,B) | -member(A,difference(B,C)).  [assumption].
+
+given #6 (I,wt=8): 6 -member(A,B) | -member(A,difference(C,B)).  [assumption].
+
+given #7 (I,wt=8): 7 subset(A,B) | member(f1(A,B),A).  [assumption].
+
+given #8 (I,wt=8): 8 subset(A,B) | -member(f1(A,B),B).  [assumption].
+
+given #9 (I,wt=9): 9 -member(A,B) | member(A,C) | -subset(B,C).  [assumption].
+
+given #10 (I,wt=11): 10 -member(A,B) | member(A,C) | member(f2(B,C),B).  [assumption].
+
+given #11 (I,wt=11): 11 -member(A,B) | member(A,C) | -member(f2(B,C),C).  [assumption].
+
+given #12 (I,wt=7): 12 union(A,B) = union(B,A).  [assumption].
+
+given #13 (I,wt=3): 13 subset(A,A).  [assumption].
+
+given #14 (I,wt=13): 14 A = B | member(f3(B,A),B) | -member(f4(B,A),B).  [assumption].
+
+given #15 (I,wt=13): 15 A = B | member(f3(B,A),B) | member(f4(B,A),A).  [assumption].
+
+given #16 (I,wt=13): 16 A = B | -member(f3(B,A),A) | -member(f4(B,A),B).  [assumption].
+
+given #17 (I,wt=13): 17 A = B | -member(f3(B,A),A) | member(f4(B,A),A).  [assumption].
+
+given #18 (I,wt=9): 18 member(A,B) | -member(A,C) | C != B.  [assumption].
+
+given #19 (I,wt=16): 19 member(A,B) | -member(A,C) | member(f5(B,C),B) | -member(f6(B,C),B).  [assumption].
+
+given #20 (I,wt=16): 20 member(A,B) | -member(A,C) | member(f5(B,C),B) | member(f6(B,C),C).  [assumption].
+
+given #21 (I,wt=16): 21 member(A,B) | -member(A,C) | -member(f5(B,C),C) | -member(f6(B,C),B).  [assumption].
+
+given #22 (I,wt=16): 22 member(A,B) | -member(A,C) | -member(f5(B,C),C) | member(f6(B,C),C).  [assumption].
+
+given #23 (I,wt=9): 23 member(A,B) | -member(A,C) | B != C.  [assumption].
+
+given #24 (I,wt=16): 24 member(A,B) | -member(A,C) | member(f7(C,B),C) | -member(f8(C,B),C).  [assumption].
+
+given #25 (I,wt=16): 25 member(A,B) | -member(A,C) | member(f7(C,B),C) | member(f8(C,B),B).  [assumption].
+
+given #26 (I,wt=16): 26 member(A,B) | -member(A,C) | -member(f7(C,B),B) | -member(f8(C,B),C).  [assumption].
+
+given #27 (I,wt=16): 27 member(A,B) | -member(A,C) | -member(f7(C,B),B) | member(f8(C,B),B).  [assumption].
+
+given #28 (I,wt=5): 28 subset(c1,union(c2,c3)).  [assumption].
+
+given #29 (I,wt=5): 29 -subset(difference(c1,c2),c3).  [assumption].
+
+given #30 (I,wt=8): 30 member(A,B) | -member(A,union(B,B)).  [factor(3,a,b)].
+
+given #31 (I,wt=15): 31 member(f5(A,B),A) | -member(f5(A,B),B) | -member(f6(A,B),A).  [factor(19,a,c)].
+
+given #32 (I,wt=15): 32 member(f5(A,B),A) | -member(f5(A,B),B) | member(f6(A,B),B).  [factor(20,a,c)].
+
+given #33 (I,wt=15): 33 member(f8(A,B),B) | -member(f8(A,B),A) | member(f7(A,B),A).  [factor(24,b,d)].
+
+given #34 (I,wt=15): 34 member(f8(A,B),B) | -member(f8(A,B),A) | -member(f7(A,B),B).  [factor(26,b,d)].
+
+given #35 (A,wt=11): 35 -member(A,B) | member(A,C) | member(f1(B,C),B).  [resolve(9,c,7,a)].
+
+given #36 (F,wt=7): 57 -member(f1(difference(c1,c2),c3),c3).  [ur(8,a,29,a)].
+
+given #37 (F,wt=9): 59 -member(f1(difference(c1,c2),c3),union(c3,c3)).  [ur(30,a,57,a)].
+
+given #38 (F,wt=9): 60 -member(f1(difference(c1,c2),c3),difference(c3,A)).  [ur(5,a,57,a)].
+
+given #39 (F,wt=11): 62 -member(f1(difference(c1,c2),c3),difference(union(c3,c3),A)).  [ur(5,a,59,a)].
+
+given #40 (T,wt=8): 55 -member(A,c1) | member(A,union(c2,c3)).  [resolve(28,a,9,c)].
+
+given #41 (T,wt=9): 56 member(f1(difference(c1,c2),c3),difference(c1,c2)).  [resolve(29,a,7,a)].
+
+given #42 (T,wt=7): 90 member(f1(difference(c1,c2),c3),c1).  [resolve(56,a,5,b)].
+
+given #43 (T,wt=9): 106 member(f1(difference(c1,c2),c3),union(c2,c3)).  [resolve(90,a,55,a)].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.01 (+ 0.00) seconds.
+% Length of proof is 15.
+% Level of proof is 4.
+% Maximum clause weight is 11.000.
+% Given clauses 43.
+
+3 member(A,B) | member(A,C) | -member(A,union(B,C)).  [assumption].
+5 member(A,B) | -member(A,difference(B,C)).  [assumption].
+6 -member(A,B) | -member(A,difference(C,B)).  [assumption].
+7 subset(A,B) | member(f1(A,B),A).  [assumption].
+8 subset(A,B) | -member(f1(A,B),B).  [assumption].
+9 -member(A,B) | member(A,C) | -subset(B,C).  [assumption].
+28 subset(c1,union(c2,c3)).  [assumption].
+29 -subset(difference(c1,c2),c3).  [assumption].
+55 -member(A,c1) | member(A,union(c2,c3)).  [resolve(28,a,9,c)].
+56 member(f1(difference(c1,c2),c3),difference(c1,c2)).  [resolve(29,a,7,a)].
+57 -member(f1(difference(c1,c2),c3),c3).  [ur(8,a,29,a)].
+89 -member(f1(difference(c1,c2),c3),c2).  [resolve(56,a,6,b)].
+90 member(f1(difference(c1,c2),c3),c1).  [resolve(56,a,5,b)].
+106 member(f1(difference(c1,c2),c3),union(c2,c3)).  [resolve(90,a,55,a)].
+148 $F.  [resolve(106,a,3,c),unit_del(a,89),unit_del(b,57)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=43. Generated=227. Kept=147. proofs=1.
+Usable=43. Sos=89. Demods=1. Limbo=13, Disabled=31. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=79. Back_subsumed=2.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=1 (1 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=2023. Demod_rewrites=6.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=100. Nonunit_bsub_feature_tests=119.
+Megabytes=0.21.
+User_CPU=0.01, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+Exiting with 1 proof.
+
+Process 23967 exit (max_proofs) Tue Nov  3 16:59:16 2009
+
+============================== continuing FOF reduction multisearch ==
+
+Subproblem 2 of 2 (negated):
+((all B (all C (all D (member(D,union(B,C)) | - member(D,B))))) & (all B (all C (all D (member(D,union(B,C)) | - member(D,C))))) & (all B (all C (all D (member(D,B) | member(D,C) | - member(D,union(B,C)))))) & (all B (all C (all D (member(D,difference(B,C)) | - member(D,B) | member(D,C))))) & (all B (all C (all D (member(D,B) | - member(D,difference(B,C)))))) & (all B (all C (all D (- member(D,C) | - member(D,difference(B,C)))))) & (all B (all C (subset(B,C) | (exists D (member(D,B) & - member(D,C)))))) & (all B (all C ((all D (- member(D,B) | member(D,C))) | - subset(B,C)))) & (all B (all C ((all D (- member(D,B) | member(D,C))) | (exists D (member(D,B) & - member(D,C)))))) & (all B (all C =(union(C,B),union(B,C)))) & (all B subset(B,B)) & (all B (all C (=(C,B) | (exists D (member(D,B) & - member(D,C))) | (exists D (- member(D,B) & member(D,C)))))) & (all B (all C ((all D (member(D,B) | - member(D,C))) | - =(C,B)))) & (all B (all C ((all D (member(D,B) | - member(D,C))) | (exists D (member(D,B) & - member(D,C))) | (exists D (- member(D,B) & member(D,C)))))) & (all B (all C ((all D (member(D,C) | - member(D,B))) | - =(C,B)))) & (all B (all C ((all D (member(D,C) | - member(D,B))) | (exists D (member(D,B) & - member(D,C))) | (exists D (- member(D,B) & member(D,C)))))) & (exists B (exists C (exists D (subset(B,union(C,D)) & - subset(difference(B,D),C)))))).
+
+Max_seconds is 30 for this subproblem.
+
+Child search process 23968 started.
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+member(A,union(B,C)) | -member(A,B).  [assumption].
+member(A,union(B,C)) | -member(A,C).  [assumption].
+member(A,B) | member(A,C) | -member(A,union(B,C)).  [assumption].
+member(A,difference(B,C)) | -member(A,B) | member(A,C).  [assumption].
+member(A,B) | -member(A,difference(B,C)).  [assumption].
+-member(A,B) | -member(A,difference(C,B)).  [assumption].
+subset(A,B) | member(f1(A,B),A).  [assumption].
+subset(A,B) | -member(f1(A,B),B).  [assumption].
+-member(A,B) | member(A,C) | -subset(B,C).  [assumption].
+-member(A,B) | member(A,C) | member(f2(B,C),B).  [assumption].
+-member(A,B) | member(A,C) | -member(f2(B,C),C).  [assumption].
+union(A,B) = union(B,A).  [assumption].
+subset(A,A).  [assumption].
+A = B | member(f3(B,A),B) | -member(f4(B,A),B).  [assumption].
+A = B | member(f3(B,A),B) | member(f4(B,A),A).  [assumption].
+A = B | -member(f3(B,A),A) | -member(f4(B,A),B).  [assumption].
+A = B | -member(f3(B,A),A) | member(f4(B,A),A).  [assumption].
+member(A,B) | -member(A,C) | C != B.  [assumption].
+member(A,B) | -member(A,C) | member(f5(B,C),B) | -member(f6(B,C),B).  [assumption].
+member(A,B) | -member(A,C) | member(f5(B,C),B) | member(f6(B,C),C).  [assumption].
+member(A,B) | -member(A,C) | -member(f5(B,C),C) | -member(f6(B,C),B).  [assumption].
+member(A,B) | -member(A,C) | -member(f5(B,C),C) | member(f6(B,C),C).  [assumption].
+member(A,B) | -member(A,C) | B != C.  [assumption].
+member(A,B) | -member(A,C) | member(f7(C,B),C) | -member(f8(C,B),C).  [assumption].
+member(A,B) | -member(A,C) | member(f7(C,B),C) | member(f8(C,B),B).  [assumption].
+member(A,B) | -member(A,C) | -member(f7(C,B),B) | -member(f8(C,B),C).  [assumption].
+member(A,B) | -member(A,C) | -member(f7(C,B),B) | member(f8(C,B),B).  [assumption].
+subset(c1,union(c2,c3)).  [assumption].
+-subset(difference(c1,c3),c2).  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ =, member, subset ]).
+Function symbol precedence:  function_order([ c1, c2, c3, union, difference, f1, f2, f3, f4, f5, f6, f7, f8 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(paramodulation).  % (positive equality literals)
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+kept:      1 member(A,union(B,C)) | -member(A,B).  [assumption].
+kept:      2 member(A,union(B,C)) | -member(A,C).  [assumption].
+kept:      3 member(A,B) | member(A,C) | -member(A,union(B,C)).  [assumption].
+kept:      4 member(A,difference(B,C)) | -member(A,B) | member(A,C).  [assumption].
+kept:      5 member(A,B) | -member(A,difference(B,C)).  [assumption].
+kept:      6 -member(A,B) | -member(A,difference(C,B)).  [assumption].
+kept:      7 subset(A,B) | member(f1(A,B),A).  [assumption].
+kept:      8 subset(A,B) | -member(f1(A,B),B).  [assumption].
+kept:      9 -member(A,B) | member(A,C) | -subset(B,C).  [assumption].
+kept:      10 -member(A,B) | member(A,C) | member(f2(B,C),B).  [assumption].
+kept:      11 -member(A,B) | member(A,C) | -member(f2(B,C),C).  [assumption].
+
+% Operation union is commutative; C redundancy checks enabled.
+kept:      12 union(A,B) = union(B,A).  [assumption].
+kept:      13 subset(A,A).  [assumption].
+kept:      14 A = B | member(f3(B,A),B) | -member(f4(B,A),B).  [assumption].
+kept:      15 A = B | member(f3(B,A),B) | member(f4(B,A),A).  [assumption].
+kept:      16 A = B | -member(f3(B,A),A) | -member(f4(B,A),B).  [assumption].
+kept:      17 A = B | -member(f3(B,A),A) | member(f4(B,A),A).  [assumption].
+kept:      18 member(A,B) | -member(A,C) | C != B.  [assumption].
+kept:      19 member(A,B) | -member(A,C) | member(f5(B,C),B) | -member(f6(B,C),B).  [assumption].
+kept:      20 member(A,B) | -member(A,C) | member(f5(B,C),B) | member(f6(B,C),C).  [assumption].
+kept:      21 member(A,B) | -member(A,C) | -member(f5(B,C),C) | -member(f6(B,C),B).  [assumption].
+kept:      22 member(A,B) | -member(A,C) | -member(f5(B,C),C) | member(f6(B,C),C).  [assumption].
+kept:      23 member(A,B) | -member(A,C) | B != C.  [assumption].
+kept:      24 member(A,B) | -member(A,C) | member(f7(C,B),C) | -member(f8(C,B),C).  [assumption].
+kept:      25 member(A,B) | -member(A,C) | member(f7(C,B),C) | member(f8(C,B),B).  [assumption].
+kept:      26 member(A,B) | -member(A,C) | -member(f7(C,B),B) | -member(f8(C,B),C).  [assumption].
+kept:      27 member(A,B) | -member(A,C) | -member(f7(C,B),B) | member(f8(C,B),B).  [assumption].
+kept:      28 subset(c1,union(c2,c3)).  [assumption].
+kept:      29 -subset(difference(c1,c3),c2).  [assumption].
+kept:      30 member(A,B) | -member(A,union(B,B)).  [factor(3,a,b)].
+kept:      31 member(f5(A,B),A) | -member(f5(A,B),B) | -member(f6(A,B),A).  [factor(19,a,c)].
+kept:      32 member(f5(A,B),A) | -member(f5(A,B),B) | member(f6(A,B),B).  [factor(20,a,c)].
+kept:      33 member(f8(A,B),B) | -member(f8(A,B),A) | member(f7(A,B),A).  [factor(24,b,d)].
+kept:      34 member(f8(A,B),B) | -member(f8(A,B),A) | -member(f7(A,B),B).  [factor(26,b,d)].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+1 member(A,union(B,C)) | -member(A,B).  [assumption].
+2 member(A,union(B,C)) | -member(A,C).  [assumption].
+3 member(A,B) | member(A,C) | -member(A,union(B,C)).  [assumption].
+4 member(A,difference(B,C)) | -member(A,B) | member(A,C).  [assumption].
+5 member(A,B) | -member(A,difference(B,C)).  [assumption].
+6 -member(A,B) | -member(A,difference(C,B)).  [assumption].
+7 subset(A,B) | member(f1(A,B),A).  [assumption].
+8 subset(A,B) | -member(f1(A,B),B).  [assumption].
+9 -member(A,B) | member(A,C) | -subset(B,C).  [assumption].
+10 -member(A,B) | member(A,C) | member(f2(B,C),B).  [assumption].
+11 -member(A,B) | member(A,C) | -member(f2(B,C),C).  [assumption].
+12 union(A,B) = union(B,A).  [assumption].
+13 subset(A,A).  [assumption].
+14 A = B | member(f3(B,A),B) | -member(f4(B,A),B).  [assumption].
+15 A = B | member(f3(B,A),B) | member(f4(B,A),A).  [assumption].
+16 A = B | -member(f3(B,A),A) | -member(f4(B,A),B).  [assumption].
+17 A = B | -member(f3(B,A),A) | member(f4(B,A),A).  [assumption].
+18 member(A,B) | -member(A,C) | C != B.  [assumption].
+19 member(A,B) | -member(A,C) | member(f5(B,C),B) | -member(f6(B,C),B).  [assumption].
+20 member(A,B) | -member(A,C) | member(f5(B,C),B) | member(f6(B,C),C).  [assumption].
+21 member(A,B) | -member(A,C) | -member(f5(B,C),C) | -member(f6(B,C),B).  [assumption].
+22 member(A,B) | -member(A,C) | -member(f5(B,C),C) | member(f6(B,C),C).  [assumption].
+23 member(A,B) | -member(A,C) | B != C.  [assumption].
+24 member(A,B) | -member(A,C) | member(f7(C,B),C) | -member(f8(C,B),C).  [assumption].
+25 member(A,B) | -member(A,C) | member(f7(C,B),C) | member(f8(C,B),B).  [assumption].
+26 member(A,B) | -member(A,C) | -member(f7(C,B),B) | -member(f8(C,B),C).  [assumption].
+27 member(A,B) | -member(A,C) | -member(f7(C,B),B) | member(f8(C,B),B).  [assumption].
+28 subset(c1,union(c2,c3)).  [assumption].
+29 -subset(difference(c1,c3),c2).  [assumption].
+30 member(A,B) | -member(A,union(B,B)).  [factor(3,a,b)].
+31 member(f5(A,B),A) | -member(f5(A,B),B) | -member(f6(A,B),A).  [factor(19,a,c)].
+32 member(f5(A,B),A) | -member(f5(A,B),B) | member(f6(A,B),B).  [factor(20,a,c)].
+33 member(f8(A,B),B) | -member(f8(A,B),A) | member(f7(A,B),A).  [factor(24,b,d)].
+34 member(f8(A,B),B) | -member(f8(A,B),A) | -member(f7(A,B),B).  [factor(26,b,d)].
+end_of_list.
+
+formulas(demodulators).
+12 union(A,B) = union(B,A).  [assumption].
+        % (lex-dep)
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.00 seconds.
+
+given #1 (I,wt=8): 1 member(A,union(B,C)) | -member(A,B).  [assumption].
+
+given #2 (I,wt=8): 2 member(A,union(B,C)) | -member(A,C).  [assumption].
+
+given #3 (I,wt=11): 3 member(A,B) | member(A,C) | -member(A,union(B,C)).  [assumption].
+
+given #4 (I,wt=11): 4 member(A,difference(B,C)) | -member(A,B) | member(A,C).  [assumption].
+
+given #5 (I,wt=8): 5 member(A,B) | -member(A,difference(B,C)).  [assumption].
+
+given #6 (I,wt=8): 6 -member(A,B) | -member(A,difference(C,B)).  [assumption].
+
+given #7 (I,wt=8): 7 subset(A,B) | member(f1(A,B),A).  [assumption].
+
+given #8 (I,wt=8): 8 subset(A,B) | -member(f1(A,B),B).  [assumption].
+
+given #9 (I,wt=9): 9 -member(A,B) | member(A,C) | -subset(B,C).  [assumption].
+
+given #10 (I,wt=11): 10 -member(A,B) | member(A,C) | member(f2(B,C),B).  [assumption].
+
+given #11 (I,wt=11): 11 -member(A,B) | member(A,C) | -member(f2(B,C),C).  [assumption].
+
+given #12 (I,wt=7): 12 union(A,B) = union(B,A).  [assumption].
+
+given #13 (I,wt=3): 13 subset(A,A).  [assumption].
+
+given #14 (I,wt=13): 14 A = B | member(f3(B,A),B) | -member(f4(B,A),B).  [assumption].
+
+given #15 (I,wt=13): 15 A = B | member(f3(B,A),B) | member(f4(B,A),A).  [assumption].
+
+given #16 (I,wt=13): 16 A = B | -member(f3(B,A),A) | -member(f4(B,A),B).  [assumption].
+
+given #17 (I,wt=13): 17 A = B | -member(f3(B,A),A) | member(f4(B,A),A).  [assumption].
+
+given #18 (I,wt=9): 18 member(A,B) | -member(A,C) | C != B.  [assumption].
+
+given #19 (I,wt=16): 19 member(A,B) | -member(A,C) | member(f5(B,C),B) | -member(f6(B,C),B).  [assumption].
+
+given #20 (I,wt=16): 20 member(A,B) | -member(A,C) | member(f5(B,C),B) | member(f6(B,C),C).  [assumption].
+
+given #21 (I,wt=16): 21 member(A,B) | -member(A,C) | -member(f5(B,C),C) | -member(f6(B,C),B).  [assumption].
+
+given #22 (I,wt=16): 22 member(A,B) | -member(A,C) | -member(f5(B,C),C) | member(f6(B,C),C).  [assumption].
+
+given #23 (I,wt=9): 23 member(A,B) | -member(A,C) | B != C.  [assumption].
+
+given #24 (I,wt=16): 24 member(A,B) | -member(A,C) | member(f7(C,B),C) | -member(f8(C,B),C).  [assumption].
+
+given #25 (I,wt=16): 25 member(A,B) | -member(A,C) | member(f7(C,B),C) | member(f8(C,B),B).  [assumption].
+
+given #26 (I,wt=16): 26 member(A,B) | -member(A,C) | -member(f7(C,B),B) | -member(f8(C,B),C).  [assumption].
+
+given #27 (I,wt=16): 27 member(A,B) | -member(A,C) | -member(f7(C,B),B) | member(f8(C,B),B).  [assumption].
+
+given #28 (I,wt=5): 28 subset(c1,union(c2,c3)).  [assumption].
+
+given #29 (I,wt=5): 29 -subset(difference(c1,c3),c2).  [assumption].
+
+given #30 (I,wt=8): 30 member(A,B) | -member(A,union(B,B)).  [factor(3,a,b)].
+
+given #31 (I,wt=15): 31 member(f5(A,B),A) | -member(f5(A,B),B) | -member(f6(A,B),A).  [factor(19,a,c)].
+
+given #32 (I,wt=15): 32 member(f5(A,B),A) | -member(f5(A,B),B) | member(f6(A,B),B).  [factor(20,a,c)].
+
+given #33 (I,wt=15): 33 member(f8(A,B),B) | -member(f8(A,B),A) | member(f7(A,B),A).  [factor(24,b,d)].
+
+given #34 (I,wt=15): 34 member(f8(A,B),B) | -member(f8(A,B),A) | -member(f7(A,B),B).  [factor(26,b,d)].
+
+given #35 (A,wt=11): 35 -member(A,B) | member(A,C) | member(f1(B,C),B).  [resolve(9,c,7,a)].
+
+given #36 (F,wt=7): 57 -member(f1(difference(c1,c3),c2),c2).  [ur(8,a,29,a)].
+
+given #37 (F,wt=9): 59 -member(f1(difference(c1,c3),c2),union(c2,c2)).  [ur(30,a,57,a)].
+
+given #38 (F,wt=9): 60 -member(f1(difference(c1,c3),c2),difference(c2,A)).  [ur(5,a,57,a)].
+
+given #39 (F,wt=11): 62 -member(f1(difference(c1,c3),c2),difference(union(c2,c2),A)).  [ur(5,a,59,a)].
+
+given #40 (T,wt=8): 55 -member(A,c1) | member(A,union(c2,c3)).  [resolve(28,a,9,c)].
+
+given #41 (T,wt=9): 56 member(f1(difference(c1,c3),c2),difference(c1,c3)).  [resolve(29,a,7,a)].
+
+given #42 (T,wt=7): 90 member(f1(difference(c1,c3),c2),c1).  [resolve(56,a,5,b)].
+
+given #43 (T,wt=9): 106 member(f1(difference(c1,c3),c2),union(c2,c3)).  [resolve(90,a,55,a)].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.01 (+ 0.00) seconds.
+% Length of proof is 15.
+% Level of proof is 4.
+% Maximum clause weight is 11.000.
+% Given clauses 43.
+
+3 member(A,B) | member(A,C) | -member(A,union(B,C)).  [assumption].
+5 member(A,B) | -member(A,difference(B,C)).  [assumption].
+6 -member(A,B) | -member(A,difference(C,B)).  [assumption].
+7 subset(A,B) | member(f1(A,B),A).  [assumption].
+8 subset(A,B) | -member(f1(A,B),B).  [assumption].
+9 -member(A,B) | member(A,C) | -subset(B,C).  [assumption].
+28 subset(c1,union(c2,c3)).  [assumption].
+29 -subset(difference(c1,c3),c2).  [assumption].
+55 -member(A,c1) | member(A,union(c2,c3)).  [resolve(28,a,9,c)].
+56 member(f1(difference(c1,c3),c2),difference(c1,c3)).  [resolve(29,a,7,a)].
+57 -member(f1(difference(c1,c3),c2),c2).  [ur(8,a,29,a)].
+89 -member(f1(difference(c1,c3),c2),c3).  [resolve(56,a,6,b)].
+90 member(f1(difference(c1,c3),c2),c1).  [resolve(56,a,5,b)].
+106 member(f1(difference(c1,c3),c2),union(c2,c3)).  [resolve(90,a,55,a)].
+148 $F.  [resolve(106,a,3,c),unit_del(a,57),unit_del(b,89)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=43. Generated=227. Kept=147. proofs=1.
+Usable=43. Sos=89. Demods=1. Limbo=13, Disabled=31. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=79. Back_subsumed=2.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=1 (1 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=2023. Demod_rewrites=6.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=100. Nonunit_bsub_feature_tests=119.
+Megabytes=0.22.
+User_CPU=0.01, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+Exiting with 1 proof.
+
+Process 23968 exit (max_proofs) Tue Nov  3 16:59:16 2009
+
+============================== end of multisearch ====================
+
+All 2 subproblems have been proved, so we are done.
+
+Total user_CPU=0.04, system_CPU=0.00, wall_clock=0.
+
+THEOREM PROVED
+
+Exiting.
+
+Process 23966 exit (max_proofs) Tue Nov  3 16:59:16 2009

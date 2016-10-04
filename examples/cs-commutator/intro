@@ -1,0 +1,35 @@
+These theorems are based on the following paper.
+<UL>
+<LI>
+  R. Padmanabhan, W. McCune, R. Veroff,
+  "Levi's Commutator Theorems for Cancellative Semigroups",
+  to appear in <I>Semigroup Forum</I>.
+</UL>
+In group theory, if @ is the commutator operation,
+the following four properties are known to be equivalent.
+
+<pre>
+    <I>(x @ y) @ z = u @ (v @ w)</I>          (A) "associativity" of commutator
+    <I>(x @ y) * z = z * (x @ y)</I>          (N) nilpotency of class 2
+    <I>(x * y) @ z = (x @ z) * (y @ z)</I>    (D) distributivity of commutator
+    <I>x*y*z*y*x = y*x*z*x*y</I>              (E) CS essence of (N)
+</pre>
+
+In cancellative semigroups, we cannot define the commutator
+operation, because we don't necessarily have in inverse operation.
+<P>
+Consider, however, the following property of the commutator operation.
+
+<pre>
+    y * x * (x @ y) = x * y.    % CS admits commutator
+</pre>
+
+Then the four properties hold for cancellative semigroups.
+<P>
+Here are 24 proofs.  We prove all pairwise implications between the
+four properties for both group theory and cancellative semigroups.
+(Of course we only need 8 of these proofs.)
+<P>
+The file <TT>AD-gt.out</TT> means (A) -> (D) for group theory.
+
+

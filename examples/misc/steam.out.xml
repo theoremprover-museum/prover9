@@ -1,0 +1,992 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE proofs SYSTEM "proof3.dtd">
+
+<?xml-stylesheet type="text/xsl" href="proof3.xsl"?>
+
+<proofs number_of_proofs="1">
+
+<source>steam.out</source>
+
+<heading><![CDATA[
+Prover9 (32) version 2009-11A, November 2009.
+Process 4530 was started by mccune on cleo,
+Tue Nov  3 09:39:06 2009
+The command was "/home/mccune/LADR/bin/prover9 -f steam.in".
+]]></heading>
+
+<proof number="1" length="74" max_count="39">
+
+<comments><![CDATA[
+% Proof 1 at 0.02 (+ 0.00) seconds.
+% Length of proof is 74.
+% Level of proof is 10.
+% Maximum clause weight is 13.000.
+% Given clauses 44.
+
+]]></comments>
+
+  <clause id="1" type="assumption">
+    <literal><![CDATA[
+      Wolf(x) -> animal(x)
+    ]]></literal>
+    <attribute><![CDATA[
+      label(non_clause)
+    ]]></attribute>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="2" type="assumption">
+    <literal><![CDATA[
+      Fox(x) -> animal(x)
+    ]]></literal>
+    <attribute><![CDATA[
+      label(non_clause)
+    ]]></attribute>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="3" type="assumption">
+    <literal><![CDATA[
+      Bird(x) -> animal(x)
+    ]]></literal>
+    <attribute><![CDATA[
+      label(non_clause)
+    ]]></attribute>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="5" type="assumption">
+    <literal><![CDATA[
+      Snail(x) -> animal(x)
+    ]]></literal>
+    <attribute><![CDATA[
+      label(non_clause)
+    ]]></attribute>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="6" type="assumption">
+    <literal><![CDATA[
+      Grain(x) -> plant(x)
+    ]]></literal>
+    <attribute><![CDATA[
+      label(non_clause)
+    ]]></attribute>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="7" type="assumption">
+    <literal><![CDATA[
+      (exists x Wolf(x))
+    ]]></literal>
+    <attribute><![CDATA[
+      label(non_clause)
+    ]]></attribute>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="8" type="assumption">
+    <literal><![CDATA[
+      (exists x Fox(x))
+    ]]></literal>
+    <attribute><![CDATA[
+      label(non_clause)
+    ]]></attribute>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="9" type="assumption">
+    <literal><![CDATA[
+      (exists x Bird(x))
+    ]]></literal>
+    <attribute><![CDATA[
+      label(non_clause)
+    ]]></attribute>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="11" type="assumption">
+    <literal><![CDATA[
+      (exists x Snail(x))
+    ]]></literal>
+    <attribute><![CDATA[
+      label(non_clause)
+    ]]></attribute>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="12" type="assumption">
+    <literal><![CDATA[
+      (exists x Grain(x))
+    ]]></literal>
+    <attribute><![CDATA[
+      label(non_clause)
+    ]]></attribute>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="13" type="assumption">
+    <literal><![CDATA[
+      (all x (animal(x) -> (all y (plant(y) -> eats(x,y))) | (all z (animal(z) & Smaller(z,x) & (exists u (plant(u) & eats(z,u))) -> eats(x,z)))))
+    ]]></literal>
+    <attribute><![CDATA[
+      label(non_clause)
+    ]]></attribute>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="15" type="assumption">
+    <literal><![CDATA[
+      Snail(x) & Bird(y) -> Smaller(x,y)
+    ]]></literal>
+    <attribute><![CDATA[
+      label(non_clause)
+    ]]></attribute>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="16" type="assumption">
+    <literal><![CDATA[
+      Bird(x) & Fox(y) -> Smaller(x,y)
+    ]]></literal>
+    <attribute><![CDATA[
+      label(non_clause)
+    ]]></attribute>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="17" type="assumption">
+    <literal><![CDATA[
+      Fox(x) & Wolf(y) -> Smaller(x,y)
+    ]]></literal>
+    <attribute><![CDATA[
+      label(non_clause)
+    ]]></attribute>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="20" type="assumption">
+    <literal><![CDATA[
+      Snail(x) -> (exists y (plant(y) & eats(x,y)))
+    ]]></literal>
+    <attribute><![CDATA[
+      label(non_clause)
+    ]]></attribute>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="21" type="assumption">
+    <literal><![CDATA[
+      Wolf(x) & Fox(y) -> -eats(x,y)
+    ]]></literal>
+    <attribute><![CDATA[
+      label(non_clause)
+    ]]></attribute>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="22" type="assumption">
+    <literal><![CDATA[
+      Wolf(x) & Grain(y) -> -eats(x,y)
+    ]]></literal>
+    <attribute><![CDATA[
+      label(non_clause)
+    ]]></attribute>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="23" type="assumption">
+    <literal><![CDATA[
+      Bird(x) & Snail(y) -> -eats(x,y)
+    ]]></literal>
+    <attribute><![CDATA[
+      label(non_clause)
+    ]]></attribute>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="24" type="goal">
+    <literal><![CDATA[
+      (exists x exists y (animal(x) & animal(y) & eats(x,y) & (all z (Grain(z) -> eats(y,z)))))
+    ]]></literal>
+    <attribute><![CDATA[
+      label(non_clause)
+    ]]></attribute>
+    <attribute><![CDATA[
+      label(goal)
+    ]]></attribute>
+    <justification jstring="[goal].">
+      <j1 rule="goal"/>
+    </justification>
+  </clause>
+
+  <clause id="25" type="clausify">
+    <literal><![CDATA[
+      Wolf(c1)
+    ]]></literal>
+    <justification jstring="[clausify(7)].">
+      <j1 rule="clausify" parents="7"/>
+    </justification>
+  </clause>
+
+  <clause id="26" type="clausify">
+    <literal><![CDATA[
+      -Wolf(x)
+    ]]></literal>
+    <literal><![CDATA[
+      animal(x)
+    ]]></literal>
+    <justification jstring="[clausify(1)].">
+      <j1 rule="clausify" parents="1"/>
+    </justification>
+  </clause>
+
+  <clause id="27" type="clausify">
+    <literal><![CDATA[
+      -Fox(x)
+    ]]></literal>
+    <literal><![CDATA[
+      -Wolf(y)
+    ]]></literal>
+    <literal><![CDATA[
+      Smaller(x,y)
+    ]]></literal>
+    <justification jstring="[clausify(17)].">
+      <j1 rule="clausify" parents="17"/>
+    </justification>
+  </clause>
+
+  <clause id="28" type="clausify">
+    <literal><![CDATA[
+      -Wolf(x)
+    ]]></literal>
+    <literal><![CDATA[
+      -Fox(y)
+    ]]></literal>
+    <literal><![CDATA[
+      -eats(x,y)
+    ]]></literal>
+    <justification jstring="[clausify(21)].">
+      <j1 rule="clausify" parents="21"/>
+    </justification>
+  </clause>
+
+  <clause id="29" type="clausify">
+    <literal><![CDATA[
+      -Wolf(x)
+    ]]></literal>
+    <literal><![CDATA[
+      -Grain(y)
+    ]]></literal>
+    <literal><![CDATA[
+      -eats(x,y)
+    ]]></literal>
+    <justification jstring="[clausify(22)].">
+      <j1 rule="clausify" parents="22"/>
+    </justification>
+  </clause>
+
+  <clause id="30" type="clausify">
+    <literal><![CDATA[
+      Fox(c2)
+    ]]></literal>
+    <justification jstring="[clausify(8)].">
+      <j1 rule="clausify" parents="8"/>
+    </justification>
+  </clause>
+
+  <clause id="31" type="clausify">
+    <literal><![CDATA[
+      -Fox(x)
+    ]]></literal>
+    <literal><![CDATA[
+      animal(x)
+    ]]></literal>
+    <justification jstring="[clausify(2)].">
+      <j1 rule="clausify" parents="2"/>
+    </justification>
+  </clause>
+
+  <clause id="32" type="clausify">
+    <literal><![CDATA[
+      -Bird(x)
+    ]]></literal>
+    <literal><![CDATA[
+      -Fox(y)
+    ]]></literal>
+    <literal><![CDATA[
+      Smaller(x,y)
+    ]]></literal>
+    <justification jstring="[clausify(16)].">
+      <j1 rule="clausify" parents="16"/>
+    </justification>
+  </clause>
+
+  <clause id="33">
+    <literal><![CDATA[
+      -Fox(x)
+    ]]></literal>
+    <literal><![CDATA[
+      Smaller(x,c1)
+    ]]></literal>
+    <justification jstring="[resolve(27,b,25,a)].">
+      <j1 rule="resolve" parents="27 25"/>
+    </justification>
+  </clause>
+
+  <clause id="34">
+    <literal><![CDATA[
+      -Fox(x)
+    ]]></literal>
+    <literal><![CDATA[
+      -eats(c1,x)
+    ]]></literal>
+    <justification jstring="[resolve(28,a,25,a)].">
+      <j1 rule="resolve" parents="28 25"/>
+    </justification>
+  </clause>
+
+  <clause id="35" type="clausify">
+    <literal><![CDATA[
+      Bird(c3)
+    ]]></literal>
+    <justification jstring="[clausify(9)].">
+      <j1 rule="clausify" parents="9"/>
+    </justification>
+  </clause>
+
+  <clause id="36" type="clausify">
+    <literal><![CDATA[
+      -Bird(x)
+    ]]></literal>
+    <literal><![CDATA[
+      animal(x)
+    ]]></literal>
+    <justification jstring="[clausify(3)].">
+      <j1 rule="clausify" parents="3"/>
+    </justification>
+  </clause>
+
+  <clause id="38" type="clausify">
+    <literal><![CDATA[
+      -Snail(x)
+    ]]></literal>
+    <literal><![CDATA[
+      -Bird(y)
+    ]]></literal>
+    <literal><![CDATA[
+      Smaller(x,y)
+    ]]></literal>
+    <justification jstring="[clausify(15)].">
+      <j1 rule="clausify" parents="15"/>
+    </justification>
+  </clause>
+
+  <clause id="40" type="clausify">
+    <literal><![CDATA[
+      -Bird(x)
+    ]]></literal>
+    <literal><![CDATA[
+      -Snail(y)
+    ]]></literal>
+    <literal><![CDATA[
+      -eats(x,y)
+    ]]></literal>
+    <justification jstring="[clausify(23)].">
+      <j1 rule="clausify" parents="23"/>
+    </justification>
+  </clause>
+
+  <clause id="41">
+    <literal><![CDATA[
+      -Bird(x)
+    ]]></literal>
+    <literal><![CDATA[
+      Smaller(x,c2)
+    ]]></literal>
+    <justification jstring="[resolve(32,b,30,a)].">
+      <j1 rule="resolve" parents="32 30"/>
+    </justification>
+  </clause>
+
+  <clause id="48" type="clausify">
+    <literal><![CDATA[
+      Snail(c5)
+    ]]></literal>
+    <justification jstring="[clausify(11)].">
+      <j1 rule="clausify" parents="11"/>
+    </justification>
+  </clause>
+
+  <clause id="49" type="clausify">
+    <literal><![CDATA[
+      -Snail(x)
+    ]]></literal>
+    <literal><![CDATA[
+      animal(x)
+    ]]></literal>
+    <justification jstring="[clausify(5)].">
+      <j1 rule="clausify" parents="5"/>
+    </justification>
+  </clause>
+
+  <clause id="50" type="clausify">
+    <literal><![CDATA[
+      -Snail(x)
+    ]]></literal>
+    <literal><![CDATA[
+      plant(f2(x))
+    ]]></literal>
+    <justification jstring="[clausify(20)].">
+      <j1 rule="clausify" parents="20"/>
+    </justification>
+  </clause>
+
+  <clause id="51" type="clausify">
+    <literal><![CDATA[
+      -Snail(x)
+    ]]></literal>
+    <literal><![CDATA[
+      eats(x,f2(x))
+    ]]></literal>
+    <justification jstring="[clausify(20)].">
+      <j1 rule="clausify" parents="20"/>
+    </justification>
+  </clause>
+
+  <clause id="52">
+    <literal><![CDATA[
+      -Snail(x)
+    ]]></literal>
+    <literal><![CDATA[
+      Smaller(x,c3)
+    ]]></literal>
+    <justification jstring="[resolve(38,b,35,a)].">
+      <j1 rule="resolve" parents="38 35"/>
+    </justification>
+  </clause>
+
+  <clause id="53">
+    <literal><![CDATA[
+      -Snail(x)
+    ]]></literal>
+    <literal><![CDATA[
+      -eats(c3,x)
+    ]]></literal>
+    <justification jstring="[resolve(40,a,35,a)].">
+      <j1 rule="resolve" parents="40 35"/>
+    </justification>
+  </clause>
+
+  <clause id="54" type="clausify">
+    <literal><![CDATA[
+      Grain(c6)
+    ]]></literal>
+    <justification jstring="[clausify(12)].">
+      <j1 rule="clausify" parents="12"/>
+    </justification>
+  </clause>
+
+  <clause id="55" type="clausify">
+    <literal><![CDATA[
+      -Grain(x)
+    ]]></literal>
+    <literal><![CDATA[
+      plant(x)
+    ]]></literal>
+    <justification jstring="[clausify(6)].">
+      <j1 rule="clausify" parents="6"/>
+    </justification>
+  </clause>
+
+  <clause id="56" type="deny">
+    <literal><![CDATA[
+      -animal(x)
+    ]]></literal>
+    <literal><![CDATA[
+      -animal(y)
+    ]]></literal>
+    <literal><![CDATA[
+      -eats(x,y)
+    ]]></literal>
+    <literal><![CDATA[
+      Grain(f3(x,y))
+    ]]></literal>
+    <justification jstring="[deny(24)].">
+      <j1 rule="deny" parents="24"/>
+    </justification>
+  </clause>
+
+  <clause id="57">
+    <literal><![CDATA[
+      -Grain(x)
+    ]]></literal>
+    <literal><![CDATA[
+      -eats(c1,x)
+    ]]></literal>
+    <justification jstring="[resolve(29,a,25,a)].">
+      <j1 rule="resolve" parents="29 25"/>
+    </justification>
+  </clause>
+
+  <clause id="58">
+    <literal><![CDATA[
+      Smaller(c2,c1)
+    ]]></literal>
+    <justification jstring="[resolve(33,a,30,a)].">
+      <j1 rule="resolve" parents="33 30"/>
+    </justification>
+  </clause>
+
+  <clause id="59" type="clausify">
+    <literal><![CDATA[
+      -animal(x)
+    ]]></literal>
+    <literal><![CDATA[
+      -plant(y)
+    ]]></literal>
+    <literal><![CDATA[
+      eats(x,y)
+    ]]></literal>
+    <literal><![CDATA[
+      -animal(z)
+    ]]></literal>
+    <literal><![CDATA[
+      -Smaller(z,x)
+    ]]></literal>
+    <literal><![CDATA[
+      -plant(u)
+    ]]></literal>
+    <literal><![CDATA[
+      -eats(z,u)
+    ]]></literal>
+    <literal><![CDATA[
+      eats(x,z)
+    ]]></literal>
+    <justification jstring="[clausify(13)].">
+      <j1 rule="clausify" parents="13"/>
+    </justification>
+  </clause>
+
+  <clause id="60">
+    <literal><![CDATA[
+      Smaller(c3,c2)
+    ]]></literal>
+    <justification jstring="[resolve(41,a,35,a)].">
+      <j1 rule="resolve" parents="41 35"/>
+    </justification>
+  </clause>
+
+  <clause id="62">
+    <literal><![CDATA[
+      Smaller(c5,c3)
+    ]]></literal>
+    <justification jstring="[resolve(52,a,48,a)].">
+      <j1 rule="resolve" parents="52 48"/>
+    </justification>
+  </clause>
+
+  <clause id="63" type="deny">
+    <literal><![CDATA[
+      -animal(x)
+    ]]></literal>
+    <literal><![CDATA[
+      -animal(y)
+    ]]></literal>
+    <literal><![CDATA[
+      -eats(x,y)
+    ]]></literal>
+    <literal><![CDATA[
+      -eats(y,f3(x,y))
+    ]]></literal>
+    <justification jstring="[deny(24)].">
+      <j1 rule="deny" parents="24"/>
+    </justification>
+  </clause>
+
+  <clause id="64">
+    <literal><![CDATA[
+      animal(c1)
+    ]]></literal>
+    <justification jstring="[resolve(25,a,26,a)].">
+      <j1 rule="resolve" parents="25 26"/>
+    </justification>
+  </clause>
+
+  <clause id="65">
+    <literal><![CDATA[
+      animal(c2)
+    ]]></literal>
+    <justification jstring="[resolve(30,a,31,a)].">
+      <j1 rule="resolve" parents="30 31"/>
+    </justification>
+  </clause>
+
+  <clause id="66">
+    <literal><![CDATA[
+      -eats(c1,c2)
+    ]]></literal>
+    <justification jstring="[resolve(34,a,30,a)].">
+      <j1 rule="resolve" parents="34 30"/>
+    </justification>
+  </clause>
+
+  <clause id="67">
+    <literal><![CDATA[
+      animal(c3)
+    ]]></literal>
+    <justification jstring="[resolve(35,a,36,a)].">
+      <j1 rule="resolve" parents="35 36"/>
+    </justification>
+  </clause>
+
+  <clause id="72">
+    <literal><![CDATA[
+      animal(c5)
+    ]]></literal>
+    <justification jstring="[resolve(48,a,49,a)].">
+      <j1 rule="resolve" parents="48 49"/>
+    </justification>
+  </clause>
+
+  <clause id="73">
+    <literal><![CDATA[
+      plant(f2(c5))
+    ]]></literal>
+    <justification jstring="[resolve(50,a,48,a)].">
+      <j1 rule="resolve" parents="50 48"/>
+    </justification>
+  </clause>
+
+  <clause id="74">
+    <literal><![CDATA[
+      eats(c5,f2(c5))
+    ]]></literal>
+    <justification jstring="[resolve(51,a,48,a)].">
+      <j1 rule="resolve" parents="51 48"/>
+    </justification>
+  </clause>
+
+  <clause id="75">
+    <literal><![CDATA[
+      -eats(c3,c5)
+    ]]></literal>
+    <justification jstring="[resolve(53,a,48,a)].">
+      <j1 rule="resolve" parents="53 48"/>
+    </justification>
+  </clause>
+
+  <clause id="76">
+    <literal><![CDATA[
+      plant(c6)
+    ]]></literal>
+    <justification jstring="[resolve(54,a,55,a)].">
+      <j1 rule="resolve" parents="54 55"/>
+    </justification>
+  </clause>
+
+  <clause id="77">
+    <literal><![CDATA[
+      -animal(x)
+    ]]></literal>
+    <literal><![CDATA[
+      -animal(y)
+    ]]></literal>
+    <literal><![CDATA[
+      -eats(x,y)
+    ]]></literal>
+    <literal><![CDATA[
+      plant(f3(x,y))
+    ]]></literal>
+    <justification jstring="[resolve(56,d,55,a)].">
+      <j1 rule="resolve" parents="56 55"/>
+    </justification>
+  </clause>
+
+  <clause id="78">
+    <literal><![CDATA[
+      -eats(c1,c6)
+    ]]></literal>
+    <justification jstring="[resolve(57,a,54,a)].">
+      <j1 rule="resolve" parents="57 54"/>
+    </justification>
+  </clause>
+
+  <clause id="80">
+    <literal><![CDATA[
+      -animal(c1)
+    ]]></literal>
+    <literal><![CDATA[
+      -plant(x)
+    ]]></literal>
+    <literal><![CDATA[
+      eats(c1,x)
+    ]]></literal>
+    <literal><![CDATA[
+      -animal(c2)
+    ]]></literal>
+    <literal><![CDATA[
+      -plant(y)
+    ]]></literal>
+    <literal><![CDATA[
+      -eats(c2,y)
+    ]]></literal>
+    <literal><![CDATA[
+      eats(c1,c2)
+    ]]></literal>
+    <justification jstring="[resolve(58,a,59,e)].">
+      <j1 rule="resolve" parents="58 59"/>
+    </justification>
+  </clause>
+
+  <clause id="81">
+    <literal><![CDATA[
+      -plant(x)
+    ]]></literal>
+    <literal><![CDATA[
+      eats(c1,x)
+    ]]></literal>
+    <literal><![CDATA[
+      -plant(y)
+    ]]></literal>
+    <literal><![CDATA[
+      -eats(c2,y)
+    ]]></literal>
+    <justification jstring="[copy(80),unit_del(a,64),unit_del(d,65),unit_del(g,66)].">
+      <j1 rule="copy" parents="80"/>
+      <j2 rule="unit_del" parents="64"/>
+      <j2 rule="unit_del" parents="65"/>
+      <j2 rule="unit_del" parents="66"/>
+    </justification>
+  </clause>
+
+  <clause id="82">
+    <literal><![CDATA[
+      -animal(c2)
+    ]]></literal>
+    <literal><![CDATA[
+      -plant(x)
+    ]]></literal>
+    <literal><![CDATA[
+      eats(c2,x)
+    ]]></literal>
+    <literal><![CDATA[
+      -animal(c3)
+    ]]></literal>
+    <literal><![CDATA[
+      -plant(y)
+    ]]></literal>
+    <literal><![CDATA[
+      -eats(c3,y)
+    ]]></literal>
+    <literal><![CDATA[
+      eats(c2,c3)
+    ]]></literal>
+    <justification jstring="[resolve(60,a,59,e)].">
+      <j1 rule="resolve" parents="60 59"/>
+    </justification>
+  </clause>
+
+  <clause id="83">
+    <literal><![CDATA[
+      -plant(x)
+    ]]></literal>
+    <literal><![CDATA[
+      eats(c2,x)
+    ]]></literal>
+    <literal><![CDATA[
+      -plant(y)
+    ]]></literal>
+    <literal><![CDATA[
+      -eats(c3,y)
+    ]]></literal>
+    <literal><![CDATA[
+      eats(c2,c3)
+    ]]></literal>
+    <justification jstring="[copy(82),unit_del(a,65),unit_del(d,67)].">
+      <j1 rule="copy" parents="82"/>
+      <j2 rule="unit_del" parents="65"/>
+      <j2 rule="unit_del" parents="67"/>
+    </justification>
+  </clause>
+
+  <clause id="84">
+    <literal><![CDATA[
+      -animal(c3)
+    ]]></literal>
+    <literal><![CDATA[
+      -plant(x)
+    ]]></literal>
+    <literal><![CDATA[
+      eats(c3,x)
+    ]]></literal>
+    <literal><![CDATA[
+      -animal(c5)
+    ]]></literal>
+    <literal><![CDATA[
+      -plant(y)
+    ]]></literal>
+    <literal><![CDATA[
+      -eats(c5,y)
+    ]]></literal>
+    <literal><![CDATA[
+      eats(c3,c5)
+    ]]></literal>
+    <justification jstring="[resolve(62,a,59,e)].">
+      <j1 rule="resolve" parents="62 59"/>
+    </justification>
+  </clause>
+
+  <clause id="85">
+    <literal><![CDATA[
+      -plant(x)
+    ]]></literal>
+    <literal><![CDATA[
+      eats(c3,x)
+    ]]></literal>
+    <literal><![CDATA[
+      -plant(y)
+    ]]></literal>
+    <literal><![CDATA[
+      -eats(c5,y)
+    ]]></literal>
+    <justification jstring="[copy(84),unit_del(a,67),unit_del(d,72),unit_del(g,75)].">
+      <j1 rule="copy" parents="84"/>
+      <j2 rule="unit_del" parents="67"/>
+      <j2 rule="unit_del" parents="72"/>
+      <j2 rule="unit_del" parents="75"/>
+    </justification>
+  </clause>
+
+  <clause id="90">
+    <literal><![CDATA[
+      -plant(x)
+    ]]></literal>
+    <literal><![CDATA[
+      eats(c2,x)
+    ]]></literal>
+    <literal><![CDATA[
+      -eats(c3,x)
+    ]]></literal>
+    <literal><![CDATA[
+      eats(c2,c3)
+    ]]></literal>
+    <justification jstring="[factor(83,a,c)].">
+      <j1 rule="factor" parents="83"/>
+    </justification>
+  </clause>
+
+  <clause id="103">
+    <literal><![CDATA[
+      -eats(c2,c6)
+    ]]></literal>
+    <justification jstring="[ur(81,a,76,a,b,78,a,c,76,a)].">
+      <j1 rule="ur" parents="81 76 78 76"/>
+    </justification>
+  </clause>
+
+  <clause id="109">
+    <literal><![CDATA[
+      -plant(x)
+    ]]></literal>
+    <literal><![CDATA[
+      eats(c3,x)
+    ]]></literal>
+    <justification jstring="[resolve(85,d,74,a),unit_del(c,73)].">
+      <j1 rule="resolve" parents="85 74"/>
+      <j2 rule="unit_del" parents="73"/>
+    </justification>
+  </clause>
+
+  <clause id="113">
+    <literal><![CDATA[
+      eats(c3,c6)
+    ]]></literal>
+    <justification jstring="[resolve(109,a,76,a)].">
+      <j1 rule="resolve" parents="109 76"/>
+    </justification>
+  </clause>
+
+  <clause id="117">
+    <literal><![CDATA[
+      eats(c2,c3)
+    ]]></literal>
+    <justification jstring="[resolve(113,a,90,c),unit_del(a,76),unit_del(b,103)].">
+      <j1 rule="resolve" parents="113 90"/>
+      <j2 rule="unit_del" parents="76"/>
+      <j2 rule="unit_del" parents="103"/>
+    </justification>
+  </clause>
+
+  <clause id="124">
+    <literal><![CDATA[
+      plant(f3(c2,c3))
+    ]]></literal>
+    <justification jstring="[resolve(117,a,77,c),unit_del(a,65),unit_del(b,67)].">
+      <j1 rule="resolve" parents="117 77"/>
+      <j2 rule="unit_del" parents="65"/>
+      <j2 rule="unit_del" parents="67"/>
+    </justification>
+  </clause>
+
+  <clause id="125">
+    <literal><![CDATA[
+      -eats(c3,f3(c2,c3))
+    ]]></literal>
+    <justification jstring="[resolve(117,a,63,c),unit_del(a,65),unit_del(b,67)].">
+      <j1 rule="resolve" parents="117 63"/>
+      <j2 rule="unit_del" parents="65"/>
+      <j2 rule="unit_del" parents="67"/>
+    </justification>
+  </clause>
+
+  <clause id="133">
+    <literal><![CDATA[
+      $F
+    ]]></literal>
+    <justification jstring="[resolve(124,a,109,a),unit_del(a,125)].">
+      <j1 rule="resolve" parents="124 109"/>
+      <j2 rule="unit_del" parents="125"/>
+    </justification>
+  </clause>
+
+</proof>
+
+</proofs>

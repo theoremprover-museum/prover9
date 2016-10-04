@@ -1,0 +1,113 @@
+============================== directproof ===========================
+Prover9 (32) version Dec-2007, Dec 2007.
+Process 16151 was started by mccune on cleo,
+Thu Dec 13 11:06:36 2007
+The command was "/home/mccune/bin/prover9 -f oml-4basis.in".
+============================== end of head ===========================
+
+============================== end of input ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.01 (+ 0.00) seconds: CC.
+% Length of proof is 21.
+% Level of proof is 11.
+% Maximum clause weight is 19.
+% Given clauses 18.
+
+1 c(c(x)) = x # answer(CC) # label(non_clause) # label(goal).  [goal].
+2 x v (y v z) = y v (x v z) # label(AJ).  [assumption].
+3 x v (x ^ y) = x # label(B1).  [assumption].
+4 x ^ y = c(c(x) v c(y)) # label(DM).  [assumption].
+5 x v (c(x) ^ (x v y)) = x v y # label(OM).  [assumption].
+6 x v c(c(c(x)) v c(x v y)) = x v y.  [para(4(a,1),5(a,1,2))].
+7 c(c(c1)) != c1 # answer(CC).  [deny(1)].
+8 x v c(c(x) v c(y)) = x.  [para(4(a,1),3(a,1,2))].
+9 x v c(c(x) v y) = x.  [para(6(a,1),8(a,1,2,1))].
+10 x v c(c(x)) = x.  [para(8(a,1),8(a,1,2,1))].
+11 x v y = y v (x v c(c(y))).  [para(10(a,1),2(a,1,2))].
+12 x v (y v c(c(x))) = y v x.  [copy(11),flip(a)].
+13 x v c(y v c(x)) = x.  [para(12(a,1),9(a,1,2,1))].
+14 c(x) v c(x) = c(x).  [para(10(a,1),13(a,1,2,1))].
+15 x v c(c(x)) = c(c(x)) v x.  [para(14(a,1),12(a,1,2))].
+16 x = c(c(x)) v x.  [para(10(a,1),15(a,1))].
+17 c(c(x)) v x = x.  [copy(16),flip(a)].
+18 x v c(c(x)) = c(c(c(c(x)))) v x.  [para(17(a,1),12(a,1,2))].
+19 x = c(c(c(c(x)))) v x.  [para(10(a,1),18(a,1))].
+20 c(c(c(c(x)))) v x = x.  [copy(19),flip(a)].
+21 c(c(c(c(x)))) v c(c(c(c(c(c(c(x)))))) v c(x)) = c(c(c(c(x)))) v x.  [para(20(a,1),6(a,1,2,1,2,1))].
+22 c(c(c(c(x)))) v c(c(c(c(c(c(c(x)))))) v c(x)) = x.  [para(20(a,1),21(a,2))].
+23 c(c(c(x))) v c(x) = c(c(c(x))).  [para(20(a,1),9(a,1,2,1))].
+24 c(x) = c(c(c(x))).  [para(17(a,1),23(a,1))].
+25 c(c(c(x))) = c(x).  [copy(24),flip(a)].
+26 c(c(x)) v c(c(c(c(c(c(c(x)))))) v c(x)) = x.  [para(25(a,1),22(a,1,1,1))].
+27 c(c(x)) v c(c(c(c(c(x)))) v c(x)) = x.  [para(25(a,1),26(a,1,2,1,1,1,1,1))].
+28 c(c(x)) v c(c(c(x)) v c(x)) = x.  [para(25(a,1),27(a,1,2,1,1,1))].
+29 c(c(x)) v c(y v c(x)) = c(c(x)).  [para(25(a,1),13(a,1,2,1,2))].
+30 c(c(x)) = x.  [para(29(a,1),28(a,1))].
+31 $F # answer(CC).  [resolve(30,a,7,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 2 at 0.12 (+ 0.00) seconds: ONE.
+% Length of proof is 33.
+% Level of proof is 19.
+% Maximum clause weight is 19.
+% Given clauses 50.
+
+1 x v c(x) = y v c(y) # answer(ONE) # label(non_clause) # label(goal).  [goal].
+2 x v (y v z) = y v (x v z) # label(AJ).  [assumption].
+3 x v (x ^ y) = x # label(B1).  [assumption].
+4 x ^ y = c(c(x) v c(y)) # label(DM).  [assumption].
+5 x v (c(x) ^ (x v y)) = x v y # label(OM).  [assumption].
+6 x v c(c(c(x)) v c(x v y)) = x v y.  [para(4(a,1),5(a,1,2))].
+7 c3 v c(c3) != c2 v c(c2) # answer(ONE).  [deny(1)].
+8 x v c(c(x) v c(y)) = x.  [para(4(a,1),3(a,1,2))].
+9 x v (y v z) = y v (x v c(c(c(y)) v c(y v z))).  [para(6(a,1),2(a,1,2))].
+10 x v (y v c(c(c(x)) v c(x v z))) = y v (x v z).  [copy(9),flip(a)].
+11 x v c(c(x) v y) = x.  [para(6(a,1),8(a,1,2,1))].
+12 x v c(c(x)) = x.  [para(8(a,1),8(a,1,2,1))].
+13 x v y = y v (x v c(c(y))).  [para(12(a,1),2(a,1,2))].
+14 x v (y v c(c(x))) = y v x.  [copy(13),flip(a)].
+15 x v c(y v (c(x) v z)) = x.  [para(2(a,1),11(a,1,2,1))].
+16 x v c(y v c(x)) = x.  [para(14(a,1),11(a,1,2,1))].
+17 x v c(x) = c(x) v (x v y).  [para(11(a,1),10(a,1,2))].
+18 x v c(x) = x v (c(x) v y).  [para(2(a,1),17(a,2))].
+19 x v (c(x) v y) = x v c(x).  [copy(18),flip(a)].
+20 c(x) v c(x) = c(x).  [para(12(a,1),16(a,1,2,1))].
+21 x v c(c(x)) = c(c(x)) v x.  [para(20(a,1),14(a,1,2))].
+22 x = c(c(x)) v x.  [para(12(a,1),21(a,1))].
+23 c(c(x)) v x = x.  [copy(22),flip(a)].
+24 x v y = c(c(y)) v (x v y).  [para(23(a,1),2(a,1,2))].
+25 c(c(x)) v (y v x) = y v x.  [copy(24),flip(a)].
+26 x v c(c(x)) = c(c(c(c(x)))) v x.  [para(23(a,1),14(a,1,2))].
+27 x = c(c(c(c(x)))) v x.  [para(12(a,1),26(a,1))].
+28 c(c(c(c(x)))) v x = x.  [copy(27),flip(a)].
+29 c(c(c(c(x)))) v c(c(c(c(c(c(c(x)))))) v c(x)) = c(c(c(c(x)))) v x.  [para(28(a,1),6(a,1,2,1,2,1))].
+30 c(c(c(c(x)))) v c(c(c(c(c(c(c(x)))))) v c(x)) = x.  [para(28(a,1),29(a,2))].
+31 c(c(c(x))) v c(x) = c(c(c(x))).  [para(28(a,1),11(a,1,2,1))].
+32 c(x) = c(c(c(x))).  [para(23(a,1),31(a,1))].
+33 c(c(c(x))) = c(x).  [copy(32),flip(a)].
+34 c(c(x)) v c(c(c(c(c(c(c(x)))))) v c(x)) = x.  [para(33(a,1),30(a,1,1,1))].
+35 c(c(x)) v c(c(c(c(c(x)))) v c(x)) = x.  [para(33(a,1),34(a,1,2,1,1,1,1,1))].
+36 c(c(x)) v c(c(c(x)) v c(x)) = x.  [para(33(a,1),35(a,1,2,1,1,1))].
+37 c(c(x)) v c(y v c(x)) = c(c(x)).  [para(33(a,1),16(a,1,2,1,2))].
+38 c(c(x)) = x.  [para(37(a,1),36(a,1))].
+39 x v (y v x) = y v x.  [para(38(a,1),25(a,1,1))].
+40 x v c(y v (z v c(x))) = x.  [para(39(a,1),15(a,1,2,1,2))].
+41 x v c(y v c(y)) = x.  [para(19(a,1),40(a,1,2,1))].
+42 c(x v c(x)) v y = y v c(x v c(x)).  [para(41(a,1),39(a,1,2))].
+43 c(x v c(x)) v y = y.  [para(41(a,1),42(a,2))].
+44 c(x v c(x)) = c(y v c(y)).  [para(43(a,1),41(a,1))].
+45 c(x v c(x)) = c_0.  [new_symbol(44)].
+46 c(c_0) = x v c(x).  [para(45(a,1),38(a,1,1))].
+49 x v c(x) = y v c(y).  [para(46(a,1),46(a,1))].
+50 $F # answer(ONE).  [resolve(49,a,7,a)].
+
+============================== end of proof ==========================
+
+% Directproof did 1 transformation(s) on 2 proof(s).

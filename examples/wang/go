@@ -1,0 +1,34 @@
+#!/bin/csh
+
+
+if ($#argv != 2) then
+	echo "need 2 args: bin-directory ouput-extension"
+	exit(1)
+endif
+
+set d=$1
+set out=$2
+
+# job wang1
+
+$d/prover9 -f wang.in wang1.in > wang1.$out
+
+# job wang2
+
+$d/prover9 -f wang.in wang2.in > wang2.$out
+
+# job wang3
+
+$d/prover9 -f wang.in wang3.in > wang3.$out
+
+# job wang1-eq
+
+$d/prover9 -f wang-eq.in wang1-eq.in > wang1-eq.$out
+
+# job wang2-eq
+
+$d/prover9 -f wang-eq.in wang2-eq.in > wang2-eq.$out
+
+# job wang3-eq
+
+$d/prover9 -f wang-eq.in wang3-eq.in > wang3-eq.$out

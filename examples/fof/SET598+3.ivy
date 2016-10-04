@@ -1,0 +1,87 @@
+;; ============================== prooftrans ============================
+;; FOF-Prover9 (32) version 2009-11A, November 2009.
+;; Process 23969 was started by mccune on cleo,
+;; Tue Nov  3 16:59:16 2009
+;; The command was "/home/mccune/LADR/bin/fof-prover9 -f SET598+3.in".
+;; ============================== end of head ===========================
+
+;; BEGINNING OF PROOF OBJECT
+(
+(1 (input) (subset (intersection v0 v1) v0) NIL)
+(30 (input) (not (subset (c1) (c2))) NIL)
+(31 (input) (= (intersection (c2) (c3)) (c1)) NIL)
+(32 (flip 31 ()) (= (c1) (intersection (c2) (c3))) NIL)
+(39A (paramod 32 (1) 30 (1 1)) (not (subset (intersection (c2) (c3)) (c2))) NIL)
+(41 (instantiate 1 ((v0 . (c2)) (v1 . (c3)))) (subset (intersection (c2) (c3)) (c2)) NIL)
+(39 (resolve 41 () 39A ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(1 (input) (subset (intersection v0 v1) v0) NIL)
+(14 (input) (= (intersection v0 v1) (intersection v1 v0)) NIL)
+(30 (input) (= (intersection (c2) (c3)) (c1)) NIL)
+(31 (flip 30 ()) (= (c1) (intersection (c2) (c3))) NIL)
+(32 (input) (not (subset (c1) (c3))) NIL)
+(33 (paramod 31 (1) 32 (1 1)) (not (subset (intersection (c2) (c3)) (c3))) NIL)
+(51 (instantiate 14 ()) (= (intersection v0 v1) (intersection v1 v0)) NIL)
+(52 (paramod 51 (1) 1 (1)) (subset (intersection v1 v0) v0) NIL)
+(49 (instantiate 52 ((v1 . v0) (v0 . v1))) (subset (intersection v0 v1) v1) NIL)
+(53 (instantiate 49 ((v0 . (c2)) (v1 . (c3)))) (subset (intersection (c2) (c3)) (c3)) NIL)
+(50 (resolve 53 () 33 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(2 (input) (or (not (subset v0 v1)) (or (not (subset v0 v2)) (subset v0 (intersection v1 v2)))) NIL)
+(30 (input) (= (intersection (c2) (c3)) (c1)) NIL)
+(31 (flip 30 ()) (= (c1) (intersection (c2) (c3))) NIL)
+(32 (input) (subset (c4) (c2)) NIL)
+(33 (input) (subset (c4) (c3)) NIL)
+(34 (input) (not (subset (c4) (c1))) NIL)
+(35 (paramod 31 (1) 34 (1 2)) (not (subset (c4) (intersection (c2) (c3)))) NIL)
+(84 (instantiate 2 ((v0 . (c4)) (v2 . (c3)))) (or (not (subset (c4) v1)) (or (not (subset (c4) (c3))) (subset (c4) (intersection v1 (c3))))) NIL)
+(85 (resolve 84 (2 1) 33 ()) (or (not (subset (c4) v1)) (subset (c4) (intersection v1 (c3)))) NIL)
+(81A (instantiate 85 ((v1 . v0))) (or (not (subset (c4) v0)) (subset (c4) (intersection v0 (c3)))) NIL)
+(86 (instantiate 81A ((v0 . (c2)))) (or (not (subset (c4) (c2))) (subset (c4) (intersection (c2) (c3)))) NIL)
+(81B (resolve 86 (2) 35 ()) (not (subset (c4) (c2))) NIL)
+(81 (resolve 32 () 81B ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(1 (input) (subset (intersection v0 v1) v0) NIL)
+(2 (input) (or (not (subset v0 v1)) (or (not (subset v0 v2)) (subset v0 (intersection v1 v2)))) NIL)
+(11 (input) (or (= v0 v1) (or (not (subset v1 v0)) (not (subset v0 v1)))) NIL)
+(14 (input) (= (intersection v0 v1) (intersection v1 v0)) NIL)
+(30 (input) (subset (c1) (c2)) NIL)
+(31 (input) (not (= (intersection (c2) (c3)) (c1))) NIL)
+(32 (input) (subset (c1) (c3)) NIL)
+(33 (input) (or (not (subset v0 (c2))) (or (not (subset v0 (c3))) (subset v0 (c1)))) NIL)
+(170 (instantiate 14 ()) (= (intersection v0 v1) (intersection v1 v0)) NIL)
+(171 (paramod 170 (1) 1 (1)) (subset (intersection v1 v0) v0) NIL)
+(49 (instantiate 171 ((v1 . v0) (v0 . v1))) (subset (intersection v0 v1) v1) NIL)
+(172 (instantiate 2 ((v0 . (c1)) (v1 . v101) (v2 . (c2)))) (or (not (subset (c1) v101)) (or (not (subset (c1) (c2))) (subset (c1) (intersection v101 (c2))))) NIL)
+(173 (resolve 30 () 172 (2 1)) (or (not (subset (c1) v101)) (subset (c1) (intersection v101 (c2)))) NIL)
+(70 (instantiate 173 ((v101 . v0))) (or (not (subset (c1) v0)) (subset (c1) (intersection v0 (c2)))) NIL)
+(174 (instantiate 70 ((v0 . (c3)))) (or (not (subset (c1) (c3))) (subset (c1) (intersection (c3) (c2)))) NIL)
+(142A (resolve 174 (1) 32 ()) (subset (c1) (intersection (c3) (c2))) NIL)
+(175 (instantiate 14 ((v0 . (c3)) (v1 . (c2)))) (= (intersection (c3) (c2)) (intersection (c2) (c3))) NIL)
+(142 (paramod 175 (1) 142A (2)) (subset (c1) (intersection (c2) (c3))) NIL)
+(176 (instantiate 11 ((v0 . (c1)) (v1 . (intersection (c2) (c3))))) (or (= (c1) (intersection (c2) (c3))) (or (not (subset (intersection (c2) (c3)) (c1))) (not (subset (c1) (intersection (c2) (c3)))))) NIL)
+(147A (resolve 142 () 176 (2 2)) (or (= (c1) (intersection (c2) (c3))) (not (subset (intersection (c2) (c3)) (c1)))) NIL)
+(147B (flip 147A (1)) (or (= (intersection (c2) (c3)) (c1)) (not (subset (intersection (c2) (c3)) (c1)))) NIL)
+(147 (resolve 31 () 147B (1)) (not (subset (intersection (c2) (c3)) (c1))) NIL)
+(177 (instantiate 33 ((v0 . (intersection v100 (c3))))) (or (not (subset (intersection v100 (c3)) (c2))) (or (not (subset (intersection v100 (c3)) (c3))) (subset (intersection v100 (c3)) (c1)))) NIL)
+(178 (instantiate 49 ((v0 . v100) (v1 . (c3)))) (subset (intersection v100 (c3)) (c3)) NIL)
+(179 (resolve 177 (2 1) 178 ()) (or (not (subset (intersection v100 (c3)) (c2))) (subset (intersection v100 (c3)) (c1))) NIL)
+(164A (instantiate 179 ((v100 . v0))) (or (not (subset (intersection v0 (c3)) (c2))) (subset (intersection v0 (c3)) (c1))) NIL)
+(180 (instantiate 164A ((v0 . (c2)))) (or (not (subset (intersection (c2) (c3)) (c2))) (subset (intersection (c2) (c3)) (c1))) NIL)
+(164B (resolve 180 (2) 147 ()) (not (subset (intersection (c2) (c3)) (c2))) NIL)
+(181 (instantiate 1 ((v0 . (c2)) (v1 . (c3)))) (subset (intersection (c2) (c3)) (c2)) NIL)
+(164 (resolve 181 () 164B ()) false NIL)
+)
+;; END OF PROOF OBJECT

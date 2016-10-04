@@ -1,0 +1,123 @@
+============================== directproof ===========================
+Prover9 (32) version Dec-2007, Dec 2007.
+Process 15672 was started by mccune on cleo,
+Thu Dec 13 11:01:05 2007
+The command was "/home/mccune/bin/prover9 -f rp-ident.in".
+============================== end of head ===========================
+
+============================== end of input ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.94 (+ 0.00) seconds.
+% Length of proof is 47.
+% Level of proof is 19.
+% Maximum clause weight is 23.
+% Given clauses 97.
+
+1 ((x * y) * z) * u = ((u * y) * z) * x # label(non_clause) # label(goal).  [goal].
+2 (x * e) * x = x.  [assumption].
+3 x * (x * y) = y.  [assumption].
+4 (x * y) * (z * u) = (x * z) * (y * u).  [assumption].
+5 ((x * x) * x) * x = e.  [assumption].
+6 ((c4 * c2) * c3) * c1 != ((c1 * c2) * c3) * c4.  [deny(1)].
+7 e * (e * e) = e * e.  [para(2(a,1),2(a,1,1))].
+8 e = e * e.  [para(3(a,1),7(a,1))].
+9 e * e = e.  [copy(8),flip(a)].
+10 x * (y * z) = ((x * e) * y) * (x * z).  [para(2(a,1),4(a,1,1))].
+11 ((x * e) * y) * (x * z) = x * (y * z).  [copy(10),flip(a)].
+12 (x * y) * z = (x * (z * e)) * (y * z).  [para(2(a,1),4(a,1,2))].
+13 (x * (y * e)) * (z * y) = (x * z) * y.  [copy(12),flip(a)].
+14 x * (y * z) = (u * y) * ((u * x) * z).  [para(3(a,1),4(a,1,1))].
+15 (x * y) * ((x * z) * u) = z * (y * u).  [copy(14),flip(a)].
+16 (x * y) * z = (x * u) * (y * (u * z)).  [para(3(a,1),4(a,1,2))].
+17 (x * y) * (z * (y * u)) = (x * z) * u.  [copy(16),flip(a)].
+18 ((x * x) * x) * e = x.  [para(5(a,1),3(a,1,2))].
+19 e * (x * y) = (e * x) * (e * y).  [para(9(a,1),4(a,1,1))].
+20 (e * x) * (e * y) = e * (x * y).  [copy(19),flip(a)].
+21 (x * y) * e = (x * e) * (y * e).  [para(9(a,1),4(a,1,2))].
+22 (x * e) * (y * e) = (x * y) * e.  [copy(21),flip(a)].
+23 x * ((x * x) * x) = (x * x) * x.  [para(18(a,1),2(a,1,1))].
+24 (e * x) * y = e * (x * (e * y)).  [para(3(a,1),20(a,1,2))].
+25 e * (x * (e * y)) = (e * x) * y.  [copy(24),flip(a)].
+26 ((x * e) * y) * z = x * (y * (x * z)).  [para(3(a,1),11(a,1,2))].
+27 ((x * y) * e) * (z * u) = ((x * e) * z) * ((y * e) * u).  [para(22(a,1),4(a,1,1))].
+28 ((x * e) * y) * ((z * e) * u) = ((x * z) * e) * (y * u).  [copy(27),flip(a)].
+29 (x * e) * (((x * e) * (x * e)) * (x * e)) = x * ((x * e) * e).  [para(11(a,1),23(a,2))].
+30 (x * e) * (((x * x) * e) * (x * e)) = x * ((x * e) * e).  [para(22(a,1),29(a,1,2,1))].
+31 (x * e) * (((x * x) * x) * e) = x * ((x * e) * e).  [para(22(a,1),30(a,1,2))].
+32 (x * e) * x = x * ((x * e) * e).  [para(18(a,1),31(a,1,2))].
+33 x = x * ((x * e) * e).  [para(2(a,1),32(a,1))].
+34 x * ((x * e) * e) = x.  [copy(33),flip(a)].
+35 x * x = (x * e) * e.  [para(34(a,1),3(a,1,2))].
+36 (x * e) * e = x * x.  [copy(35),flip(a)].
+37 (x * e) * (x * y) = x * ((((x * e) * e) * e) * y).  [para(34(a,1),11(a,1,1))].
+38 x * ((((x * e) * e) * e) * y) = (x * e) * (x * y).  [copy(37),flip(a)].
+39 (x * e) * (x * x) = e.  [para(36(a,1),3(a,1,2))].
+40 (x * x) * (x * y) = x * (e * y).  [para(36(a,1),11(a,1,1))].
+41 ((x * e) * y) * ((x * e) * e) = x * (y * x).  [para(36(a,2),11(a,1,2))].
+42 ((x * x) * e) * (y * e) = x * (y * x).  [para(28(a,1),41(a,1))].
+43 ((x * x) * y) * e = x * (y * x).  [para(22(a,1),42(a,1))].
+44 (x * x) * (y * e) = ((x * e) * y) * e.  [para(36(a,1),22(a,1,1))].
+45 ((x * e) * y) * e = (x * x) * (y * e).  [copy(44),flip(a)].
+46 e * (x * y) = (y * x) * y.  [para(3(a,1),13(a,1,1))].
+47 (x * y) * x = e * (y * x).  [copy(46),flip(a)].
+48 e = (x * x) * (e * x).  [para(39(a,1),4(a,1))].
+49 (x * x) * (e * x) = e.  [copy(48),flip(a)].
+50 (x * x) * e = e * x.  [para(49(a,1),3(a,1,2))].
+51 (((x * x) * e) * y) * (e * x) = (x * x) * (y * e).  [para(50(a,1),11(a,1,2))].
+52 ((e * x) * y) * (e * x) = (x * x) * (y * e).  [para(50(a,1),51(a,1,1,1))].
+53 e * (y * (e * x)) = (x * x) * (y * e).  [para(47(a,1),52(a,1))].
+54 (e * y) * x = (x * x) * (y * e).  [para(25(a,1),53(a,1))].
+55 (x * x) * (y * e) = (e * y) * x.  [copy(54),flip(a)].
+56 (e * x) * e = (x * x) * (x * x).  [para(50(a,1),36(a,1,1))].
+57 e * (x * e) = (x * x) * (x * x).  [para(47(a,1),56(a,1))].
+58 e * (x * e) = x * (e * x).  [para(40(a,1),57(a,2))].
+59 ((x * e) * y) * e = (e * y) * x.  [para(55(a,1),45(a,2))].
+60 x * (((e * e) * x) * y) = (x * e) * (x * y).  [para(59(a,1),38(a,1,2,1))].
+61 x * ((e * x) * y) = (x * e) * (x * y).  [para(9(a,1),60(a,1,2,1,1))].
+62 (x * e) * (x * y) = x * ((e * x) * y).  [copy(61),flip(a)].
+63 x * ((e * x) * x) = e.  [para(62(a,1),39(a,1))].
+64 (x * y) * z = u * (y * ((x * u) * z)).  [para(3(a,1),15(a,1,2))].
+65 x * (y * ((z * x) * u)) = (z * y) * u.  [copy(64),flip(a)].
+66 (x * (y * z)) * (u * w) = ((v5 * y) * u) * (((v5 * x) * z) * w).  [para(15(a,1),4(a,1,1))].
+67 ((x * y) * z) * (((x * u) * w) * v5) = (u * (y * w)) * (z * v5).  [copy(66),flip(a)].
+68 (x * y) * e = x * (y * (e * x)).  [para(49(a,1),15(a,1,2))].
+69 x * (y * (e * x)) = (x * y) * e.  [copy(68),flip(a)].
+70 x * e = (e * x) * x.  [para(63(a,1),3(a,1,2))].
+71 (e * x) * x = x * e.  [copy(70),flip(a)].
+72 ((x * y) * z) * (((x * u) * w) * v5) = w * ((y * (u * z)) * v5).  [para(17(a,1),15(a,1,1))].
+73 (x * (y * z)) * (u * w) = z * ((y * (x * u)) * w).  [para(67(a,1),72(a,1))].
+74 (x * e) * (y * (x * z)) = ((e * x) * y) * z.  [para(71(a,1),17(a,1,1))].
+75 (e * ((x * x) * y)) * ((x * x) * y) = x * (y * x).  [para(43(a,1),71(a,2))].
+76 y * (((x * x) * (e * (x * x))) * y) = x * (y * x).  [para(73(a,1),75(a,1))].
+77 y * ((e * ((x * x) * e)) * y) = x * (y * x).  [para(58(a,2),76(a,1,2,1))].
+78 y * ((e * (e * x)) * y) = x * (y * x).  [para(50(a,1),77(a,1,2,1,2))].
+79 x * (y * x) = y * (x * y).  [para(3(a,1),78(a,1,2,1))].
+80 x * (y * (x * y)) = y * x.  [para(79(a,1),3(a,1,2))].
+81 ((x * e) * y) * (x * (x * y)) = y * x.  [para(80(a,1),11(a,2))].
+82 ((x * e) * y) * y = y * x.  [para(3(a,1),81(a,1,2))].
+83 ((x * (y * x)) * z) * z = z * ((x * x) * y).  [para(43(a,1),82(a,1,1,1))].
+84 ((x * e) * (e * (x * y))) * y = x * ((x * y) * e).  [para(71(a,1),26(a,2,2))].
+85 (((e * x) * e) * y) * y = x * ((x * y) * e).  [para(74(a,1),84(a,1,1))].
+86 ((e * (x * e)) * y) * y = x * ((x * y) * e).  [para(47(a,1),85(a,1,1,1))].
+87 y * ((e * e) * x) = x * ((x * y) * e).  [para(83(a,1),86(a,1))].
+88 y * (e * x) = x * ((x * y) * e).  [para(9(a,1),87(a,1,2,1))].
+89 x * ((x * y) * e) = y * (e * x).  [copy(88),flip(a)].
+90 ((((x * e) * y) * e) * z) * ((e * y) * x) = ((x * e) * y) * (z * e).  [para(59(a,1),11(a,1,2))].
+91 (((e * y) * x) * z) * ((e * y) * x) = ((x * e) * y) * (z * e).  [para(59(a,1),90(a,1,1,1))].
+92 e * (z * ((e * y) * x)) = ((x * e) * y) * (z * e).  [para(47(a,1),91(a,1))].
+93 ((x * e) * y) * (z * e) = e * (z * ((e * y) * x)).  [copy(92),flip(a)].
+94 ((x * e) * y) * ((z * e) * ((y * u) * e)) = ((x * z) * e) * (u * (e * y)).  [para(89(a,1),28(a,2,2))].
+95 ((x * e) * y) * ((z * (y * u)) * e) = ((x * z) * e) * (u * (e * y)).  [para(22(a,1),94(a,1,2))].
+96 e * ((z * (y * u)) * ((e * y) * x)) = ((x * z) * e) * (u * (e * y)).  [para(93(a,1),95(a,1))].
+97 e * (u * ((y * (z * (e * y))) * x)) = ((x * z) * e) * (u * (e * y)).  [para(73(a,1),96(a,1,2))].
+98 e * (u * (((y * z) * e) * x)) = ((x * z) * e) * (u * (e * y)).  [para(69(a,1),97(a,1,2,2,1))].
+99 ((y * z) * u) * x = ((x * z) * e) * (u * (e * y)).  [para(65(a,1),98(a,1))].
+100 ((x * y) * z) * u = ((u * y) * z) * x.  [para(17(a,1),99(a,2))].
+101 $F.  [resolve(100,a,6,a)].
+
+============================== end of proof ==========================
+
+% Directproof did 0 transformation(s) on 1 proof(s).

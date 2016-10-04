@@ -1,0 +1,81 @@
+<HTML>
+<HEAD>
+<TITLE>Prover9 Examples: Uniquely Complemented Lattices
+</TITLE>
+</HEAD>
+
+<BODY BGCOLOR=white>
+<H1>Prover9 Examples: Uniquely Complemented Lattices
+</H1>
+
+These theorems are on Huntington equations, that is,
+equations that force uniquely complemented lattices
+to be Boolean.  Examples are distributivity and modularity.
+<P>
+This work is part of a
+<a href="http://www.mcs.anl.gov/~mccune/papers/uc-lattice">
+project of Padmanabhan, Veroff, and McCune</a>.
+
+<HR>
+
+The following job shows that lattice identity H27 is a
+Huntington identitiy by proving distributivity in uniquely
+complemented lattices.
+
+<!-- job H27d -->
+<blockquote><tt>prover9 -f <a href="lt.in">lt.in</a> <a href="uc.in">uc.in</a> <a href="H27d.in">H27d.in</a> &gt; <a href="H27d.out">H27d.out</a> ; ### ( <a href="H27d.out.xml">H27d.out.xml</a> )</tt></blockquote>
+
+
+Same for H65.
+
+<!-- job H65d -->
+<blockquote><tt>prover9 -f <a href="lt.in">lt.in</a> <a href="uc.in">uc.in</a> <a href="H65d.in">H65d.in</a> &gt; <a href="H65d.out">H65d.out</a> ; ### ( <a href="H65d.out.xml">H65d.out.xml</a> )</tt></blockquote>
+
+
+The following four jobs show that lattice identities H42, H49, H78, and H7 are
+Huntington identities by proving <i>a &le; b -> b' &le; a</i> in
+uniquely complemented lattices.
+<p /> H42 is Huntington.
+
+<!-- job H42 -->
+<blockquote><tt>prover9 -f <a href="lt.in">lt.in</a> <a href="uc.in">uc.in</a> <a href="H42.in">H42.in</a> &gt; <a href="H42.out">H42.out</a> ; ### ( <a href="H42.out.xml">H42.out.xml</a> )</tt></blockquote>
+
+
+H49 is Huntington.
+
+<!-- job H49 -->
+<blockquote><tt>prover9 -f <a href="lt.in">lt.in</a> <a href="uc.in">uc.in</a> <a href="H49.in">H49.in</a> &gt; <a href="H49.out">H49.out</a> ; ### ( <a href="H49.out.xml">H49.out.xml</a> )</tt></blockquote>
+
+
+H78 is Huntington.
+
+<!-- job H78b -->
+<blockquote><tt>prover9 -f <a href="lt.in">lt.in</a> <a href="uc.in">uc.in</a> <a href="H78b.in">H78b.in</a> &gt; <a href="H78b.out">H78b.out</a> ; ### ( <a href="H78b.out.xml">H78b.out.xml</a> )</tt></blockquote>
+
+
+H7 is Huntington.
+
+<!-- job H7b -->
+<blockquote><tt>prover9 -f <a href="lt.in">lt.in</a> <a href="uc.in">uc.in</a> <a href="H7b.in">H7b.in</a> &gt; <a href="H7b.out">H7b.out</a> ; ### ( <a href="H7b.out.xml">H7b.out.xml</a> )</tt></blockquote>
+
+
+Huntington identity H33 imples Huntington H34
+in ordinary lattice theory (without complementation).
+
+
+<!-- job H33-H34 -->
+<blockquote><tt>prover9 -f <a href="lt.in">lt.in</a> <a href="H33-H34.in">H33-H34.in</a> &gt; <a href="H33-H34.out">H33-H34.out</a> ; ### ( <a href="H33-H34.out.xml">H33-H34.out.xml</a> )</tt></blockquote>
+
+
+Same for H39 implies H3.
+
+<!-- job H39-H3 -->
+<blockquote><tt>prover9 -f <a href="lt.in">lt.in</a> <a href="H39-H3.in">H39-H3.in</a> &gt; <a href="H39-H3.out">H39-H3.out</a> ; ### ( <a href="H39-H3.out.xml">H39-H3.out.xml</a> )</tt></blockquote>
+
+
+
+
+<HR>
+
+</BODY>
+</HTML>

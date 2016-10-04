@@ -1,0 +1,15 @@
+#!/bin/csh
+
+if ($#argv != 2) then
+	echo "need 2 args: bin-directory ouput-extension"
+	exit(1)
+endif
+
+set d=$1
+set out=$2
+
+$d/prover9 -t 7200 -f LT.in > LT-base.$out
+
+$d/prover9 -f BA2.in > BA2-base.$out
+
+$d/prover9 -f MOL-base.in > MOL-base.$out

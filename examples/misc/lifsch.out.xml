@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE proofs SYSTEM "proof3.dtd">
+
+<?xml-stylesheet type="text/xsl" href="proof3.xsl"?>
+
+<proofs number_of_proofs="1">
+
+<source>lifsch.out</source>
+
+<heading><![CDATA[
+Prover9 (32) version 2009-11A, November 2009.
+Process 4533 was started by mccune on cleo,
+Tue Nov  3 09:39:06 2009
+The command was "/home/mccune/LADR/bin/prover9 -f lifsch.in".
+]]></heading>
+
+<proof number="1" length="32" max_count="54">
+
+<comments><![CDATA[
+% Proof 1 at 0.35 (+ 0.00) seconds.
+% Length of proof is 32.
+% Level of proof is 22.
+% Maximum clause weight is 34.000.
+% Given clauses 101.
+
+]]></comments>
+
+  <clause id="1" type="goal">
+    <literal><![CDATA[
+      (exists x exists y all z exists u exists w ((-p(z,z) | p(x,x) | -s(u,x)) & (s(x,z) | -s(z,u) | q(w,w)) & (q(y,z) | -q(z,w) | s(y,y))))
+    ]]></literal>
+    <attribute><![CDATA[
+      label(non_clause)
+    ]]></attribute>
+    <attribute><![CDATA[
+      label(goal)
+    ]]></attribute>
+    <justification jstring="[goal].">
+      <j1 rule="goal"/>
+    </justification>
+  </clause>
+
+  <clause id="5" type="deny">
+    <literal><![CDATA[
+      p(f1(x,y),f1(x,y))
+    ]]></literal>
+    <literal><![CDATA[
+      -s(x,f1(x,y))
+    ]]></literal>
+    <literal><![CDATA[
+      -s(y,y)
+    ]]></literal>
+    <justification jstring="[deny(1)].">
+      <j1 rule="deny" parents="1"/>
+    </justification>
+  </clause>
+
+  <clause id="7" type="deny">
+    <literal><![CDATA[
+      p(f1(x,y),f1(x,y))
+    ]]></literal>
+    <literal><![CDATA[
+      s(f1(x,y),z)
+    ]]></literal>
+    <literal><![CDATA[
+      q(f1(x,y),u)
+    ]]></literal>
+    <justification jstring="[deny(1)].">
+      <j1 rule="deny" parents="1"/>
+    </justification>
+  </clause>
+
+  <clause id="13" type="deny">
+    <literal><![CDATA[
+      -p(x,x)
+    ]]></literal>
+    <literal><![CDATA[
+      -s(x,f1(x,y))
+    ]]></literal>
+    <literal><![CDATA[
+      -s(y,y)
+    ]]></literal>
+    <justification jstring="[deny(1)].">
+      <j1 rule="deny" parents="1"/>
+    </justification>
+  </clause>
+
+  <clause id="15" type="deny">
+    <literal><![CDATA[
+      -p(x,x)
+    ]]></literal>
+    <literal><![CDATA[
+      s(f1(x,y),z)
+    ]]></literal>
+    <literal><![CDATA[
+      q(f1(x,y),u)
+    ]]></literal>
+    <justification jstring="[deny(1)].">
+      <j1 rule="deny" parents="1"/>
+    </justification>
+  </clause>
+
+  <clause id="22" type="deny">
+    <literal><![CDATA[
+      s(x,y)
+    ]]></literal>
+    <literal><![CDATA[
+      -s(y,f1(y,z))
+    ]]></literal>
+    <literal><![CDATA[
+      -s(z,z)
+    ]]></literal>
+    <justification jstring="[deny(1)].">
+      <j1 rule="deny" parents="1"/>
+    </justification>
+  </clause>
+
+  <clause id="26" type="deny">
+    <literal><![CDATA[
+      s(x,y)
+    ]]></literal>
+    <literal><![CDATA[
+      -q(z,z)
+    ]]></literal>
+    <literal><![CDATA[
+      -q(u,f1(y,u))
+    ]]></literal>
+    <justification jstring="[deny(1)].">
+      <j1 rule="deny" parents="1"/>
+    </justification>
+  </clause>
+
+  <clause id="49">
+    <literal><![CDATA[
+      -s(f1(x,y),f1(f1(x,y),z))
+    ]]></literal>
+    <literal><![CDATA[
+      -s(z,z)
+    ]]></literal>
+    <literal><![CDATA[
+      -s(x,f1(x,y))
+    ]]></literal>
+    <literal><![CDATA[
+      -s(y,y)
+    ]]></literal>
+    <justification jstring="[resolve(13,a,5,a)].">
+      <j1 rule="resolve" parents="13 5"/>
+    </justification>
+  </clause>
+
+  <clause id="68">
+    <literal><![CDATA[
+      s(f1(f1(x,y),z),u)
+    ]]></literal>
+    <literal><![CDATA[
+      q(f1(f1(x,y),z),w)
+    ]]></literal>
+    <literal><![CDATA[
+      s(f1(x,y),v5)
+    ]]></literal>
+    <literal><![CDATA[
+      q(f1(x,y),v6)
+    ]]></literal>
+    <justification jstring="[resolve(15,a,7,a)].">
+      <j1 rule="resolve" parents="15 7"/>
+    </justification>
+  </clause>
+
+  <clause id="100">
+    <literal><![CDATA[
+      -s(f1(x,y),f1(f1(x,y),y))
+    ]]></literal>
+    <literal><![CDATA[
+      -s(y,y)
+    ]]></literal>
+    <literal><![CDATA[
+      -s(x,f1(x,y))
+    ]]></literal>
+    <justification jstring="[factor(49,b,d)].">
+      <j1 rule="factor" parents="49"/>
+    </justification>
+  </clause>
+
+  <clause id="196">
+    <literal><![CDATA[
+      s(f1(f1(x,y),z),u)
+    ]]></literal>
+    <literal><![CDATA[
+      s(f1(x,y),w)
+    ]]></literal>
+    <literal><![CDATA[
+      q(f1(x,y),v5)
+    ]]></literal>
+    <literal><![CDATA[
+      s(v6,v7)
+    ]]></literal>
+    <literal><![CDATA[
+      -q(v8,v8)
+    ]]></literal>
+    <justification jstring="[resolve(68,b,26,c)].">
+      <j1 rule="resolve" parents="68 26"/>
+    </justification>
+  </clause>
+
+  <clause id="243">
+    <literal><![CDATA[
+      s(f1(f1(x,y),z),u)
+    ]]></literal>
+    <literal><![CDATA[
+      s(f1(x,y),w)
+    ]]></literal>
+    <literal><![CDATA[
+      q(f1(x,y),v5)
+    ]]></literal>
+    <literal><![CDATA[
+      -q(v6,v6)
+    ]]></literal>
+    <justification jstring="[factor(196,a,d)].">
+      <j1 rule="factor" parents="196"/>
+    </justification>
+  </clause>
+
+  <clause id="1199">
+    <literal><![CDATA[
+      s(f1(f1(x,y),z),u)
+    ]]></literal>
+    <literal><![CDATA[
+      s(f1(x,y),w)
+    ]]></literal>
+    <literal><![CDATA[
+      q(f1(x,y),v5)
+    ]]></literal>
+    <literal><![CDATA[
+      s(f1(f1(v6,v7),v8),v9)
+    ]]></literal>
+    <literal><![CDATA[
+      s(f1(v6,v7),v10)
+    ]]></literal>
+    <literal><![CDATA[
+      q(f1(v6,v7),v11)
+    ]]></literal>
+    <justification jstring="[resolve(243,d,68,b)].">
+      <j1 rule="resolve" parents="243 68"/>
+    </justification>
+  </clause>
+
+  <clause id="1207">
+    <literal><![CDATA[
+      s(f1(f1(x,y),z),u)
+    ]]></literal>
+    <literal><![CDATA[
+      s(f1(x,y),w)
+    ]]></literal>
+    <literal><![CDATA[
+      q(f1(x,y),v5)
+    ]]></literal>
+    <literal><![CDATA[
+      s(f1(x,y),v6)
+    ]]></literal>
+    <literal><![CDATA[
+      q(f1(x,y),v7)
+    ]]></literal>
+    <justification jstring="[factor(1199,a,d)].">
+      <j1 rule="factor" parents="1199"/>
+    </justification>
+  </clause>
+
+  <clause id="1210">
+    <literal><![CDATA[
+      s(f1(f1(x,y),z),u)
+    ]]></literal>
+    <literal><![CDATA[
+      s(f1(x,y),w)
+    ]]></literal>
+    <literal><![CDATA[
+      q(f1(x,y),v5)
+    ]]></literal>
+    <literal><![CDATA[
+      q(f1(x,y),v6)
+    ]]></literal>
+    <justification jstring="[factor(1207,b,d)].">
+      <j1 rule="factor" parents="1207"/>
+    </justification>
+  </clause>
+
+  <clause id="1212">
+    <literal><![CDATA[
+      s(f1(f1(x,y),z),u)
+    ]]></literal>
+    <literal><![CDATA[
+      s(f1(x,y),w)
+    ]]></literal>
+    <literal><![CDATA[
+      q(f1(x,y),v5)
+    ]]></literal>
+    <justification jstring="[factor(1210,c,d)].">
+      <j1 rule="factor" parents="1210"/>
+    </justification>
+  </clause>
+
+  <clause id="1248">
+    <literal><![CDATA[
+      s(f1(f1(x,y),z),u)
+    ]]></literal>
+    <literal><![CDATA[
+      s(f1(x,y),w)
+    ]]></literal>
+    <literal><![CDATA[
+      s(v5,v6)
+    ]]></literal>
+    <literal><![CDATA[
+      -q(v7,v7)
+    ]]></literal>
+    <justification jstring="[resolve(1212,c,26,c)].">
+      <j1 rule="resolve" parents="1212 26"/>
+    </justification>
+  </clause>
+
+  <clause id="1262">
+    <literal><![CDATA[
+      s(f1(f1(x,y),z),u)
+    ]]></literal>
+    <literal><![CDATA[
+      s(f1(x,y),w)
+    ]]></literal>
+    <literal><![CDATA[
+      -q(v5,v5)
+    ]]></literal>
+    <justification jstring="[factor(1248,a,c)].">
+      <j1 rule="factor" parents="1248"/>
+    </justification>
+  </clause>
+
+  <clause id="1268">
+    <literal><![CDATA[
+      s(f1(f1(x,y),z),u)
+    ]]></literal>
+    <literal><![CDATA[
+      s(f1(x,y),w)
+    ]]></literal>
+    <literal><![CDATA[
+      s(f1(f1(v5,v6),v7),v8)
+    ]]></literal>
+    <literal><![CDATA[
+      s(f1(v5,v6),v9)
+    ]]></literal>
+    <justification jstring="[resolve(1262,c,1212,c)].">
+      <j1 rule="resolve" parents="1262 1212"/>
+    </justification>
+  </clause>
+
+  <clause id="1269">
+    <literal><![CDATA[
+      s(f1(f1(x,y),z),u)
+    ]]></literal>
+    <literal><![CDATA[
+      s(f1(x,y),w)
+    ]]></literal>
+    <literal><![CDATA[
+      s(f1(x,y),v5)
+    ]]></literal>
+    <justification jstring="[factor(1268,a,c)].">
+      <j1 rule="factor" parents="1268"/>
+    </justification>
+  </clause>
+
+  <clause id="1270">
+    <literal><![CDATA[
+      s(f1(f1(x,y),z),u)
+    ]]></literal>
+    <literal><![CDATA[
+      s(f1(x,y),w)
+    ]]></literal>
+    <justification jstring="[factor(1269,b,c)].">
+      <j1 rule="factor" parents="1269"/>
+    </justification>
+  </clause>
+
+  <clause id="1273">
+    <literal><![CDATA[
+      s(f1(x,y),z)
+    ]]></literal>
+    <literal><![CDATA[
+      -s(u,u)
+    ]]></literal>
+    <literal><![CDATA[
+      -s(f1(x,y),f1(f1(x,y),u))
+    ]]></literal>
+    <justification jstring="[resolve(1270,a,100,a)].">
+      <j1 rule="resolve" parents="1270 100"/>
+    </justification>
+  </clause>
+
+  <clause id="1289">
+    <literal><![CDATA[
+      s(f1(x,y),z)
+    ]]></literal>
+    <literal><![CDATA[
+      s(u,f1(f1(x,y),w))
+    ]]></literal>
+    <literal><![CDATA[
+      -s(v5,v5)
+    ]]></literal>
+    <justification jstring="[resolve(1270,a,22,b)].">
+      <j1 rule="resolve" parents="1270 22"/>
+    </justification>
+  </clause>
+
+  <clause id="1313">
+    <literal><![CDATA[
+      s(f1(x,y),f1(f1(x,y),z))
+    ]]></literal>
+    <literal><![CDATA[
+      -s(u,u)
+    ]]></literal>
+    <justification jstring="[factor(1289,a,b)].">
+      <j1 rule="factor" parents="1289"/>
+    </justification>
+  </clause>
+
+  <clause id="1320">
+    <literal><![CDATA[
+      s(f1(x,y),f1(f1(x,y),z))
+    ]]></literal>
+    <literal><![CDATA[
+      s(f1(u,w),v5)
+    ]]></literal>
+    <justification jstring="[resolve(1313,b,1270,a)].">
+      <j1 rule="resolve" parents="1313 1270"/>
+    </justification>
+  </clause>
+
+  <clause id="1322">
+    <literal><![CDATA[
+      s(f1(x,y),f1(f1(x,y),z))
+    ]]></literal>
+    <justification jstring="[factor(1320,a,b)].">
+      <j1 rule="factor" parents="1320"/>
+    </justification>
+  </clause>
+
+  <clause id="1333">
+    <literal><![CDATA[
+      s(f1(x,y),z)
+    ]]></literal>
+    <literal><![CDATA[
+      -s(u,u)
+    ]]></literal>
+    <justification jstring="[back_unit_del(1273),unit_del(c,1322)].">
+      <j1 rule="back_unit_del" parents="1273"/>
+      <j2 rule="unit_del" parents="1322"/>
+    </justification>
+  </clause>
+
+  <clause id="1334">
+    <literal><![CDATA[
+      -s(x,x)
+    ]]></literal>
+    <literal><![CDATA[
+      -s(y,f1(y,x))
+    ]]></literal>
+    <justification jstring="[back_unit_del(100),unit_del(a,1322)].">
+      <j1 rule="back_unit_del" parents="100"/>
+      <j2 rule="unit_del" parents="1322"/>
+    </justification>
+  </clause>
+
+  <clause id="1346">
+    <literal><![CDATA[
+      s(f1(x,y),z)
+    ]]></literal>
+    <literal><![CDATA[
+      s(f1(u,w),v5)
+    ]]></literal>
+    <justification jstring="[resolve(1333,b,1270,a)].">
+      <j1 rule="resolve" parents="1333 1270"/>
+    </justification>
+  </clause>
+
+  <clause id="1348">
+    <literal><![CDATA[
+      s(f1(x,y),z)
+    ]]></literal>
+    <justification jstring="[factor(1346,a,b)].">
+      <j1 rule="factor" parents="1346"/>
+    </justification>
+  </clause>
+
+  <clause id="1349">
+    <literal><![CDATA[
+      -s(x,x)
+    ]]></literal>
+    <justification jstring="[resolve(1348,a,1334,b)].">
+      <j1 rule="resolve" parents="1348 1334"/>
+    </justification>
+  </clause>
+
+  <clause id="1350">
+    <literal><![CDATA[
+      $F
+    ]]></literal>
+    <justification jstring="[resolve(1349,a,1348,a)].">
+      <j1 rule="resolve" parents="1349 1348"/>
+    </justification>
+  </clause>
+
+</proof>
+
+</proofs>

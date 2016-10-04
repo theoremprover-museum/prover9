@@ -1,0 +1,895 @@
+============================== directproof ===========================
+FOF-Prover9 (32) version Dec-2007, Dec 2007.
+Process 16009 was started by mccune on cleo,
+Thu Dec 13 11:03:13 2007
+The command was "/home/mccune/bin/fof-prover9 -f ALG189+1.in".
+============================== end of head ===========================
+
+============================== end of input ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 3.
+% Level of proof is 1.
+% Maximum clause weight is 5.
+% Given clauses 0.
+
+1 op(e0,e0) = e0.  [assumption].
+2 op(op(e0,e0),e0) != e0.  [assumption].
+7 op(op(e0,e0),e0) = e0.  [para(1(a,2),1(a,1,1))].
+8 $F.  [resolve(7,a,2,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 4.
+% Level of proof is 1.
+% Maximum clause weight is 5.
+% Given clauses 0.
+
+1 op(e0,e1) = e3.  [assumption].
+2 op(e3,e1) = e0.  [assumption].
+3 op(op(e0,e1),e1) != e0.  [assumption].
+8 op(op(e0,e1),e1) = e0.  [para(1(a,2),2(a,1,1))].
+9 $F.  [resolve(8,a,3,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 4.
+% Level of proof is 1.
+% Maximum clause weight is 5.
+% Given clauses 0.
+
+1 op(e0,e2) = e4.  [assumption].
+2 op(e4,e2) = e0.  [assumption].
+3 op(op(e0,e2),e2) != e0.  [assumption].
+8 op(op(e0,e2),e2) = e0.  [para(1(a,2),2(a,1,1))].
+9 $F.  [resolve(8,a,3,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 4.
+% Level of proof is 1.
+% Maximum clause weight is 5.
+% Given clauses 0.
+
+1 op(e0,e3) = e2.  [assumption].
+2 op(e2,e3) = e0.  [assumption].
+3 op(op(e0,e3),e3) != e0.  [assumption].
+8 op(op(e0,e3),e3) = e0.  [para(1(a,2),2(a,1,1))].
+9 $F.  [resolve(8,a,3,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 4.
+% Level of proof is 1.
+% Maximum clause weight is 5.
+% Given clauses 0.
+
+1 op(e0,e4) = e1.  [assumption].
+2 op(e1,e4) = e0.  [assumption].
+3 op(op(e0,e4),e4) != e0.  [assumption].
+8 op(op(e0,e4),e4) = e0.  [para(1(a,2),2(a,1,1))].
+9 $F.  [resolve(8,a,3,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 4.
+% Level of proof is 1.
+% Maximum clause weight is 5.
+% Given clauses 0.
+
+1 op(e1,e0) = e2.  [assumption].
+2 op(e2,e0) = e1.  [assumption].
+3 op(op(e1,e0),e0) != e1.  [assumption].
+8 op(op(e1,e0),e0) = e1.  [para(1(a,2),2(a,1,1))].
+9 $F.  [resolve(8,a,3,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 3.
+% Level of proof is 1.
+% Maximum clause weight is 5.
+% Given clauses 0.
+
+1 op(e1,e1) = e1.  [assumption].
+2 op(op(e1,e1),e1) != e1.  [assumption].
+7 op(op(e1,e1),e1) = e1.  [para(1(a,2),1(a,1,1))].
+8 $F.  [resolve(7,a,2,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 4.
+% Level of proof is 1.
+% Maximum clause weight is 5.
+% Given clauses 0.
+
+1 op(e1,e2) = e3.  [assumption].
+2 op(e3,e2) = e1.  [assumption].
+3 op(op(e1,e2),e2) != e1.  [assumption].
+8 op(op(e1,e2),e2) = e1.  [para(1(a,2),2(a,1,1))].
+9 $F.  [resolve(8,a,3,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 4.
+% Level of proof is 1.
+% Maximum clause weight is 5.
+% Given clauses 0.
+
+1 op(e1,e3) = e4.  [assumption].
+2 op(e4,e3) = e1.  [assumption].
+3 op(op(e1,e3),e3) != e1.  [assumption].
+8 op(op(e1,e3),e3) = e1.  [para(1(a,2),2(a,1,1))].
+9 $F.  [resolve(8,a,3,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 4.
+% Level of proof is 1.
+% Maximum clause weight is 5.
+% Given clauses 0.
+
+1 op(e0,e4) = e1.  [assumption].
+2 op(e1,e4) = e0.  [assumption].
+3 op(op(e1,e4),e4) != e1.  [assumption].
+8 op(op(e1,e4),e4) = e1.  [para(2(a,2),1(a,1,1))].
+9 $F.  [resolve(8,a,3,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 4.
+% Level of proof is 1.
+% Maximum clause weight is 5.
+% Given clauses 0.
+
+1 op(e1,e0) = e2.  [assumption].
+2 op(e2,e0) = e1.  [assumption].
+3 op(op(e2,e0),e0) != e2.  [assumption].
+8 op(op(e2,e0),e0) = e2.  [para(2(a,2),1(a,1,1))].
+9 $F.  [resolve(8,a,3,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 4.
+% Level of proof is 1.
+% Maximum clause weight is 5.
+% Given clauses 0.
+
+1 op(e2,e1) = e4.  [assumption].
+2 op(e4,e1) = e2.  [assumption].
+3 op(op(e2,e1),e1) != e2.  [assumption].
+8 op(op(e2,e1),e1) = e2.  [para(1(a,2),2(a,1,1))].
+9 $F.  [resolve(8,a,3,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 3.
+% Level of proof is 1.
+% Maximum clause weight is 5.
+% Given clauses 0.
+
+1 op(e2,e2) = e2.  [assumption].
+2 op(op(e2,e2),e2) != e2.  [assumption].
+7 op(op(e2,e2),e2) = e2.  [para(1(a,2),1(a,1,1))].
+8 $F.  [resolve(7,a,2,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 4.
+% Level of proof is 1.
+% Maximum clause weight is 5.
+% Given clauses 0.
+
+1 op(e0,e3) = e2.  [assumption].
+2 op(e2,e3) = e0.  [assumption].
+3 op(op(e2,e3),e3) != e2.  [assumption].
+8 op(op(e2,e3),e3) = e2.  [para(2(a,2),1(a,1,1))].
+9 $F.  [resolve(8,a,3,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 4.
+% Level of proof is 1.
+% Maximum clause weight is 5.
+% Given clauses 0.
+
+1 op(e2,e4) = e3.  [assumption].
+2 op(e3,e4) = e2.  [assumption].
+3 op(op(e2,e4),e4) != e2.  [assumption].
+8 op(op(e2,e4),e4) = e2.  [para(1(a,2),2(a,1,1))].
+9 $F.  [resolve(8,a,3,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 4.
+% Level of proof is 1.
+% Maximum clause weight is 5.
+% Given clauses 0.
+
+1 op(e3,e0) = e4.  [assumption].
+2 op(e4,e0) = e3.  [assumption].
+3 op(op(e3,e0),e0) != e3.  [assumption].
+8 op(op(e3,e0),e0) = e3.  [para(1(a,2),2(a,1,1))].
+9 $F.  [resolve(8,a,3,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 4.
+% Level of proof is 1.
+% Maximum clause weight is 5.
+% Given clauses 0.
+
+1 op(e0,e1) = e3.  [assumption].
+2 op(e3,e1) = e0.  [assumption].
+3 op(op(e3,e1),e1) != e3.  [assumption].
+8 op(op(e3,e1),e1) = e3.  [para(2(a,2),1(a,1,1))].
+9 $F.  [resolve(8,a,3,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 4.
+% Level of proof is 1.
+% Maximum clause weight is 5.
+% Given clauses 0.
+
+1 op(e1,e2) = e3.  [assumption].
+2 op(e3,e2) = e1.  [assumption].
+3 op(op(e3,e2),e2) != e3.  [assumption].
+8 op(op(e3,e2),e2) = e3.  [para(2(a,2),1(a,1,1))].
+9 $F.  [resolve(8,a,3,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 3.
+% Level of proof is 1.
+% Maximum clause weight is 5.
+% Given clauses 0.
+
+1 op(e3,e3) = e3.  [assumption].
+2 op(op(e3,e3),e3) != e3.  [assumption].
+7 op(op(e3,e3),e3) = e3.  [para(1(a,2),1(a,1,1))].
+8 $F.  [resolve(7,a,2,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 4.
+% Level of proof is 1.
+% Maximum clause weight is 5.
+% Given clauses 0.
+
+1 op(e2,e4) = e3.  [assumption].
+2 op(e3,e4) = e2.  [assumption].
+3 op(op(e3,e4),e4) != e3.  [assumption].
+8 op(op(e3,e4),e4) = e3.  [para(2(a,2),1(a,1,1))].
+9 $F.  [resolve(8,a,3,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 4.
+% Level of proof is 1.
+% Maximum clause weight is 5.
+% Given clauses 0.
+
+1 op(e3,e0) = e4.  [assumption].
+2 op(e4,e0) = e3.  [assumption].
+3 op(op(e4,e0),e0) != e4.  [assumption].
+8 op(op(e4,e0),e0) = e4.  [para(2(a,2),1(a,1,1))].
+9 $F.  [resolve(8,a,3,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 4.
+% Level of proof is 1.
+% Maximum clause weight is 5.
+% Given clauses 0.
+
+1 op(e2,e1) = e4.  [assumption].
+2 op(e4,e1) = e2.  [assumption].
+3 op(op(e4,e1),e1) != e4.  [assumption].
+8 op(op(e4,e1),e1) = e4.  [para(2(a,2),1(a,1,1))].
+9 $F.  [resolve(8,a,3,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 4.
+% Level of proof is 1.
+% Maximum clause weight is 5.
+% Given clauses 0.
+
+1 op(e0,e2) = e4.  [assumption].
+2 op(e4,e2) = e0.  [assumption].
+3 op(op(e4,e2),e2) != e4.  [assumption].
+8 op(op(e4,e2),e2) = e4.  [para(2(a,2),1(a,1,1))].
+9 $F.  [resolve(8,a,3,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 4.
+% Level of proof is 1.
+% Maximum clause weight is 5.
+% Given clauses 0.
+
+1 op(e1,e3) = e4.  [assumption].
+2 op(e4,e3) = e1.  [assumption].
+3 op(op(e4,e3),e3) != e4.  [assumption].
+8 op(op(e4,e3),e3) = e4.  [para(2(a,2),1(a,1,1))].
+9 $F.  [resolve(8,a,3,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 3.
+% Level of proof is 1.
+% Maximum clause weight is 5.
+% Given clauses 0.
+
+1 op(e4,e4) = e4.  [assumption].
+2 op(op(e4,e4),e4) != e4.  [assumption].
+7 op(op(e4,e4),e4) = e4.  [para(1(a,2),1(a,1,1))].
+8 $F.  [resolve(7,a,2,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 3.
+% Level of proof is 1.
+% Maximum clause weight is 5.
+% Given clauses 0.
+
+1 op(e0,e0) = e0.  [assumption].
+2 op(op(e0,e0),op(e0,e0)) != e0.  [assumption].
+8 op(e0,op(e0,e0)) = e0.  [para(1(a,2),1(a,1,2))].
+10 op(op(e0,e0),op(e0,e0)) = e0.  [para(1(a,2),8(a,1,1))].
+11 $F.  [resolve(10,a,2,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 5.
+% Level of proof is 1.
+% Maximum clause weight is 5.
+% Given clauses 0.
+
+1 op(e0,e1) = e3.  [assumption].
+2 op(e1,e0) = e2.  [assumption].
+3 op(e2,e3) = e0.  [assumption].
+4 op(op(e1,e0),op(e0,e1)) != e0.  [assumption].
+10 op(e2,op(e0,e1)) = e0.  [para(1(a,2),3(a,1,2))].
+12 op(op(e1,e0),op(e0,e1)) = e0.  [para(2(a,2),10(a,1,1))].
+13 $F.  [resolve(12,a,4,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 5.
+% Level of proof is 1.
+% Maximum clause weight is 5.
+% Given clauses 0.
+
+1 op(e0,e2) = e4.  [assumption].
+2 op(e1,e4) = e0.  [assumption].
+3 op(e2,e0) = e1.  [assumption].
+4 op(op(e2,e0),op(e0,e2)) != e0.  [assumption].
+10 op(e1,op(e0,e2)) = e0.  [para(1(a,2),2(a,1,2))].
+12 op(op(e2,e0),op(e0,e2)) = e0.  [para(3(a,2),10(a,1,1))].
+13 $F.  [resolve(12,a,4,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 5.
+% Level of proof is 1.
+% Maximum clause weight is 5.
+% Given clauses 0.
+
+1 op(e0,e3) = e2.  [assumption].
+2 op(e3,e0) = e4.  [assumption].
+3 op(e4,e2) = e0.  [assumption].
+4 op(op(e3,e0),op(e0,e3)) != e0.  [assumption].
+10 op(e4,op(e0,e3)) = e0.  [para(1(a,2),3(a,1,2))].
+12 op(op(e3,e0),op(e0,e3)) = e0.  [para(2(a,2),10(a,1,1))].
+13 $F.  [resolve(12,a,4,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 5.
+% Level of proof is 1.
+% Maximum clause weight is 5.
+% Given clauses 0.
+
+1 op(e0,e4) = e1.  [assumption].
+2 op(e3,e1) = e0.  [assumption].
+3 op(e4,e0) = e3.  [assumption].
+4 op(op(e4,e0),op(e0,e4)) != e0.  [assumption].
+10 op(e3,op(e0,e4)) = e0.  [para(1(a,2),2(a,1,2))].
+12 op(op(e4,e0),op(e0,e4)) = e0.  [para(3(a,2),10(a,1,1))].
+13 $F.  [resolve(12,a,4,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 5.
+% Level of proof is 1.
+% Maximum clause weight is 5.
+% Given clauses 0.
+
+1 op(e0,e1) = e3.  [assumption].
+2 op(e1,e0) = e2.  [assumption].
+3 op(e3,e2) = e1.  [assumption].
+4 op(op(e0,e1),op(e1,e0)) != e1.  [assumption].
+10 op(e3,op(e1,e0)) = e1.  [para(2(a,2),3(a,1,2))].
+12 op(op(e0,e1),op(e1,e0)) = e1.  [para(1(a,2),10(a,1,1))].
+13 $F.  [resolve(12,a,4,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 3.
+% Level of proof is 1.
+% Maximum clause weight is 5.
+% Given clauses 0.
+
+1 op(e1,e1) = e1.  [assumption].
+2 op(op(e1,e1),op(e1,e1)) != e1.  [assumption].
+8 op(e1,op(e1,e1)) = e1.  [para(1(a,2),1(a,1,2))].
+10 op(op(e1,e1),op(e1,e1)) = e1.  [para(1(a,2),8(a,1,1))].
+11 $F.  [resolve(10,a,2,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 5.
+% Level of proof is 1.
+% Maximum clause weight is 5.
+% Given clauses 0.
+
+1 op(e1,e2) = e3.  [assumption].
+2 op(e2,e1) = e4.  [assumption].
+3 op(e4,e3) = e1.  [assumption].
+4 op(op(e2,e1),op(e1,e2)) != e1.  [assumption].
+10 op(e4,op(e1,e2)) = e1.  [para(1(a,2),3(a,1,2))].
+12 op(op(e2,e1),op(e1,e2)) = e1.  [para(2(a,2),10(a,1,1))].
+13 $F.  [resolve(12,a,4,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 5.
+% Level of proof is 1.
+% Maximum clause weight is 5.
+% Given clauses 0.
+
+1 op(e0,e4) = e1.  [assumption].
+2 op(e1,e3) = e4.  [assumption].
+3 op(e3,e1) = e0.  [assumption].
+4 op(op(e3,e1),op(e1,e3)) != e1.  [assumption].
+10 op(e0,op(e1,e3)) = e1.  [para(2(a,2),1(a,1,2))].
+12 op(op(e3,e1),op(e1,e3)) = e1.  [para(3(a,2),10(a,1,1))].
+13 $F.  [resolve(12,a,4,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 5.
+% Level of proof is 1.
+% Maximum clause weight is 5.
+% Given clauses 0.
+
+1 op(e1,e4) = e0.  [assumption].
+2 op(e2,e0) = e1.  [assumption].
+3 op(e4,e1) = e2.  [assumption].
+4 op(op(e4,e1),op(e1,e4)) != e1.  [assumption].
+10 op(e2,op(e1,e4)) = e1.  [para(1(a,2),2(a,1,2))].
+12 op(op(e4,e1),op(e1,e4)) = e1.  [para(3(a,2),10(a,1,1))].
+13 $F.  [resolve(12,a,4,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 5.
+% Level of proof is 1.
+% Maximum clause weight is 5.
+% Given clauses 0.
+
+1 op(e0,e2) = e4.  [assumption].
+2 op(e2,e0) = e1.  [assumption].
+3 op(e4,e1) = e2.  [assumption].
+4 op(op(e0,e2),op(e2,e0)) != e2.  [assumption].
+10 op(e4,op(e2,e0)) = e2.  [para(2(a,2),3(a,1,2))].
+12 op(op(e0,e2),op(e2,e0)) = e2.  [para(1(a,2),10(a,1,1))].
+13 $F.  [resolve(12,a,4,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 5.
+% Level of proof is 1.
+% Maximum clause weight is 5.
+% Given clauses 0.
+
+1 op(e1,e2) = e3.  [assumption].
+2 op(e2,e1) = e4.  [assumption].
+3 op(e3,e4) = e2.  [assumption].
+4 op(op(e1,e2),op(e2,e1)) != e2.  [assumption].
+10 op(e3,op(e2,e1)) = e2.  [para(2(a,2),3(a,1,2))].
+12 op(op(e1,e2),op(e2,e1)) = e2.  [para(1(a,2),10(a,1,1))].
+13 $F.  [resolve(12,a,4,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 3.
+% Level of proof is 1.
+% Maximum clause weight is 5.
+% Given clauses 0.
+
+1 op(e2,e2) = e2.  [assumption].
+2 op(op(e2,e2),op(e2,e2)) != e2.  [assumption].
+8 op(e2,op(e2,e2)) = e2.  [para(1(a,2),1(a,1,2))].
+10 op(op(e2,e2),op(e2,e2)) = e2.  [para(1(a,2),8(a,1,1))].
+11 $F.  [resolve(10,a,2,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 5.
+% Level of proof is 1.
+% Maximum clause weight is 5.
+% Given clauses 0.
+
+1 op(e1,e0) = e2.  [assumption].
+2 op(e2,e3) = e0.  [assumption].
+3 op(e3,e2) = e1.  [assumption].
+4 op(op(e3,e2),op(e2,e3)) != e2.  [assumption].
+10 op(e1,op(e2,e3)) = e2.  [para(2(a,2),1(a,1,2))].
+12 op(op(e3,e2),op(e2,e3)) = e2.  [para(3(a,2),10(a,1,1))].
+13 $F.  [resolve(12,a,4,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 5.
+% Level of proof is 1.
+% Maximum clause weight is 5.
+% Given clauses 0.
+
+1 op(e0,e3) = e2.  [assumption].
+2 op(e2,e4) = e3.  [assumption].
+3 op(e4,e2) = e0.  [assumption].
+4 op(op(e4,e2),op(e2,e4)) != e2.  [assumption].
+10 op(e0,op(e2,e4)) = e2.  [para(2(a,2),1(a,1,2))].
+12 op(op(e4,e2),op(e2,e4)) = e2.  [para(3(a,2),10(a,1,1))].
+13 $F.  [resolve(12,a,4,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 5.
+% Level of proof is 1.
+% Maximum clause weight is 5.
+% Given clauses 0.
+
+1 op(e0,e3) = e2.  [assumption].
+2 op(e2,e4) = e3.  [assumption].
+3 op(e3,e0) = e4.  [assumption].
+4 op(op(e0,e3),op(e3,e0)) != e3.  [assumption].
+10 op(e2,op(e3,e0)) = e3.  [para(3(a,2),2(a,1,2))].
+12 op(op(e0,e3),op(e3,e0)) = e3.  [para(1(a,2),10(a,1,1))].
+13 $F.  [resolve(12,a,4,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 5.
+% Level of proof is 1.
+% Maximum clause weight is 5.
+% Given clauses 0.
+
+1 op(e1,e3) = e4.  [assumption].
+2 op(e3,e1) = e0.  [assumption].
+3 op(e4,e0) = e3.  [assumption].
+4 op(op(e1,e3),op(e3,e1)) != e3.  [assumption].
+10 op(e4,op(e3,e1)) = e3.  [para(2(a,2),3(a,1,2))].
+12 op(op(e1,e3),op(e3,e1)) = e3.  [para(1(a,2),10(a,1,1))].
+13 $F.  [resolve(12,a,4,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 5.
+% Level of proof is 1.
+% Maximum clause weight is 5.
+% Given clauses 0.
+
+1 op(e0,e1) = e3.  [assumption].
+2 op(e2,e3) = e0.  [assumption].
+3 op(e3,e2) = e1.  [assumption].
+4 op(op(e2,e3),op(e3,e2)) != e3.  [assumption].
+10 op(e0,op(e3,e2)) = e3.  [para(3(a,2),1(a,1,2))].
+12 op(op(e2,e3),op(e3,e2)) = e3.  [para(2(a,2),10(a,1,1))].
+13 $F.  [resolve(12,a,4,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 3.
+% Level of proof is 1.
+% Maximum clause weight is 5.
+% Given clauses 0.
+
+1 op(e3,e3) = e3.  [assumption].
+2 op(op(e3,e3),op(e3,e3)) != e3.  [assumption].
+8 op(e3,op(e3,e3)) = e3.  [para(1(a,2),1(a,1,2))].
+10 op(op(e3,e3),op(e3,e3)) = e3.  [para(1(a,2),8(a,1,1))].
+11 $F.  [resolve(10,a,2,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 5.
+% Level of proof is 1.
+% Maximum clause weight is 5.
+% Given clauses 0.
+
+1 op(e1,e2) = e3.  [assumption].
+2 op(e3,e4) = e2.  [assumption].
+3 op(e4,e3) = e1.  [assumption].
+4 op(op(e4,e3),op(e3,e4)) != e3.  [assumption].
+10 op(e1,op(e3,e4)) = e3.  [para(2(a,2),1(a,1,2))].
+12 op(op(e4,e3),op(e3,e4)) = e3.  [para(3(a,2),10(a,1,1))].
+13 $F.  [resolve(12,a,4,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 5.
+% Level of proof is 1.
+% Maximum clause weight is 5.
+% Given clauses 0.
+
+1 op(e0,e4) = e1.  [assumption].
+2 op(e1,e3) = e4.  [assumption].
+3 op(e4,e0) = e3.  [assumption].
+4 op(op(e0,e4),op(e4,e0)) != e4.  [assumption].
+10 op(e1,op(e4,e0)) = e4.  [para(3(a,2),2(a,1,2))].
+12 op(op(e0,e4),op(e4,e0)) = e4.  [para(1(a,2),10(a,1,1))].
+13 $F.  [resolve(12,a,4,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 5.
+% Level of proof is 1.
+% Maximum clause weight is 5.
+% Given clauses 0.
+
+1 op(e0,e2) = e4.  [assumption].
+2 op(e1,e4) = e0.  [assumption].
+3 op(e4,e1) = e2.  [assumption].
+4 op(op(e1,e4),op(e4,e1)) != e4.  [assumption].
+10 op(e0,op(e4,e1)) = e4.  [para(3(a,2),1(a,1,2))].
+12 op(op(e1,e4),op(e4,e1)) = e4.  [para(2(a,2),10(a,1,1))].
+13 $F.  [resolve(12,a,4,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 5.
+% Level of proof is 1.
+% Maximum clause weight is 5.
+% Given clauses 0.
+
+1 op(e2,e4) = e3.  [assumption].
+2 op(e3,e0) = e4.  [assumption].
+3 op(e4,e2) = e0.  [assumption].
+4 op(op(e2,e4),op(e4,e2)) != e4.  [assumption].
+10 op(e3,op(e4,e2)) = e4.  [para(3(a,2),2(a,1,2))].
+12 op(op(e2,e4),op(e4,e2)) = e4.  [para(1(a,2),10(a,1,1))].
+13 $F.  [resolve(12,a,4,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 5.
+% Level of proof is 1.
+% Maximum clause weight is 5.
+% Given clauses 0.
+
+1 op(e2,e1) = e4.  [assumption].
+2 op(e3,e4) = e2.  [assumption].
+3 op(e4,e3) = e1.  [assumption].
+4 op(op(e3,e4),op(e4,e3)) != e4.  [assumption].
+10 op(e2,op(e4,e3)) = e4.  [para(3(a,2),1(a,1,2))].
+12 op(op(e3,e4),op(e4,e3)) = e4.  [para(2(a,2),10(a,1,1))].
+13 $F.  [resolve(12,a,4,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 3.
+% Level of proof is 1.
+% Maximum clause weight is 5.
+% Given clauses 0.
+
+1 op(e4,e4) = e4.  [assumption].
+2 op(op(e4,e4),op(e4,e4)) != e4.  [assumption].
+8 op(e4,op(e4,e4)) = e4.  [para(1(a,2),1(a,1,2))].
+10 op(op(e4,e4),op(e4,e4)) = e4.  [para(1(a,2),8(a,1,1))].
+11 $F.  [resolve(10,a,2,a)].
+
+============================== end of proof ==========================
+
+% Directproof did 125 transformation(s) on 50 proof(s).

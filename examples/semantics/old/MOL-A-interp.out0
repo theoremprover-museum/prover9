@@ -1,0 +1,18 @@
+terms(interpretations).
+
+interpretation( 8, [number = 1,seconds = 0], [
+    function(A, [2]),
+    function(B, [4]),
+    function(C, [6]),
+    function(f(_,_), [
+        1,1,1,1,1,1,1,1,
+        1,0,3,2,5,4,7,6,
+        1,3,3,1,3,1,7,1,
+        1,2,1,2,1,4,1,2,
+        1,5,3,1,5,1,5,1,
+        1,4,1,4,1,4,1,6,
+        1,7,7,1,5,1,7,1,
+        1,6,1,2,1,6,1,6])]).
+% isofilter: input=2, kept=1, checks=1, perms=17, 0.00 seconds.
+
+end_of_list.

@@ -1,0 +1,2980 @@
+============================== Prover9 ===============================
+Prover9 (32) version 2009-11A, November 2009.
+Process 5178 was started by mccune on cleo,
+Tue Nov  3 09:48:32 2009
+The command was "/home/mccune/LADR/bin/prover9 -f sh1.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file sh1.in
+
+assign(max_seconds,1800).
+assign(new_constants,1).
+
+formulas(sos).
+f(f(x,f(f(y,x),x)),f(y,f(z,x))) = y # label(Sh_1).
+end_of_list.
+
+formulas(goals).
+f(f(x,x),f(x,x)) = x & f(x,f(y,f(y,y))) = f(x,x) & f(f(f(y,y),x),f(f(z,z),x)) = f(f(x,f(y,z)),f(x,f(y,z))) # answer("Sheffer").
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 f(f(x,x),f(x,x)) = x & f(x,f(y,f(y,y))) = f(x,x) & f(f(f(y,y),x),f(f(z,z),x)) = f(f(x,f(y,z)),f(x,f(y,z))) # answer("Sheffer") # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+f(f(x,f(f(y,x),x)),f(y,f(z,x))) = y # label(Sh_1).  [assumption].
+f(f(c1,c1),f(c1,c1)) != c1 | f(c1,f(c2,f(c2,c2))) != f(c1,c1) | f(f(f(c2,c2),c1),f(f(c3,c3),c1)) != f(f(c1,f(c2,c3)),f(c1,f(c2,c3))) # answer("Sheffer").  [deny(1)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Auto_denials:  (no changes).
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ = ]).
+Function symbol precedence:  function_order([ c1, c2, c3, f ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(paramodulation).  % (positive equality literals)
+  % set(hyper_resolution).  % (nonunit Horn with equality)
+    % set(hyper_resolution) -> set(pos_hyper_resolution).
+  % set(neg_ur_resolution).  % (nonunit Horn with equality)
+  % assign(para_lit_limit, 3).  % (nonunit Horn with equality)
+
+Auto_process settings:
+  % set(unit_deletion).  % (Horn set with negative nonunits)
+
+kept:      2 f(f(x,f(f(y,x),x)),f(y,f(z,x))) = y # label(Sh_1).  [assumption].
+kept:      3 f(f(c1,c1),f(c1,c1)) != c1 | f(c1,f(c2,f(c2,c2))) != f(c1,c1) | f(f(f(c2,c2),c1),f(f(c3,c3),c1)) != f(f(c1,f(c2,c3)),f(c1,f(c2,c3))) # answer("Sheffer").  [deny(1)].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+2 f(f(x,f(f(y,x),x)),f(y,f(z,x))) = y # label(Sh_1).  [assumption].
+3 f(f(c1,c1),f(c1,c1)) != c1 | f(c1,f(c2,f(c2,c2))) != f(c1,c1) | f(f(f(c2,c2),c1),f(f(c3,c3),c1)) != f(f(c1,f(c2,c3)),f(c1,f(c2,c3))) # answer("Sheffer").  [deny(1)].
+end_of_list.
+
+formulas(demodulators).
+2 f(f(x,f(f(y,x),x)),f(y,f(z,x))) = y # label(Sh_1).  [assumption].
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.01 seconds.
+
+given #1 (I,wt=15): 2 f(f(x,f(f(y,x),x)),f(y,f(z,x))) = y # label(Sh_1).  [assumption].
+
+given #2 (I,wt=43): 3 f(f(c1,c1),f(c1,c1)) != c1 | f(c1,f(c2,f(c2,c2))) != f(c1,c1) | f(f(f(c2,c2),c1),f(f(c3,c3),c1)) != f(f(c1,f(c2,c3)),f(c1,f(c2,c3))) # answer("Sheffer").  [deny(1)].
+
+given #3 (A,wt=37): 4 f(f(f(x,f(y,z)),f(x,f(x,f(y,z)))),f(f(z,f(f(x,z),z)),f(u,f(x,f(y,z))))) = f(z,f(f(x,z),z)).  [para(2(a,1),2(a,1,1,2,1))].
+
+given #4 (T,wt=25): 5 f(f(f(x,f(y,z)),f(f(u,f(x,f(y,z))),f(x,f(y,z)))),f(u,x)) = u.  [para(2(a,1),2(a,1,2,2))].
+
+given #5 (T,wt=19): 13 f(f(f(x,y),f(f(z,f(x,y)),f(x,y))),f(z,x)) = z.  [para(5(a,1),2(a,1,2,2))].
+
+given #6 (T,wt=19): 15 f(f(x,f(f(y,x),x)),f(y,f(z,f(f(x,z),z)))) = y.  [para(2(a,1),5(a,1,1,1)),rewrite([2(6),2(7)])].
+
+given #7 (T,wt=11): 36 f(x,f(f(x,x),x)) = f(x,x).  [para(15(a,1),4(a,1,2)),rewrite([15(8)]),flip(a)].
+
+given #8 (A,wt=29): 6 f(f(f(x,y),f(f(f(y,f(f(z,y),y)),f(x,y)),f(x,y))),z) = f(y,f(f(z,y),y)).  [para(2(a,1),2(a,1,2))].
+
+given #9 (F,wt=34): 61 f(c1,f(c2,f(c2,c2))) != f(c1,c1) | f(f(f(c2,c2),c1),f(f(c3,c3),c1)) != f(f(c1,f(c2,c3)),f(c1,f(c2,c3))) # answer("Sheffer").  [back_rewrite(3),rewrite([51(7)]),xx(a)].
+
+given #10 (T,wt=9): 51 f(f(x,x),f(x,x)) = x.  [para(36(a,1),2(a,1,2)),rewrite([36(3)])].
+
+given #11 (T,wt=11): 50 f(f(x,x),f(x,f(y,x))) = x.  [para(36(a,1),2(a,1,1))].
+
+given #12 (T,wt=13): 60 f(f(x,f(f(y,x),x)),f(y,y)) = y.  [back_rewrite(39),rewrite([50(4),50(9)])].
+
+given #13 (T,wt=15): 47 f(x,f(f(x,x),f(y,f(x,x)))) = f(x,x).  [back_rewrite(35),rewrite([36(3),36(4),36(8)])].
+
+given #14 (A,wt=85): 7 f(f(f(f(x,f(f(y,x),x)),f(z,f(y,f(u,x)))),f(f(x,f(f(y,x),x)),f(f(x,f(f(y,x),x)),f(z,f(y,f(u,x)))))),f(f(f(y,f(u,x)),f(y,f(y,f(u,x)))),f(w,f(f(x,f(f(y,x),x)),f(z,f(y,f(u,x))))))) = f(f(y,f(u,x)),f(y,f(y,f(u,x)))).  [para(4(a,1),2(a,1,1,2,1))].
+
+given #15 (T,wt=15): 48 f(f(x,f(f(f(y,y),x),x)),y) = f(y,y).  [back_rewrite(33),rewrite([36(3),36(8)])].
+
+given #16 (T,wt=15): 58 f(f(x,x),f(x,f(y,f(f(x,y),y)))) = x.  [para(36(a,1),15(a,1,1))].
+
+given #17 (T,wt=17): 55 f(f(f(x,y),f(x,y)),f(f(x,y),x)) = f(x,y).  [para(36(a,1),13(a,1,1))].
+
+given #18 (T,wt=17): 131 f(x,f(f(f(f(y,x),f(y,x)),x),x)) = f(y,x).  [para(48(a,1),6(a,1,1,2,1)),rewrite([36(7),51(7)]),flip(a)].
+
+given #19 (A,wt=59): 8 f(f(f(x,f(y,f(z,u))),f(f(f(f(y,f(z,u)),f(y,f(y,f(z,u)))),f(x,f(y,f(z,u)))),f(x,f(y,f(z,u))))),f(u,f(f(y,u),u))) = f(f(y,f(z,u)),f(y,f(y,f(z,u)))).  [para(4(a,1),2(a,1,2))].
+
+given #20 (T,wt=9): 163 f(f(x,x),f(y,x)) = x.  [para(131(a,1),2(a,1,2)),rewrite([36(3)])].
+
+given #21 (T,wt=9): 264 f(f(x,y),f(y,y)) = y.  [back_rewrite(184),rewrite([256(4),256(7),262(7)])].
+
+given #22 (T,wt=9): 280 f(f(x,x),f(x,y)) = x.  [back_rewrite(244),rewrite([269(4)])].
+
+given #23 (T,wt=9): 324 f(f(x,y),f(x,x)) = x.  [back_rewrite(89),rewrite([269(3),269(8),269(9),298(13),298(7),298(7),298(9)])].
+
+given #24 (A,wt=11): 169 f(x,f(y,f(x,x))) = f(x,x).  [para(131(a,1),4(a,1,2)),rewrite([36(3),36(4),50(4),36(3),36(6)])].
+
+given #25 (T,wt=11): 250 f(f(x,y),f(y,f(x,y))) = y.  [para(163(a,1),131(a,1,2,1,1,1)),rewrite([163(4),163(4),163(7)])].
+
+given #26 (T,wt=11): 258 f(x,f(f(x,x),y)) = f(x,x).  [back_rewrite(239),rewrite([250(4)])].
+
+given #27 (T,wt=11): 263 f(f(x,f(y,y)),y) = f(y,y).  [back_rewrite(187),rewrite([256(7),256(13),262(12)])].
+
+given #28 (T,wt=11): 269 f(x,f(f(y,x),x)) = f(y,x).  [back_rewrite(131),rewrite([256(4)])].
+
+given #29 (A,wt=19): 237 f(f(x,x),f(f(x,f(x,x)),f(y,x))) = f(x,f(x,x)).  [para(163(a,1),4(a,1,1,1)),rewrite([163(4),36(3),165(4),163(6),165(9)])].
+
+given #30 (T,wt=11): 297 f(x,f(f(x,y),x)) = f(x,y).  [back_rewrite(181),rewrite([269(3),269(4),240(4),269(6)])].
+
+given #31 (T,wt=11): 299 f(f(x,f(y,z)),f(x,z)) = x.  [back_rewrite(171),rewrite([269(6)])].
+
+given #32 (T,wt=11): 321 f(f(x,f(y,z)),f(x,y)) = x.  [back_rewrite(94),rewrite([269(3),269(4),269(6),269(6)])].
+
+given #33 (T,wt=11): 333 f(f(f(x,x),y),x) = f(x,x).  [back_rewrite(48),rewrite([269(4)])].
+
+given #34 (A,wt=13): 256 f(f(f(x,y),f(x,y)),y) = f(x,y).  [para(163(a,1),163(a,1,2))].
+
+given #35 (T,wt=11): 338 f(f(x,y),f(x,f(y,z))) = x.  [back_rewrite(38),rewrite([298(6),298(6),298(7),269(3),269(4),269(9),269(10),298(14)])].
+
+given #36 (T,wt=11): 353 f(f(x,y),f(x,f(z,y))) = x.  [back_rewrite(2),rewrite([269(3)])].
+
+given #37 (T,wt=11): 374 f(f(x,y),x) = f(x,f(x,y)).  [para(299(a,1),269(a,1,2))].
+
+given #38 (T,wt=11): 380 f(x,f(x,f(y,x))) = f(y,x).  [back_rewrite(363),rewrite([374(3)])].
+
+given #39 (A,wt=15): 281 f(f(f(x,f(y,z)),z),x) = f(x,f(y,z)).  [back_rewrite(243),rewrite([269(6),269(5),269(10)])].
+
+% Operation f is commutative; C redundancy checks enabled.
+
+given #40 (F,wt=34): 451 f(c1,f(c2,f(c2,c2))) != f(c1,c1) | f(f(c1,f(c2,c3)),f(c1,f(c2,c3))) != f(f(c1,f(c2,c2)),f(c1,f(c3,c3))) # answer("Sheffer").  [back_rewrite(61),rewrite([421(16),421(21)]),flip(b)].
+
+given #41 (T,wt=7): 421 f(x,y) = f(y,x).  [para(264(a,1),281(a,1,1,1,2)),rewrite([264(3),264(4)])].
+
+given #42 (T,wt=11): 381 f(x,f(x,f(x,y))) = f(x,y).  [back_rewrite(326),rewrite([374(2),374(3)])].
+
+given #43 (T,wt=11): 427 f(x,f(y,f(x,y))) = f(x,x).  [para(321(a,1),281(a,1,1)),flip(a)].
+
+given #44 (T,wt=11): 453 f(f(x,y),f(y,f(x,z))) = y.  [para(421(a,1),338(a,1,1))].
+
+given #45 (A,wt=19): 291 f(f(f(x,y),f(z,x)),f(f(x,y),f(y,u))) = f(x,y).  [back_rewrite(217),rewrite([269(4),269(7),269(6),269(7),269(8),269(10),269(10),269(10)])].
+
+given #46 (T,wt=11): 454 f(f(x,y),f(f(y,z),x)) = x.  [para(421(a,1),338(a,1,2))].
+
+given #47 (T,wt=11): 455 f(f(x,y),f(y,f(z,x))) = y.  [para(421(a,1),353(a,1,1))].
+
+given #48 (T,wt=11): 456 f(f(x,y),f(f(z,y),x)) = x.  [para(421(a,1),353(a,1,2))].
+
+given #49 (T,wt=11): 464 f(x,f(y,f(y,x))) = f(x,x).  [para(421(a,1),427(a,1,2,2))].
+
+given #50 (A,wt=19): 301 f(f(x,x),f(f(f(x,x),y),f(x,z))) = f(f(x,x),y).  [back_rewrite(128),rewrite([269(5),269(6),269(10)])].
+
+given #51 (T,wt=11): 466 f(f(f(x,y),z),f(z,y)) = z.  [para(264(a,1),453(a,1,2,2))].
+
+given #52 (T,wt=11): 467 f(f(f(x,y),z),f(z,x)) = z.  [para(324(a,1),453(a,1,2,2))].
+
+given #53 (T,wt=11): 471 f(f(x,f(y,z)),f(y,x)) = x.  [para(453(a,1),421(a,1)),flip(a)].
+
+given #54 (T,wt=11): 472 f(f(x,y),f(f(x,z),y)) = y.  [para(421(a,1),453(a,1,2))].
+
+given #55 (A,wt=25): 304 f(f(f(x,x),y),f(f(x,x),f(z,f(f(f(x,x),y),f(u,x))))) = f(x,x).  [back_rewrite(125),rewrite([269(4),269(8),269(10),298(12),269(7)])].
+
+given #56 (T,wt=11): 504 f(f(x,f(y,z)),f(z,x)) = x.  [para(264(a,1),454(a,1,2,1))].
+
+given #57 (T,wt=11): 519 f(f(x,y),f(f(z,x),y)) = y.  [para(421(a,1),455(a,1,2))].
+
+given #58 (T,wt=13): 356 f(x,f(f(x,y),f(z,y))) = f(x,y).  [back_rewrite(282),rewrite([298(6)])].
+
+given #59 (T,wt=13): 399 f(x,f(f(x,y),f(y,z))) = f(x,y).  [para(338(a,1),299(a,1,1))].
+
+given #60 (A,wt=19): 307 f(f(x,x),f(f(f(x,x),y),f(z,x))) = f(f(x,x),y).  [back_rewrite(122),rewrite([269(5),269(10)])].
+
+given #61 (T,wt=13): 470 f(x,f(f(y,x),f(y,z))) = f(y,x).  [para(453(a,1),353(a,1,2)),rewrite([421(4)])].
+
+given #62 (T,wt=13): 480 f(x,f(f(y,x),f(z,y))) = f(y,x).  [para(264(a,1),291(a,1,2)),rewrite([421(4)])].
+
+given #63 (T,wt=13): 513 f(x,f(f(y,z),f(x,y))) = f(x,y).  [para(454(a,1),453(a,1,2)),rewrite([421(4)])].
+
+given #64 (T,wt=13): 518 f(x,f(f(y,z),f(x,z))) = f(x,z).  [para(353(a,1),455(a,1,2)),rewrite([421(4)])].
+
+given #65 (A,wt=21): 310 f(f(x,y),f(x,f(z,f(f(x,y),f(f(x,f(u,y)),w))))) = x.  [back_rewrite(115),rewrite([269(3),269(6),269(8),269(9),269(12),298(13),298(7),269(4),269(7),298(15)])].
+
+given #66 (T,wt=13): 525 f(x,f(f(y,z),f(y,x))) = f(y,x).  [para(453(a,1),455(a,1,2)),rewrite([421(4)])].
+
+given #67 (T,wt=13): 531 f(x,f(f(y,z),f(z,x))) = f(z,x).  [para(455(a,1),455(a,1,2)),rewrite([421(4)])].
+
+given #68 (T,wt=15): 322 f(x,f(f(x,y),f(f(x,x),z))) = f(x,y).  [back_rewrite(93),rewrite([269(3),269(5),269(8)])].
+
+given #69 (T,wt=15): 327 f(x,f(f(x,y),f(z,f(x,x)))) = f(x,y).  [back_rewrite(84),rewrite([269(3),269(8)])].
+
+given #70 (A,wt=23): 312 f(f(x,y),f(f(f(x,y),f(z,y)),f(u,x))) = f(f(x,y),f(z,y)).  [back_rewrite(108),rewrite([269(3),269(5),269(8),269(11),269(14)])].
+
+given #71 (T,wt=15): 330 f(f(x,f(y,f(x,z))),f(x,f(z,u))) = x.  [back_rewrite(65),rewrite([298(6),269(9),269(9),298(10)])].
+
+given #72 (T,wt=15): 359 f(f(x,y),f(x,f(z,f(x,f(u,y))))) = x.  [back_rewrite(277),rewrite([298(13),298(7),298(12)])].
+
+given #73 (T,wt=15): 360 f(f(x,f(y,f(x,z))),f(x,f(u,z))) = x.  [back_rewrite(276),rewrite([298(4),298(10)])].
+
+given #74 (T,wt=15): 392 f(x,f(f(y,x),f(f(x,x),z))) = f(y,x).  [para(264(a,1),338(a,1,1))].
+
+given #75 (A,wt=23): 314 f(f(x,y),f(f(f(x,y),f(y,z)),f(u,x))) = f(f(x,y),f(y,z)).  [back_rewrite(106),rewrite([269(3),269(4),269(5),269(6),269(8),269(8),269(10),269(11),269(12),269(14),269(14)])].
+
+given #76 (T,wt=15): 402 f(x,f(f(y,x),f(z,f(x,x)))) = f(y,x).  [para(264(a,1),353(a,1,1))].
+
+given #77 (T,wt=15): 429 f(x,f(y,f(x,f(z,y)))) = f(x,f(z,y)).  [para(281(a,1),256(a,2)),rewrite([421(3),421(4),421(7),421(8),421(10),356(10)])].
+
+given #78 (T,wt=11): 1380 f(x,f(y,y)) = f(x,f(x,y)).  [para(464(a,1),429(a,1,2))].
+
+given #79 (T,wt=11): 1415 f(x,f(x,f(y,y))) = f(x,y).  [para(163(a,1),1380(a,1,2)),flip(a)].
+
+given #80 (A,wt=23): 316 f(f(x,y),f(f(f(x,y),f(z,y)),f(x,u))) = f(f(x,y),f(z,y)).  [back_rewrite(104),rewrite([269(3),269(5),269(8),269(7),269(11),269(14)])].
+
+given #81 (F,wt=34): 1398 f(c1,f(c2,f(c2,c2))) != f(c1,c1) | f(f(c1,f(c2,c3)),f(c1,f(c2,c3))) != f(f(c1,f(c1,c2)),f(c1,f(c1,c3))) # answer("Sheffer").  [back_rewrite(451),rewrite([1380(27),1380(32)])].
+
+given #82 (T,wt=11): 1422 f(f(x,x),y) = f(y,f(y,x)).  [para(1380(a,1),421(a,1)),flip(a)].
+
+given #83 (T,wt=11): 1423 f(x,f(y,y)) = f(x,f(y,x)).  [para(421(a,1),1380(a,2,2))].
+
+given #84 (T,wt=11): 1547 f(x,f(f(y,y),x)) = f(x,y).  [para(421(a,1),1415(a,1,2))].
+
+given #85 (T,wt=11): 1647 f(f(x,x),y) = f(y,f(x,y)).  [para(421(a,1),1422(a,2,2))].
+
+given #86 (A,wt=19): 317 f(f(f(x,y),f(z,x)),f(f(x,y),f(u,y))) = f(x,y).  [back_rewrite(103),rewrite([269(4),269(7),269(7),269(10),269(10)])].
+
+given #87 (T,wt=15): 441 f(x,f(y,f(x,f(y,z)))) = f(x,f(y,z)).  [back_rewrite(387),rewrite([421(3)])].
+
+given #88 (T,wt=15): 442 f(f(x,y),f(x,f(f(x,f(z,y)),u))) = x.  [back_rewrite(354),rewrite([421(6)])].
+
+given #89 (T,wt=15): 445 f(f(x,y),f(x,f(z,f(x,f(y,u))))) = x.  [back_rewrite(328),rewrite([421(6)])].
+
+given #90 (T,wt=15): 461 f(f(x,f(y,f(z,y))),f(x,f(z,z))) = x.  [para(427(a,1),353(a,1,2,2))].
+
+given #91 (A,wt=19): 325 f(f(x,y),f(x,f(z,f(f(x,y),f(u,f(x,x)))))) = x.  [back_rewrite(88),rewrite([269(3),269(7),269(8),298(11),269(4)])].
+
+given #92 (T,wt=15): 503 f(x,f(f(f(x,x),y),f(z,x))) = f(z,x).  [para(264(a,1),454(a,1,1))].
+
+given #93 (T,wt=15): 505 f(x,f(f(f(x,x),y),f(x,z))) = f(x,z).  [para(324(a,1),454(a,1,1))].
+
+given #94 (T,wt=15): 522 f(f(f(x,f(y,x)),z),f(z,f(y,y))) = z.  [para(427(a,1),455(a,1,2,2))].
+
+given #95 (T,wt=15): 532 f(x,f(f(y,f(x,x)),f(z,x))) = f(z,x).  [para(264(a,1),456(a,1,1))].
+
+given #96 (A,wt=17): 334 f(x,f(f(x,y),f(f(x,f(y,z)),u))) = f(x,y).  [back_rewrite(45),rewrite([269(3),269(5),298(6),269(3),269(4),269(6),269(9)])].
+
+given #97 (T,wt=15): 533 f(x,f(f(y,f(x,x)),f(x,z))) = f(x,z).  [para(324(a,1),456(a,1,1))].
+
+given #98 (T,wt=15): 538 f(f(x,f(y,f(z,y))),f(f(z,z),x)) = x.  [para(427(a,1),456(a,1,2,1))].
+
+given #99 (T,wt=15): 545 f(x,f(y,f(f(y,z),x))) = f(f(y,z),x).  [para(454(a,1),456(a,1,2)),rewrite([421(3),421(4)])].
+
+given #100 (T,wt=15): 549 f(x,f(y,f(f(z,y),x))) = f(f(z,y),x).  [para(456(a,1),456(a,1,2)),rewrite([421(3),421(4)])].
+
+given #101 (A,wt=19): 336 f(x,f(f(x,f(y,z)),f(f(x,y),u))) = f(x,f(y,z)).  [back_rewrite(42),rewrite([298(4),269(6),269(6),269(12)])].
+
+given #102 (T,wt=15): 554 f(f(x,f(y,f(y,z))),f(x,f(z,z))) = x.  [para(464(a,1),353(a,1,2,2))].
+
+given #103 (T,wt=15): 565 f(f(f(x,f(x,y)),z),f(z,f(y,y))) = z.  [para(464(a,1),455(a,1,2,2))].
+
+given #104 (T,wt=15): 567 f(f(x,f(y,f(y,z))),f(f(z,z),x)) = x.  [para(464(a,1),456(a,1,2,1))].
+
+given #105 (T,wt=15): 581 f(f(f(x,x),y),f(y,f(z,f(x,z)))) = y.  [para(427(a,1),466(a,1,1,1))].
+
+given #106 (A,wt=21): 339 f(f(x,y),f(x,f(f(f(x,y),f(z,f(x,f(u,y)))),w))) = x.  [back_rewrite(37),rewrite([269(3),269(8),269(9),298(13),298(7),269(4),269(9),298(15)])].
+
+given #107 (T,wt=15): 586 f(f(f(x,x),y),f(y,f(z,f(z,x)))) = y.  [para(464(a,1),466(a,1,1,1))].
+
+given #108 (T,wt=15): 636 f(f(x,f(y,y)),f(f(z,f(y,z)),x)) = x.  [para(427(a,1),504(a,1,1,2))].
+
+given #109 (T,wt=15): 639 f(f(x,f(y,y)),f(f(z,f(z,y)),x)) = x.  [para(464(a,1),504(a,1,1,2))].
+
+given #110 (T,wt=15): 648 f(f(f(x,f(y,x)),z),f(f(y,y),z)) = z.  [para(427(a,1),519(a,1,2,1))].
+
+given #111 (A,wt=17): 340 f(x,f(f(x,y),f(f(x,f(z,y)),u))) = f(x,y).  [back_rewrite(32),rewrite([298(6),269(3),269(6),269(9)])].
+
+given #112 (T,wt=15): 656 f(f(f(x,f(x,y)),z),f(f(y,y),z)) = z.  [para(464(a,1),519(a,1,2,1))].
+
+given #113 (T,wt=15): 665 f(f(x,y),f(y,f(z,f(y,f(x,u))))) = y.  [para(453(a,1),356(a,1,2,1)),rewrite([453(10)])].
+
+given #114 (T,wt=15): 668 f(f(x,y),f(x,f(z,f(f(y,u),x)))) = x.  [para(454(a,1),356(a,1,2,1)),rewrite([454(10)])].
+
+given #115 (T,wt=15): 669 f(f(x,y),f(y,f(z,f(y,f(u,x))))) = y.  [para(455(a,1),356(a,1,2,1)),rewrite([455(10)])].
+
+given #116 (A,wt=17): 342 f(x,f(f(x,y),f(z,f(x,f(y,u))))) = f(x,y).  [back_rewrite(30),rewrite([269(3),269(5),298(6),269(3),269(4),269(9)])].
+
+given #117 (T,wt=15): 670 f(f(x,y),f(x,f(z,f(f(u,y),x)))) = x.  [para(456(a,1),356(a,1,2,1)),rewrite([456(10)])].
+
+given #118 (T,wt=15): 674 f(f(f(x,y),z),f(z,f(u,f(z,y)))) = z.  [para(466(a,1),356(a,1,2,1)),rewrite([466(10)])].
+
+given #119 (T,wt=15): 675 f(f(f(x,y),z),f(z,f(u,f(z,x)))) = z.  [para(467(a,1),356(a,1,2,1)),rewrite([467(10)])].
+
+given #120 (T,wt=15): 676 f(f(x,f(y,z)),f(x,f(u,f(y,x)))) = x.  [para(471(a,1),356(a,1,2,1)),rewrite([471(10)])].
+
+given #121 (A,wt=23): 345 f(f(x,f(y,z)),f(x,f(u,f(f(x,f(y,z)),f(w,f(x,y)))))) = x.  [back_rewrite(26),rewrite([269(6),269(11),269(13),298(14),298(6),269(8),298(14)])].
+
+given #122 (T,wt=15): 678 f(f(x,y),f(y,f(z,f(f(x,u),y)))) = y.  [para(472(a,1),356(a,1,2,1)),rewrite([472(10)])].
+
+given #123 (T,wt=15): 681 f(f(x,f(y,z)),f(x,f(u,f(z,x)))) = x.  [para(504(a,1),356(a,1,2,1)),rewrite([504(10)])].
+
+given #124 (T,wt=15): 683 f(f(x,y),f(y,f(z,f(f(u,x),y)))) = y.  [para(519(a,1),356(a,1,2,1)),rewrite([519(10)])].
+
+given #125 (T,wt=15): 686 f(f(x,y),f(x,f(f(x,f(y,z)),u))) = x.  [para(338(a,1),399(a,1,2,1)),rewrite([338(10)])].
+
+given #126 (A,wt=19): 348 f(x,f(f(x,f(y,z)),f(u,f(x,y)))) = f(x,f(y,z)).  [back_rewrite(17),rewrite([298(4),269(6),269(12)])].
+
+given #127 (T,wt=15): 690 f(f(x,y),f(y,f(f(y,f(x,z)),u))) = y.  [para(453(a,1),399(a,1,2,1)),rewrite([453(10)])].
+
+given #128 (T,wt=15): 693 f(f(x,y),f(x,f(f(f(y,z),x),u))) = x.  [para(454(a,1),399(a,1,2,1)),rewrite([454(10)])].
+
+given #129 (T,wt=15): 694 f(f(x,y),f(y,f(f(y,f(z,x)),u))) = y.  [para(455(a,1),399(a,1,2,1)),rewrite([455(10)])].
+
+given #130 (T,wt=15): 696 f(f(x,y),f(x,f(f(f(z,y),x),u))) = x.  [para(456(a,1),399(a,1,2,1)),rewrite([456(10)])].
+
+given #131 (A,wt=21): 350 f(f(x,y),f(x,f(z,f(f(x,y),f(u,f(x,f(w,y))))))) = x.  [back_rewrite(7),rewrite([269(3),269(8),269(9),298(13),298(7),269(4),298(15)])].
+
+given #132 (T,wt=15): 699 f(f(f(x,y),z),f(z,f(f(z,y),u))) = z.  [para(466(a,1),399(a,1,2,1)),rewrite([466(10)])].
+
+given #133 (T,wt=15): 700 f(f(f(x,y),z),f(z,f(f(z,x),u))) = z.  [para(467(a,1),399(a,1,2,1)),rewrite([467(10)])].
+
+given #134 (T,wt=15): 701 f(f(x,f(y,z)),f(x,f(f(y,x),u))) = x.  [para(471(a,1),399(a,1,2,1)),rewrite([471(10)])].
+
+given #135 (T,wt=15): 703 f(f(x,y),f(y,f(f(f(x,z),y),u))) = y.  [para(472(a,1),399(a,1,2,1)),rewrite([472(10)])].
+
+given #136 (A,wt=17): 352 f(x,f(f(x,y),f(z,f(x,f(u,y))))) = f(x,y).  [back_rewrite(4),rewrite([298(6),269(3),269(9)])].
+
+given #137 (T,wt=15): 706 f(f(x,f(y,z)),f(x,f(f(z,x),u))) = x.  [para(504(a,1),399(a,1,2,1)),rewrite([504(10)])].
+
+given #138 (T,wt=15): 707 f(f(x,y),f(y,f(f(f(z,x),y),u))) = y.  [para(519(a,1),399(a,1,2,1)),rewrite([519(10)])].
+
+given #139 (T,wt=15): 729 f(f(x,f(y,z)),f(x,f(f(x,y),u))) = x.  [para(338(a,1),470(a,1,2,1)),rewrite([338(10)])].
+
+given #140 (T,wt=15): 731 f(f(x,f(y,z)),f(x,f(f(x,z),u))) = x.  [para(353(a,1),470(a,1,2,1)),rewrite([353(10)])].
+
+given #141 (A,wt=19): 355 f(x,f(f(x,f(y,z)),f(u,f(x,z)))) = f(x,f(y,z)).  [back_rewrite(283),rewrite([298(4)])].
+
+given #142 (T,wt=15): 742 f(f(f(x,y),z),f(z,f(f(x,z),u))) = z.  [para(472(a,1),470(a,1,2,1)),rewrite([472(10)])].
+
+given #143 (T,wt=15): 746 f(f(f(x,y),z),f(z,f(f(y,z),u))) = z.  [para(519(a,1),470(a,1,2,1)),rewrite([519(10)])].
+
+given #144 (T,wt=15): 754 f(f(x,f(y,z)),f(x,f(u,f(x,y)))) = x.  [para(338(a,1),480(a,1,2,1)),rewrite([338(10)])].
+
+given #145 (T,wt=15): 756 f(f(x,f(y,z)),f(x,f(u,f(x,z)))) = x.  [para(353(a,1),480(a,1,2,1)),rewrite([353(10)])].
+
+given #146 (A,wt=23): 357 f(f(x,f(y,z)),f(x,f(u,f(f(x,f(y,z)),f(w,f(x,z)))))) = x.  [back_rewrite(279),rewrite([298(14),298(6),298(14)])].
+
+given #147 (T,wt=15): 767 f(f(f(x,y),z),f(z,f(u,f(x,z)))) = z.  [para(472(a,1),480(a,1,2,1)),rewrite([472(10)])].
+
+given #148 (T,wt=15): 771 f(f(f(x,y),z),f(z,f(u,f(y,z)))) = z.  [para(519(a,1),480(a,1,2,1)),rewrite([519(10)])].
+
+given #149 (T,wt=15): 1043 f(f(x,f(y,f(z,x))),f(x,f(z,u))) = x.  [para(421(a,1),330(a,1,1,2,2))].
+
+given #150 (T,wt=15): 1044 f(f(x,f(f(x,y),z)),f(x,f(y,u))) = x.  [para(421(a,1),330(a,1,1,2))].
+
+given #151 (A,wt=17): 358 f(f(x,y),f(x,f(z,f(f(x,y),f(u,y))))) = x.  [back_rewrite(278),rewrite([298(9),298(7),298(13)])].
+
+given #152 (T,wt=15): 1045 f(f(x,f(y,f(x,z))),f(f(z,u),x)) = x.  [para(421(a,1),330(a,1,2))].
+
+given #153 (T,wt=15): 1089 f(f(x,f(y,f(x,f(z,u)))),f(z,x)) = x.  [para(525(a,1),330(a,1,2))].
+
+given #154 (T,wt=15): 1091 f(f(x,f(y,f(x,f(z,u)))),f(u,x)) = x.  [para(531(a,1),330(a,1,2))].
+
+given #155 (T,wt=15): 1168 f(f(x,f(y,f(z,x))),f(x,f(u,z))) = x.  [para(421(a,1),360(a,1,1,2,2))].
+
+given #156 (A,wt=19): 395 f(f(x,x),f(f(y,f(x,x)),f(x,z))) = f(y,f(x,x)).  [para(263(a,1),338(a,1,1))].
+
+given #157 (T,wt=15): 1169 f(f(x,f(f(x,y),z)),f(x,f(u,y))) = x.  [para(421(a,1),360(a,1,1,2))].
+
+given #158 (T,wt=15): 1170 f(f(x,f(y,f(x,z))),f(f(u,z),x)) = x.  [para(421(a,1),360(a,1,2))].
+
+given #159 (T,wt=15): 1394 f(x,f(y,f(x,f(z,f(x,y))))) = f(x,x).  [para(330(a,1),429(a,1,2)),flip(a)].
+
+given #160 (T,wt=15): 1418 f(f(x,f(x,y)),f(x,f(f(y,y),z))) = x.  [para(1380(a,1),338(a,1,1))].
+
+given #161 (A,wt=19): 401 f(x,f(f(x,f(y,z)),f(f(x,z),u))) = f(x,f(y,z)).  [para(299(a,1),338(a,1,1))].
+
+given #162 (T,wt=15): 1419 f(f(x,f(x,y)),f(x,f(z,f(y,y)))) = x.  [para(1380(a,1),353(a,1,1))].
+
+given #163 (T,wt=15): 1420 f(f(x,f(y,y)),f(x,f(z,f(z,y)))) = x.  [para(1380(a,1),353(a,1,2,2))].
+
+given #164 (T,wt=15): 1421 f(f(x,f(y,z)),f(x,f(y,f(z,z)))) = x.  [para(1380(a,2),353(a,1,2,2))].
+
+given #165 (T,wt=11): 11509 f(x,f(y,f(y,y))) = f(x,x).  [para(1421(a,1),1421(a,1,2)),rewrite([421(2),421(6),353(6),421(3)]),flip(a)].
+
+Low Water (keep): wt=31.000, iters=7189
+
+NOTE: New constant: f(x,f(x,x)) = c_0.  [new_symbol(11548)].
+NOTE: New Function symbol precedence:  function_order([ c1, c2, c3, c_0, f ]).
+
+given #166 (A,wt=19): 404 f(f(x,x),f(f(y,f(x,x)),f(z,x))) = f(y,f(x,x)).  [para(263(a,1),353(a,1,1))].
+
+given #167 (F,wt=19): 12331 f(f(c1,f(c1,c2)),f(c1,f(c1,c3))) != f(c_0,f(c1,f(c2,c3))) # answer("Sheffer").  [back_rewrite(11510),rewrite([11782(11,R)]),flip(a)].
+
+given #168 (T,wt=7): 11669 f(x,f(x,x)) = c_0.  [new_symbol(11548)].
+
+given #169 (T,wt=7): 11756 f(c_0,f(x,x)) = x.  [back_rewrite(11568),rewrite([11669(2)])].
+
+given #170 (T,wt=7): 11757 f(c_0,f(x,c_0)) = x.  [back_rewrite(11567),rewrite([11669(2),11669(3)])].
+
+given #171 (T,wt=7): 11761 f(f(c_0,c_0),x) = c_0.  [back_rewrite(11563),rewrite([11669(2),11669(3),11669(6)])].
+
+given #172 (A,wt=29): 423 f(f(f(x,y),f(z,u)),f(y,f(u,f(f(x,y),f(z,u))))) = f(u,f(f(x,y),f(z,u))).  [para(281(a,1),299(a,1,1)),rewrite([421(7),421(8),421(13)])].
+
+given #173 (T,wt=7): 11762 f(c_0,f(c_0,x)) = x.  [back_rewrite(11562),rewrite([11669(2),11669(3)])].
+
+given #174 (T,wt=7): 11765 f(x,f(c_0,c_0)) = c_0.  [back_rewrite(11559),rewrite([11669(2),11669(3),11669(6)])].
+
+given #175 (T,wt=7): 11782 f(c_0,x) = f(x,x).  [back_rewrite(11539),rewrite([11669(2),11669(4),11669(5),11765(6),421(4),11756(4)])].
+
+given #176 (T,wt=7): 11799 f(x,c_0) = f(x,x).  [back_rewrite(11509),rewrite([11669(2)])].
+
+given #177 (A,wt=25): 424 f(f(x,f(y,z)),f(f(z,f(x,f(y,z))),f(u,x))) = f(z,f(x,f(y,z))).  [para(281(a,1),299(a,1,2)),rewrite([421(3),421(8),421(11)])].
+
+given #178 (T,wt=7): 13373 f(x,f(x,c_0)) = c_0.  [para(11669(a,1),381(a,1,2,2)),rewrite([11669(5)])].
+
+given #179 (T,wt=7): 13390 f(x,f(c_0,x)) = c_0.  [para(11756(a,1),338(a,1,2)),rewrite([421(3)])].
+
+given #180 (T,wt=9): 11795 f(f(x,y),f(x,c_0)) = x.  [back_rewrite(11517),rewrite([11669(3)])].
+
+given #181 (T,wt=9): 11796 f(f(x,c_0),f(x,y)) = x.  [back_rewrite(11516),rewrite([11669(2)])].
+
+given #182 (A,wt=29): 425 f(f(f(x,y),f(z,u)),f(x,f(u,f(f(x,y),f(z,u))))) = f(u,f(f(x,y),f(z,u))).  [para(281(a,1),321(a,1,1)),rewrite([421(7),421(8),421(13)])].
+
+given #183 (T,wt=9): 11797 f(f(x,y),f(y,c_0)) = y.  [back_rewrite(11515),rewrite([11669(3)])].
+
+given #184 (T,wt=9): 11798 f(f(x,c_0),f(y,x)) = x.  [back_rewrite(11512),rewrite([11669(2)])].
+
+given #185 (T,wt=9): 13375 f(f(x,y),f(c_0,x)) = x.  [para(11669(a,1),454(a,1,2,1))].
+
+given #186 (T,wt=9): 13376 f(f(c_0,x),f(x,y)) = x.  [para(11669(a,1),467(a,1,1,1))].
+
+given #187 (A,wt=25): 426 f(f(x,f(y,z)),f(f(z,f(x,f(y,z))),f(x,u))) = f(z,f(x,f(y,z))).  [para(281(a,1),321(a,1,2)),rewrite([421(3),421(8),421(11)])].
+
+given #188 (T,wt=9): 13377 f(f(x,y),f(c_0,y)) = y.  [para(11669(a,1),472(a,1,2,1))].
+
+given #189 (T,wt=9): 13392 f(f(c_0,x),f(y,x)) = x.  [para(11756(a,1),472(a,1,2,1))].
+
+given #190 (T,wt=11): 11724 f(x,f(c_0,f(y,f(y,x)))) = c_0.  [back_rewrite(11604),rewrite([11669(4),421(4),11669(7)])].
+
+given #191 (T,wt=11): 11727 f(x,f(c_0,f(y,f(x,y)))) = c_0.  [back_rewrite(11601),rewrite([11669(4),421(4),11669(7)])].
+
+given #192 (A,wt=27): 433 f(f(x,f(f(y,x),f(z,u))),f(u,f(f(y,x),f(z,u)))) = f(f(y,x),f(z,u)).  [para(281(a,1),281(a,1,1,1)),rewrite([421(4),421(8),421(13),421(15),429(15)])].
+
+given #193 (T,wt=11): 11743 f(f(x,c_0),y) = f(y,f(x,x)).  [back_rewrite(11584),rewrite([11669(2)])].
+
+given #194 (T,wt=11): 11755 f(f(x,c_0),y) = f(y,f(x,y)).  [back_rewrite(11569),rewrite([11669(2)])].
+
+given #195 (T,wt=11): 11759 f(x,f(y,c_0)) = f(x,f(y,x)).  [back_rewrite(11565),rewrite([11669(2)])].
+
+given #196 (T,wt=11): 11760 f(f(x,c_0),y) = f(y,f(y,x)).  [back_rewrite(11564),rewrite([11669(2)])].
+
+given #197 (A,wt=27): 443 f(f(f(x,y),z),f(y,f(f(f(x,y),z),f(u,z)))) = f(f(f(x,y),z),f(u,z)).  [back_rewrite(332),rewrite([421(5),421(8)])].
+
+given #198 (T,wt=11): 11763 f(x,f(x,f(y,c_0))) = f(x,y).  [back_rewrite(11561),rewrite([11669(2)])].
+
+given #199 (T,wt=11): 11764 f(x,f(y,c_0)) = f(x,f(x,y)).  [back_rewrite(11560),rewrite([11669(2)])].
+
+given #200 (T,wt=11): 11766 f(x,f(y,c_0)) = f(x,f(y,y)).  [back_rewrite(11558),rewrite([11669(2)])].
+
+given #201 (T,wt=11): 11774 f(x,f(c_0,f(y,x))) = f(y,x).  [back_rewrite(11549),rewrite([11669(3),421(3)])].
+
+given #202 (A,wt=27): 444 f(f(f(x,y),z),f(x,f(f(f(x,y),z),f(u,z)))) = f(f(f(x,y),z),f(u,z)).  [back_rewrite(329),rewrite([421(5),421(8)])].
+
+given #203 (T,wt=11): 11777 f(x,f(c_0,f(x,y))) = f(x,y).  [back_rewrite(11545),rewrite([11669(3),421(3)])].
+
+given #204 (T,wt=11): 11779 f(f(x,x),f(c_0,f(y,x))) = c_0.  [back_rewrite(11542),rewrite([11669(4),421(4),11669(7)])].
+
+given #205 (T,wt=11): 11786 f(f(x,x),f(c_0,f(x,y))) = c_0.  [back_rewrite(11534),rewrite([11669(4),421(4),11669(7)])].
+
+given #206 (T,wt=11): 11788 f(f(x,c_0),y) = f(f(x,x),y).  [back_rewrite(11530),rewrite([11669(2)])].
+
+given #207 (A,wt=25): 446 f(f(x,f(y,z)),f(f(y,f(x,f(y,z))),f(u,x))) = f(y,f(x,f(y,z))).  [back_rewrite(313),rewrite([421(5),421(11)])].
+
+given #208 (T,wt=11): 11793 f(x,f(f(x,c_0),y)) = f(x,x).  [back_rewrite(11519),rewrite([11669(2)])].
+
+given #209 (T,wt=11): 11794 f(x,f(y,f(x,c_0))) = f(x,x).  [back_rewrite(11518),rewrite([11669(2)])].
+
+given #210 (T,wt=11): 13345 f(x,f(c_0,f(y,f(x,x)))) = c_0.  [para(1415(a,1),404(a,1,2,1)),rewrite([11782(3,R),11756(3),421(2),11669(2),11782(9,R),11756(9),421(7),11669(7)])].
+
+given #211 (T,wt=11): 13378 f(x,f(c_0,f(f(x,x),y))) = c_0.  [para(11669(a,1),399(a,1,2,1)),rewrite([11669(7)])].
+
+given #212 (A,wt=23): 449 f(f(x,f(y,f(x,z))),f(f(y,f(x,z)),f(u,y))) = f(y,f(x,z)).  [back_rewrite(293),rewrite([421(7),421(8)])].
+
+given #213 (T,wt=11): 13386 f(x,f(y,f(c_0,x))) = f(c_0,x).  [para(11669(a,1),545(a,1,2,2,1)),rewrite([11669(6)])].
+
+given #214 (T,wt=11): 13393 f(x,f(f(c_0,x),y)) = f(c_0,x).  [para(11756(a,1),470(a,1,2,2))].
+
+given #215 (T,wt=11): 13399 f(x,f(c_0,f(y,f(x,c_0)))) = c_0.  [para(11756(a,1),325(a,1,1)),rewrite([11756(4),11765(5)])].
+
+given #216 (T,wt=11): 13408 f(x,f(c_0,f(f(x,c_0),y))) = c_0.  [para(11756(a,1),701(a,1,1))].
+
+given #217 (A,wt=17): 468 f(x,f(f(y,x),f(f(x,f(y,z)),u))) = f(y,x).  [para(453(a,1),338(a,1,1))].
+
+given #218 (T,wt=11): 13409 f(x,f(c_0,f(f(c_0,x),y))) = c_0.  [para(11756(a,1),729(a,1,1))].
+
+given #219 (T,wt=11): 13869 f(f(c_0,x),y) = f(f(x,x),y).  [para(11782(a,2),301(a,2,1)),rewrite([301(6)]),flip(a)].
+
+given #220 (T,wt=11): 13882 f(x,f(c_0,y)) = f(x,f(y,y)).  [para(11782(a,1),429(a,1,2,2,2)),rewrite([169(3)]),flip(a)].
+
+given #221 (T,wt=11): 13883 f(x,f(c_0,y)) = f(x,f(x,y)).  [para(11782(a,2),1380(a,1,2))].
+
+given #222 (A,wt=17): 469 f(x,f(f(y,x),f(z,f(x,f(y,u))))) = f(y,x).  [para(453(a,1),353(a,1,1))].
+
+given #223 (T,wt=11): 13884 f(x,f(x,f(c_0,y))) = f(x,y).  [para(11782(a,2),1415(a,1,2,2))].
+
+given #224 (T,wt=11): 13885 f(f(c_0,x),y) = f(y,f(y,x)).  [para(11782(a,2),1422(a,1,1))].
+
+given #225 (T,wt=11): 13886 f(x,f(c_0,y)) = f(x,f(y,x)).  [para(11782(a,2),1423(a,1,2))].
+
+given #226 (T,wt=11): 13887 f(f(c_0,x),y) = f(y,f(x,y)).  [para(11782(a,2),1647(a,1,1))].
+
+given #227 (A,wt=19): 474 f(f(x,x),f(f(y,f(x,y)),f(x,z))) = f(y,f(x,y)).  [para(427(a,1),453(a,1,1))].
+
+given #228 (T,wt=11): 13897 f(f(x,x),y) = f(y,f(c_0,x)).  [para(11782(a,2),545(a,1,2,2,1)),rewrite([13393(4)]),flip(a)].
+
+given #229 (T,wt=11): 13898 f(f(c_0,x),y) = f(y,f(x,x)).  [para(11782(a,2),545(a,2,1)),rewrite([258(3)]),flip(a)].
+
+given #230 (T,wt=11): 14832 f(f(x,y),f(c_0,f(y,x))) = c_0.  [para(1423(a,2),11724(a,1,2,2,2)),rewrite([1415(5)])].
+
+given #231 (T,wt=11): 16137 f(f(x,x),y) = f(y,f(x,c_0)).  [para(11759(a,2),1647(a,2))].
+
+given #232 (A,wt=19): 475 f(x,f(f(x,f(y,z)),f(f(y,x),u))) = f(x,f(y,z)).  [para(453(a,1),453(a,1,1))].
+
+given #233 (T,wt=11): 20131 f(f(c_0,f(x,y)),f(y,x)) = c_0.  [para(13886(a,1),1421(a,1)),rewrite([14115(9),421(7),338(7)])].
+
+given #234 (T,wt=13): 11871 f(f(x,x),f(y,f(c_0,f(z,x)))) = x.  [back_rewrite(2820),rewrite([11669(3)])].
+
+given #235 (T,wt=13): 13391 f(f(x,y),f(y,x)) = f(c_0,f(x,y)).  [para(291(a,1),11756(a,1,2)),flip(a)].
+
+given #236 (T,wt=13): 13853 f(f(c_0,x),f(f(c_0,f(x,y)),z)) = x.  [para(334(a,1),11762(a,1,2)),rewrite([11762(4)]),flip(a)].
+
+given #237 (A,wt=23): 477 f(f(x,f(f(y,x),z)),f(f(f(y,x),z),f(z,u))) = f(f(y,x),z).  [para(163(a,1),291(a,1,1,2)),rewrite([421(3)])].
+
+given #238 (T,wt=13): 13857 f(f(c_0,x),f(f(c_0,f(y,x)),z)) = x.  [para(340(a,1),11762(a,1,2)),rewrite([11762(4)]),flip(a)].
+
+given #239 (T,wt=13): 13859 f(f(c_0,x),f(y,f(c_0,f(x,z)))) = x.  [para(342(a,1),11762(a,1,2)),rewrite([11762(4)]),flip(a)].
+
+given #240 (T,wt=13): 13864 f(f(c_0,x),f(y,f(c_0,f(z,x)))) = x.  [para(352(a,1),11762(a,1,2)),rewrite([11762(4)]),flip(a)].
+
+given #241 (T,wt=13): 15191 f(f(x,x),f(f(y,x),f(z,x))) = c_0.  [para(433(a,1),11669(a,1,2)),rewrite([421(8),1423(8,R),421(5)])].
+
+given #242 (A,wt=23): 479 f(f(x,f(y,f(z,x))),f(f(y,f(z,x)),f(u,y))) = f(y,f(z,x)).  [para(264(a,1),291(a,1,2,2)),rewrite([421(7),421(8)])].
+
+given #243 (T,wt=13): 18356 f(f(x,c_0),f(f(c_0,f(x,y)),z)) = x.  [para(468(a,1),11762(a,1,2)),rewrite([11757(4)]),flip(a)].
+
+given #244 (T,wt=13): 19563 f(f(x,c_0),f(y,f(c_0,f(x,z)))) = x.  [para(469(a,1),11762(a,1,2)),rewrite([11757(4)]),flip(a)].
+
+given #245 (T,wt=13): 19583 f(f(x,f(c_0,f(y,z))),f(y,c_0)) = y.  [para(469(a,1),11774(a,1,2)),rewrite([19563(14)])].
+
+given #246 (T,wt=13): 19618 f(f(x,c_0),f(y,f(c_0,f(z,x)))) = x.  [para(669(a,1),13884(a,1,2)),rewrite([421(4),11757(4)]),flip(a)].
+
+given #247 (A,wt=23): 482 f(f(x,f(f(x,y),z)),f(f(f(x,y),z),f(z,u))) = f(f(x,y),z).  [para(280(a,1),291(a,1,1,2)),rewrite([421(3)])].
+
+given #248 (T,wt=13): 19628 f(f(x,c_0),f(f(c_0,f(y,x)),z)) = x.  [para(694(a,1),13884(a,1,2)),rewrite([421(4),11757(4)]),flip(a)].
+
+given #249 (T,wt=13): 20938 f(f(x,x),f(y,f(c_0,f(x,z)))) = x.  [para(421(a,1),11871(a,1,2,2,2))].
+
+given #250 (T,wt=13): 20939 f(f(x,x),f(f(c_0,f(y,x)),z)) = x.  [para(421(a,1),11871(a,1,2))].
+
+given #251 (T,wt=13): 21026 f(f(x,x),f(y,f(y,f(z,x)))) = x.  [para(13883(a,1),11871(a,1,2))].
+
+given #252 (A,wt=29): 485 f(f(x,y),f(f(f(x,y),f(z,x)),f(f(f(x,y),f(y,u)),w))) = f(f(x,y),f(z,x)).  [para(291(a,1),338(a,1,1))].
+
+Low Water (keep): wt=29.000, iters=6700
+
+given #253 (T,wt=13): 21034 f(f(x,f(c_0,f(y,z))),f(z,c_0)) = z.  [para(11871(a,1),16137(a,1)),flip(a)].
+
+given #254 (T,wt=13): 21136 f(f(x,x),f(f(c_0,f(x,y)),z)) = x.  [para(13853(a,1),380(a,1,2,2)),rewrite([421(9),1423(10,R),421(6),13853(13)])].
+
+given #255 (T,wt=13): 21193 f(f(c_0,x),f(y,f(y,f(x,z)))) = x.  [para(13885(a,1),13853(a,1,2))].
+
+given #256 (T,wt=13): 21333 f(f(c_0,x),f(y,f(y,f(z,x)))) = x.  [para(13885(a,1),13857(a,1,2))].
+
+given #257 (A,wt=19): 486 f(f(x,f(y,f(x,z))),f(x,f(f(x,f(z,u)),w))) = x.  [para(338(a,1),291(a,1,1,1)),rewrite([338(7),338(12)])].
+
+given #258 (T,wt=13): 21399 f(f(x,x),f(f(x,y),f(z,x))) = c_0.  [para(421(a,1),15191(a,1,2,1))].
+
+given #259 (T,wt=13): 21400 f(f(x,x),f(f(y,x),f(x,z))) = c_0.  [para(421(a,1),15191(a,1,2,2))].
+
+given #260 (T,wt=13): 21444 f(f(x,c_0),f(f(y,x),f(z,x))) = c_0.  [para(15191(a,1),545(a,1,2,2)),rewrite([421(6),15191(11)])].
+
+given #261 (T,wt=13): 21465 f(f(c_0,x),f(f(y,x),f(z,x))) = c_0.  [para(11782(a,2),15191(a,1,1))].
+
+given #262 (A,wt=29): 487 f(f(x,y),f(f(f(x,y),f(z,x)),f(u,f(f(x,y),f(y,w))))) = f(f(x,y),f(z,x)).  [para(291(a,1),353(a,1,1))].
+
+given #263 (T,wt=13): 21565 f(f(x,c_0),f(y,f(y,f(x,z)))) = x.  [para(13885(a,1),18356(a,1,2))].
+
+given #264 (T,wt=13): 21579 f(f(x,f(x,f(y,z))),f(y,c_0)) = y.  [para(13883(a,1),19583(a,1,1))].
+
+given #265 (T,wt=13): 21589 f(f(x,c_0),f(y,f(y,f(z,x)))) = x.  [para(13883(a,1),19618(a,1,2))].
+
+given #266 (T,wt=13): 21653 f(f(x,x),f(y,f(y,f(x,z)))) = x.  [para(13883(a,1),20938(a,1,2))].
+
+given #267 (A,wt=23): 488 f(f(x,y),f(f(f(x,y),f(z,x)),f(y,u))) = f(f(x,y),f(z,x)).  [para(291(a,1),353(a,1,2)),rewrite([421(7)])].
+
+given #268 (T,wt=13): 21676 f(f(x,f(x,f(y,z))),f(z,z)) = z.  [para(21026(a,1),380(a,1,2,2)),rewrite([421(7),1423(8,R),21026(10)])].
+
+given #269 (T,wt=13): 21796 f(f(x,f(x,f(y,z))),f(c_0,z)) = z.  [para(21026(a,1),11774(a,1,2,2)),rewrite([21026(11)])].
+
+given #270 (T,wt=13): 21808 f(f(x,f(x,f(y,z))),f(z,c_0)) = z.  [para(21026(a,1),16137(a,1)),flip(a)].
+
+given #271 (T,wt=13): 21886 f(f(x,f(x,f(y,z))),f(y,y)) = y.  [para(21193(a,1),380(a,1,2,2)),rewrite([421(7),1423(8,R),21193(11)])].
+
+given #272 (A,wt=19): 489 f(f(x,f(y,f(x,z))),f(x,f(f(x,f(u,z)),w))) = x.  [para(353(a,1),291(a,1,1,1)),rewrite([353(7),353(12)])].
+
+given #273 (T,wt=13): 21887 f(f(x,f(x,f(y,z))),f(c_0,y)) = y.  [para(21193(a,1),421(a,1)),flip(a)].
+
+given #274 (T,wt=13): 22042 f(f(x,x),f(f(x,y),f(x,z))) = c_0.  [para(421(a,1),21399(a,1,2,2))].
+
+given #275 (T,wt=13): 22076 f(f(x,c_0),f(f(x,y),f(z,x))) = c_0.  [para(21399(a,1),545(a,1,2,2)),rewrite([421(6),21399(11)])].
+
+given #276 (T,wt=13): 22094 f(f(c_0,x),f(f(x,y),f(z,x))) = c_0.  [para(11782(a,2),21399(a,1,1))].
+
+given #277 (A,wt=19): 491 f(f(f(x,y),f(y,z)),f(f(x,y),f(u,x))) = f(x,y).  [para(291(a,1),421(a,1)),flip(a)].
+
+given #278 (T,wt=13): 22160 f(f(x,c_0),f(f(y,x),f(x,z))) = c_0.  [para(21400(a,1),545(a,1,2,2)),rewrite([421(6),21400(11)])].
+
+Low Water (keep): wt=27.000, iters=6743
+
+given #279 (T,wt=13): 22178 f(f(c_0,x),f(f(y,x),f(x,z))) = c_0.  [para(11782(a,2),21400(a,1,1))].
+
+given #280 (T,wt=13): 22555 f(f(x,c_0),f(f(x,y),f(x,z))) = c_0.  [para(22042(a,1),545(a,1,2,2)),rewrite([421(6),22042(11)])].
+
+given #281 (T,wt=13): 22573 f(f(c_0,x),f(f(x,y),f(x,z))) = c_0.  [para(11782(a,2),22042(a,1,1))].
+
+given #282 (A,wt=19): 492 f(f(f(x,y),f(z,y)),f(f(y,x),f(x,u))) = f(y,x).  [para(421(a,1),291(a,1,1,1))].
+
+given #283 (T,wt=15): 1436 f(f(x,f(x,y)),f(f(f(y,y),z),x)) = x.  [para(1380(a,1),454(a,1,1))].
+
+given #284 (T,wt=15): 1442 f(f(f(x,y),z),f(z,f(x,f(y,y)))) = z.  [para(1380(a,2),455(a,1,2,2))].
+
+given #285 (T,wt=15): 1444 f(f(x,f(x,y)),f(f(z,f(y,y)),x)) = x.  [para(1380(a,1),456(a,1,1))].
+
+given #286 (T,wt=15): 1446 f(f(x,f(y,z)),f(f(y,f(z,z)),x)) = x.  [para(1380(a,2),456(a,1,2,1))].
+
+given #287 (A,wt=19): 493 f(f(f(x,y),f(x,z)),f(f(x,y),f(y,u))) = f(x,y).  [para(421(a,1),291(a,1,1,2))].
+
+given #288 (T,wt=15): 1451 f(f(f(x,f(y,y)),z),f(z,f(z,y))) = z.  [para(1380(a,1),466(a,1,2))].
+
+given #289 (T,wt=15): 1452 f(f(f(x,f(y,y)),z),f(z,f(x,y))) = z.  [para(1380(a,2),466(a,1,1,1))].
+
+given #290 (T,wt=15): 1455 f(f(f(f(x,x),y),z),f(z,f(z,x))) = z.  [para(1380(a,1),467(a,1,2))].
+
+given #291 (T,wt=15): 1470 f(f(x,f(y,f(z,z))),f(f(y,z),x)) = x.  [para(1380(a,2),504(a,1,1,2))].
+
+given #292 (A,wt=19): 494 f(f(f(x,y),f(y,z)),f(f(y,z),f(z,u))) = f(y,z).  [para(421(a,1),291(a,1,1))].
+
+given #293 (T,wt=15): 1473 f(f(f(x,x),y),f(f(z,f(z,x)),y)) = y.  [para(1380(a,1),519(a,1,2,1))].
+
+given #294 (T,wt=15): 1476 f(f(f(x,y),z),f(f(x,f(y,y)),z)) = z.  [para(1380(a,2),519(a,1,2,1))].
+
+given #295 (T,wt=15): 1482 f(x,f(f(x,y),f(z,f(z,x)))) = f(x,y).  [para(1380(a,1),307(a,1,2,2)),rewrite([280(3),280(3),280(8)])].
+
+given #296 (T,wt=15): 1541 f(x,f(f(y,x),f(z,f(z,x)))) = f(y,x).  [para(1380(a,1),402(a,1,2,2))].
+
+given #297 (A,wt=19): 495 f(f(f(x,y),f(z,x)),f(f(y,x),f(y,u))) = f(x,y).  [para(421(a,1),291(a,1,2,1))].
+
+given #298 (T,wt=15): 1543 f(x,f(y,f(z,z))) = f(x,f(y,f(y,z))).  [para(1380(a,1),429(a,1,2,2,2)),rewrite([808(6)]),flip(a)].
+
+given #299 (T,wt=15): 1646 f(f(x,f(y,z)),f(x,f(f(z,z),y))) = x.  [para(1422(a,2),353(a,1,2,2))].
+
+given #300 (T,wt=15): 1658 f(f(f(x,y),z),f(z,f(f(y,y),x))) = z.  [para(1422(a,2),455(a,1,2,2))].
+
+given #301 (T,wt=15): 1659 f(f(x,f(y,z)),f(f(f(z,z),y),x)) = x.  [para(1422(a,2),456(a,1,2,1))].
+
+given #302 (A,wt=19): 496 f(f(f(x,y),f(z,x)),f(f(y,u),f(x,y))) = f(x,y).  [para(421(a,1),291(a,1,2))].
+
+given #303 (T,wt=15): 1663 f(f(f(f(x,x),y),z),f(z,f(y,x))) = z.  [para(1422(a,2),466(a,1,1,1))].
+
+given #304 (T,wt=15): 1670 f(f(x,f(f(y,y),z)),f(x,f(x,y))) = x.  [para(1422(a,1),471(a,1,2))].
+
+given #305 (T,wt=15): 1681 f(f(x,f(y,f(z,z))),f(x,f(x,z))) = x.  [para(1422(a,1),504(a,1,2))].
+
+given #306 (T,wt=15): 1682 f(f(x,f(f(y,y),z)),f(f(z,y),x)) = x.  [para(1422(a,2),504(a,1,1,2))].
+
+given #307 (A,wt=31): 499 f(f(f(x,x),f(f(y,f(x,y)),z)),f(f(f(y,f(x,y)),z),f(z,u))) = f(f(y,f(x,y)),z).  [para(427(a,1),291(a,1,1,2)),rewrite([421(5)])].
+
+given #308 (T,wt=15): 1686 f(f(f(x,y),z),f(f(f(y,y),x),z)) = z.  [para(1422(a,2),519(a,1,2,1))].
+
+given #309 (T,wt=15): 1740 f(x,f(f(y,y),z)) = f(x,f(z,f(z,y))).  [para(1422(a,1),429(a,1,2,2,2)),rewrite([441(5)]),flip(a)].
+
+given #310 (T,wt=15): 1812 f(x,f(f(x,y),f(z,f(x,z)))) = f(x,y).  [para(1423(a,1),307(a,1,2,2)),rewrite([280(3),280(3),280(8)])].
+
+given #311 (T,wt=15): 1881 f(x,f(f(y,x),f(z,f(x,z)))) = f(y,x).  [para(1423(a,1),402(a,1,2,2))].
+
+given #312 (A,wt=29): 500 f(f(x,y),f(f(f(x,y),f(y,z)),f(f(f(x,y),f(u,x)),w))) = f(f(x,y),f(y,z)).  [para(291(a,1),453(a,1,1))].
+
+given #313 (T,wt=15): 1884 f(x,f(y,f(z,z))) = f(x,f(y,f(z,y))).  [para(1423(a,1),429(a,1,2,2,2)),rewrite([801(6)]),flip(a)].
+
+Low Water (displace): id=13830, wt=73.000
+
+Low Water (displace): id=25296, wt=19.000
+
+given #314 (T,wt=15): 1898 f(f(x,f(f(y,y),z)),f(x,f(z,y))) = x.  [para(1547(a,1),353(a,1,2,2))].
+
+given #315 (T,wt=15): 1907 f(f(f(f(x,x),y),z),f(f(y,x),z)) = z.  [para(1547(a,1),519(a,1,2,1))].
+
+given #316 (T,wt=15): 2037 f(x,f(f(y,y),z)) = f(x,f(z,f(y,z))).  [para(1647(a,1),429(a,1,2,2,2)),rewrite([441(5)]),flip(a)].
+
+given #317 (A,wt=19): 501 f(f(x,f(y,f(z,x))),f(x,f(f(x,f(z,u)),w))) = x.  [para(453(a,1),291(a,1,1,1)),rewrite([453(7),453(12)])].
+
+given #318 (T,wt=15): 2427 f(f(x,f(y,f(z,y))),f(x,f(x,z))) = x.  [para(1380(a,1),461(a,1,2))].
+
+given #319 (T,wt=15): 2530 f(x,f(f(y,f(y,x)),f(z,x))) = f(z,x).  [para(1422(a,1),503(a,1,2,1))].
+
+given #320 (T,wt=15): 2532 f(x,f(f(y,f(x,y)),f(z,x))) = f(z,x).  [para(1647(a,1),503(a,1,2,1))].
+
+given #321 (T,wt=15): 2563 f(x,f(f(y,f(y,x)),f(x,z))) = f(x,z).  [para(1422(a,1),505(a,1,2,1))].
+
+given #322 (A,wt=31): 502 f(f(f(x,y),f(z,f(f(x,y),f(u,x)))),f(f(x,y),f(f(f(x,y),f(y,w)),v5))) = f(x,y).  [para(291(a,1),291(a,1,1,1)),rewrite([291(13),291(20)])].
+
+given #323 (T,wt=15): 2565 f(x,f(f(y,f(x,y)),f(x,z))) = f(x,z).  [para(1647(a,1),505(a,1,2,1))].
+
+given #324 (T,wt=15): 2642 f(f(f(x,f(y,x)),z),f(z,f(z,y))) = z.  [para(1380(a,1),522(a,1,2))].
+
+given #325 (T,wt=15): 2946 f(x,f(f(y,y),f(f(y,z),x))) = f(x,x).  [para(545(a,1),427(a,1,2,2)),rewrite([421(6),1423(6,R),421(4)])].
+
+given #326 (T,wt=15): 2976 f(f(x,f(y,y)),z) = f(f(x,f(x,y)),z).  [para(1380(a,1),545(a,1,2,2,1)),rewrite([545(5)]),flip(a)].
+
+given #327 (A,wt=17): 506 f(x,f(f(x,y),f(f(f(y,z),x),u))) = f(x,y).  [para(454(a,1),338(a,1,1))].
+
+given #328 (T,wt=15): 2979 f(f(f(x,x),y),z) = f(f(y,f(y,x)),z).  [para(1422(a,1),545(a,1,2,2,1)),rewrite([765(6)]),flip(a)].
+
+Low Water (keep): wt=25.000, iters=6668
+
+given #329 (T,wt=15): 2981 f(f(x,f(y,y)),z) = f(f(x,f(y,x)),z).  [para(1423(a,1),545(a,1,2,2,1)),rewrite([545(5)]),flip(a)].
+
+given #330 (T,wt=15): 2986 f(f(f(x,x),y),z) = f(f(y,f(x,y)),z).  [para(1647(a,1),545(a,1,2,2,1)),rewrite([758(6)]),flip(a)].
+
+given #331 (T,wt=15): 3008 f(x,f(f(y,y),f(f(z,y),x))) = f(x,x).  [para(549(a,1),427(a,1,2,2)),rewrite([421(6),1423(6,R),421(4)])].
+
+given #332 (A,wt=17): 507 f(x,f(f(x,y),f(z,f(f(y,u),x)))) = f(x,y).  [para(454(a,1),353(a,1,1))].
+
+given #333 (T,wt=15): 3218 f(f(x,f(y,f(y,z))),f(x,f(x,z))) = x.  [para(1380(a,1),554(a,1,2))].
+
+given #334 (T,wt=15): 3223 f(f(x,f(y,f(y,z))),f(x,f(z,x))) = x.  [para(1423(a,1),554(a,1,2))].
+
+given #335 (T,wt=15): 3312 f(f(f(x,f(x,y)),z),f(z,f(z,y))) = z.  [para(1380(a,1),565(a,1,2))].
+
+Low Water (displace): id=27623, wt=17.000
+
+given #336 (T,wt=15): 3321 f(f(f(x,f(x,y)),z),f(z,f(y,z))) = z.  [para(1423(a,1),565(a,1,2))].
+
+given #337 (A,wt=19): 512 f(x,f(f(f(y,z),x),f(f(x,y),u))) = f(f(y,z),x).  [para(454(a,1),453(a,1,1))].
+
+given #338 (T,wt=15): 3514 f(f(x,f(x,y)),f(x,f(z,f(y,z)))) = x.  [para(1422(a,1),581(a,1,1))].
+
+given #339 (T,wt=15): 3749 f(f(x,f(x,y)),f(x,f(z,f(z,y)))) = x.  [para(1422(a,1),586(a,1,1))].
+
+given #340 (T,wt=15): 3755 f(f(x,f(y,x)),f(x,f(z,f(z,y)))) = x.  [para(1647(a,1),586(a,1,1))].
+
+given #341 (T,wt=15): 3822 f(f(x,f(x,y)),f(f(z,f(y,z)),x)) = x.  [para(1380(a,1),636(a,1,1))].
+
+given #342 (A,wt=19): 514 f(f(x,f(y,f(x,z))),f(x,f(f(f(z,u),x),w))) = x.  [para(454(a,1),291(a,1,1,1)),rewrite([454(7),454(12)])].
+
+given #343 (T,wt=15): 3888 f(f(x,f(x,y)),f(f(z,f(z,y)),x)) = x.  [para(1380(a,1),639(a,1,1))].
+
+given #344 (T,wt=15): 3894 f(f(x,f(y,x)),f(f(z,f(z,y)),x)) = x.  [para(1423(a,1),639(a,1,1))].
+
+given #345 (T,wt=15): 5288 f(f(x,f(y,f(z,x))),f(f(z,u),x)) = x.  [para(676(a,1),549(a,1,2,2)),rewrite([676(12)])].
+
+given #346 (T,wt=15): 5732 f(f(x,f(y,f(z,x))),f(f(u,z),x)) = x.  [para(681(a,1),549(a,1,2,2)),rewrite([681(12)])].
+
+given #347 (A,wt=29): 515 f(f(x,y),f(f(f(f(x,y),f(y,z)),u),f(f(x,y),f(w,x)))) = f(f(x,y),f(w,x)).  [para(291(a,1),454(a,1,1))].
+
+given #348 (T,wt=15): 6998 f(f(x,f(f(x,y),z)),f(f(u,y),x)) = x.  [para(699(a,1),421(a,1)),flip(a)].
+
+given #349 (T,wt=15): 7211 f(f(x,f(f(x,y),z)),f(f(y,u),x)) = x.  [para(700(a,1),421(a,1)),flip(a)].
+
+given #350 (T,wt=15): 7413 f(f(x,f(f(y,x),z)),f(x,f(y,u))) = x.  [para(701(a,1),421(a,1)),flip(a)].
+
+given #351 (T,wt=15): 7503 f(f(x,f(f(y,x),z)),f(f(y,u),x)) = x.  [para(701(a,1),549(a,1,2,2)),rewrite([701(12)])].
+
+given #352 (A,wt=17): 516 f(x,f(f(y,x),f(f(x,f(z,y)),u))) = f(y,x).  [para(455(a,1),338(a,1,1))].
+
+given #353 (T,wt=15): 7868 f(f(x,f(f(y,x),z)),f(x,f(u,y))) = x.  [para(706(a,1),421(a,1)),flip(a)].
+
+given #354 (T,wt=15): 7957 f(f(x,f(f(y,x),z)),f(f(u,y),x)) = x.  [para(706(a,1),549(a,1,2,2)),rewrite([706(12)])].
+
+given #355 (T,wt=15): 9584 f(x,f(y,f(x,f(z,f(y,x))))) = f(x,x).  [para(1043(a,1),429(a,1,2)),flip(a)].
+
+given #356 (T,wt=15): 9704 f(x,f(y,f(x,f(f(x,y),z)))) = f(x,x).  [para(1044(a,1),429(a,1,2)),flip(a)].
+
+given #357 (A,wt=17): 517 f(x,f(f(y,x),f(z,f(x,f(u,y))))) = f(y,x).  [para(455(a,1),353(a,1,1))].
+
+given #358 (T,wt=15): 10652 f(x,f(y,f(z,f(y,x)))) = f(x,f(y,y)).  [para(1394(a,1),441(a,1,2)),flip(a)].
+
+given #359 (T,wt=15): 11671 f(f(x,f(y,z)),f(x,f(y,f(z,c_0)))) = x.  [back_rewrite(11666),rewrite([11669(4)])].
+
+given #360 (T,wt=15): 11673 f(f(x,f(y,c_0)),f(x,f(z,f(z,y)))) = x.  [back_rewrite(11664),rewrite([11669(2)])].
+
+given #361 (T,wt=15): 11674 f(f(x,f(x,y)),f(x,f(z,f(y,c_0)))) = x.  [back_rewrite(11663),rewrite([11669(4)])].
+
+given #362 (A,wt=19): 521 f(f(x,x),f(f(y,f(x,y)),f(z,x))) = f(y,f(x,y)).  [para(427(a,1),455(a,1,1))].
+
+given #363 (T,wt=15): 11676 f(f(x,f(x,y)),f(x,f(f(y,c_0),z))) = x.  [back_rewrite(11661),rewrite([11669(4)])].
+
+given #364 (T,wt=15): 11701 f(f(x,x),f(c_0,f(f(c_0,f(y,x)),z))) = c_0.  [back_rewrite(11635),rewrite([11669(3),11669(5),421(5),11669(10)])].
+
+given #365 (T,wt=15): 11704 f(f(x,x),f(c_0,f(f(c_0,f(x,y)),z))) = c_0.  [back_rewrite(11631),rewrite([11669(3),11669(5),421(5),11669(10)])].
+
+given #366 (T,wt=15): 11712 f(f(x,x),f(c_0,f(y,f(c_0,f(z,x))))) = c_0.  [back_rewrite(11620),rewrite([11669(3),11669(5),421(5),11669(10)])].
+
+given #367 (A,wt=19): 523 f(x,f(f(x,f(y,z)),f(f(z,x),u))) = f(x,f(y,z)).  [para(455(a,1),453(a,1,1))].
+
+given #368 (T,wt=15): 11715 f(f(x,x),f(c_0,f(y,f(c_0,f(x,z))))) = c_0.  [back_rewrite(11616),rewrite([11669(3),11669(5),421(5),11669(10)])].
+
+given #369 (T,wt=15): 11723 f(f(f(x,f(x,y)),z),f(f(y,c_0),z)) = z.  [back_rewrite(11605),rewrite([11669(5)])].
+
+given #370 (T,wt=15): 11728 f(f(x,f(y,c_0)),f(f(z,f(z,y)),x)) = x.  [back_rewrite(11600),rewrite([11669(2)])].
+
+given #371 (T,wt=15): 11734 f(f(f(x,c_0),y),f(y,f(z,f(z,x)))) = y.  [back_rewrite(11594),rewrite([11669(2)])].
+
+given #372 (A,wt=19): 524 f(x,f(f(x,f(y,z)),f(u,f(y,x)))) = f(x,f(y,z)).  [para(453(a,1),455(a,1,1))].
+
+given #373 (T,wt=15): 11738 f(f(x,f(y,f(y,z))),f(f(z,c_0),x)) = x.  [back_rewrite(11590),rewrite([11669(5)])].
+
+given #374 (T,wt=15): 11740 f(f(f(x,f(x,y)),z),f(z,f(y,c_0))) = z.  [back_rewrite(11587),rewrite([11669(5)])].
+
+given #375 (T,wt=15): 11741 f(f(x,f(y,f(y,z))),f(x,f(z,c_0))) = x.  [back_rewrite(11586),rewrite([11669(5)])].
+
+given #376 (T,wt=15): 11747 f(x,f(f(y,f(x,c_0)),f(x,z))) = f(x,z).  [back_rewrite(11579),rewrite([11669(2)])].
+
+given #377 (A,wt=19): 526 f(f(x,f(y,f(z,x))),f(x,f(f(x,f(u,z)),w))) = x.  [para(455(a,1),291(a,1,1,1)),rewrite([455(7),455(12)])].
+
+given #378 (T,wt=15): 11748 f(x,f(f(y,f(x,c_0)),f(z,x))) = f(z,x).  [back_rewrite(11578),rewrite([11669(2)])].
+
+given #379 (T,wt=15): 11751 f(x,f(f(f(x,c_0),y),f(x,z))) = f(x,z).  [back_rewrite(11575),rewrite([11669(2)])].
+
+given #380 (T,wt=15): 11752 f(x,f(f(f(x,c_0),y),f(z,x))) = f(z,x).  [back_rewrite(11574),rewrite([11669(2)])].
+
+given #381 (T,wt=15): 11768 f(x,f(f(y,x),f(z,f(x,c_0)))) = f(y,x).  [back_rewrite(11556),rewrite([11669(3)])].
+
+given #382 (A,wt=29): 527 f(f(x,y),f(f(f(x,y),f(y,z)),f(u,f(f(x,y),f(w,x))))) = f(f(x,y),f(y,z)).  [para(291(a,1),455(a,1,1))].
+
+given #383 (T,wt=15): 11769 f(x,f(f(y,x),f(f(x,c_0),z))) = f(y,x).  [back_rewrite(11555),rewrite([11669(3)])].
+
+given #384 (T,wt=15): 11770 f(x,f(f(x,y),f(z,f(x,c_0)))) = f(x,y).  [back_rewrite(11553),rewrite([11669(3)])].
+
+given #385 (T,wt=15): 11771 f(x,f(f(x,y),f(f(x,c_0),z))) = f(x,y).  [back_rewrite(11552),rewrite([11669(3)])].
+
+given #386 (T,wt=15): 11818 f(x,f(f(y,f(x,x)),f(z,f(x,x)))) = c_0.  [back_rewrite(10664),rewrite([11669(8)])].
+
+given #387 (A,wt=23): 528 f(f(x,y),f(f(y,z),f(f(x,y),f(u,x)))) = f(f(x,y),f(u,x)).  [para(291(a,1),455(a,1,2)),rewrite([421(7)])].
+
+given #388 (T,wt=15): 11819 f(x,f(f(f(x,x),y),f(z,f(x,x)))) = c_0.  [back_rewrite(10659),rewrite([11669(8)])].
+
+given #389 (T,wt=15): 11851 f(x,f(f(c_0,f(y,f(x,x))),z)) = f(x,x).  [back_rewrite(3692),rewrite([11669(2)])].
+
+given #390 (T,wt=15): 11869 f(x,f(y,f(c_0,f(z,f(x,x))))) = f(x,x).  [back_rewrite(2843),rewrite([11669(2)])].
+
+given #391 (T,wt=15): 11870 f(x,f(y,f(c_0,f(f(x,x),z)))) = f(x,x).  [back_rewrite(2828),rewrite([11669(2)])].
+
+given #392 (A,wt=19): 529 f(x,f(f(f(y,z),x),f(u,f(x,y)))) = f(f(y,z),x).  [para(454(a,1),455(a,1,1))].
+
+given #393 (T,wt=15): 11956 f(f(f(x,x),y),f(c_0,f(z,x))) = f(z,x).  [back_rewrite(2839),rewrite([11759(7,R),421(5)])].
+
+given #394 (T,wt=15): 11958 f(f(x,f(y,y)),f(c_0,f(z,y))) = f(z,y).  [back_rewrite(2707),rewrite([11759(7,R),421(5)])].
+
+given #395 (T,wt=15): 11964 f(f(f(x,x),y),f(c_0,f(x,z))) = f(x,z).  [back_rewrite(2564),rewrite([11759(7,R),421(5)])].
+
+given #396 (T,wt=15): 11965 f(f(x,f(y,y)),f(c_0,f(y,z))) = f(y,z).  [back_rewrite(2531),rewrite([11759(7,R),421(5)])].
+
+given #397 (A,wt=19): 530 f(x,f(f(x,f(y,z)),f(u,f(z,x)))) = f(x,f(y,z)).  [para(455(a,1),455(a,1,1))].
+
+given #398 (T,wt=15): 11975 f(f(x,x),f(y,c_0)) = f(f(y,y),f(x,c_0)).  [back_rewrite(2047),rewrite([11759(4,R),11759(8,R)])].
+
+given #399 (T,wt=15): 11976 f(f(x,y),f(z,c_0)) = f(f(z,z),f(x,y)).  [back_rewrite(2039),rewrite([11759(4,R)])].
+
+given #400 (T,wt=15): 12006 f(x,f(f(y,x),f(c_0,f(z,y)))) = f(x,x).  [back_rewrite(912),rewrite([11759(5,R),421(4)])].
+
+given #401 (T,wt=15): 12007 f(x,f(f(y,x),f(c_0,f(y,z)))) = f(x,x).  [back_rewrite(886),rewrite([11759(5,R),421(4)])].
+
+given #402 (A,wt=17): 534 f(x,f(f(x,y),f(f(f(z,y),x),u))) = f(x,y).  [para(456(a,1),338(a,1,1))].
+
+given #403 (T,wt=15): 12008 f(x,f(f(x,y),f(c_0,f(z,y)))) = f(x,x).  [back_rewrite(800),rewrite([11759(5,R),421(4)])].
+
+Low Water (displace): id=31283, wt=15.000
+
+given #404 (T,wt=15): 12009 f(x,f(f(x,y),f(c_0,f(y,z)))) = f(x,x).  [back_rewrite(781),rewrite([11759(5,R),421(4)])].
+
+given #405 (T,wt=15): 12197 f(f(x,f(c_0,f(y,z))),f(f(z,y),x)) = x.  [back_rewrite(3896),rewrite([11782(3,R)])].
+
+given #406 (T,wt=15): 12235 f(f(f(x,y),z),f(z,f(c_0,f(y,x)))) = z.  [back_rewrite(3322),rewrite([11782(5,R)])].
+
+given #407 (A,wt=17): 535 f(x,f(f(x,y),f(z,f(f(u,y),x)))) = f(x,y).  [para(456(a,1),353(a,1,1))].
+
+given #408 (T,wt=15): 12657 f(f(f(x,y),z),f(f(c_0,f(y,x)),z)) = z.  [back_rewrite(4227),rewrite([11782(5,R)])].
+
+given #409 (T,wt=15): 12696 f(f(f(c_0,f(x,y)),z),f(z,f(y,x))) = z.  [back_rewrite(3753),rewrite([11782(3,R)])].
+
+given #410 (T,wt=15): 12735 f(f(x,f(y,z)),f(f(c_0,f(z,y)),x)) = x.  [back_rewrite(3424),rewrite([11782(5,R)])].
+
+given #411 (T,wt=15): 13395 f(x,f(c_0,f(y,f(c_0,f(z,f(x,x)))))) = c_0.  [para(11756(a,1),359(a,1,1))].
+
+given #412 (A,wt=19): 540 f(x,f(f(f(y,z),x),f(f(x,z),u))) = f(f(y,z),x).  [para(456(a,1),453(a,1,1))].
+
+given #413 (T,wt=15): 13397 f(x,f(c_0,f(f(c_0,f(y,f(x,x))),z))) = c_0.  [para(11756(a,1),442(a,1,1))].
+
+given #414 (T,wt=15): 13398 f(x,f(c_0,f(y,f(c_0,f(f(x,x),z))))) = c_0.  [para(11756(a,1),445(a,1,1))].
+
+given #415 (T,wt=15): 13406 f(x,f(c_0,f(f(c_0,f(f(x,x),y)),z))) = c_0.  [para(11756(a,1),686(a,1,1))].
+
+given #416 (T,wt=15): 13630 f(x,f(c_0,f(y,f(c_0,f(z,f(x,c_0)))))) = c_0.  [para(11757(a,1),359(a,1,1))].
+
+given #417 (A,wt=17): 541 f(x,f(f(y,f(x,f(z,u))),f(z,x))) = f(z,x).  [para(453(a,1),456(a,1,1))].
+
+given #418 (T,wt=15): 13634 f(x,f(c_0,f(f(c_0,f(y,f(x,c_0))),z))) = c_0.  [para(11757(a,1),442(a,1,1))].
+
+given #419 (T,wt=15): 13635 f(x,f(c_0,f(y,f(c_0,f(f(x,c_0),z))))) = c_0.  [para(11757(a,1),445(a,1,1))].
+
+given #420 (T,wt=15): 13641 f(x,f(c_0,f(f(c_0,f(f(x,c_0),y)),z))) = c_0.  [para(11757(a,1),686(a,1,1))].
+
+given #421 (T,wt=15): 13849 f(x,f(c_0,f(y,f(c_0,f(z,f(c_0,x)))))) = c_0.  [para(11762(a,1),359(a,1,1))].
+
+given #422 (A,wt=19): 542 f(f(x,f(y,f(x,z))),f(x,f(f(f(u,z),x),w))) = x.  [para(456(a,1),291(a,1,1,1)),rewrite([456(7),456(12)])].
+
+given #423 (T,wt=15): 13850 f(x,f(c_0,f(f(c_0,f(y,f(c_0,x))),z))) = c_0.  [para(11762(a,1),442(a,1,1))].
+
+given #424 (T,wt=15): 13851 f(x,f(c_0,f(y,f(c_0,f(f(c_0,x),z))))) = c_0.  [para(11762(a,1),445(a,1,1))].
+
+given #425 (T,wt=15): 13854 f(f(c_0,f(x,y)),f(f(c_0,x),z)) = f(x,y).  [para(336(a,1),11762(a,1,2)),rewrite([11762(5)]),flip(a)].
+
+given #426 (T,wt=15): 13860 f(x,f(c_0,f(f(c_0,f(f(c_0,x),y)),z))) = c_0.  [para(11762(a,1),686(a,1,1))].
+
+given #427 (A,wt=29): 543 f(f(x,y),f(f(z,f(f(x,y),f(y,u))),f(f(x,y),f(w,x)))) = f(f(x,y),f(w,x)).  [para(291(a,1),456(a,1,1))].
+
+given #428 (T,wt=15): 13861 f(f(c_0,f(x,y)),f(z,f(c_0,x))) = f(x,y).  [para(348(a,1),11762(a,1,2)),rewrite([11762(5)]),flip(a)].
+
+given #429 (T,wt=15): 13865 f(f(c_0,f(x,y)),f(z,f(c_0,y))) = f(x,y).  [para(355(a,1),11762(a,1,2)),rewrite([11762(5)]),flip(a)].
+
+given #430 (T,wt=15): 13866 f(f(c_0,f(x,y)),f(f(c_0,y),z)) = f(x,y).  [para(401(a,1),11762(a,1,2)),rewrite([11762(5)]),flip(a)].
+
+given #431 (T,wt=15): 13877 f(x,f(f(x,y),f(f(c_0,x),z))) = f(x,y).  [para(11782(a,2),322(a,1,2,2,1))].
+
+given #432 (A,wt=17): 544 f(x,f(f(y,f(f(z,u),x)),f(x,z))) = f(x,z).  [para(454(a,1),456(a,1,1))].
+
+given #433 (T,wt=15): 13878 f(x,f(f(x,y),f(z,f(c_0,x)))) = f(x,y).  [para(11782(a,2),327(a,1,2,2,2))].
+
+given #434 (T,wt=15): 13879 f(x,f(f(y,x),f(f(c_0,x),z))) = f(y,x).  [para(11782(a,2),392(a,1,2,2,1))].
+
+given #435 (T,wt=15): 13881 f(x,f(f(y,x),f(z,f(c_0,x)))) = f(y,x).  [para(11782(a,2),402(a,1,2,2,2))].
+
+given #436 (T,wt=15): 13889 f(f(x,f(y,f(z,y))),f(x,f(c_0,z))) = x.  [para(11782(a,2),461(a,1,2,2))].
+
+given #437 (A,wt=19): 546 f(x,f(f(f(y,z),x),f(u,f(x,z)))) = f(f(y,z),x).  [para(456(a,1),455(a,1,1))].
+
+given #438 (T,wt=15): 13891 f(x,f(f(f(c_0,x),y),f(z,x))) = f(z,x).  [para(11782(a,2),503(a,1,2,1,1))].
+
+given #439 (T,wt=15): 13892 f(x,f(f(f(c_0,x),y),f(x,z))) = f(x,z).  [para(11782(a,2),505(a,1,2,1,1))].
+
+given #440 (T,wt=15): 13893 f(f(f(x,f(y,x)),z),f(z,f(c_0,y))) = z.  [para(11782(a,2),522(a,1,2,2))].
+
+given #441 (T,wt=15): 13894 f(x,f(f(y,f(c_0,x)),f(z,x))) = f(z,x).  [para(11782(a,2),532(a,1,2,1,2))].
+
+given #442 (A,wt=17): 547 f(x,f(f(y,f(x,f(z,u))),f(u,x))) = f(u,x).  [para(455(a,1),456(a,1,1))].
+
+given #443 (T,wt=15): 13895 f(x,f(f(y,f(c_0,x)),f(x,z))) = f(x,z).  [para(11782(a,2),533(a,1,2,1,2))].
+
+given #444 (T,wt=15): 13896 f(f(x,f(y,f(z,y))),f(f(c_0,z),x)) = x.  [para(11782(a,2),538(a,1,2,1))].
+
+given #445 (T,wt=15): 13900 f(f(x,f(y,f(y,z))),f(x,f(c_0,z))) = x.  [para(11782(a,2),554(a,1,2,2))].
+
+given #446 (T,wt=15): 13901 f(f(f(x,f(x,y)),z),f(z,f(c_0,y))) = z.  [para(11782(a,2),565(a,1,2,2))].
+
+given #447 (A,wt=17): 548 f(x,f(f(y,f(f(z,u),x)),f(x,u))) = f(x,u).  [para(456(a,1),456(a,1,1))].
+
+given #448 (T,wt=15): 13902 f(f(x,f(y,f(y,z))),f(f(c_0,z),x)) = x.  [para(11782(a,2),567(a,1,2,1))].
+
+given #449 (T,wt=15): 13903 f(f(f(c_0,x),y),f(y,f(z,f(x,z)))) = y.  [para(11782(a,2),581(a,1,1,1))].
+
+given #450 (T,wt=15): 13904 f(f(f(c_0,x),y),f(y,f(z,f(z,x)))) = y.  [para(11782(a,2),586(a,1,1,1))].
+
+given #451 (T,wt=15): 13905 f(f(x,f(c_0,y)),f(f(z,f(y,z)),x)) = x.  [para(11782(a,2),636(a,1,1,2))].
+
+given #452 (A,wt=19): 558 f(f(x,x),f(f(y,f(y,x)),f(x,z))) = f(y,f(y,x)).  [para(464(a,1),453(a,1,1))].
+
+given #453 (T,wt=15): 13906 f(f(x,f(c_0,y)),f(f(z,f(z,y)),x)) = x.  [para(11782(a,2),639(a,1,1,2))].
+
+given #454 (T,wt=15): 13907 f(f(f(x,f(y,x)),z),f(f(c_0,y),z)) = z.  [para(11782(a,2),648(a,1,2,1))].
+
+given #455 (T,wt=15): 13908 f(f(f(x,f(x,y)),z),f(f(c_0,y),z)) = z.  [para(11782(a,2),656(a,1,2,1))].
+
+given #456 (T,wt=15): 13922 f(f(x,f(c_0,y)),f(x,f(z,f(z,y)))) = x.  [para(11782(a,2),1420(a,1,1,2))].
+
+given #457 (A,wt=31): 560 f(f(f(x,x),f(f(y,f(y,x)),z)),f(f(f(y,f(y,x)),z),f(z,u))) = f(f(y,f(y,x)),z).  [para(464(a,1),291(a,1,1,2)),rewrite([421(5)])].
+
+given #458 (T,wt=15): 13941 f(f(x,x),f(c_0,y)) = f(f(y,y),f(x,c_0)).  [back_rewrite(11993),rewrite([13883(4,R)])].
+
+given #459 (T,wt=15): 14123 f(f(x,x),f(c_0,y)) = f(f(y,y),f(c_0,x)).  [back_rewrite(1744),rewrite([13883(4,R),13883(8,R)])].
+
+given #460 (T,wt=15): 14124 f(f(x,y),f(c_0,z)) = f(f(z,z),f(x,y)).  [back_rewrite(1742),rewrite([13883(4,R)])].
+
+given #461 (T,wt=15): 14780 f(f(x,f(y,z)),f(c_0,f(x,f(y,x)))) = c_0.  [para(453(a,1),11724(a,1,2,2,2)),rewrite([421(5)])].
+
+given #462 (A,wt=19): 564 f(f(x,x),f(f(y,f(y,x)),f(z,x))) = f(y,f(y,x)).  [para(464(a,1),455(a,1,1))].
+
+given #463 (T,wt=15): 14784 f(f(f(x,y),z),f(c_0,f(z,f(z,x)))) = c_0.  [para(454(a,1),11724(a,1,2,2,2)),rewrite([421(5)])].
+
+given #464 (T,wt=15): 14786 f(f(x,f(y,z)),f(c_0,f(x,f(z,x)))) = c_0.  [para(455(a,1),11724(a,1,2,2,2)),rewrite([421(5)])].
+
+given #465 (T,wt=15): 14788 f(f(f(x,y),z),f(c_0,f(z,f(z,y)))) = c_0.  [para(456(a,1),11724(a,1,2,2,2)),rewrite([421(5)])].
+
+given #466 (T,wt=15): 14791 f(f(x,y),f(c_0,f(x,f(c_0,f(z,y))))) = c_0.  [para(466(a,1),11724(a,1,2,2,2)),rewrite([421(5),13886(5,R)])].
+
+given #467 (A,wt=25): 572 f(f(f(x,x),y),f(f(x,x),f(f(f(f(x,x),y),f(x,z)),u))) = f(x,x).  [para(301(a,1),338(a,1,1))].
+
+given #468 (T,wt=15): 14792 f(f(x,y),f(c_0,f(x,f(c_0,f(y,z))))) = c_0.  [para(467(a,1),11724(a,1,2,2,2)),rewrite([421(5),13886(5,R)])].
+
+given #469 (T,wt=15): 14793 f(f(x,y),f(c_0,f(y,f(y,f(x,z))))) = c_0.  [para(471(a,1),11724(a,1,2,2,2)),rewrite([421(5)])].
+
+given #470 (T,wt=15): 14795 f(f(f(x,y),z),f(c_0,f(z,f(x,z)))) = c_0.  [para(472(a,1),11724(a,1,2,2,2)),rewrite([421(5)])].
+
+given #471 (T,wt=15): 14797 f(f(x,y),f(c_0,f(y,f(y,f(z,x))))) = c_0.  [para(504(a,1),11724(a,1,2,2,2)),rewrite([421(5)])].
+
+given #472 (A,wt=25): 573 f(f(f(x,x),y),f(f(x,x),f(z,f(f(f(x,x),y),f(x,u))))) = f(x,x).  [para(301(a,1),353(a,1,1))].
+
+given #473 (T,wt=15): 14799 f(f(f(x,y),z),f(c_0,f(z,f(y,z)))) = c_0.  [para(519(a,1),11724(a,1,2,2,2)),rewrite([421(5)])].
+
+given #474 (T,wt=15): 14800 f(x,f(c_0,f(y,f(c_0,f(z,f(z,x)))))) = c_0.  [para(11724(a,1),356(a,1,2,1)),rewrite([11724(13)])].
+
+given #475 (T,wt=15): 14802 f(x,f(c_0,f(f(c_0,f(y,f(y,x))),z))) = c_0.  [para(11724(a,1),399(a,1,2,1)),rewrite([11724(13)])].
+
+given #476 (T,wt=15): 14805 f(f(c_0,f(x,f(x,y))),f(c_0,f(y,z))) = c_0.  [para(11724(a,1),470(a,1,2,1)),rewrite([11724(13)])].
+
+given #477 (A,wt=19): 574 f(f(x,x),f(f(x,y),f(f(x,x),z))) = f(f(x,x),z).  [para(421(a,1),301(a,1,2))].
+
+given #478 (T,wt=15): 14807 f(f(c_0,f(x,f(x,y))),f(c_0,f(z,y))) = c_0.  [para(11724(a,1),480(a,1,2,1)),rewrite([11724(13)])].
+
+given #479 (T,wt=15): 14857 f(f(x,f(y,f(z,y))),f(c_0,f(x,z))) = c_0.  [para(581(a,1),11724(a,1,2,2,2)),rewrite([421(7),13886(7,R),11756(7)])].
+
+given #480 (T,wt=15): 14860 f(f(x,f(y,f(y,z))),f(c_0,f(x,z))) = c_0.  [para(586(a,1),11724(a,1,2,2,2)),rewrite([421(7),13886(7,R),11756(7)])].
+
+given #481 (T,wt=15): 14861 f(f(f(x,f(y,x)),z),f(c_0,f(z,y))) = c_0.  [para(636(a,1),11724(a,1,2,2,2)),rewrite([421(7),1415(7)])].
+
+given #482 (A,wt=31): 576 f(f(f(x,x),y),f(f(f(f(x,x),y),f(x,z)),f(f(x,x),u))) = f(f(f(x,x),y),f(x,z)).  [para(301(a,1),453(a,1,1))].
+
+given #483 (T,wt=15): 14862 f(f(f(x,f(x,y)),z),f(c_0,f(z,y))) = c_0.  [para(639(a,1),11724(a,1,2,2,2)),rewrite([421(7),1415(7)])].
+
+given #484 (T,wt=15): 14957 f(f(x,f(f(y,y),z)),f(c_0,f(x,y))) = c_0.  [para(1418(a,1),11724(a,1,2,2,2)),rewrite([421(7),381(7)])].
+
+given #485 (T,wt=15): 14960 f(f(x,f(y,f(z,z))),f(c_0,f(x,z))) = c_0.  [para(1419(a,1),11724(a,1,2,2,2)),rewrite([421(7),381(7)])].
+
+given #486 (T,wt=15): 14967 f(f(x,y),f(c_0,f(x,f(x,f(y,z))))) = c_0.  [para(338(a,1),11727(a,1,2,2,2)),rewrite([421(5)])].
+
+given #487 (A,wt=31): 579 f(f(f(x,x),y),f(f(f(f(x,x),y),f(x,z)),f(u,f(x,x)))) = f(f(f(x,x),y),f(x,z)).  [para(301(a,1),455(a,1,1))].
+
+given #488 (T,wt=15): 14968 f(f(x,y),f(c_0,f(x,f(x,f(z,y))))) = c_0.  [para(353(a,1),11727(a,1,2,2,2)),rewrite([421(5)])].
+
+given #489 (T,wt=15): 14975 f(f(x,y),f(c_0,f(y,f(c_0,f(x,z))))) = c_0.  [para(472(a,1),11727(a,1,2,2,2)),rewrite([421(5),13886(5,R)])].
+
+given #490 (T,wt=15): 14978 f(f(x,y),f(c_0,f(y,f(c_0,f(z,x))))) = c_0.  [para(519(a,1),11727(a,1,2,2,2)),rewrite([421(5),13886(5,R)])].
+
+given #491 (T,wt=15): 14979 f(x,f(c_0,f(y,f(c_0,f(z,f(x,z)))))) = c_0.  [para(11727(a,1),356(a,1,2,1)),rewrite([11727(13)])].
+
+given #492 (A,wt=19): 583 f(f(x,f(y,f(f(z,u),x))),f(x,f(f(x,u),w))) = x.  [para(466(a,1),291(a,1,1,1)),rewrite([466(8),466(12)])].
+
+given #493 (T,wt=15): 14980 f(x,f(c_0,f(f(x,y),f(c_0,f(z,y))))) = c_0.  [para(356(a,1),11727(a,1,2,2,2)),rewrite([421(6),13883(6,R)])].
+
+given #494 (T,wt=15): 14981 f(x,f(c_0,f(f(c_0,f(y,f(x,y))),z))) = c_0.  [para(11727(a,1),399(a,1,2,1)),rewrite([11727(13)])].
+
+given #495 (T,wt=15): 14982 f(x,f(c_0,f(f(x,y),f(c_0,f(y,z))))) = c_0.  [para(399(a,1),11727(a,1,2,2,2)),rewrite([421(6),13883(6,R)])].
+
+given #496 (T,wt=15): 14984 f(x,f(c_0,f(f(y,x),f(c_0,f(y,z))))) = c_0.  [para(470(a,1),11727(a,1,2,2,2)),rewrite([421(6),13883(6,R)])].
+
+given #497 (A,wt=19): 584 f(x,f(f(f(x,y),z),f(f(u,y),x))) = f(f(u,y),x).  [para(466(a,1),454(a,1,1))].
+
+given #498 (T,wt=15): 14985 f(f(c_0,f(x,f(y,x))),f(c_0,f(z,y))) = c_0.  [para(11727(a,1),480(a,1,2,1)),rewrite([11727(13)])].
+
+given #499 (T,wt=15): 14986 f(x,f(c_0,f(f(y,x),f(c_0,f(z,y))))) = c_0.  [para(480(a,1),11727(a,1,2,2,2)),rewrite([421(6),13883(6,R)])].
+
+given #500 (T,wt=15): 15006 f(x,f(c_0,f(f(y,y),f(f(y,z),x)))) = c_0.  [para(545(a,1),11727(a,1,2,2,2)),rewrite([421(7),1423(7,R),421(5)])].
+
+given #501 (T,wt=15): 15007 f(x,f(c_0,f(f(y,y),f(f(z,y),x)))) = c_0.  [para(549(a,1),11727(a,1,2,2,2)),rewrite([421(7),1423(7,R),421(5)])].
+
+given #502 (A,wt=19): 585 f(x,f(f(y,f(x,z)),f(f(u,z),x))) = f(f(u,z),x).  [para(466(a,1),456(a,1,1))].
+
+given #503 (T,wt=15): 15207 f(f(x,f(y,y)),f(x,f(f(y,c_0),z))) = x.  [para(11743(a,2),353(a,1,2,2))].
+
+given #504 (T,wt=15): 15222 f(f(x,f(y,y)),f(x,f(z,f(y,c_0)))) = x.  [para(11743(a,1),455(a,1,1))].
+
+given #505 (T,wt=15): 15225 f(f(f(x,x),y),f(y,f(f(x,c_0),z))) = y.  [para(11743(a,2),455(a,1,2,2))].
+
+given #506 (T,wt=15): 15227 f(f(x,f(y,y)),f(f(f(y,c_0),z),x)) = x.  [para(11743(a,2),456(a,1,2,1))].
+
+given #507 (A,wt=19): 589 f(f(x,f(y,f(f(z,u),x))),f(x,f(f(x,z),w))) = x.  [para(467(a,1),291(a,1,1,1)),rewrite([467(8),467(12)])].
+
+given #508 (T,wt=15): 15230 f(f(f(f(x,c_0),y),z),f(z,f(x,x))) = z.  [para(11743(a,2),466(a,1,1,1))].
+
+given #509 (T,wt=15): 15241 f(f(x,f(y,f(z,c_0))),f(x,f(z,z))) = x.  [para(11743(a,1),504(a,1,2))].
+
+given #510 (T,wt=15): 15242 f(f(x,f(f(y,c_0),z)),f(f(y,y),x)) = x.  [para(11743(a,2),504(a,1,1,2))].
+
+given #511 (T,wt=15): 15244 f(f(x,f(y,y)),f(f(z,f(y,c_0)),x)) = x.  [para(11743(a,1),519(a,1,1))].
+
+given #512 (A,wt=19): 590 f(x,f(f(f(x,y),z),f(f(y,u),x))) = f(f(y,u),x).  [para(467(a,1),454(a,1,1))].
+
+given #513 (T,wt=15): 15245 f(f(f(x,x),y),f(f(f(x,c_0),z),y)) = y.  [para(11743(a,2),519(a,1,2,1))].
+
+given #514 (T,wt=15): 15300 f(f(c_0,x),f(y,y)) = f(f(y,c_0),f(c_0,x)).  [para(11743(a,1),314(a,1,2,1)),rewrite([14156(9)])].
+
+given #515 (T,wt=15): 15307 f(x,f(f(y,c_0),z)) = f(x,f(z,f(y,y))).  [para(11743(a,1),429(a,1,2,2,2)),rewrite([441(5)]),flip(a)].
+
+given #516 (T,wt=15): 15310 f(f(x,c_0),f(c_0,y)) = f(f(y,y),f(x,x)).  [para(11743(a,1),1380(a,1)),rewrite([13883(9,R)]),flip(a)].
+
+given #517 (A,wt=19): 591 f(x,f(f(y,f(x,z)),f(f(z,u),x))) = f(f(z,u),x).  [para(467(a,1),456(a,1,1))].
+
+given #518 (T,wt=15): 15323 f(f(x,c_0),f(y,y)) = f(f(x,x),f(c_0,y)).  [para(11743(a,2),1422(a,1)),rewrite([13883(8,R)])].
+
+given #519 (T,wt=15): 15324 f(f(x,c_0),f(y,c_0)) = f(f(y,y),f(x,x)).  [para(11743(a,1),1423(a,1)),rewrite([11759(9,R)]),flip(a)].
+
+given #520 (T,wt=15): 15326 f(f(x,c_0),f(y,y)) = f(f(x,x),f(y,c_0)).  [para(11743(a,2),1647(a,1)),rewrite([11759(8,R)])].
+
+given #521 (T,wt=15): 15374 f(f(f(x,c_0),y),z) = f(f(y,f(x,x)),z).  [para(11743(a,1),545(a,2,1)),rewrite([545(8)])].
+
+given #522 (A,wt=19): 593 f(f(x,f(y,f(x,f(z,u)))),f(x,f(f(z,x),w))) = x.  [para(471(a,1),291(a,1,1,1)),rewrite([471(8),471(12)])].
+
+given #523 (T,wt=15): 15635 f(f(x,f(f(y,c_0),z)),f(x,f(z,y))) = x.  [para(11743(a,2),1421(a,1,1,2)),rewrite([11782(7,R),11756(7)])].
+
+given #524 (T,wt=15): 15636 f(f(x,f(y,z)),f(x,f(f(z,c_0),y))) = x.  [para(11743(a,2),1421(a,1,2,2))].
+
+given #525 (T,wt=15): 15690 f(f(x,c_0),f(y,c_0)) = f(f(x,x),f(y,y)).  [para(11743(a,1),11743(a,2))].
+
+given #526 (T,wt=15): 15711 f(f(f(x,y),z),f(z,f(f(x,c_0),y))) = z.  [para(11755(a,2),455(a,1,2,2))].
+
+given #527 (A,wt=19): 594 f(x,f(f(f(y,x),z),f(x,f(y,u)))) = f(x,f(y,u)).  [para(471(a,1),454(a,1,1))].
+
+given #528 (T,wt=15): 15713 f(f(x,f(y,z)),f(f(f(y,c_0),z),x)) = x.  [para(11755(a,2),456(a,1,2,1))].
+
+given #529 (T,wt=15): 15718 f(f(f(f(x,c_0),y),z),f(z,f(x,y))) = z.  [para(11755(a,2),466(a,1,1,1))].
+
+given #530 (T,wt=15): 15731 f(f(x,f(f(y,c_0),z)),f(f(y,z),x)) = x.  [para(11755(a,2),504(a,1,1,2))].
+
+given #531 (T,wt=15): 15736 f(f(f(x,y),z),f(f(f(x,c_0),y),z)) = z.  [para(11755(a,2),519(a,1,2,1))].
+
+given #532 (A,wt=19): 595 f(x,f(f(y,f(z,x)),f(x,f(z,u)))) = f(x,f(z,u)).  [para(471(a,1),456(a,1,1))].
+
+given #533 (T,wt=15): 15806 f(x,f(f(y,c_0),z)) = f(x,f(z,f(y,z))).  [para(11755(a,1),429(a,1,2,2,2)),rewrite([441(5)]),flip(a)].
+
+given #534 (T,wt=15): 15844 f(f(f(x,c_0),y),z) = f(f(y,f(x,y)),z).  [para(11755(a,1),545(a,2,1)),rewrite([545(8)])].
+
+given #535 (T,wt=15): 16012 f(f(x,f(c_0,f(y,z))),f(x,f(z,y))) = x.  [para(11755(a,2),1420(a,1,2,2,2)),rewrite([11782(3,R),13886(8,R),11757(8)])].
+
+given #536 (T,wt=15): 16058 f(f(x,c_0),f(y,y)) = f(f(y,c_0),f(x,x)).  [back_rewrite(15697),rewrite([15808(5)])].
+
+given #537 (A,wt=19): 596 f(f(x,x),f(f(x,y),f(z,f(x,x)))) = f(z,f(x,x)).  [para(169(a,1),472(a,1,1))].
+
+given #538 (T,wt=15): 16129 f(x,f(y,f(z,c_0))) = f(x,f(y,f(z,y))).  [para(11759(a,1),429(a,2,2)),rewrite([429(8)])].
+
+given #539 (T,wt=15): 16155 f(f(x,f(y,c_0)),z) = f(f(x,f(y,x)),z).  [para(11759(a,1),545(a,1,2,2,1)),rewrite([545(5)]),flip(a)].
+
+given #540 (T,wt=15): 16170 f(f(f(x,f(y,c_0)),z),f(f(y,y),z)) = z.  [para(11759(a,2),648(a,1,1,1))].
+
+given #541 (T,wt=15): 16410 f(x,f(f(y,c_0),z)) = f(x,f(z,f(z,y))).  [para(11760(a,1),429(a,1,2,2,2)),rewrite([441(5)]),flip(a)].
+
+given #542 (A,wt=17): 597 f(x,f(f(y,x),f(f(f(y,z),x),u))) = f(y,x).  [para(472(a,1),338(a,1,1))].
+
+given #543 (T,wt=15): 16462 f(f(f(x,c_0),y),z) = f(f(y,f(y,x)),z).  [para(11760(a,1),545(a,2,1)),rewrite([545(8)])].
+
+given #544 (T,wt=15): 16730 f(f(x,c_0),f(y,c_0)) = f(f(x,x),f(c_0,y)).  [para(11760(a,1),11743(a,2)),rewrite([13883(9,R)])].
+
+given #545 (T,wt=15): 17033 f(x,f(y,f(z,c_0))) = f(x,f(y,f(y,z))).  [para(11764(a,1),429(a,2,2)),rewrite([429(8)])].
+
+given #546 (T,wt=15): 17054 f(f(x,f(y,c_0)),z) = f(f(x,f(x,y)),z).  [para(11764(a,1),545(a,1,2,2,1)),rewrite([545(5)]),flip(a)].
+
+given #547 (A,wt=19): 598 f(x,f(f(f(x,y),z),f(x,f(y,u)))) = f(x,f(y,u)).  [para(338(a,1),472(a,1,1))].
+
+given #548 (T,wt=15): 17161 f(f(x,c_0),f(c_0,y)) = f(f(y,c_0),f(x,x)).  [para(11764(a,1),11743(a,1)),rewrite([13883(6,R)])].
+
+given #549 (T,wt=15): 17216 f(x,f(y,f(z,c_0))) = f(x,f(y,f(z,z))).  [para(11766(a,1),429(a,2,2)),rewrite([429(8)])].
+
+given #550 (T,wt=15): 17240 f(f(x,f(y,c_0)),z) = f(f(x,f(y,y)),z).  [para(11766(a,1),545(a,1,2,2,1)),rewrite([545(5)]),flip(a)].
+
+given #551 (T,wt=15): 17367 f(f(f(c_0,x),y),f(c_0,f(x,z))) = f(x,z).  [para(336(a,1),11774(a,1,2)),rewrite([13854(14)])].
+
+given #552 (A,wt=17): 599 f(x,f(f(y,x),f(z,f(f(y,u),x)))) = f(y,x).  [para(472(a,1),353(a,1,1))].
+
+given #553 (T,wt=15): 17376 f(f(x,f(c_0,y)),f(c_0,f(y,z))) = f(y,z).  [para(348(a,1),11774(a,1,2)),rewrite([13861(14)])].
+
+given #554 (T,wt=15): 17381 f(f(x,f(c_0,y)),f(c_0,f(z,y))) = f(z,y).  [para(355(a,1),11774(a,1,2)),rewrite([13865(14)])].
+
+given #555 (T,wt=15): 17386 f(f(f(c_0,x),y),f(c_0,f(z,x))) = f(z,x).  [para(401(a,1),11774(a,1,2)),rewrite([13866(14)])].
+
+given #556 (T,wt=15): 17574 f(x,f(f(y,c_0),z)) = f(x,f(f(y,y),z)).  [para(11788(a,1),429(a,1,2,2,2)),rewrite([429(5)]),flip(a)].
+
+given #557 (A,wt=19): 600 f(x,f(f(f(x,y),z),f(x,f(u,y)))) = f(x,f(u,y)).  [para(353(a,1),472(a,1,1))].
+
+given #558 (T,wt=15): 17577 f(f(x,c_0),f(c_0,y)) = f(f(x,x),f(y,y)).  [para(11788(a,1),1380(a,1)),rewrite([13883(9,R)]),flip(a)].
+
+given #559 (T,wt=15): 17608 f(f(f(x,c_0),y),z) = f(f(f(x,x),y),z).  [para(11788(a,1),545(a,2,1)),rewrite([545(8)])].
+
+given #560 (T,wt=15): 17827 f(f(x,c_0),f(c_0,y)) = f(f(x,x),f(y,c_0)).  [para(11788(a,1),11764(a,1)),rewrite([13883(10,R)]),flip(a)].
+
+given #561 (T,wt=15): 18535 f(x,f(f(c_0,y),z)) = f(x,f(f(y,y),z)).  [para(13869(a,1),429(a,1,2,2,2)),rewrite([429(5)]),flip(a)].
+
+given #562 (A,wt=19): 602 f(f(x,x),f(f(x,y),f(z,f(x,z)))) = f(z,f(x,z)).  [para(427(a,1),472(a,1,1))].
+
+given #563 (T,wt=15): 18538 f(f(c_0,x),f(c_0,y)) = f(f(x,x),f(y,y)).  [para(13869(a,1),1380(a,1)),rewrite([13883(9,R)]),flip(a)].
+
+given #564 (T,wt=15): 18541 f(f(c_0,x),f(y,y)) = f(f(x,x),f(c_0,y)).  [para(13869(a,2),1380(a,1)),rewrite([13883(8,R)])].
+
+given #565 (T,wt=15): 18556 f(f(c_0,x),f(y,c_0)) = f(f(x,x),f(y,y)).  [para(13869(a,1),1423(a,1)),rewrite([11759(9,R)]),flip(a)].
+
+given #566 (T,wt=15): 18558 f(f(c_0,x),f(y,y)) = f(f(x,x),f(y,c_0)).  [para(13869(a,2),1423(a,1)),rewrite([11759(8,R)])].
+
+given #567 (A,wt=19): 603 f(x,f(f(f(y,z),x),f(f(y,x),u))) = f(f(y,z),x).  [para(472(a,1),453(a,1,1))].
+
+given #568 (T,wt=15): 18615 f(f(f(c_0,x),y),z) = f(f(f(x,x),y),z).  [para(13869(a,1),545(a,2,1)),rewrite([545(8)])].
+
+given #569 (T,wt=15): 18980 f(f(c_0,x),f(y,y)) = f(f(y,c_0),f(x,x)).  [para(13869(a,2),11743(a,2)),flip(a)].
+
+given #570 (T,wt=15): 18993 f(f(c_0,x),f(c_0,y)) = f(f(x,x),f(y,c_0)).  [para(13869(a,1),11764(a,1)),rewrite([13883(10,R)]),flip(a)].
+
+given #571 (T,wt=15): 18996 f(f(c_0,x),f(y,c_0)) = f(f(x,x),f(c_0,y)).  [para(13869(a,2),11764(a,1)),rewrite([13883(9,R)])].
+
+given #572 (A,wt=19): 604 f(f(x,f(y,f(z,x))),f(x,f(f(f(z,u),x),w))) = x.  [para(472(a,1),291(a,1,1,1)),rewrite([472(7),472(12)])].
+
+given #573 (T,wt=15): 19059 f(x,f(y,f(c_0,z))) = f(x,f(y,f(z,z))).  [para(13882(a,1),429(a,1,2,2,2)),rewrite([18537(7)]),flip(a)].
+
+given #574 (T,wt=15): 19060 f(f(c_0,x),f(c_0,y)) = f(f(y,y),f(x,x)).  [para(13882(a,1),1422(a,1)),rewrite([13883(9,R)]),flip(a)].
+
+given #575 (T,wt=15): 19063 f(f(c_0,x),f(y,c_0)) = f(f(y,y),f(x,x)).  [para(13882(a,1),1647(a,1)),rewrite([11759(9,R)]),flip(a)].
+
+given #576 (T,wt=15): 19078 f(f(x,f(c_0,y)),z) = f(f(x,f(y,y)),z).  [para(13882(a,1),545(a,1,2,2,1)),rewrite([545(5)]),flip(a)].
+
+given #577 (A,wt=29): 605 f(f(x,y),f(f(f(f(x,y),f(z,x)),u),f(f(x,y),f(y,w)))) = f(f(x,y),f(y,w)).  [para(291(a,1),472(a,1,1))].
+
+given #578 (T,wt=15): 19198 f(f(c_0,x),f(c_0,y)) = f(f(y,c_0),f(x,x)).  [para(13882(a,1),11760(a,1)),rewrite([13883(10,R)]),flip(a)].
+
+given #579 (T,wt=15): 19285 f(x,f(y,f(c_0,z))) = f(x,f(y,f(y,z))).  [para(13883(a,1),429(a,2,2)),rewrite([429(8)])].
+
+given #580 (T,wt=15): 19308 f(f(x,f(c_0,y)),z) = f(f(x,f(x,y)),z).  [para(13883(a,1),545(a,1,2,2,1)),rewrite([545(5)]),flip(a)].
+
+given #581 (T,wt=15): 19620 f(f(c_0,f(x,y)),f(z,f(x,c_0))) = f(x,y).  [para(676(a,1),13884(a,1,2)),rewrite([421(5),11762(5)]),flip(a)].
+
+given #582 (A,wt=19): 606 f(x,f(f(f(y,z),x),f(u,f(y,x)))) = f(f(y,z),x).  [para(472(a,1),455(a,1,1))].
+
+given #583 (T,wt=15): 19623 f(f(c_0,f(x,y)),f(z,f(y,c_0))) = f(x,y).  [para(681(a,1),13884(a,1,2)),rewrite([421(5),11762(5)]),flip(a)].
+
+given #584 (T,wt=15): 19631 f(f(c_0,f(x,y)),f(f(x,c_0),z)) = f(x,y).  [para(701(a,1),13884(a,1,2)),rewrite([421(5),11762(5)]),flip(a)].
+
+given #585 (T,wt=15): 19633 f(f(c_0,f(x,y)),f(f(y,c_0),z)) = f(x,y).  [para(706(a,1),13884(a,1,2)),rewrite([421(5),11762(5)]),flip(a)].
+
+given #586 (T,wt=15): 19674 f(f(f(x,y),z),f(f(f(c_0,y),x),z)) = z.  [para(13885(a,2),519(a,1,2,1))].
+
+given #587 (A,wt=19): 607 f(x,f(f(f(y,x),z),f(x,f(u,y)))) = f(x,f(u,y)).  [para(455(a,1),472(a,1,1))].
+
+given #588 (T,wt=15): 19702 f(x,f(f(c_0,y),z)) = f(x,f(z,f(z,y))).  [para(13885(a,1),429(a,1,2,2,2)),rewrite([441(5)]),flip(a)].
+
+given #589 (T,wt=15): 19722 f(f(f(c_0,x),y),z) = f(f(y,f(y,x)),z).  [para(13885(a,1),545(a,2,1)),rewrite([545(8)])].
+
+given #590 (T,wt=15): 19809 f(f(c_0,f(x,f(y,y))),f(x,f(x,y))) = c_0.  [para(13885(a,1),1421(a,1)),rewrite([421(10),16291(10)])].
+
+given #591 (T,wt=15): 19923 f(x,f(y,f(c_0,z))) = f(x,f(y,f(z,y))).  [para(13886(a,1),429(a,2,2)),rewrite([429(8)])].
+
+given #592 (A,wt=19): 609 f(f(x,x),f(f(x,y),f(z,f(z,x)))) = f(z,f(z,x)).  [para(464(a,1),472(a,1,1))].
+
+given #593 (T,wt=15): 19951 f(f(x,f(c_0,y)),z) = f(f(x,f(y,x)),z).  [para(13886(a,1),545(a,1,2,2,1)),rewrite([545(5)]),flip(a)].
+
+given #594 (T,wt=15): 20139 f(f(c_0,x),f(y,y)) = f(f(y,c_0),f(x,c_0)).  [para(13886(a,1),11743(a,1)),rewrite([11759(6,R)]),flip(a)].
+
+given #595 (T,wt=15): 20206 f(x,f(f(c_0,y),z)) = f(x,f(z,f(y,z))).  [para(13887(a,1),429(a,1,2,2,2)),rewrite([441(5)]),flip(a)].
+
+given #596 (T,wt=15): 20230 f(f(f(c_0,x),y),z) = f(f(y,f(x,y)),z).  [para(13887(a,1),545(a,2,1)),rewrite([545(8)])].
+
+given #597 (A,wt=19): 611 f(x,f(f(f(y,x),z),f(f(y,u),x))) = f(f(y,u),x).  [para(472(a,1),472(a,1,1))].
+
+given #598 (T,wt=15): 20364 f(f(c_0,x),f(y,c_0)) = f(f(c_0,y),f(x,x)).  [para(13887(a,2),13869(a,2)),rewrite([19196(5)])].
+
+given #599 (T,wt=15): 20392 f(f(x,f(y,x)),f(c_0,f(y,z))) = f(y,z).  [para(474(a,1),1423(a,2,2)),rewrite([11782(7,R),11756(7),421(5),2565(5),421(8),13883(8,R)]),flip(a)].
+
+given #600 (T,wt=15): 20436 f(x,f(f(y,y),z)) = f(x,f(z,f(c_0,y))).  [para(13897(a,1),429(a,1,2,2,2)),rewrite([441(6)]),flip(a)].
+
+given #601 (T,wt=15): 20444 f(f(f(x,x),y),z) = f(f(y,f(c_0,x)),z).  [para(13897(a,1),545(a,1,2,2,1)),rewrite([18618(7)]),flip(a)].
+
+given #602 (A,wt=33): 616 f(f(x,x),f(f(f(x,x),y),f(f(f(x,x),f(z,f(f(f(x,x),y),f(u,x)))),w))) = f(f(x,x),y).  [para(304(a,1),338(a,1,1))].
+
+given #603 (T,wt=15): 20528 f(x,f(f(c_0,y),z)) = f(x,f(z,f(y,y))).  [para(13898(a,1),429(a,1,2,2,2)),rewrite([441(5)]),flip(a)].
+
+given #604 (T,wt=15): 20539 f(f(f(c_0,x),y),z) = f(f(y,f(x,x)),z).  [para(13898(a,1),545(a,1,2,2,1)),rewrite([18619(7)]),flip(a)].
+
+given #605 (T,wt=15): 20619 f(f(c_0,x),f(y,y)) = f(f(c_0,y),f(x,x)).  [para(13898(a,2),13869(a,2))].
+
+given #606 (T,wt=15): 20629 f(f(x,y),f(c_0,f(z,f(c_0,f(y,x))))) = c_0.  [para(14832(a,1),356(a,1,2,1)),rewrite([14832(13)])].
+
+given #607 (A,wt=33): 617 f(f(x,x),f(f(f(x,x),y),f(z,f(f(x,x),f(u,f(f(f(x,x),y),f(w,x))))))) = f(f(x,x),y).  [para(304(a,1),353(a,1,1))].
+
+given #608 (T,wt=15): 20630 f(f(x,y),f(c_0,f(f(c_0,f(y,x)),z))) = c_0.  [para(14832(a,1),399(a,1,2,1)),rewrite([14832(13)])].
+
+given #609 (T,wt=15): 20650 f(f(f(c_0,f(x,y)),z),f(f(y,x),z)) = z.  [para(14832(a,1),656(a,1,1,1,2)),rewrite([421(3),11782(11,R),11762(9)])].
+
+given #610 (T,wt=15): 20727 f(x,f(f(y,y),z)) = f(x,f(z,f(y,c_0))).  [para(16137(a,1),429(a,1,2,2,2)),rewrite([441(6)]),flip(a)].
+
+given #611 (T,wt=15): 20735 f(f(f(x,x),y),z) = f(f(y,f(x,c_0)),z).  [para(16137(a,1),545(a,1,2,2,1)),rewrite([15375(7)]),flip(a)].
+
+given #612 (A,wt=27): 618 f(f(x,x),f(f(f(x,x),y),f(z,f(f(f(x,x),y),f(u,x))))) = f(f(x,x),y).  [para(304(a,1),353(a,1,2)),rewrite([421(10)])].
+
+given #613 (T,wt=15): 20848 f(x,f(y,f(x,f(f(y,x),z)))) = f(x,x).  [para(1089(a,1),475(a,1,2)),flip(a)].
+
+given #614 (T,wt=15): 20866 f(f(f(x,c_0),y),f(c_0,f(x,z))) = f(x,z).  [para(475(a,1),11774(a,1,2)),rewrite([19631(14)])].
+
+given #615 (T,wt=15): 20887 f(f(c_0,f(f(x,x),y)),f(y,f(y,x))) = c_0.  [para(1380(a,1),20131(a,1,2))].
+
+given #616 (T,wt=15): 20888 f(f(c_0,f(x,f(x,y))),f(x,f(y,y))) = c_0.  [para(1380(a,2),20131(a,1,2)),rewrite([421(3)])].
+
+given #617 (A,wt=25): 619 f(f(x,f(y,y)),f(f(y,y),f(z,f(f(x,f(y,y)),f(u,y))))) = f(y,y).  [para(380(a,1),304(a,1,1)),rewrite([380(9)])].
+
+given #618 (T,wt=15): 20891 f(f(c_0,f(f(x,x),y)),f(y,f(x,y))) = c_0.  [para(1423(a,1),20131(a,1,2))].
+
+given #619 (T,wt=15): 20892 f(f(c_0,f(x,f(y,y))),f(x,f(y,x))) = c_0.  [para(1423(a,2),20131(a,1,1,2)),rewrite([421(6)])].
+
+given #620 (T,wt=15): 20901 f(f(c_0,f(x,f(y,y))),f(x,f(y,c_0))) = c_0.  [para(11743(a,1),20131(a,1,1,2))].
+
+given #621 (T,wt=15): 20902 f(f(c_0,f(x,f(y,c_0))),f(x,f(y,y))) = c_0.  [para(11743(a,1),20131(a,1,2))].
+
+given #622 (A,wt=25): 620 f(f(x,f(y,y)),f(f(y,y),f(z,f(f(f(y,y),x),f(u,y))))) = f(y,y).  [para(421(a,1),304(a,1,1))].
+
+given #623 (T,wt=15): 20903 f(f(c_0,f(f(x,c_0),y)),f(f(x,x),y)) = c_0.  [para(11743(a,2),20131(a,1,1,2))].
+
+given #624 (T,wt=15): 20904 f(f(c_0,f(f(x,x),y)),f(f(x,c_0),y)) = c_0.  [para(11743(a,2),20131(a,1,2))].
+
+given #625 (T,wt=15): 20906 f(f(c_0,f(x,f(y,c_0))),f(x,f(y,x))) = c_0.  [para(11755(a,1),20131(a,1,2))].
+
+given #626 (T,wt=15): 20907 f(f(c_0,f(f(x,c_0),y)),f(y,f(x,y))) = c_0.  [para(11755(a,2),20131(a,1,1,2)),rewrite([421(7)])].
+
+given #627 (A,wt=25): 621 f(f(f(x,x),y),f(f(x,x),f(z,f(f(y,f(x,x)),f(u,x))))) = f(x,x).  [para(421(a,1),304(a,1,2,2,2,1))].
+
+given #628 (T,wt=15): 20909 f(f(c_0,f(x,f(x,y))),f(x,f(y,c_0))) = c_0.  [para(11760(a,1),20131(a,1,1,2))].
+
+given #629 (T,wt=15): 20910 f(f(c_0,f(x,f(y,c_0))),f(x,f(x,y))) = c_0.  [para(11760(a,1),20131(a,1,2))].
+
+given #630 (T,wt=15): 20911 f(f(c_0,f(f(x,c_0),y)),f(y,f(y,x))) = c_0.  [para(11760(a,2),20131(a,1,1,2)),rewrite([421(7)])].
+
+given #631 (T,wt=15): 20914 f(f(c_0,f(x,f(y,y))),f(f(y,c_0),x)) = c_0.  [para(11766(a,1),20131(a,1,1,2))].
+
+given #632 (A,wt=25): 622 f(f(f(x,x),y),f(f(x,x),f(z,f(f(u,x),f(f(x,x),y))))) = f(x,x).  [para(421(a,1),304(a,1,2,2,2))].
+
+given #633 (T,wt=15): 20915 f(f(c_0,f(f(x,c_0),y)),f(y,f(x,x))) = c_0.  [para(11766(a,1),20131(a,1,2))].
+
+given #634 (T,wt=15): 20916 f(f(c_0,f(x,f(y,c_0))),f(f(y,y),x)) = c_0.  [para(11766(a,2),20131(a,1,1,2))].
+
+given #635 (T,wt=15): 20917 f(f(c_0,f(f(x,x),y)),f(y,f(x,c_0))) = c_0.  [para(11766(a,2),20131(a,1,2))].
+
+given #636 (T,wt=15): 20918 f(f(c_0,f(f(x,x),y)),f(y,f(c_0,x))) = c_0.  [para(13869(a,1),20131(a,1,1,2))].
+
+given #637 (A,wt=25): 623 f(f(f(x,x),y),f(f(x,x),f(f(f(f(x,x),y),f(z,x)),u))) = f(x,x).  [para(421(a,1),304(a,1,2,2))].
+
+given #638 (T,wt=15): 20919 f(f(c_0,f(x,f(c_0,y))),f(f(y,y),x)) = c_0.  [para(13869(a,1),20131(a,1,2))].
+
+given #639 (T,wt=15): 20920 f(f(c_0,f(f(c_0,x),y)),f(y,f(x,x))) = c_0.  [para(13869(a,2),20131(a,1,1,2))].
+
+given #640 (T,wt=15): 20921 f(f(c_0,f(x,f(y,y))),f(f(c_0,y),x)) = c_0.  [para(13869(a,2),20131(a,1,2))].
+
+given #641 (T,wt=15): 20923 f(f(c_0,f(f(c_0,x),y)),f(y,f(y,x))) = c_0.  [para(13883(a,1),20131(a,1,2))].
+
+given #642 (A,wt=43): 626 f(f(x,x),f(f(f(x,x),f(y,f(f(f(x,x),z),f(u,x)))),f(f(f(x,x),z),w))) = f(f(x,x),f(y,f(f(f(x,x),z),f(u,x)))).  [para(304(a,1),453(a,1,1))].
+
+given #643 (T,wt=15): 20924 f(f(c_0,f(x,f(c_0,y))),f(x,f(x,y))) = c_0.  [para(13883(a,2),20131(a,1,1,2)),rewrite([421(7)])].
+
+given #644 (T,wt=15): 20925 f(f(c_0,f(x,f(x,y))),f(x,f(c_0,y))) = c_0.  [para(13883(a,2),20131(a,1,2)),rewrite([421(3)])].
+
+given #645 (T,wt=15): 20927 f(f(c_0,f(f(c_0,x),y)),f(y,f(x,y))) = c_0.  [para(13886(a,1),20131(a,1,2))].
+
+given #646 (T,wt=15): 20928 f(f(c_0,f(x,f(c_0,y))),f(x,f(y,x))) = c_0.  [para(13886(a,2),20131(a,1,1,2)),rewrite([421(7)])].
+
+given #647 (A,wt=37): 627 f(f(f(x,x),f(y,f(f(x,x),z))),f(f(x,x),f(f(f(x,x),f(u,f(f(f(x,x),z),f(w,x)))),v5))) = f(x,x).  [para(304(a,1),291(a,1,1,1)),rewrite([304(15),304(26)])].
+
+given #648 (T,wt=15): 20931 f(f(c_0,f(x,f(c_0,y))),f(x,f(y,y))) = c_0.  [para(13897(a,1),20131(a,1,1,2))].
+
+given #649 (T,wt=15): 20932 f(f(c_0,f(x,f(y,y))),f(x,f(c_0,y))) = c_0.  [para(13897(a,1),20131(a,1,2))].
+
+given #650 (T,wt=15): 20933 f(f(c_0,f(f(x,x),y)),f(f(c_0,x),y)) = c_0.  [para(13897(a,2),20131(a,1,1,2))].
+
+given #651 (T,wt=15): 20934 f(f(c_0,f(f(c_0,x),y)),f(f(x,x),y)) = c_0.  [para(13897(a,2),20131(a,1,2))].
+
+given #652 (A,wt=43): 629 f(f(x,x),f(f(f(x,x),f(y,f(f(f(x,x),z),f(u,x)))),f(w,f(f(x,x),z)))) = f(f(x,x),f(y,f(f(f(x,x),z),f(u,x)))).  [para(304(a,1),455(a,1,1))].
+
+given #653 (T,wt=15): 20937 f(f(x,y),f(x,f(z,f(c_0,f(u,y))))) = x.  [para(11871(a,1),353(a,1,2,2)),rewrite([421(7)])].
+
+given #654 (T,wt=15): 20945 f(f(f(x,f(c_0,f(y,z))),u),f(u,z)) = u.  [para(11871(a,1),455(a,1,2,2))].
+
+given #655 (T,wt=15): 20946 f(f(x,f(y,f(c_0,f(z,u)))),f(u,x)) = x.  [para(11871(a,1),456(a,1,2,1))].
+
+given #656 (T,wt=15): 20948 f(f(x,y),f(y,f(z,f(c_0,f(u,x))))) = y.  [para(11871(a,1),466(a,1,1,1))].
+
+given #657 (A,wt=37): 630 f(f(x,x),f(y,f(f(x,x),f(z,f(f(f(x,x),y),f(u,x)))))) = f(f(x,x),f(z,f(f(f(x,x),y),f(u,x)))).  [para(304(a,1),456(a,1,2)),rewrite([421(8),421(10)])].
+
+given #658 (T,wt=15): 20950 f(f(x,y),f(f(z,f(c_0,f(u,y))),x)) = x.  [para(11871(a,1),504(a,1,1,2))].
+
+given #659 (T,wt=15): 20952 f(f(x,y),f(f(z,f(c_0,f(u,x))),y)) = y.  [para(11871(a,1),519(a,1,2,1)),rewrite([421(7)])].
+
+given #660 (T,wt=15): 20955 f(f(x,y),f(x,f(f(c_0,f(z,y)),u))) = x.  [para(11871(a,1),330(a,1,1,2))].
+
+given #661 (T,wt=15): 20961 f(x,f(y,f(c_0,f(z,f(z,x))))) = f(x,x).  [para(1380(a,1),11871(a,1,2,2,2)),rewrite([11782(3,R),11756(3)])].
+
+given #662 (A,wt=43): 635 f(f(x,x),f(f(f(f(x,x),y),z),f(f(x,x),f(u,f(f(f(x,x),y),f(w,x)))))) = f(f(x,x),f(u,f(f(f(x,x),y),f(w,x)))).  [para(304(a,1),472(a,1,1))].
+
+given #663 (T,wt=15): 20965 f(x,f(y,f(c_0,f(z,f(x,z))))) = f(x,x).  [para(1423(a,1),11871(a,1,2,2,2)),rewrite([11782(3,R),11756(3)])].
+
+given #664 (T,wt=15): 20984 f(f(f(f(c_0,f(x,y)),z),u),f(u,y)) = u.  [para(11871(a,1),675(a,1,2,2))].
+
+given #665 (T,wt=15): 21005 f(f(x,y),f(f(f(c_0,f(z,y)),u),x)) = x.  [para(11871(a,1),1045(a,1,1,2))].
+
+given #666 (T,wt=15): 21012 f(x,f(y,f(c_0,f(z,f(x,c_0))))) = f(x,c_0).  [para(11795(a,1),11871(a,1,1))].
+
+given #667 (A,wt=19): 637 f(f(x,f(y,f(x,f(z,u)))),f(x,f(f(u,x),w))) = x.  [para(504(a,1),291(a,1,1,1)),rewrite([504(8),504(12)])].
+
+given #668 (T,wt=15): 21013 f(x,f(y,f(c_0,f(z,f(c_0,x))))) = f(c_0,x).  [para(13377(a,1),11871(a,1,1))].
+
+given #669 (T,wt=15): 21016 f(x,f(y,f(c_0,f(f(x,c_0),z)))) = f(x,x).  [para(11743(a,2),11871(a,1,2,2,2)),rewrite([11782(3,R),11756(3)])].
+
+given #670 (T,wt=15): 21033 f(x,f(y,f(c_0,f(f(c_0,x),z)))) = f(x,x).  [para(13898(a,2),11871(a,1,2,2,2)),rewrite([11782(3,R),11756(3)])].
+
+given #671 (T,wt=15): 21133 f(f(c_0,f(x,y)),f(z,f(y,x))) = f(x,y).  [para(13391(a,1),11871(a,1,2,2,2)),rewrite([11782(3,R),11762(8)])].
+
+given #672 (A,wt=19): 638 f(x,f(f(y,f(z,x)),f(x,f(u,z)))) = f(x,f(u,z)).  [para(504(a,1),456(a,1,1))].
+
+given #673 (T,wt=15): 21135 f(f(x,y),f(x,f(f(c_0,f(y,z)),u))) = x.  [para(13853(a,1),353(a,1,2,2)),rewrite([421(7)])].
+
+given #674 (T,wt=15): 21139 f(f(f(f(c_0,f(x,y)),z),u),f(u,x)) = u.  [para(13853(a,1),455(a,1,2,2))].
+
+given #675 (T,wt=15): 21140 f(f(x,f(f(c_0,f(y,z)),u)),f(y,x)) = x.  [para(13853(a,1),456(a,1,2,1))].
+
+given #676 (T,wt=15): 21142 f(x,f(f(c_0,f(f(x,x),y)),z)) = f(x,x).  [para(301(a,1),13853(a,1,2,1,2)),rewrite([11756(3)])].
+
+given #677 (A,wt=19): 640 f(f(x,x),f(f(y,x),f(z,f(x,x)))) = f(z,f(x,x)).  [para(169(a,1),519(a,1,1))].
+
+given #678 (T,wt=15): 21143 f(f(x,y),f(y,f(f(c_0,f(x,z)),u))) = y.  [para(13853(a,1),466(a,1,1,1))].
+
+given #679 (T,wt=15): 21146 f(f(x,y),f(f(f(c_0,f(y,z)),u),x)) = x.  [para(13853(a,1),504(a,1,1,2))].
+
+given #680 (T,wt=15): 21148 f(f(x,y),f(f(f(c_0,f(x,z)),u),y)) = y.  [para(13853(a,1),519(a,1,2,1)),rewrite([421(7)])].
+
+given #681 (T,wt=15): 21156 f(x,f(f(c_0,f(f(c_0,x),y)),z)) = f(c_0,x).  [para(1380(a,2),13853(a,1,1)),rewrite([11756(3)])].
+
+given #682 (A,wt=19): 641 f(f(x,x),f(f(y,x),f(f(x,x),z))) = f(f(x,x),z).  [para(258(a,1),519(a,1,1))].
+
+given #683 (T,wt=15): 21157 f(x,f(f(c_0,f(y,f(y,x))),z)) = f(x,x).  [para(1422(a,1),13853(a,1,2,1,2)),rewrite([11756(3)])].
+
+given #684 (T,wt=15): 21158 f(x,f(f(c_0,f(f(x,c_0),y)),z)) = f(x,c_0).  [para(1423(a,2),13853(a,1,1)),rewrite([11756(3)])].
+
+given #685 (T,wt=15): 21159 f(x,f(f(c_0,f(y,f(x,y))),z)) = f(x,x).  [para(1647(a,1),13853(a,1,2,1,2)),rewrite([11756(3)])].
+
+given #686 (T,wt=15): 21168 f(f(x,y),f(x,f(z,f(c_0,f(y,u))))) = x.  [para(13853(a,1),681(a,1,2,2)),rewrite([421(7)])].
+
+given #687 (A,wt=17): 642 f(x,f(f(y,x),f(f(f(z,y),x),u))) = f(y,x).  [para(519(a,1),338(a,1,1))].
+
+given #688 (T,wt=15): 21182 f(f(f(x,f(c_0,f(y,z))),u),f(u,y)) = u.  [para(13853(a,1),771(a,1,2,2))].
+
+given #689 (T,wt=15): 21194 f(x,f(f(c_0,f(y,f(c_0,x))),z)) = f(x,x).  [para(13897(a,1),13853(a,1,2,1,2)),rewrite([11756(3)])].
+
+given #690 (T,wt=15): 21195 f(x,f(f(c_0,f(y,f(x,c_0))),z)) = f(x,x).  [para(16137(a,1),13853(a,1,2,1,2)),rewrite([11756(3)])].
+
+given #691 (T,wt=15): 21268 f(f(x,f(f(c_0,f(y,z)),u)),f(z,x)) = x.  [para(13857(a,1),456(a,1,2,1))].
+
+given #692 (A,wt=19): 643 f(x,f(f(y,f(x,z)),f(x,f(z,u)))) = f(x,f(z,u)).  [para(338(a,1),519(a,1,1))].
+
+given #693 (T,wt=15): 21271 f(f(x,y),f(y,f(f(c_0,f(z,x)),u))) = y.  [para(13857(a,1),466(a,1,1,1))].
+
+given #694 (T,wt=15): 21274 f(f(x,y),f(f(f(c_0,f(z,x)),u),y)) = y.  [para(13857(a,1),519(a,1,2,1)),rewrite([421(7)])].
+
+given #695 (T,wt=15): 21338 f(f(c_0,f(x,y)),f(f(y,x),z)) = f(x,y).  [para(13391(a,1),13857(a,1,2,1,2)),rewrite([11762(8)])].
+
+given #696 (T,wt=15): 21344 f(f(x,f(y,f(c_0,f(z,u)))),f(z,x)) = x.  [para(13859(a,1),456(a,1,2,1))].
+
+given #697 (A,wt=17): 644 f(x,f(f(y,x),f(z,f(f(u,y),x)))) = f(y,x).  [para(519(a,1),353(a,1,1))].
+
+given #698 (T,wt=15): 21345 f(f(x,y),f(y,f(z,f(c_0,f(x,u))))) = y.  [para(13859(a,1),466(a,1,1,1))].
+
+given #699 (T,wt=15): 21347 f(f(x,y),f(f(z,f(c_0,f(y,u))),x)) = x.  [para(13859(a,1),504(a,1,1,2))].
+
+given #700 (T,wt=15): 21349 f(f(x,y),f(f(z,f(c_0,f(x,u))),y)) = y.  [para(13859(a,1),519(a,1,2,1)),rewrite([421(7)])].
+
+given #701 (T,wt=15): 21395 f(f(c_0,f(x,y)),f(y,f(z,f(x,y)))) = c_0.  [para(163(a,1),15191(a,1,2,1)),rewrite([11782(3,R)])].
+
+given #702 (A,wt=19): 645 f(x,f(f(y,f(x,z)),f(x,f(u,z)))) = f(x,f(u,z)).  [para(353(a,1),519(a,1,1))].
+
+given #703 (T,wt=15): 21396 f(f(c_0,f(x,y)),f(x,f(z,f(x,y)))) = c_0.  [para(280(a,1),15191(a,1,2,1)),rewrite([11782(3,R)])].
+
+given #704 (T,wt=15): 21422 f(x,f(f(y,f(y,x)),f(z,f(x,x)))) = c_0.  [para(1380(a,1),15191(a,1,2,1)),rewrite([11782(3,R),11756(3)])].
+
+given #705 (T,wt=15): 21423 f(x,f(f(y,f(x,x)),f(z,f(z,x)))) = c_0.  [para(1380(a,1),15191(a,1,2,2)),rewrite([11782(3,R),11756(3)])].
+
+given #706 (T,wt=15): 21430 f(x,f(f(y,f(x,y)),f(z,f(x,x)))) = c_0.  [para(1423(a,1),15191(a,1,2,1)),rewrite([11782(3,R),11756(3)])].
+
+given #707 (A,wt=19): 647 f(f(x,x),f(f(y,x),f(z,f(x,z)))) = f(z,f(x,z)).  [para(427(a,1),519(a,1,1))].
+
+given #708 (T,wt=15): 21431 f(x,f(f(y,f(x,x)),f(z,f(x,z)))) = c_0.  [para(1423(a,1),15191(a,1,2,2)),rewrite([11782(3,R),11756(3)])].
+
+given #709 (T,wt=15): 21466 f(x,f(f(y,f(x,c_0)),f(z,f(x,c_0)))) = c_0.  [para(11795(a,1),15191(a,1,1))].
+
+given #710 (T,wt=15): 21467 f(x,f(f(y,f(c_0,x)),f(z,f(c_0,x)))) = c_0.  [para(13377(a,1),15191(a,1,1))].
+
+given #711 (T,wt=15): 21468 f(x,f(f(f(x,c_0),y),f(z,f(x,x)))) = c_0.  [para(11743(a,2),15191(a,1,2,1)),rewrite([11782(3,R),11756(3)])].
+
+given #712 (A,wt=19): 649 f(x,f(f(f(y,z),x),f(f(z,x),u))) = f(f(y,z),x).  [para(519(a,1),453(a,1,1))].
+
+given #713 (T,wt=15): 21469 f(x,f(f(y,f(x,x)),f(f(x,c_0),z))) = c_0.  [para(11743(a,2),15191(a,1,2,2)),rewrite([11782(3,R),11756(3)])].
+
+given #714 (T,wt=15): 21472 f(x,f(f(y,f(x,y)),f(z,f(x,c_0)))) = c_0.  [para(11759(a,1),15191(a,1,2,1)),rewrite([11782(5,R),11757(4)])].
+
+given #715 (T,wt=15): 21473 f(x,f(f(y,f(x,c_0)),f(z,f(x,z)))) = c_0.  [para(11759(a,1),15191(a,1,2,2)),rewrite([11782(5,R),11757(4)])].
+
+given #716 (T,wt=15): 21480 f(x,f(f(y,f(y,x)),f(z,f(x,c_0)))) = c_0.  [para(11764(a,1),15191(a,1,2,1)),rewrite([11782(5,R),11757(4)])].
+
+given #717 (A,wt=19): 650 f(f(x,f(y,f(z,x))),f(x,f(f(f(u,z),x),w))) = x.  [para(519(a,1),291(a,1,1,1)),rewrite([519(7),519(12)])].
+
+given #718 (T,wt=15): 21481 f(x,f(f(y,f(x,c_0)),f(z,f(z,x)))) = c_0.  [para(11764(a,1),15191(a,1,2,2)),rewrite([11782(5,R),11757(4)])].
+
+given #719 (T,wt=15): 21484 f(x,f(f(y,f(x,x)),f(z,f(x,c_0)))) = c_0.  [para(11766(a,1),15191(a,1,2,1)),rewrite([11782(5,R),11757(4)])].
+
+given #720 (T,wt=15): 21485 f(x,f(f(y,f(x,c_0)),f(z,f(x,x)))) = c_0.  [para(11766(a,1),15191(a,1,2,2)),rewrite([11782(5,R),11757(4)])].
+
+given #721 (T,wt=15): 21489 f(x,f(f(y,f(x,x)),f(z,f(c_0,x)))) = c_0.  [para(13882(a,1),15191(a,1,2,1)),rewrite([11782(5,R),11762(4)])].
+
+given #722 (A,wt=29): 651 f(f(x,y),f(f(z,f(f(x,y),f(u,x))),f(f(x,y),f(y,w)))) = f(f(x,y),f(y,w)).  [para(291(a,1),519(a,1,1))].
+
+given #723 (T,wt=15): 21490 f(x,f(f(y,f(c_0,x)),f(z,f(x,x)))) = c_0.  [para(13882(a,1),15191(a,1,2,2)),rewrite([11782(5,R),11762(4)])].
+
+given #724 (T,wt=15): 21491 f(x,f(f(y,f(y,x)),f(z,f(c_0,x)))) = c_0.  [para(13883(a,1),15191(a,1,2,1)),rewrite([11782(5,R),11762(4)])].
+
+given #725 (T,wt=15): 21492 f(x,f(f(y,f(c_0,x)),f(z,f(z,x)))) = c_0.  [para(13883(a,1),15191(a,1,2,2)),rewrite([11782(5,R),11762(4)])].
+
+given #726 (T,wt=15): 21499 f(x,f(f(y,f(x,y)),f(z,f(c_0,x)))) = c_0.  [para(13886(a,1),15191(a,1,2,1)),rewrite([11782(5,R),11762(4)])].
+
+given #727 (A,wt=23): 652 f(f(x,y),f(f(z,x),f(f(x,y),f(y,u)))) = f(f(x,y),f(y,u)).  [para(291(a,1),519(a,1,2)),rewrite([421(7)])].
+
+given #728 (T,wt=15): 21500 f(x,f(f(y,f(c_0,x)),f(z,f(x,z)))) = c_0.  [para(13886(a,1),15191(a,1,2,2)),rewrite([11782(5,R),11762(4)])].
+
+given #729 (T,wt=15): 21506 f(x,f(f(f(x,x),y),f(z,f(c_0,x)))) = c_0.  [para(13897(a,2),15191(a,1,2,1)),rewrite([11782(5,R),11762(4)])].
+
+given #730 (T,wt=15): 21507 f(x,f(f(y,f(c_0,x)),f(f(x,x),z))) = c_0.  [para(13897(a,2),15191(a,1,2,2)),rewrite([11782(5,R),11762(4)])].
+
+given #731 (T,wt=15): 21508 f(x,f(f(f(c_0,x),y),f(z,f(x,x)))) = c_0.  [para(13898(a,2),15191(a,1,2,1)),rewrite([11782(3,R),11756(3)])].
+
+given #732 (A,wt=19): 653 f(x,f(f(f(y,z),x),f(u,f(z,x)))) = f(f(y,z),x).  [para(519(a,1),455(a,1,1))].
+
+given #733 (T,wt=15): 21509 f(x,f(f(y,f(x,x)),f(f(c_0,x),z))) = c_0.  [para(13898(a,2),15191(a,1,2,2)),rewrite([11782(3,R),11756(3)])].
+
+given #734 (T,wt=15): 21510 f(x,f(f(f(x,x),y),f(z,f(x,c_0)))) = c_0.  [para(16137(a,2),15191(a,1,2,1)),rewrite([11782(5,R),11757(4)])].
+
+given #735 (T,wt=15): 21511 f(x,f(f(y,f(x,c_0)),f(f(x,x),z))) = c_0.  [para(16137(a,2),15191(a,1,2,2)),rewrite([11782(5,R),11757(4)])].
+
+given #736 (T,wt=15): 21570 f(f(x,f(y,c_0)),f(c_0,f(y,z))) = f(y,z).  [para(19563(a,1),549(a,1,2)),rewrite([421(4),11777(4)]),flip(a)].
+
+given #737 (A,wt=19): 655 f(f(x,x),f(f(y,x),f(z,f(z,x)))) = f(z,f(z,x)).  [para(464(a,1),519(a,1,1))].
+
+given #738 (T,wt=15): 21573 f(f(x,f(y,c_0)),f(c_0,f(z,y))) = f(z,y).  [para(531(a,1),19583(a,1,1,2)),rewrite([421(6)])].
+
+given #739 (T,wt=15): 21587 f(f(f(x,c_0),y),f(c_0,f(z,x))) = f(z,x).  [para(19618(a,1),545(a,1,2)),rewrite([421(4),11774(4)]),flip(a)].
+
+given #740 (T,wt=15): 21659 f(f(c_0,f(x,y)),f(z,f(y,y))) = f(x,y).  [para(20939(a,1),429(a,1,2)),rewrite([421(4),11774(4)]),flip(a)].
+
+given #741 (T,wt=15): 21660 f(f(c_0,f(x,y)),f(f(y,y),z)) = f(x,y).  [para(20939(a,1),441(a,1,2)),rewrite([421(4),11774(4)]),flip(a)].
+
+given #742 (A,wt=19): 658 f(x,f(f(f(y,x),z),f(f(u,y),x))) = f(f(u,y),x).  [para(519(a,1),472(a,1,1))].
+
+given #743 (T,wt=15): 21672 f(x,f(y,f(y,f(z,f(x,x))))) = f(x,x).  [para(163(a,1),21026(a,1,1))].
+
+given #744 (T,wt=15): 21673 f(f(c_0,f(x,y)),f(z,f(z,y))) = f(x,y).  [para(163(a,1),21026(a,1,2,2,2)),rewrite([11782(3,R)])].
+
+given #745 (T,wt=15): 21674 f(f(c_0,f(x,y)),f(z,f(z,x))) = f(x,y).  [para(280(a,1),21026(a,1,2,2,2)),rewrite([11782(3,R)])].
+
+given #746 (T,wt=15): 21675 f(f(x,y),f(x,f(z,f(z,f(u,y))))) = x.  [para(21026(a,1),353(a,1,2,2)),rewrite([421(6)])].
+
+given #747 (A,wt=19): 659 f(x,f(f(y,f(z,x)),f(f(z,u),x))) = f(f(z,u),x).  [para(472(a,1),519(a,1,1))].
+
+given #748 (T,wt=15): 21678 f(f(c_0,f(x,y)),f(z,f(x,z))) = f(x,y).  [para(453(a,1),21026(a,1,2,2)),rewrite([11782(3,R),421(5)])].
+
+given #749 (T,wt=15): 21683 f(f(f(x,f(x,f(y,z))),u),f(u,z)) = u.  [para(21026(a,1),455(a,1,2,2))].
+
+given #750 (T,wt=15): 21684 f(f(c_0,f(x,y)),f(z,f(y,z))) = f(x,y).  [para(455(a,1),21026(a,1,2,2)),rewrite([11782(3,R),421(5)])].
+
+given #751 (T,wt=15): 21685 f(f(x,f(y,f(y,f(z,u)))),f(u,x)) = x.  [para(21026(a,1),456(a,1,2,1))].
+
+given #752 (A,wt=43): 660 f(f(x,x),f(f(y,f(f(x,x),z)),f(f(x,x),f(u,f(f(f(x,x),z),f(w,x)))))) = f(f(x,x),f(u,f(f(f(x,x),z),f(w,x)))).  [para(304(a,1),519(a,1,1))].
+
+given #753 (T,wt=15): 21687 f(f(x,y),f(y,f(z,f(z,f(u,x))))) = y.  [para(21026(a,1),466(a,1,1,1))].
+
+given #754 (T,wt=15): 21689 f(f(x,y),f(f(z,f(z,f(u,y))),x)) = x.  [para(21026(a,1),504(a,1,1,2))].
+
+Low Water (keep): wt=23.000, iters=6704
+
+given #755 (T,wt=15): 21691 f(f(x,y),f(f(z,f(z,f(u,x))),y)) = y.  [para(21026(a,1),519(a,1,2,1)),rewrite([421(6)])].
+
+given #756 (T,wt=15): 21704 f(f(x,x),f(c_0,f(y,f(y,f(z,x))))) = c_0.  [para(21026(a,1),1380(a,2,2)),rewrite([11782(8,R),421(9),11669(9)])].
+
+given #757 (A,wt=19): 661 f(x,f(f(y,f(z,x)),f(f(u,z),x))) = f(f(u,z),x).  [para(519(a,1),519(a,1,1))].
+
+given #758 (T,wt=15): 21705 f(x,f(y,f(y,f(z,f(z,x))))) = f(x,x).  [para(1380(a,1),21026(a,1,2,2,2)),rewrite([11782(3,R),11756(3)])].
+
+given #759 (T,wt=15): 21710 f(x,f(y,f(y,f(z,f(x,z))))) = f(x,x).  [para(1423(a,1),21026(a,1,2,2,2)),rewrite([11782(3,R),11756(3)])].
+
+given #760 (T,wt=15): 21784 f(x,f(y,f(y,f(z,f(x,c_0))))) = f(x,c_0).  [para(11795(a,1),21026(a,1,1))].
+
+given #761 (T,wt=15): 21785 f(x,f(y,f(y,f(z,f(c_0,x))))) = f(c_0,x).  [para(13377(a,1),21026(a,1,1))].
+
+given #762 (A,wt=17): 662 f(f(x,y),f(x,f(f(f(x,y),f(z,y)),u))) = x.  [para(356(a,1),338(a,1,1))].
+
+given #763 (T,wt=15): 21788 f(x,f(y,f(y,f(f(x,c_0),z)))) = f(x,x).  [para(11743(a,2),21026(a,1,2,2,2)),rewrite([11782(3,R),11756(3)])].
+
+given #764 (T,wt=15): 21806 f(x,f(y,f(y,f(f(x,x),z)))) = f(c_0,x).  [para(13897(a,2),21026(a,1,2,2,2)),rewrite([11782(5,R),11762(4)])].
+
+given #765 (T,wt=15): 21807 f(x,f(y,f(y,f(f(c_0,x),z)))) = f(x,x).  [para(13898(a,2),21026(a,1,2,2,2)),rewrite([11782(3,R),11756(3)])].
+
+given #766 (T,wt=15): 21864 f(f(x,f(y,z)),f(c_0,f(z,y))) = f(z,y).  [para(13391(a,1),21034(a,1,1,2,2)),rewrite([11762(5),421(5)])].
+
+given #767 (A,wt=25): 666 f(f(f(x,y),f(z,x)),f(f(x,y),f(f(f(x,y),f(u,y)),w))) = f(x,y).  [para(356(a,1),291(a,1,1,1)),rewrite([356(7),356(14)])].
+
+given #768 (T,wt=15): 21866 f(f(x,f(y,z)),f(x,f(u,f(z,y)))) = x.  [back_rewrite(21097),rewrite([21864(8)])].
+
+given #769 (T,wt=15): 21872 f(f(c_0,f(x,y)),f(z,f(x,x))) = f(x,y).  [para(21136(a,1),429(a,1,2)),rewrite([421(4),11777(4)]),flip(a)].
+
+given #770 (T,wt=15): 21873 f(f(c_0,f(x,y)),f(f(x,x),z)) = f(x,y).  [para(21136(a,1),441(a,1,2)),rewrite([421(4),11777(4)]),flip(a)].
+
+given #771 (T,wt=15): 21885 f(f(x,y),f(x,f(z,f(z,f(y,u))))) = x.  [para(21193(a,1),353(a,1,2,2)),rewrite([421(6)])].
+
+given #772 (A,wt=25): 667 f(f(f(x,y),f(z,x)),f(f(x,y),f(u,f(f(x,y),f(y,w))))) = f(x,y).  [para(291(a,1),356(a,1,2,1)),rewrite([291(17)])].
+
+given #773 (T,wt=15): 21890 f(f(f(x,f(x,f(y,z))),u),f(u,y)) = u.  [para(21193(a,1),455(a,1,2,2))].
+
+given #774 (T,wt=15): 21891 f(f(x,f(y,f(y,f(z,u)))),f(z,x)) = x.  [para(21193(a,1),456(a,1,2,1))].
+
+given #775 (T,wt=15): 21893 f(f(x,y),f(y,f(z,f(z,f(x,u))))) = y.  [para(21193(a,1),466(a,1,1,1))].
+
+given #776 (T,wt=15): 21895 f(f(x,y),f(f(z,f(z,f(y,u))),x)) = x.  [para(21193(a,1),504(a,1,1,2))].
+
+given #777 (A,wt=27): 673 f(f(x,x),f(f(f(x,x),y),f(z,f(f(f(x,x),y),f(x,u))))) = f(f(x,x),y).  [para(301(a,1),356(a,1,2,1)),rewrite([301(16)])].
+
+given #778 (T,wt=15): 21897 f(f(x,y),f(f(z,f(z,f(x,u))),y)) = y.  [para(21193(a,1),519(a,1,2,1)),rewrite([421(6)])].
+
+given #779 (T,wt=15): 22038 f(f(c_0,f(x,y)),f(y,f(f(x,y),z))) = c_0.  [para(163(a,1),21399(a,1,2,2)),rewrite([11782(3,R),421(6)])].
+
+given #780 (T,wt=15): 22039 f(f(c_0,f(x,y)),f(x,f(f(x,y),z))) = c_0.  [para(280(a,1),21399(a,1,2,2)),rewrite([11782(3,R),421(6)])].
+
+given #781 (T,wt=15): 22061 f(x,f(f(f(x,x),y),f(z,f(z,x)))) = c_0.  [para(1380(a,1),21399(a,1,2,2)),rewrite([11782(3,R),11756(3)])].
+
+given #782 (A,wt=23): 677 f(f(x,y),f(f(x,z),f(f(x,y),f(u,y)))) = f(f(x,y),f(u,y)).  [para(356(a,1),472(a,1,1))].
+
+given #783 (T,wt=15): 22065 f(x,f(f(f(x,x),y),f(z,f(x,z)))) = c_0.  [para(1423(a,1),21399(a,1,2,2)),rewrite([11782(3,R),11756(3)])].
+
+given #784 (T,wt=15): 22095 f(x,f(f(f(x,c_0),y),f(z,f(x,c_0)))) = c_0.  [para(11795(a,1),21399(a,1,1))].
+
+given #785 (T,wt=15): 22096 f(x,f(f(f(c_0,x),y),f(z,f(c_0,x)))) = c_0.  [para(13377(a,1),21399(a,1,1))].
+
+given #786 (T,wt=15): 22097 f(x,f(f(f(x,x),y),f(f(x,c_0),z))) = c_0.  [para(11743(a,2),21399(a,1,2,2)),rewrite([11782(3,R),11756(3)])].
+
+given #787 (A,wt=31): 680 f(f(f(x,x),y),f(f(x,x),f(z,f(f(x,x),f(u,f(f(f(x,x),y),f(w,x))))))) = f(x,x).  [para(304(a,1),356(a,1,2,1)),rewrite([304(23)])].
+
+given #788 (T,wt=15): 22099 f(x,f(f(f(x,c_0),y),f(z,f(x,z)))) = c_0.  [para(11759(a,1),21399(a,1,2,2)),rewrite([11782(5,R),11757(4)])].
+
+given #789 (T,wt=15): 22104 f(x,f(f(f(x,c_0),y),f(z,f(z,x)))) = c_0.  [para(11764(a,1),21399(a,1,2,2)),rewrite([11782(5,R),11757(4)])].
+
+given #790 (T,wt=15): 22109 f(x,f(f(f(c_0,x),y),f(z,f(z,x)))) = c_0.  [para(13883(a,1),21399(a,1,2,2)),rewrite([11782(5,R),11762(4)])].
+
+given #791 (T,wt=15): 22114 f(x,f(f(f(c_0,x),y),f(z,f(x,z)))) = c_0.  [para(13886(a,1),21399(a,1,2,2)),rewrite([11782(5,R),11762(4)])].
+
+given #792 (A,wt=23): 682 f(f(x,y),f(f(z,x),f(f(x,y),f(u,y)))) = f(f(x,y),f(u,y)).  [para(356(a,1),519(a,1,1))].
+
+given #793 (T,wt=15): 22118 f(x,f(f(f(c_0,x),y),f(f(x,x),z))) = c_0.  [para(13897(a,2),21399(a,1,2,2)),rewrite([11782(5,R),11762(4)])].
+
+given #794 (T,wt=15): 22119 f(x,f(f(f(x,x),y),f(f(c_0,x),z))) = c_0.  [para(13898(a,2),21399(a,1,2,2)),rewrite([11782(3,R),11756(3)])].
+
+given #795 (T,wt=15): 22120 f(x,f(f(f(x,c_0),y),f(f(x,x),z))) = c_0.  [para(16137(a,2),21399(a,1,2,2)),rewrite([11782(5,R),11757(4)])].
+
+given #796 (T,wt=15): 22128 f(x,f(f(y,f(x,x)),f(f(x,x),z))) = c_0.  [para(163(a,1),21400(a,1,1))].
+
+given #797 (A,wt=19): 684 f(x,f(f(x,y),f(z,f(f(x,y),f(u,y))))) = f(x,y).  [para(356(a,1),356(a,1,2,1)),rewrite([356(11)])].
+
+given #798 (T,wt=15): 22148 f(x,f(f(y,f(y,x)),f(f(x,x),z))) = c_0.  [para(1380(a,1),21400(a,1,2,1)),rewrite([11782(3,R),11756(3)])].
+
+given #799 (T,wt=15): 22150 f(x,f(f(y,f(x,y)),f(f(x,x),z))) = c_0.  [para(1423(a,1),21400(a,1,2,1)),rewrite([11782(3,R),11756(3)])].
+
+given #800 (T,wt=15): 22179 f(x,f(f(y,f(x,c_0)),f(f(x,c_0),z))) = c_0.  [para(11795(a,1),21400(a,1,1))].
+
+given #801 (T,wt=15): 22180 f(x,f(f(y,f(c_0,x)),f(f(c_0,x),z))) = c_0.  [para(13377(a,1),21400(a,1,1))].
+
+given #802 (A,wt=17): 685 f(f(x,y),f(x,f(f(f(x,y),f(y,z)),u))) = x.  [para(399(a,1),338(a,1,1))].
+
+given #803 (T,wt=15): 22182 f(x,f(f(y,f(x,y)),f(f(x,c_0),z))) = c_0.  [para(11759(a,1),21400(a,1,2,1)),rewrite([11782(5,R),11757(4)])].
+
+given #804 (T,wt=15): 22185 f(x,f(f(y,f(y,x)),f(f(x,c_0),z))) = c_0.  [para(11764(a,1),21400(a,1,2,1)),rewrite([11782(5,R),11757(4)])].
+
+given #805 (T,wt=15): 22187 f(x,f(f(y,f(y,x)),f(f(c_0,x),z))) = c_0.  [para(13883(a,1),21400(a,1,2,1)),rewrite([11782(5,R),11762(4)])].
+
+given #806 (T,wt=15): 22190 f(x,f(f(y,f(x,y)),f(f(c_0,x),z))) = c_0.  [para(13886(a,1),21400(a,1,2,1)),rewrite([11782(5,R),11762(4)])].
+
+given #807 (A,wt=17): 687 f(f(x,y),f(x,f(z,f(f(x,y),f(y,u))))) = x.  [para(399(a,1),353(a,1,1))].
+
+given #808 (T,wt=15): 22288 f(f(x,f(x,y)),f(c_0,f(z,y))) = f(z,y).  [para(264(a,1),21579(a,1,1,2,2)),rewrite([421(5)])].
+
+given #809 (T,wt=15): 22289 f(f(x,f(x,y)),f(c_0,f(y,z))) = f(y,z).  [para(324(a,1),21579(a,1,1,2,2)),rewrite([421(5)])].
+
+given #810 (T,wt=15): 22290 f(f(x,f(y,x)),f(c_0,f(z,y))) = f(z,y).  [para(519(a,1),21579(a,1,1,2)),rewrite([421(2),421(5)])].
+
+given #811 (T,wt=15): 22320 f(f(x,x),f(c_0,f(y,f(y,f(x,z))))) = c_0.  [para(21653(a,1),1380(a,2,2)),rewrite([11782(8,R),421(9),11669(9)])].
+
+given #812 (A,wt=23): 689 f(f(x,y),f(f(f(x,y),f(y,z)),f(x,u))) = f(f(x,y),f(y,z)).  [para(399(a,1),453(a,1,1))].
+
+given #813 (T,wt=15): 22525 f(x,f(f(f(x,x),y),f(f(x,x),z))) = c_0.  [para(163(a,1),22042(a,1,1))].
+
+given #814 (T,wt=15): 22574 f(x,f(f(f(x,c_0),y),f(f(x,c_0),z))) = c_0.  [para(11795(a,1),22042(a,1,1))].
+
+given #815 (T,wt=15): 22575 f(x,f(f(f(c_0,x),y),f(f(c_0,x),z))) = c_0.  [para(13377(a,1),22042(a,1,1))].
+
+given #816 (T,wt=15): 23125 f(f(f(f(x,x),y),z),f(c_0,f(z,x))) = c_0.  [para(1436(a,1),11724(a,1,2,2,2)),rewrite([421(7),381(7)])].
+
+given #817 (A,wt=25): 691 f(f(f(x,y),f(z,x)),f(f(x,y),f(f(f(x,y),f(y,u)),w))) = f(x,y).  [para(399(a,1),291(a,1,1,1)),rewrite([399(7),399(14)])].
+
+given #818 (T,wt=15): 23247 f(f(f(x,f(y,y)),z),f(c_0,f(z,y))) = c_0.  [para(1444(a,1),11724(a,1,2,2,2)),rewrite([421(7),381(7)])].
+
+given #819 (T,wt=15): 23957 f(f(x,f(y,y)),z) = f(z,f(x,f(x,y))).  [para(1543(a,1),380(a,2)),rewrite([11759(8,R),13883(8,R),11757(6)])].
+
+given #820 (T,wt=15): 23958 f(f(x,f(x,y)),z) = f(z,f(x,f(y,y))).  [para(1543(a,2),380(a,2)),rewrite([11759(8,R),13883(8,R),11757(6)])].
+
+given #821 (T,wt=15): 24244 f(f(x,f(y,z)),f(x,f(f(y,y),u))) = x.  [para(301(a,1),1646(a,1,2,2)),rewrite([421(5),505(5)])].
+
+given #822 (A,wt=27): 692 f(f(f(x,y),z),f(x,f(f(f(x,y),z),f(z,u)))) = f(f(f(x,y),z),f(z,u)).  [para(399(a,1),454(a,1,2)),rewrite([421(5),421(8)])].
+
+given #823 (T,wt=15): 24252 f(f(x,f(y,z)),f(x,f(f(z,z),u))) = x.  [para(307(a,1),1646(a,1,2,2)),rewrite([421(5),503(5)])].
+
+given #824 (T,wt=15): 24264 f(f(x,f(y,z)),f(x,f(u,f(y,y)))) = x.  [para(392(a,1),1646(a,1,2,2)),rewrite([11782(5,R),11756(5),421(5),533(5)])].
+
+given #825 (T,wt=15): 24266 f(f(x,f(y,z)),f(x,f(u,f(z,z)))) = x.  [para(402(a,1),1646(a,1,2,2)),rewrite([11782(5,R),11756(5),421(5),532(5)])].
+
+given #826 (T,wt=15): 24340 f(f(x,f(y,z)),f(x,f(u,f(y,u)))) = x.  [para(474(a,1),1646(a,1,2,2)),rewrite([421(5),2565(5)])].
+
+given #827 (A,wt=27): 695 f(f(f(x,y),z),f(y,f(f(f(x,y),z),f(z,u)))) = f(f(f(x,y),z),f(z,u)).  [para(399(a,1),456(a,1,2)),rewrite([421(5),421(8)])].
+
+given #828 (T,wt=15): 24369 f(f(f(x,y),z),f(z,f(f(x,x),u))) = z.  [para(301(a,1),1658(a,1,2,2)),rewrite([421(5),505(5)])].
+
+given #829 (T,wt=15): 24371 f(f(f(x,y),z),f(z,f(f(y,y),u))) = z.  [para(307(a,1),1658(a,1,2,2)),rewrite([421(5),503(5)])].
+
+given #830 (T,wt=15): 24376 f(f(f(x,y),z),f(z,f(u,f(x,x)))) = z.  [para(392(a,1),1658(a,1,2,2)),rewrite([11782(5,R),11756(5),421(5),533(5)])].
+
+given #831 (T,wt=15): 24377 f(f(f(x,y),z),f(z,f(u,f(y,y)))) = z.  [para(402(a,1),1658(a,1,2,2)),rewrite([11782(5,R),11756(5),421(5),532(5)])].
+
+given #832 (A,wt=27): 698 f(f(x,x),f(f(f(x,x),y),f(f(f(f(x,x),y),f(x,z)),u))) = f(f(x,x),y).  [para(301(a,1),399(a,1,2,1)),rewrite([301(16)])].
+
+given #833 (T,wt=15): 24415 f(f(f(x,y),z),f(z,f(u,f(x,u)))) = z.  [para(474(a,1),1658(a,1,2,2)),rewrite([421(5),2565(5)])].
+
+given #834 (T,wt=15): 24433 f(f(x,f(y,z)),f(f(f(y,y),u),x)) = x.  [para(301(a,1),1659(a,1,2,1)),rewrite([421(5),505(5)])].
+
+given #835 (T,wt=15): 24438 f(f(x,f(y,z)),f(f(f(z,z),u),x)) = x.  [para(307(a,1),1659(a,1,2,1)),rewrite([421(5),503(5)])].
+
+given #836 (T,wt=15): 24445 f(f(x,f(y,z)),f(f(u,f(y,y)),x)) = x.  [para(392(a,1),1659(a,1,2,1)),rewrite([11782(5,R),11756(5),421(5),533(5)])].
+
+given #837 (A,wt=23): 702 f(f(x,y),f(f(x,z),f(f(x,y),f(y,u)))) = f(f(x,y),f(y,u)).  [para(399(a,1),472(a,1,1))].
+
+given #838 (T,wt=15): 24446 f(f(x,f(y,z)),f(f(u,f(z,z)),x)) = x.  [para(402(a,1),1659(a,1,2,1)),rewrite([11782(5,R),11756(5),421(5),532(5)])].
+
+given #839 (T,wt=15): 24475 f(f(x,f(y,z)),f(f(u,f(y,u)),x)) = x.  [para(474(a,1),1659(a,1,2,1)),rewrite([421(5),2565(5)])].
+
+given #840 (T,wt=15): 24497 f(f(f(f(x,x),y),z),f(z,f(x,u))) = z.  [para(301(a,1),1663(a,1,1,1)),rewrite([421(8),505(8)])].
+
+given #841 (T,wt=15): 24498 f(f(f(f(x,x),y),z),f(z,f(u,x))) = z.  [para(307(a,1),1663(a,1,1,1)),rewrite([421(8),503(8)])].
+
+given #842 (A,wt=31): 705 f(f(f(x,x),y),f(f(x,x),f(f(f(x,x),f(z,f(f(f(x,x),y),f(u,x)))),w))) = f(x,x).  [para(304(a,1),399(a,1,2,1)),rewrite([304(23)])].
+
+given #843 (T,wt=15): 24503 f(f(f(x,f(y,y)),z),f(z,f(y,u))) = z.  [para(392(a,1),1663(a,1,1,1)),rewrite([11782(8,R),11756(8),421(8),533(8)])].
+
+given #844 (T,wt=15): 24504 f(f(f(x,f(y,y)),z),f(z,f(u,y))) = z.  [para(402(a,1),1663(a,1,1,1)),rewrite([11782(8,R),11756(8),421(8),532(8)])].
+
+given #845 (T,wt=15): 24525 f(f(f(x,f(y,x)),z),f(z,f(y,u))) = z.  [para(474(a,1),1663(a,1,1,1)),rewrite([421(8),2565(8)])].
+
+given #846 (T,wt=15): 24560 f(f(x,f(f(y,y),z)),f(f(y,u),x)) = x.  [para(301(a,1),1682(a,1,1,2)),rewrite([421(8),505(8)])].
+
+given #847 (A,wt=19): 708 f(x,f(f(x,y),f(z,f(f(x,y),f(y,u))))) = f(x,y).  [para(399(a,1),356(a,1,2,1)),rewrite([399(11)])].
+
+given #848 (T,wt=15): 24561 f(f(x,f(f(y,y),z)),f(f(u,y),x)) = x.  [para(307(a,1),1682(a,1,1,2)),rewrite([421(8),503(8)])].
+
+given #849 (T,wt=15): 24566 f(f(x,f(y,f(z,z))),f(f(z,u),x)) = x.  [para(392(a,1),1682(a,1,1,2)),rewrite([11782(8,R),11756(8),421(8),533(8)])].
+
+given #850 (T,wt=15): 24567 f(f(x,f(y,f(z,z))),f(f(u,z),x)) = x.  [para(402(a,1),1682(a,1,1,2)),rewrite([11782(8,R),11756(8),421(8),532(8)])].
+
+given #851 (T,wt=15): 24583 f(f(x,f(y,f(z,y))),f(f(z,u),x)) = x.  [para(474(a,1),1682(a,1,1,2)),rewrite([421(8),2565(8)])].
+
+given #852 (A,wt=19): 709 f(x,f(f(x,y),f(f(f(x,y),f(z,y)),u))) = f(x,y).  [para(356(a,1),399(a,1,2,1)),rewrite([356(11)])].
+
+given #853 (T,wt=15): 24628 f(f(f(x,y),z),f(f(f(x,x),u),z)) = z.  [para(301(a,1),1686(a,1,2,1)),rewrite([421(5),505(5)])].
+
+given #854 (T,wt=15): 24633 f(f(f(x,y),z),f(f(f(y,y),u),z)) = z.  [para(307(a,1),1686(a,1,2,1)),rewrite([421(5),503(5)])].
+
+given #855 (T,wt=15): 24640 f(f(f(x,y),z),f(f(u,f(x,x)),z)) = z.  [para(392(a,1),1686(a,1,2,1)),rewrite([11782(5,R),11756(5),421(5),533(5)])].
+
+given #856 (T,wt=15): 24641 f(f(f(x,y),z),f(f(u,f(y,y)),z)) = z.  [para(402(a,1),1686(a,1,2,1)),rewrite([11782(5,R),11756(5),421(5),532(5)])].
+
+given #857 (A,wt=19): 710 f(x,f(f(x,y),f(f(f(x,y),f(y,z)),u))) = f(x,y).  [para(399(a,1),399(a,1,2,1)),rewrite([399(11)])].
+
+given #858 (T,wt=15): 24678 f(f(f(x,y),z),f(f(u,f(x,u)),z)) = z.  [para(474(a,1),1686(a,1,2,1)),rewrite([421(5),2565(5)])].
+
+given #859 (T,wt=15): 24698 f(f(f(x,x),y),z) = f(z,f(y,f(y,x))).  [para(1740(a,1),380(a,2)),rewrite([11759(8,R),13883(8,R),11757(6)])].
+
+given #860 (T,wt=15): 24699 f(f(x,f(x,y)),z) = f(z,f(f(y,y),x)).  [para(1740(a,2),380(a,2)),rewrite([11759(8,R),13883(8,R),11757(6)])].
+
+given #861 (T,wt=15): 25091 f(f(x,f(y,y)),z) = f(z,f(x,f(y,x))).  [para(1884(a,1),380(a,2)),rewrite([11759(8,R),13883(8,R),11757(6)])].
+
+given #862 (A,wt=27): 726 f(f(x,x),f(f(f(x,x),y),f(f(f(f(x,x),y),f(z,x)),u))) = f(f(x,x),y).  [para(307(a,1),399(a,1,2,1)),rewrite([307(16)])].
+
+given #863 (T,wt=15): 25092 f(f(x,f(y,x)),z) = f(z,f(x,f(y,y))).  [para(1884(a,2),380(a,2)),rewrite([11759(8,R),13883(8,R),11757(6)])].
+
+given #864 (T,wt=15): 25362 f(f(x,f(f(y,y),z)),f(x,f(y,u))) = x.  [para(301(a,1),1898(a,1,1,2)),rewrite([421(8),505(8)])].
+
+given #865 (T,wt=15): 25363 f(f(x,f(f(y,y),z)),f(x,f(u,y))) = x.  [para(307(a,1),1898(a,1,1,2)),rewrite([421(8),503(8)])].
+
+given #866 (T,wt=15): 25364 f(f(x,f(y,f(z,z))),f(x,f(z,u))) = x.  [para(392(a,1),1898(a,1,1,2)),rewrite([11782(8,R),11756(8),421(8),533(8)])].
+
+given #867 (A,wt=17): 728 f(f(x,y),f(y,f(f(f(x,y),f(x,z)),u))) = y.  [para(470(a,1),338(a,1,1))].
+
+given #868 (T,wt=15): 25365 f(f(x,f(y,f(z,z))),f(x,f(u,z))) = x.  [para(402(a,1),1898(a,1,1,2)),rewrite([11782(8,R),11756(8),421(8),532(8)])].
+
+given #869 (T,wt=15): 25368 f(f(x,f(y,f(z,y))),f(x,f(z,u))) = x.  [para(474(a,1),1898(a,1,1,2)),rewrite([421(8),2565(8)])].
+
+given #870 (T,wt=15): 25379 f(f(f(f(x,x),y),z),f(f(x,u),z)) = z.  [para(301(a,1),1907(a,1,1,1)),rewrite([421(8),505(8)])].
+
+given #871 (T,wt=15): 25380 f(f(f(f(x,x),y),z),f(f(u,x),z)) = z.  [para(307(a,1),1907(a,1,1,1)),rewrite([421(8),503(8)])].
+
+given #872 (A,wt=17): 730 f(f(x,y),f(y,f(z,f(f(x,y),f(x,u))))) = y.  [para(470(a,1),353(a,1,1))].
+
+given #873 (T,wt=15): 25381 f(f(f(x,f(y,y)),z),f(f(y,u),z)) = z.  [para(392(a,1),1907(a,1,1,1)),rewrite([11782(8,R),11756(8),421(8),533(8)])].
+
+given #874 (T,wt=15): 25382 f(f(f(x,f(y,y)),z),f(f(u,y),z)) = z.  [para(402(a,1),1907(a,1,1,1)),rewrite([11782(8,R),11756(8),421(8),532(8)])].
+
+given #875 (T,wt=15): 25402 f(f(f(x,f(y,x)),z),f(f(y,u),z)) = z.  [para(474(a,1),1907(a,1,1,1)),rewrite([421(8),2565(8)])].
+
+given #876 (T,wt=15): 25421 f(f(f(x,x),y),z) = f(z,f(y,f(x,y))).  [para(2037(a,1),380(a,2)),rewrite([11759(8,R),13883(8,R),11757(6)])].
+
+given #877 (A,wt=23): 733 f(f(x,y),f(f(f(x,y),f(x,z)),f(y,u))) = f(f(x,y),f(x,z)).  [para(470(a,1),453(a,1,1))].
+
+given #878 (T,wt=15): 25422 f(f(x,f(y,x)),z) = f(z,f(f(y,y),x)).  [para(2037(a,2),380(a,2)),rewrite([11759(8,R),13883(8,R),11757(6)])].
+
+given #879 (T,wt=15): 26193 f(x,f(y,f(f(f(y,y),z),x))) = f(x,x).  [para(163(a,1),2946(a,1,2,1))].
+
+given #880 (T,wt=15): 26195 f(x,f(f(c_0,f(y,z)),f(z,x))) = f(x,x).  [para(264(a,1),2946(a,1,2,2,1)),rewrite([11782(3,R)])].
+
+given #881 (T,wt=15): 26196 f(x,f(f(c_0,f(y,z)),f(y,x))) = f(x,x).  [para(324(a,1),2946(a,1,2,2,1)),rewrite([11782(3,R)])].
+
+given #882 (A,wt=25): 734 f(f(f(x,y),f(z,y)),f(f(x,y),f(f(f(x,y),f(x,u)),w))) = f(x,y).  [para(470(a,1),291(a,1,1,1)),rewrite([470(7),470(14)])].
+
+given #883 (T,wt=15): 26197 f(x,f(f(y,y),f(x,f(y,z)))) = f(x,x).  [para(421(a,1),2946(a,1,2,2))].
+
+given #884 (T,wt=15): 26214 f(x,f(y,f(f(z,f(z,y)),x))) = f(x,x).  [para(1422(a,1),2946(a,1,2,2,1)),rewrite([11782(3,R),11756(3)])].
+
+given #885 (T,wt=15): 26218 f(x,f(y,f(f(z,f(y,z)),x))) = f(x,x).  [para(1647(a,1),2946(a,1,2,2,1)),rewrite([11782(3,R),11756(3)])].
+
+given #886 (T,wt=15): 26253 f(x,f(y,f(f(z,f(y,y)),x))) = f(x,x).  [para(395(a,1),2946(a,1,2,2,1)),rewrite([11782(3,R),11756(3)])].
+
+given #887 (A,wt=25): 735 f(f(f(x,y),f(y,z)),f(f(x,y),f(f(f(x,y),f(u,x)),w))) = f(x,y).  [para(291(a,1),470(a,1,2,1)),rewrite([291(17)])].
+
+given #888 (T,wt=15): 26256 f(x,f(f(c_0,y),f(f(y,z),x))) = f(x,x).  [para(11782(a,2),2946(a,1,2,1))].
+
+given #889 (T,wt=15): 26257 f(x,f(f(y,c_0),f(f(y,z),x))) = f(x,x).  [para(11799(a,2),2946(a,1,2,1))].
+
+given #890 (T,wt=15): 26260 f(x,f(y,f(f(f(y,c_0),z),x))) = f(x,x).  [para(11795(a,1),2946(a,1,2,1))].
+
+given #891 (T,wt=15): 26262 f(x,f(y,f(f(f(c_0,y),z),x))) = f(x,x).  [para(13377(a,1),2946(a,1,2,1))].
+
+given #892 (A,wt=27): 736 f(f(x,f(y,z)),f(y,f(f(x,f(y,z)),f(x,u)))) = f(f(x,f(y,z)),f(x,u)).  [para(470(a,1),454(a,1,2)),rewrite([421(5),421(8)])].
+
+given #893 (T,wt=15): 26277 f(x,f(y,f(f(z,f(c_0,y)),x))) = f(x,x).  [para(13897(a,1),2946(a,1,2,2,1)),rewrite([11782(3,R),11756(3)])].
+
+given #894 (T,wt=15): 26280 f(x,f(y,f(f(z,f(y,c_0)),x))) = f(x,x).  [para(16137(a,1),2946(a,1,2,2,1)),rewrite([11782(3,R),11756(3)])].
+
+given #895 (T,wt=15): 27118 f(x,f(f(y,y),f(x,f(z,y)))) = f(x,x).  [para(421(a,1),3008(a,1,2,2))].
+
+given #896 (T,wt=15): 27169 f(x,f(f(c_0,y),f(f(z,y),x))) = f(x,x).  [para(11782(a,2),3008(a,1,2,1))].
+
+given #897 (A,wt=23): 737 f(f(x,y),f(f(f(x,y),f(x,z)),f(u,y))) = f(f(x,y),f(x,z)).  [para(470(a,1),455(a,1,1))].
+
+given #898 (T,wt=15): 27170 f(x,f(f(y,c_0),f(f(z,y),x))) = f(x,x).  [para(11799(a,2),3008(a,1,2,1))].
+
+given #899 (T,wt=15): 27460 f(f(x,f(y,f(y,z))),f(c_0,f(z,x))) = c_0.  [para(3223(a,1),11727(a,1,2,2,2)),rewrite([421(7),380(7)])].
+
+given #900 (T,wt=15): 27714 f(f(c_0,f(x,y)),f(f(z,f(z,x)),y)) = c_0.  [para(3321(a,1),11727(a,1,2,2,2)),rewrite([421(7),380(7),421(7)])].
+
+given #901 (T,wt=15): 29010 f(x,f(y,f(z,f(x,y)))) = f(x,f(y,y)).  [para(9584(a,1),441(a,1,2)),flip(a)].
+
+given #902 (A,wt=27): 738 f(f(x,f(y,z)),f(z,f(f(x,f(y,z)),f(x,u)))) = f(f(x,f(y,z)),f(x,u)).  [para(470(a,1),456(a,1,2)),rewrite([421(5),421(8)])].
+
+given #903 (T,wt=15): 29041 f(x,f(f(c_0,f(y,z)),f(x,y))) = f(x,x).  [para(13853(a,1),9584(a,1,2,2,2))].
+
+given #904 (T,wt=15): 29042 f(x,f(f(c_0,f(y,z)),f(x,z))) = f(x,x).  [para(13857(a,1),9584(a,1,2,2,2))].
+
+given #905 (T,wt=15): 29093 f(x,f(y,f(f(y,x),z))) = f(x,f(y,y)).  [para(9704(a,1),441(a,1,2)),flip(a)].
+
+given #906 (T,wt=15): 29216 f(x,f(c_0,f(y,f(z,f(y,x))))) = f(x,y).  [para(360(a,1),10652(a,1,2)),rewrite([11782(8,R)]),flip(a)].
+
+given #907 (A,wt=23): 741 f(f(x,y),f(f(y,z),f(f(x,y),f(x,u)))) = f(f(x,y),f(x,u)).  [para(470(a,1),472(a,1,1))].
+
+given #908 (T,wt=15): 29263 f(x,f(c_0,f(y,f(z,f(x,y))))) = f(x,y).  [para(1168(a,1),10652(a,1,2)),rewrite([11782(8,R)]),flip(a)].
+
+given #909 (T,wt=15): 29265 f(x,f(c_0,f(y,f(f(y,x),z)))) = f(x,y).  [para(1169(a,1),10652(a,1,2)),rewrite([11782(8,R)]),flip(a)].
+
+given #910 (T,wt=15): 29268 f(f(x,f(y,f(x,z))),f(c_0,f(z,x))) = c_0.  [para(10652(a,1),11724(a,1,2,2,2)),rewrite([1415(7)])].
+
+given #911 (T,wt=15): 29337 f(x,f(c_0,f(y,f(f(x,y),z)))) = f(x,y).  [para(7868(a,1),10652(a,1,2)),rewrite([11782(8,R)]),flip(a)].
+
+given #912 (A,wt=31): 744 f(f(f(x,x),f(y,f(f(f(x,x),z),f(u,x)))),f(f(x,x),f(f(f(x,x),z),w))) = f(x,x).  [para(304(a,1),470(a,1,2,1)),rewrite([304(23)])].
+
+given #913 (T,wt=15): 29488 f(f(x,f(y,f(z,c_0))),f(c_0,f(x,z))) = c_0.  [para(11674(a,1),11724(a,1,2,2,2)),rewrite([421(8),381(8)])].
+
+given #914 (T,wt=15): 29543 f(f(x,f(f(y,c_0),z)),f(c_0,f(x,y))) = c_0.  [para(11676(a,1),11724(a,1,2,2,2)),rewrite([421(8),381(8)])].
+
+given #915 (T,wt=15): 30878 f(f(x,y),f(z,c_0)) = f(f(z,z),f(y,x)).  [para(421(a,1),11976(a,1,1))].
+
+given #916 (T,wt=15): 30990 f(f(x,f(y,f(z,x))),f(c_0,f(z,x))) = c_0.  [para(12006(a,1),532(a,1,2)),rewrite([11782(10,R),11762(8),11782(12,R),11762(10),11782(8,R),353(8),11782(8,R),11762(6)]),flip(a)].
+
+given #917 (A,wt=23): 745 f(f(x,y),f(f(z,y),f(f(x,y),f(x,u)))) = f(f(x,y),f(x,u)).  [para(470(a,1),519(a,1,1))].
+
+given #918 (T,wt=15): 31066 f(x,f(f(y,z),f(f(z,y),x))) = f(x,x).  [para(13391(a,1),12006(a,1,2,2,2)),rewrite([11762(7),421(4)])].
+
+given #919 (T,wt=15): 31145 f(f(x,f(y,f(x,z))),f(c_0,f(x,z))) = c_0.  [para(12007(a,1),532(a,1,2)),rewrite([11782(10,R),11762(8),11782(12,R),11762(10),11782(8,R),353(8),11782(8,R),11762(6)]),flip(a)].
+
+given #920 (T,wt=15): 31284 f(x,f(f(x,f(y,z)),f(c_0,y))) = f(x,x).  [para(280(a,1),12008(a,1,2,2,2))].
+
+given #921 (T,wt=15): 31285 f(x,f(y,f(x,f(z,f(y,y))))) = f(x,x).  [para(169(a,1),12008(a,1,2,2,2)),rewrite([11756(6),421(4)])].
+
+given #922 (A,wt=19): 747 f(x,f(f(y,x),f(z,f(f(y,x),f(y,u))))) = f(y,x).  [para(470(a,1),356(a,1,2,1)),rewrite([470(11)])].
+
+given #923 (T,wt=15): 31286 f(x,f(y,f(x,f(f(y,y),z)))) = f(x,x).  [para(258(a,1),12008(a,1,2,2,2)),rewrite([11756(6),421(4)])].
+
+given #924 (T,wt=15): 31292 f(x,f(y,f(x,f(z,f(z,y))))) = f(x,x).  [para(464(a,1),12008(a,1,2,2,2)),rewrite([11756(6),421(4)])].
+
+given #925 (T,wt=15): 31415 f(f(x,x),f(y,f(f(z,x),f(u,x)))) = x.  [para(15191(a,1),12008(a,1,2,1)),rewrite([11762(9),11782(9,R),11756(9)])].
+
+given #926 (T,wt=15): 31419 f(f(x,x),f(y,f(f(x,z),f(u,x)))) = x.  [para(21399(a,1),12008(a,1,2,1)),rewrite([11762(9),11782(9,R),11756(9)])].
+
+given #927 (A,wt=19): 748 f(f(f(x,y),f(z,y)),f(f(x,y),f(x,u))) = f(x,y).  [para(356(a,1),470(a,1,2,1)),rewrite([356(11)])].
+
+given #928 (T,wt=15): 31420 f(f(x,x),f(y,f(f(z,x),f(x,u)))) = x.  [para(21400(a,1),12008(a,1,2,1)),rewrite([11762(9),11782(9,R),11756(9)])].
+
+given #929 (T,wt=15): 31421 f(f(x,c_0),f(y,f(f(z,x),f(u,x)))) = x.  [para(21444(a,1),12008(a,1,2,1)),rewrite([11762(10),11782(12,R),11757(11)])].
+
+given #930 (T,wt=15): 31422 f(f(c_0,x),f(y,f(f(z,x),f(u,x)))) = x.  [para(21465(a,1),12008(a,1,2,1)),rewrite([11762(10),11782(12,R),11762(11)])].
+
+given #931 (T,wt=15): 31424 f(f(x,x),f(y,f(f(x,z),f(x,u)))) = x.  [para(22042(a,1),12008(a,1,2,1)),rewrite([11762(9),11782(9,R),11756(9)])].
+
+given #932 (A,wt=19): 749 f(x,f(f(y,x),f(f(f(y,x),f(y,z)),u))) = f(y,x).  [para(470(a,1),399(a,1,2,1)),rewrite([470(11)])].
+
+given #933 (T,wt=15): 31425 f(f(x,c_0),f(y,f(f(x,z),f(u,x)))) = x.  [para(22076(a,1),12008(a,1,2,1)),rewrite([11762(10),11782(12,R),11757(11)])].
+
+given #934 (T,wt=15): 31426 f(f(c_0,x),f(y,f(f(x,z),f(u,x)))) = x.  [para(22094(a,1),12008(a,1,2,1)),rewrite([11762(10),11782(12,R),11762(11)])].
+
+given #935 (T,wt=15): 31427 f(f(x,c_0),f(y,f(f(z,x),f(x,u)))) = x.  [para(22160(a,1),12008(a,1,2,1)),rewrite([11762(10),11782(12,R),11757(11)])].
+
+given #936 (T,wt=15): 31428 f(f(c_0,x),f(y,f(f(z,x),f(x,u)))) = x.  [para(22178(a,1),12008(a,1,2,1)),rewrite([11762(10),11782(12,R),11762(11)])].
+
+given #937 (A,wt=19): 750 f(f(f(x,y),f(y,z)),f(f(x,y),f(x,u))) = f(x,y).  [para(399(a,1),470(a,1,2,1)),rewrite([399(11)])].
+
+given #938 (T,wt=15): 31429 f(f(x,c_0),f(y,f(f(x,z),f(x,u)))) = x.  [para(22555(a,1),12008(a,1,2,1)),rewrite([11762(10),11782(12,R),11757(11)])].
+
+given #939 (T,wt=15): 31430 f(f(c_0,x),f(y,f(f(x,z),f(x,u)))) = x.  [para(22573(a,1),12008(a,1,2,1)),rewrite([11762(10),11782(12,R),11762(11)])].
+
+given #940 (T,wt=15): 31497 f(x,f(f(x,f(y,z)),f(c_0,z))) = f(x,x).  [para(264(a,1),12009(a,1,2,2,2))].
+
+given #941 (T,wt=15): 31593 f(f(x,x),f(f(f(y,x),f(z,x)),u)) = x.  [para(15191(a,1),12009(a,1,2,1)),rewrite([11762(9),11782(9,R),11756(9)])].
+
+given #942 (A,wt=25): 759 f(f(f(x,y),f(z,y)),f(f(x,y),f(f(f(x,y),f(u,x)),w))) = f(x,y).  [para(480(a,1),291(a,1,1,1)),rewrite([480(7),480(14)])].
+
+given #943 (T,wt=15): 31597 f(f(x,x),f(f(f(x,y),f(z,x)),u)) = x.  [para(21399(a,1),12009(a,1,2,1)),rewrite([11762(9),11782(9,R),11756(9)])].
+
+given #944 (T,wt=15): 31598 f(f(x,x),f(f(f(y,x),f(x,z)),u)) = x.  [para(21400(a,1),12009(a,1,2,1)),rewrite([11762(9),11782(9,R),11756(9)])].
+
+given #945 (T,wt=15): 31599 f(f(x,c_0),f(f(f(y,x),f(z,x)),u)) = x.  [para(21444(a,1),12009(a,1,2,1)),rewrite([11762(10),11782(12,R),11757(11)])].
+
+given #946 (T,wt=15): 31600 f(f(c_0,x),f(f(f(y,x),f(z,x)),u)) = x.  [para(21465(a,1),12009(a,1,2,1)),rewrite([11762(10),11782(12,R),11762(11)])].
+
+given #947 (A,wt=25): 760 f(f(f(x,y),f(y,z)),f(f(x,y),f(u,f(f(x,y),f(w,x))))) = f(x,y).  [para(291(a,1),480(a,1,2,1)),rewrite([291(17)])].
+
+given #948 (T,wt=15): 31602 f(f(x,x),f(f(f(x,y),f(x,z)),u)) = x.  [para(22042(a,1),12009(a,1,2,1)),rewrite([11762(9),11782(9,R),11756(9)])].
+
+given #949 (T,wt=15): 31603 f(f(x,c_0),f(f(f(x,y),f(z,x)),u)) = x.  [para(22076(a,1),12009(a,1,2,1)),rewrite([11762(10),11782(12,R),11757(11)])].
+
+given #950 (T,wt=15): 31604 f(f(c_0,x),f(f(f(x,y),f(z,x)),u)) = x.  [para(22094(a,1),12009(a,1,2,1)),rewrite([11762(10),11782(12,R),11762(11)])].
+
+given #951 (T,wt=15): 31606 f(f(x,c_0),f(f(f(y,x),f(x,z)),u)) = x.  [para(22160(a,1),12009(a,1,2,1)),rewrite([11762(10),11782(12,R),11757(11)])].
+
+given #952 (A,wt=27): 761 f(f(x,f(y,z)),f(y,f(f(x,f(y,z)),f(u,x)))) = f(f(x,f(y,z)),f(u,x)).  [para(480(a,1),454(a,1,2)),rewrite([421(5),421(8)])].
+
+given #953 (T,wt=15): 31607 f(f(c_0,x),f(f(f(y,x),f(x,z)),u)) = x.  [para(22178(a,1),12009(a,1,2,1)),rewrite([11762(10),11782(12,R),11762(11)])].
+
+given #954 (T,wt=15): 31608 f(f(x,c_0),f(f(f(x,y),f(x,z)),u)) = x.  [para(22555(a,1),12009(a,1,2,1)),rewrite([11762(10),11782(12,R),11757(11)])].
+
+given #955 (T,wt=15): 31609 f(f(c_0,x),f(f(f(x,y),f(x,z)),u)) = x.  [para(22573(a,1),12009(a,1,2,1)),rewrite([11762(10),11782(12,R),11762(11)])].
+
+given #956 (T,wt=15): 31697 f(f(f(x,y),z),f(c_0,f(z,f(y,x)))) = c_0.  [para(12197(a,1),11724(a,1,2,2,2)),rewrite([421(8),13884(8)])].
+
+given #957 (A,wt=23): 762 f(f(x,y),f(f(f(x,y),f(z,x)),f(u,y))) = f(f(x,y),f(z,x)).  [para(480(a,1),455(a,1,1))].
+
+given #958 (T,wt=15): 31800 f(f(f(x,y),z),f(z,f(u,f(y,x)))) = z.  [para(12235(a,1),355(a,1,2,1)),rewrite([421(8),21338(8),12235(13)])].
+
+given #959 (T,wt=15): 31802 f(f(f(x,y),z),f(z,f(f(y,x),u))) = z.  [para(12235(a,1),401(a,1,2,1)),rewrite([421(8),21338(8),31800(13)])].
+
+given #960 (T,wt=15): 32141 f(f(x,f(y,z)),f(x,f(f(z,y),u))) = x.  [para(12696(a,1),512(a,1,2,1)),rewrite([21864(8),12696(13)])].
+
+given #961 (T,wt=15): 32883 f(f(x,f(f(c_0,y),z)),f(x,f(y,u))) = x.  [para(13854(a,1),353(a,1,2,2))].
+
+given #962 (A,wt=27): 763 f(f(x,f(y,z)),f(z,f(f(x,f(y,z)),f(u,x)))) = f(f(x,f(y,z)),f(u,x)).  [para(480(a,1),456(a,1,2)),rewrite([421(5),421(8)])].
+
+given #963 (T,wt=15): 32886 f(f(f(f(c_0,x),y),z),f(z,f(x,u))) = z.  [para(13854(a,1),455(a,1,2,2))].
+
+given #964 (T,wt=15): 32887 f(f(x,f(f(c_0,y),z)),f(f(y,u),x)) = x.  [para(13854(a,1),456(a,1,2,1))].
+
+given #965 (T,wt=15): 32888 f(f(f(x,y),z),f(z,f(f(c_0,x),u))) = z.  [para(13854(a,1),466(a,1,1,1))].
+
+given #966 (T,wt=15): 32890 f(f(x,f(y,z)),f(f(f(c_0,y),u),x)) = x.  [para(13854(a,1),504(a,1,1,2))].
+
+given #967 (A,wt=31): 769 f(f(f(x,x),f(y,f(f(f(x,x),z),f(u,x)))),f(f(x,x),f(w,f(f(x,x),z)))) = f(x,x).  [para(304(a,1),480(a,1,2,1)),rewrite([304(23)])].
+
+given #968 (T,wt=15): 32892 f(f(f(f(c_0,x),y),z),f(f(x,u),z)) = z.  [para(13854(a,1),519(a,1,2,1))].
+
+given #969 (T,wt=15): 32910 f(f(x,f(y,f(c_0,z))),f(x,f(z,u))) = x.  [para(13854(a,1),681(a,1,2,2))].
+
+given #970 (T,wt=15): 32922 f(f(f(x,f(c_0,y)),z),f(z,f(y,u))) = z.  [para(13854(a,1),771(a,1,2,2))].
+
+given #971 (T,wt=15): 32923 f(f(x,f(y,z)),f(x,f(f(c_0,y),u))) = x.  [para(13854(a,1),1043(a,1,1,2))].
+
+given #972 (A,wt=23): 770 f(f(x,y),f(f(z,y),f(f(x,y),f(u,x)))) = f(f(x,y),f(u,x)).  [para(480(a,1),519(a,1,1))].
+
+given #973 (T,wt=15): 32925 f(f(x,f(y,z)),f(x,f(u,f(c_0,y)))) = x.  [para(13854(a,1),1168(a,1,1,2))].
+
+given #974 (T,wt=15): 32942 f(f(x,f(y,z)),f(f(u,f(c_0,y)),x)) = x.  [para(13854(a,1),5732(a,1,1,2))].
+
+given #975 (T,wt=15): 32991 f(x,f(c_0,f(y,f(y,f(f(c_0,x),z))))) = c_0.  [para(13885(a,1),13860(a,1,2,2))].
+
+given #976 (T,wt=15): 33017 f(f(x,f(y,f(c_0,z))),f(f(z,u),x)) = x.  [para(13861(a,1),456(a,1,2,1))].
+
+given #977 (A,wt=19): 772 f(x,f(f(y,x),f(z,f(f(y,x),f(u,y))))) = f(y,x).  [para(480(a,1),356(a,1,2,1)),rewrite([480(11)])].
+
+given #978 (T,wt=15): 33018 f(f(f(x,y),z),f(z,f(u,f(c_0,x)))) = z.  [para(13861(a,1),466(a,1,1,1))].
+
+given #979 (T,wt=15): 33021 f(f(f(x,f(c_0,y)),z),f(f(y,u),z)) = z.  [para(13861(a,1),519(a,1,2,1))].
+
+given #980 (T,wt=15): 33084 f(f(x,f(y,f(c_0,z))),f(x,f(u,z))) = x.  [para(13865(a,1),353(a,1,2,2))].
+
+given #981 (T,wt=15): 33087 f(f(f(x,f(c_0,y)),z),f(z,f(u,y))) = z.  [para(13865(a,1),455(a,1,2,2))].
+
+given #982 (A,wt=19): 773 f(f(f(x,y),f(z,y)),f(f(x,y),f(u,x))) = f(x,y).  [para(356(a,1),480(a,1,2,1)),rewrite([356(11)])].
+
+given #983 (T,wt=15): 33088 f(f(x,f(y,f(c_0,z))),f(f(u,z),x)) = x.  [para(13865(a,1),456(a,1,2,1))].
+
+given #984 (T,wt=15): 33089 f(f(f(x,y),z),f(z,f(u,f(c_0,y)))) = z.  [para(13865(a,1),466(a,1,1,1))].
+
+given #985 (T,wt=15): 33091 f(f(x,f(y,z)),f(f(u,f(c_0,z)),x)) = x.  [para(13865(a,1),504(a,1,1,2))].
+
+given #986 (T,wt=15): 33093 f(f(f(x,f(c_0,y)),z),f(f(u,y),z)) = z.  [para(13865(a,1),519(a,1,2,1))].
+
+given #987 (A,wt=19): 774 f(x,f(f(y,x),f(f(f(y,x),f(z,y)),u))) = f(y,x).  [para(480(a,1),399(a,1,2,1)),rewrite([480(11)])].
+
+given #988 (T,wt=15): 33098 f(f(x,f(y,z)),f(x,f(f(c_0,z),u))) = x.  [para(13865(a,1),330(a,1,1,2))].
+
+given #989 (T,wt=15): 33100 f(f(x,f(y,z)),f(x,f(u,f(c_0,z)))) = x.  [para(13865(a,1),360(a,1,1,2))].
+
+given #990 (T,wt=15): 33113 f(f(f(f(c_0,x),y),z),f(z,f(u,x))) = z.  [para(13865(a,1),675(a,1,2,2))].
+
+given #991 (T,wt=15): 33127 f(f(x,f(f(c_0,y),z)),f(x,f(u,y))) = x.  [para(13865(a,1),754(a,1,2,2))].
+
+given #992 (A,wt=19): 777 f(f(f(x,y),f(x,z)),f(f(x,y),f(u,y))) = f(x,y).  [para(470(a,1),480(a,1,2,1)),rewrite([470(11)])].
+
+given #993 (T,wt=15): 33130 f(f(x,f(y,z)),f(f(f(c_0,z),u),x)) = x.  [para(13865(a,1),1045(a,1,1,2))].
+
+given #994 (T,wt=15): 33175 f(f(x,f(f(c_0,y),z)),f(f(u,y),x)) = x.  [para(13866(a,1),456(a,1,2,1))].
+
+given #995 (T,wt=15): 33176 f(f(f(x,y),z),f(z,f(f(c_0,y),u))) = z.  [para(13866(a,1),466(a,1,1,1))].
+
+given #996 (T,wt=15): 33179 f(f(f(f(c_0,x),y),z),f(f(u,x),z)) = z.  [para(13866(a,1),519(a,1,2,1))].
+
+given #997 (A,wt=23): 782 f(f(x,y),f(f(f(y,z),f(x,y)),f(x,u))) = f(f(y,z),f(x,y)).  [para(513(a,1),453(a,1,1))].
+
+given #998 (T,wt=15): 35187 f(f(x,y),f(c_0,z)) = f(f(z,z),f(y,x)).  [para(421(a,1),14124(a,1,1))].
+
+given #999 (T,wt=15): 35317 f(f(c_0,f(x,f(y,x))),f(x,f(y,z))) = c_0.  [para(14780(a,1),421(a,1)),flip(a)].
+
+given #1000 (T,wt=15): 35341 f(f(x,f(y,z)),f(c_0,f(x,f(y,y)))) = c_0.  [para(1423(a,2),14780(a,1,2,2))].
+
+given #1001 (T,wt=15): 35343 f(f(x,f(f(y,y),z)),f(c_0,f(y,x))) = c_0.  [para(1647(a,1),14780(a,1,2,2,2)),rewrite([380(7)])].
+
+given #1002 (A,wt=25): 783 f(f(f(x,y),f(z,x)),f(f(x,y),f(f(f(y,u),f(x,y)),w))) = f(x,y).  [para(513(a,1),291(a,1,1,1)),rewrite([513(7),513(14)])].
+
+given #1003 (T,wt=15): 35365 f(f(x,f(f(y,c_0),z)),f(c_0,f(y,x))) = c_0.  [para(11755(a,1),14780(a,1,2,2,2)),rewrite([380(8)])].
+
+given #1004 (T,wt=15): 35366 f(f(x,f(y,z)),f(c_0,f(f(y,c_0),x))) = c_0.  [para(11755(a,2),14780(a,1,2,2))].
+
+given #1005 (T,wt=15): 35367 f(f(x,f(y,z)),f(c_0,f(x,f(y,c_0)))) = c_0.  [para(11759(a,2),14780(a,1,2,2))].
+
+given #1006 (T,wt=15): 35386 f(f(x,f(f(c_0,y),z)),f(c_0,f(y,x))) = c_0.  [para(13887(a,1),14780(a,1,2,2,2)),rewrite([380(8)])].
+
+given #1007 (A,wt=27): 784 f(f(f(x,y),z),f(x,f(f(z,u),f(f(x,y),z)))) = f(f(z,u),f(f(x,y),z)).  [para(513(a,1),454(a,1,2)),rewrite([421(5),421(8)])].
+
+given #1008 (T,wt=15): 35512 f(f(c_0,f(x,f(x,y))),f(f(y,z),x)) = c_0.  [para(14784(a,1),421(a,1)),flip(a)].
+
+given #1009 (T,wt=15): 35558 f(f(c_0,f(x,y)),f(f(f(x,x),z),y)) = c_0.  [para(1423(a,1),14784(a,1,2,2,2)),rewrite([380(7),421(7)])].
+
+given #1010 (T,wt=15): 35599 f(f(c_0,f(x,y)),f(f(f(x,c_0),z),y)) = c_0.  [para(11759(a,1),14784(a,1,2,2,2)),rewrite([380(8),421(8)])].
+
+given #1011 (T,wt=15): 35995 f(f(c_0,f(x,y)),f(f(z,f(x,x)),y)) = c_0.  [para(1423(a,1),14788(a,1,2,2,2)),rewrite([380(7),421(7)])].
+
+given #1012 (A,wt=23): 785 f(f(x,y),f(f(f(y,z),f(x,y)),f(u,x))) = f(f(y,z),f(x,y)).  [para(513(a,1),455(a,1,1))].
+
+given #1013 (T,wt=15): 36042 f(f(c_0,f(x,y)),f(f(z,f(x,c_0)),y)) = c_0.  [para(11759(a,1),14788(a,1,2,2,2)),rewrite([380(8),421(8)])].
+
+given #1014 (T,wt=15): 36070 f(f(c_0,f(x,y)),f(f(z,f(c_0,x)),y)) = c_0.  [para(13886(a,1),14788(a,1,2,2,2)),rewrite([380(8),421(8)])].
+
+given #1015 (T,wt=15): 36208 f(f(x,f(y,z)),f(c_0,f(x,f(c_0,z)))) = c_0.  [para(163(a,1),14791(a,1,2,2,2,2))].
+
+given #1016 (T,wt=15): 37064 f(f(c_0,f(x,f(y,x))),f(f(y,z),x)) = c_0.  [para(14795(a,1),421(a,1)),flip(a)].
+
+given #1017 (A,wt=27): 786 f(f(f(x,y),z),f(y,f(f(z,u),f(f(x,y),z)))) = f(f(z,u),f(f(x,y),z)).  [para(513(a,1),456(a,1,2)),rewrite([421(5),421(8)])].
+
+given #1018 (T,wt=15): 38004 f(x,f(c_0,f(y,f(y,f(z,f(x,x)))))) = c_0.  [para(14800(a,1),11965(a,1)),flip(a)].
+
+given #1019 (T,wt=15): 38306 f(f(x,f(y,f(y,z))),f(x,f(z,u))) = x.  [para(14805(a,1),554(a,1,1,2,2)),rewrite([421(6),11762(6),11782(10,R),11762(8)])].
+
+given #1020 (T,wt=15): 38308 f(f(f(x,f(x,y)),z),f(z,f(y,u))) = z.  [para(14805(a,1),565(a,1,1,1,2)),rewrite([421(6),11762(6),11782(10,R),11762(8)])].
+
+given #1021 (T,wt=15): 38310 f(f(x,f(y,f(y,z))),f(f(z,u),x)) = x.  [para(14805(a,1),567(a,1,1,2,2)),rewrite([421(6),11762(6),11782(10,R),11762(8)])].
+
+given #1022 (A,wt=23): 788 f(f(x,y),f(f(x,z),f(f(y,u),f(x,y)))) = f(f(y,u),f(x,y)).  [para(513(a,1),472(a,1,1))].
+
+given #1023 (T,wt=15): 38312 f(f(f(x,y),z),f(z,f(u,f(u,x)))) = z.  [para(14805(a,1),586(a,1,2,2,2)),rewrite([11782(7,R),11762(5),421(8),11762(8)])].
+
+given #1024 (T,wt=15): 38314 f(f(x,f(y,z)),f(f(u,f(u,y)),x)) = x.  [para(14805(a,1),639(a,1,2,1,2)),rewrite([11782(7,R),11762(5),421(8),11762(8)])].
+
+given #1025 (T,wt=15): 38316 f(f(f(x,f(x,y)),z),f(f(y,u),z)) = z.  [para(14805(a,1),656(a,1,1,1,2)),rewrite([421(6),11762(6),11782(10,R),11762(8)])].
+
+given #1026 (T,wt=15): 38355 f(f(x,f(y,z)),f(x,f(u,f(u,y)))) = x.  [para(14805(a,1),1420(a,1,2,2,2)),rewrite([11782(7,R),11762(5),421(8),11762(8)])].
+
+given #1027 (A,wt=23): 790 f(f(x,y),f(f(z,x),f(f(y,u),f(x,y)))) = f(f(y,u),f(x,y)).  [para(513(a,1),519(a,1,1))].
+
+given #1028 (T,wt=15): 38367 f(f(f(x,y),z),f(f(u,f(u,x)),z)) = z.  [para(14805(a,1),1473(a,1,2,1,2)),rewrite([11782(7,R),11762(5),421(8),11762(8)])].
+
+given #1029 (T,wt=15): 38622 f(f(x,f(y,f(y,z))),f(x,f(u,z))) = x.  [para(14807(a,1),3218(a,1,1,2,2)),rewrite([421(6),11762(6),13884(8)])].
+
+given #1030 (T,wt=15): 38624 f(f(f(x,f(x,y)),z),f(z,f(u,y))) = z.  [para(14807(a,1),3312(a,1,1,1,2)),rewrite([421(6),11762(6),13884(8)])].
+
+given #1031 (T,wt=15): 38628 f(f(x,f(y,f(y,z))),f(f(u,z),x)) = x.  [para(14807(a,1),3822(a,1,2,1,2)),rewrite([13884(6),421(8),11762(8)])].
+
+given #1032 (A,wt=19): 791 f(x,f(f(x,y),f(z,f(f(y,u),f(x,y))))) = f(x,y).  [para(513(a,1),356(a,1,2,1)),rewrite([513(11)])].
+
+given #1033 (T,wt=15): 39522 f(f(f(x,y),z),f(c_0,f(z,f(x,x)))) = c_0.  [para(301(a,1),14861(a,1,1,1,2)),rewrite([421(7),13883(7,R),11964(6)])].
+
+given #1034 (T,wt=15): 39915 f(x,f(c_0,f(y,f(x,f(z,f(y,z)))))) = c_0.  [para(14861(a,1),14861(a,1,1)),rewrite([421(7),421(9),11762(11)])].
+
+given #1035 (T,wt=15): 40583 f(f(x,f(y,z)),f(c_0,f(x,f(z,z)))) = c_0.  [para(11956(a,1),14957(a,1,1,2))].
+
+given #1036 (T,wt=15): 43152 f(f(f(x,y),z),f(f(f(y,x),u),z)) = z.  [para(12197(a,1),584(a,1,2,2)),rewrite([421(8),21338(8),12197(13)])].
+
+given #1037 (A,wt=19): 793 f(x,f(f(x,y),f(f(f(y,z),f(x,y)),u))) = f(x,y).  [para(513(a,1),399(a,1,2,1)),rewrite([513(11)])].
+
+given #1038 (T,wt=15): 43250 f(f(x,f(y,z)),f(x,f(u,f(z,u)))) = x.  [para(14985(a,1),2427(a,1,1,2,2)),rewrite([421(5),11762(5),13884(8)])].
+
+given #1039 (T,wt=15): 43259 f(f(x,f(y,f(z,y))),f(x,f(u,z))) = x.  [para(14985(a,1),3514(a,1,2,2,2)),rewrite([13884(6),421(8),11762(8)])].
+
+given #1040 (T,wt=15): 43261 f(f(x,f(y,f(z,y))),f(f(u,z),x)) = x.  [para(14985(a,1),3822(a,1,2,1,2)),rewrite([13884(6),421(8),11762(8)])].
+
+given #1041 (T,wt=15): 43302 f(f(x,f(y,z)),f(f(u,f(z,u)),x)) = x.  [para(14985(a,1),13896(a,1,1,2,2)),rewrite([421(5),11762(5),11762(8)])].
+
+given #1042 (A,wt=19): 796 f(f(f(x,y),f(z,x)),f(f(z,x),f(z,u))) = f(z,x).  [para(513(a,1),470(a,1,2,1)),rewrite([513(11)])].
+
+given #1043 (T,wt=15): 43303 f(f(f(x,f(y,x)),z),f(z,f(u,y))) = z.  [para(14985(a,1),13903(a,1,2,2,2)),rewrite([11762(6),421(8),11762(8)])].
+
+given #1044 (T,wt=15): 43307 f(f(f(x,y),z),f(f(u,f(y,u)),z)) = z.  [para(14985(a,1),13907(a,1,1,1,2)),rewrite([421(5),11762(5),11762(8)])].
+
+given #1045 (T,wt=15): 44090 f(f(x,f(y,f(z,c_0))),f(c_0,f(z,x))) = c_0.  [para(15222(a,1),15007(a,1,2,2,2)),rewrite([11782(8,R),11756(8)])].
+
+given #1046 (T,wt=15): 44560 f(f(x,f(y,z)),f(f(f(z,y),u),x)) = x.  [para(12696(a,1),590(a,1,2,2)),rewrite([21864(8),12696(13)])].
+
+given #1047 (A,wt=19): 797 f(f(f(x,y),f(z,x)),f(f(z,x),f(u,z))) = f(z,x).  [para(513(a,1),480(a,1,2,1)),rewrite([513(11)])].
+
+given #1048 (T,wt=15): 46390 f(f(f(x,c_0),y),z) = f(z,f(y,f(x,x))).  [back_rewrite(45848),rewrite([46019(9),11757(7)])].
+
+given #1049 (T,wt=15): 46438 f(f(x,f(f(y,c_0),z)),f(x,f(y,u))) = x.  [para(322(a,1),15635(a,1,1,2)),rewrite([11782(12,R),11757(11),421(10),11751(10)])].
+
+given #1050 (T,wt=15): 46439 f(f(x,f(f(y,c_0),z)),f(x,f(u,y))) = x.  [para(327(a,1),15635(a,1,1,2)),rewrite([11782(12,R),11757(11),421(10),11752(10)])].
+
+given #1051 (T,wt=15): 46442 f(f(x,f(y,f(z,c_0))),f(x,f(z,u))) = x.  [para(392(a,1),15635(a,1,1,2)),rewrite([11782(12,R),11757(11),421(10),11747(10)])].
+
+given #1052 (A,wt=23): 802 f(f(x,y),f(f(f(z,y),f(x,y)),f(x,u))) = f(f(z,y),f(x,y)).  [para(518(a,1),453(a,1,1))].
+
+given #1053 (T,wt=15): 46443 f(f(x,f(y,f(z,c_0))),f(x,f(u,z))) = x.  [para(402(a,1),15635(a,1,1,2)),rewrite([11782(12,R),11757(11),421(10),11748(10)])].
+
+given #1054 (T,wt=15): 46541 f(f(x,f(y,z)),f(x,f(f(y,c_0),u))) = x.  [para(322(a,1),15636(a,1,2,2)),rewrite([11782(8,R),11757(7),421(6),11751(6)])].
+
+given #1055 (T,wt=15): 46542 f(f(x,f(y,z)),f(x,f(f(z,c_0),u))) = x.  [para(327(a,1),15636(a,1,2,2)),rewrite([11782(8,R),11757(7),421(6),11752(6)])].
+
+given #1056 (T,wt=15): 46543 f(f(x,f(y,z)),f(x,f(u,f(y,c_0)))) = x.  [para(392(a,1),15636(a,1,2,2)),rewrite([11782(8,R),11757(7),421(6),11747(6)])].
+
+given #1057 (A,wt=25): 803 f(f(f(x,y),f(z,x)),f(f(x,y),f(f(f(u,y),f(x,y)),w))) = f(x,y).  [para(518(a,1),291(a,1,1,1)),rewrite([518(7),518(14)])].
+
+given #1058 (T,wt=15): 46544 f(f(x,f(y,z)),f(x,f(u,f(z,c_0)))) = x.  [para(402(a,1),15636(a,1,2,2)),rewrite([11782(8,R),11757(7),421(6),11748(6)])].
+
+given #1059 (T,wt=15): 46805 f(f(f(x,y),z),f(z,f(f(x,c_0),u))) = z.  [para(322(a,1),15711(a,1,2,2)),rewrite([11782(8,R),11757(7),11751(6)])].
+
+given #1060 (T,wt=15): 46806 f(f(f(x,y),z),f(z,f(f(y,c_0),u))) = z.  [para(327(a,1),15711(a,1,2,2)),rewrite([11782(8,R),11757(7),11752(6)])].
+
+given #1061 (T,wt=15): 46807 f(f(f(x,y),z),f(z,f(u,f(x,c_0)))) = z.  [para(392(a,1),15711(a,1,2,2)),rewrite([11782(8,R),11757(7),11747(6)])].
+
+given #1062 (A,wt=27): 804 f(f(f(x,y),z),f(x,f(f(u,z),f(f(x,y),z)))) = f(f(u,z),f(f(x,y),z)).  [para(518(a,1),454(a,1,2)),rewrite([421(5),421(8)])].
+
+given #1063 (T,wt=15): 46808 f(f(f(x,y),z),f(z,f(u,f(y,c_0)))) = z.  [para(402(a,1),15711(a,1,2,2)),rewrite([11782(8,R),11757(7),11748(6)])].
+
+given #1064 (T,wt=15): 46943 f(f(x,f(y,z)),f(f(f(y,c_0),u),x)) = x.  [para(322(a,1),15713(a,1,2,1)),rewrite([11782(8,R),11757(7),11751(6)])].
+
+given #1065 (T,wt=15): 46944 f(f(x,f(y,z)),f(f(f(z,c_0),u),x)) = x.  [para(327(a,1),15713(a,1,2,1)),rewrite([11782(8,R),11757(7),11752(6)])].
+
+given #1066 (T,wt=15): 46945 f(f(x,f(y,z)),f(f(u,f(y,c_0)),x)) = x.  [para(392(a,1),15713(a,1,2,1)),rewrite([11782(8,R),11757(7),11747(6)])].
+
+given #1067 (A,wt=23): 805 f(f(x,y),f(f(f(z,y),f(x,y)),f(u,x))) = f(f(z,y),f(x,y)).  [para(518(a,1),455(a,1,1))].
+
+given #1068 (T,wt=15): 46946 f(f(x,f(y,z)),f(f(u,f(z,c_0)),x)) = x.  [para(402(a,1),15713(a,1,2,1)),rewrite([11782(8,R),11757(7),11748(6)])].
+
+given #1069 (T,wt=15): 47067 f(f(f(f(x,c_0),y),z),f(z,f(x,u))) = z.  [para(322(a,1),15718(a,1,1,1)),rewrite([11782(12,R),11757(11),11751(10)])].
+
+given #1070 (T,wt=15): 47068 f(f(f(f(x,c_0),y),z),f(z,f(u,x))) = z.  [para(327(a,1),15718(a,1,1,1)),rewrite([11782(12,R),11757(11),11752(10)])].
+
+given #1071 (T,wt=15): 47069 f(f(f(x,f(y,c_0)),z),f(z,f(y,u))) = z.  [para(392(a,1),15718(a,1,1,1)),rewrite([11782(12,R),11757(11),11747(10)])].
+
+given #1072 (A,wt=27): 806 f(f(f(x,y),z),f(y,f(f(u,z),f(f(x,y),z)))) = f(f(u,z),f(f(x,y),z)).  [para(518(a,1),456(a,1,2)),rewrite([421(5),421(8)])].
+
+given #1073 (T,wt=15): 47070 f(f(f(x,f(y,c_0)),z),f(z,f(u,y))) = z.  [para(402(a,1),15718(a,1,1,1)),rewrite([11782(12,R),11757(11),11748(10)])].
+
+given #1074 (T,wt=15): 47170 f(f(x,f(f(y,c_0),z)),f(f(y,u),x)) = x.  [para(322(a,1),15731(a,1,1,2)),rewrite([11782(12,R),11757(11),11751(10)])].
+
+given #1075 (T,wt=15): 47171 f(f(x,f(f(y,c_0),z)),f(f(u,y),x)) = x.  [para(327(a,1),15731(a,1,1,2)),rewrite([11782(12,R),11757(11),11752(10)])].
+
+given #1076 (T,wt=15): 47172 f(f(x,f(y,f(z,c_0))),f(f(z,u),x)) = x.  [para(392(a,1),15731(a,1,1,2)),rewrite([11782(12,R),11757(11),11747(10)])].
+
+given #1077 (A,wt=23): 809 f(f(x,y),f(f(x,z),f(f(u,y),f(x,y)))) = f(f(u,y),f(x,y)).  [para(518(a,1),472(a,1,1))].
+
+given #1078 (T,wt=15): 47173 f(f(x,f(y,f(z,c_0))),f(f(u,z),x)) = x.  [para(402(a,1),15731(a,1,1,2)),rewrite([11782(12,R),11757(11),11748(10)])].
+
+given #1079 (T,wt=15): 47263 f(f(f(x,y),z),f(f(f(x,c_0),u),z)) = z.  [para(322(a,1),15736(a,1,2,1)),rewrite([11782(8,R),11757(7),11751(6)])].
+
+given #1080 (T,wt=15): 47264 f(f(f(x,y),z),f(f(f(y,c_0),u),z)) = z.  [para(327(a,1),15736(a,1,2,1)),rewrite([11782(8,R),11757(7),11752(6)])].
+
+given #1081 (T,wt=15): 47265 f(f(f(x,y),z),f(f(u,f(x,c_0)),z)) = z.  [para(392(a,1),15736(a,1,2,1)),rewrite([11782(8,R),11757(7),11747(6)])].
+
+given #1082 (A,wt=23): 811 f(f(x,y),f(f(z,x),f(f(u,y),f(x,y)))) = f(f(u,y),f(x,y)).  [para(518(a,1),519(a,1,1))].
+
+given #1083 (T,wt=15): 47266 f(f(f(x,y),z),f(f(u,f(y,c_0)),z)) = z.  [para(402(a,1),15736(a,1,2,1)),rewrite([11782(8,R),11757(7),11748(6)])].
+
+given #1084 (T,wt=15): 47296 f(f(f(x,y),z),f(f(f(c_0,x),u),z)) = z.  [para(13877(a,1),15736(a,1,1,1)),rewrite([33265(10)])].
+
+given #1085 (T,wt=15): 47297 f(f(f(x,y),z),f(f(u,f(c_0,y)),z)) = z.  [para(13894(a,1),15736(a,1,1,1)),rewrite([33716(10)])].
+
+given #1086 (T,wt=15): 47298 f(f(f(x,y),z),f(f(u,f(c_0,x)),z)) = z.  [para(13895(a,1),15736(a,1,1,1)),rewrite([33783(10)])].
+
+given #1087 (A,wt=19): 812 f(x,f(f(x,y),f(z,f(f(u,y),f(x,y))))) = f(x,y).  [para(518(a,1),356(a,1,2,1)),rewrite([518(11)])].
+
+given #1088 (T,wt=15): 54193 f(f(f(x,c_0),y),z) = f(z,f(f(x,x),y)).  [back_rewrite(53677),rewrite([53835(9),11757(7)])].
+
+given #1089 (T,wt=15): 59059 f(x,f(c_0,f(y,f(y,f(z,f(x,c_0)))))) = c_0.  [para(19285(a,1),13630(a,1,2))].
+
+given #1090 (T,wt=15): 59821 f(f(f(x,f(y,c_0)),z),f(f(y,u),z)) = z.  [para(19620(a,1),519(a,1,2,1))].
+
+given #1091 (T,wt=15): 59888 f(f(f(x,y),z),f(c_0,f(z,f(x,c_0)))) = c_0.  [para(19620(a,1),14862(a,1,1,1))].
+
+given #1092 (A,wt=19): 813 f(x,f(f(x,y),f(f(f(z,y),f(x,y)),u))) = f(x,y).  [para(518(a,1),399(a,1,2,1)),rewrite([518(11)])].
+
+given #1093 (T,wt=15): 59902 f(f(c_0,x),f(y,y)) = f(f(x,c_0),f(c_0,y)).  [para(19620(a,1),18541(a,2,1)),rewrite([11757(5)])].
+
+given #1094 (T,wt=15): 59904 f(f(c_0,x),f(y,y)) = f(f(x,c_0),f(y,c_0)).  [para(19620(a,1),18558(a,2,1)),rewrite([11757(5)])].
+
+given #1095 (T,wt=15): 59950 f(f(f(x,f(y,c_0)),z),f(f(u,y),z)) = z.  [para(19623(a,1),519(a,1,2,1))].
+
+given #1096 (T,wt=15): 60034 f(f(f(f(x,c_0),y),z),f(f(x,u),z)) = z.  [para(19631(a,1),519(a,1,2,1))].
+
+given #1097 (A,wt=19): 816 f(f(f(x,y),f(z,y)),f(f(z,y),f(z,u))) = f(z,y).  [para(518(a,1),470(a,1,2,1)),rewrite([518(11)])].
+
+given #1098 (T,wt=15): 60107 f(f(f(f(x,c_0),y),z),f(f(u,x),z)) = z.  [para(19633(a,1),519(a,1,2,1))].
+
+given #1099 (T,wt=15): 60167 f(f(f(x,y),z),f(c_0,f(z,f(y,c_0)))) = c_0.  [para(19633(a,1),14861(a,1,1,1))].
+
+given #1100 (T,wt=15): 61433 f(f(f(c_0,x),y),z) = f(z,f(y,f(y,x))).  [back_rewrite(60848),rewrite([61018(9),11757(7)])].
+
+given #1101 (T,wt=15): 64513 f(x,f(c_0,f(y,f(y,f(z,f(x,z)))))) = c_0.  [para(20392(a,1),14800(a,1))].
+
+given #1102 (A,wt=19): 817 f(f(f(x,y),f(z,y)),f(f(z,y),f(u,z))) = f(z,y).  [para(518(a,1),480(a,1,2,1)),rewrite([518(11)])].
+
+given #1103 (T,wt=15): 69048 f(x,f(y,f(f(x,y),z))) = f(x,f(y,y)).  [para(20848(a,1),441(a,1,2)),flip(a)].
+
+given #1104 (T,wt=15): 69108 f(x,f(f(c_0,y),f(x,f(y,z)))) = f(x,x).  [para(17367(a,1),20848(a,1,2,2,2))].
+
+given #1105 (T,wt=15): 69109 f(x,f(f(c_0,y),f(x,f(z,y)))) = f(x,x).  [para(17386(a,1),20848(a,1,2,2,2))].
+
+given #1106 (T,wt=15): 73668 f(f(f(x,y),z),f(z,f(u,f(y,u)))) = z.  [para(427(a,1),20945(a,1,1,1,2,2)),rewrite([11756(3)])].
+
+given #1107 (A,wt=23): 818 f(f(x,f(y,z)),f(x,f(u,f(f(x,f(y,z)),f(f(x,z),w))))) = x.  [para(163(a,1),310(a,1,2,2,2,2,1,2))].
+
+given #1108 (T,wt=15): 73674 f(f(f(x,y),z),f(z,f(u,f(u,y)))) = z.  [para(464(a,1),20945(a,1,1,1,2,2)),rewrite([11756(3)])].
+
+given #1109 (T,wt=15): 73804 f(f(f(x,f(y,z)),u),f(u,f(z,y))) = u.  [para(13391(a,1),20945(a,1,1,1,2,2)),rewrite([11762(5)])].
+
+given #1110 (T,wt=15): 75284 f(x,f(c_0,f(y,f(y,f(f(x,x),z))))) = c_0.  [para(20961(a,1),505(a,1,2)),rewrite([11782(5,R),13378(5)]),flip(a)].
+
+given #1111 (T,wt=15): 75701 f(f(f(f(x,y),z),u),f(u,f(y,x))) = u.  [para(13391(a,1),20984(a,1,1,1,1,2)),rewrite([11762(5)])].
+
+given #1112 (A,wt=25): 819 f(x,f(f(y,x),f(z,f(x,f(f(f(y,x),f(u,f(x,x))),w))))) = f(y,x).  [para(264(a,1),310(a,1,1)),rewrite([264(4)])].
+
+given #1113 (T,wt=15): 76387 f(f(x,f(y,f(z,u))),f(x,f(u,z))) = x.  [para(21133(a,1),353(a,1,2,2))].
+
+given #1114 (T,wt=15): 76862 f(x,f(y,f(c_0,f(f(y,x),z)))) = f(x,x).  [para(21135(a,1),638(a,1,2)),rewrite([421(6)]),flip(a)].
+
+given #1115 (T,wt=15): 79251 f(f(x,f(f(y,z),u)),f(f(z,y),x)) = x.  [para(13391(a,1),21268(a,1,1,2,1,2)),rewrite([11762(5)])].
+
+given #1116 (T,wt=15): 79671 f(f(f(x,y),z),f(f(f(c_0,y),u),z)) = z.  [para(21271(a,1),21148(a,1,2,1,1,2))].
+
+given #1117 (A,wt=23): 820 f(f(x,f(y,z)),f(x,f(u,f(f(x,f(y,z)),f(f(x,y),w))))) = x.  [para(280(a,1),310(a,1,2,2,2,2,1,2))].
+
+given #1118 (T,wt=15): 79968 f(f(x,f(y,z)),f(f(u,f(z,y)),x)) = x.  [para(21338(a,1),5732(a,1,1,2))].
+
+given #1119 (T,wt=15): 81032 f(f(c_0,f(x,f(x,f(y,z)))),f(z,x)) = c_0.  [para(516(a,1),21395(a,1,2)),rewrite([421(4)])].
+
+given #1120 (T,wt=15): 81036 f(f(c_0,f(x,f(y,x))),f(x,f(z,y))) = c_0.  [para(523(a,1),21395(a,1,2)),rewrite([421(3)])].
+
+given #1121 (T,wt=15): 81079 f(f(c_0,f(f(x,c_0),y)),f(y,f(x,z))) = c_0.  [para(19631(a,1),21395(a,1,2,2))].
+
+given #1122 (A,wt=25): 821 f(x,f(f(x,y),f(z,f(x,f(f(f(x,y),f(u,f(x,x))),w))))) = f(x,y).  [para(324(a,1),310(a,1,1)),rewrite([324(4)])].
+
+given #1123 (T,wt=15): 81080 f(f(c_0,f(f(x,c_0),y)),f(y,f(z,x))) = c_0.  [para(19633(a,1),21395(a,1,2,2))].
+
+given #1124 (T,wt=15): 81117 f(f(c_0,f(f(x,y),z)),f(z,f(y,x))) = c_0.  [para(21338(a,1),21395(a,1,2,2))].
+
+given #1125 (T,wt=15): 81342 f(f(c_0,f(x,f(c_0,f(y,z)))),f(z,x)) = c_0.  [para(644(a,1),21396(a,1,2)),rewrite([13886(4,R)])].
+
+given #1126 (T,wt=15): 84405 f(f(c_0,f(f(x,x),y)),f(y,f(z,x))) = c_0.  [para(21660(a,1),21395(a,1,2,2))].
+
+given #1127 (A,wt=19): 822 f(f(x,y),f(x,f(z,f(f(x,y),f(f(x,x),u))))) = x.  [para(258(a,1),310(a,1,2,2,2,2,1))].
+
+given #1128 (T,wt=15): 84561 f(f(f(x,f(x,y)),z),f(f(u,y),z)) = z.  [para(21673(a,1),519(a,1,2,1))].
+
+given #1129 (T,wt=15): 84659 f(f(x,f(f(c_0,y),z)),f(c_0,f(x,y))) = c_0.  [para(21673(a,1),14957(a,1,1,2,1)),rewrite([11762(9)])].
+
+given #1130 (T,wt=15): 84660 f(f(x,f(y,f(c_0,z))),f(c_0,f(x,z))) = c_0.  [para(21673(a,1),14960(a,1,1,2,2)),rewrite([11762(9)])].
+
+given #1131 (T,wt=15): 84906 f(f(c_0,f(x,f(x,y))),f(x,f(y,z))) = c_0.  [para(21674(a,1),21396(a,1,2,2))].
+
+given #1132 (A,wt=27): 823 f(x,f(f(x,y),f(f(x,f(z,f(f(x,y),f(f(x,f(u,y)),w)))),v5))) = f(x,y).  [para(310(a,1),338(a,1,1))].
+
+given #1133 (T,wt=15): 84912 f(f(x,f(y,z)),f(x,f(u,f(u,z)))) = x.  [para(163(a,1),21675(a,1,2,2,2,2))].
+
+given #1134 (T,wt=15): 86852 f(f(f(x,y),z),f(c_0,f(z,f(c_0,y)))) = c_0.  [para(21687(a,1),14975(a,1,2,2,2,2))].
+
+given #1135 (T,wt=15): 86862 f(x,f(c_0,f(f(x,f(y,z)),f(c_0,z)))) = c_0.  [para(21687(a,1),14982(a,1,2,2,2,2))].
+
+given #1136 (T,wt=15): 86866 f(x,f(c_0,f(f(c_0,f(y,z)),f(z,x)))) = c_0.  [para(21687(a,1),15006(a,1,2,2,2,1)),rewrite([11782(4,R)])].
+
+given #1137 (A,wt=27): 824 f(x,f(f(x,y),f(z,f(x,f(f(f(x,y),f(u,f(x,f(y,w)))),v5))))) = f(x,y).  [para(338(a,1),310(a,1,1)),rewrite([338(5)])].
+
+given #1138 (T,wt=15): 86874 f(x,f(y,f(y,f(z,f(y,x))))) = f(x,x).  [para(21687(a,1),594(a,1,2)),flip(a)].
+
+given #1139 (T,wt=15): 86891 f(x,f(y,f(y,f(z,f(x,y))))) = f(x,x).  [para(21687(a,1),598(a,1,2)),flip(a)].
+
+given #1140 (T,wt=15): 86980 f(f(x,f(y,z)),f(f(u,f(u,z)),x)) = x.  [para(163(a,1),21689(a,1,2,1,2,2))].
+
+given #1141 (T,wt=15): 87064 f(x,f(c_0,f(y,f(y,f(z,f(c_0,x)))))) = c_0.  [para(11762(a,1),21689(a,1,1)),rewrite([421(7)])].
+
+given #1142 (A,wt=29): 825 f(f(f(x,y),f(y,z)),f(f(x,y),f(u,f(f(f(x,y),f(y,z)),f(x,w))))) = f(x,y).  [para(338(a,1),310(a,1,2,2,2,2,1))].
+
+given #1143 (T,wt=15): 87138 f(f(x,f(y,f(z,u))),f(f(u,z),x)) = x.  [para(10652(a,1),21689(a,1,2,1,2)),rewrite([1415(6)])].
+
+given #1144 (T,wt=15): 87150 f(f(x,f(y,z)),f(c_0,f(x,f(c_0,y)))) = c_0.  [para(21689(a,1),14792(a,1,2,2,2,2))].
+
+given #1145 (T,wt=15): 87157 f(f(f(x,y),z),f(c_0,f(z,f(c_0,x)))) = c_0.  [para(21689(a,1),14975(a,1,2,2,2,2))].
+
+given #1146 (T,wt=15): 87162 f(x,f(c_0,f(f(x,f(y,z)),f(c_0,y)))) = c_0.  [para(21689(a,1),14982(a,1,2,2,2,2))].
+
+given #1147 (A,wt=27): 826 f(x,f(f(x,y),f(z,f(x,f(u,f(f(x,y),f(f(x,f(w,y)),v5))))))) = f(x,y).  [para(310(a,1),353(a,1,1))].
+
+given #1148 (T,wt=15): 87164 f(x,f(c_0,f(f(c_0,f(y,z)),f(y,x)))) = c_0.  [para(21689(a,1),15006(a,1,2,2,2,1)),rewrite([11782(4,R)])].
+
+given #1149 (T,wt=15): 87211 f(f(f(x,y),z),f(f(u,f(u,y)),z)) = z.  [para(163(a,1),21691(a,1,2,1,2,2))].
+
+given #1150 (T,wt=15): 87215 f(f(f(x,f(y,x)),z),f(f(u,y),z)) = z.  [para(427(a,1),21691(a,1,2,1,2,2)),rewrite([1415(6)])].
+
+given #1151 (T,wt=15): 87335 f(f(f(x,y),z),f(f(u,f(y,x)),z)) = z.  [para(13391(a,1),21691(a,1,2,1,2,2)),rewrite([13884(7)])].
+
+given #1152 (A,wt=23): 827 f(x,f(f(x,y),f(z,f(f(x,y),f(f(x,f(u,y)),w))))) = f(x,y).  [para(310(a,1),353(a,1,2)),rewrite([421(9)])].
+
+given #1153 (T,wt=15): 87350 f(f(f(x,f(y,z)),u),f(f(z,y),u)) = u.  [para(10652(a,1),21691(a,1,2,1,2)),rewrite([1415(6)])].
+
+given #1154 (T,wt=15): 87432 f(x,f(c_0,f(y,f(y,f(z,f(z,x)))))) = c_0.  [para(1380(a,1),21704(a,1,2,2,2,2)),rewrite([11782(3,R),11756(3)])].
+
+given #1155 (T,wt=15): 87446 f(x,f(c_0,f(y,f(y,f(f(x,c_0),z))))) = c_0.  [para(11743(a,2),21704(a,1,2,2,2,2)),rewrite([11782(3,R),11756(3)])].
+
+given #1156 (T,wt=15): 87477 f(f(c_0,f(x,f(x,y))),f(f(z,y),x)) = c_0.  [para(14788(a,1),21704(a,1,2,2,2)),rewrite([11782(5,R),421(9),11762(10)])].
+
+given #1157 (A,wt=27): 828 f(x,f(f(x,y),f(z,f(x,f(f(f(x,y),f(u,f(x,f(w,y)))),v5))))) = f(x,y).  [para(353(a,1),310(a,1,1)),rewrite([353(5)])].
+
+given #1158 (T,wt=15): 87478 f(f(c_0,f(x,f(x,f(y,z)))),f(y,x)) = c_0.  [para(14793(a,1),21704(a,1,2,2,2)),rewrite([11782(7,R),421(9),11762(10)])].
+
+given #1159 (T,wt=15): 87479 f(f(c_0,f(x,f(y,x))),f(f(z,y),x)) = c_0.  [para(14799(a,1),21704(a,1,2,2,2)),rewrite([11782(5,R),421(9),11762(10)])].
+
+given #1160 (T,wt=15): 87481 f(f(c_0,f(x,y)),f(x,f(z,f(y,z)))) = c_0.  [para(14857(a,1),21704(a,1,2,2,2)),rewrite([11782(3,R),421(9),11762(10)])].
+
+given #1161 (T,wt=15): 87483 f(f(c_0,f(x,y)),f(x,f(z,f(z,y)))) = c_0.  [para(14860(a,1),21704(a,1,2,2,2)),rewrite([11782(3,R),421(9),11762(10)])].
+
+given #1162 (A,wt=29): 829 f(f(f(x,y),f(z,y)),f(f(x,y),f(u,f(f(f(x,y),f(z,y)),f(x,w))))) = f(x,y).  [para(353(a,1),310(a,1,2,2,2,2,1))].
+
+given #1163 (T,wt=15): 87485 f(f(c_0,f(x,y)),f(f(z,f(y,z)),x)) = c_0.  [para(14861(a,1),21704(a,1,2,2,2)),rewrite([11782(3,R),421(9),11762(10)])].
+
+given #1164 (T,wt=15): 87487 f(f(c_0,f(x,y)),f(f(z,f(z,y)),x)) = c_0.  [para(14862(a,1),21704(a,1,2,2,2)),rewrite([11782(3,R),421(9),11762(10)])].
+
+given #1165 (T,wt=15): 87488 f(f(c_0,f(x,y)),f(x,f(f(y,y),z))) = c_0.  [para(14957(a,1),21704(a,1,2,2,2)),rewrite([11782(3,R),421(9),11762(10)])].
+
+given #1166 (T,wt=15): 87489 f(f(c_0,f(x,y)),f(x,f(z,f(y,y)))) = c_0.  [para(14960(a,1),21704(a,1,2,2,2)),rewrite([11782(3,R),421(9),11762(10)])].
+
+given #1167 (A,wt=21): 831 f(f(x,y),f(y,f(z,f(f(y,x),f(f(y,f(u,x)),w))))) = y.  [para(421(a,1),310(a,1,1))].
+
+given #1168 (T,wt=15): 87490 f(f(c_0,f(x,f(c_0,f(y,z)))),f(y,x)) = c_0.  [para(14975(a,1),21704(a,1,2,2,2)),rewrite([11782(9,R),421(10),11762(11)])].
+
+given #1169 (T,wt=15): 87545 f(x,f(y,f(c_0,f(z,f(y,x))))) = f(x,x).  [para(21005(a,1),661(a,1,2)),rewrite([421(6),421(7)]),flip(a)].
+
+given #1170 (T,wt=15): 87554 f(x,f(y,f(y,f(f(y,x),z)))) = f(x,x).  [para(467(a,1),21705(a,1,2,2)),rewrite([421(3),421(4)])].
+
+given #1171 (T,wt=15): 87564 f(x,f(y,f(y,f(f(x,y),z)))) = f(x,x).  [para(7868(a,1),21705(a,1,2,2)),rewrite([421(4)])].
+
+given #1172 (A,wt=21): 832 f(f(x,y),f(x,f(z,f(f(y,x),f(f(x,f(u,y)),w))))) = x.  [para(421(a,1),310(a,1,2,2,2,1))].
+
+given #1173 (T,wt=15): 87966 f(f(x,f(y,f(z,x))),f(c_0,f(x,z))) = c_0.  [para(21864(a,1),14792(a,1,2,2)),rewrite([421(3)])].
+
+given #1174 (T,wt=15): 87972 f(f(x,f(y,z)),f(c_0,f(x,f(z,y)))) = c_0.  [para(21864(a,1),14957(a,1,1,2))].
+
+given #1175 (T,wt=15): 89064 f(x,f(c_0,f(y,f(x,f(f(y,y),z))))) = c_0.  [para(680(a,1),14982(a,1,2,2,2,2)),rewrite([11756(7),421(5)])].
+
+given #1176 (T,wt=15): 89841 f(x,f(c_0,f(y,f(x,f(z,f(y,y)))))) = c_0.  [para(455(a,1),23125(a,1,1)),rewrite([421(5)])].
+
+given #1177 (A,wt=21): 833 f(f(x,y),f(x,f(z,f(f(x,y),f(f(x,f(y,u)),w))))) = x.  [para(421(a,1),310(a,1,2,2,2,2,1,2))].
+
+given #1178 (T,wt=15): 89880 f(f(f(f(c_0,x),y),z),f(c_0,f(z,x))) = c_0.  [para(11782(a,2),23125(a,1,1,1,1))].
+
+given #1179 (T,wt=15): 89881 f(f(f(f(x,c_0),y),z),f(c_0,f(z,x))) = c_0.  [para(11799(a,2),23125(a,1,1,1,1))].
+
+given #1180 (T,wt=15): 89884 f(f(f(x,y),z),f(c_0,f(f(x,c_0),z))) = c_0.  [para(11743(a,2),23125(a,1,2,2)),rewrite([11782(3,R),11756(3)])].
+
+given #1181 (T,wt=15): 89903 f(f(f(x,f(c_0,y)),z),f(c_0,f(z,y))) = c_0.  [para(13897(a,1),23125(a,1,1,1))].
+
+given #1182 (A,wt=21): 834 f(f(x,y),f(x,f(z,f(f(x,y),f(f(f(u,y),x),w))))) = x.  [para(421(a,1),310(a,1,2,2,2,2,1))].
+
+given #1183 (T,wt=15): 89906 f(f(f(x,y),z),f(c_0,f(f(x,x),z))) = c_0.  [para(13897(a,2),23125(a,1,2,2)),rewrite([11782(5,R),11762(4)])].
+
+given #1184 (T,wt=15): 89909 f(f(f(x,y),z),f(c_0,f(f(c_0,x),z))) = c_0.  [para(13898(a,2),23125(a,1,2,2)),rewrite([11782(3,R),11756(3)])].
+
+given #1185 (T,wt=15): 89910 f(f(f(x,f(y,c_0)),z),f(c_0,f(z,y))) = c_0.  [para(16137(a,1),23125(a,1,1,1))].
+
+given #1186 (T,wt=15): 89920 f(f(f(x,y),z),f(c_0,f(z,f(y,y)))) = c_0.  [para(11956(a,1),23125(a,1,1,1))].
+
+given #1187 (A,wt=21): 835 f(f(x,y),f(x,f(f(f(x,y),f(f(x,f(z,y)),u)),w))) = x.  [para(421(a,1),310(a,1,2,2))].
+
+given #1188 (T,wt=15): 90036 f(f(f(x,y),z),f(c_0,f(f(y,c_0),z))) = c_0.  [para(11743(a,2),23247(a,1,2,2)),rewrite([11782(3,R),11756(3)])].
+
+given #1189 (T,wt=15): 90057 f(f(f(x,y),z),f(c_0,f(f(y,y),z))) = c_0.  [para(13897(a,2),23247(a,1,2,2)),rewrite([11782(5,R),11762(4)])].
+
+given #1190 (T,wt=15): 90060 f(f(f(x,y),z),f(c_0,f(f(c_0,y),z))) = c_0.  [para(13898(a,2),23247(a,1,2,2)),rewrite([11782(3,R),11756(3)])].
+
+given #1191 (T,wt=15): 90136 f(f(x,f(c_0,y)),z) = f(z,f(x,f(x,y))).  [para(11782(a,2),23957(a,1,1,2))].
+
+given #1192 (A,wt=29): 838 f(f(x,f(y,f(z,y))),f(x,f(u,f(f(x,f(y,f(z,y))),f(f(x,f(z,z)),w))))) = x.  [para(427(a,1),310(a,1,2,2,2,2,1,2))].
+
+given #1193 (T,wt=15): 90137 f(f(x,f(y,c_0)),z) = f(z,f(x,f(x,y))).  [para(11799(a,2),23957(a,1,1,2))].
+
+given #1194 (T,wt=15): 90144 f(f(f(x,c_0),y),z) = f(z,f(y,f(y,x))).  [para(11743(a,2),23957(a,1,1))].
+
+given #1195 (T,wt=15): 90147 f(f(x,f(y,y)),z) = f(z,f(f(y,c_0),x)).  [para(11760(a,2),23957(a,2,2))].
+
+given #1196 (T,wt=15): 90148 f(f(x,f(y,y)),z) = f(z,f(x,f(y,c_0))).  [para(11764(a,2),23957(a,2,2))].
+
+given #1197 (A,wt=27): 840 f(x,f(f(y,x),f(z,f(x,f(f(f(y,x),f(u,f(x,f(y,w)))),v5))))) = f(y,x).  [para(453(a,1),310(a,1,1)),rewrite([453(5)])].
+
+given #1198 (T,wt=15): 90154 f(f(x,f(y,y)),z) = f(z,f(x,f(c_0,y))).  [para(13883(a,2),23957(a,2,2))].
+
+given #1199 (T,wt=15): 90156 f(f(x,f(y,y)),z) = f(z,f(f(c_0,y),x)).  [para(13885(a,2),23957(a,2,2))].
+
+given #1200 (T,wt=15): 90193 f(x,f(c_0,f(y,f(x,f(z,f(z,y)))))) = c_0.  [para(23957(a,1),15007(a,1,2,2,2)),rewrite([11782(4,R),11756(4)])].
+
+given #1201 (T,wt=15): 90211 f(f(f(x,x),y),z) = f(z,f(f(x,c_0),y)).  [para(20903(a,1),23957(a,2,2,2)),rewrite([11782(10,R),87923(10),421(10),11762(10)])].
+
+given #1202 (A,wt=29): 841 f(f(f(x,y),f(x,z)),f(f(x,y),f(u,f(f(f(x,y),f(x,z)),f(y,w))))) = f(x,y).  [para(453(a,1),310(a,1,2,2,2,2,1))].
+
+given #1203 (T,wt=15): 90215 f(f(f(x,x),y),z) = f(z,f(y,f(x,c_0))).  [para(20916(a,1),23957(a,2,2,2)),rewrite([11782(10,R),67849(10),421(10),11762(10)])].
+
+given #1204 (T,wt=15): 90220 f(f(f(c_0,x),y),z) = f(z,f(f(x,x),y)).  [para(20933(a,1),23957(a,2,2,2)),rewrite([11782(11,R),87947(10),421(10),11762(10)])].
+
+given #1205 (T,wt=15): 90280 f(f(x,f(x,y)),z) = f(z,f(x,f(c_0,y))).  [para(11782(a,2),23958(a,2,2,2))].
+
+given #1206 (T,wt=15): 90281 f(f(x,f(x,y)),z) = f(z,f(x,f(y,c_0))).  [para(11799(a,2),23958(a,2,2,2))].
+
+given #1207 (A,wt=29): 842 f(f(x,f(y,f(x,z))),f(x,f(f(x,f(u,f(f(x,z),f(f(x,f(w,z)),v5)))),v6))) = x.  [para(310(a,1),291(a,1,1,1)),rewrite([310(12),310(22)])].
+
+given #1208 (T,wt=15): 90289 f(f(x,f(x,y)),z) = f(z,f(f(y,c_0),x)).  [para(11743(a,2),23958(a,2,2))].
+
+given #1209 (T,wt=15): 90292 f(f(x,f(y,c_0)),z) = f(z,f(x,f(y,y))).  [para(11764(a,2),23958(a,1,1))].
+
+given #1210 (T,wt=15): 90299 f(f(x,f(c_0,y)),z) = f(z,f(x,f(y,y))).  [para(13883(a,2),23958(a,1,1))].
+
+given #1211 (T,wt=15): 90301 f(f(f(c_0,x),y),z) = f(z,f(y,f(x,x))).  [para(13885(a,2),23958(a,1,1))].
+
+given #1212 (A,wt=27): 845 f(x,f(f(x,y),f(z,f(x,f(f(f(x,y),f(u,f(f(y,w),x))),v5))))) = f(x,y).  [para(454(a,1),310(a,1,1)),rewrite([454(5)])].
+
+given #1213 (T,wt=15): 90304 f(f(x,f(x,y)),z) = f(z,f(f(c_0,y),x)).  [para(13898(a,2),23958(a,2,2))].
+
+given #1214 (T,wt=15): 90343 f(f(x,f(y,c_0)),z) = f(z,f(f(y,y),x)).  [para(20916(a,1),23958(a,1,1,2)),rewrite([421(7),11762(7),11782(14,R),67849(14)])].
+
+given #1215 (T,wt=15): 90348 f(f(f(x,x),y),z) = f(z,f(f(c_0,x),y)).  [para(20933(a,1),23958(a,1,1,2)),rewrite([421(6),11762(6),11782(14,R),87947(13)])].
+
+given #1216 (T,wt=15): 90460 f(x,f(c_0,f(f(y,y),f(x,f(y,z))))) = c_0.  [para(24244(a,1),21395(a,1,2)),rewrite([421(7)])].
+
+given #1217 (A,wt=27): 847 f(x,f(f(y,x),f(z,f(x,f(f(f(y,x),f(u,f(x,f(w,y)))),v5))))) = f(y,x).  [para(455(a,1),310(a,1,1)),rewrite([455(5)])].
+
+given #1218 (T,wt=15): 90550 f(f(x,f(y,z)),f(c_0,f(x,f(z,c_0)))) = c_0.  [para(24252(a,1),14960(a,1,1,2,2)),rewrite([421(5),11669(5)])].
+
+given #1219 (T,wt=15): 90568 f(x,f(c_0,f(f(y,y),f(x,f(z,y))))) = c_0.  [para(24252(a,1),21395(a,1,2)),rewrite([421(7)])].
+
+given #1220 (T,wt=15): 91167 f(x,f(c_0,f(f(f(x,x),y),z))) = f(x,z).  [para(24498(a,1),10652(a,1,2)),rewrite([11782(8,R)]),flip(a)].
+
+given #1221 (T,wt=15): 91247 f(x,f(c_0,f(f(y,f(x,x)),z))) = f(x,z).  [para(24504(a,1),10652(a,1,2)),rewrite([11782(8,R)]),flip(a)].
+
+given #1222 (A,wt=29): 848 f(f(f(x,y),f(z,x)),f(f(x,y),f(u,f(f(f(x,y),f(z,x)),f(y,w))))) = f(x,y).  [para(455(a,1),310(a,1,2,2,2,2,1))].
+
+given #1223 (T,wt=15): 91450 f(x,f(y,f(x,f(z,f(y,z))))) = f(x,x).  [para(24583(a,1),549(a,1,2)),rewrite([421(6)]),flip(a)].
+
+given #1224 (T,wt=15): 91677 f(f(f(x,x),y),z) = f(z,f(y,f(c_0,x))).  [para(13883(a,2),24698(a,2,2))].
+
+given #1225 (T,wt=15): 91734 f(f(x,f(c_0,y)),z) = f(z,f(f(y,y),x)).  [para(20933(a,1),24698(a,2,2,2)),rewrite([11782(7,R),87948(10),421(10),11762(10)])].
+
+given #1226 (T,wt=15): 91874 f(f(x,f(c_0,y)),z) = f(z,f(x,f(y,x))).  [para(11782(a,2),25091(a,1,1,2))].
+
+given #1227 (A,wt=35): 849 f(x,f(y,f(x,f(z,f(f(x,y),f(f(x,f(u,y)),w)))))) = f(x,f(z,f(f(x,y),f(f(x,f(u,y)),w)))).  [para(310(a,1),456(a,1,2)),rewrite([421(8),421(9)])].
+
+given #1228 (T,wt=15): 91875 f(f(x,f(y,c_0)),z) = f(z,f(x,f(y,x))).  [para(11799(a,2),25091(a,1,1,2))].
+
+given #1229 (T,wt=15): 91881 f(f(f(x,c_0),y),z) = f(z,f(y,f(x,y))).  [para(11743(a,2),25091(a,1,1))].
+
+given #1230 (T,wt=15): 91891 f(f(f(c_0,x),y),z) = f(z,f(y,f(x,y))).  [para(13898(a,2),25091(a,1,1))].
+
+given #1231 (T,wt=15): 91980 f(f(x,f(y,x)),z) = f(z,f(x,f(c_0,y))).  [para(11782(a,2),25092(a,2,2,2))].
+
+given #1232 (A,wt=27): 850 f(x,f(f(x,y),f(z,f(x,f(f(f(x,y),f(u,f(f(w,y),x))),v5))))) = f(x,y).  [para(456(a,1),310(a,1,1)),rewrite([456(5)])].
+
+given #1233 (T,wt=15): 91981 f(f(x,f(y,x)),z) = f(z,f(x,f(y,c_0))).  [para(11799(a,2),25092(a,2,2,2))].
+
+given #1234 (T,wt=15): 91986 f(f(x,f(y,x)),z) = f(z,f(f(y,c_0),x)).  [para(11743(a,2),25092(a,2,2))].
+
+given #1235 (T,wt=15): 91995 f(f(x,f(y,x)),z) = f(z,f(f(c_0,y),x)).  [para(13898(a,2),25092(a,2,2))].
+
+given #1236 (T,wt=15): 92076 f(x,f(c_0,f(y,f(f(x,x),z)))) = f(x,y).  [para(25363(a,1),10652(a,1,2)),rewrite([11782(8,R)]),flip(a)].
+
+given #1237 (A,wt=29): 852 f(f(x,f(y,f(y,z))),f(x,f(u,f(f(x,f(y,f(y,z))),f(f(x,f(z,z)),w))))) = x.  [para(464(a,1),310(a,1,2,2,2,2,1,2))].
+
+given #1238 (T,wt=15): 92130 f(x,f(c_0,f(y,f(z,f(x,x))))) = f(x,y).  [para(25365(a,1),10652(a,1,2)),rewrite([11782(8,R)]),flip(a)].
+
+given #1239 (T,wt=15): 92358 f(f(x,f(y,z)),f(c_0,f(f(y,y),x))) = c_0.  [para(25421(a,2),14780(a,1,2)),rewrite([421(6)])].
+
+given #1240 (T,wt=15): 92360 f(f(x,f(y,z)),f(c_0,f(f(z,z),x))) = c_0.  [para(25421(a,2),14786(a,1,2)),rewrite([421(6)])].
+
+given #1241 (T,wt=15): 92497 f(f(x,f(y,f(z,z))),f(c_0,f(z,x))) = c_0.  [para(25422(a,2),14786(a,1,2,2)),rewrite([421(7),380(7)])].
+
+given #1242 (A,wt=31): 855 f(x,f(f(f(y,z),x),f(u,f(x,f(f(f(f(y,z),x),f(w,f(x,z))),v5))))) = f(f(y,z),x).  [para(466(a,1),310(a,1,1)),rewrite([466(6)])].
+
+given #1243 (T,wt=15): 92607 f(x,f(y,f(c_0,f(f(x,y),z)))) = f(x,x).  [para(26193(a,1),584(a,1)),rewrite([11782(6,R),421(6),421(7)]),flip(a)].
+
+given #1244 (T,wt=15): 92609 f(x,f(y,f(c_0,f(z,f(x,y))))) = f(x,x).  [para(26193(a,1),585(a,1)),rewrite([11782(6,R),421(6),421(7)]),flip(a)].
+
+given #1245 (T,wt=15): 92954 f(x,f(f(y,c_0),f(x,f(y,z)))) = f(x,x).  [para(11799(a,2),26197(a,1,2,1))].
+
+given #1246 (T,wt=15): 92955 f(x,f(y,f(x,f(f(y,c_0),z)))) = f(x,x).  [para(11795(a,1),26197(a,1,2,1))].
+
+given #1247 (A,wt=33): 856 f(f(x,f(f(y,x),z)),f(f(f(y,x),z),f(u,f(f(x,f(f(y,x),z)),f(z,w))))) = f(f(y,x),z).  [para(466(a,1),310(a,1,2,2,2,2,1)),rewrite([421(3),421(8)])].
+
+given #1248 (T,wt=15): 92956 f(x,f(y,f(x,f(f(c_0,y),z)))) = f(x,x).  [para(13377(a,1),26197(a,1,2,1))].
+
+given #1249 (T,wt=15): 92957 f(x,f(y,f(x,f(z,f(c_0,y))))) = f(x,x).  [para(13897(a,1),26197(a,1,2,2,2)),rewrite([11782(3,R),11756(3)])].
+
+given #1250 (T,wt=15): 92958 f(x,f(y,f(x,f(z,f(y,c_0))))) = f(x,x).  [para(16137(a,1),26197(a,1,2,2,2)),rewrite([11782(3,R),11756(3)])].
+
+given #1251 (T,wt=15): 93658 f(x,f(f(y,c_0),f(x,f(z,y)))) = f(x,x).  [para(11799(a,2),27118(a,1,2,1))].
+
+given #1252 (A,wt=31): 857 f(x,f(f(f(y,z),x),f(u,f(x,f(f(f(f(y,z),x),f(w,f(x,y))),v5))))) = f(f(y,z),x).  [para(467(a,1),310(a,1,1)),rewrite([467(6)])].
+
+given #1253 (T,wt=15): 93895 f(f(x,f(y,f(z,y))),f(c_0,f(z,x))) = c_0.  [para(421(a,1),27460(a,1,1,2,2))].
+
+given #1254 (T,wt=15): 93933 f(f(x,f(y,z)),f(c_0,f(f(z,y),x))) = c_0.  [para(1423(a,2),27460(a,1,1,2,2)),rewrite([1415(3)])].
+
+given #1255 (T,wt=15): 93935 f(x,f(c_0,f(y,f(z,f(z,x))))) = f(x,y).  [para(27460(a,1),1647(a,2,2)),rewrite([11782(7,R),31633(9),421(6),421(11),11762(11)])].
+
+given #1256 (T,wt=15): 93956 f(f(x,f(y,z)),f(c_0,f(f(z,c_0),x))) = c_0.  [para(11763(a,1),27460(a,1,1,2))].
+
+given #1257 (A,wt=33): 858 f(f(x,f(f(x,y),z)),f(f(f(x,y),z),f(u,f(f(x,f(f(x,y),z)),f(z,w))))) = f(f(x,y),z).  [para(467(a,1),310(a,1,2,2,2,2,1)),rewrite([421(3),421(8)])].
+
+given #1258 (T,wt=15): 93968 f(f(x,f(y,z)),f(c_0,f(f(c_0,z),x))) = c_0.  [para(13869(a,2),27460(a,1,2,2)),rewrite([1415(3)])].
+
+given #1259 (T,wt=15): 93970 f(f(x,f(y,f(c_0,z))),f(c_0,f(z,x))) = c_0.  [para(13883(a,2),27460(a,1,1,2))].
+
+given #1260 (T,wt=15): 93974 f(f(x,f(y,z)),f(c_0,f(f(c_0,y),x))) = c_0.  [para(13886(a,1),27460(a,1,1,2,2)),rewrite([380(3)])].
+
+given #1261 (T,wt=15): 94473 f(x,f(c_0,f(f(y,f(x,y)),z))) = f(x,z).  [para(24525(a,1),29010(a,1,2)),rewrite([11782(8,R)]),flip(a)].
+
+given #1262 (A,wt=31): 859 f(x,f(f(x,f(y,z)),f(u,f(x,f(f(f(x,f(y,z)),f(w,f(y,x))),v5))))) = f(x,f(y,z)).  [para(471(a,1),310(a,1,1)),rewrite([471(6)])].
+
+given #1263 (T,wt=15): 94474 f(x,f(c_0,f(y,f(z,f(x,z))))) = f(x,y).  [para(25368(a,1),29010(a,1,2)),rewrite([11782(8,R)]),flip(a)].
+
+given #1264 (T,wt=15): 94481 f(x,f(c_0,f(f(y,f(y,x)),z))) = f(x,z).  [para(26214(a,1),29010(a,1,2,2)),rewrite([13898(5,R),13392(6),11782(8,R)]),flip(a)].
+
+given #1265 (T,wt=15): 94489 f(x,f(c_0,f(f(f(x,c_0),y),z))) = f(x,z).  [para(26260(a,1),29010(a,1,2,2)),rewrite([13898(6,R),13392(7),11782(10,R)]),flip(a)].
+
+given #1266 (T,wt=15): 94495 f(x,f(c_0,f(f(y,f(x,c_0)),z))) = f(x,z).  [para(26280(a,1),29010(a,1,2,2)),rewrite([13898(6,R),13392(7),11782(10,R)]),flip(a)].
+
+given #1267 (A,wt=27): 861 f(x,f(f(y,x),f(z,f(x,f(f(f(y,x),f(u,f(f(y,w),x))),v5))))) = f(y,x).  [para(472(a,1),310(a,1,1)),rewrite([472(5)])].
+
+given #1268 (T,wt=15): 95409 f(x,f(f(f(x,x),y),z)) = f(x,f(c_0,z)).  [para(24498(a,1),29216(a,1,2,2)),flip(a)].
+
+given #1269 (T,wt=15): 95411 f(x,f(f(y,f(x,x)),z)) = f(x,f(c_0,z)).  [para(24504(a,1),29216(a,1,2,2)),flip(a)].
+
+given #1270 (T,wt=15): 95729 f(x,f(f(y,f(x,y)),z)) = f(x,f(c_0,z)).  [para(24525(a,1),29263(a,1,2,2)),flip(a)].
+
+given #1271 (T,wt=15): 95743 f(x,f(f(y,f(y,x)),z)) = f(x,f(c_0,z)).  [para(26214(a,1),29263(a,1,2,2,2)),rewrite([13898(6,R),13392(7)]),flip(a)].
+
+given #1272 (A,wt=31): 865 f(x,f(f(x,f(y,z)),f(u,f(x,f(f(f(x,f(y,z)),f(w,f(z,x))),v5))))) = f(x,f(y,z)).  [para(504(a,1),310(a,1,1)),rewrite([504(6)])].
+
+given #1273 (T,wt=15): 95746 f(x,f(f(f(x,c_0),y),z)) = f(x,f(c_0,z)).  [para(26260(a,1),29263(a,1,2,2,2)),rewrite([13898(7,R),13392(8)]),flip(a)].
+
+given #1274 (T,wt=15): 95747 f(x,f(f(f(c_0,x),y),z)) = f(x,f(c_0,z)).  [para(26262(a,1),29263(a,1,2,2,2)),rewrite([13898(7,R),13392(8)]),flip(a)].
+
+given #1275 (T,wt=15): 95749 f(x,f(f(y,f(c_0,x)),z)) = f(x,f(c_0,z)).  [para(26277(a,1),29263(a,1,2,2,2)),rewrite([13898(7,R),13392(8)]),flip(a)].
+
+given #1276 (T,wt=15): 95750 f(x,f(f(y,f(x,c_0)),z)) = f(x,f(c_0,z)).  [para(26280(a,1),29263(a,1,2,2,2)),rewrite([13898(7,R),13392(8)]),flip(a)].
+
+given #1277 (A,wt=27): 867 f(x,f(f(y,x),f(z,f(x,f(f(f(y,x),f(u,f(f(w,y),x))),v5))))) = f(y,x).  [para(519(a,1),310(a,1,1)),rewrite([519(5)])].
+
+given #1278 (T,wt=15): 96402 f(f(x,y),f(z,c_0)) = f(f(y,x),f(z,z)).  [para(30878(a,2),421(a,1))].
+
+given #1279 (T,wt=15): 96550 f(f(f(x,y),z),f(c_0,f(f(y,x),z))) = c_0.  [para(30878(a,2),23125(a,1,1)),rewrite([421(4),11756(4)])].
+
+given #1280 (T,wt=15): 96731 f(f(x,y),f(c_0,z)) = f(f(y,x),f(z,z)).  [back_rewrite(31671),rewrite([96729(4)])].
+
+given #1281 (T,wt=15): 96858 f(x,f(c_0,f(f(c_0,y),f(x,f(y,z))))) = c_0.  [para(31284(a,1),29268(a,1,1,2)),rewrite([11743(4,R),11796(5)])].
+
+given #1282 (A,wt=25): 868 f(f(x,y),f(x,f(z,f(x,f(u,f(f(x,y),f(f(x,f(w,y)),v5))))))) = x.  [para(310(a,1),356(a,1,2,1)),rewrite([310(20)])].
+
+given #1283 (T,wt=15): 101823 f(x,f(c_0,f(y,f(f(x,c_0),z)))) = f(x,y).  [para(35365(a,1),1647(a,2,2)),rewrite([11782(9,R),31633(10),421(7),421(12),11762(12)])].
+
+given #1284 (T,wt=15): 104149 f(x,f(c_0,f(f(c_0,y),f(x,f(z,y))))) = c_0.  [para(38622(a,1),36070(a,1,2)),rewrite([421(8)])].
+
+given #1285 (T,wt=15): 104982 f(x,f(c_0,f(f(y,c_0),f(x,f(z,y))))) = c_0.  [para(43259(a,1),36070(a,1,2)),rewrite([421(8)])].
+
+given #1286 (T,wt=15): 105234 f(x,f(c_0,f(y,f(z,f(x,c_0))))) = f(x,y).  [para(44090(a,1),1647(a,2,2)),rewrite([11782(9,R),31633(10),421(7),421(12),11762(12)])].
+
+given #1287 (A,wt=27): 869 f(f(x,y),f(x,f(z,f(f(x,y),f(f(x,f(u,f(f(x,y),f(w,y)))),v5))))) = x.  [para(356(a,1),310(a,1,1)),rewrite([356(5)])].
+
+given #1288 (T,wt=15): 108141 f(x,f(c_0,f(y,f(y,f(f(x,y),z))))) = c_0.  [para(467(a,1),64513(a,1,2,2,2)),rewrite([421(4),421(5)])].
+
+given #1289 (T,wt=15): 108915 f(x,f(c_0,f(y,f(y,f(f(y,x),z))))) = c_0.  [para(75701(a,1),64513(a,1,2,2,2)),rewrite([421(4),421(5)])].
+
+given #1290 (T,wt=15): 111090 f(x,f(c_0,f(y,f(c_0,f(f(y,x),z))))) = c_0.  [para(69048(a,1),84405(a,1,2)),rewrite([11782(6,R),421(6),421(10),95474(10)])].
+
+given #1291 (T,wt=15): 113712 f(f(x,y),f(c_0,f(z,f(z,f(y,x))))) = c_0.  [para(44560(a,1),87446(a,1,2,2,2)),rewrite([421(5)])].
+
+given #1292 (A,wt=25): 870 f(f(x,y),f(x,f(f(x,f(z,f(f(x,y),f(f(x,f(u,y)),w)))),v5))) = x.  [para(310(a,1),399(a,1,2,1)),rewrite([310(20)])].
+
+given #1293 (T,wt=15): 115332 f(f(c_0,f(x,y)),z) = f(y,f(c_0,f(x,z))).  [para(87490(a,1),1422(a,2,2)),rewrite([11782(3,R),108306(10),31233(7),421(12),11762(12)])].
+
+given #1294 (T,wt=15): 115335 f(x,f(c_0,f(y,f(y,f(z,f(y,x)))))) = c_0.  [para(13377(a,1),87490(a,1,1,2)),rewrite([115332(7)])].
+
+given #1295 (T,wt=15): 115338 f(x,f(c_0,f(y,z))) = f(z,f(c_0,f(y,x))).  [para(87490(a,1),11764(a,2,2)),rewrite([421(9),115332(10),11774(8),115332(7),11777(5),421(12),11762(12)])].
+
+given #1296 (T,wt=15): 115357 f(x,f(c_0,f(y,f(y,f(z,f(x,y)))))) = c_0.  [para(21864(a,1),87490(a,1,1,2)),rewrite([115332(7)])].
+
+given #1297 (A,wt=27): 871 f(f(x,y),f(x,f(z,f(f(x,y),f(f(x,f(u,f(f(x,y),f(y,w)))),v5))))) = x.  [para(399(a,1),310(a,1,1)),rewrite([399(5)])].
+
+given #1298 (T,wt=15): 115453 f(x,f(c_0,f(y,z))) = f(y,f(c_0,f(x,z))).  [back_rewrite(108306),rewrite([115332(7),16966(7),115332(8)])].
+
+given #1299 (T,wt=15): 115519 f(x,f(c_0,f(y,f(c_0,f(z,f(y,x)))))) = c_0.  [back_rewrite(96145),rewrite([115332(9),95729(7)])].
+
+given #1300 (T,wt=15): 115692 f(x,f(c_0,f(y,f(c_0,f(z,f(x,y)))))) = c_0.  [back_rewrite(88812),rewrite([115332(6)])].
+
+given #1301 (T,wt=15): 115750 f(x,f(c_0,f(f(y,c_0),f(x,f(y,z))))) = c_0.  [back_rewrite(81079),rewrite([115332(8)])].
+
+given #1302 (A,wt=25): 874 f(f(x,f(y,f(f(x,z),f(f(x,f(u,z)),w)))),f(x,f(f(x,z),v5))) = x.  [para(310(a,1),470(a,1,2,1)),rewrite([310(20)])].
+
+given #1303 (T,wt=15): 115812 f(x,f(c_0,f(y,z))) = f(z,f(c_0,f(x,y))).  [back_rewrite(31460),rewrite([115332(7),16968(7),115332(8)])].
+
+given #1304 (T,wt=15): 115875 f(x,f(c_0,f(y,f(f(c_0,x),z)))) = f(y,x).  [back_rewrite(13866),rewrite([115332(7)])].
+
+given #1305 (T,wt=15): 115876 f(x,f(c_0,f(y,f(z,f(c_0,x))))) = f(y,x).  [back_rewrite(13865),rewrite([115332(7)])].
+
+given #1306 (T,wt=15): 115965 f(x,f(f(c_0,y),z)) = f(x,f(z,f(x,y))).  [para(87545(a,1),29010(a,1,2,2)),rewrite([13898(6,R),95610(7),11782(13,R),11762(10)])].
+
+given #1307 (A,wt=27): 875 f(f(x,y),f(y,f(z,f(f(x,y),f(f(y,f(u,f(f(x,y),f(x,w)))),v5))))) = y.  [para(470(a,1),310(a,1,1)),rewrite([470(5)])].
+
+given #1308 (T,wt=15): 115982 f(f(x,f(c_0,f(y,z))),f(f(x,y),z)) = z.  [para(87545(a,1),43152(a,1,2,1)),rewrite([11782(5,R),115332(6),421(7)])].
+
+given #1309 (T,wt=15): 115985 f(f(x,f(y,z)),f(y,f(c_0,f(z,x)))) = x.  [para(87545(a,1),44560(a,1,2,1)),rewrite([11782(5,R),115332(6)])].
+
+Low Water (keep): wt=21.000, iters=6736
+
+given #1310 (T,wt=15): 115995 f(f(x,f(c_0,f(y,z))),f(z,f(x,y))) = z.  [para(87545(a,1),75701(a,1,1,1)),rewrite([11782(3,R),115332(4)])].
+
+given #1311 (T,wt=15): 119609 f(x,f(c_0,f(y,f(c_0,f(f(x,y),z))))) = c_0.  [para(29093(a,1),90550(a,1,1)),rewrite([421(7),95474(10)])].
+
+given #1312 (A,wt=23): 876 f(f(x,f(y,z)),f(x,f(u,f(f(x,f(y,z)),f(f(y,x),w))))) = x.  [para(470(a,1),310(a,1,2,2,2,2,1))].
+
+given #1313 (T,wt=15): 119798 f(x,f(c_0,f(f(f(c_0,x),y),z))) = f(x,z).  [para(11782(a,2),91167(a,1,2,2,1,1))].
+
+given #1314 (T,wt=15): 119802 f(x,f(y,f(f(x,x),z))) = f(x,f(y,c_0)).  [para(11755(a,2),91167(a,1,2,2)),rewrite([119788(8)]),flip(a)].
+
+given #1315 (T,wt=15): 119804 f(x,f(c_0,f(f(y,f(c_0,x)),z))) = f(x,z).  [para(13897(a,1),91167(a,1,2,2,1))].
+
+given #1316 (T,wt=15): 119885 f(x,f(y,f(z,f(x,x)))) = f(x,f(y,c_0)).  [para(11755(a,2),91247(a,1,2,2)),rewrite([119884(8)]),flip(a)].
+
+given #1317 (A,wt=27): 878 f(f(x,y),f(y,f(z,f(f(x,y),f(f(y,f(u,f(f(x,y),f(w,x)))),v5))))) = y.  [para(480(a,1),310(a,1,1)),rewrite([480(5)])].
+
+given #1318 (T,wt=15): 120305 f(x,f(c_0,f(y,z))) = f(z,f(z,f(y,x))).  [para(849(a,1),13885(a,1,1)),rewrite([115332(7),453(8),115332(4),115332(11),453(12),11774(8)])].
+
+given #1319 (T,wt=15): 121031 f(f(x,c_0),f(y,z)) = f(f(x,x),f(z,y)).  [para(30878(a,1),92130(a,2)),rewrite([11782(7,R),115876(11)])].
+
+given #1320 (T,wt=15): 121033 f(f(c_0,x),f(y,z)) = f(f(x,x),f(z,y)).  [para(35187(a,1),92130(a,2)),rewrite([11782(7,R),115876(11)])].
+
+given #1321 (T,wt=15): 121312 f(x,f(f(y,y),z)) = f(x,f(f(y,x),z)).  [para(92607(a,1),29010(a,1,2,2)),rewrite([421(6),90853(6),11782(12,R),11762(9)])].
+
+given #1322 (A,wt=23): 879 f(f(x,f(y,z)),f(x,f(u,f(f(x,f(y,z)),f(f(z,x),w))))) = x.  [para(480(a,1),310(a,1,2,2,2,2,1))].
+
+Low Water (keep): wt=19.000, iters=8962
+
+given #1323 (F,wt=19): 127575 f(c_0,f(c1,f(c2,f(c1,f(c1,c3))))) != f(c_0,f(c1,f(c2,c3))) # answer("Sheffer").  [back_rewrite(12331),rewrite([127473(11)])].
+
+given #1324 (F,wt=19): 127576 f(c_0,f(c1,f(c2,f(c2,f(c1,c3))))) != f(c_0,f(c1,f(c2,c3))) # answer("Sheffer").  [para(115965(a,2),127575(a,1,2)),rewrite([421(9),13883(9)])].
+
+given #1325 (F,wt=19): 127577 f(c_0,f(c1,f(c3,f(c3,f(c1,c2))))) != f(c_0,f(c1,f(c2,c3))) # answer("Sheffer").  [para(120305(a,2),127576(a,1,2,2)),rewrite([13883(9)])].
+
+given #1326 (T,wt=15): 121367 f(x,f(f(c_0,y),z)) = f(x,f(z,f(y,x))).  [para(92609(a,1),29010(a,1,2,2)),rewrite([13898(6,R),95609(7),11782(13,R),11762(10)])].
+
+given #1327 (T,wt=15): 122508 f(x,f(y,f(z,f(x,z)))) = f(x,f(y,c_0)).  [para(11755(a,2),94473(a,1,2,2)),rewrite([122506(8)]),flip(a)].
+
+============================== PROOF =================================
+
+% Proof 1 at 546.66 (+ 2.14) seconds: "Sheffer".
+% Length of proof is 168.
+% Level of proof is 30.
+% Maximum clause weight is 87.000.
+% Given clauses 1327.
+
+1 f(f(x,x),f(x,x)) = x & f(x,f(y,f(y,y))) = f(x,x) & f(f(f(y,y),x),f(f(z,z),x)) = f(f(x,f(y,z)),f(x,f(y,z))) # answer("Sheffer") # label(non_clause) # label(goal).  [goal].
+2 f(f(x,f(f(y,x),x)),f(y,f(z,x))) = y # label(Sh_1).  [assumption].
+3 f(f(c1,c1),f(c1,c1)) != c1 | f(c1,f(c2,f(c2,c2))) != f(c1,c1) | f(f(f(c2,c2),c1),f(f(c3,c3),c1)) != f(f(c1,f(c2,c3)),f(c1,f(c2,c3))) # answer("Sheffer").  [deny(1)].
+4 f(f(f(x,f(y,z)),f(x,f(x,f(y,z)))),f(f(z,f(f(x,z),z)),f(u,f(x,f(y,z))))) = f(z,f(f(x,z),z)).  [para(2(a,1),2(a,1,1,2,1))].
+5 f(f(f(x,f(y,z)),f(f(u,f(x,f(y,z))),f(x,f(y,z)))),f(u,x)) = u.  [para(2(a,1),2(a,1,2,2))].
+6 f(f(f(x,y),f(f(f(y,f(f(z,y),y)),f(x,y)),f(x,y))),z) = f(y,f(f(z,y),y)).  [para(2(a,1),2(a,1,2))].
+13 f(f(f(x,y),f(f(z,f(x,y)),f(x,y))),f(z,x)) = z.  [para(5(a,1),2(a,1,2,2))].
+15 f(f(x,f(f(y,x),x)),f(y,f(z,f(f(x,z),z)))) = y.  [para(2(a,1),5(a,1,1,1)),rewrite([2(6),2(7)])].
+32 f(f(f(x,f(y,z)),f(x,f(x,f(y,z)))),f(f(z,f(f(x,z),z)),f(u,f(f(f(x,f(y,z)),u),u)))) = f(z,f(f(x,z),z)).  [para(2(a,1),15(a,1,1,2,1))].
+33 f(f(x,f(f(f(y,f(f(y,y),y)),x),x)),y) = f(y,f(f(y,y),y)).  [para(2(a,1),15(a,1,2))].
+36 f(x,f(f(x,x),x)) = f(x,x).  [para(15(a,1),4(a,1,2)),rewrite([15(8)]),flip(a)].
+38 f(f(f(f(x,f(y,z)),f(x,f(x,f(y,z)))),f(f(u,f(f(x,f(y,z)),f(x,f(x,f(y,z))))),f(f(x,f(y,z)),f(x,f(x,f(y,z)))))),f(u,f(f(f(z,f(f(x,z),z)),f(w,f(x,f(y,z)))),f(f(z,f(f(x,z),z)),f(f(z,f(f(x,z),z)),f(w,f(x,f(y,z)))))))) = u.  [para(4(a,1),15(a,1,2,2,2,1))].
+39 f(f(x,f(f(f(f(y,y),f(y,f(y,y))),x),x)),f(y,y)) = f(f(y,y),f(y,f(y,y))).  [para(4(a,1),15(a,1,2)),rewrite([36(3),36(4),36(10),36(12),36(13)])].
+48 f(f(x,f(f(f(y,y),x),x)),y) = f(y,y).  [back_rewrite(33),rewrite([36(3),36(8)])].
+50 f(f(x,x),f(x,f(y,x))) = x.  [para(36(a,1),2(a,1,1))].
+51 f(f(x,x),f(x,x)) = x.  [para(36(a,1),2(a,1,2)),rewrite([36(3)])].
+55 f(f(f(x,y),f(x,y)),f(f(x,y),x)) = f(x,y).  [para(36(a,1),13(a,1,1))].
+60 f(f(x,f(f(y,x),x)),f(y,y)) = y.  [back_rewrite(39),rewrite([50(4),50(9)])].
+61 f(c1,f(c2,f(c2,c2))) != f(c1,c1) | f(f(f(c2,c2),c1),f(f(c3,c3),c1)) != f(f(c1,f(c2,c3)),f(c1,f(c2,c3))) # answer("Sheffer").  [back_rewrite(3),rewrite([51(7)]),xx(a)].
+65 f(f(f(x,f(y,z)),f(f(f(f(y,z),f(y,f(y,z))),f(x,f(y,z))),f(x,f(y,z)))),f(f(z,u),f(f(y,f(z,u)),f(z,u)))) = f(f(y,z),f(y,f(y,z))).  [para(13(a,1),6(a,1,1,2,1,1,2,1)),rewrite([13(29)])].
+89 f(f(f(f(x,f(f(y,x),x)),f(z,f(y,f(u,x)))),f(f(x,f(f(y,x),x)),f(f(x,f(f(y,x),x)),f(z,f(y,f(u,x)))))),f(f(f(y,f(u,x)),f(y,f(y,f(u,x)))),f(f(y,f(u,x)),f(y,f(y,f(u,x)))))) = f(f(y,f(u,x)),f(y,f(y,f(u,x)))).  [para(4(a,1),60(a,1,1,2,1))].
+94 f(f(f(x,f(f(y,x),x)),f(f(z,f(x,f(f(y,x),x))),f(x,f(f(y,x),x)))),f(z,y)) = z.  [para(60(a,1),15(a,1,2,2,2,1)),rewrite([50(16)])].
+122 f(f(x,x),f(f(y,f(f(f(x,x),y),y)),f(z,x))) = f(y,f(f(f(x,x),y),y)).  [para(48(a,1),2(a,1,1,2,1)),rewrite([36(3)])].
+125 f(f(f(f(x,f(f(f(y,y),x),x)),f(z,y)),f(f(x,f(f(f(y,y),x),x)),f(f(x,f(f(f(y,y),x),x)),f(z,y)))),f(f(y,y),f(u,f(f(x,f(f(f(y,y),x),x)),f(z,y))))) = f(y,y).  [para(48(a,1),4(a,1,2,1,2,1)),rewrite([36(21),48(33),36(31)])].
+131 f(x,f(f(f(f(y,x),f(y,x)),x),x)) = f(y,x).  [para(48(a,1),6(a,1,1,2,1)),rewrite([36(7),51(7)]),flip(a)].
+163 f(f(x,x),f(y,x)) = x.  [para(131(a,1),2(a,1,2)),rewrite([36(3)])].
+171 f(f(f(x,y),f(f(z,f(x,y)),f(x,y))),f(z,y)) = z.  [para(131(a,1),13(a,1,1,1)),rewrite([131(7),131(9)])].
+175 f(f(x,y),f(f(f(x,x),f(x,y)),f(x,y))) = x.  [para(13(a,1),131(a,1,2,1,1,1)),rewrite([13(9),13(15)])].
+184 f(f(f(f(f(f(x,y),f(x,y)),y),y),f(f(x,y),f(f(f(f(x,y),f(x,y)),y),y))),f(y,y)) = y.  [para(131(a,1),60(a,1,1,2,1))].
+190 f(f(f(x,y),f(x,y)),f(f(x,y),y)) = f(x,y).  [para(131(a,1),55(a,1,1,1)),rewrite([131(7),131(9),131(12)])].
+192 f(f(f(f(f(x,y),f(x,y)),y),y),f(f(f(f(x,y),f(x,y)),f(f(f(f(x,y),f(x,y)),y),y)),f(f(f(f(x,y),f(x,y)),y),y))) = f(x,y).  [para(131(a,1),131(a,1,2,1,1,1)),rewrite([131(12),131(27)])].
+238 f(f(f(x,f(y,z)),f(x,f(x,f(y,z)))),f(f(z,f(f(x,z),z)),f(y,z))) = f(z,f(f(x,z),z)).  [para(163(a,1),4(a,1,2,2))].
+243 f(f(x,f(f(f(f(y,x),f(f(z,f(y,x)),f(y,x))),x),x)),z) = f(f(y,x),f(f(z,f(y,x)),f(y,x))).  [para(163(a,1),6(a,1,1,1)),rewrite([163(9),163(10)])].
+244 f(f(x,x),f(y,f(f(x,y),y))) = x.  [para(6(a,1),163(a,1,2))].
+256 f(f(f(x,y),f(x,y)),y) = f(x,y).  [para(163(a,1),163(a,1,2))].
+262 f(f(f(x,y),y),f(f(x,y),f(f(x,y),y))) = f(x,y).  [back_rewrite(192),rewrite([256(4),256(9),190(8),256(7)])].
+264 f(f(x,y),f(y,y)) = y.  [back_rewrite(184),rewrite([256(4),256(7),262(7)])].
+269 f(x,f(f(y,x),x)) = f(y,x).  [back_rewrite(131),rewrite([256(4)])].
+280 f(f(x,x),f(x,y)) = x.  [back_rewrite(244),rewrite([269(4)])].
+281 f(f(f(x,f(y,z)),z),x) = f(x,f(y,z)).  [back_rewrite(243),rewrite([269(6),269(5),269(10)])].
+282 f(f(f(x,f(y,z)),f(x,f(x,f(y,z)))),f(f(x,z),f(y,z))) = f(x,z).  [back_rewrite(238),rewrite([269(9),269(13)])].
+298 f(f(x,y),f(x,f(x,y))) = x.  [back_rewrite(175),rewrite([280(4)])].
+299 f(f(x,f(y,z)),f(x,z)) = x.  [back_rewrite(171),rewrite([269(6)])].
+304 f(f(f(x,x),y),f(f(x,x),f(z,f(f(f(x,x),y),f(u,x))))) = f(x,x).  [back_rewrite(125),rewrite([269(4),269(8),269(10),298(12),269(7)])].
+307 f(f(x,x),f(f(f(x,x),y),f(z,x))) = f(f(x,x),y).  [back_rewrite(122),rewrite([269(5),269(10)])].
+321 f(f(x,f(y,z)),f(x,y)) = x.  [back_rewrite(94),rewrite([269(3),269(4),269(6),269(6)])].
+324 f(f(x,y),f(x,x)) = x.  [back_rewrite(89),rewrite([269(3),269(8),269(9),298(13),298(7),298(7),298(9)])].
+330 f(f(x,f(y,f(x,z))),f(x,f(z,u))) = x.  [back_rewrite(65),rewrite([298(6),269(9),269(9),298(10)])].
+338 f(f(x,y),f(x,f(y,z))) = x.  [back_rewrite(38),rewrite([298(6),298(6),298(7),269(3),269(4),269(9),269(10),298(14)])].
+340 f(x,f(f(x,y),f(f(x,f(z,y)),u))) = f(x,y).  [back_rewrite(32),rewrite([298(6),269(3),269(6),269(9)])].
+353 f(f(x,y),f(x,f(z,y))) = x.  [back_rewrite(2),rewrite([269(3)])].
+356 f(x,f(f(x,y),f(z,y))) = f(x,y).  [back_rewrite(282),rewrite([298(6)])].
+387 f(x,f(f(x,f(y,z)),y)) = f(x,f(y,z)).  [para(321(a,1),299(a,1,1))].
+392 f(x,f(f(y,x),f(f(x,x),z))) = f(y,x).  [para(264(a,1),338(a,1,1))].
+399 f(x,f(f(x,y),f(y,z))) = f(x,y).  [para(338(a,1),299(a,1,1))].
+421 f(x,y) = f(y,x).  [para(264(a,1),281(a,1,1,1,2)),rewrite([264(3),264(4)])].
+427 f(x,f(y,f(x,y))) = f(x,x).  [para(321(a,1),281(a,1,1)),flip(a)].
+429 f(x,f(y,f(x,f(z,y)))) = f(x,f(z,y)).  [para(281(a,1),256(a,2)),rewrite([421(3),421(4),421(7),421(8),421(10),356(10)])].
+441 f(x,f(y,f(x,f(y,z)))) = f(x,f(y,z)).  [back_rewrite(387),rewrite([421(3)])].
+451 f(c1,f(c2,f(c2,c2))) != f(c1,c1) | f(f(c1,f(c2,c3)),f(c1,f(c2,c3))) != f(f(c1,f(c2,c2)),f(c1,f(c3,c3))) # answer("Sheffer").  [back_rewrite(61),rewrite([421(16),421(21)]),flip(b)].
+453 f(f(x,y),f(y,f(x,z))) = y.  [para(421(a,1),338(a,1,1))].
+454 f(f(x,y),f(f(y,z),x)) = x.  [para(421(a,1),338(a,1,2))].
+455 f(f(x,y),f(y,f(z,x))) = y.  [para(421(a,1),353(a,1,1))].
+456 f(f(x,y),f(f(z,y),x)) = x.  [para(421(a,1),353(a,1,2))].
+464 f(x,f(y,f(y,x))) = f(x,x).  [para(421(a,1),427(a,1,2,2))].
+466 f(f(f(x,y),z),f(z,y)) = z.  [para(264(a,1),453(a,1,2,2))].
+472 f(f(x,y),f(f(x,z),y)) = y.  [para(421(a,1),453(a,1,2))].
+474 f(f(x,x),f(f(y,f(x,y)),f(x,z))) = f(y,f(x,y)).  [para(427(a,1),453(a,1,1))].
+475 f(x,f(f(x,f(y,z)),f(f(y,x),u))) = f(x,f(y,z)).  [para(453(a,1),453(a,1,1))].
+505 f(x,f(f(f(x,x),y),f(x,z))) = f(x,z).  [para(324(a,1),454(a,1,1))].
+518 f(x,f(f(y,z),f(x,z))) = f(x,z).  [para(353(a,1),455(a,1,2)),rewrite([421(4)])].
+519 f(f(x,y),f(f(z,x),y)) = y.  [para(421(a,1),455(a,1,2))].
+525 f(x,f(f(y,z),f(y,x))) = f(y,x).  [para(453(a,1),455(a,1,2)),rewrite([421(4)])].
+531 f(x,f(f(y,z),f(z,x))) = f(z,x).  [para(455(a,1),455(a,1,2)),rewrite([421(4)])].
+533 f(x,f(f(y,f(x,x)),f(x,z))) = f(x,z).  [para(324(a,1),456(a,1,1))].
+545 f(x,f(y,f(f(y,z),x))) = f(f(y,z),x).  [para(454(a,1),456(a,1,2)),rewrite([421(3),421(4)])].
+549 f(x,f(y,f(f(z,y),x))) = f(f(z,y),x).  [para(456(a,1),456(a,1,2)),rewrite([421(3),421(4)])].
+584 f(x,f(f(f(x,y),z),f(f(u,y),x))) = f(f(u,y),x).  [para(466(a,1),454(a,1,1))].
+598 f(x,f(f(f(x,y),z),f(x,f(y,u)))) = f(x,f(y,u)).  [para(338(a,1),472(a,1,1))].
+648 f(f(f(x,f(y,x)),z),f(f(y,y),z)) = z.  [para(427(a,1),519(a,1,2,1))].
+692 f(f(f(x,y),z),f(x,f(f(f(x,y),z),f(z,u)))) = f(f(f(x,y),z),f(z,u)).  [para(399(a,1),454(a,1,2)),rewrite([421(5),421(8)])].
+800 f(x,f(f(x,y),f(f(z,y),f(x,y)))) = f(x,x).  [para(518(a,1),427(a,1,2,2)),rewrite([421(5)])].
+804 f(f(f(x,y),z),f(x,f(f(u,z),f(f(x,y),z)))) = f(f(u,z),f(f(x,y),z)).  [para(518(a,1),454(a,1,2)),rewrite([421(5),421(8)])].
+886 f(x,f(f(y,x),f(f(y,z),f(y,x)))) = f(x,x).  [para(525(a,1),427(a,1,2,2)),rewrite([421(5)])].
+1043 f(f(x,f(y,f(z,x))),f(x,f(z,u))) = x.  [para(421(a,1),330(a,1,1,2,2))].
+1089 f(f(x,f(y,f(x,f(z,u)))),f(z,x)) = x.  [para(525(a,1),330(a,1,2))].
+1091 f(f(x,f(y,f(x,f(z,u)))),f(u,x)) = x.  [para(531(a,1),330(a,1,2))].
+1380 f(x,f(y,y)) = f(x,f(x,y)).  [para(464(a,1),429(a,1,2))].
+1394 f(x,f(y,f(x,f(z,f(x,y))))) = f(x,x).  [para(330(a,1),429(a,1,2)),flip(a)].
+1398 f(c1,f(c2,f(c2,c2))) != f(c1,c1) | f(f(c1,f(c2,c3)),f(c1,f(c2,c3))) != f(f(c1,f(c1,c2)),f(c1,f(c1,c3))) # answer("Sheffer").  [back_rewrite(451),rewrite([1380(27),1380(32)])].
+1415 f(x,f(x,f(y,y))) = f(x,y).  [para(163(a,1),1380(a,1,2)),flip(a)].
+1421 f(f(x,f(y,z)),f(x,f(y,f(z,z)))) = x.  [para(1380(a,2),353(a,1,2,2))].
+1422 f(f(x,x),y) = f(y,f(y,x)).  [para(1380(a,1),421(a,1)),flip(a)].
+1423 f(x,f(y,y)) = f(x,f(y,x)).  [para(421(a,1),1380(a,2,2))].
+1547 f(x,f(f(y,y),x)) = f(x,y).  [para(421(a,1),1415(a,1,2))].
+1647 f(f(x,x),y) = f(y,f(x,y)).  [para(421(a,1),1422(a,2,2))].
+1658 f(f(f(x,y),z),f(z,f(f(y,y),x))) = z.  [para(1422(a,2),455(a,1,2,2))].
+1663 f(f(f(f(x,x),y),z),f(z,f(y,x))) = z.  [para(1422(a,2),466(a,1,1,1))].
+1898 f(f(x,f(f(y,y),z)),f(x,f(z,y))) = x.  [para(1547(a,1),353(a,1,2,2))].
+2565 f(x,f(f(y,f(x,y)),f(x,z))) = f(x,z).  [para(1647(a,1),505(a,1,2,1))].
+2820 f(f(x,x),f(y,f(f(x,f(x,x)),f(z,x)))) = x.  [para(304(a,1),533(a,1,2)),rewrite([280(3),280(5),421(3)]),flip(a)].
+2946 f(x,f(f(y,y),f(f(y,z),x))) = f(x,x).  [para(545(a,1),427(a,1,2,2)),rewrite([421(6),1423(6,R),421(4)])].
+9584 f(x,f(y,f(x,f(z,f(y,x))))) = f(x,x).  [para(1043(a,1),429(a,1,2)),flip(a)].
+10652 f(x,f(y,f(z,f(y,x)))) = f(x,f(y,y)).  [para(1394(a,1),441(a,1,2)),flip(a)].
+11509 f(x,f(y,f(y,y))) = f(x,x).  [para(1421(a,1),1421(a,1,2)),rewrite([421(2),421(6),353(6),421(3)]),flip(a)].
+11510 f(f(c1,f(c2,c3)),f(c1,f(c2,c3))) != f(f(c1,f(c1,c2)),f(c1,f(c1,c3))) # answer("Sheffer").  [back_unit_del(1398),unit_del(a,11509)].
+11513 f(f(x,x),f(y,f(y,y))) = x.  [para(11509(a,2),163(a,1))].
+11534 f(f(x,x),f(f(x,y),f(z,f(z,z)))) = f(z,f(z,z)).  [para(11509(a,1),472(a,1,1))].
+11539 f(f(x,f(x,x)),f(f(x,x),f(y,f(f(x,f(x,x)),f(z,f(z,z)))))) = f(x,x).  [para(11509(a,2),304(a,1,2,2,2)),rewrite([421(2),421(5)])].
+11548 f(x,f(x,x)) = f(y,f(y,y)).  [para(11509(a,2),307(a,1,2)),rewrite([421(3),11534(7),421(4)])].
+11559 f(x,f(f(y,f(y,y)),f(y,f(y,y)))) = f(x,f(x,x)).  [para(11509(a,1),1380(a,2,2))].
+11561 f(x,f(x,f(y,f(z,f(z,z))))) = f(x,y).  [para(11509(a,2),1415(a,1,2,2))].
+11562 f(f(x,f(x,x)),f(f(x,f(x,x)),y)) = y.  [para(11509(a,1),1422(a,1)),rewrite([280(3)]),flip(a)].
+11565 f(x,f(y,f(z,f(z,z)))) = f(x,f(y,x)).  [para(11509(a,2),1423(a,1,2))].
+11568 f(f(x,f(x,x)),f(y,y)) = y.  [para(11509(a,1),1647(a,2,2)),rewrite([11513(4)]),flip(a)].
+11569 f(f(x,f(y,f(y,y))),z) = f(z,f(x,z)).  [para(11509(a,2),1647(a,1,1))].
+11601 f(x,f(f(y,f(x,y)),f(z,f(z,z)))) = f(z,f(z,z)).  [para(11509(a,1),648(a,1,2)),rewrite([280(8),421(6)])].
+11669 f(x,f(x,x)) = c_0.  [new_symbol(11548)].
+11727 f(x,f(c_0,f(y,f(x,y)))) = c_0.  [back_rewrite(11601),rewrite([11669(4),421(4),11669(7)])].
+11755 f(f(x,c_0),y) = f(y,f(x,y)).  [back_rewrite(11569),rewrite([11669(2)])].
+11756 f(c_0,f(x,x)) = x.  [back_rewrite(11568),rewrite([11669(2)])].
+11759 f(x,f(y,c_0)) = f(x,f(y,x)).  [back_rewrite(11565),rewrite([11669(2)])].
+11762 f(c_0,f(c_0,x)) = x.  [back_rewrite(11562),rewrite([11669(2),11669(3)])].
+11763 f(x,f(x,f(y,c_0))) = f(x,y).  [back_rewrite(11561),rewrite([11669(2)])].
+11765 f(x,f(c_0,c_0)) = c_0.  [back_rewrite(11559),rewrite([11669(2),11669(3),11669(6)])].
+11782 f(c_0,x) = f(x,x).  [back_rewrite(11539),rewrite([11669(2),11669(4),11669(5),11765(6),421(4),11756(4)])].
+11871 f(f(x,x),f(y,f(c_0,f(z,x)))) = x.  [back_rewrite(2820),rewrite([11669(3)])].
+12007 f(x,f(f(y,x),f(c_0,f(y,z)))) = f(x,x).  [back_rewrite(886),rewrite([11759(5,R),421(4)])].
+12008 f(x,f(f(x,y),f(c_0,f(z,y)))) = f(x,x).  [back_rewrite(800),rewrite([11759(5,R),421(4)])].
+12331 f(f(c1,f(c1,c2)),f(c1,f(c1,c3))) != f(c_0,f(c1,f(c2,c3))) # answer("Sheffer").  [back_rewrite(11510),rewrite([11782(11,R)]),flip(a)].
+13857 f(f(c_0,x),f(f(c_0,f(y,x)),z)) = x.  [para(340(a,1),11762(a,1,2)),rewrite([11762(4)]),flip(a)].
+13883 f(x,f(c_0,y)) = f(x,f(x,y)).  [para(11782(a,2),1380(a,1,2))].
+13884 f(x,f(x,f(c_0,y))) = f(x,y).  [para(11782(a,2),1415(a,1,2,2))].
+13886 f(x,f(c_0,y)) = f(x,f(y,x)).  [para(11782(a,2),1423(a,1,2))].
+14975 f(f(x,y),f(c_0,f(y,f(c_0,f(x,z))))) = c_0.  [para(472(a,1),11727(a,1,2,2,2)),rewrite([421(5),13886(5,R)])].
+16966 f(x,f(c_0,f(y,f(c_0,f(x,z))))) = f(y,f(c_0,f(x,z))).  [para(1089(a,1),11763(a,1,2)),rewrite([421(8),11762(8),421(11)]),flip(a)].
+16968 f(x,f(c_0,f(y,f(c_0,f(z,x))))) = f(y,f(c_0,f(z,x))).  [para(1091(a,1),11763(a,1,2)),rewrite([421(8),11762(8),421(11)]),flip(a)].
+20848 f(x,f(y,f(x,f(f(y,x),z)))) = f(x,x).  [para(1089(a,1),475(a,1,2)),flip(a)].
+21026 f(f(x,x),f(y,f(y,f(z,x)))) = x.  [para(13883(a,1),11871(a,1,2))].
+21274 f(f(x,y),f(f(f(c_0,f(z,x)),u),y)) = y.  [para(13857(a,1),519(a,1,2,1)),rewrite([421(7)])].
+21704 f(f(x,x),f(c_0,f(y,f(y,f(z,x))))) = c_0.  [para(21026(a,1),1380(a,2,2)),rewrite([11782(8,R),421(9),11669(9)])].
+24376 f(f(f(x,y),z),f(z,f(u,f(x,x)))) = z.  [para(392(a,1),1658(a,1,2,2)),rewrite([11782(5,R),11756(5),421(5),533(5)])].
+24525 f(f(f(x,f(y,x)),z),f(z,f(y,u))) = z.  [para(474(a,1),1663(a,1,1,1)),rewrite([421(8),2565(8)])].
+25368 f(f(x,f(y,f(z,y))),f(x,f(z,u))) = x.  [para(474(a,1),1898(a,1,1,2)),rewrite([421(8),2565(8)])].
+26193 f(x,f(y,f(f(f(y,y),z),x))) = f(x,x).  [para(163(a,1),2946(a,1,2,1))].
+29010 f(x,f(y,f(z,f(x,y)))) = f(x,f(y,y)).  [para(9584(a,1),441(a,1,2)),flip(a)].
+31233 f(f(c_0,f(x,y)),f(c_0,f(x,z))) = f(f(c_0,f(x,y)),z).  [para(12007(a,1),10652(a,1,2,2)),rewrite([264(6),11782(10,R)]),flip(a)].
+31460 f(f(c_0,f(x,y)),f(c_0,f(z,y))) = f(f(c_0,f(x,y)),z).  [para(12008(a,1),10652(a,1,2,2)),rewrite([324(6),11782(10,R)]),flip(a)].
+51689 f(f(x,f(x,y)),f(x,f(y,z))) = f(c_0,f(x,f(y,z))).  [para(598(a,1),549(a,1,2)),rewrite([11782(5,R),421(6)]),flip(a)].
+69048 f(x,f(y,f(f(x,y),z))) = f(x,f(y,y)).  [para(20848(a,1),441(a,1,2)),flip(a)].
+87490 f(f(c_0,f(x,f(c_0,f(y,z)))),f(y,x)) = c_0.  [para(14975(a,1),21704(a,1,2,2,2)),rewrite([11782(9,R),421(10),11762(11)])].
+90853 f(f(x,x),f(c_0,f(f(x,y),z))) = f(f(x,x),z).  [para(24376(a,1),10652(a,1,2)),rewrite([11782(8,R)]),flip(a)].
+92607 f(x,f(y,f(c_0,f(f(x,y),z)))) = f(x,x).  [para(26193(a,1),584(a,1)),rewrite([11782(6,R),421(6),421(7)]),flip(a)].
+94473 f(x,f(c_0,f(f(y,f(x,y)),z))) = f(x,z).  [para(24525(a,1),29010(a,1,2)),rewrite([11782(8,R)]),flip(a)].
+94474 f(x,f(c_0,f(y,f(z,f(x,z))))) = f(x,y).  [para(25368(a,1),29010(a,1,2)),rewrite([11782(8,R)]),flip(a)].
+108306 f(f(c_0,f(x,y)),f(c_0,f(y,z))) = f(f(c_0,f(x,y)),z).  [para(21274(a,1),69048(a,1,2)),rewrite([11782(10,R)]),flip(a)].
+115332 f(f(c_0,f(x,y)),z) = f(y,f(c_0,f(x,z))).  [para(87490(a,1),1422(a,2,2)),rewrite([11782(3,R),108306(10),31233(7),421(12),11762(12)])].
+115453 f(x,f(c_0,f(y,z))) = f(y,f(c_0,f(x,z))).  [back_rewrite(108306),rewrite([115332(7),16966(7),115332(8)])].
+115812 f(x,f(c_0,f(y,z))) = f(z,f(c_0,f(x,y))).  [back_rewrite(31460),rewrite([115332(7),16968(7),115332(8)])].
+121312 f(x,f(f(y,y),z)) = f(x,f(f(y,x),z)).  [para(92607(a,1),29010(a,1,2,2)),rewrite([421(6),90853(6),11782(12,R),11762(9)])].
+122506 f(x,f(y,f(f(z,y),f(u,f(x,u))))) = f(x,f(z,y)).  [para(549(a,1),94473(a,1,2,2)),rewrite([94474(7)]),flip(a)].
+122508 f(x,f(y,f(z,f(x,z)))) = f(x,f(y,c_0)).  [para(11755(a,2),94473(a,1,2,2)),rewrite([122506(8)]),flip(a)].
+124905 f(x,f(y,f(c_0,f(x,z)))) = f(x,f(y,z)).  [para(115453(a,1),1380(a,2,2)),rewrite([11782(7,R),11762(5)]),flip(a)].
+125394 f(x,f(c_0,f(y,f(x,f(x,z))))) = f(x,f(c_0,f(y,z))).  [para(115812(a,1),307(a,1,2)),rewrite([11782(3,R),11782(7,R),115332(8),421(9),124905(9),115332(9),124905(7),11782(9,R),115332(10)])].
+127473 f(f(x,f(x,y)),f(x,z)) = f(c_0,f(x,f(y,f(x,z)))).  [para(121312(a,2),692(a,1,2)),rewrite([421(2),11782(5,R),115332(7),124905(8),51689(6),421(7)]),flip(a)].
+127575 f(c_0,f(c1,f(c2,f(c1,f(c1,c3))))) != f(c_0,f(c1,f(c2,c3))) # answer("Sheffer").  [back_rewrite(12331),rewrite([127473(11)])].
+127838 f(x,f(y,f(x,f(x,z)))) = f(x,f(y,z)).  [para(122508(a,1),804(a,1,2)),rewrite([1423(4,R),324(3),421(5),125394(6),13884(5),1423(9,R),324(8),421(6)]),flip(a)].
+127865 $F # answer("Sheffer").  [back_rewrite(127575),rewrite([127838(10)]),xx(a)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=1327. Generated=5998716. Kept=127863. proofs=1.
+Usable=849. Sos=19862. Demods=19164. Limbo=27, Disabled=107127. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=5896.
+Forward_subsumed=4387773. Back_subsumed=6754.
+Sos_limit_deleted=1477183. Sos_displaced=88185. Sos_removed=0.
+New_demodulators=116364 (23 lex), Back_demodulated=12185. Back_unit_deleted=1.
+Demod_attempts=121041738. Demod_rewrites=15494963.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=24. Nonunit_bsub_feature_tests=4.
+Megabytes=77.60.
+User_CPU=546.67, System_CPU=2.14, Wall_clock=554.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 1 proof.
+
+Process 5178 exit (max_proofs) Tue Nov  3 09:57:46 2009

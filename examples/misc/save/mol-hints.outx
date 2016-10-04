@@ -1,0 +1,1505 @@
+============================== Prover9 ===============================
+Prover9 (32) version Aug-2007, Aug 2007.
+Process 16043 was started by mccune on cleo,
+Tue Aug  7 09:31:56 2007
+The command was "/home/mccune/LADR/bin/prover9 -f mol-hints.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file mol-hints.in
+
+assign(max_seconds,30).
+assign(new_constants,1).
+assign(max_weight,0).
+clear(lex_dep_demod).
+    % clear(lex_dep_demod) -> assign(lex_dep_demod_lim, 0).
+
+formulas(sos).
+f(f(y,x),f(f(f(x,x),z),f(f(f(f(f(x,y),z),z),x),f(x,u)))) = x # label(MOL_sax).
+end_of_list.
+
+formulas(goals).
+f(y,x) = f(x,y) # answer(comm).
+f(y,f(y,y)) = f(x,f(x,x)) # answer(one).
+f(f(x,x),f(x,y)) = x # answer(absorb).
+f(x,f(x,f(x,y))) = f(x,y) # answer(oml).
+f(z,f(f(y,x),f(y,x))) = f(x,f(f(y,z),f(y,z))) # answer(assoc).
+f(x,f(z,f(x,f(y,y)))) = f(x,f(y,f(x,f(z,z)))) # answer(mod).
+end_of_list.
+
+formulas(hints).
+f(f(x,y),f(f(f(y,y),z),f(f(f(f(f(y,x),z),z),y),f(y,u)))) = y # label(492).
+f(f(X,X),f(X,Y)) != X # label(495).
+f(f(x,f(y,z)),f(f(f(f(y,z),f(y,z)),u),f(f(f(f(f(f(y,z),x),u),u),f(y,z)),z))) = f(y,z) # label(499).
+f(f(x,y),f(f(f(f(f(z,y),f(f(f(y,y),u),f(f(f(f(f(y,z),u),u),y),f(y,v)))),f(f(z,y),f(f(f(y,y),u),f(f(f(f(f(y,z),u),u),y),f(y,v))))),w),f(f(f(f(f(f(f(z,y),f(f(f(y,y),u),f(f(f(f(f(y,z),u),u),y),f(y,v)))),x),w),w),f(f(z,y),f(f(f(y,y),u),f(f(f(f(f(y,z),u),u),y),f(y,v))))),f(f(f(y,y),u),f(f(f(f(f(y,z),u),u),y),f(y,v)))))) = f(f(z,y),f(f(f(y,y),u),f(f(f(f(f(y,z),u),u),y),f(y,v)))) # label(500A).
+f(f(x,y),f(f(f(y,f(f(z,y),f(f(f(y,y),u),f(f(f(f(f(y,z),u),u),y),f(y,v))))),w),f(f(f(f(f(f(f(z,y),f(f(f(y,y),u),f(f(f(f(f(y,z),u),u),y),f(y,v)))),x),w),w),f(f(z,y),f(f(f(y,y),u),f(f(f(f(f(y,z),u),u),y),f(y,v))))),f(f(f(y,y),u),f(f(f(f(f(y,z),u),u),y),f(y,v)))))) = f(f(z,y),f(f(f(y,y),u),f(f(f(f(f(y,z),u),u),y),f(y,v)))) # label(500B).
+f(f(x,y),f(f(f(y,y),w),f(f(f(f(f(f(f(z,y),f(f(f(y,y),u),f(f(f(f(f(y,z),u),u),y),f(y,v)))),x),w),w),f(f(z,y),f(f(f(y,y),u),f(f(f(f(f(y,z),u),u),y),f(y,v))))),f(f(f(y,y),u),f(f(f(f(f(y,z),u),u),y),f(y,v)))))) = f(f(z,y),f(f(f(y,y),u),f(f(f(f(f(y,z),u),u),y),f(y,v)))) # label(500C).
+f(f(x,y),f(f(f(y,y),w),f(f(f(f(f(y,x),w),w),f(f(z,y),f(f(f(y,y),u),f(f(f(f(f(y,z),u),u),y),f(y,v))))),f(f(f(y,y),u),f(f(f(f(f(y,z),u),u),y),f(y,v)))))) = f(f(z,y),f(f(f(y,y),u),f(f(f(f(f(y,z),u),u),y),f(y,v)))) # label(500D).
+f(f(x,y),f(f(f(y,y),w),f(f(f(f(f(y,x),w),w),y),f(f(f(y,y),u),f(f(f(f(f(y,z),u),u),y),f(y,v)))))) = f(f(z,y),f(f(f(y,y),u),f(f(f(f(f(y,z),u),u),y),f(y,v)))) # label(500E).
+f(f(x,y),f(f(f(y,y),z),f(f(f(f(f(y,x),z),z),y),f(f(f(y,y),u),f(f(f(f(f(y,v),u),u),y),f(y,w)))))) = y # label(500).
+f(f(x,y),f(f(f(y,y),z),y)) = y # label(501).
+f(f(x,y),f(y,y)) = y # label(502).
+f(f(x,y),f(y,f(f(f(f(f(y,x),f(y,y)),f(y,y)),y),f(y,z)))) = y # label(503).
+f(f(x,y),f(f(f(y,y),f(x,x)),f(f(f(x,f(x,x)),y),f(y,z)))) = y # label(505).
+f(f(x,f(y,z)),f(f(f(f(y,z),f(y,z)),f(x,x)),f(f(f(x,f(x,x)),f(y,z)),z))) = f(y,z) # label(507).
+f(f(x,f(y,y)),f(f(f(f(y,y),f(y,y)),y),f(y,y))) = f(y,y) # label(508A).
+f(f(x,f(y,y)),f(f(y,y),f(y,y))) = f(y,y) # label(508B).
+f(f(x,f(y,y)),y) = f(y,y) # label(508).
+f(x,f(f(f(f(x,x),y),x),f(f(f(x,x),y),x))) = f(f(f(x,x),y),x) # label(510A).
+f(x,x) = f(f(f(x,x),y),x) # label(510B).
+f(f(f(x,x),y),x) = f(x,x) # label(510).
+f(f(x,y),f(y,f(f(y,y),f(y,z)))) = y # label(511).
+f(f(x,x),f(f(f(x,x),x),f(f(f(x,x),x),f(x,y)))) = x # label(512).
+f(f(x,y),f(x,x)) = f(f(x,x),f(x,x)) # label(513A).
+f(f(x,y),f(x,x)) = x # label(513).
+f(f(x,y),f(f(f(y,y),f(f(y,x),f(y,x))),f(f(f(y,x),y),f(y,z)))) = y # label(514).
+f(x,f(f(y,x),f(y,x))) = f(y,x) # label(515).
+x = f(f(x,f(f(x,x),f(x,y))),f(x,f(f(x,x),f(x,y)))) # label(519A).
+f(f(x,f(f(x,x),f(x,y))),f(x,f(f(x,x),f(x,y)))) = x # label(519).
+f(f(x,x),f(f(f(x,x),x),f(f(f(x,x),x),f(y,x)))) = x # label(520).
+f(x,f(f(x,f(f(x,x),f(x,y))),f(x,f(f(x,x),f(x,y))))) = f(x,f(f(x,x),f(x,y))) # label(521A).
+f(x,x) = f(x,f(f(x,x),f(x,y))) # label(521B).
+f(x,f(f(x,x),f(x,y))) = f(x,x) # label(521).
+f(x,f(f(f(f(x,x),f(x,x)),f(x,x)),f(f(f(f(x,x),f(x,x)),f(x,x)),f(y,f(x,x))))) = f(x,x) # label(526A).
+f(x,f(f(x,f(x,x)),f(f(f(f(x,x),f(x,x)),f(x,x)),f(y,f(x,x))))) = f(x,x) # label(526B).
+f(x,f(f(x,f(x,x)),f(f(x,f(x,x)),f(y,f(x,x))))) = f(x,x) # label(526).
+f(f(f(x,f(x,x)),f(f(x,f(x,x)),f(y,f(x,x)))),f(f(x,x),f(x,f(f(x,f(x,x)),f(f(x,f(x,x)),f(y,f(x,x))))))) = f(x,f(f(x,f(x,x)),f(f(x,f(x,x)),f(y,f(x,x))))) # label(527A).
+f(f(f(x,f(x,x)),f(f(x,f(x,x)),f(y,f(x,x)))),f(f(x,x),f(x,x))) = f(x,f(f(x,f(x,x)),f(f(x,f(x,x)),f(y,f(x,x))))) # label(527B).
+f(f(f(x,f(x,x)),f(f(x,f(x,x)),f(y,f(x,x)))),x) = f(x,f(f(x,f(x,x)),f(f(x,f(x,x)),f(y,f(x,x))))) # label(527C).
+f(f(f(x,f(x,x)),f(f(x,f(x,x)),f(y,f(x,x)))),x) = f(x,x) # label(527).
+f(f(x,f(y,z)),f(f(f(f(y,z),f(y,z)),f(x,x)),f(f(f(x,f(x,x)),f(y,z)),y))) = f(y,z) # label(528).
+f(f(f(x,f(x,x)),x),f(f(f(x,x),f(f(x,f(x,x)),f(x,f(x,x)))),f(f(x,x),f(x,y)))) = x # label(529A).
+f(f(x,x),f(f(f(x,x),f(f(x,f(x,x)),f(x,f(x,x)))),f(f(x,x),f(x,y)))) = x # label(529B).
+f(f(x,x),f(f(x,f(x,x)),f(f(x,x),f(x,y)))) = x # label(529).
+f(f(f(x,x),x),f(f(f(x,x),f(f(x,f(x,x)),f(x,f(x,x)))),f(f(x,x),f(x,y)))) = x # label(532A).
+f(f(f(x,x),x),f(f(x,f(x,x)),f(f(x,x),f(x,y)))) = x # label(532).
+f(x,f(f(f(f(f(x,f(x,x)),f(f(x,x),f(x,y))),f(f(x,f(x,x)),f(f(x,x),f(x,y)))),f(f(x,x),f(x,x))),f(f(f(f(x,x),f(f(x,x),f(x,x))),f(f(x,f(x,x)),f(f(x,x),f(x,y)))),f(f(x,x),f(x,y))))) = f(f(x,f(x,x)),f(f(x,x),f(x,y))) # label(534A).
+f(x,f(f(f(f(f(x,f(x,x)),f(f(x,x),f(x,y))),f(f(x,f(x,x)),f(f(x,x),f(x,y)))),x),f(f(f(f(x,x),f(f(x,x),f(x,x))),f(f(x,f(x,x)),f(f(x,x),f(x,y)))),f(f(x,x),f(x,y))))) = f(f(x,f(x,x)),f(f(x,x),f(x,y))) # label(534B).
+f(x,f(f(f(f(f(x,f(x,x)),f(f(x,x),f(x,y))),f(f(x,f(x,x)),f(f(x,x),f(x,y)))),x),f(f(f(f(x,x),x),f(f(x,f(x,x)),f(f(x,x),f(x,y)))),f(f(x,x),f(x,y))))) = f(f(x,f(x,x)),f(f(x,x),f(x,y))) # label(534C).
+f(x,f(f(f(f(f(x,f(x,x)),f(f(x,x),f(x,y))),f(f(x,f(x,x)),f(f(x,x),f(x,y)))),x),f(x,f(f(x,x),f(x,y))))) = f(f(x,f(x,x)),f(f(x,x),f(x,y))) # label(534D).
+f(x,f(f(f(f(f(x,f(x,x)),f(f(x,x),f(x,y))),f(f(x,f(x,x)),f(f(x,x),f(x,y)))),x),f(x,x))) = f(f(x,f(x,x)),f(f(x,x),f(x,y))) # label(534E).
+f(x,x) = f(f(x,f(x,x)),f(f(x,x),f(x,y))) # label(534F).
+f(f(x,f(x,x)),f(f(x,x),f(x,y))) = f(x,x) # label(534).
+f(f(x,x),f(f(f(f(f(x,x),f(x,y)),f(f(x,x),f(x,y))),f(x,x)),f(f(f(x,f(x,x)),f(f(x,x),f(x,y))),f(x,x)))) = f(f(x,x),f(x,y)) # label(539A).
+f(f(x,x),f(f(f(f(f(x,x),f(x,y)),f(f(x,x),f(x,y))),f(x,x)),f(f(x,x),f(x,x)))) = f(f(x,x),f(x,y)) # label(539B).
+f(f(x,x),f(f(f(f(f(x,x),f(x,y)),f(f(x,x),f(x,y))),f(x,x)),x)) = f(f(x,x),f(x,y)) # label(539C).
+f(f(x,x),f(x,x)) = f(f(x,x),f(x,y)) # label(539D).
+x = f(f(x,x),f(x,y)) # label(539E).
+f(f(x,x),f(x,y)) = x # label(539).
+$F # label(540).
+f(X,f(X,X)) != f(Y,f(Y,Y)) # label(3).
+f(Y,f(Y,Y)) != f(X,f(X,X)) # label(494).
+f(f(f(x,x),f(y,x)),f(f(f(f(y,x),f(y,x)),z),f(f(f(f(x,z),z),f(y,x)),f(f(y,x),u)))) = f(y,x) # label(504).
+f(f(x,y),f(f(f(y,y),z),f(f(f(f(f(y,x),z),z),y),f(u,y)))) = y # label(517).
+f(f(x,y),f(f(f(x,y),f(x,y)),y)) = f(f(x,y),f(x,y)) # label(522).
+f(f(x,x),f(x,f(f(x,x),y))) = f(f(x,x),f(x,x)) # label(523A).
+f(f(x,x),f(x,f(f(x,x),y))) = x # label(523).
+f(f(x,y),f(f(f(x,y),f(x,y)),x)) = f(f(x,y),f(x,y)) # label(524).
+f(f(x,x),f(x,f(y,f(x,x)))) = x # label(525).
+f(x,f(f(f(x,x),f(f(x,x),f(x,x))),f(f(f(x,x),f(x,x)),f(f(x,x),y)))) = f(x,x) # label(530A).
+f(x,f(f(f(x,x),x),f(f(f(x,x),f(x,x)),f(f(x,x),y)))) = f(x,x) # label(530B).
+f(x,f(f(f(x,x),x),f(x,f(f(x,x),y)))) = f(x,x) # label(530).
+f(f(x,f(x,x)),f(f(f(f(x,x),f(x,x)),f(f(f(x,x),x),f(f(x,x),x))),f(x,f(f(x,x),y)))) = f(x,x) # label(531A).
+f(f(x,f(x,x)),f(f(x,f(f(f(x,x),x),f(f(x,x),x))),f(x,f(f(x,x),y)))) = f(x,x) # label(531B).
+f(f(x,f(x,x)),f(f(f(x,x),x),f(x,f(f(x,x),y)))) = f(x,x) # label(531).
+f(f(x,x),f(f(f(f(f(f(x,x),x),f(x,f(f(x,x),y))),f(f(f(x,x),x),f(x,f(f(x,x),y)))),f(x,x)),f(f(f(x,f(x,x)),f(f(f(x,x),x),f(x,f(f(x,x),y)))),f(x,f(f(x,x),y))))) = f(f(f(x,x),x),f(x,f(f(x,x),y))) # label(535A).
+f(f(x,x),f(f(f(f(f(f(x,x),x),f(x,f(f(x,x),y))),f(f(f(x,x),x),f(x,f(f(x,x),y)))),f(x,x)),f(f(x,x),f(x,f(f(x,x),y))))) = f(f(f(x,x),x),f(x,f(f(x,x),y))) # label(535B).
+f(f(x,x),f(f(f(f(f(f(x,x),x),f(x,f(f(x,x),y))),f(f(f(x,x),x),f(x,f(f(x,x),y)))),f(x,x)),x)) = f(f(f(x,x),x),f(x,f(f(x,x),y))) # label(535C).
+f(f(x,x),f(x,x)) = f(f(f(x,x),x),f(x,f(f(x,x),y))) # label(535D).
+x = f(f(f(x,x),x),f(x,f(f(x,x),y))) # label(535E).
+f(f(f(x,x),x),f(x,f(f(x,x),y))) = x # label(535).
+f(f(f(x,x),x),f(x,f(y,f(x,x)))) = x # label(536).
+f(f(f(x,y),f(f(x,y),f(x,y))),f(f(f(x,y),f(x,y)),y)) = f(f(x,y),f(x,y)) # label(537).
+f(f(f(x,y),f(f(x,y),f(x,y))),f(f(f(x,y),f(x,y)),x)) = f(f(x,y),f(x,y)) # label(538).
+f(x,f(f(f(f(x,f(f(x,x),y)),f(x,f(f(x,x),y))),f(f(x,x),f(x,x))),f(f(f(f(x,x),f(f(x,x),f(x,x))),f(x,f(f(x,x),y))),x))) = f(x,f(f(x,x),y)) # label(541A).
+f(x,f(f(f(f(x,f(f(x,x),y)),f(x,f(f(x,x),y))),x),f(f(f(f(x,x),f(f(x,x),f(x,x))),f(x,f(f(x,x),y))),x))) = f(x,f(f(x,x),y)) # label(541B).
+f(x,f(f(f(f(x,f(f(x,x),y)),f(x,f(f(x,x),y))),x),f(f(f(f(x,x),x),f(x,f(f(x,x),y))),x))) = f(x,f(f(x,x),y)) # label(541C).
+f(x,f(f(f(f(x,f(f(x,x),y)),f(x,f(f(x,x),y))),x),f(x,x))) = f(x,f(f(x,x),y)) # label(541D).
+f(x,x) = f(x,f(f(x,x),y)) # label(541E).
+f(x,f(f(x,x),y)) = f(x,x) # label(541).
+f(x,f(f(f(f(x,f(y,f(x,x))),f(x,f(y,f(x,x)))),f(f(x,x),f(x,x))),f(f(f(f(x,x),f(f(x,x),f(x,x))),f(x,f(y,f(x,x)))),x))) = f(x,f(y,f(x,x))) # label(542A).
+f(x,f(f(f(f(x,f(y,f(x,x))),f(x,f(y,f(x,x)))),x),f(f(f(f(x,x),f(f(x,x),f(x,x))),f(x,f(y,f(x,x)))),x))) = f(x,f(y,f(x,x))) # label(542B).
+f(x,f(f(f(f(x,f(y,f(x,x))),f(x,f(y,f(x,x)))),x),f(f(f(f(x,x),x),f(x,f(y,f(x,x)))),x))) = f(x,f(y,f(x,x))) # label(542C).
+f(x,f(f(f(f(x,f(y,f(x,x))),f(x,f(y,f(x,x)))),x),f(x,x))) = f(x,f(y,f(x,x))) # label(542D).
+f(x,x) = f(x,f(y,f(x,x))) # label(542E).
+f(x,f(y,f(x,x))) = f(x,x) # label(542).
+f(f(f(x,y),f(x,y)),f(f(f(f(f(f(x,y),f(x,y)),y),f(f(f(x,y),f(x,y)),y)),f(f(x,y),f(x,y))),f(f(f(f(x,y),f(f(x,y),f(x,y))),f(f(f(x,y),f(x,y)),y)),f(f(x,y),f(x,y))))) = f(f(f(x,y),f(x,y)),y) # label(543A).
+f(f(f(x,y),f(x,y)),f(f(f(f(f(f(x,y),f(x,y)),y),f(f(f(x,y),f(x,y)),y)),f(f(x,y),f(x,y))),f(f(f(x,y),f(x,y)),f(f(x,y),f(x,y))))) = f(f(f(x,y),f(x,y)),y) # label(543B).
+f(f(f(x,y),f(x,y)),f(f(f(f(f(f(x,y),f(x,y)),y),f(f(f(x,y),f(x,y)),y)),f(f(x,y),f(x,y))),f(x,y))) = f(f(f(x,y),f(x,y)),y) # label(543C).
+f(f(f(x,y),f(x,y)),f(f(x,y),f(x,y))) = f(f(f(x,y),f(x,y)),y) # label(543D).
+f(x,y) = f(f(f(x,y),f(x,y)),y) # label(543E).
+f(f(f(x,y),f(x,y)),y) = f(x,y) # label(543).
+f(f(f(x,y),f(x,y)),f(f(f(f(f(f(x,y),f(x,y)),x),f(f(f(x,y),f(x,y)),x)),f(f(x,y),f(x,y))),f(f(f(f(x,y),f(f(x,y),f(x,y))),f(f(f(x,y),f(x,y)),x)),f(f(x,y),f(x,y))))) = f(f(f(x,y),f(x,y)),x) # label(544A).
+f(f(f(x,y),f(x,y)),f(f(f(f(f(f(x,y),f(x,y)),x),f(f(f(x,y),f(x,y)),x)),f(f(x,y),f(x,y))),f(f(f(x,y),f(x,y)),f(f(x,y),f(x,y))))) = f(f(f(x,y),f(x,y)),x) # label(544B).
+f(f(f(x,y),f(x,y)),f(f(f(f(f(f(x,y),f(x,y)),x),f(f(f(x,y),f(x,y)),x)),f(f(x,y),f(x,y))),f(x,y))) = f(f(f(x,y),f(x,y)),x) # label(544C).
+f(f(f(x,y),f(x,y)),f(f(x,y),f(x,y))) = f(f(f(x,y),f(x,y)),x) # label(544D).
+f(x,y) = f(f(f(x,y),f(x,y)),x) # label(544E).
+f(f(f(x,y),f(x,y)),x) = f(x,y) # label(544).
+f(f(x,y),f(f(f(y,y),f(y,y)),f(f(f(f(f(y,x),f(f(f(y,y),f(y,y)),z)),f(f(f(y,y),f(y,y)),z)),y),f(u,y)))) = y # label(546A).
+f(f(x,y),f(y,f(f(f(f(f(y,x),f(f(f(y,y),f(y,y)),z)),f(f(f(y,y),f(y,y)),z)),y),f(u,y)))) = y # label(546B).
+f(f(x,y),f(y,f(f(f(f(f(y,x),f(y,z)),f(f(f(y,y),f(y,y)),z)),y),f(u,y)))) = y # label(546C).
+f(f(x,y),f(y,f(f(f(f(f(y,x),f(y,z)),f(y,z)),y),f(u,y)))) = y # label(546).
+f(f(x,x),f(y,x)) = f(f(x,x),f(x,x)) # label(548A).
+f(f(x,x),f(y,x)) = x # label(548).
+f(x,f(f(f(f(y,x),f(y,x)),z),f(f(f(f(x,z),z),f(y,x)),f(f(y,x),u)))) = f(y,x) # label(550).
+f(f(x,y),f(f(f(f(y,x),f(y,z)),f(y,z)),y)) = y # label(552).
+f(f(f(x,x),f(y,x)),f(f(f(x,f(f(y,x),z)),f(f(y,x),z)),f(y,x))) = f(y,x) # label(553A).
+f(x,f(f(f(x,f(f(y,x),z)),f(f(y,x),z)),f(y,x))) = f(y,x) # label(553).
+f(x,f(f(f(x,x),f(f(y,x),f(f(f(x,x),z),f(f(f(f(f(x,y),z),z),x),f(x,u))))),f(y,x))) = f(y,x) # label(557A).
+f(x,f(f(f(x,x),x),f(y,x))) = f(y,x) # label(557).
+f(f(x,x),f(f(f(f(x,x),f(x,x)),f(f(y,f(x,x)),x)),f(y,f(x,x)))) = f(y,f(x,x)) # label(558A).
+f(f(x,x),f(f(x,f(f(y,f(x,x)),x)),f(y,f(x,x)))) = f(y,f(x,x)) # label(558B).
+f(f(x,x),f(f(x,f(x,x)),f(y,f(x,x)))) = f(y,f(x,x)) # label(558).
+f(x,f(f(f(x,y),f(f(y,x),f(y,y))),f(y,x))) = f(y,x) # label(559A).
+f(x,f(f(f(x,y),y),f(y,x))) = f(y,x) # label(559).
+f(x,f(f(f(x,x),x),f(x,y))) = f(f(f(x,y),f(x,y)),x) # label(560A).
+f(x,f(f(f(x,x),x),f(x,y))) = f(x,y) # label(560).
+f(f(x,x),f(f(x,x),f(x,f(x,x)))) = f(x,f(x,x)) # label(561A).
+f(f(x,x),x) = f(x,f(x,x)) # label(561).
+f(x,f(f(x,f(x,x)),f(x,y))) = f(x,y) # label(562).
+f(f(x,x),f(f(f(x,x),x),f(f(x,x),y))) = f(f(x,x),y) # label(563A).
+f(f(x,x),f(f(x,f(x,x)),f(f(x,x),y))) = f(f(x,x),y) # label(563).
+f(x,f(f(y,x),f(f(f(f(x,y),y),f(y,x)),f(f(y,x),z)))) = f(y,x) # label(564).
+f(f(x,x),f(f(x,f(x,x)),f(f(f(x,x),f(x,f(x,x))),f(f(x,f(x,x)),y)))) = f(x,f(x,x)) # label(565A).
+f(f(x,x),f(f(x,f(x,x)),f(x,f(f(x,f(x,x)),y)))) = f(x,f(x,x)) # label(565).
+f(f(f(x,f(x,x)),f(x,f(x,x))),f(f(f(x,f(x,x)),f(f(x,f(x,x)),f(x,f(x,x)))),f(f(x,f(x,x)),f(x,x)))) = f(f(x,f(x,x)),f(f(x,f(x,x)),f(x,f(x,x)))) # label(567A).
+f(f(f(x,f(x,x)),f(x,f(x,x))),f(f(f(x,f(x,x)),f(f(x,f(x,x)),f(x,f(x,x)))),x)) = f(f(x,f(x,x)),f(f(x,f(x,x)),f(x,f(x,x)))) # label(567B).
+f(f(f(x,f(x,x)),f(x,f(x,x))),f(x,x)) = f(f(x,f(x,x)),f(f(x,f(x,x)),f(x,f(x,x)))) # label(567C).
+f(x,f(x,x)) = f(f(x,f(x,x)),f(f(x,f(x,x)),f(x,f(x,x)))) # label(567D).
+f(f(x,f(x,x)),f(f(x,f(x,x)),f(x,f(x,x)))) = f(x,f(x,x)) # label(567).
+f(f(x,x),f(f(x,f(x,x)),f(x,y))) = f(x,f(x,x)) # label(568).
+f(f(f(x,f(x,x)),f(x,f(x,x))),f(f(x,f(x,x)),f(y,f(f(x,f(x,x)),f(x,f(x,x)))))) = f(y,f(f(x,f(x,x)),f(x,f(x,x)))) # label(570A).
+f(f(f(x,f(x,x)),f(x,f(x,x))),f(f(x,f(x,x)),f(x,f(x,x)))) = f(y,f(f(x,f(x,x)),f(x,f(x,x)))) # label(570B).
+f(x,f(x,x)) = f(y,f(f(x,f(x,x)),f(x,f(x,x)))) # label(570C).
+f(x,f(f(y,f(y,y)),f(y,f(y,y)))) = f(y,f(y,y)) # label(570).
+f(f(x,x),f(f(x,f(x,x)),f(y,f(y,y)))) = f(f(x,x),f(f(y,f(y,y)),f(y,f(y,y)))) # label(576A).
+f(f(x,x),f(f(x,f(x,x)),f(y,f(y,y)))) = f(y,f(y,y)) # label(576).
+f(f(x,x),f(f(x,f(x,x)),f(y,f(y,y)))) = f(x,f(x,x)) # label(577A).
+f(x,f(x,x)) = f(y,f(y,y)) # label(577).
+$F # label(578).
+f(X,f(X,f(X,Y))) != f(X,Y) # label(496).
+f(f(f(x,x),f(x,y)),f(f(f(x,f(f(x,y),z)),f(f(x,y),z)),f(x,y))) = f(x,y) # label(554A).
+f(x,f(f(f(x,f(f(x,y),z)),f(f(x,y),z)),f(x,y))) = f(x,y) # label(554).
+f(f(x,f(x,x)),f(y,y)) = y # label(574).
+f(x,f(y,f(y,y))) = f(x,x) # label(575).
+f(f(x,f(f(y,f(y,y)),f(x,x))),f(y,f(y,y))) = f(f(y,f(y,y)),f(x,x)) # label(594A).
+f(f(x,x),f(y,f(y,y))) = f(f(y,f(y,y)),f(x,x)) # label(594B).
+f(f(x,x),f(y,f(y,y))) = x # label(594).
+f(x,f(f(f(x,x),f(f(x,y),f(f(x,y),f(x,y)))),f(x,y))) = f(x,y) # label(599A).
+f(x,f(x,f(x,y))) = f(x,y) # label(599).
+$F # label(600).
+f(X,Y) != f(Y,X) # label(2).
+f(Y,X) != f(X,Y) # label(493).
+f(f(f(x,x),f(y,x)),f(f(f(f(y,x),f(y,x)),z),f(f(f(f(x,z),z),f(y,x)),x))) = f(y,x) # label(506).
+f(x,f(f(x,y),f(x,y))) = f(x,y) # label(516).
+f(f(f(f(x,x),y),f(f(f(f(f(x,z),y),y),x),f(x,u))),f(x,f(f(z,x),f(f(f(x,x),y),f(f(f(f(f(x,z),y),y),x),f(x,u)))))) = f(f(z,x),f(f(f(x,x),y),f(f(f(f(f(x,z),y),y),x),f(x,u)))) # label(518A).
+f(f(f(f(x,x),y),f(f(f(f(f(x,z),y),y),x),f(x,u))),f(x,x)) = f(f(z,x),f(f(f(x,x),y),f(f(f(f(f(x,z),y),y),x),f(x,u)))) # label(518B).
+f(f(f(f(x,x),y),f(f(f(f(f(x,z),y),y),x),f(x,u))),f(x,x)) = x # label(518).
+f(f(f(x,x),f(y,x)),f(f(f(f(y,x),f(y,x)),f(x,x)),f(f(x,f(y,x)),x))) = f(y,x) # label(533).
+f(x,f(f(f(f(y,x),f(y,x)),f(x,x)),f(f(x,f(y,x)),x))) = f(y,x) # label(549).
+f(f(x,f(x,x)),y) = f(y,y) # label(573).
+f(x,f(f(y,f(y,y)),f(z,x))) = f(z,x) # label(581).
+f(x,f(f(y,f(y,y)),f(x,z))) = f(x,z) # label(582).
+f(f(f(x,f(x,x)),y),f(f(f(y,y),f(f(x,f(x,x)),f(x,f(x,x)))),f(f(f(f(x,f(x,x)),f(f(x,f(x,x)),f(x,f(x,x)))),y),f(y,z)))) = y # label(583A).
+f(f(f(x,f(x,x)),y),f(f(x,f(x,x)),f(f(f(f(x,f(x,x)),f(f(x,f(x,x)),f(x,f(x,x)))),y),f(y,z)))) = y # label(583B).
+f(f(f(x,f(x,x)),y),f(f(x,f(x,x)),f(f(f(x,f(x,x)),y),f(y,z)))) = y # label(583C).
+f(f(f(x,f(x,x)),y),f(y,z)) = y # label(583).
+f(f(x,x),f(f(x,y),f(x,y))) = f(x,f(x,x)) # label(590).
+f(f(x,f(x,x)),f(f(y,f(y,y)),z)) = z # label(595).
+f(f(x,y),f(f(f(f(y,x),f(y,x)),f(y,f(y,y))),y)) = y # label(597A).
+f(f(x,y),f(f(y,x),y)) = y # label(597).
+f(x,f(f(f(x,x),f(f(y,x),f(f(y,x),f(y,x)))),f(y,x))) = f(y,x) # label(598A).
+f(x,f(x,f(y,x))) = f(y,x) # label(598).
+f(f(f(x,f(x,x)),f(f(f(f(f(y,z),f(f(y,y),f(y,y))),f(f(y,y),f(y,y))),y),f(y,u))),f(y,y)) = y # label(607A).
+f(f(f(x,f(x,x)),f(f(f(f(f(y,z),y),f(f(y,y),f(y,y))),y),f(y,u))),f(y,y)) = y # label(607B).
+f(f(f(x,f(x,x)),f(f(f(f(f(y,z),y),y),y),f(y,u))),f(y,y)) = y # label(607).
+f(f(x,y),f(f(f(x,f(x,y)),x),f(x,f(x,y)))) = f(x,f(x,y)) # label(616).
+f(f(x,y),f(f(f(x,f(f(f(z,f(z,z)),x),f(x,y))),f(f(x,y),f(x,y))),f(f(f(x,y),f(f(f(z,f(z,z)),x),f(x,y))),f(x,y)))) = f(f(f(z,f(z,z)),x),f(x,y)) # label(620A).
+f(f(x,y),f(f(f(x,x),f(f(x,y),f(x,y))),f(f(f(x,y),f(f(f(z,f(z,z)),x),f(x,y))),f(x,y)))) = f(f(f(z,f(z,z)),x),f(x,y)) # label(620B).
+f(f(x,y),f(f(x,f(x,x)),f(f(f(x,y),f(f(f(z,f(z,z)),x),f(x,y))),f(x,y)))) = f(f(f(z,f(z,z)),x),f(x,y)) # label(620C).
+f(f(x,y),f(f(x,f(x,x)),f(f(f(x,y),x),f(x,y)))) = f(f(f(z,f(z,z)),x),f(x,y)) # label(620D).
+f(f(f(x,y),x),f(x,y)) = f(f(f(z,f(z,z)),x),f(x,y)) # label(620E).
+f(f(f(x,y),x),f(x,y)) = x # label(620).
+f(f(x,y),x) = f(x,f(x,y)) # label(623).
+f(f(f(x,f(x,x)),f(f(f(f(y,f(y,z)),y),y),f(y,u))),f(y,y)) = y # label(626A).
+f(f(f(x,f(x,x)),f(f(f(y,f(y,f(y,z))),y),f(y,u))),f(y,y)) = y # label(626B).
+f(f(f(x,f(x,x)),f(f(f(y,z),y),f(y,u))),f(y,y)) = y # label(626C).
+f(f(f(x,f(x,x)),f(f(y,f(y,z)),f(y,u))),f(y,y)) = y # label(626).
+f(f(f(x,f(x,x)),f(f(y,z),f(z,u))),f(z,z)) = z # label(644).
+f(f(f(x,f(x,x)),f(f(y,z),f(u,z))),f(z,z)) = z # label(646).
+f(f(f(x,f(x,x)),f(f(y,f(y,y)),f(f(z,u),f(v,u)))),u) = f(f(y,f(y,y)),f(f(z,u),f(v,u))) # label(649A).
+f(f(f(x,y),f(z,y)),y) = f(f(u,f(u,u)),f(f(x,y),f(z,y))) # label(649).
+f(x,f(f(f(y,f(y,y)),f(f(z,x),f(u,x))),f(f(f(z,x),f(u,x)),x))) = f(f(f(z,x),f(u,x)),x) # label(664A).
+f(x,f(f(z,x),f(u,x))) = f(f(f(z,x),f(u,x)),x) # label(664B).
+f(f(f(x,y),f(z,y)),y) = f(y,f(f(x,y),f(z,y))) # label(664).
+f(f(x,y),f(f(f(z,y),f(x,y)),y)) = f(f(z,y),f(x,y)) # label(666A).
+f(f(x,y),f(y,f(f(z,y),f(x,y)))) = f(f(z,y),f(x,y)) # label(666).
+f(f(x,y),f(y,f(f(y,z),f(x,y)))) = f(f(f(f(y,z),f(y,z)),y),f(x,y)) # label(668A).
+f(f(x,y),f(y,f(f(y,z),f(x,y)))) = f(f(y,z),f(x,y)) # label(668).
+f(x,f(f(x,y),f(f(z,f(x,y)),f(f(f(u,f(u,u)),x),f(x,y))))) = f(f(z,f(x,y)),f(f(f(u,f(u,u)),x),f(x,y))) # label(669A).
+f(x,f(f(x,y),f(f(z,f(x,y)),x))) = f(f(z,f(x,y)),f(f(f(u,f(u,u)),x),f(x,y))) # label(669B).
+f(x,f(f(x,y),f(f(z,f(x,y)),x))) = f(f(z,f(x,y)),x) # label(669).
+f(x,f(f(x,y),f(y,x))) = f(f(f(y,y),f(x,y)),x) # label(670A).
+f(x,f(f(x,y),f(y,x))) = f(y,x) # label(670).
+f(f(x,y),f(x,y)) = f(f(y,x),f(x,y)) # label(671A).
+f(f(x,y),f(y,x)) = f(f(y,x),f(y,x)) # label(671).
+f(f(x,f(y,z)),f(f(z,y),f(y,z))) = f(y,z) # label(672).
+f(f(f(x,y),f(x,y)),f(f(x,y),f(y,x))) = f(f(f(x,y),f(y,x)),f(f(x,y),f(y,x))) # label(674A).
+f(x,y) = f(f(f(x,y),f(y,x)),f(f(x,y),f(y,x))) # label(674B).
+f(x,y) = f(y,x) # label(674).
+$F # label(675).
+f(X,f(f(Y,Z),f(Y,Z))) != f(Z,f(f(Y,X),f(Y,X))) # label(497).
+f(f(x,y),f(f(f(y,y),z),f(f(f(f(f(y,f(f(x,y),f(x,y))),z),z),y),f(y,u)))) = y # label(551A).
+f(f(x,y),f(f(f(y,y),z),f(f(f(f(f(x,y),z),z),y),f(y,u)))) = y # label(551).
+f(f(f(f(x,y),f(x,y)),y),f(f(f(f(x,y),f(y,z)),f(y,z)),y)) = y # label(555A).
+f(f(x,y),f(f(f(f(x,y),f(y,z)),f(y,z)),y)) = y # label(555).
+f(f(x,y),f(f(f(f(x,y),f(z,y)),f(y,f(f(z,y),f(z,y)))),y)) = y # label(556A).
+f(f(x,y),f(f(f(f(x,y),f(z,y)),f(z,y)),y)) = y # label(556).
+f(x,f(f(y,x),f(f(f(f(x,y),y),f(y,x)),f(z,f(y,x))))) = f(y,x) # label(566).
+f(f(x,y),f(f(z,f(z,z)),y)) = y # label(579).
+f(f(x,y),f(f(z,f(z,z)),x)) = x # label(580).
+f(f(x,y),f(f(f(y,y),z),f(f(u,f(u,u)),f(f(f(f(y,x),z),z),y)))) = y # label(585).
+f(f(f(x,f(x,x)),f(y,z)),f(f(f(f(y,z),f(y,z)),f(f(x,f(x,x)),f(x,f(x,x)))),f(f(f(f(x,f(x,x)),f(f(x,f(x,x)),f(x,f(x,x)))),f(y,z)),z))) = f(y,z) # label(586A).
+f(f(f(x,f(x,x)),f(y,z)),f(f(x,f(x,x)),f(f(f(f(x,f(x,x)),f(f(x,f(x,x)),f(x,f(x,x)))),f(y,z)),z))) = f(y,z) # label(586B).
+f(f(f(x,f(x,x)),f(y,z)),f(f(x,f(x,x)),f(f(f(x,f(x,x)),f(y,z)),z))) = f(y,z) # label(586C).
+f(f(f(x,f(x,x)),f(y,z)),z) = f(y,z) # label(586).
+f(f(x,x),f(f(x,f(x,x)),f(y,f(x,x)))) = f(y,f(f(z,f(z,z)),x)) # label(589A).
+f(y,f(x,x)) = f(y,f(f(z,f(z,z)),x)) # label(589B).
+f(x,f(f(y,f(y,y)),z)) = f(x,f(z,z)) # label(589).
+f(x,f(f(f(f(y,x),f(y,x)),f(z,f(z,z))),f(f(f(f(x,x),f(z,f(z,z))),f(y,x)),f(f(y,x),u)))) = f(y,x) # label(601A).
+f(x,f(f(y,x),f(f(f(f(x,x),f(z,f(z,z))),f(y,x)),f(f(y,x),u)))) = f(y,x) # label(601B).
+f(x,f(f(y,x),f(f(x,f(y,x)),f(f(y,x),z)))) = f(y,x) # label(601).
+f(f(x,y),f(f(z,f(z,z)),f(f(f(f(f(y,x),f(f(y,y),f(y,y))),f(f(y,y),f(y,y))),y),f(u,y)))) = y # label(606A).
+f(f(x,y),f(f(z,f(z,z)),f(f(f(f(f(y,x),y),f(f(y,y),f(y,y))),y),f(u,y)))) = y # label(606B).
+f(f(x,y),f(f(z,f(z,z)),f(f(f(f(f(y,x),y),y),y),f(u,y)))) = y # label(606).
+f(f(x,f(y,f(y,y))),f(z,f(z,z))) = x # label(613).
+f(f(x,y),f(f(y,f(f(y,x),y)),y)) = y # label(615).
+f(f(f(x,f(x,y)),x),f(f(x,y),x)) = x # label(617).
+f(f(x,f(x,f(x,y))),f(f(x,y),x)) = x # label(624A).
+f(f(x,y),f(f(x,y),x)) = x # label(624B).
+f(f(x,y),f(x,f(x,y))) = x # label(624).
+f(f(x,y),f(f(y,f(y,f(y,x))),y)) = y # label(625A).
+f(f(x,y),f(f(y,x),y)) = y # label(625B).
+f(f(x,y),f(y,f(y,x))) = y # label(625).
+f(f(x,y),f(f(z,f(z,z)),f(f(f(f(y,f(y,x)),y),y),f(u,y)))) = y # label(627A).
+f(f(x,y),f(f(z,f(z,z)),f(f(f(y,f(y,f(y,x))),y),f(u,y)))) = y # label(627B).
+f(f(x,y),f(f(z,f(z,z)),f(f(f(y,x),y),f(u,y)))) = y # label(627C).
+f(f(x,y),f(f(z,f(z,z)),f(f(y,f(y,x)),f(u,y)))) = y # label(627).
+f(x,f(y,x)) = f(f(y,x),f(f(y,x),f(f(f(x,x),z),f(f(f(f(f(x,y),z),z),x),f(x,u))))) # label(628A).
+f(x,f(y,x)) = f(f(y,x),x) # label(628B).
+f(f(x,y),y) = f(y,f(x,y)) # label(628).
+f(f(f(x,y),y),f(f(f(f(x,y),f(f(x,y),y)),f(x,y)),y)) = y # label(629A).
+f(f(y,f(x,y)),f(f(f(f(x,y),f(f(x,y),y)),f(x,y)),y)) = y # label(629B).
+f(f(y,f(x,y)),f(f(f(f(x,y),f(y,f(x,y))),f(x,y)),y)) = y # label(629C).
+f(f(y,f(x,y)),f(f(f(x,y),f(f(x,y),f(y,f(x,y)))),y)) = y # label(629D).
+f(f(y,f(x,y)),f(f(y,f(x,y)),y)) = y # label(629E).
+f(f(y,f(x,y)),f(y,f(y,f(x,y)))) = y # label(629F).
+f(f(y,f(x,y)),f(x,y)) = y # label(629G).
+f(f(x,y),f(y,f(x,y))) = y # label(629).
+f(f(x,y),f(f(f(y,y),x),f(f(f(f(x,f(x,y)),x),y),f(y,z)))) = y # label(630A).
+f(f(x,y),f(f(f(y,y),x),f(f(f(x,f(x,f(x,y))),y),f(y,z)))) = y # label(630B).
+f(f(x,y),f(f(f(y,y),x),f(f(f(x,y),y),f(y,z)))) = y # label(630C).
+f(f(x,y),f(f(f(y,y),x),f(f(y,f(x,y)),f(y,z)))) = y # label(630).
+f(f(x,y),f(f(f(y,y),z),f(f(u,f(u,u)),f(f(z,f(f(y,x),z)),y)))) = y # label(632).
+f(x,f(f(y,x),f(f(f(y,f(x,y)),f(y,x)),f(z,f(y,x))))) = f(y,x) # label(633).
+f(f(f(x,y),f(x,y)),f(x,f(f(x,y),f(x,x)))) = f(f(x,y),f(f(x,y),f(x,y))) # label(637A).
+f(f(f(x,y),f(x,y)),f(x,x)) = f(f(x,y),f(f(x,y),f(x,y))) # label(637).
+f(f(x,f(y,x)),f(x,f(f(f(x,f(y,x)),f(f(y,x),f(x,f(y,x)))),f(f(f(y,x),f(x,f(y,x))),z)))) = f(f(y,x),f(x,f(y,x))) # label(640A).
+f(f(x,f(y,x)),f(x,f(f(f(x,f(y,x)),x),f(f(f(y,x),f(x,f(y,x))),z)))) = f(f(y,x),f(x,f(y,x))) # label(640B).
+f(f(x,f(y,x)),f(x,f(f(x,f(x,f(y,x))),f(f(f(y,x),f(x,f(y,x))),z)))) = f(f(y,x),f(x,f(y,x))) # label(640C).
+f(f(x,f(y,x)),f(x,f(f(y,x),f(f(f(y,x),f(x,f(y,x))),z)))) = f(f(y,x),f(x,f(y,x))) # label(640D).
+f(f(x,f(y,x)),f(x,f(f(y,x),f(x,z)))) = f(f(y,x),f(x,f(y,x))) # label(640E).
+f(f(x,f(y,x)),f(x,f(f(y,x),f(x,z)))) = x # label(640).
+x = f(f(x,f(x,y)),f(y,x)) # label(652A).
+f(f(x,f(x,y)),f(y,x)) = x # label(652).
+f(f(x,f(f(f(y,f(y,y)),f(f(z,x),f(x,u))),f(x,x))),f(f(f(y,f(y,y)),f(f(z,x),f(x,u))),f(f(y,f(y,y)),f(f(z,x),f(x,u))))) = f(f(f(f(y,f(y,y)),f(f(z,x),f(x,u))),f(x,x)),f(f(f(f(y,f(y,y)),f(f(z,x),f(x,u))),f(x,x)),f(f(f(y,f(y,y)),f(f(z,x),f(x,u))),f(x,x)))) # label(658A).
+f(f(x,x),f(f(f(y,f(y,y)),f(f(z,x),f(x,u))),f(f(y,f(y,y)),f(f(z,x),f(x,u))))) = f(f(f(f(y,f(y,y)),f(f(z,x),f(x,u))),f(x,x)),f(f(f(f(y,f(y,y)),f(f(z,x),f(x,u))),f(x,x)),f(f(f(y,f(y,y)),f(f(z,x),f(x,u))),f(x,x)))) # label(658B).
+f(f(x,x),f(f(z,x),f(x,u))) = f(f(f(f(y,f(y,y)),f(f(z,x),f(x,u))),f(x,x)),f(f(f(f(y,f(y,y)),f(f(z,x),f(x,u))),f(x,x)),f(f(f(y,f(y,y)),f(f(z,x),f(x,u))),f(x,x)))) # label(658C).
+f(f(x,x),f(f(z,x),f(x,u))) = f(x,f(f(f(f(y,f(y,y)),f(f(z,x),f(x,u))),f(x,x)),f(f(f(y,f(y,y)),f(f(z,x),f(x,u))),f(x,x)))) # label(658D).
+f(f(x,x),f(f(z,x),f(x,u))) = f(x,f(x,f(f(f(y,f(y,y)),f(f(z,x),f(x,u))),f(x,x)))) # label(658E).
+f(f(x,x),f(f(y,x),f(x,z))) = f(x,f(x,x)) # label(658).
+f(f(x,x),f(f(y,x),f(z,f(z,z)))) = f(x,f(x,x)) # label(660).
+f(f(x,y),f(x,f(f(z,x),f(f(f(x,y),f(x,y)),x)))) = f(f(z,x),f(f(f(x,y),f(x,y)),x)) # label(667A).
+f(f(x,y),f(x,f(f(z,x),f(x,y)))) = f(f(z,x),f(f(f(x,y),f(x,y)),x)) # label(667B).
+f(f(x,y),f(x,f(f(z,x),f(x,y)))) = f(f(z,x),f(x,y)) # label(667).
+f(f(x,f(y,x)),f(x,f(f(x,y),f(x,y)))) = x # label(673A).
+f(f(x,f(y,x)),f(x,y)) = x # label(673).
+f(x,f(f(y,x),f(y,f(z,f(y,x))))) = f(y,x) # label(676).
+f(f(x,y),f(x,f(y,x))) = x # label(677).
+f(f(f(x,f(x,x)),f(y,z)),y) = f(z,y) # label(678).
+f(f(f(x,f(x,x)),y),z) = f(z,f(y,y)) # label(679).
+f(f(f(x,f(x,x)),f(f(y,f(y,y)),f(z,u))),f(u,z)) = f(f(y,f(y,y)),f(z,u)) # label(682A).
+f(f(z,u),f(u,z)) = f(f(y,f(y,y)),f(z,u)) # label(682B).
+f(f(x,f(x,x)),f(y,z)) = f(f(y,z),f(z,y)) # label(682).
+f(f(x,f(y,z)),f(f(y,z),f(z,y))) = f(z,y) # label(686).
+f(x,f(f(y,z),f(z,x))) = f(z,x) # label(689).
+f(x,f(y,f(f(z,y),x))) = f(f(z,y),x) # label(690).
+f(x,f(f(y,z),f(y,x))) = f(y,x) # label(691).
+f(f(x,y),f(f(z,f(y,f(y,x))),y)) = f(f(y,f(y,x)),f(x,y)) # label(695A).
+f(f(x,y),f(f(z,f(y,f(y,x))),y)) = y # label(695).
+f(x,f(f(y,z),f(x,z))) = f(z,x) # label(696).
+f(x,f(f(y,x),f(z,y))) = f(y,x) # label(697).
+f(x,y) = f(f(f(x,z),f(x,y)),y) # label(701A).
+f(f(f(x,y),f(x,z)),z) = f(x,z) # label(701).
+f(x,f(f(y,x),f(y,z))) = f(y,x) # label(702).
+f(x,f(y,f(x,f(z,y)))) = f(f(z,y),x) # label(703A).
+f(f(x,y),z) = f(z,f(y,f(z,f(x,y)))) # label(703).
+f(x,y) = f(f(f(z,x),f(y,x)),y) # label(704A).
+f(f(f(x,y),f(z,y)),z) = f(y,z) # label(704).
+f(x,f(f(x,y),f(z,y))) = f(y,x) # label(705).
+f(f(f(x,y),f(z,y)),f(f(u,z),f(y,z))) = f(z,f(f(x,y),f(z,y))) # label(706A).
+f(f(f(x,y),f(z,y)),f(f(u,z),f(y,z))) = f(y,z) # label(706).
+f(x,f(f(f(y,z),x),z)) = f(f(y,z),x) # label(708).
+f(f(x,f(y,x)),f(x,f(f(x,y),z))) = f(f(x,y),f(x,f(y,x))) # label(718A).
+f(f(x,f(y,x)),f(x,f(f(x,y),z))) = x # label(718).
+f(f(x,f(y,f(x,z))),y) = f(f(x,z),y) # label(722).
+f(f(f(x,f(y,z)),f(f(y,f(y,z)),f(y,z))),f(y,f(y,z))) = y # label(723A).
+f(f(f(x,f(y,z)),f(f(y,z),f(y,f(y,z)))),f(y,f(y,z))) = y # label(723B).
+f(f(f(x,f(y,z)),y),f(y,f(y,z))) = y # label(723).
+f(f(f(x,f(y,z)),f(f(z,f(z,y)),f(y,z))),f(z,f(z,y))) = z # label(724A).
+f(f(f(x,f(y,z)),z),f(z,f(z,y))) = z # label(724).
+f(f(f(x,y),f(z,y)),x) = f(y,x) # label(725).
+f(x,f(f(x,f(y,z)),z)) = f(f(y,z),x) # label(726).
+f(f(f(x,f(y,z)),z),x) = f(f(y,z),x) # label(728).
+f(x,f(y,f(x,f(z,y)))) = f(x,f(z,y)) # label(731).
+f(f(f(f(x,f(x,x)),y),z),u) = f(u,f(f(y,y),f(u,f(z,f(y,y))))) # label(732A).
+f(f(f(f(x,f(x,x)),y),z),u) = f(u,f(z,f(y,y))) # label(732).
+f(x,f(y,z)) = f(f(z,f(x,f(y,z))),x) # label(736A).
+f(f(x,f(y,f(z,x))),y) = f(y,f(z,x)) # label(736).
+f(x,y) = f(f(f(y,x),f(x,y)),f(z,f(y,x))) # label(740A).
+f(f(f(x,y),f(y,x)),f(z,f(x,y))) = f(y,x) # label(740).
+f(f(f(x,y),f(y,x)),f(z,f(y,x))) = f(x,y) # label(741).
+f(x,f(f(f(y,z),x),f(u,f(z,y)))) = f(f(f(f(z,y),f(y,z)),f(u,f(z,y))),x) # label(743A).
+f(x,f(f(f(y,z),x),f(u,f(z,y)))) = f(f(y,z),x) # label(743).
+f(f(f(x,y),f(f(z,u),y)),f(f(f(u,z),f(z,u)),f(y,f(z,u)))) = f(y,f(z,u)) # label(745A).
+f(f(f(x,y),f(f(z,u),y)),f(u,z)) = f(y,f(z,u)) # label(745).
+f(f(f(f(x,f(x,x)),y),f(y,y)),f(f(z,f(z,z)),f(f(u,f(y,y)),f(f(y,y),v)))) = f(y,y) # label(748A).
+f(x,f(f(y,f(y,y)),f(f(z,f(x,x)),f(f(x,x),u)))) = f(x,x) # label(748).
+f(f(x,y),f(f(f(z,f(z,z)),f(f(u,f(f(y,x),u)),y)),y)) = f(f(x,y),f(f(f(y,y),u),f(f(z,f(z,z)),f(f(u,f(f(y,x),u)),y)))) # label(759A).
+f(f(x,y),f(f(u,f(f(y,x),u)),y)) = f(f(x,y),f(f(f(y,y),u),f(f(z,f(z,z)),f(f(u,f(f(y,x),u)),y)))) # label(759B).
+f(f(x,y),f(f(z,f(f(y,x),z)),y)) = y # label(759).
+f(f(f(f(x,f(x,x)),f(f(y,f(f(z,u),y)),z)),z),f(u,z)) = f(f(u,z),f(f(f(z,z),y),f(f(x,f(x,x)),f(f(y,f(f(z,u),y)),z)))) # label(760A).
+f(f(f(y,f(f(z,u),y)),z),f(u,z)) = f(f(u,z),f(f(f(z,z),y),f(f(x,f(x,x)),f(f(y,f(f(z,u),y)),z)))) # label(760B).
+f(f(f(x,f(f(y,z),x)),y),f(z,y)) = y # label(760).
+f(f(f(x,x),f(x,y)),f(f(z,f(x,z)),f(x,y))) = f(x,y) # label(761A).
+f(x,f(f(y,f(x,y)),f(x,z))) = f(x,z) # label(761).
+f(f(x,y),f(f(z,f(f(u,f(f(y,x),u)),y)),y)) = f(f(f(u,f(f(y,x),u)),y),f(x,y)) # label(763A).
+f(f(x,y),f(f(z,f(f(u,f(f(y,x),u)),y)),y)) = y # label(763).
+f(f(x,x),f(f(f(f(y,x),f(z,f(z,z))),f(x,f(x,x))),f(f(x,x),u))) = f(f(x,x),u) # label(765A).
+f(f(x,x),f(f(y,x),f(f(x,x),z))) = f(f(x,x),z) # label(765).
+f(x,f(f(y,f(x,x)),f(f(f(x,x),f(x,x)),z))) = f(f(f(x,x),f(x,x)),z) # label(772A).
+f(x,f(f(y,f(x,x)),f(x,z))) = f(f(f(x,x),f(x,x)),z) # label(772B).
+f(x,f(f(y,f(x,x)),f(x,z))) = f(x,z) # label(772).
+f(f(x,x),f(f(f(x,x),y),f(z,x))) = f(f(x,x),y) # label(774).
+f(x,f(f(f(x,x),y),f(x,z))) = f(x,z) # label(775).
+f(x,f(f(f(x,x),y),f(z,x))) = f(x,f(x,f(z,x))) # label(776A).
+f(x,f(f(f(x,x),y),f(z,x))) = f(z,x) # label(776).
+f(x,y) = f(f(f(f(y,y),z),f(x,y)),y) # label(779A).
+f(f(f(f(x,x),y),f(z,x)),x) = f(z,x) # label(779).
+f(f(x,y),f(f(f(y,y),f(f(f(y,y),z),f(x,y))),f(f(y,f(f(f(f(y,y),z),f(x,y)),y)),f(y,u)))) = y # label(781A).
+f(f(x,y),f(f(f(y,y),z),f(f(y,f(f(f(f(y,y),z),f(x,y)),y)),f(y,u)))) = y # label(781B).
+f(f(x,y),f(f(f(y,y),z),f(f(y,f(x,y)),f(y,u)))) = y # label(781).
+f(f(x,x),f(f(f(x,x),y),f(f(z,f(z,z)),f(x,u)))) = x # label(783).
+x = f(f(y,f(f(z,f(z,z)),f(x,u))),f(x,x)) # label(789A).
+f(f(x,f(f(y,f(y,y)),f(z,u))),f(z,z)) = z # label(789).
+f(f(x,f(y,y)),f(f(z,f(f(y,y),f(f(y,y),y))),f(z,f(f(y,y),f(f(y,y),y))))) = f(z,f(f(y,y),f(f(y,y),y))) # label(791A).
+f(f(x,f(y,y)),f(f(z,f(f(y,y),f(y,f(y,y)))),f(z,f(f(y,y),f(f(y,y),y))))) = f(z,f(f(y,y),f(f(y,y),y))) # label(791B).
+f(f(x,f(y,y)),f(f(z,y),f(z,f(f(y,y),f(f(y,y),y))))) = f(z,f(f(y,y),f(f(y,y),y))) # label(791C).
+f(f(x,f(y,y)),f(f(z,y),f(z,f(f(y,y),f(y,f(y,y)))))) = f(z,f(f(y,y),f(f(y,y),y))) # label(791D).
+f(f(x,f(y,y)),f(f(z,y),f(z,y))) = f(z,f(f(y,y),f(f(y,y),y))) # label(791E).
+f(f(x,f(y,y)),f(f(z,y),f(z,y))) = f(z,f(f(y,y),f(y,f(y,y)))) # label(791F).
+f(f(x,f(y,y)),f(f(z,y),f(z,y))) = f(z,y) # label(791).
+f(f(x,y),f(f(z,f(y,y)),f(f(z,f(y,y)),f(f(x,y),f(x,y))))) = f(z,f(y,y)) # label(792A).
+f(f(x,y),f(f(z,f(y,y)),f(x,y))) = f(z,f(y,y)) # label(792).
+f(x,y) = f(f(f(x,y),f(x,y)),f(z,f(y,y))) # label(794A).
+f(f(f(x,y),f(x,y)),f(z,f(y,y))) = f(x,y) # label(794).
+f(x,f(f(f(f(y,y),z),x),f(u,y))) = f(f(f(y,y),z),x) # label(796).
+f(f(f(x,x),f(x,f(f(y,f(y,y)),f(f(z,f(x,x)),f(f(x,x),u))))),f(v,f(f(f(y,f(y,y)),f(f(z,f(x,x)),f(f(x,x),u))),f(f(y,f(y,y)),f(f(z,f(x,x)),f(f(x,x),u)))))) = f(x,f(f(y,f(y,y)),f(f(z,f(x,x)),f(f(x,x),u)))) # label(797A).
+f(f(f(x,x),f(x,x)),f(v,f(f(f(y,f(y,y)),f(f(z,f(x,x)),f(f(x,x),u))),f(f(y,f(y,y)),f(f(z,f(x,x)),f(f(x,x),u)))))) = f(x,f(f(y,f(y,y)),f(f(z,f(x,x)),f(f(x,x),u)))) # label(797B).
+f(x,f(v,f(f(f(y,f(y,y)),f(f(z,f(x,x)),f(f(x,x),u))),f(f(y,f(y,y)),f(f(z,f(x,x)),f(f(x,x),u)))))) = f(x,f(f(y,f(y,y)),f(f(z,f(x,x)),f(f(x,x),u)))) # label(797C).
+f(x,f(v,f(f(z,f(x,x)),f(f(x,x),u)))) = f(x,f(f(y,f(y,y)),f(f(z,f(x,x)),f(f(x,x),u)))) # label(797D).
+f(x,f(y,f(f(z,f(x,x)),f(f(x,x),u)))) = f(x,x) # label(797).
+f(f(x,f(y,x)),f(x,f(z,f(y,y)))) = x # label(798).
+f(x,x) = f(f(f(x,f(y,x)),f(y,y)),x) # label(800A).
+f(f(f(x,f(y,x)),f(y,y)),x) = f(x,x) # label(800).
+f(f(x,x),f(f(y,f(y,y)),f(f(x,f(z,x)),f(z,z)))) = f(f(x,f(z,x)),f(z,z)) # label(801).
+f(f(x,x),f(y,f(f(f(f(f(z,f(z,z)),x),f(x,x)),u),f(f(f(x,x),f(x,x)),v)))) = f(f(x,x),f(x,x)) # label(808A).
+f(f(x,x),f(y,f(f(x,u),f(f(f(x,x),f(x,x)),v)))) = f(f(x,x),f(x,x)) # label(808B).
+f(f(x,x),f(y,f(f(x,u),f(x,v)))) = f(f(x,x),f(x,x)) # label(808C).
+f(f(x,x),f(y,f(f(x,z),f(x,u)))) = x # label(808).
+f(x,f(f(f(y,y),z),f(f(y,u),x))) = f(f(y,u),x) # label(817).
+f(x,x) = f(f(y,f(f(z,f(f(x,f(y,y)),z)),x)),x) # label(822A).
+f(f(x,f(f(y,f(f(z,f(x,x)),y)),z)),z) = f(z,z) # label(822).
+f(x,f(y,y)) = f(f(f(z,f(f(y,f(x,x)),z)),y),x) # label(823A).
+f(f(f(x,f(f(y,f(z,z)),x)),y),z) = f(z,f(y,y)) # label(823).
+f(f(f(f(f(x,x),f(f(x,x),y)),f(x,x)),f(z,f(f(x,x),y))),x) = f(x,f(f(z,f(f(x,x),y)),f(z,f(f(x,x),y)))) # label(824A).
+f(f(f(f(x,x),f(f(x,x),f(f(x,x),y))),f(z,f(f(x,x),y))),x) = f(x,f(f(z,f(f(x,x),y)),f(z,f(f(x,x),y)))) # label(824B).
+f(f(f(f(x,x),y),f(z,f(f(x,x),y))),x) = f(x,f(f(z,f(f(x,x),y)),f(z,f(f(x,x),y)))) # label(824).
+f(f(f(f(f(x,x),f(f(x,x),y)),f(x,x)),f(z,f(y,f(x,x)))),x) = f(x,f(f(z,f(y,f(x,x))),f(z,f(y,f(x,x))))) # label(825A).
+f(f(f(f(x,x),f(f(x,x),f(f(x,x),y))),f(z,f(y,f(x,x)))),x) = f(x,f(f(z,f(y,f(x,x))),f(z,f(y,f(x,x))))) # label(825B).
+f(f(f(f(x,x),y),f(z,f(y,f(x,x)))),x) = f(x,f(f(z,f(y,f(x,x))),f(z,f(y,f(x,x))))) # label(825).
+f(f(f(x,f(f(y,f(z,z)),x)),f(x,f(y,f(z,z)))),z) = f(z,f(f(x,f(y,f(z,z))),f(x,f(y,f(z,z))))) # label(826A).
+f(x,z) = f(z,f(f(x,f(y,f(z,z))),f(x,f(y,f(z,z))))) # label(826B).
+f(x,f(f(y,f(z,f(x,x))),f(y,f(z,f(x,x))))) = f(y,x) # label(826).
+f(f(f(f(x,x),y),f(z,f(y,f(x,x)))),x) = f(z,x) # label(827).
+f(f(f(f(x,x),y),f(z,f(f(f(x,x),f(f(x,x),y)),f(x,x)))),x) = f(z,x) # label(828A).
+f(f(f(f(x,x),y),f(z,f(f(x,x),f(f(x,x),f(f(x,x),y))))),x) = f(z,x) # label(828B).
+f(f(f(f(x,x),y),f(z,f(f(x,x),y))),x) = f(z,x) # label(828C).
+f(x,f(f(y,f(f(x,x),z)),f(y,f(f(x,x),z)))) = f(y,x) # label(828).
+f(f(f(f(x,x),y),f(z,f(y,f(x,x)))),x) = f(f(f(u,z),f(f(y,f(x,x)),z)),x) # label(829A).
+f(z,x) = f(f(f(u,z),f(f(y,f(x,x)),z)),x) # label(829B).
+f(f(f(x,y),f(f(z,f(u,u)),y)),u) = f(y,u) # label(829).
+f(f(f(f(x,x),y),f(z,f(f(x,x),y))),x) = f(z,x) # label(833).
+f(f(f(x,y),f(z,y)),f(f(z,u),f(z,v))) = f(y,f(f(z,u),f(z,v))) # label(834).
+f(f(f(f(x,x),y),f(z,f(f(x,x),y))),x) = f(f(f(z,u),f(z,f(f(x,x),y))),x) # label(836A).
+f(z,x) = f(f(f(z,u),f(z,f(f(x,x),y))),x) # label(836B).
+f(f(f(x,y),f(x,f(f(z,z),u))),z) = f(x,z) # label(836).
+f(x,y) = f(y,f(f(x,z),f(x,f(f(y,y),u)))) # label(838A).
+f(x,f(f(y,z),f(y,f(f(x,x),u)))) = f(y,x) # label(838).
+f(f(f(x,y),f(z,y)),f(f(z,f(f(y,y),u)),f(z,v))) = f(y,f(f(z,v),f(z,f(f(y,y),u)))) # label(839A).
+f(y,f(f(z,f(f(y,y),u)),f(z,v))) = f(y,f(f(z,v),f(z,f(f(y,y),u)))) # label(839B).
+f(x,f(f(y,f(f(x,x),z)),f(y,u))) = f(y,x) # label(839).
+f(f(x,x),f(f(y,f(z,x)),f(y,u))) = f(y,f(x,x)) # label(846).
+f(f(x,x),f(f(y,z),f(z,f(u,x)))) = f(z,f(x,x)) # label(848).
+f(f(x,x),f(f(y,z),f(z,f(u,x)))) = f(f(x,x),z) # label(850).
+f(f(f(x,y),f(x,y)),f(f(z,u),f(x,u))) = f(f(f(x,y),f(x,y)),u) # label(851).
+f(f(x,x),f(f(y,f(y,y)),f(f(z,x),u))) = f(f(x,x),u) # label(852).
+f(f(x,x),f(f(y,f(y,y)),f(f(x,z),u))) = f(f(x,x),u) # label(853).
+f(f(x,x),f(z,z)) = f(f(x,f(z,x)),f(z,z)) # label(855A).
+f(f(x,f(y,x)),f(y,y)) = f(f(x,x),f(y,y)) # label(855).
+f(f(f(x,y),f(f(x,z),f(x,y))),f(f(x,z),f(x,z))) = f(y,f(f(x,z),f(x,z))) # label(870A).
+f(f(f(x,y),f(x,y)),f(f(x,z),f(x,z))) = f(y,f(f(x,z),f(x,z))) # label(870B).
+f(f(f(x,y),f(x,y)),z) = f(y,f(f(x,z),f(x,z))) # label(870).
+f(x,f(f(y,z),f(y,z))) = f(z,f(f(y,x),f(y,x))) # label(872).
+$F # label(873).
+f(X,f(Y,f(X,f(Z,Z)))) != f(X,f(Z,f(X,f(Y,Y)))) # label(7).
+f(X,f(Z,f(X,f(Y,Y)))) != f(X,f(Y,f(X,f(Z,Z)))) # label(498).
+f(x,f(y,f(f(y,z),x))) = f(f(y,z),x) # label(692).
+f(f(f(x,y),f(y,f(z,u))),f(z,f(y,f(z,u)))) = f(f(z,u),f(f(x,y),f(y,f(z,u)))) # label(729A).
+f(f(f(x,y),f(y,f(z,u))),f(z,f(y,f(z,u)))) = f(y,f(z,u)) # label(729).
+f(f(x,f(f(y,f(y,y)),z)),u) = f(u,f(x,f(z,z))) # label(749).
+f(f(f(x,x),f(x,f(y,z))),f(y,f(x,f(y,z)))) = f(x,f(y,z)) # label(754A).
+f(x,f(y,f(x,f(y,z)))) = f(x,f(y,z)) # label(754).
+f(x,f(f(y,f(y,x)),f(x,z))) = f(x,z) # label(766).
+f(f(f(f(x,x),y),f(z,f(y,f(x,x)))),x) = f(f(f(f(y,f(x,x)),z),f(u,z)),x) # label(830A).
+f(z,x) = f(f(f(f(y,f(x,x)),z),f(u,z)),x) # label(830B).
+f(f(f(f(x,f(y,y)),z),f(u,z)),y) = f(z,y) # label(830).
+f(f(f(x,y),f(z,y)),f(f(x,u),f(x,v))) = f(y,f(f(x,u),f(x,v))) # label(835).
+f(f(f(x,y),f(x,f(z,u))),f(z,z)) = f(x,f(z,z)) # label(837).
+f(f(x,x),f(f(y,f(y,y)),f(f(z,x),f(u,v)))) = f(f(x,x),f(u,f(f(z,x),f(u,v)))) # label(854A).
+f(f(x,x),f(u,v)) = f(f(x,x),f(u,f(f(z,x),f(u,v)))) # label(854B).
+f(f(x,x),f(y,f(f(z,x),f(y,u)))) = f(f(x,x),f(y,u)) # label(854).
+f(f(x,f(f(f(y,f(y,y)),z),x)),z) = f(f(x,x),f(f(f(y,f(y,y)),z),f(f(y,f(y,y)),z))) # label(856A).
+f(f(x,f(f(f(y,f(y,y)),z),x)),z) = f(f(x,x),z) # label(856).
+f(x,f(f(y,z),f(y,u))) = f(f(f(y,z),f(y,u)),f(f(y,x),f(v,x))) # label(917A).
+f(f(f(x,y),f(x,z)),f(f(x,u),f(v,u))) = f(u,f(f(x,y),f(x,z))) # label(917).
+f(f(f(x,y),f(x,z)),f(f(x,u),f(v,u))) = f(f(f(x,y),f(x,z)),u) # label(918).
+f(f(f(x,y),f(x,f(f(x,z),u))),z) = f(x,f(f(x,z),f(x,z))) # label(921A).
+f(f(f(x,y),f(x,f(f(x,z),u))),z) = f(z,x) # label(921).
+f(f(x,f(x,y)),f(y,f(f(y,x),z))) = f(f(x,x),f(y,f(f(y,x),z))) # label(922).
+f(x,f(f(y,y),f(x,f(f(x,y),z)))) = f(x,f(f(x,y),z)) # label(924).
+f(x,f(f(y,y),f(x,z))) = f(x,f(f(x,y),f(x,z))) # label(926).
+f(x,f(f(y,y),f(x,z))) = f(f(f(x,y),f(x,z)),x) # label(928A).
+f(f(f(x,y),f(x,z)),x) = f(x,f(f(y,y),f(x,z))) # label(928).
+f(x,f(f(x,y),f(z,z))) = f(x,f(f(x,z),f(x,y))) # label(929).
+f(x,f(f(x,y),f(f(f(z,f(z,z)),u),f(f(z,f(z,z)),u)))) = f(x,f(f(x,y),f(x,f(u,u)))) # label(930A).
+f(x,f(f(x,y),u)) = f(x,f(f(x,y),f(x,f(u,u)))) # label(930B).
+f(x,f(f(x,y),f(x,f(z,z)))) = f(x,f(f(x,y),z)) # label(930).
+f(f(f(x,f(x,x)),f(y,f(f(y,z),u))),y) = f(f(f(y,z),f(y,f(u,u))),y) # label(931A).
+f(f(f(y,z),u),y) = f(f(f(y,z),f(y,f(u,u))),y) # label(931B).
+f(f(f(x,y),z),x) = f(x,f(f(y,y),f(x,f(z,z)))) # label(931).
+f(f(x,f(y,f(z,z))),y) = f(y,f(f(f(f(u,f(u,u)),z),f(f(u,f(u,u)),z)),f(y,f(x,x)))) # label(932A).
+f(f(x,f(y,f(z,z))),y) = f(y,f(z,f(y,f(x,x)))) # label(932).
+f(f(f(x,f(x,x)),f(y,f(z,f(y,f(u,u))))),y) = f(f(u,f(y,f(z,z))),y) # label(933A).
+f(f(z,f(y,f(u,u))),y) = f(f(u,f(y,f(z,z))),y) # label(933B).
+f(y,f(u,f(y,f(z,z)))) = f(f(u,f(y,f(z,z))),y) # label(933C).
+f(x,f(y,f(x,f(z,z)))) = f(x,f(z,f(x,f(y,y)))) # label(933).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 f(y,x) = f(x,y) # answer(comm) # label(non_clause) # label(goal).  [goal].
+2 f(y,f(y,y)) = f(x,f(x,x)) # answer(one) # label(non_clause) # label(goal).  [goal].
+3 f(f(x,x),f(x,y)) = x # answer(absorb) # label(non_clause) # label(goal).  [goal].
+4 f(x,f(x,f(x,y))) = f(x,y) # answer(oml) # label(non_clause) # label(goal).  [goal].
+5 f(z,f(f(y,x),f(y,x))) = f(x,f(f(y,z),f(y,z))) # answer(assoc) # label(non_clause) # label(goal).  [goal].
+6 f(x,f(z,f(x,f(y,y)))) = f(x,f(y,f(x,f(z,z)))) # answer(mod) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+f(f(x,y),f(f(f(y,y),z),f(f(f(f(f(y,x),z),z),y),f(y,u)))) = y # label(MOL_sax).  [assumption].
+f(c2,c1) != f(c1,c2) # answer(comm).  [deny(1)].
+f(c4,f(c4,c4)) != f(c3,f(c3,c3)) # answer(one).  [deny(2)].
+f(f(c5,c5),f(c5,c6)) != c5 # answer(absorb).  [deny(3)].
+f(c7,f(c7,f(c7,c8))) != f(c7,c8) # answer(oml).  [deny(4)].
+f(c9,f(f(c10,c11),f(c10,c11))) != f(c11,f(f(c10,c9),f(c10,c9))) # answer(assoc).  [deny(5)].
+f(c12,f(c13,f(c12,f(c14,c14)))) != f(c12,f(c14,f(c12,f(c13,c13)))) # answer(mod).  [deny(6)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+% 486 hints input.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Auto_denials:
+  % assign(max_proofs, 6).  % (Horn set with more than one neg. clause)
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ = ]).
+Function symbol precedence:  function_order([ c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, f ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(paramodulation).  % (positive equality literals)
+    % set(paramodulation) -> set(back_demod).
+
+Auto_process settings:  (no changes).
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+7 f(f(x,y),f(f(f(y,y),z),f(f(f(f(f(y,x),z),z),y),f(y,u)))) = y # label(MOL_sax) # label(492).  [assumption].
+8 f(c2,c1) != f(c1,c2) # answer(comm).  [deny(1)].
+9 f(c4,f(c4,c4)) != f(c3,f(c3,c3)) # answer(one).  [deny(2)].
+10 f(f(c5,c5),f(c5,c6)) != c5 # answer(absorb).  [deny(3)].
+11 f(c7,f(c7,f(c7,c8))) != f(c7,c8) # answer(oml).  [deny(4)].
+12 f(c9,f(f(c10,c11),f(c10,c11))) != f(c11,f(f(c10,c9),f(c10,c9))) # answer(assoc).  [deny(5)].
+14 f(c12,f(c14,f(c12,f(c13,c13)))) != f(c12,f(c13,f(c12,f(c14,c14)))) # answer(mod).  [copy(13),flip(a)].
+end_of_list.
+
+formulas(demodulators).
+7 f(f(x,y),f(f(f(y,y),z),f(f(f(f(f(y,x),z),z),y),f(y,u)))) = y # label(MOL_sax) # label(492).  [assumption].
+end_of_list.
+
+% 486 hints processed (53 are redundant).
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.05 seconds.
+
+given #1 (I,wt=25): 7 f(f(x,y),f(f(f(y,y),z),f(f(f(f(f(y,x),z),z),y),f(y,u)))) = y # label(MOL_sax) # label(492).  [assumption].
+
+given #2 (I,wt=7): 8 f(c2,c1) != f(c1,c2) # answer(comm).  [deny(1)].
+
+given #3 (I,wt=11): 9 f(c4,f(c4,c4)) != f(c3,f(c3,c3)) # answer(one).  [deny(2)].
+
+given #4 (I,wt=9): 10 f(f(c5,c5),f(c5,c6)) != c5 # answer(absorb).  [deny(3)].
+
+given #5 (I,wt=11): 11 f(c7,f(c7,f(c7,c8))) != f(c7,c8) # answer(oml).  [deny(4)].
+
+given #6 (I,wt=19): 12 f(c9,f(f(c10,c11),f(c10,c11))) != f(c11,f(f(c10,c9),f(c10,c9))) # answer(assoc).  [deny(5)].
+
+given #7 (I,wt=19): 14 f(c12,f(c14,f(c12,f(c13,c13)))) != f(c12,f(c13,f(c12,f(c14,c14)))) # answer(mod).  [copy(13),flip(a)].
+
+given #8 (H,wt=35): 15 f(f(x,f(y,z)),f(f(f(f(y,z),f(y,z)),u),f(f(f(f(f(f(y,z),x),u),u),f(y,z)),z))) = f(y,z) # label(499).  [para(7(a,1),7(a,1,2,2,2))].
+
+given #9 (H,wt=41): 16 f(f(x,y),f(f(f(y,y),z),f(f(f(f(f(y,x),z),z),y),f(f(f(y,y),u),f(f(f(f(f(y,w),u),u),y),f(y,v5)))))) = y # label(500).  [para(7(a,1),15(a,1,1,2)),rewrite([7(12),7(12),7(14),7(17),7(30)])].
+
+given #10 (H,wt=13): 17 f(f(x,y),f(f(f(y,y),z),y)) = y # label(501).  [para(7(a,1),16(a,1,2,2))].
+
+given #11 (H,wt=9): 18 f(f(x,y),f(y,y)) = y # label(502).  [para(7(a,1),17(a,1,2,1))].
+
+given #12 (H,wt=11): 24 f(f(x,f(y,y)),y) = f(y,y) # label(508).  [para(18(a,1),15(a,1,2,2,1)),rewrite([18(5),18(5)])].
+
+given #13 (H,wt=11): 25 f(f(f(x,x),y),x) = f(x,x) # label(510B).  [para(17(a,1),18(a,1,1)),rewrite([17(7)]),flip(a)].
+
+given #14 (H,wt=9): 28 f(f(x,y),f(x,x)) = x # label(513).  [para(18(a,1),25(a,1,1,1)),rewrite([18(6)])].
+
+given #15 (H,wt=13): 30 f(x,f(f(y,x),f(y,x))) = f(y,x) # label(515).  [para(7(a,1),28(a,1,1))].
+
+given #16 (H,wt=13): 31 f(x,f(f(x,y),f(x,y))) = f(x,y) # label(516).  [para(28(a,1),28(a,1,1))].
+
+given #17 (H,wt=15): 26 f(f(x,y),f(y,f(f(y,y),f(y,z)))) = y # label(511).  [back_rewrite(19),rewrite([24(7)])].
+
+given #18 (H,wt=21): 27 f(f(x,x),f(f(f(x,x),x),f(f(f(x,x),x),f(x,y)))) = x # label(512).  [para(25(a,1),7(a,1,2,2,1,1))].
+
+given #19 (H,wt=21): 34 f(f(x,f(f(x,x),f(x,y))),f(x,f(f(x,x),f(x,y)))) = x # label(519A).  [para(26(a,1),25(a,1)),flip(a)].
+
+given #20 (H,wt=13): 36 f(x,f(f(x,x),f(x,y))) = f(x,x) # label(521B).  [para(34(a,1),18(a,1,1)),rewrite([34(9)]),flip(a)].
+
+given #21 (H,wt=13): 38 f(f(x,x),f(x,f(f(x,x),y))) = x # label(523).  [para(18(a,1),36(a,1,2,1)),rewrite([28(8)])].
+
+given #22 (H,wt=13): 40 f(f(x,x),f(x,f(y,f(x,x)))) = x # label(525).  [para(30(a,1),38(a,1,2,2))].
+
+given #23 (H,wt=21): 35 f(f(x,x),f(f(f(x,x),x),f(f(f(x,x),x),f(y,x)))) = x # label(520).  [para(30(a,1),27(a,1,2,2,2))].
+
+given #24 (H,wt=21): 37 f(f(x,y),f(f(f(x,y),f(x,y)),y)) = f(f(x,y),f(x,y)) # label(522).  [para(7(a,1),36(a,1,2,2))].
+
+given #25 (H,wt=21): 39 f(f(x,y),f(f(f(x,y),f(x,y)),x)) = f(f(x,y),f(x,y)) # label(524).  [para(28(a,1),36(a,1,2,2))].
+
+given #26 (H,wt=23): 41 f(x,f(f(x,f(x,x)),f(f(x,f(x,x)),f(y,f(x,x))))) = f(x,x) # label(526).  [para(18(a,1),35(a,1,1)),rewrite([28(3),28(5)])].
+
+given #27 (H,wt=23): 42 f(f(f(x,f(x,x)),f(f(x,f(x,x)),f(y,f(x,x)))),x) = f(x,x) # label(527).  [para(41(a,1),30(a,1,2,1)),rewrite([41(18),28(11),41(18)])].
+
+given #28 (H,wt=25): 21 f(f(x,y),f(f(f(y,y),f(x,x)),f(f(f(x,f(x,x)),y),f(y,z)))) = y # label(505).  [para(18(a,1),7(a,1,2,2,1,1,1))].
+
+given #29 (H,wt=19): 44 f(f(x,x),f(f(x,f(x,x)),f(f(x,x),f(x,y)))) = x # label(529).  [para(42(a,1),21(a,1,2,2,1)),rewrite([24(3),30(8)])].
+
+given #30 (H,wt=19): 45 f(x,f(f(f(x,x),x),f(x,f(f(x,x),y)))) = f(x,x) # label(530).  [para(18(a,1),44(a,1,1)),rewrite([28(4),28(5)])].
+
+given #31 (H,wt=25): 32 f(f(x,y),f(f(f(y,y),z),f(f(f(f(f(y,x),z),z),y),f(u,y)))) = y # label(517).  [para(30(a,1),7(a,1,2,2,2))].
+
+given #32 (H,wt=25): 33 f(f(f(f(x,x),y),f(f(f(f(f(x,z),y),y),x),f(x,u))),f(x,x)) = x # label(518).  [para(7(a,1),30(a,1,2,1)),rewrite([7(20),7(22)])].
+
+given #33 (H,wt=27): 29 f(f(x,y),f(f(f(y,y),f(f(y,x),f(y,x))),f(f(f(y,x),y),f(y,z)))) = y # label(514).  [para(28(a,1),7(a,1,2,2,1,1))].
+
+given #34 (H,wt=21): 47 f(f(f(x,x),x),f(f(x,f(x,x)),f(f(x,x),f(x,y)))) = x # label(532).  [para(24(a,1),29(a,1,2,2,1)),rewrite([30(9)])].
+
+given #35 (H,wt=23): 46 f(f(x,f(x,x)),f(f(f(x,x),x),f(x,f(f(x,x),y)))) = f(x,x) # label(531).  [para(18(a,1),29(a,1,2,2,1)),rewrite([28(5),30(8)])].
+
+given #36 (H,wt=33): 22 f(f(f(x,x),f(y,x)),f(f(f(f(y,x),f(y,x)),z),f(f(f(f(x,z),z),f(y,x)),x))) = f(y,x) # label(506).  [para(18(a,1),15(a,1,2,2,1,1,1,1))].
+
+given #37 (H,wt=31): 48 f(f(f(x,x),f(y,x)),f(f(f(f(y,x),f(y,x)),f(x,x)),f(f(x,f(y,x)),x))) = f(y,x) # label(533).  [para(28(a,1),22(a,1,2,2,1,1))].
+
+given #38 (H,wt=33): 23 f(f(x,f(y,z)),f(f(f(f(y,z),f(y,z)),f(x,x)),f(f(f(x,f(x,x)),f(y,z)),z))) = f(y,z) # label(507).  [para(18(a,1),15(a,1,2,2,1,1,1))].
+
+given #39 (H,wt=15): 50 f(f(f(x,x),x),f(x,f(f(x,x),y))) = x # label(535E).  [para(45(a,1),23(a,1,1)),rewrite([46(25),38(21),24(17),28(3)]),flip(a)].
+
+given #40 (H,wt=15): 51 f(f(f(x,x),x),f(x,f(y,f(x,x)))) = x # label(536).  [para(30(a,1),50(a,1,2,2))].
+
+given #41 (H,wt=17): 49 f(f(x,f(x,x)),f(f(x,x),f(x,y))) = f(x,x) # label(534F).  [para(44(a,1),23(a,1,1)),rewrite([28(16),28(18),47(23),36(18),18(16)]),flip(a)].
+
+given #42 (H,wt=29): 52 f(f(f(x,y),f(f(x,y),f(x,y))),f(f(f(x,y),f(x,y)),y)) = f(f(x,y),f(x,y)) # label(537).  [para(7(a,1),49(a,1,2,2))].
+
+given #43 (H,wt=29): 53 f(f(f(x,y),f(f(x,y),f(x,y))),f(f(f(x,y),f(x,y)),x)) = f(f(x,y),f(x,y)) # label(538).  [para(28(a,1),49(a,1,2,2))].
+
+given #44 (H,wt=33): 43 f(f(x,f(y,z)),f(f(f(f(y,z),f(y,z)),f(x,x)),f(f(f(x,f(x,x)),f(y,z)),y))) = f(y,z) # label(528).  [para(28(a,1),21(a,1,2,2,2))].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.21 (+ 0.00) seconds: absorb.
+% Length of proof is 28.
+% Level of proof is 14.
+% Maximum clause weight is 41.
+% Given clauses 44.
+
+3 f(f(x,x),f(x,y)) = x # answer(absorb) # label(non_clause) # label(goal).  [goal].
+7 f(f(x,y),f(f(f(y,y),z),f(f(f(f(f(y,x),z),z),y),f(y,u)))) = y # label(MOL_sax) # label(492).  [assumption].
+10 f(f(c5,c5),f(c5,c6)) != c5 # answer(absorb).  [deny(3)].
+15 f(f(x,f(y,z)),f(f(f(f(y,z),f(y,z)),u),f(f(f(f(f(f(y,z),x),u),u),f(y,z)),z))) = f(y,z) # label(499).  [para(7(a,1),7(a,1,2,2,2))].
+16 f(f(x,y),f(f(f(y,y),z),f(f(f(f(f(y,x),z),z),y),f(f(f(y,y),u),f(f(f(f(f(y,w),u),u),y),f(y,v5)))))) = y # label(500).  [para(7(a,1),15(a,1,1,2)),rewrite([7(12),7(12),7(14),7(17),7(30)])].
+17 f(f(x,y),f(f(f(y,y),z),y)) = y # label(501).  [para(7(a,1),16(a,1,2,2))].
+18 f(f(x,y),f(y,y)) = y # label(502).  [para(7(a,1),17(a,1,2,1))].
+19 f(f(x,y),f(y,f(f(f(f(f(y,x),f(y,y)),f(y,y)),y),f(y,z)))) = y # label(503).  [para(18(a,1),7(a,1,2,1))].
+21 f(f(x,y),f(f(f(y,y),f(x,x)),f(f(f(x,f(x,x)),y),f(y,z)))) = y # label(505).  [para(18(a,1),7(a,1,2,2,1,1,1))].
+23 f(f(x,f(y,z)),f(f(f(f(y,z),f(y,z)),f(x,x)),f(f(f(x,f(x,x)),f(y,z)),z))) = f(y,z) # label(507).  [para(18(a,1),15(a,1,2,2,1,1,1))].
+24 f(f(x,f(y,y)),y) = f(y,y) # label(508).  [para(18(a,1),15(a,1,2,2,1)),rewrite([18(5),18(5)])].
+25 f(f(f(x,x),y),x) = f(x,x) # label(510B).  [para(17(a,1),18(a,1,1)),rewrite([17(7)]),flip(a)].
+26 f(f(x,y),f(y,f(f(y,y),f(y,z)))) = y # label(511).  [back_rewrite(19),rewrite([24(7)])].
+27 f(f(x,x),f(f(f(x,x),x),f(f(f(x,x),x),f(x,y)))) = x # label(512).  [para(25(a,1),7(a,1,2,2,1,1))].
+28 f(f(x,y),f(x,x)) = x # label(513).  [para(18(a,1),25(a,1,1,1)),rewrite([18(6)])].
+29 f(f(x,y),f(f(f(y,y),f(f(y,x),f(y,x))),f(f(f(y,x),y),f(y,z)))) = y # label(514).  [para(28(a,1),7(a,1,2,2,1,1))].
+30 f(x,f(f(y,x),f(y,x))) = f(y,x) # label(515).  [para(7(a,1),28(a,1,1))].
+34 f(f(x,f(f(x,x),f(x,y))),f(x,f(f(x,x),f(x,y)))) = x # label(519A).  [para(26(a,1),25(a,1)),flip(a)].
+35 f(f(x,x),f(f(f(x,x),x),f(f(f(x,x),x),f(y,x)))) = x # label(520).  [para(30(a,1),27(a,1,2,2,2))].
+36 f(x,f(f(x,x),f(x,y))) = f(x,x) # label(521B).  [para(34(a,1),18(a,1,1)),rewrite([34(9)]),flip(a)].
+41 f(x,f(f(x,f(x,x)),f(f(x,f(x,x)),f(y,f(x,x))))) = f(x,x) # label(526).  [para(18(a,1),35(a,1,1)),rewrite([28(3),28(5)])].
+42 f(f(f(x,f(x,x)),f(f(x,f(x,x)),f(y,f(x,x)))),x) = f(x,x) # label(527).  [para(41(a,1),30(a,1,2,1)),rewrite([41(18),28(11),41(18)])].
+43 f(f(x,f(y,z)),f(f(f(f(y,z),f(y,z)),f(x,x)),f(f(f(x,f(x,x)),f(y,z)),y))) = f(y,z) # label(528).  [para(28(a,1),21(a,1,2,2,2))].
+44 f(f(x,x),f(f(x,f(x,x)),f(f(x,x),f(x,y)))) = x # label(529).  [para(42(a,1),21(a,1,2,2,1)),rewrite([24(3),30(8)])].
+47 f(f(f(x,x),x),f(f(x,f(x,x)),f(f(x,x),f(x,y)))) = x # label(532).  [para(24(a,1),29(a,1,2,2,1)),rewrite([30(9)])].
+49 f(f(x,f(x,x)),f(f(x,x),f(x,y))) = f(x,x) # label(534F).  [para(44(a,1),23(a,1,1)),rewrite([28(16),28(18),47(23),36(18),18(16)]),flip(a)].
+54 f(f(x,x),f(x,y)) = x # label(539E).  [para(36(a,1),43(a,1,1)),rewrite([49(16),28(13),24(11),28(3)]),flip(a)].
+55 $F # answer(absorb).  [resolve(54,a,10,a)].
+
+============================== end of proof ==========================
+% Redundant proof: 60 $F # answer(absorb).  [back_rewrite(10),rewrite([54(7)]),xx(a)].
+
+% Disable descendants (x means already disabled):
+ 10x
+
+given #45 (H,wt=9): 54 f(f(x,x),f(x,y)) = x # label(539E).  [para(36(a,1),43(a,1,1)),rewrite([49(16),28(13),24(11),28(3)]),flip(a)].
+
+given #46 (H,wt=9): 61 f(f(x,x),f(y,x)) = x # label(548).  [para(30(a,1),54(a,1,2))].
+
+given #47 (H,wt=11): 56 f(x,f(f(x,x),y)) = f(x,x) # label(541E).  [para(38(a,1),43(a,1,1)),rewrite([54(10),54(12),50(14),18(10)]),flip(a)].
+
+given #48 (H,wt=11): 57 f(x,f(y,f(x,x))) = f(x,x) # label(542E).  [para(40(a,1),43(a,1,1)),rewrite([54(10),54(12),51(14),18(10)]),flip(a)].
+
+given #49 (H,wt=13): 58 f(f(f(x,y),f(x,y)),y) = f(x,y) # label(543E).  [para(37(a,1),43(a,1,1)),rewrite([52(26),54(23),24(18),54(7)]),flip(a)].
+
+given #50 (H,wt=13): 59 f(f(f(x,y),f(x,y)),x) = f(x,y) # label(544E).  [para(39(a,1),43(a,1,1)),rewrite([53(26),54(23),24(18),54(7)]),flip(a)].
+
+given #51 (H,wt=25): 62 f(f(x,y),f(y,f(f(f(f(f(y,x),f(y,z)),f(y,z)),y),f(u,y)))) = y # label(546).  [para(54(a,1),32(a,1,2,1))].
+
+given #52 (H,wt=19): 66 f(f(x,y),f(f(f(f(y,x),f(y,z)),f(y,z)),y)) = y # label(552).  [para(30(a,1),62(a,1,2))].
+
+given #53 (H,wt=19): 69 f(f(x,y),f(f(f(f(x,y),f(y,z)),f(y,z)),y)) = y # label(555).  [para(30(a,1),66(a,1,2,1,1,1)),rewrite([58(4)])].
+
+given #54 (H,wt=19): 70 f(f(x,y),f(f(f(f(x,y),f(z,y)),f(z,y)),y)) = y # label(556).  [para(30(a,1),69(a,1,2,1,1,2)),rewrite([30(8)])].
+
+given #55 (H,wt=23): 67 f(x,f(f(f(x,f(f(y,x),z)),f(f(y,x),z)),f(y,x))) = f(y,x) # label(553).  [para(18(a,1),66(a,1,2,1,1,1)),rewrite([61(3)])].
+
+given #56 (H,wt=15): 71 f(x,f(f(f(x,x),x),f(y,x))) = f(y,x) # label(557).  [para(7(a,1),67(a,1,2,1,1,2)),rewrite([7(12)])].
+
+given #57 (H,wt=15): 73 f(x,f(f(f(x,y),y),f(y,x))) = f(y,x) # label(559).  [para(28(a,1),67(a,1,2,1,1,2)),rewrite([28(4)])].
+
+given #58 (H,wt=11): 75 f(f(x,x),x) = f(x,f(x,x)) # label(561).  [para(25(a,1),73(a,1,2,1)),rewrite([54(5)])].
+
+given #59 (H,wt=15): 76 f(x,f(f(x,f(x,x)),f(x,y))) = f(x,y) # label(562).  [back_rewrite(74),rewrite([75(2)])].
+
+given #60 (H,wt=21): 72 f(f(x,x),f(f(x,f(x,x)),f(y,f(x,x)))) = f(y,f(x,x)) # label(558).  [para(24(a,1),67(a,1,2,1,1,2)),rewrite([54(4),24(4)])].
+
+given #61 (H,wt=21): 77 f(f(x,x),f(f(x,f(x,x)),f(f(x,x),y))) = f(f(x,x),y) # label(563).  [para(18(a,1),76(a,1,2,1,2)),rewrite([75(3)])].
+
+given #62 (H,wt=23): 68 f(x,f(f(f(x,f(f(x,y),z)),f(f(x,y),z)),f(x,y))) = f(x,y) # label(554).  [para(28(a,1),66(a,1,2,1,1,1)),rewrite([54(3)])].
+
+given #63 (H,wt=25): 63 f(x,f(f(f(f(y,x),f(y,x)),f(x,x)),f(f(x,f(y,x)),x))) = f(y,x) # label(549).  [back_rewrite(48),rewrite([61(3)])].
+
+given #64 (H,wt=25): 65 f(f(x,y),f(f(f(y,y),z),f(f(f(f(f(x,y),z),z),y),f(y,u)))) = y # label(551).  [para(58(a,1),7(a,1,1)),rewrite([30(7)])].
+
+given #65 (H,wt=31): 64 f(x,f(f(f(f(y,x),f(y,x)),z),f(f(f(f(x,z),z),f(y,x)),f(f(y,x),u)))) = f(y,x) # label(550).  [back_rewrite(20),rewrite([61(3)])].
+
+given #66 (H,wt=25): 78 f(x,f(f(y,x),f(f(f(f(x,y),y),f(y,x)),f(f(y,x),z)))) = f(y,x) # label(564).  [para(59(a,1),64(a,1,2,1))].
+
+given #67 (H,wt=25): 79 f(f(x,x),f(f(x,f(x,x)),f(x,f(f(x,f(x,x)),y)))) = f(x,f(x,x)) # label(565).  [para(25(a,1),78(a,1,2,2,1,1)),rewrite([54(7)])].
+
+given #68 (H,wt=19): 82 f(f(x,x),f(f(x,f(x,x)),f(x,y))) = f(x,f(x,x)) # label(568).  [para(76(a,1),79(a,1,2,2))].
+
+given #69 (H,wt=23): 81 f(f(x,f(x,x)),f(f(x,f(x,x)),f(x,f(x,x)))) = f(x,f(x,x)) # label(567D).  [para(42(a,1),79(a,1,2,2,2)),rewrite([28(17),42(14),58(7)]),flip(a)].
+
+given #70 (H,wt=19): 83 f(x,f(f(y,f(y,y)),f(y,f(y,y)))) = f(y,f(y,y)) # label(570C).  [para(81(a,1),72(a,1,2,1)),rewrite([57(14),54(11)]),flip(a)].
+
+============================== PROOF =================================
+
+% Proof 2 at 0.38 (+ 0.00) seconds: one.
+% Length of proof is 62.
+% Level of proof is 23.
+% Maximum clause weight is 41.
+% Given clauses 70.
+
+2 f(y,f(y,y)) = f(x,f(x,x)) # answer(one) # label(non_clause) # label(goal).  [goal].
+7 f(f(x,y),f(f(f(y,y),z),f(f(f(f(f(y,x),z),z),y),f(y,u)))) = y # label(MOL_sax) # label(492).  [assumption].
+9 f(c4,f(c4,c4)) != f(c3,f(c3,c3)) # answer(one).  [deny(2)].
+15 f(f(x,f(y,z)),f(f(f(f(y,z),f(y,z)),u),f(f(f(f(f(f(y,z),x),u),u),f(y,z)),z))) = f(y,z) # label(499).  [para(7(a,1),7(a,1,2,2,2))].
+16 f(f(x,y),f(f(f(y,y),z),f(f(f(f(f(y,x),z),z),y),f(f(f(y,y),u),f(f(f(f(f(y,w),u),u),y),f(y,v5)))))) = y # label(500).  [para(7(a,1),15(a,1,1,2)),rewrite([7(12),7(12),7(14),7(17),7(30)])].
+17 f(f(x,y),f(f(f(y,y),z),y)) = y # label(501).  [para(7(a,1),16(a,1,2,2))].
+18 f(f(x,y),f(y,y)) = y # label(502).  [para(7(a,1),17(a,1,2,1))].
+19 f(f(x,y),f(y,f(f(f(f(f(y,x),f(y,y)),f(y,y)),y),f(y,z)))) = y # label(503).  [para(18(a,1),7(a,1,2,1))].
+20 f(f(f(x,x),f(y,x)),f(f(f(f(y,x),f(y,x)),z),f(f(f(f(x,z),z),f(y,x)),f(f(y,x),u)))) = f(y,x) # label(504).  [para(18(a,1),7(a,1,2,2,1,1,1,1))].
+21 f(f(x,y),f(f(f(y,y),f(x,x)),f(f(f(x,f(x,x)),y),f(y,z)))) = y # label(505).  [para(18(a,1),7(a,1,2,2,1,1,1))].
+23 f(f(x,f(y,z)),f(f(f(f(y,z),f(y,z)),f(x,x)),f(f(f(x,f(x,x)),f(y,z)),z))) = f(y,z) # label(507).  [para(18(a,1),15(a,1,2,2,1,1,1))].
+24 f(f(x,f(y,y)),y) = f(y,y) # label(508).  [para(18(a,1),15(a,1,2,2,1)),rewrite([18(5),18(5)])].
+25 f(f(f(x,x),y),x) = f(x,x) # label(510B).  [para(17(a,1),18(a,1,1)),rewrite([17(7)]),flip(a)].
+26 f(f(x,y),f(y,f(f(y,y),f(y,z)))) = y # label(511).  [back_rewrite(19),rewrite([24(7)])].
+27 f(f(x,x),f(f(f(x,x),x),f(f(f(x,x),x),f(x,y)))) = x # label(512).  [para(25(a,1),7(a,1,2,2,1,1))].
+28 f(f(x,y),f(x,x)) = x # label(513).  [para(18(a,1),25(a,1,1,1)),rewrite([18(6)])].
+29 f(f(x,y),f(f(f(y,y),f(f(y,x),f(y,x))),f(f(f(y,x),y),f(y,z)))) = y # label(514).  [para(28(a,1),7(a,1,2,2,1,1))].
+30 f(x,f(f(y,x),f(y,x))) = f(y,x) # label(515).  [para(7(a,1),28(a,1,1))].
+32 f(f(x,y),f(f(f(y,y),z),f(f(f(f(f(y,x),z),z),y),f(u,y)))) = y # label(517).  [para(30(a,1),7(a,1,2,2,2))].
+34 f(f(x,f(f(x,x),f(x,y))),f(x,f(f(x,x),f(x,y)))) = x # label(519A).  [para(26(a,1),25(a,1)),flip(a)].
+35 f(f(x,x),f(f(f(x,x),x),f(f(f(x,x),x),f(y,x)))) = x # label(520).  [para(30(a,1),27(a,1,2,2,2))].
+36 f(x,f(f(x,x),f(x,y))) = f(x,x) # label(521B).  [para(34(a,1),18(a,1,1)),rewrite([34(9)]),flip(a)].
+37 f(f(x,y),f(f(f(x,y),f(x,y)),y)) = f(f(x,y),f(x,y)) # label(522).  [para(7(a,1),36(a,1,2,2))].
+38 f(f(x,x),f(x,f(f(x,x),y))) = x # label(523).  [para(18(a,1),36(a,1,2,1)),rewrite([28(8)])].
+39 f(f(x,y),f(f(f(x,y),f(x,y)),x)) = f(f(x,y),f(x,y)) # label(524).  [para(28(a,1),36(a,1,2,2))].
+40 f(f(x,x),f(x,f(y,f(x,x)))) = x # label(525).  [para(30(a,1),38(a,1,2,2))].
+41 f(x,f(f(x,f(x,x)),f(f(x,f(x,x)),f(y,f(x,x))))) = f(x,x) # label(526).  [para(18(a,1),35(a,1,1)),rewrite([28(3),28(5)])].
+42 f(f(f(x,f(x,x)),f(f(x,f(x,x)),f(y,f(x,x)))),x) = f(x,x) # label(527).  [para(41(a,1),30(a,1,2,1)),rewrite([41(18),28(11),41(18)])].
+43 f(f(x,f(y,z)),f(f(f(f(y,z),f(y,z)),f(x,x)),f(f(f(x,f(x,x)),f(y,z)),y))) = f(y,z) # label(528).  [para(28(a,1),21(a,1,2,2,2))].
+44 f(f(x,x),f(f(x,f(x,x)),f(f(x,x),f(x,y)))) = x # label(529).  [para(42(a,1),21(a,1,2,2,1)),rewrite([24(3),30(8)])].
+45 f(x,f(f(f(x,x),x),f(x,f(f(x,x),y)))) = f(x,x) # label(530).  [para(18(a,1),44(a,1,1)),rewrite([28(4),28(5)])].
+46 f(f(x,f(x,x)),f(f(f(x,x),x),f(x,f(f(x,x),y)))) = f(x,x) # label(531).  [para(18(a,1),29(a,1,2,2,1)),rewrite([28(5),30(8)])].
+47 f(f(f(x,x),x),f(f(x,f(x,x)),f(f(x,x),f(x,y)))) = x # label(532).  [para(24(a,1),29(a,1,2,2,1)),rewrite([30(9)])].
+49 f(f(x,f(x,x)),f(f(x,x),f(x,y))) = f(x,x) # label(534F).  [para(44(a,1),23(a,1,1)),rewrite([28(16),28(18),47(23),36(18),18(16)]),flip(a)].
+50 f(f(f(x,x),x),f(x,f(f(x,x),y))) = x # label(535E).  [para(45(a,1),23(a,1,1)),rewrite([46(25),38(21),24(17),28(3)]),flip(a)].
+51 f(f(f(x,x),x),f(x,f(y,f(x,x)))) = x # label(536).  [para(30(a,1),50(a,1,2,2))].
+52 f(f(f(x,y),f(f(x,y),f(x,y))),f(f(f(x,y),f(x,y)),y)) = f(f(x,y),f(x,y)) # label(537).  [para(7(a,1),49(a,1,2,2))].
+53 f(f(f(x,y),f(f(x,y),f(x,y))),f(f(f(x,y),f(x,y)),x)) = f(f(x,y),f(x,y)) # label(538).  [para(28(a,1),49(a,1,2,2))].
+54 f(f(x,x),f(x,y)) = x # label(539E).  [para(36(a,1),43(a,1,1)),rewrite([49(16),28(13),24(11),28(3)]),flip(a)].
+57 f(x,f(y,f(x,x))) = f(x,x) # label(542E).  [para(40(a,1),43(a,1,1)),rewrite([54(10),54(12),51(14),18(10)]),flip(a)].
+58 f(f(f(x,y),f(x,y)),y) = f(x,y) # label(543E).  [para(37(a,1),43(a,1,1)),rewrite([52(26),54(23),24(18),54(7)]),flip(a)].
+59 f(f(f(x,y),f(x,y)),x) = f(x,y) # label(544E).  [para(39(a,1),43(a,1,1)),rewrite([53(26),54(23),24(18),54(7)]),flip(a)].
+61 f(f(x,x),f(y,x)) = x # label(548).  [para(30(a,1),54(a,1,2))].
+62 f(f(x,y),f(y,f(f(f(f(f(y,x),f(y,z)),f(y,z)),y),f(u,y)))) = y # label(546).  [para(54(a,1),32(a,1,2,1))].
+64 f(x,f(f(f(f(y,x),f(y,x)),z),f(f(f(f(x,z),z),f(y,x)),f(f(y,x),u)))) = f(y,x) # label(550).  [back_rewrite(20),rewrite([61(3)])].
+66 f(f(x,y),f(f(f(f(y,x),f(y,z)),f(y,z)),y)) = y # label(552).  [para(30(a,1),62(a,1,2))].
+67 f(x,f(f(f(x,f(f(y,x),z)),f(f(y,x),z)),f(y,x))) = f(y,x) # label(553).  [para(18(a,1),66(a,1,2,1,1,1)),rewrite([61(3)])].
+71 f(x,f(f(f(x,x),x),f(y,x))) = f(y,x) # label(557).  [para(7(a,1),67(a,1,2,1,1,2)),rewrite([7(12)])].
+72 f(f(x,x),f(f(x,f(x,x)),f(y,f(x,x)))) = f(y,f(x,x)) # label(558).  [para(24(a,1),67(a,1,2,1,1,2)),rewrite([54(4),24(4)])].
+73 f(x,f(f(f(x,y),y),f(y,x))) = f(y,x) # label(559).  [para(28(a,1),67(a,1,2,1,1,2)),rewrite([28(4)])].
+74 f(x,f(f(f(x,x),x),f(x,y))) = f(x,y) # label(560).  [para(59(a,1),71(a,1,2,2)),rewrite([59(9)])].
+75 f(f(x,x),x) = f(x,f(x,x)) # label(561).  [para(25(a,1),73(a,1,2,1)),rewrite([54(5)])].
+76 f(x,f(f(x,f(x,x)),f(x,y))) = f(x,y) # label(562).  [back_rewrite(74),rewrite([75(2)])].
+77 f(f(x,x),f(f(x,f(x,x)),f(f(x,x),y))) = f(f(x,x),y) # label(563).  [para(18(a,1),76(a,1,2,1,2)),rewrite([75(3)])].
+78 f(x,f(f(y,x),f(f(f(f(x,y),y),f(y,x)),f(f(y,x),z)))) = f(y,x) # label(564).  [para(59(a,1),64(a,1,2,1))].
+79 f(f(x,x),f(f(x,f(x,x)),f(x,f(f(x,f(x,x)),y)))) = f(x,f(x,x)) # label(565).  [para(25(a,1),78(a,1,2,2,1,1)),rewrite([54(7)])].
+81 f(f(x,f(x,x)),f(f(x,f(x,x)),f(x,f(x,x)))) = f(x,f(x,x)) # label(567D).  [para(42(a,1),79(a,1,2,2,2)),rewrite([28(17),42(14),58(7)]),flip(a)].
+82 f(f(x,x),f(f(x,f(x,x)),f(x,y))) = f(x,f(x,x)) # label(568).  [para(76(a,1),79(a,1,2,2))].
+83 f(x,f(f(y,f(y,y)),f(y,f(y,y)))) = f(y,f(y,y)) # label(570C).  [para(81(a,1),72(a,1,2,1)),rewrite([57(14),54(11)]),flip(a)].
+90 f(f(x,x),f(f(x,f(x,x)),f(y,f(y,y)))) = f(y,f(y,y)) # label(576).  [para(83(a,1),77(a,1,2,2)),rewrite([83(14)])].
+91 f(x,f(x,x)) = f(y,f(y,y)) # label(577).  [para(83(a,1),82(a,1,2,2)),rewrite([90(7)])].
+92 $F # answer(one).  [resolve(91,a,9,a)].
+
+============================== end of proof ==========================
+
+NOTE: New constant: f(x,f(x,x)) = c_0.  [new_symbol(91)].
+NOTE: New Function symbol precedence:  function_order([ c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c_0, f ]).
+
+% Disable descendants (x means already disabled):
+ 9
+
+given #71 (H,wt=11): 86 f(f(x,f(x,x)),y) = f(y,y) # label(573).  [para(83(a,1),25(a,1,1))].
+
+given #72 (H,wt=11): 87 f(f(x,f(x,x)),f(y,y)) = y # label(574).  [para(83(a,1),28(a,1,1))].
+
+given #73 (H,wt=11): 88 f(f(x,x),f(y,f(y,y))) = x # label(594).  [para(83(a,1),54(a,1,2))].
+
+given #74 (H,wt=11): 89 f(x,f(y,f(y,y))) = f(x,x) # label(575).  [para(83(a,1),56(a,1,2))].
+
+============================== PROOF =================================
+
+% Proof 3 at 0.41 (+ 0.00) seconds: oml.
+% Length of proof is 58.
+% Level of proof is 22.
+% Maximum clause weight is 41.
+% Given clauses 74.
+
+4 f(x,f(x,f(x,y))) = f(x,y) # answer(oml) # label(non_clause) # label(goal).  [goal].
+7 f(f(x,y),f(f(f(y,y),z),f(f(f(f(f(y,x),z),z),y),f(y,u)))) = y # label(MOL_sax) # label(492).  [assumption].
+11 f(c7,f(c7,f(c7,c8))) != f(c7,c8) # answer(oml).  [deny(4)].
+15 f(f(x,f(y,z)),f(f(f(f(y,z),f(y,z)),u),f(f(f(f(f(f(y,z),x),u),u),f(y,z)),z))) = f(y,z) # label(499).  [para(7(a,1),7(a,1,2,2,2))].
+16 f(f(x,y),f(f(f(y,y),z),f(f(f(f(f(y,x),z),z),y),f(f(f(y,y),u),f(f(f(f(f(y,w),u),u),y),f(y,v5)))))) = y # label(500).  [para(7(a,1),15(a,1,1,2)),rewrite([7(12),7(12),7(14),7(17),7(30)])].
+17 f(f(x,y),f(f(f(y,y),z),y)) = y # label(501).  [para(7(a,1),16(a,1,2,2))].
+18 f(f(x,y),f(y,y)) = y # label(502).  [para(7(a,1),17(a,1,2,1))].
+19 f(f(x,y),f(y,f(f(f(f(f(y,x),f(y,y)),f(y,y)),y),f(y,z)))) = y # label(503).  [para(18(a,1),7(a,1,2,1))].
+20 f(f(f(x,x),f(y,x)),f(f(f(f(y,x),f(y,x)),z),f(f(f(f(x,z),z),f(y,x)),f(f(y,x),u)))) = f(y,x) # label(504).  [para(18(a,1),7(a,1,2,2,1,1,1,1))].
+21 f(f(x,y),f(f(f(y,y),f(x,x)),f(f(f(x,f(x,x)),y),f(y,z)))) = y # label(505).  [para(18(a,1),7(a,1,2,2,1,1,1))].
+23 f(f(x,f(y,z)),f(f(f(f(y,z),f(y,z)),f(x,x)),f(f(f(x,f(x,x)),f(y,z)),z))) = f(y,z) # label(507).  [para(18(a,1),15(a,1,2,2,1,1,1))].
+24 f(f(x,f(y,y)),y) = f(y,y) # label(508).  [para(18(a,1),15(a,1,2,2,1)),rewrite([18(5),18(5)])].
+25 f(f(f(x,x),y),x) = f(x,x) # label(510B).  [para(17(a,1),18(a,1,1)),rewrite([17(7)]),flip(a)].
+26 f(f(x,y),f(y,f(f(y,y),f(y,z)))) = y # label(511).  [back_rewrite(19),rewrite([24(7)])].
+27 f(f(x,x),f(f(f(x,x),x),f(f(f(x,x),x),f(x,y)))) = x # label(512).  [para(25(a,1),7(a,1,2,2,1,1))].
+28 f(f(x,y),f(x,x)) = x # label(513).  [para(18(a,1),25(a,1,1,1)),rewrite([18(6)])].
+29 f(f(x,y),f(f(f(y,y),f(f(y,x),f(y,x))),f(f(f(y,x),y),f(y,z)))) = y # label(514).  [para(28(a,1),7(a,1,2,2,1,1))].
+30 f(x,f(f(y,x),f(y,x))) = f(y,x) # label(515).  [para(7(a,1),28(a,1,1))].
+32 f(f(x,y),f(f(f(y,y),z),f(f(f(f(f(y,x),z),z),y),f(u,y)))) = y # label(517).  [para(30(a,1),7(a,1,2,2,2))].
+34 f(f(x,f(f(x,x),f(x,y))),f(x,f(f(x,x),f(x,y)))) = x # label(519A).  [para(26(a,1),25(a,1)),flip(a)].
+35 f(f(x,x),f(f(f(x,x),x),f(f(f(x,x),x),f(y,x)))) = x # label(520).  [para(30(a,1),27(a,1,2,2,2))].
+36 f(x,f(f(x,x),f(x,y))) = f(x,x) # label(521B).  [para(34(a,1),18(a,1,1)),rewrite([34(9)]),flip(a)].
+37 f(f(x,y),f(f(f(x,y),f(x,y)),y)) = f(f(x,y),f(x,y)) # label(522).  [para(7(a,1),36(a,1,2,2))].
+38 f(f(x,x),f(x,f(f(x,x),y))) = x # label(523).  [para(18(a,1),36(a,1,2,1)),rewrite([28(8)])].
+39 f(f(x,y),f(f(f(x,y),f(x,y)),x)) = f(f(x,y),f(x,y)) # label(524).  [para(28(a,1),36(a,1,2,2))].
+40 f(f(x,x),f(x,f(y,f(x,x)))) = x # label(525).  [para(30(a,1),38(a,1,2,2))].
+41 f(x,f(f(x,f(x,x)),f(f(x,f(x,x)),f(y,f(x,x))))) = f(x,x) # label(526).  [para(18(a,1),35(a,1,1)),rewrite([28(3),28(5)])].
+42 f(f(f(x,f(x,x)),f(f(x,f(x,x)),f(y,f(x,x)))),x) = f(x,x) # label(527).  [para(41(a,1),30(a,1,2,1)),rewrite([41(18),28(11),41(18)])].
+43 f(f(x,f(y,z)),f(f(f(f(y,z),f(y,z)),f(x,x)),f(f(f(x,f(x,x)),f(y,z)),y))) = f(y,z) # label(528).  [para(28(a,1),21(a,1,2,2,2))].
+44 f(f(x,x),f(f(x,f(x,x)),f(f(x,x),f(x,y)))) = x # label(529).  [para(42(a,1),21(a,1,2,2,1)),rewrite([24(3),30(8)])].
+45 f(x,f(f(f(x,x),x),f(x,f(f(x,x),y)))) = f(x,x) # label(530).  [para(18(a,1),44(a,1,1)),rewrite([28(4),28(5)])].
+46 f(f(x,f(x,x)),f(f(f(x,x),x),f(x,f(f(x,x),y)))) = f(x,x) # label(531).  [para(18(a,1),29(a,1,2,2,1)),rewrite([28(5),30(8)])].
+47 f(f(f(x,x),x),f(f(x,f(x,x)),f(f(x,x),f(x,y)))) = x # label(532).  [para(24(a,1),29(a,1,2,2,1)),rewrite([30(9)])].
+49 f(f(x,f(x,x)),f(f(x,x),f(x,y))) = f(x,x) # label(534F).  [para(44(a,1),23(a,1,1)),rewrite([28(16),28(18),47(23),36(18),18(16)]),flip(a)].
+50 f(f(f(x,x),x),f(x,f(f(x,x),y))) = x # label(535E).  [para(45(a,1),23(a,1,1)),rewrite([46(25),38(21),24(17),28(3)]),flip(a)].
+51 f(f(f(x,x),x),f(x,f(y,f(x,x)))) = x # label(536).  [para(30(a,1),50(a,1,2,2))].
+52 f(f(f(x,y),f(f(x,y),f(x,y))),f(f(f(x,y),f(x,y)),y)) = f(f(x,y),f(x,y)) # label(537).  [para(7(a,1),49(a,1,2,2))].
+53 f(f(f(x,y),f(f(x,y),f(x,y))),f(f(f(x,y),f(x,y)),x)) = f(f(x,y),f(x,y)) # label(538).  [para(28(a,1),49(a,1,2,2))].
+54 f(f(x,x),f(x,y)) = x # label(539E).  [para(36(a,1),43(a,1,1)),rewrite([49(16),28(13),24(11),28(3)]),flip(a)].
+56 f(x,f(f(x,x),y)) = f(x,x) # label(541E).  [para(38(a,1),43(a,1,1)),rewrite([54(10),54(12),50(14),18(10)]),flip(a)].
+57 f(x,f(y,f(x,x))) = f(x,x) # label(542E).  [para(40(a,1),43(a,1,1)),rewrite([54(10),54(12),51(14),18(10)]),flip(a)].
+58 f(f(f(x,y),f(x,y)),y) = f(x,y) # label(543E).  [para(37(a,1),43(a,1,1)),rewrite([52(26),54(23),24(18),54(7)]),flip(a)].
+59 f(f(f(x,y),f(x,y)),x) = f(x,y) # label(544E).  [para(39(a,1),43(a,1,1)),rewrite([53(26),54(23),24(18),54(7)]),flip(a)].
+61 f(f(x,x),f(y,x)) = x # label(548).  [para(30(a,1),54(a,1,2))].
+62 f(f(x,y),f(y,f(f(f(f(f(y,x),f(y,z)),f(y,z)),y),f(u,y)))) = y # label(546).  [para(54(a,1),32(a,1,2,1))].
+64 f(x,f(f(f(f(y,x),f(y,x)),z),f(f(f(f(x,z),z),f(y,x)),f(f(y,x),u)))) = f(y,x) # label(550).  [back_rewrite(20),rewrite([61(3)])].
+66 f(f(x,y),f(f(f(f(y,x),f(y,z)),f(y,z)),y)) = y # label(552).  [para(30(a,1),62(a,1,2))].
+67 f(x,f(f(f(x,f(f(y,x),z)),f(f(y,x),z)),f(y,x))) = f(y,x) # label(553).  [para(18(a,1),66(a,1,2,1,1,1)),rewrite([61(3)])].
+68 f(x,f(f(f(x,f(f(x,y),z)),f(f(x,y),z)),f(x,y))) = f(x,y) # label(554).  [para(28(a,1),66(a,1,2,1,1,1)),rewrite([54(3)])].
+72 f(f(x,x),f(f(x,f(x,x)),f(y,f(x,x)))) = f(y,f(x,x)) # label(558).  [para(24(a,1),67(a,1,2,1,1,2)),rewrite([54(4),24(4)])].
+78 f(x,f(f(y,x),f(f(f(f(x,y),y),f(y,x)),f(f(y,x),z)))) = f(y,x) # label(564).  [para(59(a,1),64(a,1,2,1))].
+79 f(f(x,x),f(f(x,f(x,x)),f(x,f(f(x,f(x,x)),y)))) = f(x,f(x,x)) # label(565).  [para(25(a,1),78(a,1,2,2,1,1)),rewrite([54(7)])].
+81 f(f(x,f(x,x)),f(f(x,f(x,x)),f(x,f(x,x)))) = f(x,f(x,x)) # label(567D).  [para(42(a,1),79(a,1,2,2,2)),rewrite([28(17),42(14),58(7)]),flip(a)].
+83 f(x,f(f(y,f(y,y)),f(y,f(y,y)))) = f(y,f(y,y)) # label(570C).  [para(81(a,1),72(a,1,2,1)),rewrite([57(14),54(11)]),flip(a)].
+88 f(f(x,x),f(y,f(y,y))) = x # label(594).  [para(83(a,1),54(a,1,2))].
+89 f(x,f(y,f(y,y))) = f(x,x) # label(575).  [para(83(a,1),56(a,1,2))].
+105 f(x,f(x,f(x,y))) = f(x,y) # label(599).  [para(89(a,1),68(a,1,2,1,1)),rewrite([88(7)])].
+106 $F # answer(oml).  [resolve(105,a,11,a)].
+
+============================== end of proof ==========================
+% Redundant proof: 109 $F # answer(oml).  [back_rewrite(11),rewrite([105(7)]),xx(a)].
+
+% Disable descendants (x means already disabled):
+ 11x
+
+given #75 (H,wt=11): 91 f(x,f(x,x)) = f(y,f(y,y)) # label(577).  [para(83(a,1),82(a,1,2,2)),rewrite([90(7)])].
+
+given #76 (H,wt=11): 103 f(f(x,y),f(f(y,x),y)) = y # label(597).  [para(89(a,1),66(a,1,2,1,1)),rewrite([88(7)])].
+
+given #77 (H,wt=11): 104 f(x,f(x,f(y,x))) = f(y,x) # label(598).  [para(89(a,1),67(a,1,2,1,1)),rewrite([88(7)])].
+
+given #78 (H,wt=11): 105 f(x,f(x,f(x,y))) = f(x,y) # label(599).  [para(89(a,1),68(a,1,2,1,1)),rewrite([88(7)])].
+
+given #79 (H,wt=11): 112 f(f(x,y),f(f(x,y),x)) = x # label(624B).  [para(31(a,1),103(a,1,2,1)),rewrite([59(4)])].
+
+given #80 (H,wt=13): 93 f(f(x,y),f(f(z,f(z,z)),y)) = y # label(579).  [para(86(a,2),18(a,1,2))].
+
+given #81 (H,wt=13): 94 f(f(x,y),f(f(z,f(z,z)),x)) = x # label(580).  [para(86(a,2),28(a,1,2))].
+
+given #82 (H,wt=13): 97 f(f(f(x,f(x,x)),y),f(y,z)) = y # label(583).  [para(86(a,1),21(a,1,2,1,2)),rewrite([83(10),83(13),96(12)])].
+
+given #83 (H,wt=11): 117 f(f(x,y),x) = f(x,f(x,y)) # label(623).  [back_rewrite(114),rewrite([116(7)])].
+
+given #84 (H,wt=11): 118 f(f(x,y),f(x,f(x,y))) = x # label(624).  [back_rewrite(115),rewrite([117(3),105(3),117(3)])].
+
+given #85 (H,wt=11): 119 f(f(x,y),f(y,f(y,x))) = y # label(625).  [back_rewrite(113),rewrite([117(3),105(4),117(3)])].
+
+given #86 (H,wt=11): 122 f(f(x,y),y) = f(y,f(x,y)) # label(628B).  [para(7(a,1),117(a,1,1)),rewrite([7(14)]),flip(a)].
+
+given #87 (H,wt=11): 123 f(f(x,y),f(y,f(x,y))) = y # label(629).  [para(117(a,1),70(a,1,2,1,1)),rewrite([122(2),122(5),117(8),104(8),117(5),104(5),122(4)])].
+
+given #88 (H,wt=15): 95 f(x,f(f(y,f(y,y)),f(z,x))) = f(z,x) # label(581).  [para(86(a,2),30(a,1,2))].
+
+given #89 (H,wt=15): 96 f(x,f(f(y,f(y,y)),f(x,z))) = f(x,z) # label(582).  [para(86(a,2),31(a,1,2))].
+
+given #90 (H,wt=15): 99 f(f(f(x,f(x,x)),f(y,z)),z) = f(y,z) # label(586).  [para(86(a,1),23(a,1,2,1,2)),rewrite([83(13),83(14),96(13)])].
+
+given #91 (H,wt=15): 100 f(x,f(f(y,f(y,y)),z)) = f(x,f(z,z)) # label(589B).  [para(86(a,2),72(a,2,2)),rewrite([95(7)]),flip(a)].
+
+given #92 (H,wt=15): 102 f(f(x,f(x,x)),f(f(y,f(y,y)),z)) = z # label(595).  [para(86(a,2),87(a,1,2))].
+
+given #93 (H,wt=15): 108 f(f(x,f(y,f(y,y))),f(z,f(z,z))) = x # label(613).  [para(89(a,2),88(a,1,1))].
+
+given #94 (H,wt=17): 101 f(f(x,x),f(f(x,y),f(x,y))) = f(x,f(x,x)) # label(590).  [para(86(a,1),82(a,1,2))].
+
+given #95 (H,wt=21): 90 f(f(x,x),f(f(x,f(x,x)),f(y,f(y,y)))) = f(y,f(y,y)) # label(576).  [para(83(a,1),77(a,1,2,2)),rewrite([83(14)])].
+
+given #96 (H,wt=21): 107 f(x,f(f(y,x),f(f(x,f(y,x)),f(f(y,x),z)))) = f(y,x) # label(601).  [para(89(a,1),64(a,1,2,2,1,1,1)),rewrite([88(6),88(5)])].
+
+given #97 (H,wt=17): 128 f(f(x,f(y,x)),f(x,f(f(y,x),f(x,z)))) = x # label(640).  [para(123(a,1),107(a,1,2,1)),rewrite([123(8),117(5),104(5),123(7),123(11)])].
+
+given #98 (H,wt=21): 120 f(f(f(x,f(x,x)),f(f(y,f(y,z)),f(y,u))),f(y,y)) = y # label(626).  [back_rewrite(111),rewrite([117(4),117(5),105(5),117(4)])].
+
+given #99 (H,wt=19): 129 f(f(f(x,f(x,x)),f(f(y,z),f(z,u))),f(z,z)) = z # label(644).  [para(104(a,1),120(a,1,1,2,1))].
+
+given #100 (H,wt=19): 130 f(f(f(x,f(x,x)),f(f(y,z),f(u,z))),f(z,z)) = z # label(646).  [para(30(a,1),129(a,1,1,2,2))].
+
+given #101 (H,wt=21): 121 f(f(x,y),f(f(z,f(z,z)),f(f(y,f(y,x)),f(u,y)))) = y # label(627).  [back_rewrite(110),rewrite([117(5),117(6),105(6),117(5)])].
+
+given #102 (H,wt=11): 132 f(f(x,f(x,y)),f(y,x)) = x # label(652A).  [para(121(a,1),95(a,1)),flip(a)].
+
+given #103 (H,wt=21): 124 f(f(x,y),f(f(f(y,y),x),f(f(y,f(x,y)),f(y,z)))) = y # label(630).  [para(117(a,1),65(a,1,2,2,1,1,1)),rewrite([117(6),105(6),122(5)])].
+
+given #104 (H,wt=23): 127 f(f(f(x,y),f(x,y)),f(x,x)) = f(f(x,y),f(f(x,y),f(x,y))) # label(637).  [para(28(a,1),101(a,1,2,1)),rewrite([28(6)])].
+
+given #105 (H,wt=17): 133 f(f(x,x),f(f(y,x),f(x,z))) = f(x,f(x,x)) # label(658).  [para(129(a,1),127(a,1,1,1)),rewrite([129(8),93(14),129(13),129(13),129(13)])].
+
+given #106 (H,wt=19): 134 f(f(x,x),f(f(y,x),f(z,f(z,z)))) = f(x,f(x,x)) # label(660).  [para(83(a,1),133(a,1,2,2))].
+
+given #107 (H,wt=23): 131 f(f(f(x,y),f(z,y)),y) = f(f(u,f(u,u)),f(f(x,y),f(z,y))) # label(649).  [para(130(a,1),54(a,1,2)),rewrite([93(13)])].
+
+given #108 (H,wt=19): 135 f(f(f(x,y),f(z,y)),y) = f(y,f(f(x,y),f(z,y))) # label(664B).  [para(131(a,1),30(a,1,2,1)),rewrite([97(11)]),flip(a)].
+
+given #109 (H,wt=21): 137 f(f(x,y),f(y,f(f(z,y),f(x,y)))) = f(f(z,y),f(x,y)) # label(666).  [para(131(a,2),95(a,1,2)),rewrite([135(5)])].
+
+given #110 (H,wt=21): 138 f(x,f(f(x,y),f(f(z,f(x,y)),x))) = f(f(z,f(x,y)),x) # label(669).  [para(54(a,1),137(a,1,1)),rewrite([54(6),54(11)])].
+
+given #111 (H,wt=13): 141 f(x,f(f(x,y),f(y,x))) = f(y,x) # label(670).  [para(61(a,1),138(a,1,2,2,1)),rewrite([61(7)])].
+
+given #112 (H,wt=21): 139 f(f(x,y),f(x,f(f(z,x),f(x,y)))) = f(f(z,x),f(x,y)) # label(667).  [para(59(a,1),137(a,1,1)),rewrite([59(6),59(11)])].
+
+given #113 (H,wt=21): 140 f(f(x,y),f(y,f(f(y,z),f(x,y)))) = f(f(y,z),f(x,y)) # label(668).  [para(59(a,1),137(a,1,2,2,1)),rewrite([59(10)])].
+
+given #114 (H,wt=15): 142 f(f(x,y),f(y,x)) = f(f(y,x),f(y,x)) # label(671A).  [para(141(a,1),140(a,1,2)),flip(a)].
+
+% Operation f is commutative; C redundancy checks enabled.
+
+============================== PROOF =================================
+
+% Proof 4 at 0.64 (+ 0.00) seconds: comm.
+% Length of proof is 96.
+% Level of proof is 36.
+% Maximum clause weight is 41.
+% Given clauses 114.
+
+1 f(y,x) = f(x,y) # answer(comm) # label(non_clause) # label(goal).  [goal].
+7 f(f(x,y),f(f(f(y,y),z),f(f(f(f(f(y,x),z),z),y),f(y,u)))) = y # label(MOL_sax) # label(492).  [assumption].
+8 f(c2,c1) != f(c1,c2) # answer(comm).  [deny(1)].
+15 f(f(x,f(y,z)),f(f(f(f(y,z),f(y,z)),u),f(f(f(f(f(f(y,z),x),u),u),f(y,z)),z))) = f(y,z) # label(499).  [para(7(a,1),7(a,1,2,2,2))].
+16 f(f(x,y),f(f(f(y,y),z),f(f(f(f(f(y,x),z),z),y),f(f(f(y,y),u),f(f(f(f(f(y,w),u),u),y),f(y,v5)))))) = y # label(500).  [para(7(a,1),15(a,1,1,2)),rewrite([7(12),7(12),7(14),7(17),7(30)])].
+17 f(f(x,y),f(f(f(y,y),z),y)) = y # label(501).  [para(7(a,1),16(a,1,2,2))].
+18 f(f(x,y),f(y,y)) = y # label(502).  [para(7(a,1),17(a,1,2,1))].
+19 f(f(x,y),f(y,f(f(f(f(f(y,x),f(y,y)),f(y,y)),y),f(y,z)))) = y # label(503).  [para(18(a,1),7(a,1,2,1))].
+20 f(f(f(x,x),f(y,x)),f(f(f(f(y,x),f(y,x)),z),f(f(f(f(x,z),z),f(y,x)),f(f(y,x),u)))) = f(y,x) # label(504).  [para(18(a,1),7(a,1,2,2,1,1,1,1))].
+21 f(f(x,y),f(f(f(y,y),f(x,x)),f(f(f(x,f(x,x)),y),f(y,z)))) = y # label(505).  [para(18(a,1),7(a,1,2,2,1,1,1))].
+22 f(f(f(x,x),f(y,x)),f(f(f(f(y,x),f(y,x)),z),f(f(f(f(x,z),z),f(y,x)),x))) = f(y,x) # label(506).  [para(18(a,1),15(a,1,2,2,1,1,1,1))].
+23 f(f(x,f(y,z)),f(f(f(f(y,z),f(y,z)),f(x,x)),f(f(f(x,f(x,x)),f(y,z)),z))) = f(y,z) # label(507).  [para(18(a,1),15(a,1,2,2,1,1,1))].
+24 f(f(x,f(y,y)),y) = f(y,y) # label(508).  [para(18(a,1),15(a,1,2,2,1)),rewrite([18(5),18(5)])].
+25 f(f(f(x,x),y),x) = f(x,x) # label(510B).  [para(17(a,1),18(a,1,1)),rewrite([17(7)]),flip(a)].
+26 f(f(x,y),f(y,f(f(y,y),f(y,z)))) = y # label(511).  [back_rewrite(19),rewrite([24(7)])].
+27 f(f(x,x),f(f(f(x,x),x),f(f(f(x,x),x),f(x,y)))) = x # label(512).  [para(25(a,1),7(a,1,2,2,1,1))].
+28 f(f(x,y),f(x,x)) = x # label(513).  [para(18(a,1),25(a,1,1,1)),rewrite([18(6)])].
+29 f(f(x,y),f(f(f(y,y),f(f(y,x),f(y,x))),f(f(f(y,x),y),f(y,z)))) = y # label(514).  [para(28(a,1),7(a,1,2,2,1,1))].
+30 f(x,f(f(y,x),f(y,x))) = f(y,x) # label(515).  [para(7(a,1),28(a,1,1))].
+31 f(x,f(f(x,y),f(x,y))) = f(x,y) # label(516).  [para(28(a,1),28(a,1,1))].
+32 f(f(x,y),f(f(f(y,y),z),f(f(f(f(f(y,x),z),z),y),f(u,y)))) = y # label(517).  [para(30(a,1),7(a,1,2,2,2))].
+33 f(f(f(f(x,x),y),f(f(f(f(f(x,z),y),y),x),f(x,u))),f(x,x)) = x # label(518).  [para(7(a,1),30(a,1,2,1)),rewrite([7(20),7(22)])].
+34 f(f(x,f(f(x,x),f(x,y))),f(x,f(f(x,x),f(x,y)))) = x # label(519A).  [para(26(a,1),25(a,1)),flip(a)].
+35 f(f(x,x),f(f(f(x,x),x),f(f(f(x,x),x),f(y,x)))) = x # label(520).  [para(30(a,1),27(a,1,2,2,2))].
+36 f(x,f(f(x,x),f(x,y))) = f(x,x) # label(521B).  [para(34(a,1),18(a,1,1)),rewrite([34(9)]),flip(a)].
+37 f(f(x,y),f(f(f(x,y),f(x,y)),y)) = f(f(x,y),f(x,y)) # label(522).  [para(7(a,1),36(a,1,2,2))].
+38 f(f(x,x),f(x,f(f(x,x),y))) = x # label(523).  [para(18(a,1),36(a,1,2,1)),rewrite([28(8)])].
+39 f(f(x,y),f(f(f(x,y),f(x,y)),x)) = f(f(x,y),f(x,y)) # label(524).  [para(28(a,1),36(a,1,2,2))].
+40 f(f(x,x),f(x,f(y,f(x,x)))) = x # label(525).  [para(30(a,1),38(a,1,2,2))].
+41 f(x,f(f(x,f(x,x)),f(f(x,f(x,x)),f(y,f(x,x))))) = f(x,x) # label(526).  [para(18(a,1),35(a,1,1)),rewrite([28(3),28(5)])].
+42 f(f(f(x,f(x,x)),f(f(x,f(x,x)),f(y,f(x,x)))),x) = f(x,x) # label(527).  [para(41(a,1),30(a,1,2,1)),rewrite([41(18),28(11),41(18)])].
+43 f(f(x,f(y,z)),f(f(f(f(y,z),f(y,z)),f(x,x)),f(f(f(x,f(x,x)),f(y,z)),y))) = f(y,z) # label(528).  [para(28(a,1),21(a,1,2,2,2))].
+44 f(f(x,x),f(f(x,f(x,x)),f(f(x,x),f(x,y)))) = x # label(529).  [para(42(a,1),21(a,1,2,2,1)),rewrite([24(3),30(8)])].
+45 f(x,f(f(f(x,x),x),f(x,f(f(x,x),y)))) = f(x,x) # label(530).  [para(18(a,1),44(a,1,1)),rewrite([28(4),28(5)])].
+46 f(f(x,f(x,x)),f(f(f(x,x),x),f(x,f(f(x,x),y)))) = f(x,x) # label(531).  [para(18(a,1),29(a,1,2,2,1)),rewrite([28(5),30(8)])].
+47 f(f(f(x,x),x),f(f(x,f(x,x)),f(f(x,x),f(x,y)))) = x # label(532).  [para(24(a,1),29(a,1,2,2,1)),rewrite([30(9)])].
+48 f(f(f(x,x),f(y,x)),f(f(f(f(y,x),f(y,x)),f(x,x)),f(f(x,f(y,x)),x))) = f(y,x) # label(533).  [para(28(a,1),22(a,1,2,2,1,1))].
+49 f(f(x,f(x,x)),f(f(x,x),f(x,y))) = f(x,x) # label(534F).  [para(44(a,1),23(a,1,1)),rewrite([28(16),28(18),47(23),36(18),18(16)]),flip(a)].
+50 f(f(f(x,x),x),f(x,f(f(x,x),y))) = x # label(535E).  [para(45(a,1),23(a,1,1)),rewrite([46(25),38(21),24(17),28(3)]),flip(a)].
+51 f(f(f(x,x),x),f(x,f(y,f(x,x)))) = x # label(536).  [para(30(a,1),50(a,1,2,2))].
+52 f(f(f(x,y),f(f(x,y),f(x,y))),f(f(f(x,y),f(x,y)),y)) = f(f(x,y),f(x,y)) # label(537).  [para(7(a,1),49(a,1,2,2))].
+53 f(f(f(x,y),f(f(x,y),f(x,y))),f(f(f(x,y),f(x,y)),x)) = f(f(x,y),f(x,y)) # label(538).  [para(28(a,1),49(a,1,2,2))].
+54 f(f(x,x),f(x,y)) = x # label(539E).  [para(36(a,1),43(a,1,1)),rewrite([49(16),28(13),24(11),28(3)]),flip(a)].
+56 f(x,f(f(x,x),y)) = f(x,x) # label(541E).  [para(38(a,1),43(a,1,1)),rewrite([54(10),54(12),50(14),18(10)]),flip(a)].
+57 f(x,f(y,f(x,x))) = f(x,x) # label(542E).  [para(40(a,1),43(a,1,1)),rewrite([54(10),54(12),51(14),18(10)]),flip(a)].
+58 f(f(f(x,y),f(x,y)),y) = f(x,y) # label(543E).  [para(37(a,1),43(a,1,1)),rewrite([52(26),54(23),24(18),54(7)]),flip(a)].
+59 f(f(f(x,y),f(x,y)),x) = f(x,y) # label(544E).  [para(39(a,1),43(a,1,1)),rewrite([53(26),54(23),24(18),54(7)]),flip(a)].
+61 f(f(x,x),f(y,x)) = x # label(548).  [para(30(a,1),54(a,1,2))].
+62 f(f(x,y),f(y,f(f(f(f(f(y,x),f(y,z)),f(y,z)),y),f(u,y)))) = y # label(546).  [para(54(a,1),32(a,1,2,1))].
+63 f(x,f(f(f(f(y,x),f(y,x)),f(x,x)),f(f(x,f(y,x)),x))) = f(y,x) # label(549).  [back_rewrite(48),rewrite([61(3)])].
+64 f(x,f(f(f(f(y,x),f(y,x)),z),f(f(f(f(x,z),z),f(y,x)),f(f(y,x),u)))) = f(y,x) # label(550).  [back_rewrite(20),rewrite([61(3)])].
+66 f(f(x,y),f(f(f(f(y,x),f(y,z)),f(y,z)),y)) = y # label(552).  [para(30(a,1),62(a,1,2))].
+67 f(x,f(f(f(x,f(f(y,x),z)),f(f(y,x),z)),f(y,x))) = f(y,x) # label(553).  [para(18(a,1),66(a,1,2,1,1,1)),rewrite([61(3)])].
+68 f(x,f(f(f(x,f(f(x,y),z)),f(f(x,y),z)),f(x,y))) = f(x,y) # label(554).  [para(28(a,1),66(a,1,2,1,1,1)),rewrite([54(3)])].
+71 f(x,f(f(f(x,x),x),f(y,x))) = f(y,x) # label(557).  [para(7(a,1),67(a,1,2,1,1,2)),rewrite([7(12)])].
+72 f(f(x,x),f(f(x,f(x,x)),f(y,f(x,x)))) = f(y,f(x,x)) # label(558).  [para(24(a,1),67(a,1,2,1,1,2)),rewrite([54(4),24(4)])].
+73 f(x,f(f(f(x,y),y),f(y,x))) = f(y,x) # label(559).  [para(28(a,1),67(a,1,2,1,1,2)),rewrite([28(4)])].
+74 f(x,f(f(f(x,x),x),f(x,y))) = f(x,y) # label(560).  [para(59(a,1),71(a,1,2,2)),rewrite([59(9)])].
+75 f(f(x,x),x) = f(x,f(x,x)) # label(561).  [para(25(a,1),73(a,1,2,1)),rewrite([54(5)])].
+76 f(x,f(f(x,f(x,x)),f(x,y))) = f(x,y) # label(562).  [back_rewrite(74),rewrite([75(2)])].
+77 f(f(x,x),f(f(x,f(x,x)),f(f(x,x),y))) = f(f(x,x),y) # label(563).  [para(18(a,1),76(a,1,2,1,2)),rewrite([75(3)])].
+78 f(x,f(f(y,x),f(f(f(f(x,y),y),f(y,x)),f(f(y,x),z)))) = f(y,x) # label(564).  [para(59(a,1),64(a,1,2,1))].
+79 f(f(x,x),f(f(x,f(x,x)),f(x,f(f(x,f(x,x)),y)))) = f(x,f(x,x)) # label(565).  [para(25(a,1),78(a,1,2,2,1,1)),rewrite([54(7)])].
+81 f(f(x,f(x,x)),f(f(x,f(x,x)),f(x,f(x,x)))) = f(x,f(x,x)) # label(567D).  [para(42(a,1),79(a,1,2,2,2)),rewrite([28(17),42(14),58(7)]),flip(a)].
+82 f(f(x,x),f(f(x,f(x,x)),f(x,y))) = f(x,f(x,x)) # label(568).  [para(76(a,1),79(a,1,2,2))].
+83 f(x,f(f(y,f(y,y)),f(y,f(y,y)))) = f(y,f(y,y)) # label(570C).  [para(81(a,1),72(a,1,2,1)),rewrite([57(14),54(11)]),flip(a)].
+86 f(f(x,f(x,x)),y) = f(y,y) # label(573).  [para(83(a,1),25(a,1,1))].
+88 f(f(x,x),f(y,f(y,y))) = x # label(594).  [para(83(a,1),54(a,1,2))].
+89 f(x,f(y,f(y,y))) = f(x,x) # label(575).  [para(83(a,1),56(a,1,2))].
+90 f(f(x,x),f(f(x,f(x,x)),f(y,f(y,y)))) = f(y,f(y,y)) # label(576).  [para(83(a,1),77(a,1,2,2)),rewrite([83(14)])].
+91 f(x,f(x,x)) = f(y,f(y,y)) # label(577).  [para(83(a,1),82(a,1,2,2)),rewrite([90(7)])].
+93 f(f(x,y),f(f(z,f(z,z)),y)) = y # label(579).  [para(86(a,2),18(a,1,2))].
+95 f(x,f(f(y,f(y,y)),f(z,x))) = f(z,x) # label(581).  [para(86(a,2),30(a,1,2))].
+96 f(x,f(f(y,f(y,y)),f(x,z))) = f(x,z) # label(582).  [para(86(a,2),31(a,1,2))].
+97 f(f(f(x,f(x,x)),y),f(y,z)) = y # label(583).  [para(86(a,1),21(a,1,2,1,2)),rewrite([83(10),83(13),96(12)])].
+101 f(f(x,x),f(f(x,y),f(x,y))) = f(x,f(x,x)) # label(590).  [para(86(a,1),82(a,1,2))].
+103 f(f(x,y),f(f(y,x),y)) = y # label(597).  [para(89(a,1),66(a,1,2,1,1)),rewrite([88(7)])].
+104 f(x,f(x,f(y,x))) = f(y,x) # label(598).  [para(89(a,1),67(a,1,2,1,1)),rewrite([88(7)])].
+105 f(x,f(x,f(x,y))) = f(x,y) # label(599).  [para(89(a,1),68(a,1,2,1,1)),rewrite([88(7)])].
+111 f(f(f(x,f(x,x)),f(f(f(f(f(y,z),y),y),y),f(y,u))),f(y,y)) = y # label(607).  [para(91(a,1),33(a,1,1,1)),rewrite([54(6),54(7)])].
+114 f(f(x,y),f(f(f(x,f(x,y)),x),f(x,f(x,y)))) = f(x,f(x,y)) # label(616).  [para(105(a,1),103(a,1,1))].
+116 f(f(f(x,y),x),f(x,y)) = x # label(620).  [para(97(a,1),63(a,1,2,1,1,1)),rewrite([97(6),101(6),97(9),95(9),97(9)])].
+117 f(f(x,y),x) = f(x,f(x,y)) # label(623).  [back_rewrite(114),rewrite([116(7)])].
+120 f(f(f(x,f(x,x)),f(f(y,f(y,z)),f(y,u))),f(y,y)) = y # label(626).  [back_rewrite(111),rewrite([117(4),117(5),105(5),117(4)])].
+129 f(f(f(x,f(x,x)),f(f(y,z),f(z,u))),f(z,z)) = z # label(644).  [para(104(a,1),120(a,1,1,2,1))].
+130 f(f(f(x,f(x,x)),f(f(y,z),f(u,z))),f(z,z)) = z # label(646).  [para(30(a,1),129(a,1,1,2,2))].
+131 f(f(f(x,y),f(z,y)),y) = f(f(u,f(u,u)),f(f(x,y),f(z,y))) # label(649).  [para(130(a,1),54(a,1,2)),rewrite([93(13)])].
+135 f(f(f(x,y),f(z,y)),y) = f(y,f(f(x,y),f(z,y))) # label(664B).  [para(131(a,1),30(a,1,2,1)),rewrite([97(11)]),flip(a)].
+137 f(f(x,y),f(y,f(f(z,y),f(x,y)))) = f(f(z,y),f(x,y)) # label(666).  [para(131(a,2),95(a,1,2)),rewrite([135(5)])].
+138 f(x,f(f(x,y),f(f(z,f(x,y)),x))) = f(f(z,f(x,y)),x) # label(669).  [para(54(a,1),137(a,1,1)),rewrite([54(6),54(11)])].
+140 f(f(x,y),f(y,f(f(y,z),f(x,y)))) = f(f(y,z),f(x,y)) # label(668).  [para(59(a,1),137(a,1,2,2,1)),rewrite([59(10)])].
+141 f(x,f(f(x,y),f(y,x))) = f(y,x) # label(670).  [para(61(a,1),138(a,1,2,2,1)),rewrite([61(7)])].
+142 f(f(x,y),f(y,x)) = f(f(y,x),f(y,x)) # label(671A).  [para(141(a,1),140(a,1,2)),flip(a)].
+143 f(f(x,f(y,z)),f(f(z,y),f(y,z))) = f(y,z) # label(672).  [para(142(a,2),18(a,1,2))].
+145 f(x,y) = f(y,x) # label(674).  [para(142(a,1),142(a,1,1)),rewrite([54(7),143(8)])].
+146 $F # answer(comm).  [resolve(145,a,8,a)].
+
+============================== end of proof ==========================
+% back CAC tautology: 142 f(f(x,y),f(y,x)) = f(f(y,x),f(y,x)) # label(671A).  [para(141(a,1),140(a,1,2)),flip(a)].
+
+% Disable descendants (x means already disabled):
+ 8
+
+given #115 (H,wt=7): 145 f(x,y) = f(y,x) # label(674).  [para(142(a,1),142(a,1,1)),rewrite([54(7),143(8)])].
+
+given #116 (H,wt=11): 144 f(f(x,f(y,x)),f(x,y)) = x # label(673).  [para(142(a,1),128(a,1,2,2)),rewrite([31(6)])].
+
+given #117 (H,wt=11): 148 f(f(x,y),f(x,f(y,x))) = x # label(677).  [para(145(a,1),118(a,1,2,2))].
+
+given #118 (H,wt=15): 149 f(f(f(x,f(x,x)),f(y,z)),y) = f(z,y) # label(678).  [para(145(a,1),99(a,1,1,2))].
+
+given #119 (H,wt=15): 150 f(f(f(x,f(x,x)),y),z) = f(z,f(y,y)) # label(679).  [para(145(a,1),100(a,1))].
+
+given #120 (H,wt=17): 143 f(f(x,f(y,z)),f(f(z,y),f(y,z))) = f(y,z) # label(672).  [para(142(a,2),18(a,1,2))].
+
+given #121 (H,wt=17): 147 f(x,f(f(y,x),f(y,f(z,f(y,x))))) = f(y,x) # label(676).  [back_rewrite(126),rewrite([144(5)])].
+
+given #122 (H,wt=13): 153 f(x,f(f(y,z),f(z,x))) = f(z,x) # label(689).  [para(139(a,1),147(a,1,2))].
+
+given #123 (H,wt=13): 156 f(x,f(f(y,z),f(y,x))) = f(y,x) # label(691).  [para(59(a,1),153(a,1,2,1))].
+
+given #124 (H,wt=13): 158 f(x,f(f(y,z),f(x,z))) = f(z,x) # label(696).  [para(145(a,1),153(a,1,2,2))].
+
+given #125 (H,wt=13): 159 f(x,f(f(y,x),f(z,y))) = f(y,x) # label(697).  [para(145(a,1),153(a,1,2))].
+
+given #126 (H,wt=13): 160 f(f(f(x,y),f(x,z)),z) = f(x,z) # label(701A).  [para(156(a,1),145(a,1)),flip(a)].
+
+given #127 (H,wt=13): 161 f(x,f(f(y,x),f(y,z))) = f(y,x) # label(702).  [para(145(a,1),156(a,1,2))].
+
+given #128 (H,wt=13): 163 f(f(f(x,y),f(z,y)),z) = f(y,z) # label(704A).  [para(158(a,1),145(a,1)),flip(a)].
+
+given #129 (H,wt=13): 164 f(x,f(f(x,y),f(z,y))) = f(y,x) # label(705).  [para(145(a,1),158(a,1,2))].
+
+given #130 (H,wt=13): 170 f(f(f(x,y),f(z,y)),x) = f(y,x) # label(725).  [para(145(a,1),163(a,1,1))].
+
+given #131 (H,wt=15): 154 f(x,f(y,f(f(y,z),x))) = f(f(y,z),x) # label(692).  [para(54(a,1),153(a,1,2,1))].
+
+given #132 (H,wt=15): 155 f(x,f(y,f(f(z,y),x))) = f(f(z,y),x) # label(690).  [para(61(a,1),153(a,1,2,1))].
+
+given #133 (H,wt=15): 157 f(f(x,y),f(f(z,f(y,f(y,x))),y)) = y # label(695).  [para(132(a,1),153(a,1,2,2)),rewrite([132(10)])].
+
+given #134 (H,wt=15): 162 f(f(x,y),z) = f(z,f(y,f(z,f(x,y)))) # label(703A).  [para(61(a,1),158(a,1,2,1)),flip(a)].
+
+given #135 (H,wt=15): 166 f(x,f(f(f(y,z),x),z)) = f(f(y,z),x) # label(708).  [para(61(a,1),159(a,1,2,2))].
+
+given #136 (H,wt=15): 167 f(f(x,f(y,x)),f(x,f(f(x,y),z))) = x # label(718).  [para(148(a,1),161(a,1,2,1)),rewrite([148(10)])].
+
+given #137 (H,wt=15): 168 f(f(x,f(y,f(x,z))),y) = f(f(x,z),y) # label(722).  [para(54(a,1),163(a,1,1,1))].
+
+given #138 (H,wt=15): 169 f(f(f(x,f(y,z)),z),f(z,f(z,y))) = z # label(724).  [para(119(a,1),163(a,2)),rewrite([132(6)])].
+
+given #139 (H,wt=15): 171 f(x,f(f(x,f(y,z)),z)) = f(f(y,z),x) # label(726).  [para(61(a,1),164(a,1,2,2))].
+
+given #140 (H,wt=15): 172 f(f(f(x,f(y,z)),z),x) = f(f(y,z),x) # label(728).  [para(61(a,1),170(a,1,1,2))].
+
+given #141 (H,wt=15): 174 f(x,f(y,f(x,f(z,y)))) = f(x,f(z,y)) # label(731).  [para(162(a,1),145(a,1))].
+
+given #142 (H,wt=15): 176 f(f(f(x,f(y,z)),y),f(y,f(y,z))) = y # label(723).  [para(145(a,1),169(a,1,1,1,2))].
+
+given #143 (H,wt=15): 177 f(f(x,f(y,f(z,x))),y) = f(y,f(z,x)) # label(736A).  [para(174(a,1),145(a,1)),flip(a)].
+
+given #144 (H,wt=17): 151 f(f(x,f(x,x)),f(y,z)) = f(f(y,z),f(z,y)) # label(682B).  [para(149(a,1),54(a,1,2)),rewrite([93(9)]),flip(a)].
+
+given #145 (H,wt=17): 152 f(f(x,f(y,z)),f(f(y,z),f(z,y))) = f(z,y) # label(686).  [para(145(a,1),143(a,1,1,2))].
+
+given #146 (H,wt=17): 178 f(f(f(x,y),f(y,x)),f(z,f(x,y))) = f(y,x) # label(740A).  [para(152(a,1),145(a,1)),flip(a)].
+
+given #147 (H,wt=17): 179 f(f(f(x,y),f(y,x)),f(z,f(y,x))) = f(x,y) # label(741).  [para(145(a,1),178(a,1,1))].
+
+given #148 (H,wt=19): 165 f(f(f(x,y),f(z,y)),f(f(u,z),f(y,z))) = f(y,z) # label(706).  [para(158(a,1),153(a,1,2,2)),rewrite([158(11)])].
+
+given #149 (H,wt=19): 175 f(f(f(f(x,f(x,x)),y),z),u) = f(u,f(z,f(y,y))) # label(732).  [para(150(a,2),162(a,1,1)),rewrite([174(11)])].
+
+given #150 (H,wt=19): 180 f(x,f(f(f(y,z),x),f(u,f(z,y)))) = f(f(y,z),x) # label(743).  [para(178(a,1),166(a,1,2,1,1)),rewrite([178(12)])].
+
+given #151 (H,wt=19): 181 f(f(f(x,y),f(f(z,u),y)),f(u,z)) = f(y,f(z,u)) # label(745).  [para(151(a,1),165(a,1,2,1)),rewrite([178(10)])].
+
+given #152 (H,wt=19): 183 f(f(x,f(f(y,f(y,y)),z)),u) = f(u,f(x,f(z,z))) # label(749).  [para(145(a,1),175(a,1,1))].
+
+given #153 (H,wt=23): 136 f(f(x,f(x,x)),f(f(y,z),f(u,z))) = f(z,f(f(y,z),f(u,z))) # label(649).  [para(131(a,1),30(a,2)),rewrite([135(4),135(8),31(10)]),flip(a)].
+
+given #154 (H,wt=23): 173 f(f(f(x,y),f(y,f(z,u))),f(z,f(y,f(z,u)))) = f(y,f(z,u)) # label(729).  [para(153(a,1),154(a,1,2,2)),rewrite([153(14)])].
+
+given #155 (H,wt=15): 184 f(x,f(y,f(x,f(y,z)))) = f(x,f(y,z)) # label(754).  [para(24(a,1),173(a,1,1,1)),rewrite([54(4)])].
+
+given #156 (H,wt=23): 182 f(x,f(f(y,f(y,y)),f(f(z,f(x,x)),f(f(x,x),u)))) = f(x,x) # label(748).  [para(175(a,2),129(a,1)),rewrite([18(5)])].
+
+given #157 (H,wt=27): 125 f(f(x,y),f(f(f(y,y),z),f(f(u,f(u,u)),f(f(z,f(f(y,x),z)),y)))) = y # label(632).  [back_rewrite(98),rewrite([122(8)])].
+
+given #158 (H,wt=15): 185 f(f(x,y),f(f(z,f(f(y,x),z)),y)) = y # label(759).  [para(125(a,1),174(a,1,2,2)),rewrite([99(9),125(18)])].
+
+given #159 (H,wt=15): 186 f(f(f(x,f(f(y,z),x)),y),f(z,y)) = y # label(760).  [para(125(a,1),177(a,1,1,2)),rewrite([99(8),125(18)])].
+
+given #160 (H,wt=15): 187 f(x,f(f(y,f(x,y)),f(x,z))) = f(x,z) # label(761).  [para(28(a,1),185(a,1,2,1,2,1)),rewrite([54(3)])].
+
+given #161 (H,wt=15): 190 f(x,f(f(y,f(y,x)),f(x,z))) = f(x,z) # label(766).  [para(145(a,1),187(a,1,2,1,2))].
+
+given #162 (H,wt=19): 188 f(f(x,y),f(f(z,f(f(u,f(f(y,x),u)),y)),y)) = y # label(763).  [para(185(a,1),158(a,1,2,2)),rewrite([186(14)])].
+
+given #163 (H,wt=19): 189 f(f(x,x),f(f(y,x),f(f(x,x),z))) = f(f(x,x),z) # label(765).  [para(134(a,1),187(a,1,2,1,2)),rewrite([108(8)])].
+
+given #164 (H,wt=15): 191 f(x,f(f(y,f(x,x)),f(x,z))) = f(x,z) # label(772).  [para(18(a,1),189(a,1,1)),rewrite([54(5),54(8)])].
+
+given #165 (H,wt=15): 193 f(x,f(f(f(x,x),y),f(x,z))) = f(x,z) # label(775).  [para(145(a,1),191(a,1,2,1))].
+
+given #166 (H,wt=15): 194 f(x,f(f(f(x,x),y),f(z,x))) = f(z,x) # label(776).  [para(104(a,1),193(a,1,2,2)),rewrite([104(8)])].
+
+given #167 (H,wt=15): 195 f(f(f(f(x,x),y),f(z,x)),x) = f(z,x) # label(779A).  [para(194(a,1),145(a,1)),flip(a)].
+
+given #168 (H,wt=19): 192 f(f(x,x),f(f(f(x,x),y),f(z,x))) = f(f(x,x),y) # label(774).  [para(145(a,1),189(a,1,2))].
+
+given #169 (H,wt=21): 196 f(f(x,y),f(f(f(y,y),z),f(f(y,f(x,y)),f(y,u)))) = y # label(781).  [para(195(a,1),124(a,1,1)),rewrite([192(7),195(8)])].
+
+given #170 (H,wt=21): 197 f(f(x,x),f(f(f(x,x),y),f(f(z,f(z,z)),f(x,u)))) = x # label(783).  [para(91(a,1),196(a,1,2,2,1))].
+
+given #171 (H,wt=17): 198 f(f(x,f(f(y,f(y,y)),f(z,u))),f(z,z)) = z # label(789A).  [para(197(a,1),171(a,1)),flip(a)].
+
+given #172 (H,wt=17): 199 f(f(x,f(y,y)),f(f(z,y),f(z,y))) = f(z,y) # label(791).  [para(157(a,1),198(a,1,1,2)),rewrite([61(6),61(7),61(10)])].
+
+given #173 (H,wt=17): 201 f(f(f(x,y),f(x,y)),f(z,f(y,y))) = f(x,y) # label(794A).  [para(199(a,1),145(a,1)),flip(a)].
+
+given #174 (H,wt=19): 200 f(f(x,y),f(f(z,f(y,y)),f(x,y))) = f(z,f(y,y)) # label(792).  [para(199(a,1),118(a,1,1)),rewrite([199(9)])].
+
+given #175 (H,wt=15): 204 f(f(x,f(y,x)),f(x,f(z,f(y,y)))) = x # label(798).  [para(200(a,1),167(a,1,2,2))].
+
+given #176 (H,wt=15): 205 f(f(f(x,f(y,x)),f(y,y)),x) = f(x,x) # label(800A).  [para(204(a,1),168(a,1,1)),flip(a)].
+
+given #177 (H,wt=19): 203 f(x,f(y,f(f(z,f(x,x)),f(f(x,x),u)))) = f(x,x) # label(797).  [para(182(a,1),201(a,1,1,1)),rewrite([182(10),54(3),93(17),182(16)])].
+
+given #178 (H,wt=15): 207 f(f(x,x),f(y,f(f(x,z),f(x,u)))) = x # label(808).  [para(175(a,2),203(a,1,2,2,1)),rewrite([18(6),54(5),54(9)])].
+
+given #179 (H,wt=21): 202 f(x,f(f(f(f(y,y),z),x),f(u,y))) = f(f(f(y,y),z),x) # label(796).  [para(201(a,1),180(a,1,2,2))].
+
+given #180 (H,wt=19): 208 f(x,f(f(f(y,y),z),f(f(y,u),x))) = f(f(y,u),x) # label(817).  [para(202(a,1),180(a,1,2))].
+
+given #181 (H,wt=19): 209 f(f(x,f(f(y,f(f(z,f(x,x)),y)),z)),z) = f(z,z) # label(822A).  [para(188(a,1),208(a,1,2)),flip(a)].
+
+given #182 (H,wt=19): 210 f(f(f(x,f(f(y,f(z,z)),x)),y),z) = f(z,f(y,y)) # label(823A).  [para(209(a,1),171(a,1,2)),flip(a)].
+
+given #183 (H,wt=21): 211 f(x,f(f(y,f(z,f(x,x))),f(y,f(z,f(x,x))))) = f(y,x) # label(826B).  [para(172(a,1),210(a,1,1,1,2)),rewrite([144(8)]),flip(a)].
+
+given #184 (H,wt=17): 212 f(f(f(x,y),f(f(z,f(u,u)),y)),u) = f(y,u) # label(829B).  [para(163(a,1),211(a,1,2,1)),rewrite([163(11),211(8)]),flip(a)].
+
+given #185 (H,wt=17): 213 f(f(f(f(x,f(y,y)),z),f(u,z)),y) = f(z,y) # label(830B).  [para(170(a,1),211(a,1,2,1)),rewrite([170(11),211(8)]),flip(a)].
+
+given #186 (H,wt=25): 214 f(f(f(x,y),f(z,y)),f(f(z,u),f(z,w))) = f(y,f(f(z,u),f(z,w))) # label(834).  [para(207(a,1),212(a,1,1,2,1))].
+
+given #187 (H,wt=25): 215 f(f(f(x,y),f(z,y)),f(f(x,u),f(x,w))) = f(y,f(f(x,u),f(x,w))) # label(835).  [para(207(a,1),213(a,1,1,1,1))].
+
+given #188 (H,wt=25): 216 f(f(f(x,y),f(x,z)),f(f(x,u),f(w,u))) = f(u,f(f(x,y),f(x,z))) # label(917A).  [para(215(a,1),145(a,1)),flip(a)].
+
+============================== PROOF =================================
+
+% Proof 5 at 1.58 (+ 0.01) seconds: assoc.
+% Length of proof is 167.
+% Level of proof is 61.
+% Maximum clause weight is 41.
+% Given clauses 188.
+
+5 f(z,f(f(y,x),f(y,x))) = f(x,f(f(y,z),f(y,z))) # answer(assoc) # label(non_clause) # label(goal).  [goal].
+7 f(f(x,y),f(f(f(y,y),z),f(f(f(f(f(y,x),z),z),y),f(y,u)))) = y # label(MOL_sax) # label(492).  [assumption].
+12 f(c9,f(f(c10,c11),f(c10,c11))) != f(c11,f(f(c10,c9),f(c10,c9))) # answer(assoc).  [deny(5)].
+15 f(f(x,f(y,z)),f(f(f(f(y,z),f(y,z)),u),f(f(f(f(f(f(y,z),x),u),u),f(y,z)),z))) = f(y,z) # label(499).  [para(7(a,1),7(a,1,2,2,2))].
+16 f(f(x,y),f(f(f(y,y),z),f(f(f(f(f(y,x),z),z),y),f(f(f(y,y),u),f(f(f(f(f(y,w),u),u),y),f(y,v5)))))) = y # label(500).  [para(7(a,1),15(a,1,1,2)),rewrite([7(12),7(12),7(14),7(17),7(30)])].
+17 f(f(x,y),f(f(f(y,y),z),y)) = y # label(501).  [para(7(a,1),16(a,1,2,2))].
+18 f(f(x,y),f(y,y)) = y # label(502).  [para(7(a,1),17(a,1,2,1))].
+19 f(f(x,y),f(y,f(f(f(f(f(y,x),f(y,y)),f(y,y)),y),f(y,z)))) = y # label(503).  [para(18(a,1),7(a,1,2,1))].
+20 f(f(f(x,x),f(y,x)),f(f(f(f(y,x),f(y,x)),z),f(f(f(f(x,z),z),f(y,x)),f(f(y,x),u)))) = f(y,x) # label(504).  [para(18(a,1),7(a,1,2,2,1,1,1,1))].
+21 f(f(x,y),f(f(f(y,y),f(x,x)),f(f(f(x,f(x,x)),y),f(y,z)))) = y # label(505).  [para(18(a,1),7(a,1,2,2,1,1,1))].
+22 f(f(f(x,x),f(y,x)),f(f(f(f(y,x),f(y,x)),z),f(f(f(f(x,z),z),f(y,x)),x))) = f(y,x) # label(506).  [para(18(a,1),15(a,1,2,2,1,1,1,1))].
+23 f(f(x,f(y,z)),f(f(f(f(y,z),f(y,z)),f(x,x)),f(f(f(x,f(x,x)),f(y,z)),z))) = f(y,z) # label(507).  [para(18(a,1),15(a,1,2,2,1,1,1))].
+24 f(f(x,f(y,y)),y) = f(y,y) # label(508).  [para(18(a,1),15(a,1,2,2,1)),rewrite([18(5),18(5)])].
+25 f(f(f(x,x),y),x) = f(x,x) # label(510B).  [para(17(a,1),18(a,1,1)),rewrite([17(7)]),flip(a)].
+26 f(f(x,y),f(y,f(f(y,y),f(y,z)))) = y # label(511).  [back_rewrite(19),rewrite([24(7)])].
+27 f(f(x,x),f(f(f(x,x),x),f(f(f(x,x),x),f(x,y)))) = x # label(512).  [para(25(a,1),7(a,1,2,2,1,1))].
+28 f(f(x,y),f(x,x)) = x # label(513).  [para(18(a,1),25(a,1,1,1)),rewrite([18(6)])].
+29 f(f(x,y),f(f(f(y,y),f(f(y,x),f(y,x))),f(f(f(y,x),y),f(y,z)))) = y # label(514).  [para(28(a,1),7(a,1,2,2,1,1))].
+30 f(x,f(f(y,x),f(y,x))) = f(y,x) # label(515).  [para(7(a,1),28(a,1,1))].
+31 f(x,f(f(x,y),f(x,y))) = f(x,y) # label(516).  [para(28(a,1),28(a,1,1))].
+32 f(f(x,y),f(f(f(y,y),z),f(f(f(f(f(y,x),z),z),y),f(u,y)))) = y # label(517).  [para(30(a,1),7(a,1,2,2,2))].
+33 f(f(f(f(x,x),y),f(f(f(f(f(x,z),y),y),x),f(x,u))),f(x,x)) = x # label(518).  [para(7(a,1),30(a,1,2,1)),rewrite([7(20),7(22)])].
+34 f(f(x,f(f(x,x),f(x,y))),f(x,f(f(x,x),f(x,y)))) = x # label(519A).  [para(26(a,1),25(a,1)),flip(a)].
+35 f(f(x,x),f(f(f(x,x),x),f(f(f(x,x),x),f(y,x)))) = x # label(520).  [para(30(a,1),27(a,1,2,2,2))].
+36 f(x,f(f(x,x),f(x,y))) = f(x,x) # label(521B).  [para(34(a,1),18(a,1,1)),rewrite([34(9)]),flip(a)].
+37 f(f(x,y),f(f(f(x,y),f(x,y)),y)) = f(f(x,y),f(x,y)) # label(522).  [para(7(a,1),36(a,1,2,2))].
+38 f(f(x,x),f(x,f(f(x,x),y))) = x # label(523).  [para(18(a,1),36(a,1,2,1)),rewrite([28(8)])].
+39 f(f(x,y),f(f(f(x,y),f(x,y)),x)) = f(f(x,y),f(x,y)) # label(524).  [para(28(a,1),36(a,1,2,2))].
+40 f(f(x,x),f(x,f(y,f(x,x)))) = x # label(525).  [para(30(a,1),38(a,1,2,2))].
+41 f(x,f(f(x,f(x,x)),f(f(x,f(x,x)),f(y,f(x,x))))) = f(x,x) # label(526).  [para(18(a,1),35(a,1,1)),rewrite([28(3),28(5)])].
+42 f(f(f(x,f(x,x)),f(f(x,f(x,x)),f(y,f(x,x)))),x) = f(x,x) # label(527).  [para(41(a,1),30(a,1,2,1)),rewrite([41(18),28(11),41(18)])].
+43 f(f(x,f(y,z)),f(f(f(f(y,z),f(y,z)),f(x,x)),f(f(f(x,f(x,x)),f(y,z)),y))) = f(y,z) # label(528).  [para(28(a,1),21(a,1,2,2,2))].
+44 f(f(x,x),f(f(x,f(x,x)),f(f(x,x),f(x,y)))) = x # label(529).  [para(42(a,1),21(a,1,2,2,1)),rewrite([24(3),30(8)])].
+45 f(x,f(f(f(x,x),x),f(x,f(f(x,x),y)))) = f(x,x) # label(530).  [para(18(a,1),44(a,1,1)),rewrite([28(4),28(5)])].
+46 f(f(x,f(x,x)),f(f(f(x,x),x),f(x,f(f(x,x),y)))) = f(x,x) # label(531).  [para(18(a,1),29(a,1,2,2,1)),rewrite([28(5),30(8)])].
+47 f(f(f(x,x),x),f(f(x,f(x,x)),f(f(x,x),f(x,y)))) = x # label(532).  [para(24(a,1),29(a,1,2,2,1)),rewrite([30(9)])].
+48 f(f(f(x,x),f(y,x)),f(f(f(f(y,x),f(y,x)),f(x,x)),f(f(x,f(y,x)),x))) = f(y,x) # label(533).  [para(28(a,1),22(a,1,2,2,1,1))].
+49 f(f(x,f(x,x)),f(f(x,x),f(x,y))) = f(x,x) # label(534F).  [para(44(a,1),23(a,1,1)),rewrite([28(16),28(18),47(23),36(18),18(16)]),flip(a)].
+50 f(f(f(x,x),x),f(x,f(f(x,x),y))) = x # label(535E).  [para(45(a,1),23(a,1,1)),rewrite([46(25),38(21),24(17),28(3)]),flip(a)].
+51 f(f(f(x,x),x),f(x,f(y,f(x,x)))) = x # label(536).  [para(30(a,1),50(a,1,2,2))].
+52 f(f(f(x,y),f(f(x,y),f(x,y))),f(f(f(x,y),f(x,y)),y)) = f(f(x,y),f(x,y)) # label(537).  [para(7(a,1),49(a,1,2,2))].
+53 f(f(f(x,y),f(f(x,y),f(x,y))),f(f(f(x,y),f(x,y)),x)) = f(f(x,y),f(x,y)) # label(538).  [para(28(a,1),49(a,1,2,2))].
+54 f(f(x,x),f(x,y)) = x # label(539E).  [para(36(a,1),43(a,1,1)),rewrite([49(16),28(13),24(11),28(3)]),flip(a)].
+56 f(x,f(f(x,x),y)) = f(x,x) # label(541E).  [para(38(a,1),43(a,1,1)),rewrite([54(10),54(12),50(14),18(10)]),flip(a)].
+57 f(x,f(y,f(x,x))) = f(x,x) # label(542E).  [para(40(a,1),43(a,1,1)),rewrite([54(10),54(12),51(14),18(10)]),flip(a)].
+58 f(f(f(x,y),f(x,y)),y) = f(x,y) # label(543E).  [para(37(a,1),43(a,1,1)),rewrite([52(26),54(23),24(18),54(7)]),flip(a)].
+59 f(f(f(x,y),f(x,y)),x) = f(x,y) # label(544E).  [para(39(a,1),43(a,1,1)),rewrite([53(26),54(23),24(18),54(7)]),flip(a)].
+61 f(f(x,x),f(y,x)) = x # label(548).  [para(30(a,1),54(a,1,2))].
+62 f(f(x,y),f(y,f(f(f(f(f(y,x),f(y,z)),f(y,z)),y),f(u,y)))) = y # label(546).  [para(54(a,1),32(a,1,2,1))].
+63 f(x,f(f(f(f(y,x),f(y,x)),f(x,x)),f(f(x,f(y,x)),x))) = f(y,x) # label(549).  [back_rewrite(48),rewrite([61(3)])].
+64 f(x,f(f(f(f(y,x),f(y,x)),z),f(f(f(f(x,z),z),f(y,x)),f(f(y,x),u)))) = f(y,x) # label(550).  [back_rewrite(20),rewrite([61(3)])].
+65 f(f(x,y),f(f(f(y,y),z),f(f(f(f(f(x,y),z),z),y),f(y,u)))) = y # label(551).  [para(58(a,1),7(a,1,1)),rewrite([30(7)])].
+66 f(f(x,y),f(f(f(f(y,x),f(y,z)),f(y,z)),y)) = y # label(552).  [para(30(a,1),62(a,1,2))].
+67 f(x,f(f(f(x,f(f(y,x),z)),f(f(y,x),z)),f(y,x))) = f(y,x) # label(553).  [para(18(a,1),66(a,1,2,1,1,1)),rewrite([61(3)])].
+68 f(x,f(f(f(x,f(f(x,y),z)),f(f(x,y),z)),f(x,y))) = f(x,y) # label(554).  [para(28(a,1),66(a,1,2,1,1,1)),rewrite([54(3)])].
+69 f(f(x,y),f(f(f(f(x,y),f(y,z)),f(y,z)),y)) = y # label(555).  [para(30(a,1),66(a,1,2,1,1,1)),rewrite([58(4)])].
+70 f(f(x,y),f(f(f(f(x,y),f(z,y)),f(z,y)),y)) = y # label(556).  [para(30(a,1),69(a,1,2,1,1,2)),rewrite([30(8)])].
+71 f(x,f(f(f(x,x),x),f(y,x))) = f(y,x) # label(557).  [para(7(a,1),67(a,1,2,1,1,2)),rewrite([7(12)])].
+72 f(f(x,x),f(f(x,f(x,x)),f(y,f(x,x)))) = f(y,f(x,x)) # label(558).  [para(24(a,1),67(a,1,2,1,1,2)),rewrite([54(4),24(4)])].
+73 f(x,f(f(f(x,y),y),f(y,x))) = f(y,x) # label(559).  [para(28(a,1),67(a,1,2,1,1,2)),rewrite([28(4)])].
+74 f(x,f(f(f(x,x),x),f(x,y))) = f(x,y) # label(560).  [para(59(a,1),71(a,1,2,2)),rewrite([59(9)])].
+75 f(f(x,x),x) = f(x,f(x,x)) # label(561).  [para(25(a,1),73(a,1,2,1)),rewrite([54(5)])].
+76 f(x,f(f(x,f(x,x)),f(x,y))) = f(x,y) # label(562).  [back_rewrite(74),rewrite([75(2)])].
+77 f(f(x,x),f(f(x,f(x,x)),f(f(x,x),y))) = f(f(x,x),y) # label(563).  [para(18(a,1),76(a,1,2,1,2)),rewrite([75(3)])].
+78 f(x,f(f(y,x),f(f(f(f(x,y),y),f(y,x)),f(f(y,x),z)))) = f(y,x) # label(564).  [para(59(a,1),64(a,1,2,1))].
+79 f(f(x,x),f(f(x,f(x,x)),f(x,f(f(x,f(x,x)),y)))) = f(x,f(x,x)) # label(565).  [para(25(a,1),78(a,1,2,2,1,1)),rewrite([54(7)])].
+80 f(x,f(f(y,x),f(f(f(f(x,y),y),f(y,x)),f(z,f(y,x))))) = f(y,x) # label(566).  [para(30(a,1),78(a,1,2,2,2))].
+81 f(f(x,f(x,x)),f(f(x,f(x,x)),f(x,f(x,x)))) = f(x,f(x,x)) # label(567D).  [para(42(a,1),79(a,1,2,2,2)),rewrite([28(17),42(14),58(7)]),flip(a)].
+82 f(f(x,x),f(f(x,f(x,x)),f(x,y))) = f(x,f(x,x)) # label(568).  [para(76(a,1),79(a,1,2,2))].
+83 f(x,f(f(y,f(y,y)),f(y,f(y,y)))) = f(y,f(y,y)) # label(570C).  [para(81(a,1),72(a,1,2,1)),rewrite([57(14),54(11)]),flip(a)].
+86 f(f(x,f(x,x)),y) = f(y,y) # label(573).  [para(83(a,1),25(a,1,1))].
+88 f(f(x,x),f(y,f(y,y))) = x # label(594).  [para(83(a,1),54(a,1,2))].
+89 f(x,f(y,f(y,y))) = f(x,x) # label(575).  [para(83(a,1),56(a,1,2))].
+90 f(f(x,x),f(f(x,f(x,x)),f(y,f(y,y)))) = f(y,f(y,y)) # label(576).  [para(83(a,1),77(a,1,2,2)),rewrite([83(14)])].
+91 f(x,f(x,x)) = f(y,f(y,y)) # label(577).  [para(83(a,1),82(a,1,2,2)),rewrite([90(7)])].
+93 f(f(x,y),f(f(z,f(z,z)),y)) = y # label(579).  [para(86(a,2),18(a,1,2))].
+95 f(x,f(f(y,f(y,y)),f(z,x))) = f(z,x) # label(581).  [para(86(a,2),30(a,1,2))].
+96 f(x,f(f(y,f(y,y)),f(x,z))) = f(x,z) # label(582).  [para(86(a,2),31(a,1,2))].
+97 f(f(f(x,f(x,x)),y),f(y,z)) = y # label(583).  [para(86(a,1),21(a,1,2,1,2)),rewrite([83(10),83(13),96(12)])].
+98 f(f(x,y),f(f(f(y,y),z),f(f(u,f(u,u)),f(f(f(f(y,x),z),z),y)))) = y # label(585).  [para(86(a,2),32(a,1,2,2))].
+99 f(f(f(x,f(x,x)),f(y,z)),z) = f(y,z) # label(586).  [para(86(a,1),23(a,1,2,1,2)),rewrite([83(13),83(14),96(13)])].
+100 f(x,f(f(y,f(y,y)),z)) = f(x,f(z,z)) # label(589B).  [para(86(a,2),72(a,2,2)),rewrite([95(7)]),flip(a)].
+101 f(f(x,x),f(f(x,y),f(x,y))) = f(x,f(x,x)) # label(590).  [para(86(a,1),82(a,1,2))].
+103 f(f(x,y),f(f(y,x),y)) = y # label(597).  [para(89(a,1),66(a,1,2,1,1)),rewrite([88(7)])].
+104 f(x,f(x,f(y,x))) = f(y,x) # label(598).  [para(89(a,1),67(a,1,2,1,1)),rewrite([88(7)])].
+105 f(x,f(x,f(x,y))) = f(x,y) # label(599).  [para(89(a,1),68(a,1,2,1,1)),rewrite([88(7)])].
+107 f(x,f(f(y,x),f(f(x,f(y,x)),f(f(y,x),z)))) = f(y,x) # label(601).  [para(89(a,1),64(a,1,2,2,1,1,1)),rewrite([88(6),88(5)])].
+108 f(f(x,f(y,f(y,y))),f(z,f(z,z))) = x # label(613).  [para(89(a,2),88(a,1,1))].
+110 f(f(x,y),f(f(z,f(z,z)),f(f(f(f(f(y,x),y),y),y),f(u,y)))) = y # label(606).  [para(91(a,1),32(a,1,2,1)),rewrite([54(7),54(8)])].
+111 f(f(f(x,f(x,x)),f(f(f(f(f(y,z),y),y),y),f(y,u))),f(y,y)) = y # label(607).  [para(91(a,1),33(a,1,1,1)),rewrite([54(6),54(7)])].
+114 f(f(x,y),f(f(f(x,f(x,y)),x),f(x,f(x,y)))) = f(x,f(x,y)) # label(616).  [para(105(a,1),103(a,1,1))].
+116 f(f(f(x,y),x),f(x,y)) = x # label(620).  [para(97(a,1),63(a,1,2,1,1,1)),rewrite([97(6),101(6),97(9),95(9),97(9)])].
+117 f(f(x,y),x) = f(x,f(x,y)) # label(623).  [back_rewrite(114),rewrite([116(7)])].
+120 f(f(f(x,f(x,x)),f(f(y,f(y,z)),f(y,u))),f(y,y)) = y # label(626).  [back_rewrite(111),rewrite([117(4),117(5),105(5),117(4)])].
+121 f(f(x,y),f(f(z,f(z,z)),f(f(y,f(y,x)),f(u,y)))) = y # label(627).  [back_rewrite(110),rewrite([117(5),117(6),105(6),117(5)])].
+122 f(f(x,y),y) = f(y,f(x,y)) # label(628B).  [para(7(a,1),117(a,1,1)),rewrite([7(14)]),flip(a)].
+123 f(f(x,y),f(y,f(x,y))) = y # label(629).  [para(117(a,1),70(a,1,2,1,1)),rewrite([122(2),122(5),117(8),104(8),117(5),104(5),122(4)])].
+124 f(f(x,y),f(f(f(y,y),x),f(f(y,f(x,y)),f(y,z)))) = y # label(630).  [para(117(a,1),65(a,1,2,2,1,1,1)),rewrite([117(6),105(6),122(5)])].
+125 f(f(x,y),f(f(f(y,y),z),f(f(u,f(u,u)),f(f(z,f(f(y,x),z)),y)))) = y # label(632).  [back_rewrite(98),rewrite([122(8)])].
+126 f(x,f(f(y,x),f(f(f(y,f(x,y)),f(y,x)),f(z,f(y,x))))) = f(y,x) # label(633).  [back_rewrite(80),rewrite([122(3)])].
+127 f(f(f(x,y),f(x,y)),f(x,x)) = f(f(x,y),f(f(x,y),f(x,y))) # label(637).  [para(28(a,1),101(a,1,2,1)),rewrite([28(6)])].
+128 f(f(x,f(y,x)),f(x,f(f(y,x),f(x,z)))) = x # label(640).  [para(123(a,1),107(a,1,2,1)),rewrite([123(8),117(5),104(5),123(7),123(11)])].
+129 f(f(f(x,f(x,x)),f(f(y,z),f(z,u))),f(z,z)) = z # label(644).  [para(104(a,1),120(a,1,1,2,1))].
+130 f(f(f(x,f(x,x)),f(f(y,z),f(u,z))),f(z,z)) = z # label(646).  [para(30(a,1),129(a,1,1,2,2))].
+131 f(f(f(x,y),f(z,y)),y) = f(f(u,f(u,u)),f(f(x,y),f(z,y))) # label(649).  [para(130(a,1),54(a,1,2)),rewrite([93(13)])].
+132 f(f(x,f(x,y)),f(y,x)) = x # label(652A).  [para(121(a,1),95(a,1)),flip(a)].
+133 f(f(x,x),f(f(y,x),f(x,z))) = f(x,f(x,x)) # label(658).  [para(129(a,1),127(a,1,1,1)),rewrite([129(8),93(14),129(13),129(13),129(13)])].
+134 f(f(x,x),f(f(y,x),f(z,f(z,z)))) = f(x,f(x,x)) # label(660).  [para(83(a,1),133(a,1,2,2))].
+135 f(f(f(x,y),f(z,y)),y) = f(y,f(f(x,y),f(z,y))) # label(664B).  [para(131(a,1),30(a,1,2,1)),rewrite([97(11)]),flip(a)].
+137 f(f(x,y),f(y,f(f(z,y),f(x,y)))) = f(f(z,y),f(x,y)) # label(666).  [para(131(a,2),95(a,1,2)),rewrite([135(5)])].
+138 f(x,f(f(x,y),f(f(z,f(x,y)),x))) = f(f(z,f(x,y)),x) # label(669).  [para(54(a,1),137(a,1,1)),rewrite([54(6),54(11)])].
+139 f(f(x,y),f(x,f(f(z,x),f(x,y)))) = f(f(z,x),f(x,y)) # label(667).  [para(59(a,1),137(a,1,1)),rewrite([59(6),59(11)])].
+140 f(f(x,y),f(y,f(f(y,z),f(x,y)))) = f(f(y,z),f(x,y)) # label(668).  [para(59(a,1),137(a,1,2,2,1)),rewrite([59(10)])].
+141 f(x,f(f(x,y),f(y,x))) = f(y,x) # label(670).  [para(61(a,1),138(a,1,2,2,1)),rewrite([61(7)])].
+142 f(f(x,y),f(y,x)) = f(f(y,x),f(y,x)) # label(671A).  [para(141(a,1),140(a,1,2)),flip(a)].
+143 f(f(x,f(y,z)),f(f(z,y),f(y,z))) = f(y,z) # label(672).  [para(142(a,2),18(a,1,2))].
+144 f(f(x,f(y,x)),f(x,y)) = x # label(673).  [para(142(a,1),128(a,1,2,2)),rewrite([31(6)])].
+145 f(x,y) = f(y,x) # label(674).  [para(142(a,1),142(a,1,1)),rewrite([54(7),143(8)])].
+147 f(x,f(f(y,x),f(y,f(z,f(y,x))))) = f(y,x) # label(676).  [back_rewrite(126),rewrite([144(5)])].
+150 f(f(f(x,f(x,x)),y),z) = f(z,f(y,y)) # label(679).  [para(145(a,1),100(a,1))].
+152 f(f(x,f(y,z)),f(f(y,z),f(z,y))) = f(z,y) # label(686).  [para(145(a,1),143(a,1,1,2))].
+153 f(x,f(f(y,z),f(z,x))) = f(z,x) # label(689).  [para(139(a,1),147(a,1,2))].
+157 f(f(x,y),f(f(z,f(y,f(y,x))),y)) = y # label(695).  [para(132(a,1),153(a,1,2,2)),rewrite([132(10)])].
+158 f(x,f(f(y,z),f(x,z))) = f(z,x) # label(696).  [para(145(a,1),153(a,1,2,2))].
+159 f(x,f(f(y,x),f(z,y))) = f(y,x) # label(697).  [para(145(a,1),153(a,1,2))].
+162 f(f(x,y),z) = f(z,f(y,f(z,f(x,y)))) # label(703A).  [para(61(a,1),158(a,1,2,1)),flip(a)].
+163 f(f(f(x,y),f(z,y)),z) = f(y,z) # label(704A).  [para(158(a,1),145(a,1)),flip(a)].
+164 f(x,f(f(x,y),f(z,y))) = f(y,x) # label(705).  [para(145(a,1),158(a,1,2))].
+166 f(x,f(f(f(y,z),x),z)) = f(f(y,z),x) # label(708).  [para(61(a,1),159(a,1,2,2))].
+170 f(f(f(x,y),f(z,y)),x) = f(y,x) # label(725).  [para(145(a,1),163(a,1,1))].
+171 f(x,f(f(x,f(y,z)),z)) = f(f(y,z),x) # label(726).  [para(61(a,1),164(a,1,2,2))].
+172 f(f(f(x,f(y,z)),z),x) = f(f(y,z),x) # label(728).  [para(61(a,1),170(a,1,1,2))].
+174 f(x,f(y,f(x,f(z,y)))) = f(x,f(z,y)) # label(731).  [para(162(a,1),145(a,1))].
+175 f(f(f(f(x,f(x,x)),y),z),u) = f(u,f(z,f(y,y))) # label(732).  [para(150(a,2),162(a,1,1)),rewrite([174(11)])].
+177 f(f(x,f(y,f(z,x))),y) = f(y,f(z,x)) # label(736A).  [para(174(a,1),145(a,1)),flip(a)].
+178 f(f(f(x,y),f(y,x)),f(z,f(x,y))) = f(y,x) # label(740A).  [para(152(a,1),145(a,1)),flip(a)].
+180 f(x,f(f(f(y,z),x),f(u,f(z,y)))) = f(f(y,z),x) # label(743).  [para(178(a,1),166(a,1,2,1,1)),rewrite([178(12)])].
+182 f(x,f(f(y,f(y,y)),f(f(z,f(x,x)),f(f(x,x),u)))) = f(x,x) # label(748).  [para(175(a,2),129(a,1)),rewrite([18(5)])].
+185 f(f(x,y),f(f(z,f(f(y,x),z)),y)) = y # label(759).  [para(125(a,1),174(a,1,2,2)),rewrite([99(9),125(18)])].
+186 f(f(f(x,f(f(y,z),x)),y),f(z,y)) = y # label(760).  [para(125(a,1),177(a,1,1,2)),rewrite([99(8),125(18)])].
+187 f(x,f(f(y,f(x,y)),f(x,z))) = f(x,z) # label(761).  [para(28(a,1),185(a,1,2,1,2,1)),rewrite([54(3)])].
+188 f(f(x,y),f(f(z,f(f(u,f(f(y,x),u)),y)),y)) = y # label(763).  [para(185(a,1),158(a,1,2,2)),rewrite([186(14)])].
+189 f(f(x,x),f(f(y,x),f(f(x,x),z))) = f(f(x,x),z) # label(765).  [para(134(a,1),187(a,1,2,1,2)),rewrite([108(8)])].
+191 f(x,f(f(y,f(x,x)),f(x,z))) = f(x,z) # label(772).  [para(18(a,1),189(a,1,1)),rewrite([54(5),54(8)])].
+192 f(f(x,x),f(f(f(x,x),y),f(z,x))) = f(f(x,x),y) # label(774).  [para(145(a,1),189(a,1,2))].
+193 f(x,f(f(f(x,x),y),f(x,z))) = f(x,z) # label(775).  [para(145(a,1),191(a,1,2,1))].
+194 f(x,f(f(f(x,x),y),f(z,x))) = f(z,x) # label(776).  [para(104(a,1),193(a,1,2,2)),rewrite([104(8)])].
+195 f(f(f(f(x,x),y),f(z,x)),x) = f(z,x) # label(779A).  [para(194(a,1),145(a,1)),flip(a)].
+196 f(f(x,y),f(f(f(y,y),z),f(f(y,f(x,y)),f(y,u)))) = y # label(781).  [para(195(a,1),124(a,1,1)),rewrite([192(7),195(8)])].
+197 f(f(x,x),f(f(f(x,x),y),f(f(z,f(z,z)),f(x,u)))) = x # label(783).  [para(91(a,1),196(a,1,2,2,1))].
+198 f(f(x,f(f(y,f(y,y)),f(z,u))),f(z,z)) = z # label(789A).  [para(197(a,1),171(a,1)),flip(a)].
+199 f(f(x,f(y,y)),f(f(z,y),f(z,y))) = f(z,y) # label(791).  [para(157(a,1),198(a,1,1,2)),rewrite([61(6),61(7),61(10)])].
+201 f(f(f(x,y),f(x,y)),f(z,f(y,y))) = f(x,y) # label(794A).  [para(199(a,1),145(a,1)),flip(a)].
+202 f(x,f(f(f(f(y,y),z),x),f(u,y))) = f(f(f(y,y),z),x) # label(796).  [para(201(a,1),180(a,1,2,2))].
+203 f(x,f(y,f(f(z,f(x,x)),f(f(x,x),u)))) = f(x,x) # label(797).  [para(182(a,1),201(a,1,1,1)),rewrite([182(10),54(3),93(17),182(16)])].
+207 f(f(x,x),f(y,f(f(x,z),f(x,u)))) = x # label(808).  [para(175(a,2),203(a,1,2,2,1)),rewrite([18(6),54(5),54(9)])].
+208 f(x,f(f(f(y,y),z),f(f(y,u),x))) = f(f(y,u),x) # label(817).  [para(202(a,1),180(a,1,2))].
+209 f(f(x,f(f(y,f(f(z,f(x,x)),y)),z)),z) = f(z,z) # label(822A).  [para(188(a,1),208(a,1,2)),flip(a)].
+210 f(f(f(x,f(f(y,f(z,z)),x)),y),z) = f(z,f(y,y)) # label(823A).  [para(209(a,1),171(a,1,2)),flip(a)].
+211 f(x,f(f(y,f(z,f(x,x))),f(y,f(z,f(x,x))))) = f(y,x) # label(826B).  [para(172(a,1),210(a,1,1,1,2)),rewrite([144(8)]),flip(a)].
+212 f(f(f(x,y),f(f(z,f(u,u)),y)),u) = f(y,u) # label(829B).  [para(163(a,1),211(a,1,2,1)),rewrite([163(11),211(8)]),flip(a)].
+213 f(f(f(f(x,f(y,y)),z),f(u,z)),y) = f(z,y) # label(830B).  [para(170(a,1),211(a,1,2,1)),rewrite([170(11),211(8)]),flip(a)].
+214 f(f(f(x,y),f(z,y)),f(f(z,u),f(z,w))) = f(y,f(f(z,u),f(z,w))) # label(834).  [para(207(a,1),212(a,1,1,2,1))].
+215 f(f(f(x,y),f(z,y)),f(f(x,u),f(x,w))) = f(y,f(f(x,u),f(x,w))) # label(835).  [para(207(a,1),213(a,1,1,1,1))].
+216 f(f(f(x,y),f(x,z)),f(f(x,u),f(w,u))) = f(u,f(f(x,y),f(x,z))) # label(917A).  [para(215(a,1),145(a,1)),flip(a)].
+218 f(x,f(f(y,z),f(y,z))) = f(z,f(f(y,x),f(y,x))) # label(872).  [para(216(a,1),214(a,1))].
+219 $F # answer(assoc).  [resolve(218,a,12,a)].
+
+============================== end of proof ==========================
+
+% Disable descendants (x means already disabled):
+ 12
+
+given #189 (H,wt=19): 218 f(x,f(f(y,z),f(y,z))) = f(z,f(f(y,x),f(y,x))) # label(872).  [para(216(a,1),214(a,1))].
+
+given #190 (H,wt=19): 220 f(f(f(x,y),f(x,y)),z) = f(y,f(f(x,z),f(x,z))) # label(870).  [para(218(a,1),145(a,1)),flip(a)].
+
+given #191 (H,wt=25): 217 f(f(f(x,y),f(x,z)),f(f(x,u),f(w,u))) = f(f(f(x,y),f(x,z)),u) # label(918).  [para(216(a,2),145(a,1))].
+
+given #192 (H,wt=25): 221 f(f(f(x,y),f(x,z)),f(f(u,w),f(x,w))) = f(f(f(x,y),f(x,z)),w) # label(851).  [para(145(a,1),217(a,1,2))].
+
+given #193 (H,wt=29): 206 f(f(x,x),f(f(y,f(y,y)),f(f(x,f(z,x)),f(z,z)))) = f(f(x,f(z,x)),f(z,z)) # label(801).  [para(205(a,1),94(a,1,1))].
+
+============================== STATISTICS ============================
+
+Given=193. Generated=79157. Kept=207. proofs=5.
+Usable=116. Sos=0. Demods=103. Limbo=0, Disabled=98. Hints=486.
+Weight_deleted=43510. Literals_deleted=0.
+Forward_subsumed=35438. Back_subsumed=23.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=185 (0 lex), Back_demodulated=64. Back_unit_deleted=0.
+Demod_attempts=1614326. Demod_rewrites=126343.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.66.
+User_CPU=1.76, System_CPU=0.01, Wall_clock=2.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+SEARCH FAILED
+
+Exiting with 5 proofs.
+
+Process 16043 exit (sos_empty) Tue Aug  7 09:31:58 2007

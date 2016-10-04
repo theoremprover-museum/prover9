@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE proofs SYSTEM "proof3.dtd">
+
+<?xml-stylesheet type="text/xsl" href="proof3.xsl"?>
+
+<proofs number_of_proofs="2">
+
+<source>GEO147+1.out</source>
+
+<heading><![CDATA[
+FOF-Prover9 (32) version 2009-11A, November 2009.
+Process 23951 was started by mccune on cleo,
+Tue Nov  3 16:59:16 2009
+The command was "/home/mccune/LADR/bin/fof-prover9 -f GEO147+1.in".
+]]></heading>
+
+<proof number="1" length="11" max_count="12">
+
+<comments><![CDATA[
+% Proof 1 at 0.25 (+ 0.00) seconds.
+% Length of proof is 11.
+% Level of proof is 3.
+% Maximum clause weight is 8.000.
+% Given clauses 384.
+
+]]></comments>
+
+  <clause id="35" type="assumption">
+    <literal><![CDATA[
+      once(at_the_same_time(at(A,B),at(C,B)))
+    ]]></literal>
+    <literal><![CDATA[
+      -connect(A,C,B)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="37" type="assumption">
+    <literal><![CDATA[
+      connect(c2,c3,c1)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="211" type="assumption">
+    <literal><![CDATA[
+      once(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -once(at_the_same_time(A,B))
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="214" type="assumption">
+    <literal><![CDATA[
+      incident_o(A,trajectory_of(B))
+    ]]></literal>
+    <literal><![CDATA[
+      -once(at(B,A))
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="215" type="assumption">
+    <literal><![CDATA[
+      trajectory_of(A) = f61(A)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="219" type="assumption">
+    <literal><![CDATA[
+      -incident_o(c1,trajectory_of(c2))
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="220">
+    <literal><![CDATA[
+      -incident_o(c1,f61(c2))
+    ]]></literal>
+    <justification jstring="[copy(219),rewrite([215(3)])].">
+      <j1 rule="copy" parents="219"/>
+      <j2 rule="rewrite" parents="215"/>
+    </justification>
+  </clause>
+
+  <clause id="278">
+    <literal><![CDATA[
+      once(at_the_same_time(at(c2,c1),at(c3,c1)))
+    ]]></literal>
+    <justification jstring="[resolve(37,a,35,b)].">
+      <j1 rule="resolve" parents="37 35"/>
+    </justification>
+  </clause>
+
+  <clause id="384">
+    <literal><![CDATA[
+      incident_o(A,f61(B))
+    ]]></literal>
+    <literal><![CDATA[
+      -once(at(B,A))
+    ]]></literal>
+    <justification jstring="[back_rewrite(214),rewrite([215(1)])].">
+      <j1 rule="back_rewrite" parents="214"/>
+      <j2 rule="rewrite" parents="215"/>
+    </justification>
+  </clause>
+
+  <clause id="755">
+    <literal><![CDATA[
+      once(at(c2,c1))
+    ]]></literal>
+    <justification jstring="[resolve(278,a,211,b)].">
+      <j1 rule="resolve" parents="278 211"/>
+    </justification>
+  </clause>
+
+  <clause id="948">
+    <literal><![CDATA[
+      $F
+    ]]></literal>
+    <justification jstring="[resolve(755,a,384,b),unit_del(a,220)].">
+      <j1 rule="resolve" parents="755 384"/>
+      <j2 rule="unit_del" parents="220"/>
+    </justification>
+  </clause>
+
+</proof>
+
+<proof number="2" length="11" max_count="12">
+
+<comments><![CDATA[
+% Proof 1 at 0.25 (+ 0.00) seconds.
+% Length of proof is 11.
+% Level of proof is 3.
+% Maximum clause weight is 8.000.
+% Given clauses 383.
+
+]]></comments>
+
+  <clause id="35" type="assumption">
+    <literal><![CDATA[
+      once(at_the_same_time(at(A,B),at(C,B)))
+    ]]></literal>
+    <literal><![CDATA[
+      -connect(A,C,B)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="37" type="assumption">
+    <literal><![CDATA[
+      connect(c2,c3,c1)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="212" type="assumption">
+    <literal><![CDATA[
+      -once(at_the_same_time(A,B))
+    ]]></literal>
+    <literal><![CDATA[
+      once(B)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="214" type="assumption">
+    <literal><![CDATA[
+      incident_o(A,trajectory_of(B))
+    ]]></literal>
+    <literal><![CDATA[
+      -once(at(B,A))
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="215" type="assumption">
+    <literal><![CDATA[
+      trajectory_of(A) = f61(A)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="219" type="assumption">
+    <literal><![CDATA[
+      -incident_o(c1,trajectory_of(c3))
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="220">
+    <literal><![CDATA[
+      -incident_o(c1,f61(c3))
+    ]]></literal>
+    <justification jstring="[copy(219),rewrite([215(3)])].">
+      <j1 rule="copy" parents="219"/>
+      <j2 rule="rewrite" parents="215"/>
+    </justification>
+  </clause>
+
+  <clause id="278">
+    <literal><![CDATA[
+      once(at_the_same_time(at(c2,c1),at(c3,c1)))
+    ]]></literal>
+    <justification jstring="[resolve(37,a,35,b)].">
+      <j1 rule="resolve" parents="37 35"/>
+    </justification>
+  </clause>
+
+  <clause id="384">
+    <literal><![CDATA[
+      incident_o(A,f61(B))
+    ]]></literal>
+    <literal><![CDATA[
+      -once(at(B,A))
+    ]]></literal>
+    <justification jstring="[back_rewrite(214),rewrite([215(1)])].">
+      <j1 rule="back_rewrite" parents="214"/>
+      <j2 rule="rewrite" parents="215"/>
+    </justification>
+  </clause>
+
+  <clause id="754">
+    <literal><![CDATA[
+      once(at(c3,c1))
+    ]]></literal>
+    <justification jstring="[resolve(278,a,212,a)].">
+      <j1 rule="resolve" parents="278 212"/>
+    </justification>
+  </clause>
+
+  <clause id="945">
+    <literal><![CDATA[
+      $F
+    ]]></literal>
+    <justification jstring="[resolve(754,a,384,b),unit_del(a,220)].">
+      <j1 rule="resolve" parents="754 384"/>
+      <j2 rule="unit_del" parents="220"/>
+    </justification>
+  </clause>
+
+</proof>
+
+</proofs>

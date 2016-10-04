@@ -1,0 +1,208 @@
+============================== prooftrans ============================
+Prover9 (32) version 2008-05A, May 2008.
+Process 12530 was started by mccune on cleo,
+Wed May  7 11:30:41 2008
+The command was "/home/mccune/LADR/bin/prover9 -f RBA-2.in".
+============================== end of head ===========================
+
+============================== end of input ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.16 (+ 0.00) seconds: Huntington.
+% Length of proof is 30.
+% Level of proof is 15.
+% Maximum clause weight is 23.
+% Given clauses 48.
+
+c 1  (exists c c + c = c) # label(non_clause)
+i assumption
+e
+c 2  (x + y')' + (x' + y')' = y # answer(Huntington) # label(non_clause) # label(goal)
+i goal
+e
+c 3  x + y = y + x
+i assumption
+e
+c 4  (x + y) + z = x + (y + z)
+i assumption
+e
+c 5  ((x + y)' + (x + y')')' = x # label(Robbins)
+i assumption
+e
+c 6  c1 + c1 = c1
+i clausify
+p 1
+e
+c 7  (c2 + c3')' + (c2' + c3')' != c3 # answer(Huntington)
+i deny
+p 2
+e
+c 9  x + (y + z) = y + (x + z)
+i para
+p 3
+p 4
+i rewrite
+p 4
+e
+c 10  ((x + y)' + (y + x')')' = y
+i para
+p 3
+p 5
+e
+c 11  ((x + y)' + (y' + x)')' = x
+i para
+p 3
+p 5
+e
+c 14  ((x + y)' + (x + ((y + z)' + (y + z')'))')' = x
+i para
+p 5
+p 5
+i rewrite
+p 3
+e
+c 16  c1 + (c1 + x) = c1 + x
+i para
+p 6
+p 4
+i (flip)
+e
+c 18  (c1' + (c1 + c1')')' = c1
+i para
+p 6
+p 5
+e
+c 25  ((x + c1)' + (x + (c1' + (c1 + c1')'))')' = x
+i para
+p 18
+p 5
+i rewrite
+p 3
+e
+c 26  (c1 + (c1 + (c1' + c1'))')' = c1'
+i para
+p 18
+p 5
+i rewrite
+p 9
+p 3
+e
+c 27  ((x + y)' + (x' + y)')' = y
+i para
+p 3
+p 10
+e
+c 37  ((c1 + x)' + (c1 + (x + c1'))')' = c1 + x
+i para
+p 16
+p 10
+i rewrite
+p 4
+e
+c 75  ((c1 + x)' + (c1' + ((c1 + c1')' + x))')' = x
+i para
+p 18
+p 27
+i rewrite
+p 4
+p 3
+e
+c 146  (c1' + (c1 + (c1' + c1'))')' = c1
+i para
+p 26
+p 5
+i rewrite
+p 16
+p 3
+e
+c 147  (c1 + (c1' + c1'))' = (c1 + c1')'
+i para
+p 26
+p 10
+i rewrite
+p 3
+p 146
+p 3
+i (flip)
+e
+c 156  (c1 + (c1 + c1')')' = c1'
+i back_rewrite
+p 26
+i rewrite
+p 147
+e
+c 535  (c1' + (c1 + (c1' + (c1 + c1')'))')' = c1 + (c1 + c1')'
+i para
+p 156
+p 37
+i rewrite
+p 3
+e
+c 648  c1 + (c1 + c1')' = c1
+i para
+p 6
+p 25
+i rewrite
+p 535
+e
+c 669  c1 + ((c1 + c1')' + x) = c1 + x
+i para
+p 648
+p 4
+i (flip)
+e
+c 678  (c1 + c1')' + x = x
+i para
+p 669
+p 10
+i rewrite
+p 3
+p 75
+i (flip)
+e
+c 705  (c1 + c1')' = (x + x')'
+i para
+p 678
+p 14
+i rewrite
+p 678
+p 5
+p 3
+i (flip)
+e
+c 867  (x + x'')'' = x
+i para
+p 705
+p 5
+i rewrite
+p 678
+e
+c 875  x'' = x
+i para
+p 705
+p 11
+i rewrite
+p 3
+p 3
+p 678
+p 867
+i (flip)
+e
+c 1014  (x + y)' + (x' + y)' = y'
+i para
+p 27
+p 875
+i (flip)
+e
+c 1029  $F # answer(Huntington)
+i back_rewrite
+p 7
+i rewrite
+p 1014
+p 875
+i (flip)
+e
+
+============================== end of proof ==========================

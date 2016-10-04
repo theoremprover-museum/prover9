@@ -1,0 +1,24 @@
+assign(max_seconds, 30).
+
+set(breadth_first).
+assign(max_weight, 48).
+
+formulas(usable).
+
+  -P(e(x,y)) | -P(x) | P(y) # label(condensed_detachment).
+
+end_of_list.
+  
+formulas(sos).
+
+  P(e(x,e(e(e(x,y),e(z,y)),z))) # label(XCB).
+
+end_of_list.
+  
+formulas(goals).
+
+  P(e(x,x)) # answer(Reflex).
+
+end_of_list.
+
+  

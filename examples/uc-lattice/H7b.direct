@@ -1,0 +1,77 @@
+============================== directproof ===========================
+Prover9 (32) version Dec-2007, Dec 2007.
+Process 16177 was started by mccune on cleo,
+Thu Dec 13 11:09:01 2007
+The command was "/home/mccune/bin/prover9 -f lt.in uc.in H7b.in".
+============================== end of head ===========================
+
+============================== end of input ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 7.73 (+ 0.13) seconds.
+% Length of proof is 33.
+% Level of proof is 13.
+% Maximum clause weight is 23.
+% Given clauses 1051.
+
+1 (all x all y (x ^ y = x -> x' v y' = x')) # label(non_clause) # label(goal).  [goal].
+2 x v y = y v x.  [assumption].
+3 (x v y) v z = x v (y v z).  [assumption].
+4 x ^ y = y ^ x.  [assumption].
+5 (x ^ y) ^ z = x ^ (y ^ z).  [assumption].
+6 x ^ (x v y) = x.  [assumption].
+7 x v (x ^ y) = x.  [assumption].
+8 x v x' = 1.  [assumption].
+9 x ^ x' = 0.  [assumption].
+10 x v y != 1 | x ^ y != 0 | x' = y.  [assumption].
+11 x ^ (y v (x ^ z)) = x ^ (y v (x ^ ((x ^ y) v (z ^ (x v y))))) # label(H7).  [assumption].
+12 x ^ (y v (x ^ ((x ^ y) v (z ^ (x v y))))) = x ^ (y v (x ^ z)).  [copy(11),flip(a)].
+13 c1 ^ c2 = c1.  [deny(1)].
+14 c1' != c1' v c2'.  [deny(1)].
+16 (x v y) v z = y v (x v z).  [para(2(a,1),3(a,1,1))].
+17 x v (y v z) = y v (x v z).  [para(3(a,1),16(a,1))].
+18 x v y = x v ((x ^ z) v y).  [para(7(a,1),3(a,1,1))].
+19 x v ((x ^ y) v z) = x v z.  [copy(18),flip(a)].
+20 x v (y ^ x) = x.  [para(4(a,1),7(a,1,2))].
+21 x ^ 1 = x.  [para(8(a,1),6(a,1,2))].
+22 0 = x ^ (y ^ (x ^ y)').  [para(9(a,1),5(a,1))].
+23 x ^ (y ^ (x ^ y)') = 0.  [copy(22),flip(a)].
+24 x ^ (y v (x ^ ((x ^ y) v (z ^ (y v x))))) = x ^ (y v (x ^ z)).  [para(2(a,1),12(a,1,2,2,2,2,2))].
+25 x = 1 ^ x.  [para(21(a,1),4(a,1))].
+26 1 ^ x = x.  [copy(25),flip(a)].
+27 1 v x = 1.  [para(26(a,1),6(a,1))].
+28 1 = x v 1.  [para(27(a,1),2(a,1))].
+29 x v 1 = 1.  [copy(28),flip(a)].
+30 x v 1 = x v (x ^ y)'.  [para(8(a,1),19(a,1,2))].
+31 1 = x v (x ^ y)'.  [para(29(a,1),30(a,1))].
+32 x v (x ^ y)' = 1.  [copy(31),flip(a)].
+33 x v (y ^ x)' = 1.  [para(4(a,1),32(a,1,2,1))].
+34 c2 v c1' = 1.  [para(13(a,1),33(a,1,2,1))].
+35 c1' ^ (c2 v (c1' ^ ((c1' ^ c2) v (x ^ 1)))) = c1' ^ (c2 v (c1' ^ x)).  [para(34(a,1),24(a,1,2,2,2,2,2))].
+36 c1' ^ (c2 v (c1' ^ ((c2 ^ c1') v (x ^ 1)))) = c1' ^ (c2 v (c1' ^ x)).  [para(4(a,1),35(a,1,2,2,2,1))].
+37 c1' ^ (c2 v (c1' ^ ((c2 ^ c1') v x))) = c1' ^ (c2 v (c1' ^ x)).  [para(21(a,1),36(a,1,2,2,2,2))].
+38 c1' ^ (c2 v (c1' ^ 1)) = c1' ^ (c2 v (c1' ^ (c2 ^ c1')')).  [para(8(a,1),37(a,1,2,2,2))].
+39 c1' ^ (c2 v (1 ^ c1')) = c1' ^ (c2 v (c1' ^ (c2 ^ c1')')).  [para(4(a,1),38(a,1,2,2))].
+40 c1' ^ (c2 v c1') = c1' ^ (c2 v (c1' ^ (c2 ^ c1')')).  [para(26(a,1),39(a,1,2,2))].
+41 c1' ^ 1 = c1' ^ (c2 v (c1' ^ (c2 ^ c1')')).  [para(34(a,1),40(a,1,2))].
+42 1 ^ c1' = c1' ^ (c2 v (c1' ^ (c2 ^ c1')')).  [para(4(a,1),41(a,1))].
+43 c1' = c1' ^ (c2 v (c1' ^ (c2 ^ c1')')).  [para(26(a,1),42(a,1))].
+44 c1' ^ (c2 v (c1' ^ (c2 ^ c1')')) = c1'.  [copy(43),flip(a)].
+45 (c2 v (c1' ^ (c2 ^ c1')')) v c1' = c2 v (c1' ^ (c2 ^ c1')').  [para(44(a,1),20(a,1,2))].
+46 c1' v (c2 v (c1' ^ (c2 ^ c1')')) = c2 v (c1' ^ (c2 ^ c1')').  [para(2(a,1),45(a,1))].
+47 c2 v (c1' v (c1' ^ (c2 ^ c1')')) = c2 v (c1' ^ (c2 ^ c1')').  [para(17(a,1),46(a,1))].
+48 c2 v c1' = c2 v (c1' ^ (c2 ^ c1')').  [para(7(a,1),47(a,1,2))].
+49 1 = c2 v (c1' ^ (c2 ^ c1')').  [para(34(a,1),48(a,1))].
+50 c2 v (c1' ^ (c2 ^ c1')') = 1.  [copy(49),flip(a)].
+51 c2 ^ (c1' ^ (c2 ^ c1')') != 0 | c2' = c1' ^ (c2 ^ c1')'.  [resolve(10,a,50,a)].
+52 c2' = c1' ^ (c2 ^ c1')'.  [resolve(51,a,23,a)].
+53 c1' ^ (c2 ^ c1')' = c2'.  [copy(52),flip(a)].
+54 c1' v c2' = c1'.  [para(53(a,1),7(a,1,2))].
+56 c1' = c1' v c2'.  [copy(54),flip(a)].
+57 $F.  [resolve(56,a,14,a)].
+
+============================== end of proof ==========================
+
+% Directproof did 1 transformation(s) on 1 proof(s).

@@ -1,0 +1,94 @@
+assign(max_seconds, 30).
+
+%------------------------------------------------------------------------------
+% File     : SET587+3 : TPTP v3.0.1. Released v2.2.0.
+% Domain   : Set Theory (Boolean properties)
+% Problem  : X \ Y = the empty set iff X (= Y
+% Version  : [Try89] axioms : Reduced > Incomplete.
+% English  : The difference of X and Y is the empty set iff X is a subset of 
+%            Y.
+
+% Refs     : [ILF] The ILF Group (1998), The ILF System: A Tool for the Int
+%          : [Try89] Trybulec (1989), Tarski Grothendieck Set Theory
+%          : [TS89]  Trybulec & Swieczkowska (1989), Boolean Properties of
+% Source   : [ILF]
+% Names    : BOOLE (45) [TS89] 
+
+% Status   : Theorem
+% Rating   : 0.33 v2.6.0, 0.29 v2.5.0, 0.12 v2.4.0, 0.25 v2.3.0, 0.00 v2.2.1
+% Syntax   : Number of formulae    :    9 (   2 unit)
+%            Number of atoms       :   21 (   4 equality)
+%            Maximal formula depth :    7 (   5 average)
+%            Number of connectives :   15 (   3 ~  ;   0  |;   2  &)
+%                                         (   8 <=>;   2 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :    4 (   0 propositional; 1-2 arity)
+%            Number of functors    :    2 (   1 constant; 0-2 arity)
+%            Number of variables   :   20 (   0 singleton;  20 !;   0 ?)
+%            Maximal term depth    :    2 (   1 average)
+
+% Comments : 
+%          : tptp2X -f mace4 SET587+3.p 
+%------------------------------------------------------------------------------
+%----NOTE WELL: conjecture has been negated
+set(prolog_style_variables).
+formulas(assumptions).
+
+% member_equal, axiom.
+    ( all B 
+    ( all C 
+      ( ( all D 
+          ( member(D,B)
+         <-> member(D,C) ) )
+      -> B = C ) ) ).
+
+% difference_defn, axiom.
+    ( all B 
+    ( all C 
+    ( all D 
+      ( member(D,difference(B,C))
+     <-> ( member(D,B)
+         & -(member(D,C)) ) ) ) ) ).
+
+% empty_set_defn, axiom.
+    ( all B -(member(B,empty_set)) ).
+
+% subset_defn, axiom.
+    ( all B 
+    ( all C 
+      ( subset(B,C)
+     <-> ( all D 
+          ( member(D,B)
+          -> member(D,C) ) ) ) ) ).
+
+% equal_defn, axiom.
+    ( all B 
+    ( all C 
+      ( B = C
+     <-> ( subset(B,C)
+         & subset(C,B) ) ) ) ).
+
+% equal_member_defn, axiom.
+    ( all B 
+    ( all C 
+      ( B = C
+     <-> ( all D 
+          ( member(D,B)
+         <-> member(D,C) ) ) ) ) ).
+
+% reflexivity_of_subset, axiom.
+    ( all B subset(B,B) ).
+
+% empty_defn, axiom.
+    ( all B 
+      ( empty(B)
+     <-> ( all C -(member(C,B)) ) ) ).
+
+% prove_difference_empty_set, negated_conjecture.
+    -(( ( all B 
+        ( all C 
+          ( difference(B,C) = empty_set
+         <-> subset(B,C) ) ) ) )).
+end_of_list.
+
+%------------------------------------------------------------------------------

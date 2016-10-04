@@ -1,0 +1,47 @@
+============================== directproof ===========================
+Prover9 (32) version Dec-2007, Dec 2007.
+Process 16132 was started by mccune on cleo,
+Thu Dec 13 11:03:58 2007
+The command was "/home/mccune/bin/prover9 -f gt.in NA.in".
+============================== end of head ===========================
+op(450,infix,@).
+op(400,infix_right,*).
+
+============================== end of input ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.00 (+ 0.00) seconds: A.
+% Length of proof is 12.
+% Level of proof is 3.
+% Maximum clause weight is 13.
+% Given clauses 5.
+
+1 (x * y) * z = x * y * z.  [assumption].
+2 e * x = x.  [assumption].
+3 x' * x = e.  [assumption].
+4 x @ y = x' * y' * x * y.  [assumption].
+5 x' * y' * x * y = x @ y.  [copy(4),flip(a)].
+6 (x @ y) * z = z * (x @ y).  [assumption].
+7 (A @ B) @ C != D @ (F @ G) # answer(A).  [assumption].
+8 e * x = y' * y * x.  [para(3(a,1),1(a,1,1))].
+9 x = y' * y * x.  [para(2(a,1),8(a,1))].
+10 x' * x * y = y.  [copy(9),flip(a)].
+11 (x @ y) * (x @ y)' = e.  [para(6(a,2),3(a,1))].
+12 (x @ y)' * z' * z * (x @ y) = (x @ y) @ z.  [para(6(a,1),5(a,1,2,2))].
+13 (x @ y)' * (x @ y) = (x @ y) @ z.  [para(10(a,1),12(a,1,2))].
+14 (x @ y) * (x @ y)' = (x @ y) @ z.  [para(6(a,2),13(a,1))].
+15 e = (x @ y) @ z.  [para(11(a,1),14(a,1))].
+16 (x @ y) @ z = e.  [copy(15),flip(a)].
+17 x' * (y @ z)' * (y @ z) * x = x @ (y @ z).  [para(6(a,2),5(a,1,2,2))].
+18 x' * x = x @ (y @ z).  [para(10(a,1),17(a,1,2))].
+19 e = x @ (y @ z).  [para(3(a,1),18(a,1))].
+20 x @ (y @ z) = e.  [copy(19),flip(a)].
+24 e = x @ (y @ z).  [copy(20),flip(a)].
+26 (x @ y) @ z = u @ (w @ v5).  [para(16(a,2),24(a,1))].
+27 $F # answer(A).  [resolve(26,a,7,a)].
+
+============================== end of proof ==========================
+
+% Directproof did 2 transformation(s) on 1 proof(s).

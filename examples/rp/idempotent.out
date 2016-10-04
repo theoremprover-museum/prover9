@@ -1,0 +1,147 @@
+============================== Prover9 ===============================
+Prover9 (32) version 2009-11A, November 2009.
+Process 4308 was started by mccune on cleo,
+Tue Nov  3 09:37:44 2009
+The command was "/home/mccune/LADR/bin/prover9 -f idempotent.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file idempotent.in
+
+assign(max_seconds,30).
+
+formulas(sos).
+(x * e) * x = x.
+x * (x * y) = y.
+(x * y) * (z * u) = (x * z) * (y * u).
+((x * x) * x) * x = e.
+end_of_list.
+
+formulas(goals).
+e * e = e.
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 e * e = e # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+(x * e) * x = x.  [assumption].
+x * (x * y) = y.  [assumption].
+(x * y) * (z * u) = (x * z) * (y * u).  [assumption].
+((x * x) * x) * x = e.  [assumption].
+e * e != e.  [deny(1)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Auto_denials:  (no changes).
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ = ]).
+Function symbol precedence:  function_order([ e, * ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(paramodulation).  % (positive equality literals)
+
+Auto_process settings:  (no changes).
+
+kept:      2 (x * e) * x = x.  [assumption].
+kept:      3 x * (x * y) = y.  [assumption].
+kept:      4 (x * y) * (z * u) = (x * z) * (y * u).  [assumption].
+kept:      5 ((x * x) * x) * x = e.  [assumption].
+kept:      6 e * e != e.  [deny(1)].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+2 (x * e) * x = x.  [assumption].
+3 x * (x * y) = y.  [assumption].
+4 (x * y) * (z * u) = (x * z) * (y * u).  [assumption].
+5 ((x * x) * x) * x = e.  [assumption].
+6 e * e != e.  [deny(1)].
+end_of_list.
+
+formulas(demodulators).
+2 (x * e) * x = x.  [assumption].
+3 x * (x * y) = y.  [assumption].
+5 ((x * x) * x) * x = e.  [assumption].
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.01 seconds.
+
+given #1 (I,wt=7): 2 (x * e) * x = x.  [assumption].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.01 (+ 0.00) seconds.
+% Length of proof is 6.
+% Level of proof is 2.
+% Maximum clause weight is 7.000.
+% Given clauses 1.
+
+1 e * e = e # label(non_clause) # label(goal).  [goal].
+2 (x * e) * x = x.  [assumption].
+3 x * (x * y) = y.  [assumption].
+6 e * e != e.  [deny(1)].
+7 e * e = e.  [para(2(a,1),2(a,1,1)),rewrite([3(5)]),flip(a)].
+8 $F.  [resolve(7,a,6,a)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=1. Generated=6. Kept=6. proofs=1.
+Usable=1. Sos=4. Demods=3. Limbo=0, Disabled=5. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=0. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=3 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=49. Demod_rewrites=1.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.02.
+User_CPU=0.01, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 1 proof.
+
+Process 4308 exit (max_proofs) Tue Nov  3 09:37:44 2009

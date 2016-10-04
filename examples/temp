@@ -1,0 +1,21 @@
+================= Starting problem set milehigh =================
+================= Starting problem set rp =================
+different, qg2.out  : Given=470. Generated=39820. Kept=8546. proofs=0.
+           qg2.outx : Given=511. Generated=41079. Kept=9141. proofs=0.
+================= Starting problem set mace4-misc =================
+================= Starting problem set misc =================
+different, temp.out  : Given=417. Generated=28699. Kept=1390. proofs=0.
+           temp.outx : 
+================= Starting problem set fof =================
+different, ALG033+1.out  : Given=0. Generated=59. Kept=58. proofs=1.
+           ALG033+1.outx : Given=0. Generated=0. Kept=0. proofs=0.
+================= Starting problem set ltsax =================
+================= Starting problem set cs-commutator =================
+================= Starting problem set cs-ore =================
+================= Starting problem set olsax =================
+================= Starting problem set lattice-between =================
+================= Starting problem set wang =================
+================= Starting problem set uc-lattice =================
+================= Starting problem set basax =================
+================= Starting problem set median =================
+================= Starting problem set semantics =================

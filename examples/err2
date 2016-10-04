@@ -1,0 +1,61 @@
+================= Starting problem set semantics =================
+
+=== Mace4 starting on domain size 2. ===
+
+=== Mace4 starting on domain size 3. ===
+
+=== Mace4 starting on domain size 4. ===
+
+=== Mace4 starting on domain size 5. ===
+
+=== Mace4 starting on domain size 6. ===
+
+------ process 26819 exit (max_models) ------
+-------- Proof 1 -------- H2.
+
+THEOREM PROVED
+
+------ process 26823 exit (max_proofs) ------
+-------- Proof 1 -------- H2.
+
+THEOREM PROVED
+
+------ process 26824 exit (max_proofs) ------
+
+=== Mace4 starting on domain size 6. ===
+
+------ process 26839 exit (all_models) ------
+-------- Proof 1 -------- "Sheffer".
+
+THEOREM PROVED
+
+------ process 26843 exit (max_proofs) ------
+
+SEARCH FAILED
+
+------ process 26850 exit (max_seconds) ------
+
+=== Mace4 starting on domain size 8. ===
+
+------ process 26877 exit (all_models) ------
+-------- Proof 1 -------- A_SS.
+
+THEOREM PROVED
+
+------ process 26881 exit (max_proofs) ------
+
+=== Mace4 starting on domain size 10. ===
+
+------ process 26893 exit (all_models) ------
+-------- Proof 1 -------- MOD_SS.
+
+THEOREM PROVED
+
+------ process 26897 exit (max_proofs) ------
+-------- Proof 1 -------- A_SS.
+-------- Proof 2 -------- MOD_SS.
+
+THEOREM PROVED
+
+------ process 27025 exit (max_proofs) ------
+

@@ -1,0 +1,96 @@
+============================== Mace4 =================================
+Mace4 (32) version 2009-11A, November 2009.
+Process 4300 was started by mccune on cleo,
+Tue Nov  3 09:37:22 2009
+The command was "/home/mccune/LADR/bin/mace4 -f cand3.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file cand3.in
+
+assign(iterate_up_to,100).
+    % assign(iterate_up_to, 100) -> assign(end_size, 100).
+
+formulas(theory).
+f(f(g(f(y,z)),y),g(f(g(f(f(x,z),z)),x))) = z # label(candidate_3).
+end_of_list.
+
+formulas(goals).
+f(f(x,y),z) = f(x,f(y,z)) # label(associativity).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 f(f(x,y),z) = f(x,f(y,z)) # label(associativity) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== CLAUSES FOR SEARCH ====================
+
+formulas(mace4_clauses).
+f(f(g(f(x,y)),x),g(f(g(f(f(z,y),y)),z))) = y # label(candidate_3).
+f(f(c1,c2),c3) != f(c1,f(c2,c3)) # label(associativity).
+end_of_list.
+
+============================== end of clauses for search =============
+
+% There are no natural numbers in the input.
+
+============================== DOMAIN SIZE 2 =========================
+
+============================== STATISTICS ============================
+
+For domain size 2.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.01 seconds).
+Ground clauses: seen=9, kept=9.
+Selections=78, assignments=155, propagations=49, current_models=0.
+Rewrite_terms=1588, rewrite_bools=142, indexes=218.
+Rules_from_neg_clauses=29, cross_offs=29.
+
+============================== end of statistics =====================
+
+============================== DOMAIN SIZE 3 =========================
+
+============================== MODEL =================================
+
+interpretation( 3, [number=1, seconds=0], [
+
+        function(c1, [ 0 ]),
+
+        function(c2, [ 0 ]),
+
+        function(c3, [ 0 ]),
+
+        function(g(_), [ 0, 1, 2 ]),
+
+        function(f(_,_), [
+			   1, 0, 2,
+			   2, 1, 0,
+			   0, 2, 1 ])
+]).
+
+============================== end of model ==========================
+
+============================== STATISTICS ============================
+
+For domain size 3.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.01 seconds).
+Ground clauses: seen=28, kept=28.
+Selections=39, assignments=103, propagations=33, current_models=1.
+Rewrite_terms=1633, rewrite_bools=181, indexes=252.
+Rules_from_neg_clauses=8, cross_offs=25.
+
+============================== end of statistics =====================
+
+User_CPU=0.01, System_CPU=0.00, Wall_clock=0.
+
+Exiting with 1 model.
+
+Process 4300 exit (max_models) Tue Nov  3 09:37:22 2009
+The process finished Tue Nov  3 09:37:22 2009

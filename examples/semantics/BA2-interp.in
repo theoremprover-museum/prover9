@@ -1,0 +1,26 @@
+assign(max_seconds, 30).
+
+formulas(theory).
+
+  % Modular ortholattice (MOL) in terms of the Sheffer stroke
+
+  f(x,f(f(y,z),f(y,z))) = f(y,f(f(x,z),f(x,z))).  % A_SS
+  f(f(x,x),f(x,y)) = x.                           % B_SS
+  f(x,f(x,x)) = f(y,f(y,y)).                      % ONE_SS
+  f(x,f(y,f(x,f(z,z)))) = f(x,f(z,f(x,f(y,y)))).  % MOD_SS
+
+  % lemmas: 
+
+  f(x,f(x,x)) = 1.
+  f(x,y) = f(y,x).  % commutativity
+
+end_of_list.
+
+formulas(goals).
+
+  % The following, along with commutitiviy, gives Boolean,
+  % so denying this produces a non-Boolean MOL.
+
+  f(f(x,y),f(x,f(y,z))) = x # label(Veroff_2).
+
+end_of_list.

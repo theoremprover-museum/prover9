@@ -1,0 +1,34 @@
+;; ============================== prooftrans ============================
+;; FOF-Prover9 (32) version 2009-11A, November 2009.
+;; Process 23987 was started by mccune on cleo,
+;; Tue Nov  3 16:59:22 2009
+;; The command was "/home/mccune/LADR/bin/fof-prover9 -f SWC258+1.in".
+;; ============================== end of head ===========================
+
+;; BEGINNING OF PROOF OBJECT
+(
+(213 (input) (or (not (ssItem v0)) (totalorderedP (cons v0 (nil)))) NIL)
+(254 (input) (not (totalorderedP (c3))) NIL)
+(257 (input) (= (c5) (c3)) NIL)
+(260 (input) (ssItem (c7)) NIL)
+(261 (input) (= (cons (c7) (nil)) (c5)) NIL)
+(262 (paramod 257 (1) 261 (2)) (= (cons (c7) (nil)) (c3)) NIL)
+(5676 (instantiate 213 ((v0 . (c7)))) (or (not (ssItem (c7))) (totalorderedP (cons (c7) (nil)))) NIL)
+(5673A (resolve 260 () 5676 (1)) (totalorderedP (cons (c7) (nil))) NIL)
+(5673B (paramod 262 (1) 5673A (1)) (totalorderedP (c3)) NIL)
+(5673 (resolve 254 () 5673B ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(214 (input) (totalorderedP (nil)) NIL)
+(259 (input) (not (totalorderedP (c5))) NIL)
+(261 (input) (= (c6) (c5)) NIL)
+(262 (input) (= (nil) (c6)) NIL)
+(263A (paramod 261 (1) 262 (2)) (= (nil) (c5)) NIL)
+(263 (flip 263A ()) (= (c5) (nil)) NIL)
+(782A (paramod 263 (1) 259 (1 1)) (not (totalorderedP (nil))) NIL)
+(782 (resolve 214 () 782A ()) false NIL)
+)
+;; END OF PROOF OBJECT

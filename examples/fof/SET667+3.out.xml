@@ -1,0 +1,954 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE proofs SYSTEM "proof3.dtd">
+
+<?xml-stylesheet type="text/xsl" href="proof3.xsl"?>
+
+<proofs number_of_proofs="2">
+
+<source>SET667+3.out</source>
+
+<heading><![CDATA[
+FOF-Prover9 (32) version 2009-11A, November 2009.
+Process 23981 was started by mccune on cleo,
+Tue Nov  3 16:59:21 2009
+The command was "/home/mccune/LADR/bin/fof-prover9 -f SET667+3.in".
+]]></heading>
+
+<proof number="1" length="33" max_count="21">
+
+<comments><![CDATA[
+% Proof 1 at 0.06 (+ 0.02) seconds.
+% Length of proof is 33.
+% Level of proof is 7.
+% Maximum clause weight is 21.000.
+% Given clauses 183.
+
+]]></comments>
+
+  <clause id="2" type="assumption">
+    <literal><![CDATA[
+      -ilf_type(A,set_type)
+    ]]></literal>
+    <literal><![CDATA[
+      ilf_type(A,binary_relation_type)
+    ]]></literal>
+    <literal><![CDATA[
+      -relation_like(A)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="9" type="assumption">
+    <literal><![CDATA[
+      -ilf_type(A,set_type)
+    ]]></literal>
+    <literal><![CDATA[
+      -ilf_type(B,set_type)
+    ]]></literal>
+    <literal><![CDATA[
+      -ilf_type(C,subset_type(cross_product(A,B)))
+    ]]></literal>
+    <literal><![CDATA[
+      relation_like(C)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="11" type="assumption">
+    <literal><![CDATA[
+      -ilf_type(A,set_type)
+    ]]></literal>
+    <literal><![CDATA[
+      -ilf_type(B,set_type)
+    ]]></literal>
+    <literal><![CDATA[
+      -ilf_type(C,binary_relation_type)
+    ]]></literal>
+    <literal><![CDATA[
+      -member(ordered_pair(A,B),C)
+    ]]></literal>
+    <literal><![CDATA[
+      member(A,domain_of(C))
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="15" type="assumption">
+    <literal><![CDATA[
+      -ilf_type(A,set_type)
+    ]]></literal>
+    <literal><![CDATA[
+      -ilf_type(B,set_type)
+    ]]></literal>
+    <literal><![CDATA[
+      -member(B,A)
+    ]]></literal>
+    <literal><![CDATA[
+      -ilf_type(C,set_type)
+    ]]></literal>
+    <literal><![CDATA[
+      member(ordered_pair(B,C),identity_relation_of(A))
+    ]]></literal>
+    <literal><![CDATA[
+      C != B
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="20" type="assumption">
+    <literal><![CDATA[
+      -ilf_type(A,set_type)
+    ]]></literal>
+    <literal><![CDATA[
+      -ilf_type(B,set_type)
+    ]]></literal>
+    <literal><![CDATA[
+      -ilf_type(C,relation_type(A,B))
+    ]]></literal>
+    <literal><![CDATA[
+      ilf_type(C,subset_type(cross_product(A,B)))
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="23" type="assumption">
+    <literal><![CDATA[
+      -ilf_type(A,set_type)
+    ]]></literal>
+    <literal><![CDATA[
+      -ilf_type(B,set_type)
+    ]]></literal>
+    <literal><![CDATA[
+      subset(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      member(f2(A,B),A)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="24" type="assumption">
+    <literal><![CDATA[
+      -ilf_type(A,set_type)
+    ]]></literal>
+    <literal><![CDATA[
+      -ilf_type(B,set_type)
+    ]]></literal>
+    <literal><![CDATA[
+      subset(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -member(f2(A,B),B)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="25" type="assumption">
+    <literal><![CDATA[
+      -ilf_type(A,set_type)
+    ]]></literal>
+    <literal><![CDATA[
+      -ilf_type(B,set_type)
+    ]]></literal>
+    <literal><![CDATA[
+      -ilf_type(C,set_type)
+    ]]></literal>
+    <literal><![CDATA[
+      -member(C,A)
+    ]]></literal>
+    <literal><![CDATA[
+      member(C,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -subset(A,B)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="74" type="assumption">
+    <literal><![CDATA[
+      -ilf_type(A,set_type)
+    ]]></literal>
+    <literal><![CDATA[
+      -ilf_type(B,set_type)
+    ]]></literal>
+    <literal><![CDATA[
+      -ilf_type(C,relation_type(A,B))
+    ]]></literal>
+    <literal><![CDATA[
+      domain(A,B,C) = domain_of(C)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="78" type="assumption">
+    <literal><![CDATA[
+      ilf_type(A,set_type)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="79" type="assumption">
+    <literal><![CDATA[
+      ilf_type(c5,relation_type(c2,c3))
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="80" type="assumption">
+    <literal><![CDATA[
+      subset(identity_relation_of(c4),c5)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="81" type="assumption">
+    <literal><![CDATA[
+      -subset(c4,domain(c2,c3,c5))
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="92">
+    <literal><![CDATA[
+      -ilf_type(A,set_type)
+    ]]></literal>
+    <literal><![CDATA[
+      -ilf_type(B,set_type)
+    ]]></literal>
+    <literal><![CDATA[
+      -ilf_type(C,subset_type(cross_product(A,B)))
+    ]]></literal>
+    <literal><![CDATA[
+      -ilf_type(C,set_type)
+    ]]></literal>
+    <literal><![CDATA[
+      ilf_type(C,binary_relation_type)
+    ]]></literal>
+    <justification jstring="[resolve(9,d,2,c)].">
+      <j1 rule="resolve" parents="9 2"/>
+    </justification>
+  </clause>
+
+  <clause id="93">
+    <literal><![CDATA[
+      -ilf_type(A,subset_type(cross_product(B,C)))
+    ]]></literal>
+    <literal><![CDATA[
+      ilf_type(A,binary_relation_type)
+    ]]></literal>
+    <justification jstring="[copy(92),unit_del(a,78),unit_del(b,78),unit_del(d,78)].">
+      <j1 rule="copy" parents="92"/>
+      <j2 rule="unit_del" parents="78"/>
+      <j2 rule="unit_del" parents="78"/>
+      <j2 rule="unit_del" parents="78"/>
+    </justification>
+  </clause>
+
+  <clause id="106">
+    <literal><![CDATA[
+      -member(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      member(ordered_pair(A,A),identity_relation_of(B))
+    ]]></literal>
+    <justification jstring="[factor(15,b,d),xx(e),unit_del(a,78),unit_del(b,78)].">
+      <j1 rule="factor" parents="15"/>
+      <j2 rule="xx"/>
+      <j2 rule="unit_del" parents="78"/>
+      <j2 rule="unit_del" parents="78"/>
+    </justification>
+  </clause>
+
+  <clause id="151">
+    <literal><![CDATA[
+      -ilf_type(A,relation_type(B,C))
+    ]]></literal>
+    <literal><![CDATA[
+      domain(B,C,A) = domain_of(A)
+    ]]></literal>
+    <justification jstring="[back_unit_del(74),unit_del(a,78),unit_del(b,78)].">
+      <j1 rule="back_unit_del" parents="74"/>
+      <j2 rule="unit_del" parents="78"/>
+      <j2 rule="unit_del" parents="78"/>
+    </justification>
+  </clause>
+
+  <clause id="173">
+    <literal><![CDATA[
+      -member(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      member(A,C)
+    ]]></literal>
+    <literal><![CDATA[
+      -subset(B,C)
+    ]]></literal>
+    <justification jstring="[back_unit_del(25),unit_del(a,78),unit_del(b,78),unit_del(c,78)].">
+      <j1 rule="back_unit_del" parents="25"/>
+      <j2 rule="unit_del" parents="78"/>
+      <j2 rule="unit_del" parents="78"/>
+      <j2 rule="unit_del" parents="78"/>
+    </justification>
+  </clause>
+
+  <clause id="174">
+    <literal><![CDATA[
+      subset(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -member(f2(A,B),B)
+    ]]></literal>
+    <justification jstring="[back_unit_del(24),unit_del(a,78),unit_del(b,78)].">
+      <j1 rule="back_unit_del" parents="24"/>
+      <j2 rule="unit_del" parents="78"/>
+      <j2 rule="unit_del" parents="78"/>
+    </justification>
+  </clause>
+
+  <clause id="175">
+    <literal><![CDATA[
+      subset(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      member(f2(A,B),A)
+    ]]></literal>
+    <justification jstring="[back_unit_del(23),unit_del(a,78),unit_del(b,78)].">
+      <j1 rule="back_unit_del" parents="23"/>
+      <j2 rule="unit_del" parents="78"/>
+      <j2 rule="unit_del" parents="78"/>
+    </justification>
+  </clause>
+
+  <clause id="177">
+    <literal><![CDATA[
+      -ilf_type(A,relation_type(B,C))
+    ]]></literal>
+    <literal><![CDATA[
+      ilf_type(A,subset_type(cross_product(B,C)))
+    ]]></literal>
+    <justification jstring="[back_unit_del(20),unit_del(a,78),unit_del(b,78)].">
+      <j1 rule="back_unit_del" parents="20"/>
+      <j2 rule="unit_del" parents="78"/>
+      <j2 rule="unit_del" parents="78"/>
+    </justification>
+  </clause>
+
+  <clause id="184">
+    <literal><![CDATA[
+      -ilf_type(A,binary_relation_type)
+    ]]></literal>
+    <literal><![CDATA[
+      -member(ordered_pair(B,C),A)
+    ]]></literal>
+    <literal><![CDATA[
+      member(B,domain_of(A))
+    ]]></literal>
+    <justification jstring="[back_unit_del(11),unit_del(a,78),unit_del(b,78)].">
+      <j1 rule="back_unit_del" parents="11"/>
+      <j2 rule="unit_del" parents="78"/>
+      <j2 rule="unit_del" parents="78"/>
+    </justification>
+  </clause>
+
+  <clause id="192">
+    <literal><![CDATA[
+      domain(c2,c3,c5) = domain_of(c5)
+    ]]></literal>
+    <justification jstring="[resolve(151,a,79,a)].">
+      <j1 rule="resolve" parents="151 79"/>
+    </justification>
+  </clause>
+
+  <clause id="194">
+    <literal><![CDATA[
+      -subset(c4,domain_of(c5))
+    ]]></literal>
+    <justification jstring="[back_rewrite(81),rewrite([192(5)])].">
+      <j1 rule="back_rewrite" parents="81"/>
+      <j2 rule="rewrite" parents="192"/>
+    </justification>
+  </clause>
+
+  <clause id="236">
+    <literal><![CDATA[
+      -member(A,identity_relation_of(c4))
+    ]]></literal>
+    <literal><![CDATA[
+      member(A,c5)
+    ]]></literal>
+    <justification jstring="[resolve(173,c,80,a)].">
+      <j1 rule="resolve" parents="173 80"/>
+    </justification>
+  </clause>
+
+  <clause id="243">
+    <literal><![CDATA[
+      ilf_type(c5,subset_type(cross_product(c2,c3)))
+    ]]></literal>
+    <justification jstring="[resolve(177,a,79,a)].">
+      <j1 rule="resolve" parents="177 79"/>
+    </justification>
+  </clause>
+
+  <clause id="251">
+    <literal><![CDATA[
+      member(f2(c4,domain_of(c5)),c4)
+    ]]></literal>
+    <justification jstring="[resolve(194,a,175,a)].">
+      <j1 rule="resolve" parents="194 175"/>
+    </justification>
+  </clause>
+
+  <clause id="252">
+    <literal><![CDATA[
+      -member(f2(c4,domain_of(c5)),domain_of(c5))
+    ]]></literal>
+    <justification jstring="[ur(174,a,194,a)].">
+      <j1 rule="ur" parents="174 194"/>
+    </justification>
+  </clause>
+
+  <clause id="400">
+    <literal><![CDATA[
+      ilf_type(c5,binary_relation_type)
+    ]]></literal>
+    <justification jstring="[resolve(243,a,93,a)].">
+      <j1 rule="resolve" parents="243 93"/>
+    </justification>
+  </clause>
+
+  <clause id="407">
+    <literal><![CDATA[
+      -member(ordered_pair(f2(c4,domain_of(c5)),A),c5)
+    ]]></literal>
+    <justification jstring="[ur(184,a,400,a,c,252,a)].">
+      <j1 rule="ur" parents="184 400 252"/>
+    </justification>
+  </clause>
+
+  <clause id="417">
+    <literal><![CDATA[
+      member(ordered_pair(f2(c4,domain_of(c5)),f2(c4,domain_of(c5))),identity_relation_of(c4))
+    ]]></literal>
+    <justification jstring="[resolve(251,a,106,a)].">
+      <j1 rule="resolve" parents="251 106"/>
+    </justification>
+  </clause>
+
+  <clause id="1013">
+    <literal><![CDATA[
+      -member(ordered_pair(f2(c4,domain_of(c5)),A),identity_relation_of(c4))
+    ]]></literal>
+    <justification jstring="[ur(236,b,407,a)].">
+      <j1 rule="ur" parents="236 407"/>
+    </justification>
+  </clause>
+
+  <clause id="1014">
+    <literal><![CDATA[
+      $F
+    ]]></literal>
+    <justification jstring="[resolve(1013,a,417,a)].">
+      <j1 rule="resolve" parents="1013 417"/>
+    </justification>
+  </clause>
+
+</proof>
+
+<proof number="2" length="33" max_count="21">
+
+<comments><![CDATA[
+% Proof 1 at 0.07 (+ 0.02) seconds.
+% Length of proof is 33.
+% Level of proof is 7.
+% Maximum clause weight is 21.000.
+% Given clauses 183.
+
+]]></comments>
+
+  <clause id="2" type="assumption">
+    <literal><![CDATA[
+      -ilf_type(A,set_type)
+    ]]></literal>
+    <literal><![CDATA[
+      ilf_type(A,binary_relation_type)
+    ]]></literal>
+    <literal><![CDATA[
+      -relation_like(A)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="9" type="assumption">
+    <literal><![CDATA[
+      -ilf_type(A,set_type)
+    ]]></literal>
+    <literal><![CDATA[
+      -ilf_type(B,set_type)
+    ]]></literal>
+    <literal><![CDATA[
+      -ilf_type(C,subset_type(cross_product(A,B)))
+    ]]></literal>
+    <literal><![CDATA[
+      relation_like(C)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="12" type="assumption">
+    <literal><![CDATA[
+      -ilf_type(A,set_type)
+    ]]></literal>
+    <literal><![CDATA[
+      -ilf_type(B,set_type)
+    ]]></literal>
+    <literal><![CDATA[
+      -ilf_type(C,binary_relation_type)
+    ]]></literal>
+    <literal><![CDATA[
+      -member(ordered_pair(A,B),C)
+    ]]></literal>
+    <literal><![CDATA[
+      member(B,range_of(C))
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="15" type="assumption">
+    <literal><![CDATA[
+      -ilf_type(A,set_type)
+    ]]></literal>
+    <literal><![CDATA[
+      -ilf_type(B,set_type)
+    ]]></literal>
+    <literal><![CDATA[
+      -member(B,A)
+    ]]></literal>
+    <literal><![CDATA[
+      -ilf_type(C,set_type)
+    ]]></literal>
+    <literal><![CDATA[
+      member(ordered_pair(B,C),identity_relation_of(A))
+    ]]></literal>
+    <literal><![CDATA[
+      C != B
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="20" type="assumption">
+    <literal><![CDATA[
+      -ilf_type(A,set_type)
+    ]]></literal>
+    <literal><![CDATA[
+      -ilf_type(B,set_type)
+    ]]></literal>
+    <literal><![CDATA[
+      -ilf_type(C,relation_type(A,B))
+    ]]></literal>
+    <literal><![CDATA[
+      ilf_type(C,subset_type(cross_product(A,B)))
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="23" type="assumption">
+    <literal><![CDATA[
+      -ilf_type(A,set_type)
+    ]]></literal>
+    <literal><![CDATA[
+      -ilf_type(B,set_type)
+    ]]></literal>
+    <literal><![CDATA[
+      subset(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      member(f2(A,B),A)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="24" type="assumption">
+    <literal><![CDATA[
+      -ilf_type(A,set_type)
+    ]]></literal>
+    <literal><![CDATA[
+      -ilf_type(B,set_type)
+    ]]></literal>
+    <literal><![CDATA[
+      subset(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -member(f2(A,B),B)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="25" type="assumption">
+    <literal><![CDATA[
+      -ilf_type(A,set_type)
+    ]]></literal>
+    <literal><![CDATA[
+      -ilf_type(B,set_type)
+    ]]></literal>
+    <literal><![CDATA[
+      -ilf_type(C,set_type)
+    ]]></literal>
+    <literal><![CDATA[
+      -member(C,A)
+    ]]></literal>
+    <literal><![CDATA[
+      member(C,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -subset(A,B)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="76" type="assumption">
+    <literal><![CDATA[
+      -ilf_type(A,set_type)
+    ]]></literal>
+    <literal><![CDATA[
+      -ilf_type(B,set_type)
+    ]]></literal>
+    <literal><![CDATA[
+      -ilf_type(C,relation_type(A,B))
+    ]]></literal>
+    <literal><![CDATA[
+      range(A,B,C) = range_of(C)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="78" type="assumption">
+    <literal><![CDATA[
+      ilf_type(A,set_type)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="79" type="assumption">
+    <literal><![CDATA[
+      ilf_type(c5,relation_type(c2,c3))
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="80" type="assumption">
+    <literal><![CDATA[
+      subset(identity_relation_of(c4),c5)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="81" type="assumption">
+    <literal><![CDATA[
+      -subset(c4,range(c2,c3,c5))
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="92">
+    <literal><![CDATA[
+      -ilf_type(A,set_type)
+    ]]></literal>
+    <literal><![CDATA[
+      -ilf_type(B,set_type)
+    ]]></literal>
+    <literal><![CDATA[
+      -ilf_type(C,subset_type(cross_product(A,B)))
+    ]]></literal>
+    <literal><![CDATA[
+      -ilf_type(C,set_type)
+    ]]></literal>
+    <literal><![CDATA[
+      ilf_type(C,binary_relation_type)
+    ]]></literal>
+    <justification jstring="[resolve(9,d,2,c)].">
+      <j1 rule="resolve" parents="9 2"/>
+    </justification>
+  </clause>
+
+  <clause id="93">
+    <literal><![CDATA[
+      -ilf_type(A,subset_type(cross_product(B,C)))
+    ]]></literal>
+    <literal><![CDATA[
+      ilf_type(A,binary_relation_type)
+    ]]></literal>
+    <justification jstring="[copy(92),unit_del(a,78),unit_del(b,78),unit_del(d,78)].">
+      <j1 rule="copy" parents="92"/>
+      <j2 rule="unit_del" parents="78"/>
+      <j2 rule="unit_del" parents="78"/>
+      <j2 rule="unit_del" parents="78"/>
+    </justification>
+  </clause>
+
+  <clause id="106">
+    <literal><![CDATA[
+      -member(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      member(ordered_pair(A,A),identity_relation_of(B))
+    ]]></literal>
+    <justification jstring="[factor(15,b,d),xx(e),unit_del(a,78),unit_del(b,78)].">
+      <j1 rule="factor" parents="15"/>
+      <j2 rule="xx"/>
+      <j2 rule="unit_del" parents="78"/>
+      <j2 rule="unit_del" parents="78"/>
+    </justification>
+  </clause>
+
+  <clause id="149">
+    <literal><![CDATA[
+      -ilf_type(A,relation_type(B,C))
+    ]]></literal>
+    <literal><![CDATA[
+      range(B,C,A) = range_of(A)
+    ]]></literal>
+    <justification jstring="[back_unit_del(76),unit_del(a,78),unit_del(b,78)].">
+      <j1 rule="back_unit_del" parents="76"/>
+      <j2 rule="unit_del" parents="78"/>
+      <j2 rule="unit_del" parents="78"/>
+    </justification>
+  </clause>
+
+  <clause id="173">
+    <literal><![CDATA[
+      -member(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      member(A,C)
+    ]]></literal>
+    <literal><![CDATA[
+      -subset(B,C)
+    ]]></literal>
+    <justification jstring="[back_unit_del(25),unit_del(a,78),unit_del(b,78),unit_del(c,78)].">
+      <j1 rule="back_unit_del" parents="25"/>
+      <j2 rule="unit_del" parents="78"/>
+      <j2 rule="unit_del" parents="78"/>
+      <j2 rule="unit_del" parents="78"/>
+    </justification>
+  </clause>
+
+  <clause id="174">
+    <literal><![CDATA[
+      subset(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -member(f2(A,B),B)
+    ]]></literal>
+    <justification jstring="[back_unit_del(24),unit_del(a,78),unit_del(b,78)].">
+      <j1 rule="back_unit_del" parents="24"/>
+      <j2 rule="unit_del" parents="78"/>
+      <j2 rule="unit_del" parents="78"/>
+    </justification>
+  </clause>
+
+  <clause id="175">
+    <literal><![CDATA[
+      subset(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      member(f2(A,B),A)
+    ]]></literal>
+    <justification jstring="[back_unit_del(23),unit_del(a,78),unit_del(b,78)].">
+      <j1 rule="back_unit_del" parents="23"/>
+      <j2 rule="unit_del" parents="78"/>
+      <j2 rule="unit_del" parents="78"/>
+    </justification>
+  </clause>
+
+  <clause id="177">
+    <literal><![CDATA[
+      -ilf_type(A,relation_type(B,C))
+    ]]></literal>
+    <literal><![CDATA[
+      ilf_type(A,subset_type(cross_product(B,C)))
+    ]]></literal>
+    <justification jstring="[back_unit_del(20),unit_del(a,78),unit_del(b,78)].">
+      <j1 rule="back_unit_del" parents="20"/>
+      <j2 rule="unit_del" parents="78"/>
+      <j2 rule="unit_del" parents="78"/>
+    </justification>
+  </clause>
+
+  <clause id="183">
+    <literal><![CDATA[
+      -ilf_type(A,binary_relation_type)
+    ]]></literal>
+    <literal><![CDATA[
+      -member(ordered_pair(B,C),A)
+    ]]></literal>
+    <literal><![CDATA[
+      member(C,range_of(A))
+    ]]></literal>
+    <justification jstring="[back_unit_del(12),unit_del(a,78),unit_del(b,78)].">
+      <j1 rule="back_unit_del" parents="12"/>
+      <j2 rule="unit_del" parents="78"/>
+      <j2 rule="unit_del" parents="78"/>
+    </justification>
+  </clause>
+
+  <clause id="189">
+    <literal><![CDATA[
+      range(c2,c3,c5) = range_of(c5)
+    ]]></literal>
+    <justification jstring="[resolve(149,a,79,a)].">
+      <j1 rule="resolve" parents="149 79"/>
+    </justification>
+  </clause>
+
+  <clause id="191">
+    <literal><![CDATA[
+      -subset(c4,range_of(c5))
+    ]]></literal>
+    <justification jstring="[back_rewrite(81),rewrite([189(5)])].">
+      <j1 rule="back_rewrite" parents="81"/>
+      <j2 rule="rewrite" parents="189"/>
+    </justification>
+  </clause>
+
+  <clause id="236">
+    <literal><![CDATA[
+      -member(A,identity_relation_of(c4))
+    ]]></literal>
+    <literal><![CDATA[
+      member(A,c5)
+    ]]></literal>
+    <justification jstring="[resolve(173,c,80,a)].">
+      <j1 rule="resolve" parents="173 80"/>
+    </justification>
+  </clause>
+
+  <clause id="243">
+    <literal><![CDATA[
+      ilf_type(c5,subset_type(cross_product(c2,c3)))
+    ]]></literal>
+    <justification jstring="[resolve(177,a,79,a)].">
+      <j1 rule="resolve" parents="177 79"/>
+    </justification>
+  </clause>
+
+  <clause id="251">
+    <literal><![CDATA[
+      member(f2(c4,range_of(c5)),c4)
+    ]]></literal>
+    <justification jstring="[resolve(191,a,175,a)].">
+      <j1 rule="resolve" parents="191 175"/>
+    </justification>
+  </clause>
+
+  <clause id="252">
+    <literal><![CDATA[
+      -member(f2(c4,range_of(c5)),range_of(c5))
+    ]]></literal>
+    <justification jstring="[ur(174,a,191,a)].">
+      <j1 rule="ur" parents="174 191"/>
+    </justification>
+  </clause>
+
+  <clause id="400">
+    <literal><![CDATA[
+      ilf_type(c5,binary_relation_type)
+    ]]></literal>
+    <justification jstring="[resolve(243,a,93,a)].">
+      <j1 rule="resolve" parents="243 93"/>
+    </justification>
+  </clause>
+
+  <clause id="407">
+    <literal><![CDATA[
+      -member(ordered_pair(A,f2(c4,range_of(c5))),c5)
+    ]]></literal>
+    <justification jstring="[ur(183,a,400,a,c,252,a)].">
+      <j1 rule="ur" parents="183 400 252"/>
+    </justification>
+  </clause>
+
+  <clause id="417">
+    <literal><![CDATA[
+      member(ordered_pair(f2(c4,range_of(c5)),f2(c4,range_of(c5))),identity_relation_of(c4))
+    ]]></literal>
+    <justification jstring="[resolve(251,a,106,a)].">
+      <j1 rule="resolve" parents="251 106"/>
+    </justification>
+  </clause>
+
+  <clause id="1013">
+    <literal><![CDATA[
+      -member(ordered_pair(A,f2(c4,range_of(c5))),identity_relation_of(c4))
+    ]]></literal>
+    <justification jstring="[ur(236,b,407,a)].">
+      <j1 rule="ur" parents="236 407"/>
+    </justification>
+  </clause>
+
+  <clause id="1014">
+    <literal><![CDATA[
+      $F
+    ]]></literal>
+    <justification jstring="[resolve(1013,a,417,a)].">
+      <j1 rule="resolve" parents="1013 417"/>
+    </justification>
+  </clause>
+
+</proof>
+
+</proofs>

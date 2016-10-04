@@ -1,0 +1,1378 @@
+----- Prover9 July-2005X, 13 July 2005 -----
+Process 10919 was started by mccune on gyro.thornwood,
+Fri Jul 15 15:25:54 2005
+The command was "prover9 -f H42.in".
+
+% Reading from file H42.in
+
+set(auto).
+    % set(auto) -> set(auto1).
+    % set(auto1) -> set(auto_inference).
+    % set(auto1) -> set(fof_reduction).
+    % set(auto1) -> set(predicate_elimination).
+    % set(auto1) -> set(unfold_eq).
+    % set(unfold_eq) -> assign(unfold_eq_limit, 2147483647).
+    % set(unfold_eq) -> clear(fold_eq).
+    % set(auto1) -> set(inverse_order).
+    % set(auto1) -> assign(new_constants, 1).
+    % assign(new_constants, 1) -> clear(x_proofs).
+    % assign(new_constants, 1) -> clear(rx_proofs).
+    % set(auto1) -> assign(lex_dep_demod_lim, 11).
+    % set(auto1) -> set(lex_dep_demod_sane).
+    % set(auto1) -> assign(max_weight, 100).
+    % set(auto1) -> assign(age_part, 1).
+    % set(auto1) -> assign(weight_part, 2).
+    % set(auto1) -> assign(weight_neg_part, 2).
+    % set(auto1) -> assign(sos_limit, 10000).
+    % set(auto1) -> clear(x_proofs).
+    % set(auto1) -> assign(stats, lots).
+    % set(auto1) -> assign(max_megs, 200).
+    % set(auto1) -> clear(clocks).
+
+clauses(sos).
+x v y = y v x.
+(x v y) v z = x v (y v z).
+x ^ y = y ^ x.
+(x ^ y) ^ z = x ^ (y ^ z).
+x ^ (x v y) = x.
+x v (x ^ y) = x.
+x v x ' = 1.
+x ^ x ' = 0.
+x v y != 1 | x ^ y != 0 | x ' = y.
+x ^ (y v (z ^ (x v u))) = x ^ (y v (z ^ (y v (u v (x ^ z))))) # label(H42).
+A ^ B = A.
+A ' v B ' != A '.
+end_of_list.
+
+% Finished reading the input.
+
+% Entering prover search function.
+% Assigned IDs to 12 clauses.
+
+% Predicate elimination: (none).
+% Relation symbol precedence:  lex([ = ]).
+% Function symbol precedence:  lex([ 0, 1, A, B, ^, v, ' ]).
+% After inverse_order: % Function symbol precedence:  lex([ 0, 1, A, B, v, ^, ' ]).
+% Unfolding symbols: (none).
+
+% Auto inference settings:
+  % set(paramodulation).  % (positive equality literals)
+    % set(paramodulation) -> set(back_demod).
+  % set(hyper_resolution).  % (nonunit Horn with equality)
+  % set(neg_ur_resolution).  % (nonunit Horn with equality)
+  % assign(para_lit_limit, 2).  % (nonunit Horn with equality)
+
+% Reasonable options, based on the structure of the clauses:
+  % (nothing changed)
+
+% Operation v is commutative; redundancy checks enabled.
+
+% Operation v is associative-commutative; redundancy checks enabled.
+
+% Operation ^ is commutative; redundancy checks enabled.
+
+% Operation ^ is associative-commutative; redundancy checks enabled.
+
+% Clauses after input processing:
+
+clauses(usable).
+end_of_list.
+
+clauses(sos).
+13 x v y = y v x.  [input]
+14 (x v y) v z = x v (y v z).  [input]
+15 x ^ y = y ^ x.  [input]
+16 (x ^ y) ^ z = x ^ (y ^ z).  [input]
+17 x ^ (x v y) = x.  [input]
+18 x v (x ^ y) = x.  [input]
+19 x v x ' = 1.  [input]
+20 x ^ x ' = 0.  [input]
+21 x v y != 1 | x ^ y != 0 | x ' = y.  [input]
+22 x ^ (y v (z ^ (y v (u v (x ^ z))))) = x ^ (y v (z ^ (x v u))) # label(H42).  [copy 10 flip a]
+23 A ^ B = A.  [input]
+24 A ' v B ' != A '.  [input]
+end_of_list.
+
+clauses(demodulators).
+13 x v y = y v x.  [input]
+        % (lex-dep)
+14 (x v y) v z = x v (y v z).  [input]
+15 x ^ y = y ^ x.  [input]
+        % (lex-dep)
+16 (x ^ y) ^ z = x ^ (y ^ z).  [input]
+17 x ^ (x v y) = x.  [input]
+18 x v (x ^ y) = x.  [input]
+19 x v x ' = 1.  [input]
+20 x ^ x ' = 0.  [input]
+23 A ^ B = A.  [input]
+end_of_list.
+
+clauses(goals).
+end_of_list.
+
+% Starting search at 0.00 seconds.
+
+given #1 (wt=7): 13 x v y = y v x.  [input]
+
+given #2 (wt=11): 14 (x v y) v z = x v (y v z).  [input]
+
+given #3 (wt=7): 15 x ^ y = y ^ x.  [input]
+
+given #4 (wt=11): 16 (x ^ y) ^ z = x ^ (y ^ z).  [input]
+
+given #5 (wt=7): 17 x ^ (x v y) = x.  [input]
+
+given #6 (wt=7): 18 x v (x ^ y) = x.  [input]
+
+given #7 (wt=6): 19 x v x ' = 1.  [input]
+
+given #8 (wt=6): 20 x ^ x ' = 0.  [input]
+
+given #9 (wt=14): 21 x v y != 1 | x ^ y != 0 | x ' = y.  [input]
+
+given #10 (wt=23): 22 x ^ (y v (z ^ (y v (u v (x ^ z))))) = x ^ (y v (z ^ (x v u))) # label(H42).  [copy 10 flip a]
+
+given #11 (wt=5): 23 A ^ B = A.  [input]
+
+given #12 (wt=8): 24 A ' v B ' != A '.  [input]
+
+given #13 (wt=5): 35 x ^ x = x.  [para (18 (a 1) 17 (a 1 2))]
+
+given #14 (wt=5): 36 x v x = x.  [para (17 (a 1) 18 (a 1 2))]
+
+given #15 (wt=5): 39 x ^ 1 = x.  [para (19 (a 1) 17 (a 1 2))]
+
+given #16 (wt=11): 25 x v (y v z) = y v (x v z).  [para (13 (a 1) 14 (a 1 1)) demod (14)]
+
+given #17 (wt=5): 42 x v 0 = x.  [para (20 (a 1) 18 (a 1 2))]
+
+given #18 (wt=5): 66 1 ^ x = x.  [para (39 (a 1) 15 (a 1)) flip a]
+
+given #19 (wt=4): 71 1 ' = 0.  [hyper (21 a 42 a b 66 a)]
+
+given #20 (wt=5): 70 0 v x = x.  [para (42 (a 1) 13 (a 1)) flip a]
+
+given #21 (wt=11): 26 x ^ (y ^ z) = y ^ (x ^ z).  [para (15 (a 1) 16 (a 1 1)) demod (16)]
+
+given #22 (wt=4): 74 0 ' = 1.  [hyper (21 a 70 a b 39 a)]
+
+given #23 (wt=5): 72 1 v x = 1.  [para (66 (a 1) 17 (a 1))]
+
+given #24 (wt=5): 75 0 ^ x = 0.  [para (70 (a 1) 17 (a 1 2))]
+
+given #25 (wt=5): 81 x v 1 = 1.  [para (72 (a 1) 13 (a 1)) flip a]
+
+given #26 (wt=7): 27 x ^ (y v x) = x.  [para (13 (a 1) 17 (a 1 2))]
+
+given #27 (wt=5): 83 x ^ 0 = 0.  [para (75 (a 1) 15 (a 1)) flip a]
+
+given #28 (wt=7): 33 x v (y ^ x) = x.  [para (15 (a 1) 18 (a 1 2))]
+
+given #29 (wt=5): 93 A v B = B.  [para (23 (a 1) 33 (a 1 2)) demod (13)]
+
+given #30 (wt=8): 73 x v (x ' v y) = 1.  [back_demod 37 demod (72)]
+
+given #31 (wt=13): 28 (x v y) ^ (x v (y v z)) = x v y.  [para (14 (a 1) 17 (a 1 2))]
+
+given #32 (wt=9): 99 A ^ (A ' v B ') != 0.  [ur (21 a 73 a c 24 a_flip)]
+
+given #33 (wt=8): 76 x ^ (x ' ^ y) = 0.  [back_demod 40 demod (75)]
+
+given #34 (wt=8): 82 x v (y v x ') = 1.  [back_demod 69 demod (81)]
+
+given #35 (wt=8): 84 x ^ (y ^ x ') = 0.  [back_demod 79 demod (83)]
+
+given #36 (wt=11): 29 x ^ ((x v y) ^ z) = x ^ z.  [para (17 (a 1) 16 (a 1 1)) flip a]
+
+given #37 (wt=8): 118 x ^ (x v y) ' = 0.  [para (20 (a 1) 29 (a 1 2)) demod (83) flip a]
+
+given #38 (wt=6): 128 A ^ B ' = 0.  [para (93 (a 1) 118 (a 1 2 1))]
+
+given #39 (wt=8): 124 x ^ (y v x) ' = 0.  [para (13 (a 1) 118 (a 1 2 1))]
+
+given #40 (wt=8): 129 A ^ (B ' ^ x) = 0.  [para (128 (a 1) 16 (a 1 1)) demod (75) flip a]
+
+given #41 (wt=13): 30 x ^ (y ^ ((x ^ y) v z)) = x ^ y.  [para (17 (a 1) 16 (a 1)) flip a]
+
+given #42 (wt=8): 130 A ^ (x ^ B ') = 0.  [para (128 (a 1) 26 (a 1 2)) demod (83) flip a]
+
+given #43 (wt=9): 58 A ^ (B ^ x) = A ^ x.  [para (23 (a 1) 16 (a 1 1)) flip a]
+
+given #44 (wt=7): 146 A ^ (B v x) = A.  [para (17 (a 1) 58 (a 1 2)) demod (23) flip a]
+
+given #45 (wt=7): 148 A ^ (x v B) = A.  [para (27 (a 1) 58 (a 1 2)) demod (23) flip a]
+
+given #46 (wt=11): 31 x v ((x ^ y) v z) = x v z.  [para (18 (a 1) 14 (a 1 1)) flip a]
+
+given #47 (wt=8): 151 A ^ (B v x) ' = 0.  [para (118 (a 1) 58 (a 1 2)) demod (15 75) flip a]
+
+given #48 (wt=8): 152 A ^ (x v B) ' = 0.  [para (124 (a 1) 58 (a 1 2)) demod (15 75) flip a]
+
+given #49 (wt=8): 161 x v (x ^ y) ' = 1.  [para (19 (a 1) 31 (a 1 2)) demod (81) flip a]
+
+given #50 (wt=8): 175 x v (y ^ x) ' = 1.  [para (15 (a 1) 161 (a 1 2 1))]
+
+given #51 (wt=13): 32 x v (y v ((x v y) ^ z)) = x v y.  [para (18 (a 1) 14 (a 1)) flip a]
+
+given #52 (wt=6): 181 B v A ' = 1.  [para (23 (a 1) 175 (a 1 2 1))]
+
+given #53 (wt=8): 187 B v (x v A ') = 1.  [para (146 (a 1) 175 (a 1 2 1)) demod (14)]
+
+given #54 (wt=8): 196 B v (A ' v x) = 1.  [para (181 (a 1) 14 (a 1 1)) demod (72) flip a]
+
+given #55 (wt=9): 59 B ^ (x ^ A) = x ^ A.  [para (23 (a 1) 16 (a 2 2)) demod (15)]
+
+given #56 (wt=13): 34 (x ^ y) v (x ^ (y ^ z)) = x ^ y.  [para (16 (a 1) 18 (a 1 2))]
+
+given #57 (wt=7): 200 B v (x ^ A) = B.  [para (59 (a 1) 18 (a 1 2))]
+
+given #58 (wt=7): 212 B v (A ^ x) = B.  [para (15 (a 1) 200 (a 1 2))]
+
+given #59 (wt=8): 202 B v (x ^ A) ' = 1.  [para (59 (a 1) 161 (a 1 2 1))]
+
+given #60 (wt=8): 219 B v (A ^ x) ' = 1.  [para (15 (a 1) 202 (a 1 2 1))]
+
+given #61 (wt=10): 38 x v (y v (x v y) ') = 1.  [para (19 (a 1) 14 (a 1)) flip a]
+
+given #62 (wt=9): 60 x ^ (x ^ y) = x ^ y.  [para (35 (a 1) 16 (a 1 1)) flip a]
+
+given #63 (wt=9): 62 x ^ (y ^ x) = y ^ x.  [para (35 (a 1) 16 (a 2 2)) demod (15)]
+
+given #64 (wt=9): 63 x v (x v y) = x v y.  [para (36 (a 1) 14 (a 1 1)) flip a]
+
+given #65 (wt=9): 65 x v (y v x) = y v x.  [para (36 (a 1) 14 (a 2 2)) demod (13)]
+
+given #66 (wt=10): 41 x ^ (y ^ (x ^ y) ') = 0.  [para (20 (a 1) 16 (a 1)) flip a]
+
+given #67 (wt=9): 67 x ^ (y v (x v z)) = x.  [para (25 (a 1) 17 (a 1 2))]
+
+given #68 (wt=9): 78 x v (y ^ (x ^ z)) = x.  [para (26 (a 1) 18 (a 1 2))]
+
+given #69 (wt=9): 80 A ^ (x ^ B) = x ^ A.  [para (23 (a 1) 26 (a 1 2)) flip a]
+
+given #70 (wt=9): 85 x ^ (y v (z v x)) = x.  [para (14 (a 1) 27 (a 1 2))]
+
+given #71 (wt=23): 43 x ^ (y v (z ^ (y v ((x ^ z) v u)))) = x ^ (y v (z ^ (x v u))).  [para (13 (a 1) 22 (a 1 2 2 2 2))]
+
+given #72 (wt=9): 92 x v (y ^ (z ^ x)) = x.  [para (16 (a 1) 33 (a 1 2))]
+
+given #73 (wt=9): 96 A v (B v x) = B v x.  [para (93 (a 1) 14 (a 1 1)) flip a]
+
+given #74 (wt=9): 97 B v (x v A) = x v B.  [para (93 (a 1) 14 (a 2 2)) demod (13)]
+
+given #75 (wt=9): 98 A v (x v B) = x v B.  [para (93 (a 1) 25 (a 1 2)) flip a]
+
+given #76 (wt=23): 44 x ^ (y v (z ^ (u v ((x ^ z) v y)))) = x ^ (y v (z ^ (x v u))).  [para (13 (a 1) 22 (a 1 2 2 2)) demod (14)]
+
+given #77 (wt=9): 154 A ^ (x v (B v y)) = A.  [para (25 (a 1) 146 (a 1 2))]
+
+given #78 (wt=9): 156 A ^ (x v (y v B)) = A.  [para (14 (a 1) 148 (a 1 2))]
+
+given #79 (wt=9): 213 B v (x ^ (y ^ A)) = B.  [para (16 (a 1) 200 (a 1 2))]
+
+given #80 (wt=9): 217 B v (x ^ (A ^ y)) = B.  [para (26 (a 1) 212 (a 1 2))]
+
+given #81 (wt=23): 45 x ^ (y v (z ^ (y v (u v (x ^ z))))) = x ^ (y v (z ^ (u v x))).  [para (13 (a 1) 22 (a 2 2 2 2))]
+
+given #82 (wt=9): 325 B v (x v A) = B v x.  [para (97 (a 2) 13 (a 1))]
+
+given #83 (wt=10): 101 x v (y v (x ' v z)) = 1.  [para (73 (a 1) 25 (a 1 2)) demod (81) flip a]
+
+given #84 (wt=10): 112 x ^ (y ^ (x ' ^ z)) = 0.  [para (76 (a 1) 26 (a 1 2)) demod (83) flip a]
+
+given #85 (wt=10): 114 x v (y v (z v x ')) = 1.  [para (14 (a 1) 82 (a 1 2))]
+
+given #86 (wt=17): 54 x ^ (y v (z ^ (y v x))) = x ^ (y v (z ^ x)).  [para (18 (a 1) 22 (a 1 2 2 2 2)) demod (36)]
+
+given #87 (wt=10): 116 x ^ (y ^ (z ^ x ')) = 0.  [para (16 (a 1) 84 (a 1 2))]
+
+given #88 (wt=10): 122 x ^ ((x v y) ' ^ z) = 0.  [para (76 (a 1) 29 (a 1 2)) demod (83) flip a]
+
+given #89 (wt=10): 123 x ^ (y ^ (x v z) ') = 0.  [para (84 (a 1) 29 (a 1 2)) demod (83) flip a]
+
+given #90 (wt=10): 127 x ^ (y v (x v z)) ' = 0.  [para (25 (a 1) 118 (a 1 2 1))]
+
+given #91 (wt=21): 55 x ^ (y v (x ' ^ (y v z))) = x ^ (y v (x ' ^ (x v z))).  [para (20 (a 1) 22 (a 1 2 2 2 2 2)) demod (42)]
+
+given #92 (wt=10): 131 x ^ (y v (z v x)) ' = 0.  [para (14 (a 1) 124 (a 1 2 1))]
+
+given #93 (wt=10): 132 x ^ ((y v x) ' ^ z) = 0.  [para (124 (a 1) 16 (a 1 1)) demod (75) flip a]
+
+given #94 (wt=10): 135 x ^ (y ^ (z v x) ') = 0.  [para (124 (a 1) 26 (a 1 2)) demod (83) flip a]
+
+given #95 (wt=10): 136 A ^ (x ^ (B ' ^ y)) = 0.  [para (129 (a 1) 26 (a 1 2)) demod (83) flip a]
+
+given #96 (wt=49): 56 x ^ (y v ((z v (u ^ (z v (v v (x ^ u))))) ^ (y v (w v (x ^ (z v (u ^ (x v v)))))))) = x ^ (y v ((z v (u ^ (z v (v v (x ^ u))))) ^ (x v w))).  [para (22 (a 1) 22 (a 1 2 2 2 2 2))]
+
+given #97 (wt=10): 144 A ^ (x ^ (y ^ B ')) = 0.  [para (16 (a 1) 130 (a 1 2))]
+
+given #98 (wt=10): 165 x v ((x ^ y) ' v z) = 1.  [para (73 (a 1) 31 (a 1 2)) demod (81) flip a]
+
+given #99 (wt=10): 166 x v (y v (x ^ z) ') = 1.  [para (82 (a 1) 31 (a 1 2)) demod (81) flip a]
+
+given #100 (wt=10): 168 A ^ ((B v x) ' ^ y) = 0.  [para (151 (a 1) 16 (a 1 1)) demod (75) flip a]
+
+given #101 (wt=41): 57 x ^ (y v ((z v (u ^ (x v v))) ^ (y v (w v (x ^ (z v (u ^ (v v x)))))))) = x ^ (y v ((z v (u ^ (x v v))) ^ (x v w))).  [para (22 (a 2) 22 (a 1 2 2 2 2 2)) demod (45)]
+
+given #102 (wt=10): 169 A ^ (x v (B v y)) ' = 0.  [para (25 (a 1) 151 (a 1 2 1))]
+
+given #103 (wt=10): 170 A ^ (x ^ (B v y) ') = 0.  [para (151 (a 1) 26 (a 1 2)) demod (83) flip a]
+
+given #104 (wt=10): 171 A ^ (x v (y v B)) ' = 0.  [para (14 (a 1) 152 (a 1 2 1))]
+
+given #105 (wt=10): 172 A ^ ((x v B) ' ^ y) = 0.  [para (152 (a 1) 16 (a 1 1)) demod (75) flip a]
+
+given #106 (wt=11): 68 x v (y v (x ^ z)) = y v x.  [para (18 (a 1) 25 (a 1 2)) flip a]
+
+given #107 (wt=10): 173 A ^ (x ^ (y v B) ') = 0.  [para (152 (a 1) 26 (a 1 2)) demod (83) flip a]
+
+given #108 (wt=10): 177 x v (y ^ (x ^ z)) ' = 1.  [para (26 (a 1) 161 (a 1 2 1))]
+
+given #109 (wt=10): 178 x v ((y ^ x) ' v z) = 1.  [para (175 (a 1) 14 (a 1 1)) demod (72) flip a]
+
+given #110 (wt=10): 180 x v (y ^ (z ^ x)) ' = 1.  [para (16 (a 1) 175 (a 1 2 1))]
+
+given #111 (wt=11): 77 x ^ (y ^ (x v z)) = y ^ x.  [para (17 (a 1) 26 (a 1 2)) flip a]
+
+given #112 (wt=10): 182 x v (y v (z ^ x) ') = 1.  [para (175 (a 1) 25 (a 1 2)) demod (81) flip a]
+
+given #113 (wt=10): 186 (B ^ x) v (A ^ x) ' = 1.  [para (58 (a 1) 175 (a 1 2 1))]
+
+given #114 (wt=10): 197 B v (x v (A ' v y)) = 1.  [para (187 (a 1) 14 (a 1 1)) demod (72 14) flip a]
+
+given #115 (wt=10): 198 B v (x v (y v A ')) = 1.  [para (14 (a 1) 187 (a 1 2))]
+
+given #116 (wt=11): 86 x ^ ((y v x) ^ z) = x ^ z.  [para (27 (a 1) 16 (a 1 1)) flip a]
+
+given #117 (wt=10): 218 B v ((x ^ A) ' v y) = 1.  [para (202 (a 1) 14 (a 1 1)) demod (72) flip a]
+
+given #118 (wt=10): 220 B v (x ^ (y ^ A)) ' = 1.  [para (16 (a 1) 202 (a 1 2 1))]
+
+given #119 (wt=10): 221 B v (x v (y ^ A) ') = 1.  [para (202 (a 1) 25 (a 1 2)) demod (81) flip a]
+
+given #120 (wt=10): 222 B v ((A ^ x) ' v y) = 1.  [para (219 (a 1) 14 (a 1 1)) demod (72) flip a]
+
+given #121 (wt=13): 87 x ^ (y ^ (z v (x ^ y))) = x ^ y.  [para (27 (a 1) 16 (a 1)) flip a]
+
+given #122 (wt=10): 223 B v (x v (A ^ y) ') = 1.  [para (219 (a 1) 25 (a 1 2)) demod (81) flip a]
+
+given #123 (wt=10): 224 B v (x ^ (A ^ y)) ' = 1.  [para (26 (a 1) 219 (a 1 2 1))]
+
+given #124 (wt=10): 225 x v (y v (y v x) ') = 1.  [para (13 (a 1) 38 (a 1 2 2 1))]
+
+given #125 (wt=10): 240 x ^ (y ^ (y ^ x) ') = 0.  [para (15 (a 1) 41 (a 1 2 2 1))]
+
+given #126 (wt=13): 88 (x v y) ^ (x v (z v y)) = x v y.  [para (25 (a 1) 27 (a 1 2))]
+
+given #127 (wt=10): 245 A ^ (x ^ (B ^ x) ') = 0.  [para (41 (a 1) 58 (a 1 2)) demod (15 75) flip a]
+
+given #128 (wt=10): 254 (x ^ B) v (x ^ A) ' = 1.  [para (80 (a 1) 175 (a 1 2 1))]
+
+given #129 (wt=10): 327 (x v A) ^ (x v B) ' = 0.  [para (97 (a 1) 124 (a 1 2 1))]
+
+given #130 (wt=10): 491 (x v A) ^ (B v x) ' = 0.  [para (325 (a 1) 124 (a 1 2 1))]
+
+given #131 (wt=11): 89 x ^ (y ^ (z v x)) = y ^ x.  [para (27 (a 1) 26 (a 1 2)) flip a]
+
+given #132 (wt=10): 981 (x ^ B) v (A ^ x) ' = 1.  [para (15 (a 1) 186 (a 1 1))]
+
+given #133 (wt=10): 982 (B ^ x) v (x ^ A) ' = 1.  [para (15 (a 1) 186 (a 1 2 1))]
+
+given #134 (wt=10): 983 (B ^ (A v x)) v A ' = 1.  [para (17 (a 1) 186 (a 1 2 1))]
+
+given #135 (wt=10): 986 (B ^ (x v A)) v A ' = 1.  [para (27 (a 1) 186 (a 1 2 1))]
+
+given #136 (wt=11): 90 x v ((y ^ x) v z) = x v z.  [para (33 (a 1) 14 (a 1 1)) flip a]
+
+given #137 (wt=10): 1102 A ^ (x ^ (x ^ B) ') = 0.  [para (240 (a 1) 58 (a 1 2)) demod (15 75) flip a]
+
+given #138 (wt=10): 1135 x ^ (A ^ (B ^ x) ') = 0.  [para (245 (a 1) 26 (a 1)) flip a]
+
+given #139 (wt=10): 1137 A ^ (B ^ (A v x)) ' = 0.  [para (245 (a 1) 29 (a 1)) flip a]
+
+given #140 (wt=10): 1147 A ^ (B ^ (x v A)) ' = 0.  [para (245 (a 1) 86 (a 1)) flip a]
+
+given #141 (wt=13): 91 x v (y v (z ^ (x v y))) = x v y.  [para (33 (a 1) 14 (a 1)) flip a]
+
+given #142 (wt=10): 1154 (A v x) ^ (x v B) ' = 0.  [para (13 (a 1) 327 (a 1 1))]
+
+given #143 (wt=10): 1161 (A v x) ^ (B v x) ' = 0.  [para (13 (a 1) 491 (a 1 1))]
+
+given #144 (wt=10): 1162 (A v (B ^ x)) ^ B ' = 0.  [para (18 (a 1) 491 (a 1 2 1)) demod (13)]
+
+given #145 (wt=10): 1164 (A v (x ^ B)) ^ B ' = 0.  [para (33 (a 1) 491 (a 1 2 1)) demod (13)]
+
+given #146 (wt=11): 94 x v (y v (z ^ x)) = y v x.  [para (33 (a 1) 25 (a 1 2)) flip a]
+
+given #147 (wt=10): 1200 A ' v (B ^ (A v x)) = 1.  [para (983 (a 1) 13 (a 1)) flip a]
+
+given #148 (wt=10): 1206 A ' v (B ^ (x v A)) = 1.  [para (986 (a 1) 13 (a 1)) flip a]
+
+given #149 (wt=8): 1356 A ' v (x v A) = 1.  [para (1206 (a 1) 94 (a 1 2)) demod (13 72) flip a]
+
+given #150 (wt=10): 1252 x ^ (A ^ (x ^ B) ') = 0.  [para (1102 (a 1) 26 (a 1)) flip a]
+
+given #151 (wt=13): 95 (x ^ y) v (x ^ (z ^ y)) = x ^ y.  [para (26 (a 1) 33 (a 1 2))]
+
+given #152 (wt=10): 1305 B ' ^ (A v (B ^ x)) = 0.  [para (1162 (a 1) 15 (a 1)) flip a]
+
+given #153 (wt=10): 1310 B ' ^ (A v (x ^ B)) = 0.  [para (1164 (a 1) 15 (a 1)) flip a]
+
+given #154 (wt=8): 1420 B ' ^ (x ^ B) = 0.  [para (1310 (a 1) 89 (a 1 2)) demod (15 75) flip a]
+
+given #155 (wt=10): 1357 A ' v (x v (A v y)) = 1.  [para (1356 (a 1) 14 (a 1 1)) demod (72 14) flip a]
+
+given #156 (wt=12): 100 x v (y v ((x v y) ' v z)) = 1.  [para (73 (a 1) 14 (a 1)) flip a]
+
+given #157 (wt=8): 1426 A ' v (x v B) = 1.  [para (93 (a 1) 1357 (a 1 2 2))]
+
+given #158 (wt=10): 1358 A ' v (x v (y v A)) = 1.  [para (14 (a 1) 1356 (a 1 2))]
+
+given #159 (wt=10): 1421 B ' ^ (x ^ (B ^ y)) = 0.  [para (1420 (a 1) 16 (a 1 1)) demod (75 16) flip a]
+
+given #160 (wt=10): 1422 B ' ^ (x ^ (y ^ B)) = 0.  [para (16 (a 1) 1420 (a 1 2))]
+
+given #161 (wt=13): 102 (x v y) ^ (y v (x v z)) = y v x.  [para (13 (a 1) 28 (a 1 1))]
+
+given #162 (wt=8): 1456 B ' ^ (x ^ A) = 0.  [para (23 (a 1) 1422 (a 1 2 2))]
+
+given #163 (wt=10): 1428 A ' v (x v (B v y)) = 1.  [para (96 (a 1) 1357 (a 1 2 2))]
+
+given #164 (wt=10): 1429 A ' v (x v (y v B)) = 1.  [para (98 (a 1) 1357 (a 1 2 2))]
+
+given #165 (wt=10): 1437 x v (B v (x v A) ') = 1.  [para (98 (a 1) 100 (a 1 2)) demod (13)]
+
+given #166 (wt=13): 103 (x v y) ^ (y v (z v x)) = x v y.  [para (13 (a 1) 28 (a 1 2)) demod (14)]
+
+given #167 (wt=8): 1508 x ' v (y v x) = 1.  [para (19 (a 1) 103 (a 1 1)) demod (66 19)]
+
+given #168 (wt=10): 1452 B ' ^ (x ^ (y ^ A)) = 0.  [para (59 (a 1) 1421 (a 1 2 2))]
+
+given #169 (wt=10): 1476 B ' ^ (x ^ (A ^ y)) = 0.  [para (1456 (a 1) 16 (a 1 1)) demod (75 16) flip a]
+
+given #170 (wt=10): 1489 x v (B v (A v x) ') = 1.  [para (13 (a 1) 1437 (a 1 2 2 1))]
+
+given #171 (wt=19): 104 (x v (y v z)) ^ (x v (y v (z v u))) = x v (y v z).  [para (14 (a 1) 28 (a 1 1)) demod (14 14)]
+
+given #172 (wt=10): 1495 B v (x v (x v A) ') = 1.  [para (1437 (a 1) 25 (a 1)) flip a]
+
+given #173 (wt=10): 1513 x ' v (y v (z v x)) = 1.  [para (73 (a 1) 103 (a 1 1)) demod (14 66 73)]
+
+given #174 (wt=10): 1516 (x ^ y) ' v (z v x) = 1.  [para (161 (a 1) 103 (a 1 1)) demod (66 161)]
+
+given #175 (wt=10): 1517 (x ^ y) ' v (z v y) = 1.  [para (175 (a 1) 103 (a 1 1)) demod (66 175)]
+
+given #176 (wt=17): 105 (x v y) ^ ((x v (y v z)) ^ u) = (x v y) ^ u.  [para (28 (a 1) 16 (a 1 1)) flip a]
+
+given #177 (wt=10): 1522 (x ^ A) ' v (y v B) = 1.  [para (202 (a 1) 103 (a 1 1)) demod (66 202)]
+
+given #178 (wt=10): 1523 (A ^ x) ' v (y v B) = 1.  [para (219 (a 1) 103 (a 1 1)) demod (66 219)]
+
+given #179 (wt=10): 1561 x ' v (y v (x v z)) = 1.  [para (1508 (a 1) 14 (a 1 1)) demod (72 14) flip a]
+
+given #180 (wt=10): 1579 B v (x v (A v x) ') = 1.  [para (1489 (a 1) 25 (a 1)) flip a]
+
+given #181 (wt=19): 106 (x v (y v z)) ^ (y v (x v (z v u))) = y v (x v z).  [para (25 (a 1) 28 (a 1 1)) demod (14)]
+
+given #182 (wt=10): 1614 B v (A v (B ^ x)) ' = 1.  [para (1495 (a 1) 31 (a 1)) demod (13) flip a]
+
+given #183 (wt=10): 1619 B v (A v (x ^ B)) ' = 1.  [para (1495 (a 1) 90 (a 1)) demod (13) flip a]
+
+given #184 (wt=11): 110 (x v A) ^ (x v B) = x v A.  [para (93 (a 1) 28 (a 1 2 2))]
+
+given #185 (wt=11): 149 (A ^ x) v (B ^ x) = B ^ x.  [para (58 (a 1) 33 (a 1 2)) demod (13)]
+
+given #186 (wt=15): 107 (x v y) ^ (x v (z v (y v u))) = x v y.  [para (25 (a 1) 28 (a 1 2 2))]
+
+given #187 (wt=11): 150 A ^ ((B v x) ^ y) = A ^ y.  [para (29 (a 1) 58 (a 1 2)) demod (58) flip a]
+
+given #188 (wt=11): 155 A ^ (x ^ (B v y)) = x ^ A.  [para (146 (a 1) 26 (a 1 2)) flip a]
+
+given #189 (wt=11): 157 A ^ ((x v B) ^ y) = A ^ y.  [para (148 (a 1) 16 (a 1 1)) flip a]
+
+given #190 (wt=11): 158 A ^ (x ^ (y v B)) = x ^ A.  [para (148 (a 1) 26 (a 1 2)) flip a]
+
+given #191 (wt=17): 108 (x v y) ^ (z ^ (x v (y v u))) = z ^ (x v y).  [para (28 (a 1) 26 (a 1 2)) flip a]
+
+given #192 (wt=11): 201 B v ((x ^ A) v y) = B v y.  [para (59 (a 1) 31 (a 1 2 1))]
+
+given #193 (wt=11): 211 (B ^ x) v (x ^ A) = B ^ x.  [para (59 (a 1) 34 (a 1 2))]
+
+given #194 (wt=11): 214 B v (x v (y ^ A)) = x v B.  [para (200 (a 1) 25 (a 1 2)) flip a]
+
+given #195 (wt=11): 215 B v ((A ^ x) v y) = B v y.  [para (212 (a 1) 14 (a 1 1)) flip a]
+
+given #196 (wt=12): 111 x ^ (y ^ ((x ^ y) ' ^ z)) = 0.  [para (76 (a 1) 16 (a 1)) flip a]
+
+given #197 (wt=11): 216 B v (x v (A ^ y)) = x v B.  [para (212 (a 1) 25 (a 1 2)) flip a]
+
+given #198 (wt=11): 233 (x v y) ^ (z ^ x) = z ^ x.  [para (62 (a 1) 29 (a 2)) demod (232)]
+
+given #199 (wt=11): 234 (x ^ y) v (y ^ x) = x ^ y.  [para (62 (a 1) 34 (a 1 2))]
+
+given #200 (wt=10): 2100 (x ^ y) v (y ^ x) ' = 1.  [para (234 (a 1) 1508 (a 1 2)) demod (13)]
+
+given #201 (wt=12): 113 x v (y v (z v (x v y) ')) = 1.  [para (82 (a 1) 14 (a 1)) flip a]
+
+given #202 (wt=11): 238 (x v y) ^ (y v x) = x v y.  [para (65 (a 1) 28 (a 1 2))]
+
+given #203 (wt=11): 239 (x ^ y) v (z v x) = z v x.  [para (65 (a 1) 31 (a 2)) demod (237)]
+
+given #204 (wt=11): 247 x ^ (y v (z v (x v u))) = x.  [para (14 (a 1) 67 (a 1 2))]
+
+given #205 (wt=11): 250 x v (y ^ (z ^ (x ^ u))) = x.  [para (16 (a 1) 78 (a 1 2))]
+
+given #206 (wt=12): 115 x ^ (y ^ (z ^ (x ^ y) ')) = 0.  [para (84 (a 1) 16 (a 1)) flip a]
+
+given #207 (wt=11): 253 (x ^ A) v (x ^ B) = x ^ B.  [para (80 (a 1) 33 (a 1 2)) demod (13)]
+
+given #208 (wt=11): 255 x ^ (y v (z v (u v x))) = x.  [para (14 (a 1) 85 (a 1 2 2))]
+
+given #209 (wt=11): 312 x v (y ^ (z ^ (u ^ x))) = x.  [para (16 (a 1) 92 (a 1 2 2))]
+
+given #210 (wt=11): 336 (A v x) ^ (x v B) = A v x.  [para (98 (a 1) 28 (a 1 2))]
+
+given #211 (wt=17): 117 x ^ (y ^ (((x ^ y) v z) ^ u)) = x ^ (y ^ u).  [para (29 (a 1) 16 (a 1)) demod (16) flip a]
+
+given #212 (wt=11): 431 A ^ (x v (y v (B v z))) = A.  [para (14 (a 1) 154 (a 1 2))]
+
+given #213 (wt=11): 434 A ^ (x v (y v (z v B))) = A.  [para (14 (a 1) 156 (a 1 2 2))]
+
+given #214 (wt=11): 438 B v (x ^ (y ^ (z ^ A))) = B.  [para (16 (a 1) 213 (a 1 2 2))]
+
+given #215 (wt=11): 441 B v (x ^ (y ^ (A ^ z))) = B.  [para (16 (a 1) 217 (a 1 2))]
+
+given #216 (wt=13): 119 x ^ ((y v (x v z)) ^ u) = x ^ u.  [para (25 (a 1) 29 (a 1 2 1))]
+
+given #217 (wt=11): 490 (x v A) ^ (B v x) = x v A.  [para (325 (a 1) 27 (a 1 2))]
+
+given #218 (wt=11): 1020 (x v y) ^ (z ^ y) = z ^ y.  [para (62 (a 1) 86 (a 2)) demod (232)]
+
+given #219 (wt=11): 1123 (A v x) ^ (B v x) = A v x.  [para (96 (a 1) 88 (a 1 2))]
+
+given #220 (wt=11): 1222 (x ^ y) v (z v y) = z v y.  [para (65 (a 1) 90 (a 2)) demod (237)]
+
+given #221 (wt=15): 120 x ^ (y ^ ((x v z) ^ u)) = y ^ (x ^ u).  [para (29 (a 1) 26 (a 1 2)) flip a]
+
+given #222 (wt=11): 1812 (x ^ A) v (B ^ x) = B ^ x.  [para (15 (a 1) 149 (a 1 1))]
+
+given #223 (wt=11): 1869 (B v x) ^ (y ^ A) = y ^ A.  [para (62 (a 1) 150 (a 2)) demod (232)]
+
+given #224 (wt=11): 1902 (x v B) ^ (y ^ A) = y ^ A.  [para (62 (a 1) 157 (a 2)) demod (232)]
+
+given #225 (wt=11): 1954 (x ^ A) v (y v B) = y v B.  [para (65 (a 1) 201 (a 2)) demod (237)]
+
+given #226 (wt=15): 121 (x ^ y) v ((x v z) ^ y) = (x v z) ^ y.  [para (29 (a 1) 33 (a 1 2)) demod (13)]
+
+given #227 (wt=11): 2015 (A ^ x) v (y v B) = y v B.  [para (65 (a 1) 215 (a 2)) demod (237)]
+
+given #228 (wt=11): 2203 (A ^ x) v (x ^ B) = x ^ B.  [para (15 (a 1) 253 (a 1 1))]
+
+given #229 (wt=11): 2288 (x v B) ^ (A v x) = A v x.  [para (336 (a 1) 15 (a 1)) flip a]
+
+given #230 (wt=11): 2434 (B v x) ^ (x v A) = x v A.  [para (490 (a 1) 15 (a 1)) flip a]
+
+given #231 (wt=12): 125 (x v y) ^ (x v (y v z)) ' = 0.  [para (14 (a 1) 118 (a 1 2 1))]
+
+given #232 (wt=10): 2744 (x v y) ^ (y v x) ' = 0.  [para (65 (a 1) 125 (a 1 2 1))]
+
+given #233 (wt=11): 2712 (x ^ B) v (A ^ x) = x ^ B.  [para (2203 (a 1) 13 (a 1)) flip a]
+
+given #234 (wt=12): 126 x ^ (y ^ ((x ^ y) v z) ') = 0.  [para (118 (a 1) 16 (a 1)) flip a]
+
+given #235 (wt=12): 133 x ^ (y ^ (z v (x ^ y)) ') = 0.  [para (124 (a 1) 16 (a 1)) flip a]
+
+given #236 (wt=12): 134 (x v y) ^ (x v (z v y)) ' = 0.  [para (25 (a 1) 124 (a 1 2 1))]
+
+given #237 (wt=12): 167 ((x ^ y) v z) ^ (x v z) ' = 0.  [para (31 (a 1) 124 (a 1 2 1))]
+
+given #238 (wt=12): 174 x v (y v ((x v y) ^ z) ') = 1.  [para (161 (a 1) 14 (a 1)) flip a]
+
+given #239 (wt=12): 176 (x ^ y) v (x ^ (y ^ z)) ' = 1.  [para (16 (a 1) 161 (a 1 2 1))]
+
+given #240 (wt=12): 179 x v (y v (z ^ (x v y)) ') = 1.  [para (175 (a 1) 14 (a 1)) flip a]
+
+given #241 (wt=13): 137 x ^ (y ^ ((y ^ x) v z)) = x ^ y.  [para (15 (a 1) 30 (a 1 2 2 1))]
+
+given #242 (wt=12): 183 (x ^ y) v (x ^ (z ^ y)) ' = 1.  [para (26 (a 1) 175 (a 1 2 1))]
+
+given #243 (wt=12): 184 ((x v y) ^ z) v (x ^ z) ' = 1.  [para (29 (a 1) 175 (a 1 2 1))]
+
+given #244 (wt=12): 227 x v (y v (z v (x v z) ')) = 1.  [para (38 (a 1) 25 (a 1 2)) demod (81) flip a]
+
+given #245 (wt=12): 229 x v (y v ((x ^ z) v y) ') = 1.  [para (38 (a 1) 31 (a 1 2)) demod (81) flip a]
+
+given #246 (wt=19): 138 x ^ (y ^ (z ^ ((x ^ (y ^ z)) v u))) = x ^ (y ^ z).  [para (30 (a 1) 16 (a 1)) demod (16 16) flip a]
+
+given #247 (wt=12): 242 x ^ (y ^ (z ^ (x ^ z) ')) = 0.  [para (41 (a 1) 26 (a 1 2)) demod (83) flip a]
+
+given #248 (wt=12): 244 x ^ (y ^ ((x v z) ^ y) ') = 0.  [para (41 (a 1) 29 (a 1 2)) demod (83) flip a]
+
+given #249 (wt=12): 494 x v (y v (z v (x ' v u))) = 1.  [para (14 (a 1) 101 (a 1 2))]
+
+given #250 (wt=12): 495 x v (y v ((x ^ z) ' v u)) = 1.  [para (101 (a 1) 31 (a 1 2)) demod (81) flip a]
+
+given #251 (wt=15): 139 x ^ (y ^ (z v ((x ^ y) v u))) = x ^ y.  [para (25 (a 1) 30 (a 1 2 2))]
+
+given #252 (wt=12): 498 x ^ (y ^ (z ^ (x ' ^ u))) = 0.  [para (16 (a 1) 112 (a 1 2))]
+
+given #253 (wt=12): 499 x ^ (y ^ ((x v z) ' ^ u)) = 0.  [para (112 (a 1) 29 (a 1 2)) demod (83) flip a]
+
+given #254 (wt=12): 503 x v (y v (z v (u v x '))) = 1.  [para (14 (a 1) 114 (a 1 2 2))]
+
+given #255 (wt=12): 504 x v (y v (z v (x ^ u) ')) = 1.  [para (114 (a 1) 31 (a 1 2)) demod (81) flip a]
+
+given #256 (wt=17): 140 x ^ (y ^ (z ^ ((x ^ z) v u))) = y ^ (x ^ z).  [para (30 (a 1) 26 (a 1 2)) flip a]
+
+given #257 (wt=12): 539 x ^ (y ^ (z ^ (u ^ x '))) = 0.  [para (16 (a 1) 116 (a 1 2 2))]
+
+given #258 (wt=12): 540 x ^ (y ^ (z ^ (x v u) ')) = 0.  [para (116 (a 1) 29 (a 1 2)) demod (83) flip a]
+
+given #259 (wt=12): 545 x ^ ((y v (x v z)) ' ^ u) = 0.  [para (25 (a 1) 122 (a 1 2 1 1))]
+
+given #260 (wt=12): 550 x ^ (y ^ (z v (x v u)) ') = 0.  [para (25 (a 1) 123 (a 1 2 2 1))]
+
+given #261 (wt=19): 141 x ^ (y ^ (z ^ ((y ^ (x ^ z)) v u))) = x ^ (y ^ z).  [para (26 (a 1) 30 (a 1 2 2 1)) demod (16)]
+
+given #262 (wt=12): 554 x ^ (y v (z v (x v u))) ' = 0.  [para (14 (a 1) 127 (a 1 2 1))]
+
+given #263 (wt=12): 656 x ^ (y v (z v (u v x))) ' = 0.  [para (14 (a 1) 131 (a 1 2 1 2))]
+
+given #264 (wt=12): 657 x ^ ((y v (z v x)) ' ^ u) = 0.  [para (131 (a 1) 16 (a 1 1)) demod (75) flip a]
+
+given #265 (wt=12): 660 x ^ (y ^ (z v (u v x)) ') = 0.  [para (131 (a 1) 26 (a 1 2)) demod (83) flip a]
+
+given #266 (wt=19): 142 (x ^ y) v (y ^ ((x ^ y) v z)) = y ^ ((x ^ y) v z).  [para (30 (a 1) 33 (a 1 2)) demod (13)]
+
+given #267 (wt=12): 666 (x v A) ^ (y v (B v x)) ' = 0.  [para (325 (a 1) 131 (a 1 2 1 2))]
+
+given #268 (wt=12): 669 x ^ (y ^ ((z v x) ' ^ u)) = 0.  [para (132 (a 1) 26 (a 1 2)) demod (83) flip a]
+
+given #269 (wt=12): 674 (x v A) ^ ((B v x) ' ^ y) = 0.  [para (325 (a 1) 132 (a 1 2 1 1))]
+
+given #270 (wt=12): 675 x ^ (y ^ (z ^ (u v x) ')) = 0.  [para (16 (a 1) 135 (a 1 2))]
+
+given #271 (wt=15): 143 x ^ (y ^ (((x v z) ^ y) v u)) = x ^ y.  [para (30 (a 1) 29 (a 1 2)) demod (29) flip a]
+
+given #272 (wt=11): 3720 A ^ ((B ^ (A v x)) v y) = A.  [para (143 (a 1) 58 (a 1)) demod (23 15) flip a]
+
+given #273 (wt=11): 3778 A ^ ((B ^ (x v A)) v y) = A.  [para (13 (a 1) 3720 (a 1 2 1 2))]
+
+given #274 (wt=11): 3779 A ^ (x v (B ^ (A v y))) = A.  [para (13 (a 1) 3720 (a 1 2))]
+
+given #275 (wt=11): 3803 A ^ (x v (B ^ (y v A))) = A.  [para (13 (a 1) 3778 (a 1 2))]
+
+given #276 (wt=13): 145 B ^ (x ^ (A ^ y)) = x ^ (A ^ y).  [para (58 (a 1) 16 (a 2 2)) demod (26 16)]
+
+given #277 (wt=12): 681 (x v A) ^ (y ^ (B v x) ') = 0.  [para (325 (a 1) 135 (a 1 2 2 1))]
+
+given #278 (wt=12): 682 A ^ (x ^ (y ^ (B ' ^ z))) = 0.  [para (16 (a 1) 136 (a 1 2))]
+
+given #279 (wt=12): 788 A ^ (x ^ (y ^ (z ^ B '))) = 0.  [para (16 (a 1) 144 (a 1 2 2))]
+
+given #280 (wt=12): 793 x v ((y ^ (x ^ z)) ' v u) = 1.  [para (26 (a 1) 165 (a 1 2 1 1))]
+
+given #281 (wt=13): 147 A ^ (x ^ (B ^ y)) = x ^ (A ^ y).  [para (58 (a 1) 26 (a 1 2)) flip a]
+
+given #282 (wt=12): 800 x v (y v (z ^ (x ^ u)) ') = 1.  [para (26 (a 1) 166 (a 1 2 2 1))]
+
+given #283 (wt=12): 805 A ^ ((x v (B v y)) ' ^ z) = 0.  [para (25 (a 1) 168 (a 1 2 1 1))]
+
+given #284 (wt=12): 806 A ^ (x ^ ((B v y) ' ^ z)) = 0.  [para (168 (a 1) 26 (a 1 2)) demod (83) flip a]
+
+given #285 (wt=12): 885 A ^ (x v (y v (B v z))) ' = 0.  [para (14 (a 1) 169 (a 1 2 1))]
+
+given #286 (wt=13): 153 A ^ (x ^ ((B ^ x) v y)) = A ^ x.  [para (30 (a 1) 58 (a 1 2)) demod (58) flip a]
+
+given #287 (wt=12): 886 A ^ (x ^ (y v (B v z)) ') = 0.  [para (169 (a 1) 26 (a 1 2)) demod (83) flip a]
+
+given #288 (wt=12): 889 A ^ (x ^ (y ^ (B v z) ')) = 0.  [para (16 (a 1) 170 (a 1 2))]
+
+given #289 (wt=12): 892 A ^ (x v (y v (z v B))) ' = 0.  [para (14 (a 1) 171 (a 1 2 1 2))]
+
+given #290 (wt=12): 893 A ^ ((x v (y v B)) ' ^ z) = 0.  [para (171 (a 1) 16 (a 1 1)) demod (75) flip a]
+
+given #291 (wt=17): 159 x v (y v (((x v y) ^ z) v u)) = x v (y v u).  [para (31 (a 1) 14 (a 1)) demod (14) flip a]
+
+given #292 (wt=12): 894 A ^ (x ^ (y v (z v B)) ') = 0.  [para (171 (a 1) 26 (a 1 2)) demod (83) flip a]
+
+given #293 (wt=12): 897 A ^ (x ^ ((y v B) ' ^ z)) = 0.  [para (172 (a 1) 26 (a 1 2)) demod (83) flip a]
+
+given #294 (wt=12): 903 (x v (y ^ z)) ^ (x v y) ' = 0.  [para (68 (a 1) 124 (a 1 2 1))]
+
+given #295 (wt=12): 913 A ^ (x ^ (y ^ (z v B) ')) = 0.  [para (16 (a 1) 173 (a 1 2))]
+
+given #296 (wt=17): 160 (x ^ y) v ((x ^ (y ^ z)) v u) = (x ^ y) v u.  [para (16 (a 1) 31 (a 1 2 1))]
+
+given #297 (wt=12): 918 x v (y ^ (z ^ (x ^ u))) ' = 1.  [para (16 (a 1) 177 (a 1 2 1))]
+
+given #298 (wt=12): 923 x v ((y ^ (z ^ x)) ' v u) = 1.  [para (16 (a 1) 178 (a 1 2 1 1))]
+
+given #299 (wt=12): 924 x v (y v ((z ^ x) ' v u)) = 1.  [para (178 (a 1) 25 (a 1 2)) demod (81) flip a]
+
+given #300 (wt=12): 928 (B ^ x) v ((A ^ x) ' v y) = 1.  [para (58 (a 1) 178 (a 1 2 1 1))]
+
+given #301 (wt=15): 162 x v (y v ((x ^ z) v u)) = y v (x v u).  [para (31 (a 1) 25 (a 1 2)) flip a]
+
+given #302 (wt=12): 929 (x ^ B) v ((x ^ A) ' v y) = 1.  [para (80 (a 1) 178 (a 1 2 1 1))]
+
+given #303 (wt=12): 940 x v (y ^ (z ^ (u ^ x))) ' = 1.  [para (16 (a 1) 180 (a 1 2 1 2))]
+
+given #304 (wt=12): 941 x v (y v (z ^ (u ^ x)) ') = 1.  [para (180 (a 1) 25 (a 1 2)) demod (81) flip a]
+
+given #305 (wt=12): 946 (B ^ x) v (y ^ (A ^ x)) ' = 1.  [para (58 (a 1) 180 (a 1 2 1 2))]
+
+given #306 (wt=13): 163 x v ((y ^ (x ^ z)) v u) = x v u.  [para (26 (a 1) 31 (a 1 2 1))]
+
+given #307 (wt=12): 947 (x ^ B) v (y ^ (x ^ A)) ' = 1.  [para (80 (a 1) 180 (a 1 2 1 2))]
+
+given #308 (wt=12): 959 (x ^ (y v z)) v (x ^ y) ' = 1.  [para (77 (a 1) 175 (a 1 2 1))]
+
+given #309 (wt=12): 965 x v (y v (z v (u ^ x) ')) = 1.  [para (14 (a 1) 182 (a 1 2))]
+
+given #310 (wt=12): 969 (B ^ x) v (y v (A ^ x) ') = 1.  [para (58 (a 1) 182 (a 1 2 2 1))]
+
+given #311 (wt=15): 164 (x v y) ^ ((x ^ z) v y) = (x ^ z) v y.  [para (31 (a 1) 27 (a 1 2)) demod (15)]
+
+given #312 (wt=12): 970 (x ^ B) v (y v (x ^ A) ') = 1.  [para (80 (a 1) 182 (a 1 2 2 1))]
+
+given #313 (wt=12): 989 (B ^ (x v (A v y))) v A ' = 1.  [para (67 (a 1) 186 (a 1 2 1))]
+
+given #314 (wt=12): 990 (B ^ (x v (y v A))) v A ' = 1.  [para (85 (a 1) 186 (a 1 2 1))]
+
+given #315 (wt=12): 1002 B v (x v (y v (A ' v z))) = 1.  [para (14 (a 1) 197 (a 1 2))]
+
+given #316 (wt=14): 185 (x ^ ((y ^ x) v z)) v (y ^ x) ' = 1.  [para (30 (a 1) 175 (a 1 2 1))]
+
+given #317 (wt=12): 1007 B v (x v (y v (z v A '))) = 1.  [para (14 (a 1) 198 (a 1 2 2))]
+
+given #318 (wt=12): 1018 ((x v y) ^ z) v (y ^ z) ' = 1.  [para (86 (a 1) 175 (a 1 2 1))]
+
+given #319 (wt=12): 1021 x ^ (y ^ ((z v x) ^ y) ') = 0.  [para (41 (a 1) 86 (a 1 2)) demod (83) flip a]
+
+given #320 (wt=12): 1036 B v ((x ^ (y ^ A)) ' v z) = 1.  [para (16 (a 1) 218 (a 1 2 1 1))]
+
+given #321 (wt=13): 188 x v (y v ((y v x) ^ z)) = x v y.  [para (13 (a 1) 32 (a 1 2 2 1))]
+
+given #322 (wt=12): 1037 B v (x v ((y ^ A) ' v z)) = 1.  [para (218 (a 1) 25 (a 1 2)) demod (81) flip a]
+
+given #323 (wt=12): 1042 B v (x ^ (y ^ (z ^ A))) ' = 1.  [para (16 (a 1) 220 (a 1 2 1 2))]
+
+given #324 (wt=12): 1043 B v (x v (y ^ (z ^ A)) ') = 1.  [para (220 (a 1) 25 (a 1 2)) demod (81) flip a]
+
+given #325 (wt=12): 1047 B v (x v (y v (z ^ A) ')) = 1.  [para (14 (a 1) 221 (a 1 2))]
+
+given #326 (wt=19): 189 x v (y v (z v ((x v (y v z)) ^ u))) = x v (y v z).  [para (32 (a 1) 14 (a 1)) demod (14 14) flip a]
+
+given #327 (wt=12): 1052 B v (x v ((A ^ y) ' v z)) = 1.  [para (222 (a 1) 25 (a 1 2)) demod (81) flip a]
+
+given #328 (wt=12): 1053 B v ((x ^ (A ^ y)) ' v z) = 1.  [para (26 (a 1) 222 (a 1 2 1 1))]
+
+given #329 (wt=12): 1076 B v (x v (y v (A ^ z) ')) = 1.  [para (14 (a 1) 223 (a 1 2))]
+
+given #330 (wt=12): 1077 B v (x v (y ^ (A ^ z)) ') = 1.  [para (26 (a 1) 223 (a 1 2 2 1))]
+
+given #331 (wt=17): 190 x v (y v (z v ((x v z) ^ u))) = y v (x v z).  [para (32 (a 1) 25 (a 1 2)) flip a]
+
+given #332 (wt=12): 1082 B v (x ^ (y ^ (A ^ z))) ' = 1.  [para (16 (a 1) 224 (a 1 2 1))]
+
+given #333 (wt=12): 1086 x v (y v ((y v x) ' v z)) = 1.  [para (225 (a 1) 14 (a 1 1)) demod (72 14) flip a]
+
+given #334 (wt=12): 1089 x v (y v (z v (z v x) ')) = 1.  [para (225 (a 1) 25 (a 1 2)) demod (81) flip a]
+
+given #335 (wt=12): 1091 x v (y v (y v (x ^ z)) ') = 1.  [para (225 (a 1) 31 (a 1 2)) demod (81) flip a]
+
+given #336 (wt=19): 191 x v (y v (z v ((y v (x v z)) ^ u))) = x v (y v z).  [para (25 (a 1) 32 (a 1 2 2 1)) demod (14)]
+
+given #337 (wt=12): 1096 x ^ (y ^ ((y ^ x) ' ^ z)) = 0.  [para (240 (a 1) 16 (a 1 1)) demod (75 16) flip a]
+
+given #338 (wt=12): 1099 x ^ (y ^ (z ^ (z ^ x) ')) = 0.  [para (240 (a 1) 26 (a 1 2)) demod (83) flip a]
+
+given #339 (wt=8): 5456 x ' ^ (y ^ x) = 0.  [para (20 (a 1) 1099 (a 1 2 2 2 1)) demod (74 39)]
+
+given #340 (wt=10): 5458 x ' ^ (y ^ (z ^ x)) = 0.  [para (76 (a 1) 1099 (a 1 2 2 2 1)) demod (74 39 16)]
+
+given #341 (wt=15): 192 x v (y v (z ^ ((x v y) ^ u))) = x v y.  [para (26 (a 1) 32 (a 1 2 2))]
+
+given #342 (wt=10): 5460 (x v y) ' ^ (z ^ x) = 0.  [para (118 (a 1) 1099 (a 1 2 2 2 1)) demod (74 39)]
+
+given #343 (wt=10): 5461 (x v y) ' ^ (z ^ y) = 0.  [para (124 (a 1) 1099 (a 1 2 2 2 1)) demod (74 39)]
+
+given #344 (wt=10): 5462 (B v x) ' ^ (y ^ A) = 0.  [para (151 (a 1) 1099 (a 1 2 2 2 1)) demod (74 15 66)]
+
+given #345 (wt=10): 5463 (x v B) ' ^ (y ^ A) = 0.  [para (152 (a 1) 1099 (a 1 2 2 2 1)) demod (74 15 66)]
+
+given #346 (wt=19): 193 (x v y) ^ (y v ((x v y) ^ z)) = y v ((x v y) ^ z).  [para (32 (a 1) 27 (a 1 2)) demod (15)]
+
+given #347 (wt=10): 5528 x ' ^ (y ^ (x ^ z)) = 0.  [para (5456 (a 1) 16 (a 1 1)) demod (75 16) flip a]
+
+given #348 (wt=12): 1101 x ^ (y ^ (y ^ (x v z)) ') = 0.  [para (240 (a 1) 29 (a 1 2)) demod (83) flip a]
+
+given #349 (wt=12): 1105 x ^ (y ^ (y ^ (z v x)) ') = 0.  [para (240 (a 1) 86 (a 1 2)) demod (83) flip a]
+
+given #350 (wt=12): 1132 A ^ (x ^ ((B ^ x) ' ^ y)) = 0.  [para (245 (a 1) 16 (a 1 1)) demod (75 16) flip a]
+
+given #351 (wt=14): 194 (x v ((y v x) ^ z)) ^ (y v x) ' = 0.  [para (32 (a 1) 124 (a 1 2 1))]
+
+given #352 (wt=12): 1134 A ^ (x ^ (y ^ (B ^ y) ')) = 0.  [para (245 (a 1) 26 (a 1 2)) demod (83) flip a]
+
+given #353 (wt=12): 1157 (x v A) ^ ((x v B) ' ^ y) = 0.  [para (327 (a 1) 16 (a 1 1)) demod (75) flip a]
+
+given #354 (wt=12): 1158 (x v A) ^ (y ^ (x v B) ') = 0.  [para (327 (a 1) 26 (a 1 2)) demod (83) flip a]
+
+given #355 (wt=12): 1167 (A v (x ^ (B ^ y))) ^ B ' = 0.  [para (78 (a 1) 491 (a 1 2 1)) demod (13)]
+
+given #356 (wt=15): 195 x v (y v (((x ^ z) v y) ^ u)) = x v y.  [para (32 (a 1) 31 (a 1 2)) demod (31) flip a]
+
+given #357 (wt=12): 1169 (A v (x ^ (y ^ B))) ^ B ' = 0.  [para (92 (a 1) 491 (a 1 2 1)) demod (13)]
+
+given #358 (wt=12): 1175 (x ^ (y v z)) v (x ^ z) ' = 1.  [para (89 (a 1) 175 (a 1 2 1))]
+
+given #359 (wt=12): 1190 (x ^ B) v ((A ^ x) ' v y) = 1.  [para (981 (a 1) 14 (a 1 1)) demod (72) flip a]
+
+given #360 (wt=12): 1191 (x ^ B) v (y v (A ^ x) ') = 1.  [para (981 (a 1) 25 (a 1 2)) demod (81) flip a]
+
+given #361 (wt=13): 199 B ^ (x ^ (y ^ A)) = A ^ (x ^ y).  [para (16 (a 1) 59 (a 1 2)) demod (15)]
+
+given #362 (wt=12): 1195 (B ^ x) v ((x ^ A) ' v y) = 1.  [para (982 (a 1) 14 (a 1 1)) demod (72) flip a]
+
+given #363 (wt=12): 1196 (B ^ x) v (y v (x ^ A) ') = 1.  [para (982 (a 1) 25 (a 1 2)) demod (81) flip a]
+
+given #364 (wt=12): 1201 (B ^ (A v x)) v (A ' v y) = 1.  [para (983 (a 1) 14 (a 1 1)) demod (72) flip a]
+
+given #365 (wt=12): 1202 (B ^ (A v x)) v (y v A ') = 1.  [para (983 (a 1) 25 (a 1 2)) demod (81) flip a]
+
+given #366 (wt=13): 203 (x ^ y) v (y ^ (x ^ z)) = y ^ x.  [para (15 (a 1) 34 (a 1 1))]
+
+given #367 (wt=12): 1207 (B ^ (x v A)) v (A ' v y) = 1.  [para (986 (a 1) 14 (a 1 1)) demod (72) flip a]
+
+given #368 (wt=12): 1208 (B ^ (x v A)) v (y v A ') = 1.  [para (986 (a 1) 25 (a 1 2)) demod (81) flip a]
+
+given #369 (wt=12): 1217 ((x ^ y) v z) ^ (y v z) ' = 0.  [para (90 (a 1) 124 (a 1 2 1))]
+
+given #370 (wt=12): 1221 x v (y v ((z ^ x) v y) ') = 1.  [para (38 (a 1) 90 (a 1 2)) demod (81) flip a]
+
+given #371 (wt=13): 204 (x ^ y) v (y ^ (z ^ x)) = x ^ y.  [para (15 (a 1) 34 (a 1 2)) demod (16)]
+
+given #372 (wt=12): 1243 x v (y v (y v (z ^ x)) ') = 1.  [para (225 (a 1) 90 (a 1 2)) demod (81) flip a]
+
+given #373 (wt=12): 1249 A ^ (x ^ ((x ^ B) ' ^ y)) = 0.  [para (1102 (a 1) 16 (a 1 1)) demod (75 16) flip a]
+
+given #374 (wt=12): 1251 A ^ (x ^ (y ^ (y ^ B) ')) = 0.  [para (1102 (a 1) 26 (a 1 2)) demod (83) flip a]
+
+given #375 (wt=12): 1255 x ^ (A ^ ((B ^ x) ' ^ y)) = 0.  [para (1135 (a 1) 16 (a 1 1)) demod (75 16) flip a]
+
+given #376 (wt=19): 205 (x ^ (y ^ z)) v (x ^ (y ^ (z ^ u))) = x ^ (y ^ z).  [para (16 (a 1) 34 (a 1 1)) demod (16 16)]
+
+given #377 (wt=12): 1257 x ^ (y ^ (A ^ (B ^ x) ')) = 0.  [para (1135 (a 1) 26 (a 1 2)) demod (83) flip a]
+
+given #378 (wt=12): 1258 x ^ (A ^ (B ^ (x v y)) ') = 0.  [para (1135 (a 1) 29 (a 1 2)) demod (83) flip a]
+
+given #379 (wt=12): 1261 x ^ (A ^ (B ^ (y v x)) ') = 0.  [para (1135 (a 1) 86 (a 1 2)) demod (83) flip a]
+
+given #380 (wt=12): 1262 A ^ ((B ^ (A v x)) ' ^ y) = 0.  [para (1137 (a 1) 16 (a 1 1)) demod (75) flip a]
+
+given #381 (wt=17): 206 (x ^ y) v (z v (x ^ (y ^ u))) = z v (x ^ y).  [para (34 (a 1) 25 (a 1 2)) flip a]
+
+given #382 (wt=12): 1263 A ^ (B ^ (x v (A v y))) ' = 0.  [para (25 (a 1) 1137 (a 1 2 1 2))]
+
+given #383 (wt=12): 1264 A ^ (x ^ (B ^ (A v y)) ') = 0.  [para (1137 (a 1) 26 (a 1 2)) demod (83) flip a]
+
+given #384 (wt=12): 1267 A ^ (B ^ (x v (y v A))) ' = 0.  [para (14 (a 1) 1147 (a 1 2 1 2))]
+
+given #385 (wt=12): 1268 A ^ ((B ^ (x v A)) ' ^ y) = 0.  [para (1147 (a 1) 16 (a 1 1)) demod (75) flip a]
+
+given #386 (wt=19): 207 (x ^ (y ^ z)) v (y ^ (x ^ (z ^ u))) = y ^ (x ^ z).  [para (26 (a 1) 34 (a 1 1)) demod (16)]
+
+given #387 (wt=12): 1269 A ^ (x ^ (B ^ (y v A)) ') = 0.  [para (1147 (a 1) 26 (a 1 2)) demod (83) flip a]
+
+given #388 (wt=12): 1292 (A v x) ^ ((x v B) ' ^ y) = 0.  [para (1154 (a 1) 16 (a 1 1)) demod (75) flip a]
+
+given #389 (wt=12): 1294 (A v x) ^ (y ^ (x v B) ') = 0.  [para (1154 (a 1) 26 (a 1 2)) demod (83) flip a]
+
+given #390 (wt=12): 1301 (A v x) ^ ((B v x) ' ^ y) = 0.  [para (1161 (a 1) 16 (a 1 1)) demod (75) flip a]
+
+given #391 (wt=15): 208 (x ^ y) v (x ^ (z ^ (y ^ u))) = x ^ y.  [para (26 (a 1) 34 (a 1 2 2))]
+
+given #392 (wt=12): 1302 (A v x) ^ (y ^ (B v x) ') = 0.  [para (1161 (a 1) 26 (a 1 2)) demod (83) flip a]
+
+given #393 (wt=12): 1306 (A v (B ^ x)) ^ (B ' ^ y) = 0.  [para (1162 (a 1) 16 (a 1 1)) demod (75) flip a]
+
+given #394 (wt=12): 1307 (A v (B ^ x)) ^ (y ^ B ') = 0.  [para (1162 (a 1) 26 (a 1 2)) demod (83) flip a]
+
+given #395 (wt=12): 1311 (A v (x ^ B)) ^ (B ' ^ y) = 0.  [para (1164 (a 1) 16 (a 1 1)) demod (75) flip a]
+
+given #396 (wt=13): 210 (x ^ B) v (x ^ (y ^ A)) = x ^ B.  [para (59 (a 1) 34 (a 1 2 2))]
+
+given #397 (wt=12): 1312 (A v (x ^ B)) ^ (y ^ B ') = 0.  [para (1164 (a 1) 26 (a 1 2)) demod (83) flip a]
+
+given #398 (wt=12): 1319 (x v (y ^ z)) ^ (x v z) ' = 0.  [para (94 (a 1) 124 (a 1 2 1))]
+
+given #399 (wt=12): 1344 A ' v ((B ^ (A v x)) v y) = 1.  [para (1200 (a 1) 14 (a 1 1)) demod (72) flip a]
+
+given #400 (wt=12): 1345 A ' v (x v (B ^ (A v y))) = 1.  [para (1200 (a 1) 25 (a 1 2)) demod (81) flip a]
+
+given #401 (wt=14): 226 x v (y v (z v (x v (y v z)) ')) = 1.  [para (38 (a 1) 14 (a 1)) demod (14) flip a]
+
+given #402 (wt=12): 1346 A ' v (B ^ (x v (A v y))) = 1.  [para (25 (a 1) 1200 (a 1 2 2))]
+
+given #403 (wt=12): 1350 A ' v ((B ^ (x v A)) v y) = 1.  [para (1206 (a 1) 14 (a 1 1)) demod (72) flip a]
+
+given #404 (wt=12): 1351 A ' v (B ^ (x v (y v A))) = 1.  [para (14 (a 1) 1206 (a 1 2 2))]
+
+given #405 (wt=12): 1352 A ' v (x v (B ^ (y v A))) = 1.  [para (1206 (a 1) 25 (a 1 2)) demod (81) flip a]
+
+given #406 (wt=14): 228 x v (y v (z v (y v (x v z)) ')) = 1.  [para (25 (a 1) 38 (a 1 2 2 1)) demod (14)]
+
+given #407 (wt=12): 1362 x ^ (A ^ ((x ^ B) ' ^ y)) = 0.  [para (1252 (a 1) 16 (a 1 1)) demod (75 16) flip a]
+
+given #408 (wt=12): 1363 x ^ (y ^ (A ^ (x ^ B) ')) = 0.  [para (1252 (a 1) 26 (a 1 2)) demod (83) flip a]
+
+given #409 (wt=12): 1405 B ' ^ ((A v (B ^ x)) ^ y) = 0.  [para (1305 (a 1) 16 (a 1 1)) demod (75) flip a]
+
+given #410 (wt=12): 1406 B ' ^ (x ^ (A v (B ^ y))) = 0.  [para (1305 (a 1) 26 (a 1 2)) demod (83) flip a]
+
+given #411 (wt=13): 230 x ^ (y ^ (x ^ z)) = y ^ (x ^ z).  [para (60 (a 1) 16 (a 2 2)) demod (26 16)]
+
+given #412 (wt=12): 1407 B ' ^ (A v (x ^ (B ^ y))) = 0.  [para (26 (a 1) 1305 (a 1 2 2))]
+
+given #413 (wt=12): 1412 B ' ^ ((A v (x ^ B)) ^ y) = 0.  [para (1310 (a 1) 16 (a 1 1)) demod (75) flip a]
+
+given #414 (wt=12): 1413 B ' ^ (A v (x ^ (y ^ B))) = 0.  [para (16 (a 1) 1310 (a 1 2 2))]
+
+given #415 (wt=12): 1414 B ' ^ (x ^ (A v (y ^ B))) = 0.  [para (1310 (a 1) 26 (a 1 2)) demod (83) flip a]
+
+given #416 (wt=13): 232 x ^ (y ^ (z ^ x)) = y ^ (z ^ x).  [para (16 (a 1) 62 (a 1 2)) demod (16)]
+
+given #417 (wt=12): 1473 x v (y v (z v (y v x) ')) = 1.  [para (102 (a 1) 166 (a 1 2 2 1)) demod (14)]
+
+given #418 (wt=12): 1474 x v (y v (z ^ (y v x)) ') = 1.  [para (102 (a 1) 177 (a 1 2 1 2)) demod (14)]
+
+given #419 (wt=12): 1479 A ' v (x v (y v (B v z))) = 1.  [para (14 (a 1) 1428 (a 1 2))]
+
+given #420 (wt=12): 1484 A ' v (x v (y v (z v B))) = 1.  [para (14 (a 1) 1429 (a 1 2 2))]
+
+given #421 (wt=13): 235 x v (y v (x v z)) = y v (x v z).  [para (63 (a 1) 14 (a 2 2)) demod (25 14)]
+
+given #422 (wt=12): 1490 x v (B v ((x v A) ' v y)) = 1.  [para (1437 (a 1) 14 (a 1 1)) demod (72 14) flip a]
+
+given #423 (wt=12): 1492 B v (x v (y v (y v A) ')) = 1.  [para (1437 (a 1) 14 (a 2 2)) demod (25 14 81)]
+
+given #424 (wt=12): 1494 x v (y v (B v (x v A) ')) = 1.  [para (1437 (a 1) 25 (a 1 2)) demod (81) flip a]
+
+given #425 (wt=12): 1496 x v (B v (A v (x ^ y)) ') = 1.  [para (1437 (a 1) 31 (a 1 2)) demod (81 13) flip a]
+
+given #426 (wt=13): 237 x v (y v (z v x)) = y v (z v x).  [para (14 (a 1) 65 (a 1 2)) demod (14)]
+
+given #427 (wt=12): 1501 x v (B v (A v (y ^ x)) ') = 1.  [para (1437 (a 1) 90 (a 1 2)) demod (81 13) flip a]
+
+given #428 (wt=12): 1524 x v ((y v x) ' v (z v y)) = 1.  [para (38 (a 1) 103 (a 1 1)) demod (14 66 38)]
+
+given #429 (wt=12): 1535 (x ^ y) ' v (z v (u v x)) = 1.  [para (165 (a 1) 103 (a 1 1)) demod (14 66 165)]
+
+given #430 (wt=12): 1537 (x ^ (y ^ z)) ' v (u v y) = 1.  [para (177 (a 1) 103 (a 1 1)) demod (66 177)]
+
+given #431 (wt=14): 241 x ^ (y ^ (z ^ (x ^ (y ^ z)) ')) = 0.  [para (41 (a 1) 16 (a 1)) demod (16) flip a]
+
+given #432 (wt=12): 1539 (x ^ y) ' v (z v (u v y)) = 1.  [para (178 (a 1) 103 (a 1 1)) demod (14 66 178)]
+
+given #433 (wt=12): 1541 (x ^ (y ^ z)) ' v (u v z) = 1.  [para (180 (a 1) 103 (a 1 1)) demod (66 180)]
+
+given #434 (wt=12): 1543 (A ^ x) ' v (y v (B ^ x)) = 1.  [para (186 (a 1) 103 (a 1 1)) demod (66 186)]
+
+given #435 (wt=12): 1544 (x ^ A) ' v (y v (z v B)) = 1.  [para (218 (a 1) 103 (a 1 1)) demod (14 66 218)]
+
+given #436 (wt=14): 243 x ^ (y ^ (z ^ (y ^ (x ^ z)) ')) = 0.  [para (26 (a 1) 41 (a 1 2 2 1)) demod (16)]
+
+given #437 (wt=12): 1545 (x ^ (y ^ A)) ' v (z v B) = 1.  [para (220 (a 1) 103 (a 1 1)) demod (66 220)]
+
+given #438 (wt=12): 1546 (A ^ x) ' v (y v (z v B)) = 1.  [para (222 (a 1) 103 (a 1 1)) demod (14 66 222)]
+
+given #439 (wt=12): 1547 (x ^ (A ^ y)) ' v (z v B) = 1.  [para (224 (a 1) 103 (a 1 1)) demod (66 224)]
+
+given #440 (wt=12): 1548 x v ((x v y) ' v (z v y)) = 1.  [para (225 (a 1) 103 (a 1 1)) demod (14 66 225)]
+
+given #441 (wt=15): 246 (x v y) ^ (z v (x v (y v u))) = x v y.  [para (14 (a 1) 67 (a 1 2 2))]
+
+given #442 (wt=12): 1549 (x ^ A) ' v (y v (x ^ B)) = 1.  [para (254 (a 1) 103 (a 1 1)) demod (66 254)]
+
+given #443 (wt=12): 1550 (A ^ x) ' v (y v (x ^ B)) = 1.  [para (981 (a 1) 103 (a 1 1)) demod (66 981)]
+
+given #444 (wt=12): 1551 (x ^ A) ' v (y v (B ^ x)) = 1.  [para (982 (a 1) 103 (a 1 1)) demod (66 982)]
+
+given #445 (wt=12): 1560 B v ((x v A) ' v (y v x)) = 1.  [para (1437 (a 1) 103 (a 1 1)) demod (14 66 1437)]
+
+given #446 (wt=13): 248 x ^ (y ^ (z v (x v u))) = y ^ x.  [para (67 (a 1) 26 (a 1 2)) flip a]
+
+given #447 (wt=12): 1567 x v (y v (x v (y ^ z)) ') = 1.  [para (68 (a 1) 1508 (a 1 2)) demod (13 14)]
+
+given #448 (wt=12): 1569 x v (y v (x v (z ^ y)) ') = 1.  [para (94 (a 1) 1508 (a 1 2)) demod (13 14)]
+
+given #449 (wt=12): 1570 B ' ^ (x ^ (y ^ (A ^ z))) = 0.  [para (1452 (a 1) 16 (a 1 1)) demod (75 16 16) flip a]
+
+given #450 (wt=12): 1571 B ' ^ (x ^ (y ^ (z ^ A))) = 0.  [para (16 (a 1) 1452 (a 1 2 2))]
+
+given #451 (wt=15): 249 (x ^ y) v (z ^ (x ^ (y ^ u))) = x ^ y.  [para (16 (a 1) 78 (a 1 2 2))]
+
+given #452 (wt=12): 1576 x v (B v ((A v x) ' v y)) = 1.  [para (1489 (a 1) 14 (a 1 1)) demod (72 14) flip a]
+
+given #453 (wt=12): 1577 B v (x v (y v (A v y) ')) = 1.  [para (1489 (a 1) 14 (a 2 2)) demod (25 14 81)]
+
+given #454 (wt=12): 1578 x v (y v (B v (A v x) ')) = 1.  [para (1489 (a 1) 25 (a 1 2)) demod (81) flip a]
+
+given #455 (wt=12): 1589 B v (x v ((A v x) ' v y)) = 1.  [para (100 (a 1) 1489 (a 1 2 2 1)) demod (71 13 70 13)]
+
+given #456 (wt=13): 251 x v (y v (z ^ (x ^ u))) = y v x.  [para (78 (a 1) 25 (a 1 2)) flip a]
+
+given #457 (wt=12): 1590 B v ((A v x) ' v (y v x)) = 1.  [para (1489 (a 1) 103 (a 1 1)) demod (14 66 1489)]
+
+given #458 (wt=12): 1612 B v (x v ((x v A) ' v y)) = 1.  [para (1495 (a 1) 14 (a 1 1)) demod (72 14) flip a]
+
+given #459 (wt=12): 1620 x v ((x v A) ' v (y v B)) = 1.  [para (1495 (a 1) 103 (a 1 1)) demod (14 66 1495)]
+
+given #460 (wt=12): 1621 x ' v (y v (z v (x v u))) = 1.  [para (1513 (a 1) 14 (a 1 1)) demod (72 14 14) flip a]
+
+given #461 (wt=13): 252 A ^ (x ^ (y ^ B)) = A ^ (x ^ y).  [para (16 (a 1) 80 (a 1 2)) demod (15)]
+
+given #462 (wt=12): 1622 x ' v (y v (z v (u v x))) = 1.  [para (14 (a 1) 1513 (a 1 2 2))]
+
+given #463 (wt=12): 1628 (x v A) ' v (y v (B v x)) = 1.  [para (325 (a 1) 1513 (a 1 2 2))]
+
+given #464 (wt=12): 1637 (x ^ y) ' v (z v (x v u)) = 1.  [para (1516 (a 1) 14 (a 1 1)) demod (72 14) flip a]
+
+given #465 (wt=12): 1643 B v (x v ((x v A) ^ y) ') = 1.  [para (325 (a 1) 1516 (a 1 2)) demod (13 14)]
+
+given #466 (wt=13): 256 x ^ ((y v (z v x)) ^ u) = x ^ u.  [para (85 (a 1) 16 (a 1 1)) flip a]
+
+given #467 (wt=12): 1652 (x v y) ' v (z v (y v x)) = 1.  [para (102 (a 1) 1516 (a 1 1 1))]
+
+given #468 (wt=12): 1653 (x ^ y) ' v (z v (y v u)) = 1.  [para (1517 (a 1) 14 (a 1 1)) demod (72 14) flip a]
+
+given #469 (wt=12): 1664 B v (x v (y ^ (x v A)) ') = 1.  [para (325 (a 1) 1517 (a 1 2)) demod (13 14)]
+
+given #470 (wt=12): 1716 (A v x) ^ (B v (x v y)) ' = 0.  [para (1154 (a 1) 105 (a 1 2)) demod (15 75 13) flip a]
+
+given #471 (wt=15): 257 x ^ (y ^ (z v (u v (x ^ y)))) = x ^ y.  [para (85 (a 1) 16 (a 1)) flip a]
+
+given #472 (wt=12): 1720 (x ^ A) ' v (y v (B v z)) = 1.  [para (1522 (a 1) 14 (a 1 1)) demod (72 14) flip a]
+
+given #473 (wt=12): 1725 (A ^ x) ' v (y v (B v z)) = 1.  [para (1523 (a 1) 14 (a 1 1)) demod (72 14) flip a]
+
+given #474 (wt=12): 1737 x v ((A v x) ' v (y v B)) = 1.  [para (1579 (a 1) 103 (a 1 1)) demod (14 66 1579)]
+
+given #475 (wt=12): 1787 B v ((A v (B ^ x)) ' v y) = 1.  [para (1614 (a 1) 14 (a 1 1)) demod (72) flip a]
+
+given #476 (wt=15): 258 (x v y) ^ (z v (x v (u v y))) = x v y.  [para (25 (a 1) 85 (a 1 2 2))]
+
+given #477 (wt=12): 1788 B v (x v (A v (B ^ y)) ') = 1.  [para (1614 (a 1) 25 (a 1 2)) demod (81) flip a]
+
+given #478 (wt=12): 1789 B v (A v (x ^ (B ^ y))) ' = 1.  [para (26 (a 1) 1614 (a 1 2 1 2))]
+
+given #479 (wt=12): 1793 (A v (B ^ x)) ' v (y v B) = 1.  [para (1614 (a 1) 103 (a 1 1)) demod (66 1614)]
+
+given #480 (wt=12): 1795 B v ((A v (x ^ B)) ' v y) = 1.  [para (1619 (a 1) 14 (a 1 1)) demod (72) flip a]
+
+given #481 (wt=13): 259 x ^ (y ^ (z v (u v x))) = y ^ x.  [para (85 (a 1) 26 (a 1 2)) flip a]
+
+given #482 (wt=12): 1796 B v (A v (x ^ (y ^ B))) ' = 1.  [para (16 (a 1) 1619 (a 1 2 1 2))]
+
+given #483 (wt=12): 1797 B v (x v (A v (y ^ B)) ') = 1.  [para (1619 (a 1) 25 (a 1 2)) demod (81) flip a]
+
+given #484 (wt=12): 1801 (A v (x ^ B)) ' v (y v B) = 1.  [para (1619 (a 1) 103 (a 1 1)) demod (66 1619)]
+
+given #485 (wt=12): 1808 x v (B v (y ^ (x v A)) ') = 1.  [para (110 (a 1) 180 (a 1 2 1 2)) demod (14)]
+
+given #486 (wt=17): 260 ((x ^ y) v z) ^ (u v (x v z)) = (x ^ y) v z.  [para (31 (a 1) 85 (a 1 2 2))]
+
+given #487 (wt=12): 1809 x v (B v (y v (x v A) ')) = 1.  [para (110 (a 1) 182 (a 1 2 2 1)) demod (14)]
+
+given #488 (wt=12): 1811 (x v A) ' v (y v (x v B)) = 1.  [para (110 (a 1) 1517 (a 1 1 1))]
+
+given #489 (wt=12): 1828 A ^ (x ^ (y ^ (B ^ x) ')) = 0.  [para (149 (a 1) 123 (a 1 2 2 1)) demod (16)]
+
+given #490 (wt=12): 1829 A ^ (x ^ (y v (B ^ x)) ') = 0.  [para (149 (a 1) 127 (a 1 2 1 2)) demod (16)]
+
+given #491 (wt=21): 261 (x v ((y v x) ^ z)) ^ (u v (y v x)) = x v ((y v x) ^ z).  [para (32 (a 1) 85 (a 1 2 2))]
+
+given #492 (wt=12): 1868 ((B v x) ^ y) v (A ^ y) ' = 1.  [para (150 (a 1) 175 (a 1 2 1))]
+
+given #493 (wt=12): 1870 A ^ (x ^ ((B v y) ^ x) ') = 0.  [para (41 (a 1) 150 (a 1 2)) demod (15 75) flip a]
+
+given #494 (wt=12): 1881 A ^ (x ^ (x ^ (B v y)) ') = 0.  [para (240 (a 1) 150 (a 1 2)) demod (15 75) flip a]
+
+given #495 (wt=12): 1887 (x ^ (B v y)) v (x ^ A) ' = 1.  [para (155 (a 1) 175 (a 1 2 1))]
+
+given #496 (wt=17): 262 x ^ (y ^ (z ^ (u v (x ^ y)))) = x ^ (y ^ z).  [para (34 (a 1) 85 (a 1 2 2)) demod (16 16)]
+
+given #497 (wt=12): 1901 ((x v B) ^ y) v (A ^ y) ' = 1.  [para (157 (a 1) 175 (a 1 2 1))]
+
+given #498 (wt=12): 1903 A ^ (x ^ ((y v B) ^ x) ') = 0.  [para (41 (a 1) 157 (a 1 2)) demod (15 75) flip a]
+
+given #499 (wt=12): 1915 A ^ (x ^ (x ^ (y v B)) ') = 0.  [para (240 (a 1) 157 (a 1 2)) demod (15 75) flip a]
+
+% Back_subsumption disabled, ratio of kept to back_subsumed is 62 (0.00 of 7.66 sec).
+
+given #500 (wt=12): 1921 (x ^ (y v B)) v (x ^ A) ' = 1.  [para (158 (a 1) 175 (a 1 2 1))]
+
+given #501 (wt=23): 263 x ^ (y v (z ^ ((x ^ z) v (u v y)))) = x ^ (y v (z ^ (x v u))).  [para (13 (a 1) 43 (a 1 2 2 2)) demod (14)]
+
+given #502 (wt=12): 1951 ((x ^ A) v y) ^ (B v y) ' = 0.  [para (201 (a 1) 124 (a 1 2 1))]
+
+given #503 (wt=12): 1953 B v (x v ((y ^ A) v x) ') = 1.  [para (38 (a 1) 201 (a 1 2)) demod (13 72) flip a]
+
+given #504 (wt=12): 1964 B v (x v (x v (y ^ A)) ') = 1.  [para (225 (a 1) 201 (a 1 2)) demod (13 72) flip a]
+
+given #505 (wt=12): 1985 x ^ (A ^ (y v (B ^ x)) ') = 0.  [para (211 (a 1) 131 (a 1 2 1 2)) demod (16)]
+
+given #506 (wt=29): 264 x ^ (y v (z v (u ^ (y v (z v ((x ^ u) v v)))))) = x ^ (y v (z v (u ^ (x v v)))).  [para (14 (a 1) 43 (a 1 2 2 2)) demod (14 14)]
+
+given #507 (wt=12): 1986 x ^ (A ^ (y ^ (B ^ x) ')) = 0.  [para (211 (a 1) 135 (a 1 2 2 1)) demod (16)]
+
+given #508 (wt=12): 1989 (B ^ x) v (x ^ (A ^ y)) ' = 1.  [para (211 (a 1) 1516 (a 1 2)) demod (16 13)]
+
+given #509 (wt=12): 1990 (B ^ x) v (y ^ (x ^ A)) ' = 1.  [para (211 (a 1) 1517 (a 1 2)) demod (13)]
+
+given #510 (wt=12): 1993 (x v (y ^ A)) ^ (x v B) ' = 0.  [para (214 (a 1) 124 (a 1 2 1))]
+
+given #511 (wt=23): 265 x ^ (y v (z ^ (y v ((z ^ x) v u)))) = x ^ (y v (z ^ (x v u))).  [para (15 (a 1) 43 (a 1 2 2 2 2 1))]
+
+given #512 (wt=12): 2006 x v (B v (x v (y ^ A)) ') = 1.  [para (214 (a 1) 1508 (a 1 2)) demod (13 14)]
+
+given #513 (wt=12): 2012 ((A ^ x) v y) ^ (B v y) ' = 0.  [para (215 (a 1) 124 (a 1 2 1))]
+
+given #514 (wt=12): 2014 B v (x v ((A ^ y) v x) ') = 1.  [para (38 (a 1) 215 (a 1 2)) demod (13 72) flip a]
+
+given #515 (wt=12): 2025 B v (x v (x v (A ^ y)) ') = 1.  [para (225 (a 1) 215 (a 1 2)) demod (13 72) flip a]
+
+given #516 (wt=27): 266 x ^ ((y v (z ^ (y v ((x ^ z) v u)))) ^ v) = x ^ ((y v (z ^ (x v u))) ^ v).  [para (43 (a 1) 16 (a 1 1)) demod (16) flip a]
+
+given #517 (wt=12): 2047 (x v (A ^ y)) ^ (x v B) ' = 0.  [para (216 (a 1) 124 (a 1 2 1))]
+
+given #518 (wt=12): 2060 x v (B v (x v (A ^ y)) ') = 1.  [para (216 (a 1) 1508 (a 1 2)) demod (13 14)]
+
+given #519 (wt=12): 2084 x ^ (y ^ (x ^ (y v z)) ') = 0.  [para (233 (a 1) 111 (a 1 2)) demod (15)]
+
+given #520 (wt=12): 2096 x ^ (y ^ (z v (y ^ x)) ') = 0.  [para (234 (a 1) 131 (a 1 2 1 2)) demod (16)]
+
+given #521 (wt=31): 267 x ^ (y ^ (z v (u ^ (z v ((x ^ (y ^ u)) v v))))) = x ^ (y ^ (z v (u ^ ((x ^ y) v v)))).  [para (43 (a 1) 16 (a 1)) demod (16 16) flip a]
+
+given #522 (wt=12): 2097 x ^ (y ^ (z ^ (y ^ x) ')) = 0.  [para (234 (a 1) 135 (a 1 2 2 1)) demod (16)]
+
+given #523 (wt=12): 2101 (x ^ y) ' v (z v (y ^ x)) = 1.  [para (234 (a 1) 1513 (a 1 2 2))]
+
+given #524 (wt=12): 2102 (x ^ y) v (y ^ (x ^ z)) ' = 1.  [para (234 (a 1) 1516 (a 1 2)) demod (16 13)]
+
+given #525 (wt=12): 2103 (x ^ y) v (z ^ (y ^ x)) ' = 1.  [para (234 (a 1) 1517 (a 1 2)) demod (13)]
+
+given #526 (wt=29): 268 x ^ (y v (z ^ (u ^ (y v ((x ^ (z ^ u)) v v))))) = x ^ (y v (z ^ (u ^ (x v v)))).  [para (16 (a 1) 43 (a 1 2 2)) demod (16)]
+
+given #527 (wt=12): 2105 (x ^ y) v ((y ^ x) ' v z) = 1.  [para (2100 (a 1) 14 (a 1 1)) demod (72) flip a]
+
+given #528 (wt=12): 2108 (x ^ y) v (z v (y ^ x) ') = 1.  [para (2100 (a 1) 25 (a 1 2)) demod (81) flip a]
+
+given #529 (wt=12): 2124 B v (x v (y v (A v x) ')) = 1.  [para (113 (a 1) 1489 (a 1 2 2 1)) demod (71 13 70 13)]
+
+given #530 (wt=12): 2210 x ^ (A ^ (y ^ (x ^ B) ')) = 0.  [para (253 (a 1) 123 (a 1 2 2 1)) demod (16)]
+
+given #531 (wt=19): 270 x ^ (y v (z ^ (y v (x ^ z)))) = x ^ (y v (z ^ x)).  [para (18 (a 1) 43 (a 1 2 2 2 2)) demod (16 18)]
+
+given #532 (wt=12): 2211 x ^ (A ^ (y v (x ^ B)) ') = 0.  [para (253 (a 1) 127 (a 1 2 1 2)) demod (16)]
+
+given #533 (wt=12): 2293 x v (B v (y ^ (A v x)) ') = 1.  [para (336 (a 1) 180 (a 1 2 1 2)) demod (14)]
+
+given #534 (wt=12): 2294 x v (B v (y v (A v x) ')) = 1.  [para (336 (a 1) 182 (a 1 2 2 1)) demod (14)]
+
+given #535 (wt=12): 2296 (A v x) ' v (y v (x v B)) = 1.  [para (336 (a 1) 1517 (a 1 1 1))]
+
+given #536 (wt=21): 272 x ^ ((x ^ y) v (z v (y ^ (x v z)))) = x ^ ((x ^ y) v z).  [para (36 (a 1) 43 (a 1 2 2 2)) demod (33 14) flip a]
+
+given #537 (wt=12): 2445 B v (x v (y v (x v A) ')) = 1.  [para (490 (a 1) 182 (a 1 2 2 1)) demod (14)]
+
+given #538 (wt=12): 2483 x ^ (y ^ (x ^ (z v y)) ') = 0.  [para (1020 (a 1) 111 (a 1 2)) demod (15)]
+
+given #539 (wt=12): 2498 B v (x v (y ^ (A v x)) ') = 1.  [para (1123 (a 1) 180 (a 1 2 1 2)) demod (14)]
+
+given #540 (wt=12): 2500 (A v x) ' v (y v (B v x)) = 1.  [para (1123 (a 1) 1517 (a 1 1 1))]
+
+given #541 (wt=23): 274 x ^ (y v (z ^ ((x ^ z) v (y v u)))) = x ^ (y v (z ^ (x v u))).  [para (25 (a 1) 43 (a 1 2 2 2))]
+
+given #542 (wt=12): 2563 x ^ (y ^ ((y v z) ^ x) ') = 0.  [para (240 (a 1) 120 (a 1 2)) demod (83) flip a]
+
+given #543 (wt=12): 2565 A ^ (x ^ (B ^ (x v y)) ') = 0.  [para (245 (a 1) 120 (a 1 2)) demod (83) flip a]
+
+given #544 (wt=12): 2601 x ^ (A ^ (x ^ (B v y)) ') = 0.  [para (1869 (a 1) 111 (a 1 2)) demod (15)]
+
+given #545 (wt=12): 2608 x ^ (A ^ (x ^ (y v B)) ') = 0.  [para (1902 (a 1) 111 (a 1 2)) demod (15)]
+
+given #546 (wt=27): 275 x ^ (y ^ (z v (u ^ (z v ((x ^ u) v v))))) = y ^ (x ^ (z v (u ^ (x v v)))).  [para (43 (a 1) 26 (a 1 2)) flip a]
+
+given #547 (wt=12): 2718 A ^ (x ^ (y ^ (x ^ B) ')) = 0.  [para (2203 (a 1) 123 (a 1 2 2 1)) demod (16)]
+
+given #548 (wt=12): 2719 A ^ (x ^ (y v (x ^ B)) ') = 0.  [para (2203 (a 1) 127 (a 1 2 1 2)) demod (16)]
+
+given #549 (wt=12): 2739 (x v y) ^ (y v (x v z)) ' = 0.  [para (13 (a 1) 125 (a 1 1))]
+
+given #550 (wt=12): 2740 (x v y) ^ (y v (z v x)) ' = 0.  [para (13 (a 1) 125 (a 1 2 1)) demod (14)]
+
+given #551 (wt=29): 276 x ^ (y v (z ^ (u ^ (y v ((z ^ (x ^ u)) v v))))) = x ^ (y v (z ^ (u ^ (x v v)))).  [para (26 (a 1) 43 (a 1 2 2 2 2 1)) demod (16 16)]
+
+given #552 (wt=12): 2746 (x v A) ^ (x v (B v y)) ' = 0.  [para (96 (a 1) 125 (a 1 2 1 2))]
+
+given #553 (wt=12): 2747 (x v A) ^ (x v (y v B)) ' = 0.  [para (98 (a 1) 125 (a 1 2 1 2))]
+
+given #554 (wt=12): 2751 ((x ^ y) v z) ^ (z v x) ' = 0.  [para (239 (a 1) 125 (a 1 2 1))]
+
+given #555 (wt=12): 2754 ((x ^ y) v z) ^ (z v y) ' = 0.  [para (1222 (a 1) 125 (a 1 2 1))]
+
+given #556 (wt=33): 278 x v ((y ^ (x v ((z ^ y) v u))) v (z ^ (x v (y ^ (z v u))))) = x v (y ^ (x v ((z ^ y) v u))).  [para (43 (a 1) 33 (a 1 2)) demod (14)]
+
+given #557 (wt=11): 9459 x v (B ^ (x v A)) = x v A.  [para (146 (a 1) 278 (a 1 2 2 2 2)) demod (15 23 67 1818 15 23 67)]
+
+given #558 (wt=11): 9465 x v (B ^ (A v x)) = x v A.  [para (13 (a 1) 9459 (a 1 2 2))]
+
+given #559 (wt=12): 2757 ((x ^ A) v y) ^ (y v B) ' = 0.  [para (1954 (a 1) 125 (a 1 2 1))]
+
+given #560 (wt=12): 2760 ((A ^ x) v y) ^ (y v B) ' = 0.  [para (2015 (a 1) 125 (a 1 2 1))]
+
+given #561 (wt=17): 279 A ^ (x v (y ^ (x v B))) = A ^ (x v (y ^ B)).  [para (93 (a 1) 43 (a 2 2 2 2)) demod (13 212)]
+
+given #562 (wt=12): 2764 (x v y) ^ ((y v x) ' ^ z) = 0.  [para (2744 (a 1) 16 (a 1 1)) demod (75) flip a]
+
+given #563 (wt=12): 2766 (x v y) ^ (z ^ (y v x) ') = 0.  [para (2744 (a 1) 26 (a 1 2)) demod (83) flip a]
+
+given #564 (wt=12): 2778 (x ^ B) v (A ^ (x ^ y)) ' = 1.  [para (2712 (a 1) 1516 (a 1 2)) demod (16 13)]
+
+given #565 (wt=12): 2779 (x ^ B) v (y ^ (A ^ x)) ' = 1.  [para (2712 (a 1) 1517 (a 1 2)) demod (13)]
+
+given #566 (wt=25): 281 x ^ (y v (x ' ^ (z ^ (y v u)))) = x ^ (y v (x ' ^ (z ^ (x v u)))).  [para (76 (a 1) 43 (a 1 2 2 2 2 1)) demod (70 16 16)]
+
+given #567 (wt=12): 2783 x ^ (y ^ ((y ^ x) v z) ') = 0.  [para (15 (a 1) 126 (a 1 2 2 1 1))]
+
+given #568 (wt=12): 2788 A ^ (x ^ ((B ^ x) v y) ') = 0.  [para (126 (a 1) 58 (a 1 2)) demod (15 75) flip a]
+
+given #569 (wt=12): 2815 (x v y) ^ (z v (y v x)) ' = 0.  [para (13 (a 1) 134 (a 1 2 1)) demod (14)]
+
+given #570 (wt=12): 2845 (x v (y ^ z)) ^ (y v x) ' = 0.  [para (13 (a 1) 167 (a 1 1))]
+
+given #571 (wt=16): 282 x ^ (y v (z ^ (x v y '))) = x ^ (y v z).  [para (82 (a 1) 43 (a 1 2 2 2)) demod (39) flip a]
+
+given #572 (wt=12): 2847 (x v y) ' ^ ((x ^ z) v y) = 0.  [para (167 (a 1) 15 (a 1)) flip a]
+
+given #573 (wt=12): 2849 ((x ^ y) v (x ^ z)) ^ x ' = 0.  [para (18 (a 1) 167 (a 1 2 1))]
+
+given #574 (wt=12): 2853 ((x ^ y) v (z ^ x)) ^ x ' = 0.  [para (33 (a 1) 167 (a 1 2 1))]
+
+given #575 (wt=12): 2857 ((B ^ x) v (y ^ A)) ^ B ' = 0.  [para (200 (a 1) 167 (a 1 2 1))]
+
+given #576 (wt=25): 283 x ^ (y v (z ^ (x ' ^ (y v u)))) = x ^ (y v (z ^ (x ' ^ (x v u)))).  [para (84 (a 1) 43 (a 1 2 2 2 2 1)) demod (70 16 16)]
+
+given #577 (wt=12): 2858 ((B ^ x) v (A ^ y)) ^ B ' = 0.  [para (212 (a 1) 167 (a 1 2 1))]
+
+given #578 (wt=12): 2888 x v (y v ((y v x) ^ z) ') = 1.  [para (13 (a 1) 174 (a 1 2 2 1 1))]
+
+given #579 (wt=12): 2898 B v (x v ((A v x) ^ y) ') = 1.  [para (174 (a 1) 1489 (a 1 2 2 1)) demod (71 13 70 13)]
+
+given #580 (wt=12): 2901 (x ^ y) v (y ^ (z ^ x)) ' = 1.  [para (15 (a 1) 176 (a 1 2 1)) demod (16)]
+
+given #581 (wt=27): 284 x ^ (y v (z ^ (y v (((x v u) ^ z) v v)))) = x ^ (y v (z ^ (x v (u v v)))).  [para (43 (a 1) 29 (a 1 2)) demod (14 29) flip a]
+
+given #582 (wt=12): 2904 (x ^ B) v (x ^ (y ^ A)) ' = 1.  [para (59 (a 1) 176 (a 1 2 1 2))]
+
+given #583 (wt=12): 2914 ((x v y) ^ z) v (z ^ x) ' = 1.  [para (233 (a 1) 176 (a 1 2 1))]
+
+given #584 (wt=12): 2916 ((x v y) ^ z) v (z ^ y) ' = 1.  [para (1020 (a 1) 176 (a 1 2 1))]
+
+given #585 (wt=12): 2918 ((B v x) ^ y) v (y ^ A) ' = 1.  [para (1869 (a 1) 176 (a 1 2 1))]
+
+given #586 (wt=31): 285 x ^ (y v ((x v z) ^ (u ^ (y v ((x ^ u) v v))))) = x ^ (y v ((x v z) ^ (u ^ (x v v)))).  [para (29 (a 1) 43 (a 1 2 2 2 2 1)) demod (16 16)]
+
+given #587 (wt=12): 2920 ((x v B) ^ y) v (y ^ A) ' = 1.  [para (1902 (a 1) 176 (a 1 2 1))]
+
+given #588 (wt=12): 3017 (x ^ y) ' v ((x v z) ^ y) = 1.  [para (184 (a 1) 13 (a 1)) flip a]
+
+given #589 (wt=12): 3018 (x ^ (y v z)) v (y ^ x) ' = 1.  [para (15 (a 1) 184 (a 1 1))]
+
+given #590 (wt=12): 3019 ((x v y) ^ (x v z)) v x ' = 1.  [para (17 (a 1) 184 (a 1 2 1))]
+
+given #591 (wt=25): 286 x ^ (y v ((x v z) ' ^ (y v u))) = x ^ (y v ((x v z) ' ^ (x v u))).  [para (118 (a 1) 43 (a 1 2 2 2 2 1)) demod (70)]
+
+given #592 (wt=12): 3022 ((x v y) ^ (z v x)) v x ' = 1.  [para (27 (a 1) 184 (a 1 2 1))]
+
+given #593 (wt=12): 3026 ((A v x) ^ (B v y)) v A ' = 1.  [para (146 (a 1) 184 (a 1 2 1))]
+
+given #594 (wt=12): 3027 ((A v x) ^ (y v B)) v A ' = 1.  [para (148 (a 1) 184 (a 1 2 1))]
+
+given #595 (wt=12): 3091 x v (y v ((y ^ z) v x) ') = 1.  [para (229 (a 1) 25 (a 1)) flip a]
+
+given #596 (wt=21): 287 A ^ (x v (B ' ^ (A v y))) = A ^ (x v (B ' ^ (x v y))).  [para (128 (a 1) 43 (a 1 2 2 2 2 1)) demod (70) flip a]
+
+-------- Proof 1 -------- (12.28 + 0.34 seconds) 
+
+-------- PROOF --------
+Length of proof is 45.
+Maximum clause weight is 23.
+10 x ^ (y v (z ^ (x v u))) = x ^ (y v (z ^ (y v (u v (x ^ z))))) # label(H42).  [input]
+13 x v y = y v x.  [input]
+14 (x v y) v z = x v (y v z).  [input]
+15 x ^ y = y ^ x.  [input]
+16 (x ^ y) ^ z = x ^ (y ^ z).  [input]
+17 x ^ (x v y) = x.  [input]
+18 x v (x ^ y) = x.  [input]
+19 x v x ' = 1.  [input]
+20 x ^ x ' = 0.  [input]
+21 x v y != 1 | x ^ y != 0 | x ' = y.  [input]
+22 x ^ (y v (z ^ (y v (u v (x ^ z))))) = x ^ (y v (z ^ (x v u))) # label(H42).  [copy 10 flip a]
+23 A ^ B = A.  [input]
+24 A ' v B ' != A '.  [input]
+26 x ^ (y ^ z) = y ^ (x ^ z).  [para (15 (a 1) 16 (a 1 1)) demod (16)]
+29 x ^ ((x v y) ^ z) = x ^ z.  [para (17 (a 1) 16 (a 1 1)) flip a]
+31 x v ((x ^ y) v z) = x v z.  [para (18 (a 1) 14 (a 1 1)) flip a]
+33 x v (y ^ x) = x.  [para (15 (a 1) 18 (a 1 2))]
+37 x v (x ' v y) = 1 v y.  [para (19 (a 1) 14 (a 1 1)) flip a]
+39 x ^ 1 = x.  [para (19 (a 1) 17 (a 1 2))]
+40 x ^ (x ' ^ y) = 0 ^ y.  [para (20 (a 1) 16 (a 1 1)) flip a]
+42 x v 0 = x.  [para (20 (a 1) 18 (a 1 2))]
+43 x ^ (y v (z ^ (y v ((x ^ z) v u)))) = x ^ (y v (z ^ (x v u))).  [para (13 (a 1) 22 (a 1 2 2 2 2))]
+58 A ^ (B ^ x) = A ^ x.  [para (23 (a 1) 16 (a 1 1)) flip a]
+66 1 ^ x = x.  [para (39 (a 1) 15 (a 1)) flip a]
+70 0 v x = x.  [para (42 (a 1) 13 (a 1)) flip a]
+72 1 v x = 1.  [para (66 (a 1) 17 (a 1))]
+73 x v (x ' v y) = 1.  [back_demod 37 demod (72)]
+75 0 ^ x = 0.  [para (70 (a 1) 17 (a 1 2))]
+76 x ^ (x ' ^ y) = 0.  [back_demod 40 demod (75)]
+81 x v 1 = 1.  [para (72 (a 1) 13 (a 1)) flip a]
+83 x ^ 0 = 0.  [para (75 (a 1) 15 (a 1)) flip a]
+93 A v B = B.  [para (23 (a 1) 33 (a 1 2)) demod (13)]
+99 A ^ (A ' v B ') != 0.  [ur (21 a 73 a c 24 a_flip)]
+118 x ^ (x v y) ' = 0.  [para (20 (a 1) 29 (a 1 2)) demod (83) flip a]
+128 A ^ B ' = 0.  [para (93 (a 1) 118 (a 1 2 1))]
+149 (A ^ x) v (B ^ x) = B ^ x.  [para (58 (a 1) 33 (a 1 2)) demod (13)]
+161 x v (x ^ y) ' = 1.  [para (19 (a 1) 31 (a 1 2)) demod (81) flip a]
+175 x v (y ^ x) ' = 1.  [para (15 (a 1) 161 (a 1 2 1))]
+186 (B ^ x) v (A ^ x) ' = 1.  [para (58 (a 1) 175 (a 1 2 1))]
+287 A ^ (x v (B ' ^ (A v y))) = A ^ (x v (B ' ^ (x v y))).  [para (128 (a 1) 43 (a 1 2 2 2 2 1)) demod (70) flip a]
+983 (B ^ (A v x)) v A ' = 1.  [para (17 (a 1) 186 (a 1 2 1))]
+1200 A ' v (B ^ (A v x)) = 1.  [para (983 (a 1) 13 (a 1)) flip a]
+1814 A v (B ^ (A v x)) = B ^ (A v x).  [para (17 (a 1) 149 (a 1 1))]
+10084 A ^ (A ' v B ') = 0.  [para (1200 (a 1) 287 (a 2 2 2 2)) demod (1814 26 76 13 70 20 15 66) flip a]
+10085 $F.  [resolve (10084 a 99 a)]
+
+-------- end of proof  -------
+
+Given=596. Generated=259603. Kept=10072. Proofs=1.
+Usable=584. Sos=9085. Demods=9117. Goals=0. Limbo=6, Disabled=408. Hints=0.
+Weight_deleted=17. Literals_deleted=0.
+Forward_subsumed=232701. Back_subsumed=140.
+Sos_limit_deleted=16813. Sos_displaced=0. Sos_removed=0.
+New_demodulators=9425 (4 lex), Back_demodulated=256. Back_unit_deleted=0.
+Demod_attempts=3848904. Demod_rewrites=769640.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=1.
+Megabytes=10.33.
+User_CPU=12.28, System_CPU=0.34, Wall_clock=14.
+
+THEOREM PROVED
+
+Exiting with 1 proof.
+
+Process 10919 exit (max_proofs) Fri Jul 15 15:26:08 2005

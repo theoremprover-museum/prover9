@@ -1,0 +1,617 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE proofs SYSTEM "proof3.dtd">
+
+<?xml-stylesheet type="text/xsl" href="proof3.xsl"?>
+
+<proofs number_of_proofs="2">
+
+<source>oml-4basis.out</source>
+
+<heading><![CDATA[
+Prover9 (32) version 2009-11A, November 2009.
+Process 5126 was started by mccune on cleo,
+Tue Nov  3 09:45:16 2009
+The command was "/home/mccune/LADR/bin/prover9 -f oml-4basis.in".
+]]></heading>
+
+<proof number="1" length="21" max_count="19">
+
+<comments><![CDATA[
+% Proof 1 at 0.02 (+ 0.00) seconds: CC.
+% Length of proof is 21.
+% Level of proof is 11.
+% Maximum clause weight is 19.000.
+% Given clauses 18.
+
+]]></comments>
+
+  <clause id="1" type="goal">
+    <literal><![CDATA[
+      c(c(x)) = x
+    ]]></literal>
+    <attribute><![CDATA[
+      answer(CC)
+    ]]></attribute>
+    <attribute><![CDATA[
+      label(non_clause)
+    ]]></attribute>
+    <attribute><![CDATA[
+      label(goal)
+    ]]></attribute>
+    <justification jstring="[goal].">
+      <j1 rule="goal"/>
+    </justification>
+  </clause>
+
+  <clause id="3" type="assumption">
+    <literal><![CDATA[
+      x v (y v z) = y v (x v z)
+    ]]></literal>
+    <attribute><![CDATA[
+      label(AJ)
+    ]]></attribute>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="4" type="assumption">
+    <literal><![CDATA[
+      x v (x ^ y) = x
+    ]]></literal>
+    <attribute><![CDATA[
+      label(B1)
+    ]]></attribute>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="5" type="assumption">
+    <literal><![CDATA[
+      x ^ y = c(c(x) v c(y))
+    ]]></literal>
+    <attribute><![CDATA[
+      label(DM)
+    ]]></attribute>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="6" type="assumption">
+    <literal><![CDATA[
+      x v (c(x) ^ (x v y)) = x v y
+    ]]></literal>
+    <attribute><![CDATA[
+      label(OM)
+    ]]></attribute>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="7">
+    <literal><![CDATA[
+      x v c(c(c(x)) v c(x v y)) = x v y
+    ]]></literal>
+    <justification jstring="[copy(6),rewrite([5(3)])].">
+      <j1 rule="copy" parents="6"/>
+      <j2 rule="rewrite" parents="5"/>
+    </justification>
+  </clause>
+
+  <clause id="8" type="deny">
+    <literal><![CDATA[
+      c(c(c1)) != c1
+    ]]></literal>
+    <attribute><![CDATA[
+      answer(CC)
+    ]]></attribute>
+    <justification jstring="[deny(1)].">
+      <j1 rule="deny" parents="1"/>
+    </justification>
+  </clause>
+
+  <clause id="10">
+    <literal><![CDATA[
+      x v c(c(x) v c(y)) = x
+    ]]></literal>
+    <justification jstring="[back_rewrite(4),rewrite([5(1)])].">
+      <j1 rule="back_rewrite" parents="4"/>
+      <j2 rule="rewrite" parents="5"/>
+    </justification>
+  </clause>
+
+  <clause id="16">
+    <literal><![CDATA[
+      x v c(c(x) v y) = x
+    ]]></literal>
+    <justification jstring="[para(7(a,1),10(a,1,2,1))].">
+      <j1 rule="para" parents="7 10"/>
+    </justification>
+  </clause>
+
+  <clause id="17">
+    <literal><![CDATA[
+      x v c(c(x)) = x
+    ]]></literal>
+    <justification jstring="[para(10(a,1),10(a,1,2,1))].">
+      <j1 rule="para" parents="10 10"/>
+    </justification>
+  </clause>
+
+  <clause id="32">
+    <literal><![CDATA[
+      x v (y v c(c(x))) = y v x
+    ]]></literal>
+    <justification jstring="[para(17(a,1),3(a,1,2)),flip(a)].">
+      <j1 rule="para" parents="17 3"/>
+      <j2 rule="flip"/>
+    </justification>
+  </clause>
+
+  <clause id="42">
+    <literal><![CDATA[
+      x v c(y v c(x)) = x
+    ]]></literal>
+    <justification jstring="[para(32(a,1),16(a,1,2,1))].">
+      <j1 rule="para" parents="32 16"/>
+    </justification>
+  </clause>
+
+  <clause id="53">
+    <literal><![CDATA[
+      c(x) v c(x) = c(x)
+    ]]></literal>
+    <justification jstring="[para(17(a,1),42(a,1,2,1))].">
+      <j1 rule="para" parents="17 42"/>
+    </justification>
+  </clause>
+
+  <clause id="59">
+    <literal><![CDATA[
+      c(c(x)) v x = x
+    ]]></literal>
+    <justification jstring="[para(53(a,1),32(a,1,2)),rewrite([17(3)]),flip(a)].">
+      <j1 rule="para" parents="53 32"/>
+      <j2 rule="rewrite" parents="17"/>
+      <j2 rule="flip"/>
+    </justification>
+  </clause>
+
+  <clause id="69">
+    <literal><![CDATA[
+      c(c(c(c(x)))) v x = x
+    ]]></literal>
+    <justification jstring="[para(59(a,1),32(a,1,2)),rewrite([17(3)]),flip(a)].">
+      <j1 rule="para" parents="59 32"/>
+      <j2 rule="rewrite" parents="17"/>
+      <j2 rule="flip"/>
+    </justification>
+  </clause>
+
+  <clause id="74">
+    <literal><![CDATA[
+      c(c(c(c(x)))) v c(c(c(c(c(c(c(x)))))) v c(x)) = x
+    ]]></literal>
+    <justification jstring="[para(69(a,1),7(a,1,2,1,2,1)),rewrite([69(19)])].">
+      <j1 rule="para" parents="69 7"/>
+      <j2 rule="rewrite" parents="69"/>
+    </justification>
+  </clause>
+
+  <clause id="80">
+    <literal><![CDATA[
+      c(c(c(x))) = c(x)
+    ]]></literal>
+    <justification jstring="[para(69(a,1),16(a,1,2,1)),rewrite([59(5)]),flip(a)].">
+      <j1 rule="para" parents="69 16"/>
+      <j2 rule="rewrite" parents="59"/>
+      <j2 rule="flip"/>
+    </justification>
+  </clause>
+
+  <clause id="82">
+    <literal><![CDATA[
+      c(c(x)) v c(c(c(x)) v c(x)) = x
+    ]]></literal>
+    <justification jstring="[back_rewrite(74),rewrite([80(3),80(5),80(5)])].">
+      <j1 rule="back_rewrite" parents="74"/>
+      <j2 rule="rewrite" parents="80 80 80"/>
+    </justification>
+  </clause>
+
+  <clause id="96">
+    <literal><![CDATA[
+      c(c(x)) v c(y v c(x)) = c(c(x))
+    ]]></literal>
+    <justification jstring="[para(80(a,1),42(a,1,2,1,2))].">
+      <j1 rule="para" parents="80 42"/>
+    </justification>
+  </clause>
+
+  <clause id="99">
+    <literal><![CDATA[
+      c(c(x)) = x
+    ]]></literal>
+    <justification jstring="[back_rewrite(82),rewrite([96(8)])].">
+      <j1 rule="back_rewrite" parents="82"/>
+      <j2 rule="rewrite" parents="96"/>
+    </justification>
+  </clause>
+
+  <clause id="100">
+    <literal><![CDATA[
+      $F
+    ]]></literal>
+    <attribute><![CDATA[
+      answer(CC)
+    ]]></attribute>
+    <justification jstring="[resolve(99,a,8,a)].">
+      <j1 rule="resolve" parents="99 8"/>
+    </justification>
+  </clause>
+
+</proof>
+
+<proof number="2" length="33" max_count="19">
+
+<comments><![CDATA[
+% Proof 2 at 0.14 (+ 0.00) seconds: ONE.
+% Length of proof is 33.
+% Level of proof is 19.
+% Maximum clause weight is 19.000.
+% Given clauses 50.
+
+]]></comments>
+
+  <clause id="2" type="goal">
+    <literal><![CDATA[
+      x v c(x) = y v c(y)
+    ]]></literal>
+    <attribute><![CDATA[
+      answer(ONE)
+    ]]></attribute>
+    <attribute><![CDATA[
+      label(non_clause)
+    ]]></attribute>
+    <attribute><![CDATA[
+      label(goal)
+    ]]></attribute>
+    <justification jstring="[goal].">
+      <j1 rule="goal"/>
+    </justification>
+  </clause>
+
+  <clause id="3" type="assumption">
+    <literal><![CDATA[
+      x v (y v z) = y v (x v z)
+    ]]></literal>
+    <attribute><![CDATA[
+      label(AJ)
+    ]]></attribute>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="4" type="assumption">
+    <literal><![CDATA[
+      x v (x ^ y) = x
+    ]]></literal>
+    <attribute><![CDATA[
+      label(B1)
+    ]]></attribute>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="5" type="assumption">
+    <literal><![CDATA[
+      x ^ y = c(c(x) v c(y))
+    ]]></literal>
+    <attribute><![CDATA[
+      label(DM)
+    ]]></attribute>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="6" type="assumption">
+    <literal><![CDATA[
+      x v (c(x) ^ (x v y)) = x v y
+    ]]></literal>
+    <attribute><![CDATA[
+      label(OM)
+    ]]></attribute>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="7">
+    <literal><![CDATA[
+      x v c(c(c(x)) v c(x v y)) = x v y
+    ]]></literal>
+    <justification jstring="[copy(6),rewrite([5(3)])].">
+      <j1 rule="copy" parents="6"/>
+      <j2 rule="rewrite" parents="5"/>
+    </justification>
+  </clause>
+
+  <clause id="9" type="deny">
+    <literal><![CDATA[
+      c3 v c(c3) != c2 v c(c2)
+    ]]></literal>
+    <attribute><![CDATA[
+      answer(ONE)
+    ]]></attribute>
+    <justification jstring="[deny(2)].">
+      <j1 rule="deny" parents="2"/>
+    </justification>
+  </clause>
+
+  <clause id="10">
+    <literal><![CDATA[
+      x v c(c(x) v c(y)) = x
+    ]]></literal>
+    <justification jstring="[back_rewrite(4),rewrite([5(1)])].">
+      <j1 rule="back_rewrite" parents="4"/>
+      <j2 rule="rewrite" parents="5"/>
+    </justification>
+  </clause>
+
+  <clause id="12">
+    <literal><![CDATA[
+      x v (y v c(c(c(x)) v c(x v z))) = y v (x v z)
+    ]]></literal>
+    <justification jstring="[para(7(a,1),3(a,1,2)),flip(a)].">
+      <j1 rule="para" parents="7 3"/>
+      <j2 rule="flip"/>
+    </justification>
+  </clause>
+
+  <clause id="16">
+    <literal><![CDATA[
+      x v c(c(x) v y) = x
+    ]]></literal>
+    <justification jstring="[para(7(a,1),10(a,1,2,1))].">
+      <j1 rule="para" parents="7 10"/>
+    </justification>
+  </clause>
+
+  <clause id="17">
+    <literal><![CDATA[
+      x v c(c(x)) = x
+    ]]></literal>
+    <justification jstring="[para(10(a,1),10(a,1,2,1))].">
+      <j1 rule="para" parents="10 10"/>
+    </justification>
+  </clause>
+
+  <clause id="32">
+    <literal><![CDATA[
+      x v (y v c(c(x))) = y v x
+    ]]></literal>
+    <justification jstring="[para(17(a,1),3(a,1,2)),flip(a)].">
+      <j1 rule="para" parents="17 3"/>
+      <j2 rule="flip"/>
+    </justification>
+  </clause>
+
+  <clause id="35">
+    <literal><![CDATA[
+      x v c(y v (c(x) v z)) = x
+    ]]></literal>
+    <justification jstring="[para(3(a,1),16(a,1,2,1))].">
+      <j1 rule="para" parents="3 16"/>
+    </justification>
+  </clause>
+
+  <clause id="42">
+    <literal><![CDATA[
+      x v c(y v c(x)) = x
+    ]]></literal>
+    <justification jstring="[para(32(a,1),16(a,1,2,1))].">
+      <j1 rule="para" parents="32 16"/>
+    </justification>
+  </clause>
+
+  <clause id="48">
+    <literal><![CDATA[
+      x v (c(x) v y) = x v c(x)
+    ]]></literal>
+    <justification jstring="[para(16(a,1),12(a,1,2)),rewrite([3(5)]),flip(a)].">
+      <j1 rule="para" parents="16 12"/>
+      <j2 rule="rewrite" parents="3"/>
+      <j2 rule="flip"/>
+    </justification>
+  </clause>
+
+  <clause id="53">
+    <literal><![CDATA[
+      c(x) v c(x) = c(x)
+    ]]></literal>
+    <justification jstring="[para(17(a,1),42(a,1,2,1))].">
+      <j1 rule="para" parents="17 42"/>
+    </justification>
+  </clause>
+
+  <clause id="59">
+    <literal><![CDATA[
+      c(c(x)) v x = x
+    ]]></literal>
+    <justification jstring="[para(53(a,1),32(a,1,2)),rewrite([17(3)]),flip(a)].">
+      <j1 rule="para" parents="53 32"/>
+      <j2 rule="rewrite" parents="17"/>
+      <j2 rule="flip"/>
+    </justification>
+  </clause>
+
+  <clause id="61">
+    <literal><![CDATA[
+      c(c(x)) v (y v x) = y v x
+    ]]></literal>
+    <justification jstring="[para(59(a,1),3(a,1,2)),flip(a)].">
+      <j1 rule="para" parents="59 3"/>
+      <j2 rule="flip"/>
+    </justification>
+  </clause>
+
+  <clause id="69">
+    <literal><![CDATA[
+      c(c(c(c(x)))) v x = x
+    ]]></literal>
+    <justification jstring="[para(59(a,1),32(a,1,2)),rewrite([17(3)]),flip(a)].">
+      <j1 rule="para" parents="59 32"/>
+      <j2 rule="rewrite" parents="17"/>
+      <j2 rule="flip"/>
+    </justification>
+  </clause>
+
+  <clause id="74">
+    <literal><![CDATA[
+      c(c(c(c(x)))) v c(c(c(c(c(c(c(x)))))) v c(x)) = x
+    ]]></literal>
+    <justification jstring="[para(69(a,1),7(a,1,2,1,2,1)),rewrite([69(19)])].">
+      <j1 rule="para" parents="69 7"/>
+      <j2 rule="rewrite" parents="69"/>
+    </justification>
+  </clause>
+
+  <clause id="80">
+    <literal><![CDATA[
+      c(c(c(x))) = c(x)
+    ]]></literal>
+    <justification jstring="[para(69(a,1),16(a,1,2,1)),rewrite([59(5)]),flip(a)].">
+      <j1 rule="para" parents="69 16"/>
+      <j2 rule="rewrite" parents="59"/>
+      <j2 rule="flip"/>
+    </justification>
+  </clause>
+
+  <clause id="82">
+    <literal><![CDATA[
+      c(c(x)) v c(c(c(x)) v c(x)) = x
+    ]]></literal>
+    <justification jstring="[back_rewrite(74),rewrite([80(3),80(5),80(5)])].">
+      <j1 rule="back_rewrite" parents="74"/>
+      <j2 rule="rewrite" parents="80 80 80"/>
+    </justification>
+  </clause>
+
+  <clause id="96">
+    <literal><![CDATA[
+      c(c(x)) v c(y v c(x)) = c(c(x))
+    ]]></literal>
+    <justification jstring="[para(80(a,1),42(a,1,2,1,2))].">
+      <j1 rule="para" parents="80 42"/>
+    </justification>
+  </clause>
+
+  <clause id="99">
+    <literal><![CDATA[
+      c(c(x)) = x
+    ]]></literal>
+    <justification jstring="[back_rewrite(82),rewrite([96(8)])].">
+      <j1 rule="back_rewrite" parents="82"/>
+      <j2 rule="rewrite" parents="96"/>
+    </justification>
+  </clause>
+
+  <clause id="113">
+    <literal><![CDATA[
+      x v (y v x) = y v x
+    ]]></literal>
+    <justification jstring="[back_rewrite(61),rewrite([99(2)])].">
+      <j1 rule="back_rewrite" parents="61"/>
+      <j2 rule="rewrite" parents="99"/>
+    </justification>
+  </clause>
+
+  <clause id="367">
+    <literal><![CDATA[
+      x v c(y v (z v c(x))) = x
+    ]]></literal>
+    <justification jstring="[para(113(a,1),35(a,1,2,1,2))].">
+      <j1 rule="para" parents="113 35"/>
+    </justification>
+  </clause>
+
+  <clause id="462">
+    <literal><![CDATA[
+      x v c(y v c(y)) = x
+    ]]></literal>
+    <justification jstring="[para(48(a,1),367(a,1,2,1))].">
+      <j1 rule="para" parents="48 367"/>
+    </justification>
+  </clause>
+
+  <clause id="468">
+    <literal><![CDATA[
+      c(x v c(x)) v y = y
+    ]]></literal>
+    <justification jstring="[para(462(a,1),113(a,1,2)),rewrite([462(8)])].">
+      <j1 rule="para" parents="462 113"/>
+      <j2 rule="rewrite" parents="462"/>
+    </justification>
+  </clause>
+
+  <clause id="701">
+    <literal><![CDATA[
+      c(x v c(x)) = c(y v c(y))
+    ]]></literal>
+    <justification jstring="[para(468(a,1),462(a,1))].">
+      <j1 rule="para" parents="468 462"/>
+    </justification>
+  </clause>
+
+  <clause id="702">
+    <literal><![CDATA[
+      c(x v c(x)) = c_0
+    ]]></literal>
+    <justification jstring="[new_symbol(701)].">
+      <j1 rule="new_symbol" parents="701"/>
+    </justification>
+  </clause>
+
+  <clause id="711">
+    <literal><![CDATA[
+      c(c_0) = x v c(x)
+    ]]></literal>
+    <justification jstring="[para(702(a,1),99(a,1,1))].">
+      <j1 rule="para" parents="702 99"/>
+    </justification>
+  </clause>
+
+  <clause id="777">
+    <literal><![CDATA[
+      c(c_0) != c2 v c(c2)
+    ]]></literal>
+    <attribute><![CDATA[
+      answer(ONE)
+    ]]></attribute>
+    <justification jstring="[para(711(a,2),9(a,1))].">
+      <j1 rule="para" parents="711 9"/>
+    </justification>
+  </clause>
+
+  <clause id="778">
+    <literal><![CDATA[
+      $F
+    ]]></literal>
+    <attribute><![CDATA[
+      answer(ONE)
+    ]]></attribute>
+    <justification jstring="[resolve(777,a,711,a)].">
+      <j1 rule="resolve" parents="777 711"/>
+    </justification>
+  </clause>
+
+</proof>
+
+</proofs>

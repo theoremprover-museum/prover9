@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE proofs SYSTEM "proof3.dtd">
+
+<?xml-stylesheet type="text/xsl" href="proof3.xsl"?>
+
+<proofs number_of_proofs="1">
+
+<source>xcb-reflex.out</source>
+
+<heading><![CDATA[
+Prover9 (32) version 2009-11A, November 2009.
+Process 4529 was started by mccune on cleo,
+Tue Nov  3 09:39:04 2009
+The command was "/home/mccune/LADR/bin/prover9 -f xcb-reflex.in".
+]]></heading>
+
+<proof number="1" length="19" max_count="48">
+
+<comments><![CDATA[
+% Proof 1 at 2.69 (+ 0.05) seconds: Reflex.
+% Length of proof is 19.
+% Level of proof is 8.
+% Maximum clause weight is 48.000.
+% Given clauses 587.
+
+]]></comments>
+
+  <clause id="1" type="goal">
+    <literal><![CDATA[
+      P(e(x,x))
+    ]]></literal>
+    <attribute><![CDATA[
+      answer(Reflex)
+    ]]></attribute>
+    <attribute><![CDATA[
+      label(non_clause)
+    ]]></attribute>
+    <attribute><![CDATA[
+      label(goal)
+    ]]></attribute>
+    <justification jstring="[goal].">
+      <j1 rule="goal"/>
+    </justification>
+  </clause>
+
+  <clause id="2" type="assumption">
+    <literal><![CDATA[
+      -P(e(x,y))
+    ]]></literal>
+    <literal><![CDATA[
+      -P(x)
+    ]]></literal>
+    <literal><![CDATA[
+      P(y)
+    ]]></literal>
+    <attribute><![CDATA[
+      label(condensed_detachment)
+    ]]></attribute>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="3" type="assumption">
+    <literal><![CDATA[
+      P(e(x,e(e(e(x,y),e(z,y)),z)))
+    ]]></literal>
+    <attribute><![CDATA[
+      label(XCB)
+    ]]></attribute>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="4" type="deny">
+    <literal><![CDATA[
+      -P(e(c1,c1))
+    ]]></literal>
+    <attribute><![CDATA[
+      answer(Reflex)
+    ]]></attribute>
+    <justification jstring="[deny(1)].">
+      <j1 rule="deny" parents="1"/>
+    </justification>
+  </clause>
+
+  <clause id="5">
+    <literal><![CDATA[
+      P(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w))
+    ]]></literal>
+    <justification jstring="[hyper(2,a,3,a,b,3,a)].">
+      <j1 rule="hyper" parents="2 3 3"/>
+    </justification>
+  </clause>
+
+  <clause id="6">
+    <literal><![CDATA[
+      P(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),v5),e(v6,v5)),v6))
+    ]]></literal>
+    <justification jstring="[hyper(2,a,3,a,b,5,a)].">
+      <j1 rule="hyper" parents="2 3 5"/>
+    </justification>
+  </clause>
+
+  <clause id="7">
+    <literal><![CDATA[
+      P(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)))
+    ]]></literal>
+    <justification jstring="[hyper(2,a,5,a,b,3,a)].">
+      <j1 rule="hyper" parents="2 5 3"/>
+    </justification>
+  </clause>
+
+  <clause id="9">
+    <literal><![CDATA[
+      P(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),v5),v6),e(v5,v6)))
+    ]]></literal>
+    <justification jstring="[hyper(2,a,6,a,b,3,a)].">
+      <j1 rule="hyper" parents="2 6 3"/>
+    </justification>
+  </clause>
+
+  <clause id="10">
+    <literal><![CDATA[
+      P(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),x)))
+    ]]></literal>
+    <justification jstring="[hyper(2,a,7,a,b,7,a)].">
+      <j1 rule="hyper" parents="2 7 7"/>
+    </justification>
+  </clause>
+
+  <clause id="11">
+    <literal><![CDATA[
+      P(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),v5),e(v6,v5)),v6))
+    ]]></literal>
+    <justification jstring="[hyper(2,a,3,a,b,7,a)].">
+      <j1 rule="hyper" parents="2 3 7"/>
+    </justification>
+  </clause>
+
+  <clause id="14">
+    <literal><![CDATA[
+      P(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),x),w),e(v5,w)),v5)))
+    ]]></literal>
+    <justification jstring="[hyper(2,a,7,a,b,3,a)].">
+      <j1 rule="hyper" parents="2 7 3"/>
+    </justification>
+  </clause>
+
+  <clause id="28">
+    <literal><![CDATA[
+      P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),v9),e(v8,v9))))
+    ]]></literal>
+    <justification jstring="[hyper(2,a,10,a,b,7,a)].">
+      <j1 rule="hyper" parents="2 10 7"/>
+    </justification>
+  </clause>
+
+  <clause id="35">
+    <literal><![CDATA[
+      P(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),v5),v6),e(v5,v6)))
+    ]]></literal>
+    <justification jstring="[hyper(2,a,11,a,b,3,a)].">
+      <j1 rule="hyper" parents="2 11 3"/>
+    </justification>
+  </clause>
+
+  <clause id="57">
+    <literal><![CDATA[
+      P(e(e(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),x),w),e(v5,w)),v5)),v6),e(v7,v6)),v7))
+    ]]></literal>
+    <justification jstring="[hyper(2,a,3,a,b,14,a)].">
+      <j1 rule="hyper" parents="2 3 14"/>
+    </justification>
+  </clause>
+
+  <clause id="141">
+    <literal><![CDATA[
+      P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(e(e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6),v7),e(v6,v7)),v8),v9),e(v8,v9))),v10),e(v11,v10)),v11))
+    ]]></literal>
+    <justification jstring="[hyper(2,a,14,a,b,35,a)].">
+      <j1 rule="hyper" parents="2 14 35"/>
+    </justification>
+  </clause>
+
+  <clause id="262">
+    <literal><![CDATA[
+      P(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),v9)),v10)),e(v9,v10)))
+    ]]></literal>
+    <justification jstring="[hyper(2,a,57,a,b,28,a)].">
+      <j1 rule="hyper" parents="2 57 28"/>
+    </justification>
+  </clause>
+
+  <clause id="589">
+    <literal><![CDATA[
+      P(e(e(x,e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),v5),e(w,v5)),e(e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),v9),e(v10,v9))),v10)),x))
+    ]]></literal>
+    <justification jstring="[hyper(2,a,9,a,b,141,a)].">
+      <j1 rule="hyper" parents="2 9 141"/>
+    </justification>
+  </clause>
+
+  <clause id="1754">
+    <literal><![CDATA[
+      P(e(x,x))
+    ]]></literal>
+    <justification jstring="[hyper(2,a,262,a,b,589,a)].">
+      <j1 rule="hyper" parents="2 262 589"/>
+    </justification>
+  </clause>
+
+  <clause id="1755">
+    <literal><![CDATA[
+      $F
+    ]]></literal>
+    <attribute><![CDATA[
+      answer(Reflex)
+    ]]></attribute>
+    <justification jstring="[resolve(1754,a,4,a)].">
+      <j1 rule="resolve" parents="1754 4"/>
+    </justification>
+  </clause>
+
+</proof>
+
+</proofs>

@@ -1,0 +1,45 @@
+
+=== Mace4 starting on domain size 2. ===
+
+=== Mace4 starting on domain size 3. ===
+
+=== Mace4 starting on domain size 4. ===
+
+=== Mace4 starting on domain size 5. ===
+
+=== Mace4 starting on domain size 6. ===
+
+------ process 17460 exit (max_models) ------
+-------- Proof 1 -------- H2.
+
+THEOREM PROVED
+
+------ process 17464 exit (max_proofs) ------
+
+=== Mace4 starting on domain size 6. ===
+
+------ process 17465 exit (all_models) ------
+-------- Proof 1 -------- "Sheffer".
+
+THEOREM PROVED
+
+------ process 17469 exit (max_proofs) ------
+
+=== Mace4 starting on domain size 8. ===
+
+------ process 17472 exit (all_models) ------
+-------- Proof 1 -------- A_SS.
+
+THEOREM PROVED
+
+------ process 17476 exit (max_proofs) ------
+
+=== Mace4 starting on domain size 10. ===
+
+------ process 17495 exit (all_models) ------
+-------- Proof 1 -------- MOD_SS.
+
+THEOREM PROVED
+
+------ process 17499 exit (max_proofs) ------
+

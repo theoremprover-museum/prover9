@@ -1,0 +1,195 @@
+<HTML>
+<HEAD>
+<TITLE>Prover9 Examples: Commutators in Cancellative Semigroups
+</TITLE>
+</HEAD>
+
+<BODY BGCOLOR=white>
+<H1>Prover9 Examples: Commutators in Cancellative Semigroups
+</H1>
+
+These theorems are based on the following paper.
+<UL>
+<LI>
+  R. Padmanabhan, W. McCune, R. Veroff,
+  "Levi's Commutator Theorems for Cancellative Semigroups",
+  to appear in <I>Semigroup Forum</I>.
+</UL>
+In group theory, if @ is the commutator operation,
+the following four properties are known to be equivalent.
+
+<pre>
+    <I>(x @ y) @ z = u @ (v @ w)</I>          (A) "associativity" of commutator
+    <I>(x @ y) * z = z * (x @ y)</I>          (N) nilpotency of class 2
+    <I>(x * y) @ z = (x @ z) * (y @ z)</I>    (D) distributivity of commutator
+    <I>x*y*z*y*x = y*x*z*x*y</I>              (E) CS essence of (N)
+</pre>
+
+In cancellative semigroups, we cannot define the commutator
+operation, because we don't necessarily have in inverse operation.
+<P>
+Consider, however, the following property of the commutator operation.
+
+<pre>
+    y * x * (x @ y) = x * y.    % CS admits commutator
+</pre>
+
+Then the four properties hold for cancellative semigroups.
+<P>
+Here are 24 proofs.  We prove all pairwise implications between the
+four properties for both group theory and cancellative semigroups.
+(Of course we only need 8 of these proofs.)
+<P>
+The file <TT>AD-gt.out</TT> means (A) -> (D) for group theory.
+
+
+<hr>
+
+<!-- job AD-gt -->
+<blockquote><tt>prover9 -f <a href="gt.in">gt.in</a> <a href="AD.in">AD.in</a> &gt; <a href="AD-gt.out">AD-gt.out</a> ; ### ( <a href="AD-gt.out.xml">AD-gt.out.xml</a> )</tt></blockquote>
+
+
+<hr>
+
+<!-- job AD-cs -->
+<blockquote><tt>prover9 -f <a href="cs.in">cs.in</a> <a href="AD.in">AD.in</a> &gt; <a href="AD-cs.out">AD-cs.out</a> ; ### ( <a href="AD-cs.out.xml">AD-cs.out.xml</a> )</tt></blockquote>
+
+
+<hr>
+
+<!-- job AE-gt -->
+<blockquote><tt>prover9 -f <a href="gt.in">gt.in</a> <a href="AE.in">AE.in</a> &gt; <a href="AE-gt.out">AE-gt.out</a> ; ### ( <a href="AE-gt.out.xml">AE-gt.out.xml</a> )</tt></blockquote>
+
+
+<hr>
+
+<!-- job AE-cs -->
+<blockquote><tt>prover9 -f <a href="cs.in">cs.in</a> <a href="AE.in">AE.in</a> &gt; <a href="AE-cs.out">AE-cs.out</a> ; ### ( <a href="AE-cs.out.xml">AE-cs.out.xml</a> )</tt></blockquote>
+
+
+<hr>
+
+<!-- job AN-gt -->
+<blockquote><tt>prover9 -f <a href="gt.in">gt.in</a> <a href="AN.in">AN.in</a> &gt; <a href="AN-gt.out">AN-gt.out</a> ; ### ( <a href="AN-gt.out.xml">AN-gt.out.xml</a> )</tt></blockquote>
+
+
+<hr>
+
+<!-- job AN-cs -->
+<blockquote><tt>prover9 -f <a href="cs.in">cs.in</a> <a href="AN.in">AN.in</a> &gt; <a href="AN-cs.out">AN-cs.out</a> ; ### ( <a href="AN-cs.out.xml">AN-cs.out.xml</a> )</tt></blockquote>
+
+
+<hr>
+
+<!-- job DA-gt -->
+<blockquote><tt>prover9 -f <a href="gt.in">gt.in</a> <a href="DA.in">DA.in</a> &gt; <a href="DA-gt.out">DA-gt.out</a> ; ### ( <a href="DA-gt.out.xml">DA-gt.out.xml</a> )</tt></blockquote>
+
+
+<hr>
+
+<!-- job DA-cs -->
+<blockquote><tt>prover9 -f <a href="cs.in">cs.in</a> <a href="DA.in">DA.in</a> &gt; <a href="DA-cs.out">DA-cs.out</a> ; ### ( <a href="DA-cs.out.xml">DA-cs.out.xml</a> )</tt></blockquote>
+
+
+<hr>
+
+<!-- job DE-gt -->
+<blockquote><tt>prover9 -f <a href="gt.in">gt.in</a> <a href="DE.in">DE.in</a> &gt; <a href="DE-gt.out">DE-gt.out</a> ; ### ( <a href="DE-gt.out.xml">DE-gt.out.xml</a> )</tt></blockquote>
+
+
+<hr>
+
+<!-- job DE-cs -->
+<blockquote><tt>prover9 -f <a href="cs.in">cs.in</a> <a href="DE.in">DE.in</a> &gt; <a href="DE-cs.out">DE-cs.out</a> ; ### ( <a href="DE-cs.out.xml">DE-cs.out.xml</a> )</tt></blockquote>
+
+
+<hr>
+
+<!-- job DN-gt -->
+<blockquote><tt>prover9 -f <a href="gt.in">gt.in</a> <a href="DN.in">DN.in</a> &gt; <a href="DN-gt.out">DN-gt.out</a> ; ### ( <a href="DN-gt.out.xml">DN-gt.out.xml</a> )</tt></blockquote>
+
+
+<hr>
+
+<!-- job DN-cs -->
+<blockquote><tt>prover9 -f <a href="cs.in">cs.in</a> <a href="DN.in">DN.in</a> &gt; <a href="DN-cs.out">DN-cs.out</a> ; ### ( <a href="DN-cs.out.xml">DN-cs.out.xml</a> )</tt></blockquote>
+
+
+<hr>
+
+<!-- job EA-gt -->
+<blockquote><tt>prover9 -f <a href="gt.in">gt.in</a> <a href="EA.in">EA.in</a> &gt; <a href="EA-gt.out">EA-gt.out</a> ; ### ( <a href="EA-gt.out.xml">EA-gt.out.xml</a> )</tt></blockquote>
+
+
+<hr>
+
+<!-- job EA-cs -->
+<blockquote><tt>prover9 -f <a href="cs.in">cs.in</a> <a href="EA.in">EA.in</a> &gt; <a href="EA-cs.out">EA-cs.out</a> ; ### ( <a href="EA-cs.out.xml">EA-cs.out.xml</a> )</tt></blockquote>
+
+
+<hr>
+
+<!-- job ED-gt -->
+<blockquote><tt>prover9 -f <a href="gt.in">gt.in</a> <a href="ED.in">ED.in</a> &gt; <a href="ED-gt.out">ED-gt.out</a> ; ### ( <a href="ED-gt.out.xml">ED-gt.out.xml</a> )</tt></blockquote>
+
+
+<hr>
+
+<!-- job ED-cs -->
+<blockquote><tt>prover9 -f <a href="cs.in">cs.in</a> <a href="ED.in">ED.in</a> &gt; <a href="ED-cs.out">ED-cs.out</a> ; ### ( <a href="ED-cs.out.xml">ED-cs.out.xml</a> )</tt></blockquote>
+
+
+<hr>
+
+<!-- job EN-gt -->
+<blockquote><tt>prover9 -f <a href="gt.in">gt.in</a> <a href="EN.in">EN.in</a> &gt; <a href="EN-gt.out">EN-gt.out</a> ; ### ( <a href="EN-gt.out.xml">EN-gt.out.xml</a> )</tt></blockquote>
+
+
+<hr>
+
+<!-- job EN-cs -->
+<blockquote><tt>prover9 -f <a href="cs.in">cs.in</a> <a href="EN.in">EN.in</a> &gt; <a href="EN-cs.out">EN-cs.out</a> ; ### ( <a href="EN-cs.out.xml">EN-cs.out.xml</a> )</tt></blockquote>
+
+
+<hr>
+
+<!-- job NA-gt -->
+<blockquote><tt>prover9 -f <a href="gt.in">gt.in</a> <a href="NA.in">NA.in</a> &gt; <a href="NA-gt.out">NA-gt.out</a> ; ### ( <a href="NA-gt.out.xml">NA-gt.out.xml</a> )</tt></blockquote>
+
+
+<hr>
+
+<!-- job NA-cs -->
+<blockquote><tt>prover9 -f <a href="cs.in">cs.in</a> <a href="NA.in">NA.in</a> &gt; <a href="NA-cs.out">NA-cs.out</a> ; ### ( <a href="NA-cs.out.xml">NA-cs.out.xml</a> )</tt></blockquote>
+
+
+<hr>
+
+<!-- job ND-gt -->
+<blockquote><tt>prover9 -f <a href="gt.in">gt.in</a> <a href="ND.in">ND.in</a> &gt; <a href="ND-gt.out">ND-gt.out</a> ; ### ( <a href="ND-gt.out.xml">ND-gt.out.xml</a> )</tt></blockquote>
+
+
+<hr>
+
+<!-- job ND-cs -->
+<blockquote><tt>prover9 -f <a href="cs.in">cs.in</a> <a href="ND.in">ND.in</a> &gt; <a href="ND-cs.out">ND-cs.out</a> ; ### ( <a href="ND-cs.out.xml">ND-cs.out.xml</a> )</tt></blockquote>
+
+
+<hr>
+
+<!-- job NE-gt -->
+<blockquote><tt>prover9 -f <a href="gt.in">gt.in</a> <a href="NE.in">NE.in</a> &gt; <a href="NE-gt.out">NE-gt.out</a> ; ### ( <a href="NE-gt.out.xml">NE-gt.out.xml</a> )</tt></blockquote>
+
+
+<hr>
+
+<!-- job NE-cs -->
+<blockquote><tt>prover9 -f <a href="cs.in">cs.in</a> <a href="NE.in">NE.in</a> &gt; <a href="NE-cs.out">NE-cs.out</a> ; ### ( <a href="NE-cs.out.xml">NE-cs.out.xml</a> )</tt></blockquote>
+
+
+
+
+<HR>
+
+</BODY>
+</HTML>

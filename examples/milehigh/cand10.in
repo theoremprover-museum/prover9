@@ -1,0 +1,27 @@
+assign(iterate_up_to, 100).
+
+formulas(theory).
+
+  f(f(g(f(x,x)),y),g(f(g(f(x,f(x,z))),y))) = z # label(candidate_10).
+
+% inverse loop axioms
+
+  f(g(x),x) = 1.
+  f(x,g(x)) = 1.
+  f(g(x),f(x,y)) = y.
+  f(f(y,x),g(x)) = y.
+
+% inverse loop lemmmas (these help Mace4 a lot for this example)
+
+  f(1,x) = x.
+  f(x,1) = x.
+  g(g(x)) = x.
+  g(1) = 1.
+
+end_of_list.
+
+formulas(goals).
+
+  f(f(x,y),z) = f(x,f(y,z)) # label(associativity).
+
+end_of_list.

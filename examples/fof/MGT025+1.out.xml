@@ -1,0 +1,3890 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE proofs SYSTEM "proof3.dtd">
+
+<?xml-stylesheet type="text/xsl" href="proof3.xsl"?>
+
+<proofs number_of_proofs="8">
+
+<source>MGT025+1.out</source>
+
+<heading><![CDATA[
+FOF-Prover9 (32) version 2009-11A, November 2009.
+Process 23954 was started by mccune on cleo,
+Tue Nov  3 16:59:16 2009
+The command was "/home/mccune/LADR/bin/fof-prover9 -f MGT025+1.in".
+]]></heading>
+
+<proof number="1" length="35" max_count="23">
+
+<comments><![CDATA[
+% Proof 1 at 0.01 (+ 0.00) seconds.
+% Length of proof is 35.
+% Level of proof is 6.
+% Maximum clause weight is 21.000.
+% Given clauses 36.
+
+]]></comments>
+
+  <clause id="1" type="assumption">
+    <literal><![CDATA[
+      environment(c1)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="3" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      efficient_producers != B
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(B,A,C)
+    ]]></literal>
+    <literal><![CDATA[
+      sum(cardinality_at_time(first_movers,C),cardinality_at_time(efficient_producers,C)) = number_of_organizations(A,C)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="5" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -in_environment(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      subpopulation(first_movers,A,B)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="6" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -in_environment(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      subpopulation(efficient_producers,A,B)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="7" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -in_environment(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(C,A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -greater(cardinality_at_time(C,B),zero)
+    ]]></literal>
+    <literal><![CDATA[
+      -constant(cardinality_at_time(C,B))
+    ]]></literal>
+    <literal><![CDATA[
+      growth_rate(C,B) = zero
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="8" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -in_environment(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(C,A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -greater(cardinality_at_time(C,B),zero)
+    ]]></literal>
+    <literal><![CDATA[
+      -increases(cardinality_at_time(C,B))
+    ]]></literal>
+    <literal><![CDATA[
+      greater(growth_rate(C,B),zero)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="10" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulations(first_movers,efficient_producers,A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      greater(cardinality_at_time(first_movers,B),zero)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="11" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulations(first_movers,efficient_producers,A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      greater(cardinality_at_time(efficient_producers,B),zero)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="12" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulations(first_movers,efficient_producers,A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      in_environment(A,B)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="15" type="assumption">
+    <literal><![CDATA[
+      -constant(A)
+    ]]></literal>
+    <literal><![CDATA[
+      constant(B)
+    ]]></literal>
+    <literal><![CDATA[
+      increases(B)
+    ]]></literal>
+    <literal><![CDATA[
+      sum(B,C) != A
+    ]]></literal>
+    <literal><![CDATA[
+      increases(C)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="22" type="assumption">
+    <literal><![CDATA[
+      subpopulations(first_movers,efficient_producers,c1,c2)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="23" type="assumption">
+    <literal><![CDATA[
+      constant(number_of_organizations(c1,c2))
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="24" type="assumption">
+    <literal><![CDATA[
+      growth_rate(first_movers,c2) != zero
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="25" type="assumption">
+    <literal><![CDATA[
+      -greater(growth_rate(first_movers,c2),zero)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="26" type="assumption">
+    <literal><![CDATA[
+      -greater(growth_rate(efficient_producers,c2),zero)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="29">
+    <literal><![CDATA[
+      efficient_producers != A
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(A,c1,B)
+    ]]></literal>
+    <literal><![CDATA[
+      sum(cardinality_at_time(first_movers,B),cardinality_at_time(efficient_producers,B)) = number_of_organizations(c1,B)
+    ]]></literal>
+    <justification jstring="[resolve(1,a,3,a)].">
+      <j1 rule="resolve" parents="1 3"/>
+    </justification>
+  </clause>
+
+  <clause id="30">
+    <literal><![CDATA[
+      efficient_producers != A
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(A,c1,B)
+    ]]></literal>
+    <literal><![CDATA[
+      number_of_organizations(c1,B) = sum(cardinality_at_time(first_movers,B),cardinality_at_time(efficient_producers,B))
+    ]]></literal>
+    <justification jstring="[copy(29),flip(c)].">
+      <j1 rule="copy" parents="29"/>
+      <j2 rule="flip"/>
+    </justification>
+  </clause>
+
+  <clause id="33">
+    <literal><![CDATA[
+      -in_environment(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      subpopulation(first_movers,c1,A)
+    ]]></literal>
+    <justification jstring="[resolve(1,a,5,a)].">
+      <j1 rule="resolve" parents="1 5"/>
+    </justification>
+  </clause>
+
+  <clause id="34">
+    <literal><![CDATA[
+      -in_environment(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      subpopulation(efficient_producers,c1,A)
+    ]]></literal>
+    <justification jstring="[resolve(1,a,6,a)].">
+      <j1 rule="resolve" parents="1 6"/>
+    </justification>
+  </clause>
+
+  <clause id="35">
+    <literal><![CDATA[
+      -in_environment(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(B,c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      -greater(cardinality_at_time(B,A),zero)
+    ]]></literal>
+    <literal><![CDATA[
+      -constant(cardinality_at_time(B,A))
+    ]]></literal>
+    <literal><![CDATA[
+      growth_rate(B,A) = zero
+    ]]></literal>
+    <justification jstring="[resolve(1,a,7,a)].">
+      <j1 rule="resolve" parents="1 7"/>
+    </justification>
+  </clause>
+
+  <clause id="36">
+    <literal><![CDATA[
+      -in_environment(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(B,c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      -greater(cardinality_at_time(B,A),zero)
+    ]]></literal>
+    <literal><![CDATA[
+      -increases(cardinality_at_time(B,A))
+    ]]></literal>
+    <literal><![CDATA[
+      greater(growth_rate(B,A),zero)
+    ]]></literal>
+    <justification jstring="[resolve(1,a,8,a)].">
+      <j1 rule="resolve" parents="1 8"/>
+    </justification>
+  </clause>
+
+  <clause id="38">
+    <literal><![CDATA[
+      -subpopulations(first_movers,efficient_producers,c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      greater(cardinality_at_time(first_movers,A),zero)
+    ]]></literal>
+    <justification jstring="[resolve(1,a,10,a)].">
+      <j1 rule="resolve" parents="1 10"/>
+    </justification>
+  </clause>
+
+  <clause id="39">
+    <literal><![CDATA[
+      -subpopulations(first_movers,efficient_producers,c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      greater(cardinality_at_time(efficient_producers,A),zero)
+    ]]></literal>
+    <justification jstring="[resolve(1,a,11,a)].">
+      <j1 rule="resolve" parents="1 11"/>
+    </justification>
+  </clause>
+
+  <clause id="40">
+    <literal><![CDATA[
+      -subpopulations(first_movers,efficient_producers,c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      in_environment(c1,A)
+    ]]></literal>
+    <justification jstring="[resolve(1,a,12,a)].">
+      <j1 rule="resolve" parents="1 12"/>
+    </justification>
+  </clause>
+
+  <clause id="54">
+    <literal><![CDATA[
+      greater(cardinality_at_time(first_movers,c2),zero)
+    ]]></literal>
+    <justification jstring="[resolve(38,a,22,a)].">
+      <j1 rule="resolve" parents="38 22"/>
+    </justification>
+  </clause>
+
+  <clause id="55">
+    <literal><![CDATA[
+      greater(cardinality_at_time(efficient_producers,c2),zero)
+    ]]></literal>
+    <justification jstring="[resolve(39,a,22,a)].">
+      <j1 rule="resolve" parents="39 22"/>
+    </justification>
+  </clause>
+
+  <clause id="56">
+    <literal><![CDATA[
+      in_environment(c1,c2)
+    ]]></literal>
+    <justification jstring="[resolve(40,a,22,a)].">
+      <j1 rule="resolve" parents="40 22"/>
+    </justification>
+  </clause>
+
+  <clause id="57">
+    <literal><![CDATA[
+      subpopulation(efficient_producers,c1,c2)
+    ]]></literal>
+    <justification jstring="[resolve(56,a,34,a)].">
+      <j1 rule="resolve" parents="56 34"/>
+    </justification>
+  </clause>
+
+  <clause id="58">
+    <literal><![CDATA[
+      subpopulation(first_movers,c1,c2)
+    ]]></literal>
+    <justification jstring="[resolve(56,a,33,a)].">
+      <j1 rule="resolve" parents="56 33"/>
+    </justification>
+  </clause>
+
+  <clause id="60">
+    <literal><![CDATA[
+      -increases(cardinality_at_time(efficient_producers,c2))
+    ]]></literal>
+    <justification jstring="[resolve(57,a,36,b),unit_del(a,56),unit_del(b,55),unit_del(d,26)].">
+      <j1 rule="resolve" parents="57 36"/>
+      <j2 rule="unit_del" parents="56"/>
+      <j2 rule="unit_del" parents="55"/>
+      <j2 rule="unit_del" parents="26"/>
+    </justification>
+  </clause>
+
+  <clause id="63">
+    <literal><![CDATA[
+      number_of_organizations(c1,c2) = sum(cardinality_at_time(first_movers,c2),cardinality_at_time(efficient_producers,c2))
+    ]]></literal>
+    <justification jstring="[resolve(57,a,30,b),xx(a)].">
+      <j1 rule="resolve" parents="57 30"/>
+      <j2 rule="xx"/>
+    </justification>
+  </clause>
+
+  <clause id="74">
+    <literal><![CDATA[
+      constant(sum(cardinality_at_time(first_movers,c2),cardinality_at_time(efficient_producers,c2)))
+    ]]></literal>
+    <justification jstring="[back_rewrite(23),rewrite([63(3)])].">
+      <j1 rule="back_rewrite" parents="23"/>
+      <j2 rule="rewrite" parents="63"/>
+    </justification>
+  </clause>
+
+  <clause id="76">
+    <literal><![CDATA[
+      -increases(cardinality_at_time(first_movers,c2))
+    ]]></literal>
+    <justification jstring="[resolve(58,a,36,b),unit_del(a,56),unit_del(b,54),unit_del(d,25)].">
+      <j1 rule="resolve" parents="58 36"/>
+      <j2 rule="unit_del" parents="56"/>
+      <j2 rule="unit_del" parents="54"/>
+      <j2 rule="unit_del" parents="25"/>
+    </justification>
+  </clause>
+
+  <clause id="77">
+    <literal><![CDATA[
+      -constant(cardinality_at_time(first_movers,c2))
+    ]]></literal>
+    <justification jstring="[resolve(58,a,35,b),unit_del(a,56),unit_del(b,54),unit_del(d,24)].">
+      <j1 rule="resolve" parents="58 35"/>
+      <j2 rule="unit_del" parents="56"/>
+      <j2 rule="unit_del" parents="54"/>
+      <j2 rule="unit_del" parents="24"/>
+    </justification>
+  </clause>
+
+  <clause id="80">
+    <literal><![CDATA[
+      $F
+    ]]></literal>
+    <justification jstring="[ur(15,b,77,a,c,76,a,d,xx,e,60,a),unit_del(a,74)].">
+      <j1 rule="ur" parents="15 77 76 60"/>
+      <j2 rule="unit_del" parents="74"/>
+    </justification>
+  </clause>
+
+</proof>
+
+<proof number="2" length="35" max_count="23">
+
+<comments><![CDATA[
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 35.
+% Level of proof is 6.
+% Maximum clause weight is 21.000.
+% Given clauses 36.
+
+]]></comments>
+
+  <clause id="1" type="assumption">
+    <literal><![CDATA[
+      environment(c1)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="3" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      efficient_producers != B
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(B,A,C)
+    ]]></literal>
+    <literal><![CDATA[
+      sum(cardinality_at_time(first_movers,C),cardinality_at_time(efficient_producers,C)) = number_of_organizations(A,C)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="5" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -in_environment(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      subpopulation(first_movers,A,B)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="6" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -in_environment(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      subpopulation(efficient_producers,A,B)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="7" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -in_environment(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(C,A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -greater(cardinality_at_time(C,B),zero)
+    ]]></literal>
+    <literal><![CDATA[
+      -constant(cardinality_at_time(C,B))
+    ]]></literal>
+    <literal><![CDATA[
+      growth_rate(C,B) = zero
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="8" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -in_environment(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(C,A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -greater(cardinality_at_time(C,B),zero)
+    ]]></literal>
+    <literal><![CDATA[
+      -increases(cardinality_at_time(C,B))
+    ]]></literal>
+    <literal><![CDATA[
+      greater(growth_rate(C,B),zero)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="9" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -in_environment(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(C,A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -greater(cardinality_at_time(C,B),zero)
+    ]]></literal>
+    <literal><![CDATA[
+      -decreases(cardinality_at_time(C,B))
+    ]]></literal>
+    <literal><![CDATA[
+      greater(zero,growth_rate(C,B))
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="10" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulations(first_movers,efficient_producers,A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      greater(cardinality_at_time(first_movers,B),zero)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="12" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulations(first_movers,efficient_producers,A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      in_environment(A,B)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="14" type="assumption">
+    <literal><![CDATA[
+      -constant(A)
+    ]]></literal>
+    <literal><![CDATA[
+      constant(B)
+    ]]></literal>
+    <literal><![CDATA[
+      increases(B)
+    ]]></literal>
+    <literal><![CDATA[
+      decreases(B)
+    ]]></literal>
+    <literal><![CDATA[
+      sum(B,C) != A
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="22" type="assumption">
+    <literal><![CDATA[
+      subpopulations(first_movers,efficient_producers,c1,c2)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="23" type="assumption">
+    <literal><![CDATA[
+      constant(number_of_organizations(c1,c2))
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="24" type="assumption">
+    <literal><![CDATA[
+      growth_rate(first_movers,c2) != zero
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="25" type="assumption">
+    <literal><![CDATA[
+      -greater(growth_rate(first_movers,c2),zero)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="26" type="assumption">
+    <literal><![CDATA[
+      -greater(zero,growth_rate(first_movers,c2))
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="29">
+    <literal><![CDATA[
+      efficient_producers != A
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(A,c1,B)
+    ]]></literal>
+    <literal><![CDATA[
+      sum(cardinality_at_time(first_movers,B),cardinality_at_time(efficient_producers,B)) = number_of_organizations(c1,B)
+    ]]></literal>
+    <justification jstring="[resolve(1,a,3,a)].">
+      <j1 rule="resolve" parents="1 3"/>
+    </justification>
+  </clause>
+
+  <clause id="30">
+    <literal><![CDATA[
+      efficient_producers != A
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(A,c1,B)
+    ]]></literal>
+    <literal><![CDATA[
+      number_of_organizations(c1,B) = sum(cardinality_at_time(first_movers,B),cardinality_at_time(efficient_producers,B))
+    ]]></literal>
+    <justification jstring="[copy(29),flip(c)].">
+      <j1 rule="copy" parents="29"/>
+      <j2 rule="flip"/>
+    </justification>
+  </clause>
+
+  <clause id="33">
+    <literal><![CDATA[
+      -in_environment(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      subpopulation(first_movers,c1,A)
+    ]]></literal>
+    <justification jstring="[resolve(1,a,5,a)].">
+      <j1 rule="resolve" parents="1 5"/>
+    </justification>
+  </clause>
+
+  <clause id="34">
+    <literal><![CDATA[
+      -in_environment(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      subpopulation(efficient_producers,c1,A)
+    ]]></literal>
+    <justification jstring="[resolve(1,a,6,a)].">
+      <j1 rule="resolve" parents="1 6"/>
+    </justification>
+  </clause>
+
+  <clause id="35">
+    <literal><![CDATA[
+      -in_environment(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(B,c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      -greater(cardinality_at_time(B,A),zero)
+    ]]></literal>
+    <literal><![CDATA[
+      -constant(cardinality_at_time(B,A))
+    ]]></literal>
+    <literal><![CDATA[
+      growth_rate(B,A) = zero
+    ]]></literal>
+    <justification jstring="[resolve(1,a,7,a)].">
+      <j1 rule="resolve" parents="1 7"/>
+    </justification>
+  </clause>
+
+  <clause id="36">
+    <literal><![CDATA[
+      -in_environment(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(B,c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      -greater(cardinality_at_time(B,A),zero)
+    ]]></literal>
+    <literal><![CDATA[
+      -increases(cardinality_at_time(B,A))
+    ]]></literal>
+    <literal><![CDATA[
+      greater(growth_rate(B,A),zero)
+    ]]></literal>
+    <justification jstring="[resolve(1,a,8,a)].">
+      <j1 rule="resolve" parents="1 8"/>
+    </justification>
+  </clause>
+
+  <clause id="37">
+    <literal><![CDATA[
+      -in_environment(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(B,c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      -greater(cardinality_at_time(B,A),zero)
+    ]]></literal>
+    <literal><![CDATA[
+      -decreases(cardinality_at_time(B,A))
+    ]]></literal>
+    <literal><![CDATA[
+      greater(zero,growth_rate(B,A))
+    ]]></literal>
+    <justification jstring="[resolve(1,a,9,a)].">
+      <j1 rule="resolve" parents="1 9"/>
+    </justification>
+  </clause>
+
+  <clause id="38">
+    <literal><![CDATA[
+      -subpopulations(first_movers,efficient_producers,c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      greater(cardinality_at_time(first_movers,A),zero)
+    ]]></literal>
+    <justification jstring="[resolve(1,a,10,a)].">
+      <j1 rule="resolve" parents="1 10"/>
+    </justification>
+  </clause>
+
+  <clause id="40">
+    <literal><![CDATA[
+      -subpopulations(first_movers,efficient_producers,c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      in_environment(c1,A)
+    ]]></literal>
+    <justification jstring="[resolve(1,a,12,a)].">
+      <j1 rule="resolve" parents="1 12"/>
+    </justification>
+  </clause>
+
+  <clause id="54">
+    <literal><![CDATA[
+      greater(cardinality_at_time(first_movers,c2),zero)
+    ]]></literal>
+    <justification jstring="[resolve(38,a,22,a)].">
+      <j1 rule="resolve" parents="38 22"/>
+    </justification>
+  </clause>
+
+  <clause id="56">
+    <literal><![CDATA[
+      in_environment(c1,c2)
+    ]]></literal>
+    <justification jstring="[resolve(40,a,22,a)].">
+      <j1 rule="resolve" parents="40 22"/>
+    </justification>
+  </clause>
+
+  <clause id="57">
+    <literal><![CDATA[
+      subpopulation(efficient_producers,c1,c2)
+    ]]></literal>
+    <justification jstring="[resolve(56,a,34,a)].">
+      <j1 rule="resolve" parents="56 34"/>
+    </justification>
+  </clause>
+
+  <clause id="58">
+    <literal><![CDATA[
+      subpopulation(first_movers,c1,c2)
+    ]]></literal>
+    <justification jstring="[resolve(56,a,33,a)].">
+      <j1 rule="resolve" parents="56 33"/>
+    </justification>
+  </clause>
+
+  <clause id="63">
+    <literal><![CDATA[
+      number_of_organizations(c1,c2) = sum(cardinality_at_time(first_movers,c2),cardinality_at_time(efficient_producers,c2))
+    ]]></literal>
+    <justification jstring="[resolve(57,a,30,b),xx(a)].">
+      <j1 rule="resolve" parents="57 30"/>
+      <j2 rule="xx"/>
+    </justification>
+  </clause>
+
+  <clause id="74">
+    <literal><![CDATA[
+      constant(sum(cardinality_at_time(first_movers,c2),cardinality_at_time(efficient_producers,c2)))
+    ]]></literal>
+    <justification jstring="[back_rewrite(23),rewrite([63(3)])].">
+      <j1 rule="back_rewrite" parents="23"/>
+      <j2 rule="rewrite" parents="63"/>
+    </justification>
+  </clause>
+
+  <clause id="75">
+    <literal><![CDATA[
+      -decreases(cardinality_at_time(first_movers,c2))
+    ]]></literal>
+    <justification jstring="[resolve(58,a,37,b),unit_del(a,56),unit_del(b,54),unit_del(d,26)].">
+      <j1 rule="resolve" parents="58 37"/>
+      <j2 rule="unit_del" parents="56"/>
+      <j2 rule="unit_del" parents="54"/>
+      <j2 rule="unit_del" parents="26"/>
+    </justification>
+  </clause>
+
+  <clause id="76">
+    <literal><![CDATA[
+      -increases(cardinality_at_time(first_movers,c2))
+    ]]></literal>
+    <justification jstring="[resolve(58,a,36,b),unit_del(a,56),unit_del(b,54),unit_del(d,25)].">
+      <j1 rule="resolve" parents="58 36"/>
+      <j2 rule="unit_del" parents="56"/>
+      <j2 rule="unit_del" parents="54"/>
+      <j2 rule="unit_del" parents="25"/>
+    </justification>
+  </clause>
+
+  <clause id="77">
+    <literal><![CDATA[
+      -constant(cardinality_at_time(first_movers,c2))
+    ]]></literal>
+    <justification jstring="[resolve(58,a,35,b),unit_del(a,56),unit_del(b,54),unit_del(d,24)].">
+      <j1 rule="resolve" parents="58 35"/>
+      <j2 rule="unit_del" parents="56"/>
+      <j2 rule="unit_del" parents="54"/>
+      <j2 rule="unit_del" parents="24"/>
+    </justification>
+  </clause>
+
+  <clause id="80">
+    <literal><![CDATA[
+      -constant(sum(cardinality_at_time(first_movers,c2),A))
+    ]]></literal>
+    <justification jstring="[ur(14,b,77,a,c,76,a,d,75,a,e,xx)].">
+      <j1 rule="ur" parents="14 77 76 75"/>
+    </justification>
+  </clause>
+
+  <clause id="81">
+    <literal><![CDATA[
+      $F
+    ]]></literal>
+    <justification jstring="[resolve(80,a,74,a)].">
+      <j1 rule="resolve" parents="80 74"/>
+    </justification>
+  </clause>
+
+</proof>
+
+<proof number="3" length="37" max_count="23">
+
+<comments><![CDATA[
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 37.
+% Level of proof is 6.
+% Maximum clause weight is 21.000.
+% Given clauses 36.
+
+]]></comments>
+
+  <clause id="1" type="assumption">
+    <literal><![CDATA[
+      environment(c1)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="3" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      efficient_producers != B
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(B,A,C)
+    ]]></literal>
+    <literal><![CDATA[
+      sum(cardinality_at_time(first_movers,C),cardinality_at_time(efficient_producers,C)) = number_of_organizations(A,C)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="5" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -in_environment(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      subpopulation(first_movers,A,B)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="6" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -in_environment(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      subpopulation(efficient_producers,A,B)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="7" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -in_environment(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(C,A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -greater(cardinality_at_time(C,B),zero)
+    ]]></literal>
+    <literal><![CDATA[
+      -constant(cardinality_at_time(C,B))
+    ]]></literal>
+    <literal><![CDATA[
+      growth_rate(C,B) = zero
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="8" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -in_environment(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(C,A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -greater(cardinality_at_time(C,B),zero)
+    ]]></literal>
+    <literal><![CDATA[
+      -increases(cardinality_at_time(C,B))
+    ]]></literal>
+    <literal><![CDATA[
+      greater(growth_rate(C,B),zero)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="9" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -in_environment(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(C,A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -greater(cardinality_at_time(C,B),zero)
+    ]]></literal>
+    <literal><![CDATA[
+      -decreases(cardinality_at_time(C,B))
+    ]]></literal>
+    <literal><![CDATA[
+      greater(zero,growth_rate(C,B))
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="10" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulations(first_movers,efficient_producers,A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      greater(cardinality_at_time(first_movers,B),zero)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="11" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulations(first_movers,efficient_producers,A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      greater(cardinality_at_time(efficient_producers,B),zero)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="12" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulations(first_movers,efficient_producers,A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      in_environment(A,B)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="17" type="assumption">
+    <literal><![CDATA[
+      -constant(A)
+    ]]></literal>
+    <literal><![CDATA[
+      constant(B)
+    ]]></literal>
+    <literal><![CDATA[
+      sum(B,C) != A
+    ]]></literal>
+    <literal><![CDATA[
+      decreases(C)
+    ]]></literal>
+    <literal><![CDATA[
+      increases(C)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="22" type="assumption">
+    <literal><![CDATA[
+      subpopulations(first_movers,efficient_producers,c1,c2)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="23" type="assumption">
+    <literal><![CDATA[
+      constant(number_of_organizations(c1,c2))
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="24" type="assumption">
+    <literal><![CDATA[
+      growth_rate(first_movers,c2) != zero
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="25" type="assumption">
+    <literal><![CDATA[
+      -greater(zero,growth_rate(efficient_producers,c2))
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="26" type="assumption">
+    <literal><![CDATA[
+      -greater(growth_rate(efficient_producers,c2),zero)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="29">
+    <literal><![CDATA[
+      efficient_producers != A
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(A,c1,B)
+    ]]></literal>
+    <literal><![CDATA[
+      sum(cardinality_at_time(first_movers,B),cardinality_at_time(efficient_producers,B)) = number_of_organizations(c1,B)
+    ]]></literal>
+    <justification jstring="[resolve(1,a,3,a)].">
+      <j1 rule="resolve" parents="1 3"/>
+    </justification>
+  </clause>
+
+  <clause id="30">
+    <literal><![CDATA[
+      efficient_producers != A
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(A,c1,B)
+    ]]></literal>
+    <literal><![CDATA[
+      number_of_organizations(c1,B) = sum(cardinality_at_time(first_movers,B),cardinality_at_time(efficient_producers,B))
+    ]]></literal>
+    <justification jstring="[copy(29),flip(c)].">
+      <j1 rule="copy" parents="29"/>
+      <j2 rule="flip"/>
+    </justification>
+  </clause>
+
+  <clause id="33">
+    <literal><![CDATA[
+      -in_environment(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      subpopulation(first_movers,c1,A)
+    ]]></literal>
+    <justification jstring="[resolve(1,a,5,a)].">
+      <j1 rule="resolve" parents="1 5"/>
+    </justification>
+  </clause>
+
+  <clause id="34">
+    <literal><![CDATA[
+      -in_environment(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      subpopulation(efficient_producers,c1,A)
+    ]]></literal>
+    <justification jstring="[resolve(1,a,6,a)].">
+      <j1 rule="resolve" parents="1 6"/>
+    </justification>
+  </clause>
+
+  <clause id="35">
+    <literal><![CDATA[
+      -in_environment(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(B,c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      -greater(cardinality_at_time(B,A),zero)
+    ]]></literal>
+    <literal><![CDATA[
+      -constant(cardinality_at_time(B,A))
+    ]]></literal>
+    <literal><![CDATA[
+      growth_rate(B,A) = zero
+    ]]></literal>
+    <justification jstring="[resolve(1,a,7,a)].">
+      <j1 rule="resolve" parents="1 7"/>
+    </justification>
+  </clause>
+
+  <clause id="36">
+    <literal><![CDATA[
+      -in_environment(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(B,c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      -greater(cardinality_at_time(B,A),zero)
+    ]]></literal>
+    <literal><![CDATA[
+      -increases(cardinality_at_time(B,A))
+    ]]></literal>
+    <literal><![CDATA[
+      greater(growth_rate(B,A),zero)
+    ]]></literal>
+    <justification jstring="[resolve(1,a,8,a)].">
+      <j1 rule="resolve" parents="1 8"/>
+    </justification>
+  </clause>
+
+  <clause id="37">
+    <literal><![CDATA[
+      -in_environment(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(B,c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      -greater(cardinality_at_time(B,A),zero)
+    ]]></literal>
+    <literal><![CDATA[
+      -decreases(cardinality_at_time(B,A))
+    ]]></literal>
+    <literal><![CDATA[
+      greater(zero,growth_rate(B,A))
+    ]]></literal>
+    <justification jstring="[resolve(1,a,9,a)].">
+      <j1 rule="resolve" parents="1 9"/>
+    </justification>
+  </clause>
+
+  <clause id="38">
+    <literal><![CDATA[
+      -subpopulations(first_movers,efficient_producers,c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      greater(cardinality_at_time(first_movers,A),zero)
+    ]]></literal>
+    <justification jstring="[resolve(1,a,10,a)].">
+      <j1 rule="resolve" parents="1 10"/>
+    </justification>
+  </clause>
+
+  <clause id="39">
+    <literal><![CDATA[
+      -subpopulations(first_movers,efficient_producers,c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      greater(cardinality_at_time(efficient_producers,A),zero)
+    ]]></literal>
+    <justification jstring="[resolve(1,a,11,a)].">
+      <j1 rule="resolve" parents="1 11"/>
+    </justification>
+  </clause>
+
+  <clause id="40">
+    <literal><![CDATA[
+      -subpopulations(first_movers,efficient_producers,c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      in_environment(c1,A)
+    ]]></literal>
+    <justification jstring="[resolve(1,a,12,a)].">
+      <j1 rule="resolve" parents="1 12"/>
+    </justification>
+  </clause>
+
+  <clause id="54">
+    <literal><![CDATA[
+      greater(cardinality_at_time(first_movers,c2),zero)
+    ]]></literal>
+    <justification jstring="[resolve(38,a,22,a)].">
+      <j1 rule="resolve" parents="38 22"/>
+    </justification>
+  </clause>
+
+  <clause id="55">
+    <literal><![CDATA[
+      greater(cardinality_at_time(efficient_producers,c2),zero)
+    ]]></literal>
+    <justification jstring="[resolve(39,a,22,a)].">
+      <j1 rule="resolve" parents="39 22"/>
+    </justification>
+  </clause>
+
+  <clause id="56">
+    <literal><![CDATA[
+      in_environment(c1,c2)
+    ]]></literal>
+    <justification jstring="[resolve(40,a,22,a)].">
+      <j1 rule="resolve" parents="40 22"/>
+    </justification>
+  </clause>
+
+  <clause id="57">
+    <literal><![CDATA[
+      subpopulation(efficient_producers,c1,c2)
+    ]]></literal>
+    <justification jstring="[resolve(56,a,34,a)].">
+      <j1 rule="resolve" parents="56 34"/>
+    </justification>
+  </clause>
+
+  <clause id="58">
+    <literal><![CDATA[
+      subpopulation(first_movers,c1,c2)
+    ]]></literal>
+    <justification jstring="[resolve(56,a,33,a)].">
+      <j1 rule="resolve" parents="56 33"/>
+    </justification>
+  </clause>
+
+  <clause id="59">
+    <literal><![CDATA[
+      -decreases(cardinality_at_time(efficient_producers,c2))
+    ]]></literal>
+    <justification jstring="[resolve(57,a,37,b),unit_del(a,56),unit_del(b,55),unit_del(d,25)].">
+      <j1 rule="resolve" parents="57 37"/>
+      <j2 rule="unit_del" parents="56"/>
+      <j2 rule="unit_del" parents="55"/>
+      <j2 rule="unit_del" parents="25"/>
+    </justification>
+  </clause>
+
+  <clause id="60">
+    <literal><![CDATA[
+      -increases(cardinality_at_time(efficient_producers,c2))
+    ]]></literal>
+    <justification jstring="[resolve(57,a,36,b),unit_del(a,56),unit_del(b,55),unit_del(d,26)].">
+      <j1 rule="resolve" parents="57 36"/>
+      <j2 rule="unit_del" parents="56"/>
+      <j2 rule="unit_del" parents="55"/>
+      <j2 rule="unit_del" parents="26"/>
+    </justification>
+  </clause>
+
+  <clause id="63">
+    <literal><![CDATA[
+      number_of_organizations(c1,c2) = sum(cardinality_at_time(first_movers,c2),cardinality_at_time(efficient_producers,c2))
+    ]]></literal>
+    <justification jstring="[resolve(57,a,30,b),xx(a)].">
+      <j1 rule="resolve" parents="57 30"/>
+      <j2 rule="xx"/>
+    </justification>
+  </clause>
+
+  <clause id="74">
+    <literal><![CDATA[
+      constant(sum(cardinality_at_time(first_movers,c2),cardinality_at_time(efficient_producers,c2)))
+    ]]></literal>
+    <justification jstring="[back_rewrite(23),rewrite([63(3)])].">
+      <j1 rule="back_rewrite" parents="23"/>
+      <j2 rule="rewrite" parents="63"/>
+    </justification>
+  </clause>
+
+  <clause id="77">
+    <literal><![CDATA[
+      -constant(cardinality_at_time(first_movers,c2))
+    ]]></literal>
+    <justification jstring="[resolve(58,a,35,b),unit_del(a,56),unit_del(b,54),unit_del(d,24)].">
+      <j1 rule="resolve" parents="58 35"/>
+      <j2 rule="unit_del" parents="56"/>
+      <j2 rule="unit_del" parents="54"/>
+      <j2 rule="unit_del" parents="24"/>
+    </justification>
+  </clause>
+
+  <clause id="79">
+    <literal><![CDATA[
+      $F
+    ]]></literal>
+    <justification jstring="[ur(17,b,77,a,c,xx,d,59,a,e,60,a),unit_del(a,74)].">
+      <j1 rule="ur" parents="17 77 59 60"/>
+      <j2 rule="unit_del" parents="74"/>
+    </justification>
+  </clause>
+
+</proof>
+
+<proof number="4" length="35" max_count="23">
+
+<comments><![CDATA[
+% Proof 1 at 0.01 (+ 0.00) seconds.
+% Length of proof is 35.
+% Level of proof is 6.
+% Maximum clause weight is 21.000.
+% Given clauses 36.
+
+]]></comments>
+
+  <clause id="1" type="assumption">
+    <literal><![CDATA[
+      environment(c1)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="3" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      efficient_producers != B
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(B,A,C)
+    ]]></literal>
+    <literal><![CDATA[
+      sum(cardinality_at_time(first_movers,C),cardinality_at_time(efficient_producers,C)) = number_of_organizations(A,C)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="5" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -in_environment(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      subpopulation(first_movers,A,B)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="6" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -in_environment(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      subpopulation(efficient_producers,A,B)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="7" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -in_environment(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(C,A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -greater(cardinality_at_time(C,B),zero)
+    ]]></literal>
+    <literal><![CDATA[
+      -constant(cardinality_at_time(C,B))
+    ]]></literal>
+    <literal><![CDATA[
+      growth_rate(C,B) = zero
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="9" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -in_environment(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(C,A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -greater(cardinality_at_time(C,B),zero)
+    ]]></literal>
+    <literal><![CDATA[
+      -decreases(cardinality_at_time(C,B))
+    ]]></literal>
+    <literal><![CDATA[
+      greater(zero,growth_rate(C,B))
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="10" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulations(first_movers,efficient_producers,A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      greater(cardinality_at_time(first_movers,B),zero)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="11" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulations(first_movers,efficient_producers,A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      greater(cardinality_at_time(efficient_producers,B),zero)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="12" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulations(first_movers,efficient_producers,A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      in_environment(A,B)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="16" type="assumption">
+    <literal><![CDATA[
+      -constant(A)
+    ]]></literal>
+    <literal><![CDATA[
+      constant(B)
+    ]]></literal>
+    <literal><![CDATA[
+      decreases(B)
+    ]]></literal>
+    <literal><![CDATA[
+      sum(B,C) != A
+    ]]></literal>
+    <literal><![CDATA[
+      decreases(C)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="22" type="assumption">
+    <literal><![CDATA[
+      subpopulations(first_movers,efficient_producers,c1,c2)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="23" type="assumption">
+    <literal><![CDATA[
+      constant(number_of_organizations(c1,c2))
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="24" type="assumption">
+    <literal><![CDATA[
+      growth_rate(first_movers,c2) != zero
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="25" type="assumption">
+    <literal><![CDATA[
+      -greater(zero,growth_rate(efficient_producers,c2))
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="26" type="assumption">
+    <literal><![CDATA[
+      -greater(zero,growth_rate(first_movers,c2))
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="29">
+    <literal><![CDATA[
+      efficient_producers != A
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(A,c1,B)
+    ]]></literal>
+    <literal><![CDATA[
+      sum(cardinality_at_time(first_movers,B),cardinality_at_time(efficient_producers,B)) = number_of_organizations(c1,B)
+    ]]></literal>
+    <justification jstring="[resolve(1,a,3,a)].">
+      <j1 rule="resolve" parents="1 3"/>
+    </justification>
+  </clause>
+
+  <clause id="30">
+    <literal><![CDATA[
+      efficient_producers != A
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(A,c1,B)
+    ]]></literal>
+    <literal><![CDATA[
+      number_of_organizations(c1,B) = sum(cardinality_at_time(first_movers,B),cardinality_at_time(efficient_producers,B))
+    ]]></literal>
+    <justification jstring="[copy(29),flip(c)].">
+      <j1 rule="copy" parents="29"/>
+      <j2 rule="flip"/>
+    </justification>
+  </clause>
+
+  <clause id="33">
+    <literal><![CDATA[
+      -in_environment(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      subpopulation(first_movers,c1,A)
+    ]]></literal>
+    <justification jstring="[resolve(1,a,5,a)].">
+      <j1 rule="resolve" parents="1 5"/>
+    </justification>
+  </clause>
+
+  <clause id="34">
+    <literal><![CDATA[
+      -in_environment(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      subpopulation(efficient_producers,c1,A)
+    ]]></literal>
+    <justification jstring="[resolve(1,a,6,a)].">
+      <j1 rule="resolve" parents="1 6"/>
+    </justification>
+  </clause>
+
+  <clause id="35">
+    <literal><![CDATA[
+      -in_environment(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(B,c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      -greater(cardinality_at_time(B,A),zero)
+    ]]></literal>
+    <literal><![CDATA[
+      -constant(cardinality_at_time(B,A))
+    ]]></literal>
+    <literal><![CDATA[
+      growth_rate(B,A) = zero
+    ]]></literal>
+    <justification jstring="[resolve(1,a,7,a)].">
+      <j1 rule="resolve" parents="1 7"/>
+    </justification>
+  </clause>
+
+  <clause id="37">
+    <literal><![CDATA[
+      -in_environment(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(B,c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      -greater(cardinality_at_time(B,A),zero)
+    ]]></literal>
+    <literal><![CDATA[
+      -decreases(cardinality_at_time(B,A))
+    ]]></literal>
+    <literal><![CDATA[
+      greater(zero,growth_rate(B,A))
+    ]]></literal>
+    <justification jstring="[resolve(1,a,9,a)].">
+      <j1 rule="resolve" parents="1 9"/>
+    </justification>
+  </clause>
+
+  <clause id="38">
+    <literal><![CDATA[
+      -subpopulations(first_movers,efficient_producers,c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      greater(cardinality_at_time(first_movers,A),zero)
+    ]]></literal>
+    <justification jstring="[resolve(1,a,10,a)].">
+      <j1 rule="resolve" parents="1 10"/>
+    </justification>
+  </clause>
+
+  <clause id="39">
+    <literal><![CDATA[
+      -subpopulations(first_movers,efficient_producers,c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      greater(cardinality_at_time(efficient_producers,A),zero)
+    ]]></literal>
+    <justification jstring="[resolve(1,a,11,a)].">
+      <j1 rule="resolve" parents="1 11"/>
+    </justification>
+  </clause>
+
+  <clause id="40">
+    <literal><![CDATA[
+      -subpopulations(first_movers,efficient_producers,c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      in_environment(c1,A)
+    ]]></literal>
+    <justification jstring="[resolve(1,a,12,a)].">
+      <j1 rule="resolve" parents="1 12"/>
+    </justification>
+  </clause>
+
+  <clause id="54">
+    <literal><![CDATA[
+      greater(cardinality_at_time(first_movers,c2),zero)
+    ]]></literal>
+    <justification jstring="[resolve(38,a,22,a)].">
+      <j1 rule="resolve" parents="38 22"/>
+    </justification>
+  </clause>
+
+  <clause id="55">
+    <literal><![CDATA[
+      greater(cardinality_at_time(efficient_producers,c2),zero)
+    ]]></literal>
+    <justification jstring="[resolve(39,a,22,a)].">
+      <j1 rule="resolve" parents="39 22"/>
+    </justification>
+  </clause>
+
+  <clause id="56">
+    <literal><![CDATA[
+      in_environment(c1,c2)
+    ]]></literal>
+    <justification jstring="[resolve(40,a,22,a)].">
+      <j1 rule="resolve" parents="40 22"/>
+    </justification>
+  </clause>
+
+  <clause id="57">
+    <literal><![CDATA[
+      subpopulation(efficient_producers,c1,c2)
+    ]]></literal>
+    <justification jstring="[resolve(56,a,34,a)].">
+      <j1 rule="resolve" parents="56 34"/>
+    </justification>
+  </clause>
+
+  <clause id="58">
+    <literal><![CDATA[
+      subpopulation(first_movers,c1,c2)
+    ]]></literal>
+    <justification jstring="[resolve(56,a,33,a)].">
+      <j1 rule="resolve" parents="56 33"/>
+    </justification>
+  </clause>
+
+  <clause id="59">
+    <literal><![CDATA[
+      -decreases(cardinality_at_time(efficient_producers,c2))
+    ]]></literal>
+    <justification jstring="[resolve(57,a,37,b),unit_del(a,56),unit_del(b,55),unit_del(d,25)].">
+      <j1 rule="resolve" parents="57 37"/>
+      <j2 rule="unit_del" parents="56"/>
+      <j2 rule="unit_del" parents="55"/>
+      <j2 rule="unit_del" parents="25"/>
+    </justification>
+  </clause>
+
+  <clause id="63">
+    <literal><![CDATA[
+      number_of_organizations(c1,c2) = sum(cardinality_at_time(first_movers,c2),cardinality_at_time(efficient_producers,c2))
+    ]]></literal>
+    <justification jstring="[resolve(57,a,30,b),xx(a)].">
+      <j1 rule="resolve" parents="57 30"/>
+      <j2 rule="xx"/>
+    </justification>
+  </clause>
+
+  <clause id="74">
+    <literal><![CDATA[
+      constant(sum(cardinality_at_time(first_movers,c2),cardinality_at_time(efficient_producers,c2)))
+    ]]></literal>
+    <justification jstring="[back_rewrite(23),rewrite([63(3)])].">
+      <j1 rule="back_rewrite" parents="23"/>
+      <j2 rule="rewrite" parents="63"/>
+    </justification>
+  </clause>
+
+  <clause id="75">
+    <literal><![CDATA[
+      -decreases(cardinality_at_time(first_movers,c2))
+    ]]></literal>
+    <justification jstring="[resolve(58,a,37,b),unit_del(a,56),unit_del(b,54),unit_del(d,26)].">
+      <j1 rule="resolve" parents="58 37"/>
+      <j2 rule="unit_del" parents="56"/>
+      <j2 rule="unit_del" parents="54"/>
+      <j2 rule="unit_del" parents="26"/>
+    </justification>
+  </clause>
+
+  <clause id="77">
+    <literal><![CDATA[
+      -constant(cardinality_at_time(first_movers,c2))
+    ]]></literal>
+    <justification jstring="[resolve(58,a,35,b),unit_del(a,56),unit_del(b,54),unit_del(d,24)].">
+      <j1 rule="resolve" parents="58 35"/>
+      <j2 rule="unit_del" parents="56"/>
+      <j2 rule="unit_del" parents="54"/>
+      <j2 rule="unit_del" parents="24"/>
+    </justification>
+  </clause>
+
+  <clause id="80">
+    <literal><![CDATA[
+      $F
+    ]]></literal>
+    <justification jstring="[ur(16,b,77,a,c,75,a,d,xx,e,59,a),unit_del(a,74)].">
+      <j1 rule="ur" parents="16 77 75 59"/>
+      <j2 rule="unit_del" parents="74"/>
+    </justification>
+  </clause>
+
+</proof>
+
+<proof number="5" length="35" max_count="23">
+
+<comments><![CDATA[
+% Proof 1 at 0.01 (+ 0.00) seconds.
+% Length of proof is 35.
+% Level of proof is 6.
+% Maximum clause weight is 21.000.
+% Given clauses 36.
+
+]]></comments>
+
+  <clause id="1" type="assumption">
+    <literal><![CDATA[
+      environment(c1)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="3" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      efficient_producers != B
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(B,A,C)
+    ]]></literal>
+    <literal><![CDATA[
+      sum(cardinality_at_time(first_movers,C),cardinality_at_time(efficient_producers,C)) = number_of_organizations(A,C)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="5" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -in_environment(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      subpopulation(first_movers,A,B)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="6" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -in_environment(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      subpopulation(efficient_producers,A,B)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="7" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -in_environment(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(C,A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -greater(cardinality_at_time(C,B),zero)
+    ]]></literal>
+    <literal><![CDATA[
+      -constant(cardinality_at_time(C,B))
+    ]]></literal>
+    <literal><![CDATA[
+      growth_rate(C,B) = zero
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="8" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -in_environment(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(C,A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -greater(cardinality_at_time(C,B),zero)
+    ]]></literal>
+    <literal><![CDATA[
+      -increases(cardinality_at_time(C,B))
+    ]]></literal>
+    <literal><![CDATA[
+      greater(growth_rate(C,B),zero)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="10" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulations(first_movers,efficient_producers,A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      greater(cardinality_at_time(first_movers,B),zero)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="11" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulations(first_movers,efficient_producers,A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      greater(cardinality_at_time(efficient_producers,B),zero)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="12" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulations(first_movers,efficient_producers,A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      in_environment(A,B)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="19" type="assumption">
+    <literal><![CDATA[
+      -constant(A)
+    ]]></literal>
+    <literal><![CDATA[
+      increases(B)
+    ]]></literal>
+    <literal><![CDATA[
+      sum(B,C) != A
+    ]]></literal>
+    <literal><![CDATA[
+      constant(C)
+    ]]></literal>
+    <literal><![CDATA[
+      increases(C)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="22" type="assumption">
+    <literal><![CDATA[
+      subpopulations(first_movers,efficient_producers,c1,c2)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="23" type="assumption">
+    <literal><![CDATA[
+      constant(number_of_organizations(c1,c2))
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="24" type="assumption">
+    <literal><![CDATA[
+      growth_rate(efficient_producers,c2) != zero
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="25" type="assumption">
+    <literal><![CDATA[
+      -greater(growth_rate(first_movers,c2),zero)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="26" type="assumption">
+    <literal><![CDATA[
+      -greater(growth_rate(efficient_producers,c2),zero)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="29">
+    <literal><![CDATA[
+      efficient_producers != A
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(A,c1,B)
+    ]]></literal>
+    <literal><![CDATA[
+      sum(cardinality_at_time(first_movers,B),cardinality_at_time(efficient_producers,B)) = number_of_organizations(c1,B)
+    ]]></literal>
+    <justification jstring="[resolve(1,a,3,a)].">
+      <j1 rule="resolve" parents="1 3"/>
+    </justification>
+  </clause>
+
+  <clause id="30">
+    <literal><![CDATA[
+      efficient_producers != A
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(A,c1,B)
+    ]]></literal>
+    <literal><![CDATA[
+      number_of_organizations(c1,B) = sum(cardinality_at_time(first_movers,B),cardinality_at_time(efficient_producers,B))
+    ]]></literal>
+    <justification jstring="[copy(29),flip(c)].">
+      <j1 rule="copy" parents="29"/>
+      <j2 rule="flip"/>
+    </justification>
+  </clause>
+
+  <clause id="33">
+    <literal><![CDATA[
+      -in_environment(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      subpopulation(first_movers,c1,A)
+    ]]></literal>
+    <justification jstring="[resolve(1,a,5,a)].">
+      <j1 rule="resolve" parents="1 5"/>
+    </justification>
+  </clause>
+
+  <clause id="34">
+    <literal><![CDATA[
+      -in_environment(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      subpopulation(efficient_producers,c1,A)
+    ]]></literal>
+    <justification jstring="[resolve(1,a,6,a)].">
+      <j1 rule="resolve" parents="1 6"/>
+    </justification>
+  </clause>
+
+  <clause id="35">
+    <literal><![CDATA[
+      -in_environment(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(B,c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      -greater(cardinality_at_time(B,A),zero)
+    ]]></literal>
+    <literal><![CDATA[
+      -constant(cardinality_at_time(B,A))
+    ]]></literal>
+    <literal><![CDATA[
+      growth_rate(B,A) = zero
+    ]]></literal>
+    <justification jstring="[resolve(1,a,7,a)].">
+      <j1 rule="resolve" parents="1 7"/>
+    </justification>
+  </clause>
+
+  <clause id="36">
+    <literal><![CDATA[
+      -in_environment(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(B,c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      -greater(cardinality_at_time(B,A),zero)
+    ]]></literal>
+    <literal><![CDATA[
+      -increases(cardinality_at_time(B,A))
+    ]]></literal>
+    <literal><![CDATA[
+      greater(growth_rate(B,A),zero)
+    ]]></literal>
+    <justification jstring="[resolve(1,a,8,a)].">
+      <j1 rule="resolve" parents="1 8"/>
+    </justification>
+  </clause>
+
+  <clause id="38">
+    <literal><![CDATA[
+      -subpopulations(first_movers,efficient_producers,c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      greater(cardinality_at_time(first_movers,A),zero)
+    ]]></literal>
+    <justification jstring="[resolve(1,a,10,a)].">
+      <j1 rule="resolve" parents="1 10"/>
+    </justification>
+  </clause>
+
+  <clause id="39">
+    <literal><![CDATA[
+      -subpopulations(first_movers,efficient_producers,c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      greater(cardinality_at_time(efficient_producers,A),zero)
+    ]]></literal>
+    <justification jstring="[resolve(1,a,11,a)].">
+      <j1 rule="resolve" parents="1 11"/>
+    </justification>
+  </clause>
+
+  <clause id="40">
+    <literal><![CDATA[
+      -subpopulations(first_movers,efficient_producers,c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      in_environment(c1,A)
+    ]]></literal>
+    <justification jstring="[resolve(1,a,12,a)].">
+      <j1 rule="resolve" parents="1 12"/>
+    </justification>
+  </clause>
+
+  <clause id="54">
+    <literal><![CDATA[
+      greater(cardinality_at_time(first_movers,c2),zero)
+    ]]></literal>
+    <justification jstring="[resolve(38,a,22,a)].">
+      <j1 rule="resolve" parents="38 22"/>
+    </justification>
+  </clause>
+
+  <clause id="55">
+    <literal><![CDATA[
+      greater(cardinality_at_time(efficient_producers,c2),zero)
+    ]]></literal>
+    <justification jstring="[resolve(39,a,22,a)].">
+      <j1 rule="resolve" parents="39 22"/>
+    </justification>
+  </clause>
+
+  <clause id="56">
+    <literal><![CDATA[
+      in_environment(c1,c2)
+    ]]></literal>
+    <justification jstring="[resolve(40,a,22,a)].">
+      <j1 rule="resolve" parents="40 22"/>
+    </justification>
+  </clause>
+
+  <clause id="57">
+    <literal><![CDATA[
+      subpopulation(efficient_producers,c1,c2)
+    ]]></literal>
+    <justification jstring="[resolve(56,a,34,a)].">
+      <j1 rule="resolve" parents="56 34"/>
+    </justification>
+  </clause>
+
+  <clause id="58">
+    <literal><![CDATA[
+      subpopulation(first_movers,c1,c2)
+    ]]></literal>
+    <justification jstring="[resolve(56,a,33,a)].">
+      <j1 rule="resolve" parents="56 33"/>
+    </justification>
+  </clause>
+
+  <clause id="60">
+    <literal><![CDATA[
+      -increases(cardinality_at_time(efficient_producers,c2))
+    ]]></literal>
+    <justification jstring="[resolve(57,a,36,b),unit_del(a,56),unit_del(b,55),unit_del(d,26)].">
+      <j1 rule="resolve" parents="57 36"/>
+      <j2 rule="unit_del" parents="56"/>
+      <j2 rule="unit_del" parents="55"/>
+      <j2 rule="unit_del" parents="26"/>
+    </justification>
+  </clause>
+
+  <clause id="61">
+    <literal><![CDATA[
+      -constant(cardinality_at_time(efficient_producers,c2))
+    ]]></literal>
+    <justification jstring="[resolve(57,a,35,b),unit_del(a,56),unit_del(b,55),unit_del(d,24)].">
+      <j1 rule="resolve" parents="57 35"/>
+      <j2 rule="unit_del" parents="56"/>
+      <j2 rule="unit_del" parents="55"/>
+      <j2 rule="unit_del" parents="24"/>
+    </justification>
+  </clause>
+
+  <clause id="63">
+    <literal><![CDATA[
+      number_of_organizations(c1,c2) = sum(cardinality_at_time(first_movers,c2),cardinality_at_time(efficient_producers,c2))
+    ]]></literal>
+    <justification jstring="[resolve(57,a,30,b),xx(a)].">
+      <j1 rule="resolve" parents="57 30"/>
+      <j2 rule="xx"/>
+    </justification>
+  </clause>
+
+  <clause id="74">
+    <literal><![CDATA[
+      constant(sum(cardinality_at_time(first_movers,c2),cardinality_at_time(efficient_producers,c2)))
+    ]]></literal>
+    <justification jstring="[back_rewrite(23),rewrite([63(3)])].">
+      <j1 rule="back_rewrite" parents="23"/>
+      <j2 rule="rewrite" parents="63"/>
+    </justification>
+  </clause>
+
+  <clause id="76">
+    <literal><![CDATA[
+      -increases(cardinality_at_time(first_movers,c2))
+    ]]></literal>
+    <justification jstring="[resolve(58,a,36,b),unit_del(a,56),unit_del(b,54),unit_del(d,25)].">
+      <j1 rule="resolve" parents="58 36"/>
+      <j2 rule="unit_del" parents="56"/>
+      <j2 rule="unit_del" parents="54"/>
+      <j2 rule="unit_del" parents="25"/>
+    </justification>
+  </clause>
+
+  <clause id="79">
+    <literal><![CDATA[
+      $F
+    ]]></literal>
+    <justification jstring="[ur(19,b,76,a,c,xx,d,61,a,e,60,a),unit_del(a,74)].">
+      <j1 rule="ur" parents="19 76 61 60"/>
+      <j2 rule="unit_del" parents="74"/>
+    </justification>
+  </clause>
+
+</proof>
+
+<proof number="6" length="37" max_count="23">
+
+<comments><![CDATA[
+% Proof 1 at 0.01 (+ 0.00) seconds.
+% Length of proof is 37.
+% Level of proof is 6.
+% Maximum clause weight is 21.000.
+% Given clauses 36.
+
+]]></comments>
+
+  <clause id="1" type="assumption">
+    <literal><![CDATA[
+      environment(c1)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="3" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      efficient_producers != B
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(B,A,C)
+    ]]></literal>
+    <literal><![CDATA[
+      sum(cardinality_at_time(first_movers,C),cardinality_at_time(efficient_producers,C)) = number_of_organizations(A,C)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="5" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -in_environment(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      subpopulation(first_movers,A,B)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="6" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -in_environment(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      subpopulation(efficient_producers,A,B)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="7" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -in_environment(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(C,A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -greater(cardinality_at_time(C,B),zero)
+    ]]></literal>
+    <literal><![CDATA[
+      -constant(cardinality_at_time(C,B))
+    ]]></literal>
+    <literal><![CDATA[
+      growth_rate(C,B) = zero
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="8" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -in_environment(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(C,A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -greater(cardinality_at_time(C,B),zero)
+    ]]></literal>
+    <literal><![CDATA[
+      -increases(cardinality_at_time(C,B))
+    ]]></literal>
+    <literal><![CDATA[
+      greater(growth_rate(C,B),zero)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="9" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -in_environment(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(C,A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -greater(cardinality_at_time(C,B),zero)
+    ]]></literal>
+    <literal><![CDATA[
+      -decreases(cardinality_at_time(C,B))
+    ]]></literal>
+    <literal><![CDATA[
+      greater(zero,growth_rate(C,B))
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="10" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulations(first_movers,efficient_producers,A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      greater(cardinality_at_time(first_movers,B),zero)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="11" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulations(first_movers,efficient_producers,A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      greater(cardinality_at_time(efficient_producers,B),zero)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="12" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulations(first_movers,efficient_producers,A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      in_environment(A,B)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="18" type="assumption">
+    <literal><![CDATA[
+      -constant(A)
+    ]]></literal>
+    <literal><![CDATA[
+      increases(B)
+    ]]></literal>
+    <literal><![CDATA[
+      decreases(B)
+    ]]></literal>
+    <literal><![CDATA[
+      sum(B,C) != A
+    ]]></literal>
+    <literal><![CDATA[
+      constant(C)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="22" type="assumption">
+    <literal><![CDATA[
+      subpopulations(first_movers,efficient_producers,c1,c2)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="23" type="assumption">
+    <literal><![CDATA[
+      constant(number_of_organizations(c1,c2))
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="24" type="assumption">
+    <literal><![CDATA[
+      growth_rate(efficient_producers,c2) != zero
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="25" type="assumption">
+    <literal><![CDATA[
+      -greater(growth_rate(first_movers,c2),zero)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="26" type="assumption">
+    <literal><![CDATA[
+      -greater(zero,growth_rate(first_movers,c2))
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="29">
+    <literal><![CDATA[
+      efficient_producers != A
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(A,c1,B)
+    ]]></literal>
+    <literal><![CDATA[
+      sum(cardinality_at_time(first_movers,B),cardinality_at_time(efficient_producers,B)) = number_of_organizations(c1,B)
+    ]]></literal>
+    <justification jstring="[resolve(1,a,3,a)].">
+      <j1 rule="resolve" parents="1 3"/>
+    </justification>
+  </clause>
+
+  <clause id="30">
+    <literal><![CDATA[
+      efficient_producers != A
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(A,c1,B)
+    ]]></literal>
+    <literal><![CDATA[
+      number_of_organizations(c1,B) = sum(cardinality_at_time(first_movers,B),cardinality_at_time(efficient_producers,B))
+    ]]></literal>
+    <justification jstring="[copy(29),flip(c)].">
+      <j1 rule="copy" parents="29"/>
+      <j2 rule="flip"/>
+    </justification>
+  </clause>
+
+  <clause id="33">
+    <literal><![CDATA[
+      -in_environment(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      subpopulation(first_movers,c1,A)
+    ]]></literal>
+    <justification jstring="[resolve(1,a,5,a)].">
+      <j1 rule="resolve" parents="1 5"/>
+    </justification>
+  </clause>
+
+  <clause id="34">
+    <literal><![CDATA[
+      -in_environment(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      subpopulation(efficient_producers,c1,A)
+    ]]></literal>
+    <justification jstring="[resolve(1,a,6,a)].">
+      <j1 rule="resolve" parents="1 6"/>
+    </justification>
+  </clause>
+
+  <clause id="35">
+    <literal><![CDATA[
+      -in_environment(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(B,c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      -greater(cardinality_at_time(B,A),zero)
+    ]]></literal>
+    <literal><![CDATA[
+      -constant(cardinality_at_time(B,A))
+    ]]></literal>
+    <literal><![CDATA[
+      growth_rate(B,A) = zero
+    ]]></literal>
+    <justification jstring="[resolve(1,a,7,a)].">
+      <j1 rule="resolve" parents="1 7"/>
+    </justification>
+  </clause>
+
+  <clause id="36">
+    <literal><![CDATA[
+      -in_environment(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(B,c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      -greater(cardinality_at_time(B,A),zero)
+    ]]></literal>
+    <literal><![CDATA[
+      -increases(cardinality_at_time(B,A))
+    ]]></literal>
+    <literal><![CDATA[
+      greater(growth_rate(B,A),zero)
+    ]]></literal>
+    <justification jstring="[resolve(1,a,8,a)].">
+      <j1 rule="resolve" parents="1 8"/>
+    </justification>
+  </clause>
+
+  <clause id="37">
+    <literal><![CDATA[
+      -in_environment(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(B,c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      -greater(cardinality_at_time(B,A),zero)
+    ]]></literal>
+    <literal><![CDATA[
+      -decreases(cardinality_at_time(B,A))
+    ]]></literal>
+    <literal><![CDATA[
+      greater(zero,growth_rate(B,A))
+    ]]></literal>
+    <justification jstring="[resolve(1,a,9,a)].">
+      <j1 rule="resolve" parents="1 9"/>
+    </justification>
+  </clause>
+
+  <clause id="38">
+    <literal><![CDATA[
+      -subpopulations(first_movers,efficient_producers,c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      greater(cardinality_at_time(first_movers,A),zero)
+    ]]></literal>
+    <justification jstring="[resolve(1,a,10,a)].">
+      <j1 rule="resolve" parents="1 10"/>
+    </justification>
+  </clause>
+
+  <clause id="39">
+    <literal><![CDATA[
+      -subpopulations(first_movers,efficient_producers,c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      greater(cardinality_at_time(efficient_producers,A),zero)
+    ]]></literal>
+    <justification jstring="[resolve(1,a,11,a)].">
+      <j1 rule="resolve" parents="1 11"/>
+    </justification>
+  </clause>
+
+  <clause id="40">
+    <literal><![CDATA[
+      -subpopulations(first_movers,efficient_producers,c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      in_environment(c1,A)
+    ]]></literal>
+    <justification jstring="[resolve(1,a,12,a)].">
+      <j1 rule="resolve" parents="1 12"/>
+    </justification>
+  </clause>
+
+  <clause id="54">
+    <literal><![CDATA[
+      greater(cardinality_at_time(first_movers,c2),zero)
+    ]]></literal>
+    <justification jstring="[resolve(38,a,22,a)].">
+      <j1 rule="resolve" parents="38 22"/>
+    </justification>
+  </clause>
+
+  <clause id="55">
+    <literal><![CDATA[
+      greater(cardinality_at_time(efficient_producers,c2),zero)
+    ]]></literal>
+    <justification jstring="[resolve(39,a,22,a)].">
+      <j1 rule="resolve" parents="39 22"/>
+    </justification>
+  </clause>
+
+  <clause id="56">
+    <literal><![CDATA[
+      in_environment(c1,c2)
+    ]]></literal>
+    <justification jstring="[resolve(40,a,22,a)].">
+      <j1 rule="resolve" parents="40 22"/>
+    </justification>
+  </clause>
+
+  <clause id="57">
+    <literal><![CDATA[
+      subpopulation(efficient_producers,c1,c2)
+    ]]></literal>
+    <justification jstring="[resolve(56,a,34,a)].">
+      <j1 rule="resolve" parents="56 34"/>
+    </justification>
+  </clause>
+
+  <clause id="58">
+    <literal><![CDATA[
+      subpopulation(first_movers,c1,c2)
+    ]]></literal>
+    <justification jstring="[resolve(56,a,33,a)].">
+      <j1 rule="resolve" parents="56 33"/>
+    </justification>
+  </clause>
+
+  <clause id="61">
+    <literal><![CDATA[
+      -constant(cardinality_at_time(efficient_producers,c2))
+    ]]></literal>
+    <justification jstring="[resolve(57,a,35,b),unit_del(a,56),unit_del(b,55),unit_del(d,24)].">
+      <j1 rule="resolve" parents="57 35"/>
+      <j2 rule="unit_del" parents="56"/>
+      <j2 rule="unit_del" parents="55"/>
+      <j2 rule="unit_del" parents="24"/>
+    </justification>
+  </clause>
+
+  <clause id="63">
+    <literal><![CDATA[
+      number_of_organizations(c1,c2) = sum(cardinality_at_time(first_movers,c2),cardinality_at_time(efficient_producers,c2))
+    ]]></literal>
+    <justification jstring="[resolve(57,a,30,b),xx(a)].">
+      <j1 rule="resolve" parents="57 30"/>
+      <j2 rule="xx"/>
+    </justification>
+  </clause>
+
+  <clause id="74">
+    <literal><![CDATA[
+      constant(sum(cardinality_at_time(first_movers,c2),cardinality_at_time(efficient_producers,c2)))
+    ]]></literal>
+    <justification jstring="[back_rewrite(23),rewrite([63(3)])].">
+      <j1 rule="back_rewrite" parents="23"/>
+      <j2 rule="rewrite" parents="63"/>
+    </justification>
+  </clause>
+
+  <clause id="75">
+    <literal><![CDATA[
+      -decreases(cardinality_at_time(first_movers,c2))
+    ]]></literal>
+    <justification jstring="[resolve(58,a,37,b),unit_del(a,56),unit_del(b,54),unit_del(d,26)].">
+      <j1 rule="resolve" parents="58 37"/>
+      <j2 rule="unit_del" parents="56"/>
+      <j2 rule="unit_del" parents="54"/>
+      <j2 rule="unit_del" parents="26"/>
+    </justification>
+  </clause>
+
+  <clause id="76">
+    <literal><![CDATA[
+      -increases(cardinality_at_time(first_movers,c2))
+    ]]></literal>
+    <justification jstring="[resolve(58,a,36,b),unit_del(a,56),unit_del(b,54),unit_del(d,25)].">
+      <j1 rule="resolve" parents="58 36"/>
+      <j2 rule="unit_del" parents="56"/>
+      <j2 rule="unit_del" parents="54"/>
+      <j2 rule="unit_del" parents="25"/>
+    </justification>
+  </clause>
+
+  <clause id="78">
+    <literal><![CDATA[
+      $F
+    ]]></literal>
+    <justification jstring="[ur(18,b,76,a,c,75,a,d,xx,e,61,a),unit_del(a,74)].">
+      <j1 rule="ur" parents="18 76 75 61"/>
+      <j2 rule="unit_del" parents="74"/>
+    </justification>
+  </clause>
+
+</proof>
+
+<proof number="7" length="32" max_count="23">
+
+<comments><![CDATA[
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 32.
+% Level of proof is 6.
+% Maximum clause weight is 21.000.
+% Given clauses 36.
+
+]]></comments>
+
+  <clause id="1" type="assumption">
+    <literal><![CDATA[
+      environment(c1)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="3" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      efficient_producers != B
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(B,A,C)
+    ]]></literal>
+    <literal><![CDATA[
+      sum(cardinality_at_time(first_movers,C),cardinality_at_time(efficient_producers,C)) = number_of_organizations(A,C)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="6" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -in_environment(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      subpopulation(efficient_producers,A,B)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="7" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -in_environment(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(C,A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -greater(cardinality_at_time(C,B),zero)
+    ]]></literal>
+    <literal><![CDATA[
+      -constant(cardinality_at_time(C,B))
+    ]]></literal>
+    <literal><![CDATA[
+      growth_rate(C,B) = zero
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="8" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -in_environment(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(C,A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -greater(cardinality_at_time(C,B),zero)
+    ]]></literal>
+    <literal><![CDATA[
+      -increases(cardinality_at_time(C,B))
+    ]]></literal>
+    <literal><![CDATA[
+      greater(growth_rate(C,B),zero)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="9" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -in_environment(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(C,A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -greater(cardinality_at_time(C,B),zero)
+    ]]></literal>
+    <literal><![CDATA[
+      -decreases(cardinality_at_time(C,B))
+    ]]></literal>
+    <literal><![CDATA[
+      greater(zero,growth_rate(C,B))
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="11" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulations(first_movers,efficient_producers,A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      greater(cardinality_at_time(efficient_producers,B),zero)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="12" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulations(first_movers,efficient_producers,A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      in_environment(A,B)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="21" type="assumption">
+    <literal><![CDATA[
+      -constant(A)
+    ]]></literal>
+    <literal><![CDATA[
+      sum(B,C) != A
+    ]]></literal>
+    <literal><![CDATA[
+      constant(C)
+    ]]></literal>
+    <literal><![CDATA[
+      decreases(C)
+    ]]></literal>
+    <literal><![CDATA[
+      increases(C)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="22" type="assumption">
+    <literal><![CDATA[
+      subpopulations(first_movers,efficient_producers,c1,c2)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="23" type="assumption">
+    <literal><![CDATA[
+      constant(number_of_organizations(c1,c2))
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="24" type="assumption">
+    <literal><![CDATA[
+      growth_rate(efficient_producers,c2) != zero
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="25" type="assumption">
+    <literal><![CDATA[
+      -greater(zero,growth_rate(efficient_producers,c2))
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="26" type="assumption">
+    <literal><![CDATA[
+      -greater(growth_rate(efficient_producers,c2),zero)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="29">
+    <literal><![CDATA[
+      efficient_producers != A
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(A,c1,B)
+    ]]></literal>
+    <literal><![CDATA[
+      sum(cardinality_at_time(first_movers,B),cardinality_at_time(efficient_producers,B)) = number_of_organizations(c1,B)
+    ]]></literal>
+    <justification jstring="[resolve(1,a,3,a)].">
+      <j1 rule="resolve" parents="1 3"/>
+    </justification>
+  </clause>
+
+  <clause id="30">
+    <literal><![CDATA[
+      efficient_producers != A
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(A,c1,B)
+    ]]></literal>
+    <literal><![CDATA[
+      number_of_organizations(c1,B) = sum(cardinality_at_time(first_movers,B),cardinality_at_time(efficient_producers,B))
+    ]]></literal>
+    <justification jstring="[copy(29),flip(c)].">
+      <j1 rule="copy" parents="29"/>
+      <j2 rule="flip"/>
+    </justification>
+  </clause>
+
+  <clause id="34">
+    <literal><![CDATA[
+      -in_environment(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      subpopulation(efficient_producers,c1,A)
+    ]]></literal>
+    <justification jstring="[resolve(1,a,6,a)].">
+      <j1 rule="resolve" parents="1 6"/>
+    </justification>
+  </clause>
+
+  <clause id="35">
+    <literal><![CDATA[
+      -in_environment(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(B,c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      -greater(cardinality_at_time(B,A),zero)
+    ]]></literal>
+    <literal><![CDATA[
+      -constant(cardinality_at_time(B,A))
+    ]]></literal>
+    <literal><![CDATA[
+      growth_rate(B,A) = zero
+    ]]></literal>
+    <justification jstring="[resolve(1,a,7,a)].">
+      <j1 rule="resolve" parents="1 7"/>
+    </justification>
+  </clause>
+
+  <clause id="36">
+    <literal><![CDATA[
+      -in_environment(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(B,c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      -greater(cardinality_at_time(B,A),zero)
+    ]]></literal>
+    <literal><![CDATA[
+      -increases(cardinality_at_time(B,A))
+    ]]></literal>
+    <literal><![CDATA[
+      greater(growth_rate(B,A),zero)
+    ]]></literal>
+    <justification jstring="[resolve(1,a,8,a)].">
+      <j1 rule="resolve" parents="1 8"/>
+    </justification>
+  </clause>
+
+  <clause id="37">
+    <literal><![CDATA[
+      -in_environment(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(B,c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      -greater(cardinality_at_time(B,A),zero)
+    ]]></literal>
+    <literal><![CDATA[
+      -decreases(cardinality_at_time(B,A))
+    ]]></literal>
+    <literal><![CDATA[
+      greater(zero,growth_rate(B,A))
+    ]]></literal>
+    <justification jstring="[resolve(1,a,9,a)].">
+      <j1 rule="resolve" parents="1 9"/>
+    </justification>
+  </clause>
+
+  <clause id="39">
+    <literal><![CDATA[
+      -subpopulations(first_movers,efficient_producers,c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      greater(cardinality_at_time(efficient_producers,A),zero)
+    ]]></literal>
+    <justification jstring="[resolve(1,a,11,a)].">
+      <j1 rule="resolve" parents="1 11"/>
+    </justification>
+  </clause>
+
+  <clause id="40">
+    <literal><![CDATA[
+      -subpopulations(first_movers,efficient_producers,c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      in_environment(c1,A)
+    ]]></literal>
+    <justification jstring="[resolve(1,a,12,a)].">
+      <j1 rule="resolve" parents="1 12"/>
+    </justification>
+  </clause>
+
+  <clause id="55">
+    <literal><![CDATA[
+      greater(cardinality_at_time(efficient_producers,c2),zero)
+    ]]></literal>
+    <justification jstring="[resolve(39,a,22,a)].">
+      <j1 rule="resolve" parents="39 22"/>
+    </justification>
+  </clause>
+
+  <clause id="56">
+    <literal><![CDATA[
+      in_environment(c1,c2)
+    ]]></literal>
+    <justification jstring="[resolve(40,a,22,a)].">
+      <j1 rule="resolve" parents="40 22"/>
+    </justification>
+  </clause>
+
+  <clause id="57">
+    <literal><![CDATA[
+      subpopulation(efficient_producers,c1,c2)
+    ]]></literal>
+    <justification jstring="[resolve(56,a,34,a)].">
+      <j1 rule="resolve" parents="56 34"/>
+    </justification>
+  </clause>
+
+  <clause id="59">
+    <literal><![CDATA[
+      -decreases(cardinality_at_time(efficient_producers,c2))
+    ]]></literal>
+    <justification jstring="[resolve(57,a,37,b),unit_del(a,56),unit_del(b,55),unit_del(d,25)].">
+      <j1 rule="resolve" parents="57 37"/>
+      <j2 rule="unit_del" parents="56"/>
+      <j2 rule="unit_del" parents="55"/>
+      <j2 rule="unit_del" parents="25"/>
+    </justification>
+  </clause>
+
+  <clause id="60">
+    <literal><![CDATA[
+      -increases(cardinality_at_time(efficient_producers,c2))
+    ]]></literal>
+    <justification jstring="[resolve(57,a,36,b),unit_del(a,56),unit_del(b,55),unit_del(d,26)].">
+      <j1 rule="resolve" parents="57 36"/>
+      <j2 rule="unit_del" parents="56"/>
+      <j2 rule="unit_del" parents="55"/>
+      <j2 rule="unit_del" parents="26"/>
+    </justification>
+  </clause>
+
+  <clause id="61">
+    <literal><![CDATA[
+      -constant(cardinality_at_time(efficient_producers,c2))
+    ]]></literal>
+    <justification jstring="[resolve(57,a,35,b),unit_del(a,56),unit_del(b,55),unit_del(d,24)].">
+      <j1 rule="resolve" parents="57 35"/>
+      <j2 rule="unit_del" parents="56"/>
+      <j2 rule="unit_del" parents="55"/>
+      <j2 rule="unit_del" parents="24"/>
+    </justification>
+  </clause>
+
+  <clause id="63">
+    <literal><![CDATA[
+      number_of_organizations(c1,c2) = sum(cardinality_at_time(first_movers,c2),cardinality_at_time(efficient_producers,c2))
+    ]]></literal>
+    <justification jstring="[resolve(57,a,30,b),xx(a)].">
+      <j1 rule="resolve" parents="57 30"/>
+      <j2 rule="xx"/>
+    </justification>
+  </clause>
+
+  <clause id="74">
+    <literal><![CDATA[
+      constant(sum(cardinality_at_time(first_movers,c2),cardinality_at_time(efficient_producers,c2)))
+    ]]></literal>
+    <justification jstring="[back_rewrite(23),rewrite([63(3)])].">
+      <j1 rule="back_rewrite" parents="23"/>
+      <j2 rule="rewrite" parents="63"/>
+    </justification>
+  </clause>
+
+  <clause id="79">
+    <literal><![CDATA[
+      -constant(sum(A,cardinality_at_time(efficient_producers,c2)))
+    ]]></literal>
+    <justification jstring="[ur(21,b,xx,c,61,a,d,59,a,e,60,a)].">
+      <j1 rule="ur" parents="21 61 59 60"/>
+    </justification>
+  </clause>
+
+  <clause id="80">
+    <literal><![CDATA[
+      $F
+    ]]></literal>
+    <justification jstring="[resolve(79,a,74,a)].">
+      <j1 rule="resolve" parents="79 74"/>
+    </justification>
+  </clause>
+
+</proof>
+
+<proof number="8" length="35" max_count="23">
+
+<comments><![CDATA[
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 35.
+% Level of proof is 6.
+% Maximum clause weight is 21.000.
+% Given clauses 36.
+
+]]></comments>
+
+  <clause id="1" type="assumption">
+    <literal><![CDATA[
+      environment(c1)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="3" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      efficient_producers != B
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(B,A,C)
+    ]]></literal>
+    <literal><![CDATA[
+      sum(cardinality_at_time(first_movers,C),cardinality_at_time(efficient_producers,C)) = number_of_organizations(A,C)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="5" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -in_environment(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      subpopulation(first_movers,A,B)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="6" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -in_environment(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      subpopulation(efficient_producers,A,B)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="7" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -in_environment(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(C,A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -greater(cardinality_at_time(C,B),zero)
+    ]]></literal>
+    <literal><![CDATA[
+      -constant(cardinality_at_time(C,B))
+    ]]></literal>
+    <literal><![CDATA[
+      growth_rate(C,B) = zero
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="9" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -in_environment(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(C,A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -greater(cardinality_at_time(C,B),zero)
+    ]]></literal>
+    <literal><![CDATA[
+      -decreases(cardinality_at_time(C,B))
+    ]]></literal>
+    <literal><![CDATA[
+      greater(zero,growth_rate(C,B))
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="10" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulations(first_movers,efficient_producers,A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      greater(cardinality_at_time(first_movers,B),zero)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="11" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulations(first_movers,efficient_producers,A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      greater(cardinality_at_time(efficient_producers,B),zero)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="12" type="assumption">
+    <literal><![CDATA[
+      -environment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulations(first_movers,efficient_producers,A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      in_environment(A,B)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="20" type="assumption">
+    <literal><![CDATA[
+      -constant(A)
+    ]]></literal>
+    <literal><![CDATA[
+      decreases(B)
+    ]]></literal>
+    <literal><![CDATA[
+      sum(B,C) != A
+    ]]></literal>
+    <literal><![CDATA[
+      constant(C)
+    ]]></literal>
+    <literal><![CDATA[
+      decreases(C)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="22" type="assumption">
+    <literal><![CDATA[
+      subpopulations(first_movers,efficient_producers,c1,c2)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="23" type="assumption">
+    <literal><![CDATA[
+      constant(number_of_organizations(c1,c2))
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="24" type="assumption">
+    <literal><![CDATA[
+      growth_rate(efficient_producers,c2) != zero
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="25" type="assumption">
+    <literal><![CDATA[
+      -greater(zero,growth_rate(efficient_producers,c2))
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="26" type="assumption">
+    <literal><![CDATA[
+      -greater(zero,growth_rate(first_movers,c2))
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="29">
+    <literal><![CDATA[
+      efficient_producers != A
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(A,c1,B)
+    ]]></literal>
+    <literal><![CDATA[
+      sum(cardinality_at_time(first_movers,B),cardinality_at_time(efficient_producers,B)) = number_of_organizations(c1,B)
+    ]]></literal>
+    <justification jstring="[resolve(1,a,3,a)].">
+      <j1 rule="resolve" parents="1 3"/>
+    </justification>
+  </clause>
+
+  <clause id="30">
+    <literal><![CDATA[
+      efficient_producers != A
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(A,c1,B)
+    ]]></literal>
+    <literal><![CDATA[
+      number_of_organizations(c1,B) = sum(cardinality_at_time(first_movers,B),cardinality_at_time(efficient_producers,B))
+    ]]></literal>
+    <justification jstring="[copy(29),flip(c)].">
+      <j1 rule="copy" parents="29"/>
+      <j2 rule="flip"/>
+    </justification>
+  </clause>
+
+  <clause id="33">
+    <literal><![CDATA[
+      -in_environment(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      subpopulation(first_movers,c1,A)
+    ]]></literal>
+    <justification jstring="[resolve(1,a,5,a)].">
+      <j1 rule="resolve" parents="1 5"/>
+    </justification>
+  </clause>
+
+  <clause id="34">
+    <literal><![CDATA[
+      -in_environment(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      subpopulation(efficient_producers,c1,A)
+    ]]></literal>
+    <justification jstring="[resolve(1,a,6,a)].">
+      <j1 rule="resolve" parents="1 6"/>
+    </justification>
+  </clause>
+
+  <clause id="35">
+    <literal><![CDATA[
+      -in_environment(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(B,c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      -greater(cardinality_at_time(B,A),zero)
+    ]]></literal>
+    <literal><![CDATA[
+      -constant(cardinality_at_time(B,A))
+    ]]></literal>
+    <literal><![CDATA[
+      growth_rate(B,A) = zero
+    ]]></literal>
+    <justification jstring="[resolve(1,a,7,a)].">
+      <j1 rule="resolve" parents="1 7"/>
+    </justification>
+  </clause>
+
+  <clause id="37">
+    <literal><![CDATA[
+      -in_environment(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      -subpopulation(B,c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      -greater(cardinality_at_time(B,A),zero)
+    ]]></literal>
+    <literal><![CDATA[
+      -decreases(cardinality_at_time(B,A))
+    ]]></literal>
+    <literal><![CDATA[
+      greater(zero,growth_rate(B,A))
+    ]]></literal>
+    <justification jstring="[resolve(1,a,9,a)].">
+      <j1 rule="resolve" parents="1 9"/>
+    </justification>
+  </clause>
+
+  <clause id="38">
+    <literal><![CDATA[
+      -subpopulations(first_movers,efficient_producers,c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      greater(cardinality_at_time(first_movers,A),zero)
+    ]]></literal>
+    <justification jstring="[resolve(1,a,10,a)].">
+      <j1 rule="resolve" parents="1 10"/>
+    </justification>
+  </clause>
+
+  <clause id="39">
+    <literal><![CDATA[
+      -subpopulations(first_movers,efficient_producers,c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      greater(cardinality_at_time(efficient_producers,A),zero)
+    ]]></literal>
+    <justification jstring="[resolve(1,a,11,a)].">
+      <j1 rule="resolve" parents="1 11"/>
+    </justification>
+  </clause>
+
+  <clause id="40">
+    <literal><![CDATA[
+      -subpopulations(first_movers,efficient_producers,c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      in_environment(c1,A)
+    ]]></literal>
+    <justification jstring="[resolve(1,a,12,a)].">
+      <j1 rule="resolve" parents="1 12"/>
+    </justification>
+  </clause>
+
+  <clause id="54">
+    <literal><![CDATA[
+      greater(cardinality_at_time(first_movers,c2),zero)
+    ]]></literal>
+    <justification jstring="[resolve(38,a,22,a)].">
+      <j1 rule="resolve" parents="38 22"/>
+    </justification>
+  </clause>
+
+  <clause id="55">
+    <literal><![CDATA[
+      greater(cardinality_at_time(efficient_producers,c2),zero)
+    ]]></literal>
+    <justification jstring="[resolve(39,a,22,a)].">
+      <j1 rule="resolve" parents="39 22"/>
+    </justification>
+  </clause>
+
+  <clause id="56">
+    <literal><![CDATA[
+      in_environment(c1,c2)
+    ]]></literal>
+    <justification jstring="[resolve(40,a,22,a)].">
+      <j1 rule="resolve" parents="40 22"/>
+    </justification>
+  </clause>
+
+  <clause id="57">
+    <literal><![CDATA[
+      subpopulation(efficient_producers,c1,c2)
+    ]]></literal>
+    <justification jstring="[resolve(56,a,34,a)].">
+      <j1 rule="resolve" parents="56 34"/>
+    </justification>
+  </clause>
+
+  <clause id="58">
+    <literal><![CDATA[
+      subpopulation(first_movers,c1,c2)
+    ]]></literal>
+    <justification jstring="[resolve(56,a,33,a)].">
+      <j1 rule="resolve" parents="56 33"/>
+    </justification>
+  </clause>
+
+  <clause id="59">
+    <literal><![CDATA[
+      -decreases(cardinality_at_time(efficient_producers,c2))
+    ]]></literal>
+    <justification jstring="[resolve(57,a,37,b),unit_del(a,56),unit_del(b,55),unit_del(d,25)].">
+      <j1 rule="resolve" parents="57 37"/>
+      <j2 rule="unit_del" parents="56"/>
+      <j2 rule="unit_del" parents="55"/>
+      <j2 rule="unit_del" parents="25"/>
+    </justification>
+  </clause>
+
+  <clause id="61">
+    <literal><![CDATA[
+      -constant(cardinality_at_time(efficient_producers,c2))
+    ]]></literal>
+    <justification jstring="[resolve(57,a,35,b),unit_del(a,56),unit_del(b,55),unit_del(d,24)].">
+      <j1 rule="resolve" parents="57 35"/>
+      <j2 rule="unit_del" parents="56"/>
+      <j2 rule="unit_del" parents="55"/>
+      <j2 rule="unit_del" parents="24"/>
+    </justification>
+  </clause>
+
+  <clause id="63">
+    <literal><![CDATA[
+      number_of_organizations(c1,c2) = sum(cardinality_at_time(first_movers,c2),cardinality_at_time(efficient_producers,c2))
+    ]]></literal>
+    <justification jstring="[resolve(57,a,30,b),xx(a)].">
+      <j1 rule="resolve" parents="57 30"/>
+      <j2 rule="xx"/>
+    </justification>
+  </clause>
+
+  <clause id="74">
+    <literal><![CDATA[
+      constant(sum(cardinality_at_time(first_movers,c2),cardinality_at_time(efficient_producers,c2)))
+    ]]></literal>
+    <justification jstring="[back_rewrite(23),rewrite([63(3)])].">
+      <j1 rule="back_rewrite" parents="23"/>
+      <j2 rule="rewrite" parents="63"/>
+    </justification>
+  </clause>
+
+  <clause id="75">
+    <literal><![CDATA[
+      -decreases(cardinality_at_time(first_movers,c2))
+    ]]></literal>
+    <justification jstring="[resolve(58,a,37,b),unit_del(a,56),unit_del(b,54),unit_del(d,26)].">
+      <j1 rule="resolve" parents="58 37"/>
+      <j2 rule="unit_del" parents="56"/>
+      <j2 rule="unit_del" parents="54"/>
+      <j2 rule="unit_del" parents="26"/>
+    </justification>
+  </clause>
+
+  <clause id="79">
+    <literal><![CDATA[
+      $F
+    ]]></literal>
+    <justification jstring="[ur(20,b,75,a,c,xx,d,61,a,e,59,a),unit_del(a,74)].">
+      <j1 rule="ur" parents="20 75 61 59"/>
+      <j2 rule="unit_del" parents="74"/>
+    </justification>
+  </clause>
+
+</proof>
+
+</proofs>

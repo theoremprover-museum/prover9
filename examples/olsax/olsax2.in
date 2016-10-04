@@ -1,0 +1,32 @@
+assign(max_seconds, 300).
+
+assign(new_constants, 1).
+
+function_order([ ', ^, v, f ]).
+
+set(restrict_denials).
+
+assign(max_weight, 40).
+
+formulas(sos).
+
+  f(f(f(f(y,x),f(x,z)),u),f(x,f(f(x,f(f(y,y),y)),z))) = x # label(OL_Sh).
+
+  x v y = f(f(x,x),f(y,y))  # label(definition_join).
+  x ^ y = f(f(x,y),f(x,y))  # label(definition_meet).
+  x' = f(x,x)               # label(definition_complementation).
+
+end_of_list.
+
+formulas(goals).
+
+  f(x,f(f(y,z),f(y,z))) = f(y,f(f(x,z),f(x,z)))  # answer(assoc).
+  f(f(x,x),f(x,y)) = x                           # answer(absorb).
+  f(x,f(x,x)) = f(y,f(y,y))                      # answer(one).
+
+  f(x,f(f(y,z),f(y,z))) = f(y,f(f(x,z),f(x,z)))
+     & f(f(x,x),f(x,y)) = x
+     & f(x,f(x,x)) = f(y,f(y,y))
+     # answer(combined).
+
+end_of_list.

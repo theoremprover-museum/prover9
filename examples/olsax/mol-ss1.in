@@ -1,0 +1,30 @@
+assign(max_seconds, 30).
+
+assign(new_constants, 1).
+
+formulas(sos).
+
+  f(x,f(f(y,z),f(y,z))) = f(y,f(f(x,z),f(x,z))).  % A_SS
+  f(f(x,x),f(x,y)) = x.                           % B_SS
+  f(x,f(x,x)) = f(y,f(y,y)).                      % ONE_SS
+  f(x,f(y,f(x,f(z,z)))) = f(x,f(z,f(x,f(y,y)))).  % MOD_SS
+
+  x v y = f(f(x,x),f(y,y))  # label(definition_join).
+  x ^ y = f(f(x,y),f(x,y))  # label(definition_meet).
+  x' = f(x,x)               # label(definition_complementation).
+
+end_of_list.
+
+formulas(goals).
+
+  x v (y v z) = y v (x v z)              # answer(AJ).
+  x v (x ^ y) = x                        # answer(B1).
+  x ^ y = (x' v y')'                     # answer(DM).
+  x'' = x                                # answer(CC).
+  x v x' = y v y'                        # answer(ONE).
+
+  x v (y ^ (x v z)) = x v (z ^ (x v y))  # answer(MOD).
+
+  f(x,y) = x' v y'                       # answer(DEF_SS).
+
+end_of_list.

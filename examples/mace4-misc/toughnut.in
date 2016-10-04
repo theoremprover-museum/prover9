@@ -1,0 +1,116 @@
+% Here is an example that works much better (5 times better) with
+% the old version of MACE (MACE 2.0).  The reason is that it is
+% entirely relational.  We have to pay the overhead related to
+% rewriting (data structures, etc), but no term rewriting occurs.
+% (Boolean rewriting occurs, but that is precisely what MACE 2.0
+% does so well.)
+%
+% This is the mutilated checkerboard problem from John McCarthy's
+% 1964 Stanford AI memo "A Tough Nut for Proof Procedures".
+%
+% Of all the proofs I know about, this one comes closest to answersing
+% the exact challenge put forth in the memo; that is, showing
+% automatically that a set of first-order statements representing the
+% 8x8 problem is unsatisfiable.
+%
+% (Of course, the real AI interest is in discovering the coloring
+% argument, so most people focus on the 2n x 2n problem.)
+%
+% Running MACE with -n8 does not directly show that the
+% set is unsatisfiable; it just shows there are no models of size 8;
+% but that's all we're really interested in.  In other words, it
+% would be fair to include
+%   x = 0 | x = 1 | x = 2 | x = 3 | x = 4 | x = 5 | x = 6 | x = 7
+% in McCarthy's set; then the MACE result would clearly be correct.
+%
+% If the board is
+% 
+% (7,0) ... (7,7)
+%   .         .
+%   .         .
+%   .         .
+% (0,0) ... (0,7)
+% 
+% G1(x,y) means that (x,y) and the space above are covered by a domino.
+% G2(x,y) means that (x,y) and the space to the right are covered by a domino.
+% G3(x,y) means that (x,y) and the space below are covered by a domino.
+% G4(x,y) means that (x,y) and the space to the left are covered by a domino.
+% G5(x,y) means that (x,y) is not allowed to be covered.
+%
+% S(x,y) is the successor relation for 0 ... 7.
+% L(x,y) is the less-than relation for 0 ... 7.
+%
+% The numbers in comments are McCarthy's axiom numbers.
+
+assign(domain_size, 8).
+
+formulas(assumptions).
+
+% List the squares that are not allowed to be covered.
+% This is unsatisfiable (it should give no models).
+
+all x all y (G5(x,y) <-> (x=0 & y=0) | (x=7 & y=7)). % 11, 12
+
+% Some test cases that are satisfiable:
+%
+% all x all y (G5(x,y) <-> (x=1 & y=1) | (x=1 & y=2) |
+%                          (x=2 & y=2) | (x=3 & y=2) ).
+%
+% all x all y (G5(x,y) <-> (x=0 & y=1) | (x=7 & y=7)).
+%
+% all x all y -G5(x,y).   % complete board -- 12988816 models
+
+end_of_list.
+
+formulas(assumptions).
+
+% Dominoes don't stick out past the edges of the board.
+
+-G3(0,y).  % 15
+-G4(x,0).
+-G1(7,y).
+-G2(x,7).
+
+S(0,1). S(1,2). S(2,3). S(3,4). S(4,5). S(5,6). S(6,7).  % 1
+
+% To change the board size, update the preceding few clauses.
+% The rest of the clauses don't depend on the size of the board.
+
+-S(x,y) | L(x,y).  % 2
+
+-L(x,y) | -L(y,z) | L(x,z).   % 3a
+-L(x,y) | -L(y,z) | -S(x,z).  % 3b
+
+-L(x,y)  | x != y.  % 4
+
+% = is built in, se we don't include McCarthy's axiom 5.
+
+% Every square must satisfy a Gi.
+
+G1(x,y) | G2(x,y) | G3(x,y) | G4(x,y) | G5(x,y).  % 6
+
+% Every square satisfies at most one Gi.
+
+-G1(x,y) | -G2(x,y).  % 7
+-G1(x,y) | -G3(x,y).
+-G1(x,y) | -G4(x,y).
+-G1(x,y) | -G5(x,y).
+
+-G2(x,y) | -G3(x,y).  % 8
+-G2(x,y) | -G4(x,y).
+-G2(x,y) | -G5(x,y).
+
+-G3(x,y) | -G4(x,y).  % 9
+-G3(x,y) | -G5(x,y).
+
+-G4(x,y) | -G5(x,y).  % 10
+
+% Relationships between Gis.
+
+-S(x1,x2) | -G1(x1,y) |  G3(x2,y).  % 13
+-S(x1,x2) |  G1(x1,y) | -G3(x2,y).
+
+-S(y1,y2) | -G2(x,y1) |  G4(x,y2).  % 14
+-S(y1,y2) |  G2(x,y1) | -G4(x,y2).
+
+end_of_list.

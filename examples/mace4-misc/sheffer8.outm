@@ -1,0 +1,80 @@
+============================== Mace4 =================================
+Mace4 (32) version 2008-11A, November 2008.
+Process 14103 was started by mccune on cleo,
+Thu Jan 15 17:05:19 2009
+The command was "/home/mccune/LADR/bin/mace4 -f sheffer8.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file sheffer8.in
+
+assign(domain_size,8).
+    % assign(domain_size, 8) -> assign(start_size, 8).
+    % assign(domain_size, 8) -> assign(end_size, 8).
+
+formulas(assumptions).
+f(f(f(y,f(z,x)),y),f(x,f(z,y))) = x.
+f(A,B) != f(B,A).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+
+============================== end of process non-clausal formulas ===
+
+============================== CLAUSES FOR SEARCH ====================
+
+formulas(mace4_clauses).
+f(f(f(x,f(y,z)),x),f(z,f(y,x))) = z.
+f(A,B) != f(B,A).
+end_of_list.
+
+============================== end of clauses for search =============
+
+% There are no natural numbers in the input.
+
+============================== DOMAIN SIZE 8 =========================
+
+============================== MODEL =================================
+
+interpretation( 8, [number=1, seconds=0], [
+
+        function(A, [ 0 ]),
+
+        function(B, [ 1 ]),
+
+        function(f(_,_), [
+			   0, 0, 1, 2, 1, 4, 2, 4,
+			   2, 2, 4, 2, 4, 4, 2, 4,
+			   3, 0, 6, 5, 1, 7, 2, 4,
+			   0, 0, 0, 2, 0, 2, 2, 2,
+			   5, 2, 7, 5, 4, 7, 2, 4,
+			   3, 0, 3, 5, 0, 5, 2, 2,
+			   2, 2, 2, 2, 2, 2, 2, 2,
+			   5, 2, 5, 5, 2, 5, 2, 2 ])
+]).
+
+============================== end of model ==========================
+
+============================== STATISTICS ============================
+
+For domain size 8.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
+Ground clauses: seen=513, kept=513.
+Selections=37, assignments=133, propagations=52, current_models=1.
+Rewrite_terms=4087, rewrite_bools=660, indexes=670.
+Rules_from_neg_clauses=16, cross_offs=268.
+
+============================== end of statistics =====================
+
+User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
+
+Exiting with 1 model.
+
+Process 14103 exit (max_models) Thu Jan 15 17:05:19 2009
+The process finished Thu Jan 15 17:05:19 2009

@@ -1,0 +1,13 @@
+assign(max_seconds, 30).
+
+formulas(sos).
+
+x ^ (y v (x ^ (z v u))) = x ^ (y v ((x v y) ^ (z v u))) # label(H33).
+
+end_of_list.
+
+formulas(goals).
+
+x ^ (y v (z ^ u)) = x ^ (y v (z ^ (y v (u ^ (y v z))))) # answer(H34).
+
+end_of_list.

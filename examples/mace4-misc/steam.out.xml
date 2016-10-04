@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE interps SYSTEM "interp3.dtd">
+
+<?xml-stylesheet type="text/xsl" href="interp3.xsl"?>
+
+<interps>
+
+<source>steam.out</source>
+
+<heading><![CDATA[
+Mace4 (32) version 2009-11A, November 2009.
+Process 4316 was started by mccune on cleo,
+Tue Nov  3 09:38:31 2009
+The command was "/home/mccune/LADR/bin/mace4 -f steam.in".
+]]></heading>
+
+<input><![CDATA[
+formulas(assumptions).
+Wolf(x) -> animal(x).
+Fox(x) -> animal(x).
+Bird(x) -> animal(x).
+Caterpillar(x) -> animal(x).
+Snail(x) -> animal(x).
+Grain(x) -> plant(x).
+(exists x Wolf(x)).
+(exists x Fox(x)).
+(exists x Bird(x)).
+(exists x Caterpillar(x)).
+(exists x Snail(x)).
+(exists x Grain(x)).
+(all x (animal(x) -> (all y (plant(y) -> eats(x,y))) | (all z (animal(z) & Smaller(z,x) & (exists u (plant(u) & eats(z,u))) -> eats(x,z))))).
+Caterpillar(x) & Bird(y) -> Smaller(x,y).
+Snail(x) & Bird(y) -> Smaller(x,y).
+Bird(x) & Fox(y) -> Smaller(x,y).
+Fox(x) & Wolf(y) -> Smaller(x,y).
+Bird(x) & Caterpillar(y) -> eats(x,y).
+Caterpillar(x) -> (exists y (plant(y) & eats(x,y))).
+Wolf(x) & Fox(y) -> -eats(x,y).
+Wolf(x) & Grain(y) -> -eats(x,y).
+Bird(x) & Snail(y) -> -eats(x,y).
+end_of_list.
+
+formulas(goals).
+(exists x exists y (animal(x) & animal(y) & eats(x,y) & (all z (Grain(z) -> eats(y,z))))).
+end_of_list.
+]]></input>
+
+  <interp size="3" number="1" seconds="0">
+
+    <op0 type="function">
+      <sym><![CDATA[c1]]></sym>
+      <v>0</v>
+    </op0>
+
+    <op0 type="function">
+      <sym><![CDATA[c2]]></sym>
+      <v>0</v>
+    </op0>
+
+    <op0 type="function">
+      <sym><![CDATA[c3]]></sym>
+      <v>0</v>
+    </op0>
+
+    <op0 type="function">
+      <sym><![CDATA[c4]]></sym>
+      <v>1</v>
+    </op0>
+
+    <op0 type="function">
+      <sym><![CDATA[c5]]></sym>
+      <v>0</v>
+    </op0>
+
+    <op0 type="function">
+      <sym><![CDATA[c6]]></sym>
+      <v>0</v>
+    </op0>
+
+    <op1 type="function">
+        <sym><![CDATA[f1]]></sym>
+        <head><i>0</i><i>1</i><i>2</i></head>
+        <row> <v>0</v><v>0</v><v>0</v></row>
+    </op1>
+
+    <op1 type="relation">
+        <sym><![CDATA[Bird]]></sym>
+        <head><i>0</i><i>1</i><i>2</i></head>
+        <row> <v>1</v><v>0</v><v>0</v></row>
+    </op1>
+
+    <op1 type="relation">
+        <sym><![CDATA[Caterpillar]]></sym>
+        <head><i>0</i><i>1</i><i>2</i></head>
+        <row> <v>0</v><v>1</v><v>0</v></row>
+    </op1>
+
+    <op1 type="relation">
+        <sym><![CDATA[Fox]]></sym>
+        <head><i>0</i><i>1</i><i>2</i></head>
+        <row> <v>1</v><v>0</v><v>0</v></row>
+    </op1>
+
+    <op1 type="relation">
+        <sym><![CDATA[Grain]]></sym>
+        <head><i>0</i><i>1</i><i>2</i></head>
+        <row> <v>1</v><v>0</v><v>1</v></row>
+    </op1>
+
+    <op1 type="relation">
+        <sym><![CDATA[Snail]]></sym>
+        <head><i>0</i><i>1</i><i>2</i></head>
+        <row> <v>1</v><v>0</v><v>0</v></row>
+    </op1>
+
+    <op1 type="relation">
+        <sym><![CDATA[Wolf]]></sym>
+        <head><i>0</i><i>1</i><i>2</i></head>
+        <row> <v>1</v><v>0</v><v>0</v></row>
+    </op1>
+
+    <op1 type="relation">
+        <sym><![CDATA[animal]]></sym>
+        <head><i>0</i><i>1</i><i>2</i></head>
+        <row> <v>1</v><v>1</v><v>0</v></row>
+    </op1>
+
+    <op1 type="relation">
+        <sym><![CDATA[plant]]></sym>
+        <head><i>0</i><i>1</i><i>2</i></head>
+        <row> <v>1</v><v>0</v><v>1</v></row>
+    </op1>
+
+    <op2 type="function">
+        <sym><![CDATA[f2]]></sym>
+        <head>        <i>0</i><i>1</i><i>2</i></head>
+        <row><i>0</i> <v>0</v><v>2</v><v>0</v></row>
+        <row><i>1</i> <v>0</v><v>0</v><v>0</v></row>
+        <row><i>2</i> <v>0</v><v>0</v><v>0</v></row>
+    </op2>
+
+    <op2 type="relation">
+        <sym><![CDATA[Smaller]]></sym>
+        <head>        <i>0</i><i>1</i><i>2</i></head>
+        <row><i>0</i> <v>1</v><v>0</v><v>0</v></row>
+        <row><i>1</i> <v>1</v><v>0</v><v>0</v></row>
+        <row><i>2</i> <v>0</v><v>0</v><v>0</v></row>
+    </op2>
+
+    <op2 type="relation">
+        <sym><![CDATA[eats]]></sym>
+        <head>        <i>0</i><i>1</i><i>2</i></head>
+        <row><i>0</i> <v>0</v><v>1</v><v>0</v></row>
+        <row><i>1</i> <v>1</v><v>0</v><v>0</v></row>
+        <row><i>2</i> <v>0</v><v>0</v><v>0</v></row>
+    </op2>
+  </interp>
+
+</interps>

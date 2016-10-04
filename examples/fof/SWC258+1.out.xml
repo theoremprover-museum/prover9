@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE proofs SYSTEM "proof3.dtd">
+
+<?xml-stylesheet type="text/xsl" href="proof3.xsl"?>
+
+<proofs number_of_proofs="2">
+
+<source>SWC258+1.out</source>
+
+<heading><![CDATA[
+FOF-Prover9 (32) version 2009-11A, November 2009.
+Process 23987 was started by mccune on cleo,
+Tue Nov  3 16:59:22 2009
+The command was "/home/mccune/LADR/bin/fof-prover9 -f SWC258+1.in".
+]]></heading>
+
+<proof number="1" length="7" max_count="6">
+
+<comments><![CDATA[
+% Proof 1 at 2.81 (+ 0.04) seconds.
+% Length of proof is 7.
+% Level of proof is 2.
+% Maximum clause weight is 6.000.
+% Given clauses 200.
+
+]]></comments>
+
+  <clause id="213" type="assumption">
+    <literal><![CDATA[
+      -ssItem(A)
+    ]]></literal>
+    <literal><![CDATA[
+      totalorderedP(cons(A,nil))
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="254" type="assumption">
+    <literal><![CDATA[
+      -totalorderedP(c3)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="257" type="assumption">
+    <literal><![CDATA[
+      c5 = c3
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="260" type="assumption">
+    <literal><![CDATA[
+      ssItem(c7)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="261" type="assumption">
+    <literal><![CDATA[
+      cons(c7,nil) = c5
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="262">
+    <literal><![CDATA[
+      cons(c7,nil) = c3
+    ]]></literal>
+    <justification jstring="[copy(261),rewrite([257(4)])].">
+      <j1 rule="copy" parents="261"/>
+      <j2 rule="rewrite" parents="257"/>
+    </justification>
+  </clause>
+
+  <clause id="5673">
+    <literal><![CDATA[
+      $F
+    ]]></literal>
+    <justification jstring="[resolve(260,a,213,a),rewrite([262(3)]),unit_del(a,254)].">
+      <j1 rule="resolve" parents="260 213"/>
+      <j2 rule="rewrite" parents="262"/>
+      <j2 rule="unit_del" parents="254"/>
+    </justification>
+  </clause>
+
+</proof>
+
+<proof number="2" length="6" max_count="3">
+
+<comments><![CDATA[
+% Proof 1 at 0.40 (+ 0.00) seconds.
+% Length of proof is 6.
+% Level of proof is 2.
+% Maximum clause weight is 3.000.
+% Given clauses 0.
+
+]]></comments>
+
+  <clause id="214" type="assumption">
+    <literal><![CDATA[
+      totalorderedP(nil)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="259" type="assumption">
+    <literal><![CDATA[
+      -totalorderedP(c5)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="261" type="assumption">
+    <literal><![CDATA[
+      c6 = c5
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="262" type="assumption">
+    <literal><![CDATA[
+      nil = c6
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="263">
+    <literal><![CDATA[
+      c5 = nil
+    ]]></literal>
+    <justification jstring="[copy(262),rewrite([261(2)]),flip(a)].">
+      <j1 rule="copy" parents="262"/>
+      <j2 rule="rewrite" parents="261"/>
+      <j2 rule="flip"/>
+    </justification>
+  </clause>
+
+  <clause id="782">
+    <literal><![CDATA[
+      $F
+    ]]></literal>
+    <justification jstring="[back_rewrite(259),rewrite([263(1)]),unit_del(a,214)].">
+      <j1 rule="back_rewrite" parents="259"/>
+      <j2 rule="rewrite" parents="263"/>
+      <j2 rule="unit_del" parents="214"/>
+    </justification>
+  </clause>
+
+</proof>
+
+</proofs>

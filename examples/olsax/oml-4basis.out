@@ -1,0 +1,324 @@
+============================== Prover9 ===============================
+Prover9 (32) version 2009-11A, November 2009.
+Process 5126 was started by mccune on cleo,
+Tue Nov  3 09:45:16 2009
+The command was "/home/mccune/LADR/bin/prover9 -f oml-4basis.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file oml-4basis.in
+
+assign(max_seconds,30).
+assign(new_constants,1).
+
+formulas(sos).
+x v (y v z) = y v (x v z) # label(AJ).
+x v (x ^ y) = x # label(B1).
+x ^ y = c(c(x) v c(y)) # label(DM).
+x v (c(x) ^ (x v y)) = x v y # label(OM).
+end_of_list.
+
+formulas(goals).
+c(c(x)) = x # answer(CC).
+x v c(x) = y v c(y) # answer(ONE).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 c(c(x)) = x # answer(CC) # label(non_clause) # label(goal).  [goal].
+2 x v c(x) = y v c(y) # answer(ONE) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+x v (y v z) = y v (x v z) # label(AJ).  [assumption].
+x v (x ^ y) = x # label(B1).  [assumption].
+x ^ y = c(c(x) v c(y)) # label(DM).  [assumption].
+x v (c(x) ^ (x v y)) = x v y # label(OM).  [assumption].
+c(c(c1)) != c1 # answer(CC).  [deny(1)].
+c3 v c(c3) != c2 v c(c2) # answer(ONE).  [deny(2)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Auto_denials:
+  % assign(max_proofs, 2).  % (Horn set with more than one neg. clause)
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ = ]).
+Function symbol precedence:  function_order([ c1, c2, c3, v, ^, c ]).
+After inverse_order:  (no changes).
+Unfolding symbols: ^/2.
+
+Auto_inference settings:
+  % set(paramodulation).  % (positive equality literals)
+
+Auto_process settings:  (no changes).
+
+kept:      3 x v (y v z) = y v (x v z) # label(AJ).  [assumption].
+kept:      4 x v (x ^ y) = x # label(B1).  [assumption].
+kept:      5 x ^ y = c(c(x) v c(y)) # label(DM).  [assumption].
+           6 x v (c(x) ^ (x v y)) = x v y # label(OM).  [assumption].
+kept:      7 x v c(c(c(x)) v c(x v y)) = x v y.  [copy(6),rewrite([5(3)])].
+kept:      8 c(c(c1)) != c1 # answer(CC).  [deny(1)].
+kept:      9 c3 v c(c3) != c2 v c(c2) # answer(ONE).  [deny(2)].
+kept:      10 x v c(c(x) v c(y)) = x.  [back_rewrite(4),rewrite([5(1)])].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+3 x v (y v z) = y v (x v z) # label(AJ).  [assumption].
+5 x ^ y = c(c(x) v c(y)) # label(DM).  [assumption].
+7 x v c(c(c(x)) v c(x v y)) = x v y.  [copy(6),rewrite([5(3)])].
+8 c(c(c1)) != c1 # answer(CC).  [deny(1)].
+9 c3 v c(c3) != c2 v c(c2) # answer(ONE).  [deny(2)].
+10 x v c(c(x) v c(y)) = x.  [back_rewrite(4),rewrite([5(1)])].
+end_of_list.
+
+formulas(demodulators).
+3 x v (y v z) = y v (x v z) # label(AJ).  [assumption].
+        % (lex-dep)
+5 x ^ y = c(c(x) v c(y)) # label(DM).  [assumption].
+7 x v c(c(c(x)) v c(x v y)) = x v y.  [copy(6),rewrite([5(3)])].
+10 x v c(c(x) v c(y)) = x.  [back_rewrite(4),rewrite([5(1)])].
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.01 seconds.
+
+given #1 (I,wt=11): 3 x v (y v z) = y v (x v z) # label(AJ).  [assumption].
+
+given #2 (I,wt=10): 5 x ^ y = c(c(x) v c(y)) # label(DM).  [assumption].
+
+given #3 (I,wt=15): 7 x v c(c(c(x)) v c(x v y)) = x v y.  [copy(6),rewrite([5(3)])].
+
+given #4 (I,wt=5): 8 c(c(c1)) != c1 # answer(CC).  [deny(1)].
+
+given #5 (I,wt=9): 9 c3 v c(c3) != c2 v c(c2) # answer(ONE).  [deny(2)].
+
+given #6 (I,wt=10): 10 x v c(c(x) v c(y)) = x.  [back_rewrite(4),rewrite([5(1)])].
+
+given #7 (A,wt=15): 11 x v (y v (z v u)) = z v (x v (y v u)).  [para(3(a,1),3(a,1,2))].
+
+given #8 (T,wt=7): 17 x v c(c(x)) = x.  [para(10(a,1),10(a,1,2,1))].
+
+given #9 (T,wt=9): 16 x v c(c(x) v y) = x.  [para(7(a,1),10(a,1,2,1))].
+
+given #10 (T,wt=11): 15 x v c(c(c(x)) v c(x)) = x.  [para(10(a,1),7(a,1,2,1,2,1)),rewrite([10(11)])].
+
+given #11 (T,wt=11): 32 x v (y v c(c(x))) = y v x.  [para(17(a,1),3(a,1,2)),flip(a)].
+
+given #12 (A,wt=19): 12 x v (y v c(c(c(x)) v c(x v z))) = y v (x v z).  [para(7(a,1),3(a,1,2)),flip(a)].
+
+given #13 (T,wt=9): 42 x v c(y v c(x)) = x.  [para(32(a,1),16(a,1,2,1))].
+
+given #14 (T,wt=8): 53 c(x) v c(x) = c(x).  [para(17(a,1),42(a,1,2,1))].
+
+given #15 (T,wt=7): 59 c(c(x)) v x = x.  [para(53(a,1),32(a,1,2)),rewrite([17(3)]),flip(a)].
+
+given #16 (T,wt=9): 69 c(c(c(c(x)))) v x = x.  [para(59(a,1),32(a,1,2)),rewrite([17(3)]),flip(a)].
+
+given #17 (A,wt=19): 13 x v c(c(c(x)) v c(y v (x v z))) = x v (y v z).  [para(3(a,1),7(a,1,2,1,2,1))].
+
+given #18 (T,wt=7): 80 c(c(c(x))) = c(x).  [para(69(a,1),16(a,1,2,1)),rewrite([59(5)]),flip(a)].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.02 (+ 0.00) seconds: CC.
+% Length of proof is 21.
+% Level of proof is 11.
+% Maximum clause weight is 19.000.
+% Given clauses 18.
+
+1 c(c(x)) = x # answer(CC) # label(non_clause) # label(goal).  [goal].
+3 x v (y v z) = y v (x v z) # label(AJ).  [assumption].
+4 x v (x ^ y) = x # label(B1).  [assumption].
+5 x ^ y = c(c(x) v c(y)) # label(DM).  [assumption].
+6 x v (c(x) ^ (x v y)) = x v y # label(OM).  [assumption].
+7 x v c(c(c(x)) v c(x v y)) = x v y.  [copy(6),rewrite([5(3)])].
+8 c(c(c1)) != c1 # answer(CC).  [deny(1)].
+10 x v c(c(x) v c(y)) = x.  [back_rewrite(4),rewrite([5(1)])].
+16 x v c(c(x) v y) = x.  [para(7(a,1),10(a,1,2,1))].
+17 x v c(c(x)) = x.  [para(10(a,1),10(a,1,2,1))].
+32 x v (y v c(c(x))) = y v x.  [para(17(a,1),3(a,1,2)),flip(a)].
+42 x v c(y v c(x)) = x.  [para(32(a,1),16(a,1,2,1))].
+53 c(x) v c(x) = c(x).  [para(17(a,1),42(a,1,2,1))].
+59 c(c(x)) v x = x.  [para(53(a,1),32(a,1,2)),rewrite([17(3)]),flip(a)].
+69 c(c(c(c(x)))) v x = x.  [para(59(a,1),32(a,1,2)),rewrite([17(3)]),flip(a)].
+74 c(c(c(c(x)))) v c(c(c(c(c(c(c(x)))))) v c(x)) = x.  [para(69(a,1),7(a,1,2,1,2,1)),rewrite([69(19)])].
+80 c(c(c(x))) = c(x).  [para(69(a,1),16(a,1,2,1)),rewrite([59(5)]),flip(a)].
+82 c(c(x)) v c(c(c(x)) v c(x)) = x.  [back_rewrite(74),rewrite([80(3),80(5),80(5)])].
+96 c(c(x)) v c(y v c(x)) = c(c(x)).  [para(80(a,1),42(a,1,2,1,2))].
+99 c(c(x)) = x.  [back_rewrite(82),rewrite([96(8)])].
+100 $F # answer(CC).  [resolve(99,a,8,a)].
+
+============================== end of proof ==========================
+% Redundant proof: 125 $F # answer(CC).  [back_rewrite(8),rewrite([99(3)]),xx(a)].
+
+% Disable descendants (x means already disabled):
+ 8x
+
+given #19 (T,wt=5): 99 c(c(x)) = x.  [back_rewrite(82),rewrite([96(8)])].
+
+given #20 (T,wt=5): 115 x v x = x.  [back_rewrite(59),rewrite([99(2)])].
+
+given #21 (T,wt=9): 112 x v (x v y) = x v y.  [back_rewrite(62),rewrite([99(3),55(3)])].
+
+given #22 (A,wt=19): 18 x v (y v (z v (u v w))) = z v (x v (u v (y v w))).  [para(11(a,1),3(a,1,2))].
+
+given #23 (T,wt=9): 113 x v (y v x) = y v x.  [back_rewrite(61),rewrite([99(2)])].
+
+given #24 (T,wt=9): 165 c(c(x) v y) v x = x.  [para(16(a,1),113(a,1,2)),rewrite([16(8)])].
+
+given #25 (T,wt=9): 166 c(x v c(y)) v y = y.  [para(42(a,1),113(a,1,2)),rewrite([42(8)])].
+
+given #26 (T,wt=10): 128 c(x) v c(x v y) = c(x).  [para(99(a,1),16(a,1,2,1,1))].
+
+given #27 (A,wt=15): 19 x v (y v (z v u)) = z v (y v (x v u)).  [para(11(a,1),3(a,1))].
+
+given #28 (T,wt=9): 204 (x v y) v x = x v y.  [para(128(a,1),42(a,1,2,1)),rewrite([99(3)])].
+
+given #29 (T,wt=9): 232 (x v y) v y = x v y.  [para(113(a,1),204(a,1,1)),rewrite([113(4)])].
+
+given #30 (T,wt=10): 129 c(x) v c(y v x) = c(x).  [para(99(a,1),42(a,1,2,1,2))].
+
+given #31 (T,wt=10): 180 c(x v y) v c(x) = c(x).  [para(99(a,1),165(a,1,1,1,1))].
+
+given #32 (A,wt=19): 20 x v (y v (z v (u v w))) = u v (x v (y v (z v w))).  [para(11(a,2),3(a,1,2))].
+
+given #33 (T,wt=10): 194 c(x v y) v c(y) = c(y).  [para(99(a,1),166(a,1,1,1,2))].
+
+given #34 (T,wt=11): 35 x v c(y v (c(x) v z)) = x.  [para(3(a,1),16(a,1,2,1))].
+
+given #35 (T,wt=11): 48 x v (c(x) v y) = x v c(x).  [para(16(a,1),12(a,1,2)),rewrite([3(5)]),flip(a)].
+
+given #36 (T,wt=9): 379 c(x) v x = x v c(x).  [para(99(a,1),48(a,1,2,1)),rewrite([3(3),48(3),99(5)]),flip(a)].
+
+given #37 (A,wt=15): 21 x v (y v (z v u)) = x v (z v (y v u)).  [para(11(a,2),3(a,1))].
+
+given #38 (T,wt=11): 172 c(x v (c(y) v z)) v y = y.  [para(3(a,1),165(a,1,1,1))].
+
+given #39 (T,wt=11): 367 x v c(y v (z v c(x))) = x.  [para(113(a,1),35(a,1,2,1,2))].
+
+given #40 (T,wt=9): 462 x v c(y v c(y)) = x.  [para(48(a,1),367(a,1,2,1))].
+
+% Operation v is commutative; C redundancy checks enabled.
+
+given #41 (T,wt=7): 464 x v y = y v x.  [para(462(a,1),3(a,1,2)),rewrite([462(5)])].
+
+given #42 (A,wt=23): 24 x v (y v (z v (u v (w v v5)))) = u v (x v (y v (w v (z v v5)))).  [para(11(a,1),11(a,1,2,2))].
+
+given #43 (T,wt=9): 468 c(x v c(x)) v y = y.  [para(462(a,1),113(a,1,2)),rewrite([462(8)])].
+
+NOTE: New constant: c(x v c(x)) = c_0.  [new_symbol(701)].
+NOTE: New Function symbol precedence:  function_order([ c1, c2, c3, c_0, v, ^, c ]).
+
+given #44 (T,wt=5): 703 c_0 v x = x.  [back_rewrite(468),rewrite([702(3)])].
+
+given #45 (T,wt=5): 704 x v c_0 = x.  [back_rewrite(462),rewrite([702(3)])].
+
+given #46 (T,wt=7): 702 c(x v c(x)) = c_0.  [new_symbol(701)].
+
+given #47 (A,wt=19): 25 x v (y v (z v (u v w))) = u v (x v (z v (y v w))).  [para(11(a,1),11(a,1,2))].
+
+given #48 (T,wt=7): 706 c(x v c(c_0)) = c_0.  [para(703(a,1),42(a,1))].
+
+given #49 (T,wt=7): 709 c(c_0) v x = c(c_0).  [para(703(a,1),48(a,1)),rewrite([703(7)])].
+
+given #50 (T,wt=7): 711 c(c_0) = x v c(x).  [para(702(a,1),99(a,1,1))].
+
+============================== PROOF =================================
+
+% Proof 2 at 0.14 (+ 0.00) seconds: ONE.
+% Length of proof is 33.
+% Level of proof is 19.
+% Maximum clause weight is 19.000.
+% Given clauses 50.
+
+2 x v c(x) = y v c(y) # answer(ONE) # label(non_clause) # label(goal).  [goal].
+3 x v (y v z) = y v (x v z) # label(AJ).  [assumption].
+4 x v (x ^ y) = x # label(B1).  [assumption].
+5 x ^ y = c(c(x) v c(y)) # label(DM).  [assumption].
+6 x v (c(x) ^ (x v y)) = x v y # label(OM).  [assumption].
+7 x v c(c(c(x)) v c(x v y)) = x v y.  [copy(6),rewrite([5(3)])].
+9 c3 v c(c3) != c2 v c(c2) # answer(ONE).  [deny(2)].
+10 x v c(c(x) v c(y)) = x.  [back_rewrite(4),rewrite([5(1)])].
+12 x v (y v c(c(c(x)) v c(x v z))) = y v (x v z).  [para(7(a,1),3(a,1,2)),flip(a)].
+16 x v c(c(x) v y) = x.  [para(7(a,1),10(a,1,2,1))].
+17 x v c(c(x)) = x.  [para(10(a,1),10(a,1,2,1))].
+32 x v (y v c(c(x))) = y v x.  [para(17(a,1),3(a,1,2)),flip(a)].
+35 x v c(y v (c(x) v z)) = x.  [para(3(a,1),16(a,1,2,1))].
+42 x v c(y v c(x)) = x.  [para(32(a,1),16(a,1,2,1))].
+48 x v (c(x) v y) = x v c(x).  [para(16(a,1),12(a,1,2)),rewrite([3(5)]),flip(a)].
+53 c(x) v c(x) = c(x).  [para(17(a,1),42(a,1,2,1))].
+59 c(c(x)) v x = x.  [para(53(a,1),32(a,1,2)),rewrite([17(3)]),flip(a)].
+61 c(c(x)) v (y v x) = y v x.  [para(59(a,1),3(a,1,2)),flip(a)].
+69 c(c(c(c(x)))) v x = x.  [para(59(a,1),32(a,1,2)),rewrite([17(3)]),flip(a)].
+74 c(c(c(c(x)))) v c(c(c(c(c(c(c(x)))))) v c(x)) = x.  [para(69(a,1),7(a,1,2,1,2,1)),rewrite([69(19)])].
+80 c(c(c(x))) = c(x).  [para(69(a,1),16(a,1,2,1)),rewrite([59(5)]),flip(a)].
+82 c(c(x)) v c(c(c(x)) v c(x)) = x.  [back_rewrite(74),rewrite([80(3),80(5),80(5)])].
+96 c(c(x)) v c(y v c(x)) = c(c(x)).  [para(80(a,1),42(a,1,2,1,2))].
+99 c(c(x)) = x.  [back_rewrite(82),rewrite([96(8)])].
+113 x v (y v x) = y v x.  [back_rewrite(61),rewrite([99(2)])].
+367 x v c(y v (z v c(x))) = x.  [para(113(a,1),35(a,1,2,1,2))].
+462 x v c(y v c(y)) = x.  [para(48(a,1),367(a,1,2,1))].
+468 c(x v c(x)) v y = y.  [para(462(a,1),113(a,1,2)),rewrite([462(8)])].
+701 c(x v c(x)) = c(y v c(y)).  [para(468(a,1),462(a,1))].
+702 c(x v c(x)) = c_0.  [new_symbol(701)].
+711 c(c_0) = x v c(x).  [para(702(a,1),99(a,1,1))].
+777 c(c_0) != c2 v c(c2) # answer(ONE).  [para(711(a,2),9(a,1))].
+778 $F # answer(ONE).  [resolve(777,a,711,a)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=50. Generated=2958. Kept=772. proofs=2.
+Usable=27. Sos=499. Demods=177. Limbo=0, Disabled=251. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=2185. Back_subsumed=25.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=373 (5 lex), Back_demodulated=220. Back_unit_deleted=0.
+Demod_attempts=32231. Demod_rewrites=3185.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.77.
+User_CPU=0.14, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 2 proofs.
+
+Process 5126 exit (max_proofs) Tue Nov  3 09:45:16 2009

@@ -1,0 +1,126 @@
+<html><body>
+<style type="text/css">
+td { text-align: right }
+</style>
+<h3>Mace4 Job</h3>
+<blockquote><pre>
+Mace4 (32) version 2009-11A, November 2009.
+Process 4319 was started by mccune on cleo,
+Tue Nov  3 09:38:38 2009
+The command was "/home/mccune/LADR/bin/mace4 -f group2.in".
+</pre></blockquote>
+<p></p>This page was generated from file
+	<a href="group2.out">group2.out</a>.
+<hr>
+<h3>Constraints</h3>
+<blockquote><pre>
+formulas(assumptions).
+(x * y) * z = x * (y * z).
+(exists e ((all x e * x = x) &amp; (all x exists y y * x = e))).
+(exists a exists b a * b != b * a).
+end_of_list.
+</pre></blockquote>
+<hr>
+<h3>Interpretation
+
+
+  , size = 6
+  , number = 1
+  , seconds = 0</h3>
+<p></p>
+Constant c1 = 0<p></p>
+Constant c2 = 1<p></p>
+Constant c3 = 2<p></p>
+Unary
+function f1<blockquote><table cellpadding="4" rules="groups">
+<colgroup></colgroup>
+<tr>
+<td></td>
+<td><font color="red">0</font></td>
+<td><font color="red">1</font></td>
+<td><font color="red">2</font></td>
+<td><font color="red">3</font></td>
+<td><font color="red">4</font></td>
+<td><font color="red">5</font></td>
+</tr>
+<tbody><tr>
+<td></td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>4</td>
+<td>3</td>
+<td>5</td>
+</tr></tbody>
+</table></blockquote>
+<p></p>
+Binary
+function *<blockquote><table cellpadding="4" rules="groups">
+<colgroup></colgroup>
+<tr>
+<td></td>
+<td><font color="red">0</font></td>
+<td><font color="red">1</font></td>
+<td><font color="red">2</font></td>
+<td><font color="red">3</font></td>
+<td><font color="red">4</font></td>
+<td><font color="red">5</font></td>
+</tr>
+<tbody>
+<tr>
+<td><font color="red">0</font></td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+</tr>
+<tr>
+<td><font color="red">1</font></td>
+<td>1</td>
+<td>0</td>
+<td>3</td>
+<td>2</td>
+<td>5</td>
+<td>4</td>
+</tr>
+<tr>
+<td><font color="red">2</font></td>
+<td>2</td>
+<td>4</td>
+<td>0</td>
+<td>5</td>
+<td>1</td>
+<td>3</td>
+</tr>
+<tr>
+<td><font color="red">3</font></td>
+<td>3</td>
+<td>5</td>
+<td>1</td>
+<td>4</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr>
+<td><font color="red">4</font></td>
+<td>4</td>
+<td>2</td>
+<td>5</td>
+<td>0</td>
+<td>3</td>
+<td>1</td>
+</tr>
+<tr>
+<td><font color="red">5</font></td>
+<td>5</td>
+<td>3</td>
+<td>4</td>
+<td>1</td>
+<td>2</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></blockquote>
+</body></html>

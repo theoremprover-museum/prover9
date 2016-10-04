@@ -1,0 +1,17 @@
+% Noncommutative group of size 48.  This is found in about a second.
+% Size 48 is usually way out of range for MACE4, and I don't know
+% why this one is so fast.  In general, sizes 6 * 2^n are very fast.
+
+assign(domain_size, 48).
+
+clear(negprop).  % This reduces the time from 3 seconds to 1.
+
+formulas(assumptions).
+
+e * x = x.
+x' * x = e.
+(x * y) * z = x * (y * z).
+
+A * B != B * A.
+
+end_of_list.

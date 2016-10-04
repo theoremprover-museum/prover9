@@ -1,0 +1,42 @@
+#!/bin/csh
+
+
+if ($#argv != 2) then
+	echo "need 2 args: bin-directory ouput-extension"
+	exit(1)
+endif
+
+set d=$1
+set out=$2
+
+# job H27d
+
+$d/prover9 -f lt.in uc.in H27d.in > H27d.$out
+
+# job H65d
+
+$d/prover9 -f lt.in uc.in H65d.in > H65d.$out
+
+# job H42
+
+$d/prover9 -f lt.in uc.in H42.in > H42.$out
+
+# job H49
+
+$d/prover9 -f lt.in uc.in H49.in > H49.$out
+
+# job H78b
+
+$d/prover9 -f lt.in uc.in H78b.in > H78b.$out
+
+# job H7b
+
+$d/prover9 -f lt.in uc.in H7b.in > H7b.$out
+
+# job H33-H34
+
+$d/prover9 -f lt.in H33-H34.in > H33-H34.$out
+
+# job H39-H3
+
+$d/prover9 -f lt.in H39-H3.in > H39-H3.$out

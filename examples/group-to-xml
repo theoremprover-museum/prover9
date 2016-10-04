@@ -1,0 +1,22 @@
+#!/bin/csh
+
+if ($#argv != 2) then
+	echo "need 2 args: bin-directory (problem-set-file | directory)"
+	exit(1)
+endif
+
+set bin=$1
+
+if -d $2 then
+    set group=$2
+else
+    set group=`cat $2`
+endif
+
+
+foreach d ($group)
+    echo "================= Starting problem set $d ================="
+    cd $d
+    ../xmler $bin
+    cd ..
+end

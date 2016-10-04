@@ -1,0 +1,9 @@
+#!/bin/csh
+
+foreach i ( *.xml )
+
+    echo "xsltproc $i > $i:r.html"
+    xsltproc $i > $i:r.html
+
+end
+	
