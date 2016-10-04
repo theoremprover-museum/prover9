@@ -1,0 +1,790 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+  <title>Prover9 Manual: Glossary</title>
+ <link rel="stylesheet" href="manual.css">
+</head>
+
+<body>
+
+<hr>
+<table width="100%">
+<tr>
+<colgroup>
+<col width="33%">
+<col width="34%">
+<col width="33%">
+</colgroup>
+<td align="left"><i>Prover9 Manual</i>
+<td align="center"><img src="prover9-5a-256t.gif">
+<td align="right"><i>Version 2009-11A</i>
+</table>
+<hr>
+
+<!-- Main content -->
+
+<h1>Glossary</h1>
+
+<i>Under construction.  (Send suggestions of terms to include.)</i>
+
+
+<hr>
+<hr>
+<h2>Terms, Clauses, Formulas, Interpretations</h2>
+
+These definitions apply to first-order unsorted logic.
+See a book on first-order logic for more formal definitions
+of these concepts.
+
+<hr>
+<!-- start def term -->
+<!-- start def terms -->
+<a name="term">
+
+<i>Term</i>
+<blockquote>
+A recursive definition of first-order unsorted <i class="g">terms</i>.
+<ul>
+<li>A variable is a term,
+<li>a constant is a term, and
+<li>an <i>n</i>-ary function symbol applied to <i>n</i> terms is a term.
+</ul>
+</blockquote>
+
+<hr>
+<!-- start def atomic formula -->
+<a name="atomic formula">
+
+<i>Atomic Formula</i>
+<blockquote>
+An <i>n</i>-ary predicate symbol applied to <i>n</i> terms
+is an <i class="g">atomic formula</i>.
+</blockquote>
+
+<hr>
+<!-- start def formula -->
+<a name="formula">
+
+<i>Formula</i>
+<blockquote>
+<ul>
+<li>An atomic formula is a formula,
+<li>if <tt>F</tt> and <tt>G</tt> are formulas, then the following are formulas.
+<ul>
+<li><tt>(-F)</tt>
+<li><tt>(F | G)</tt>
+<li><tt>(F & G)</tt>
+<li><tt>(F -> G)</tt>
+<li><tt>(F <-> G)</tt>
+</ul>
+<li>if <tt>F</tt> is a formula and <tt>x</tt> is a variable, then the
+following are formulas.
+<ul>
+<li><tt>(all x F)</tt>
+<li><tt>(exists x F)</tt>
+</ul>
+</ul>
+When writing formulas for Prover9, many of the parentheses can be
+omitted;  see the page <a href="syntax.html">Clauses and Formulas</a>
+tor the parsing rules.
+</blockquote>
+
+<hr>
+<!-- start def free variable -->
+<!-- start def open formula -->
+<!-- start def closed formula -->
+<!-- start def closed formulas -->
+<a name="quantifiers">
+
+<i>Free Variables</i>
+<blockquote>
+A <i class="g">free variable</i> is a variable not bound by any quantifier.
+A <i class="g">closed formula</i> has no free variables.
+An <i class="g">open formula</i> has at least one free variable.
+<p>
+Prover9's default rule for distinguishing free variables
+from constants is that free varaibles start with (lower case)
+'<tt>u</tt>' through '<tt>z</tt>'.
+</blockquote>
+
+<hr>
+<!-- start def literal -->
+<a name="literal">
+
+<i>Literal</i>
+<blockquote>
+A <i class="g">literal</i> is either an
+<a href="glossary.html#atomic formula">atomic formula</a>
+or the negation of an atomic formula.
+</blockquote>
+
+<hr>
+<!-- start def clause -->
+<!-- start def clauses -->
+<a name="clause">
+
+<i>Clause</i>
+<blockquote>
+A <i class="g">clause</i> is a formula consisting of a disjunction of literals.
+All variables in a clause are
+assumed to be universally quantified.
+</blockquote>
+
+<hr>
+<!-- start def interpretation -->
+<a name="interpretation">
+
+<i>Interpretation</i>
+<blockquote>
+An <i class="g">interpretation</i> of a first-order language consists of
+<ul>
+<li> of a set of objects called the <i class="g">domain</i>,
+<li> an <i>n</i>-ary function over the domain into the domain for
+     each <i>n</i>-ary function symbol in the language,
+<li> an <i>n</i>-ary relation over the domain for
+     each <i>n</i>-ary predicate symbol in the language.
+</ul>
+</blockquote>
+Given an interpretation, each term in the language
+evaluates to a member of the domain, and
+each clause or
+closed formula in the language evaluates to TRUE or to FALSE.
+
+<hr>
+<hr>
+<h2>Types of Clause</h2>
+
+<hr>
+<!-- start def unit clause -->
+<a name="unit-clause">
+
+<i>Unit Clause</i>
+<blockquote>
+A <i class="g">unit clause</i> has exactly one literal.
+</blockquote>
+
+<hr>
+<!-- start def positive clause -->
+<!-- start def negative clause -->
+<!-- start def mixed clause -->
+<a name="clause-signs">
+
+<i>Positive Clause, Negative Clause, Mixed Clause</i>
+<blockquote>
+A <i class="g">positive clause</i> has no negative literals.
+A <i class="g">negative clause</i> has no positive literals.
+Note that the empty clause is both positive and negative.
+A <i class="g">mixed clause</i> has at least one literal of each sign.
+</blockquote>
+
+<hr>
+<!-- start def non-Horn -->
+<!-- start def non-Horn clause -->
+<!-- start def non-Horn clauses -->
+<!-- start def Horn -->
+<!-- start def Horn clause -->
+<!-- start def Horn set -->
+<!-- start def Horn clauses -->
+<!-- start def Horn sets -->
+<a name="horn">
+
+<i>Horn Clause, Horn Set</i>
+<blockquote>
+A <i class="g">Horn clause</i> has at most one positive literal.
+A Horn set is a set of Horn clauses.
+</blockquote>
+
+<hr>
+<!-- start def definite clause -->
+<a name="definite-clause">
+
+<i>Definite Clause</i>
+<blockquote>
+A <i class="g">definite clause</i> has exactly one positive literal.
+</blockquote>
+
+<hr>
+<hr>
+<h2>Logic Transformations</h2>
+
+<hr>
+<!-- start def negation normal form -->
+<!-- start def NNF -->
+<a name="NNF">
+
+<i>Negation Normal Form (NNF)</i>
+<blockquote>
+A formula is in <i class="g">negation normal form</i>
+if the only logic connectives are
+negation, conjunction, disjunction, quantification (universal or existential),
+and if all negation operations are applied directly to atomic formulas.
+</blockquote>
+
+<hr>
+<!-- start def conjunctive normal form -->
+<!-- start def CNF -->
+<a name="CNF">
+
+<i>Conjunctive Normal Form (CNF)</i>
+<blockquote>
+This definition applies to quantifier-free formulas.
+<p>
+A formula is in <i class="g">conjunctive normal form</i>
+if (1) the only logic connectives
+are negation, conjunction, and disjunction,
+(2) no negation is applied to a conjunction or a disjunction,
+and (3) no disjunction is applied to a conjunction.
+<p>
+Alternate definition: A formula is in CNF if it is a clause or a
+conjunction of clauses.
+</blockquote>
+
+<hr>
+<!-- start def Skolemization -->
+<!-- start def skolemization -->
+<!-- start def Skolem constant -->
+<!-- start def Skolem function -->
+<!-- start def Skolem -->
+<a name="skolemization">
+
+<i>Skolemization</i>
+<blockquote>
+</i>Skolemization</i> is the process of replacing
+existentially quantified variables
+in a formula with new constants (called <i class="g">Skolem constants</i>) or
+functions (called <i class="g">Skolem functions</i>).  If an existential
+quantifier is in the scope of some universal quantifiers, the
+new symbol is a function of the corresponding universally quantified
+variables.
+The result of Skolemization is not, strictly speaking, equivalent to
+the original formula, because new symbols may have been introduced,
+but the result is inconsistent iff the the original formula is
+inconsistent.
+</blockquote>
+
+<hr>
+<!-- start def clause normal form -->
+<!-- start def clausification -->
+<!-- start def clausify -->
+<a name="clausification">
+
+<i>Clausification</i>
+<blockquote>
+<i class="g">Clausification</i> is the process of translating a formula
+into a conjunction of clauses.  A standard way is
+NNF conversion, Skolemization, moving universal quantifiers
+to the top (renaming bound variables if necessary),
+CNF conversion, and finally removing universal quantifiers.
+The variables in each resulting clause are implicitly
+universally quantified.
+<p>
+Each step produces an equivalent formula, except for
+Skolemization, which produces an equiconsistent formula,
+so the result of Clausification is inconsistent iff
+the original formula is inconsistent.
+</blockquote>
+
+<hr>
+<!-- start universal closure -->
+<a name="universal_closure">
+
+<i>Universal Closure</i>
+<blockquote>
+The <i class="g">universal closure</i> of a formula is constructed by universally
+quantifying, at the top of the formula, all free variables
+in the formula.
+</blockquote>
+
+<hr>
+<hr>
+<h2>Term Ordering Terminology</h2>
+
+<hr>
+<!-- start def kbo -->
+<!-- start def KBO -->
+<a name="KBO">
+
+<i>Knuth-Bendix Ordering (KBO)</i>
+<blockquote>
+</blockquote>
+
+<hr>
+<!-- start def LPO -->
+<!-- start def lpo -->
+<a name="LPO">
+
+<i>Lexicographic Path Ordering (LPO)</i>
+<blockquote>
+</blockquote>
+
+<hr>
+<!-- start def RPO -->
+<!-- start def rpo -->
+<a name="RPO">
+
+<i>Recursive Path Ordering (RPO)</i>
+<blockquote>
+</blockquote>
+
+<hr>
+<!-- start def maximal -->
+<!-- start def maximal literal -->
+<!-- start def maximal literals -->
+<a name="maximal">
+
+<i>Maximal Literal</i>
+<blockquote>
+A literal is <i class="g">maximal</i> in a clause, with respect to some term ordering,
+if no literal in the clause is greater.  The terms orderings used
+by Prover9 (LPO, KBO, RPO) are, in general, only partial, so clauses
+do not necessarily have greatest literals.
+</blockquote>
+
+<hr>
+<hr>
+<h2>Inference and Simplification Rules</h2>
+
+<hr>
+<!-- start def completeness -->
+<a name="completeness">
+
+<i>Completeness</i>
+<blockquote>
+An inference system is <i class="g">complete</i> if it is capable
+(given enough time and memory) of proving any theorem
+(in the language of the inference system).
+</blockquote>
+
+<hr>
+<!-- start def binary resolution -->
+<!-- start def resolution -->
+<!-- start def positive resolution -->
+<!-- start def negative resolution -->
+<!-- start def positive binary resolution -->
+<!-- start def negative binary resolution -->
+<a name="Binary Resolution">
+
+<i>Binary Resolution</i>
+<blockquote>
+The inference rule <i class="g">binary resolution</i>
+takes two clauses containing
+unifiable literals of opposite sign and produces a clause
+consisting of the remaining literals to which the most general
+unifying substitution has been applied.  The rule can be viewed
+as a generalization of modus ponens.
+<p>
+Restrictions on Binary Resolution.
+<ul>
+<li><i class="g">Positive resolution</i>: one of the parents is is a positive clause.
+<li><i class="g">Negative resolution</i>: one of the parents is is a negative clause.
+<li><i class="g">Unit resolution</i>: one of the parents is is a unit clause.
+</ul>
+</blockquote>
+
+<hr>
+<!-- start def ordered resolution -->
+<!-- start def ordered paramodulation -->
+<!-- start def literal selection -->
+<a name="ordered-inf">
+
+<i>Ordered Inference, Literal Selection</i>
+<blockquote>
+<i class="g">Ordered Inference</i> is a restriction of resolution
+or paramdulation based on literal ordering.  In some cases,
+inferences can be restricted to <a href="glossary.html#maximal">maximal literals</a>.
+<p>
+<i class="g">Literal selection</i> is a restriction of resolution
+or paramdulation.  In each clause, some subset of the
+negative literals are marked as selected (the selection
+may be arbitrary), and in some cases inferences can be
+restricted to selected literals.
+</blockquote>
+
+<hr>
+<!-- start def factoring -->
+<!-- start def binary factoring -->
+<!-- start def factor -->
+<!-- start def factorization -->
+<a name="factoring">
+
+<i>Factoring</i>
+<blockquote>
+The inference rule <i class="g">factoring</i> takes one clause containing two or more
+literals (of the same sign) that all unify.  The most general unifying
+substitution is applied to the parent, and the unified literals
+become identical and are merged into one.
+<p>
+Factoring in Prover9 is binary, operating on two literals
+at a time.
+</blockquote>
+
+<hr>
+<!-- start def hyperresolution -->
+<!-- start def negative hyperresolution -->
+<!-- start def nucleus -->
+<!-- start def satellite -->
+<a name="hyperresolution">
+
+<i>Hyperresolution</i>
+<blockquote>
+The <i class="g">hyperresolution</i> inference rule 
+(also called positive hyperresolution)
+takes a non-positive clause (called the
+<i class="g">nucleus</i>) and simultaneously resolves each of its negative
+literals with positive clauses (called the <i class="g">satellites</i>),
+producing a positive clause.  Hyperresolution can be viewed as a
+sequence of positive binary resolution steps ending with a positive
+clause.
+<p>
+Negative hyperresolution is similar to hyperresolution but with the
+signs reversed.
+</blockquote>
+
+<hr>
+<!-- start def UR-resolution -->
+<!-- start def positive UR-resolution -->
+<!-- start def negative UR-resolution -->
+<!-- start def unit-resulting resolution -->
+<a name="UR-resolution">
+
+<i>UR-Resolution</i>
+<blockquote>
+The <i class="g">UR-resolution</i>
+(unit-resulting resolution) inference rule takes a nonunit
+clause (called the <i class="g">nucleus</i>) and resolves all but one of its literals
+with unit clauses (called the <i class="g">satellites</i>), producing a unit clause.
+<p>
+<i class="g">Positive UR-resolution</i> is UR-resolution with the constraint that the
+result must be a positive unit clause.
+<p>
+<i class="g">Negative UR-resolution</i> is UR-resolution with the constraint that the
+result must be a negative unit clause.
+</blockquote>
+
+<hr>
+<!-- start def paramodulation -->
+<!-- start def from parent -->
+<!-- start def from clause -->
+<!-- start def from literal -->
+<!-- start def into term -->
+<!-- start def into parent -->
+<!-- start def into clause -->
+<!-- start def into literal -->
+<!-- start def into term -->
+<!-- start def superposition -->
+<a name="from-into">
+
+<i>"From" and "Into" in Paramodulation</i>
+<blockquote>
+A <i class="g">paramodulation</i> inference consists of
+two parents and a child.
+The parent containing the equality used for the
+replacement is the <i class="g">from</i> parent or the <i class="g">from clause</i>,
+the equality is the <i class="g">from</i> literal,
+and the side of the equality that unifies with
+the term being replaced is the <i class="g">from</i> term.
+<p>
+The replaced term is the <i class="g">into</i> term,
+the literal containing the replaced term
+is the <i class="g">into</i> literal, and
+the parent containing the replaced term is the
+<i class="g">into</i> parent or <i class="g">into</i> clause.
+<p>
+<i class="g">Superposition</i> is a restricted form of paramodulation
+in which substitution is not allowed into the
+lighter side of an equation.
+</blockquote>
+
+<hr>
+<!-- start def positive paramodulation -->
+<a name="positive-paramodulation">
+
+<i>Positive Paramodulation</i>
+<blockquote>
+<i class="g">Positive paramodulation</i> is a restriction
+of paramodulation in which the "from" clause is positive,
+and if the "into" literal is positive, the "into" clause
+is also positive.
+</blockquote>
+
+<hr>
+<!-- start def demodulation -->
+<!-- start def demodulator -->
+<!-- start def rewriting -->
+<!-- start def back demodulation -->
+<!-- start def demodulator -->
+<a name="demodulation">
+
+<i>Demodulation, Back Demodulation</i>
+<blockquote>
+<i class="g">Demodulation</i> (also called <i class="g">rewriting</i>) is the process
+of using a set of oriented equations 
+(demodulators) to rewrite (simplify, canonicalize) terms.
+If the demodulators have good properties, demodulation terminates.
+<p>
+</i>Forward demodulation</i> (or just demodulation) is the process of using
+a set of demodulators to rewrite newly generated clauses.
+<p>
+<i class="g">Back demodulation</i> is the process of using a new demodulator to
+simplify previously stored clauses.
+</blockquote>
+
+<hr>
+<!-- start def unit deletion -->
+<!-- start def back unit deletion -->
+<a name="unit-deletion">
+
+<i>Unit Deletion, Back Unit Deletion</i>
+<blockquote>
+<i class="g">Unit deletion</i> is analogous to demodulation.  The difference is
+that unit clauses, rather than equations, are used for simplification.
+<p>
+Unit deletion is the process of using unit clauses to remove literals
+from newly generated clauses.
+<p>
+<i class="g">Back unit deletion</i> is the process of using a new unit clause to
+remove literals from previously stored clauses.
+</blockquote>
+
+<hr>
+<!-- start def subsume -->
+<!-- start def subsumption -->
+<!-- start def back subsumption -->
+<!-- start def forward subsumption -->
+<a name="subsumption">
+
+<i>Subsumption, Forward and Backward Subsumption</i>
+<blockquote>
+Clause C <i class="g">subsumes</i> clause D if the variables of C can be
+instantiated in such a way that it becomes a subclause of D.
+If C subsumes D, then D can be discarded, because it is weaker
+than or equivalent to C.  (There are some proof procedures that
+require retention of subsumed clauses.)
+<p>
+<i class="g">Forward subsumption</i> (or just subsumption) is the process of
+deleting a newly derived clause if it is subsumed by some
+previously stored clause.
+<p>
+<i class="g">Back subsumption</i> is the process of deleting all previously stored
+clauses that are subsumed by a newly derived clause.
+</blockquote>
+
+<hr>
+<!-- start def unit conflict -->
+<a name="conflict">
+
+<i>Unit Conflict</i>
+<blockquote>
+<i class="g">Unit Conflict</i> is an inference rule that derives
+a contradiction from unit clauses, for example, from
+<tt>P(a,b)</tt> and <tt>-P(x,b)</tt>.
+</blockquote>
+
+<hr>
+<hr>
+<h2>Prover9 Terminology</h2>
+
+<hr>
+<!-- start def given clause -->
+<!-- start def given clause algorithm -->
+<!-- start def given clause loop  -->
+<!-- start def given clauses -->
+<a name="given-clause">
+
+<i>Given Clause</i>
+<blockquote>
+The <i class="g">given clause loop</i> drives the inference process
+int Prover9.  At each iteration of the loop, a <i class="g">given clause</i>
+is selected from the
+<a href="glossary.html#sos-usable">sos list</a>, moved the the
+<a href="glossary.html#sos-usable">usable list</a>, and
+then inferences are made using the given clause and other
+clauses in the usable list.
+</blockquote>
+
+<hr>
+<!-- start def assumptions -->
+<!-- start def assumptions list -->
+<!-- start def sos -->
+<!-- start def sos list -->
+<!-- start def usable -->
+<!-- start def usable list -->
+<a name="sos-usable">
+
+<i>Sos List, Assumptions List, Usable List</i>
+<blockquote>
+During the search, the <i class="g">usable</i> list is the list of clauses that
+are available for making inferences with the
+<a href="glossary.html#given-clause">given clause</a>, and
+the <i class="g">sos list</i> is the list of clauses that
+are waiting to be selected as
+<a href="glossary.html#given-clause">given clause</a>s.
+Clauses in the sos list are not available for making primary inferences,
+but they can be used to simplify inferred clauses by
+<a href="glossary.html#demodulation">demodulation</a> and
+<a href="glossary.html#unit-deletion">unit deletion</a>.
+<p>
+The <i class="g">assumptions list</i> is identical to the sos list; that is,
+"assumptions" is a synonym for "sos".
+<p>
+Prover9 also accepts non-clausal formulas in lists named usable or sos.
+Such formulas are transformed to clauses which are placed in the
+clause list of the same name.
+<p>
+The name "sos" is used because it can be employed to achieve the
+set-of-support strategy, which requires that all lines of reasoning
+start with a subset of the input clauses called the set of support.
+The clauses or formulas in the initial set of support are placed
+the sos list, and the rest of the clauses or formulas are placed in the
+usable list.
+</blockquote>
+
+<hr>
+<!-- start def goal -->
+<!-- start def goals list -->
+<!-- start def goals -->
+<a name="goals">
+
+<i>Goal, Goals List</i>
+<blockquote>
+A <i class="g">goal</i> is the conclusion of a conjecture, stated in positive form.
+Each goals is transformed to clauses by constructing its 
+<a href="glossary.html#">universal closure</a>,
+negation, then
+<a href="glossary.html#clausification">clausification</a>.
+<p>
+If there is more than one goal, Prover9 may impose restrictions
+on the structure of the goals.
+</blockquote>
+
+<hr>
+<!-- start def hint -->
+<!-- start def hints list -->
+<!-- start def hints -->
+<a name="hints">
+
+<i>Hint, Hints List</i>
+<blockquote>
+<i class="g">Hints</i> are clauses that are intended to guide Prover9 toward proofs.
+Hints are not part of the problem specification; that is, they
+are not used for making inferences.  They are used only as
+a component of the weighting function for selecting <a href="glossary.html#given-clause">given clauses</a>.
+</blockquote>
+
+<hr>
+<!-- start def initial clause -->
+<!-- start def input clause -->
+<a name="initial">
+
+<i>Initial Clause</i>
+<blockquote>
+A clause is an <i class="g">initial clause</i> if it exists at the
+time when the first <a href="glossary.html#given-clause">given clause</a> is selected.
+Initial clauses are not necessarily input clauses, because
+they may be created during preprocessing, for example, by
+<a href="glossary.html#demodulation">rewriting</a> or <a href="glossary.html#clausification">clausification</a>.
+</blockquote>
+
+<hr>
+<!-- start def denial -->
+<!-- start def denials list -->
+<!-- start def denials -->
+<a name="denials">
+
+<i>Denial</i>
+<blockquote>
+In Prover9 terminology, a
+<a href="glossary.html#clause-signs">negative clause</a>
+in a </g>Horn set</g> is
+called a <i class="g">denial</i>, because such clauses usually come from the
+negation of a conclusion.
+(The term does not apply to non-Horn sets, because a proof of a non-Horn
+set may require more than one negative clause.)
+</blockquote>
+
+<hr>
+<!-- start def fof reduction -->
+<a name="fof-reduction">
+
+<i>FOF Reduction</i>
+<blockquote>
+<i class="g">FOF (First-Order Formula) reduction</i> is a method of attempting to
+simplify a problem by reducing it to an equivalent set of
+independent subproblems.  A trivial example is to reduce the
+conjecture <tt>A <-> B</tt> to the pair of problems
+<tt>A -> B</tt> and <tt>B -> A</tt>.
+</blockquote>
+
+<hr>
+<!-- start def lex-dependent demodulator -->
+<!-- start def lex-dependent demodulation -->
+<a name="lex-dep">
+
+<i>Lex-Dependent Demodulator</i>
+<blockquote>
+A <i class="g">lex-dependent demodulator</i> is one that cannot be oriented by
+the primary term ordering (LPO or KBO).  An example is commutativity
+of a binary operation.  During demodulation, a lex-dependent demodulator
+is applied only if it produces a term that is smaller in the primary
+term ordering.
+</blockquote>
+
+<hr>
+<!-- start def depth of the term -->
+<!-- start def depth of the atom -->
+<!-- start def depth of the literal -->
+<!-- start def depth of the clause -->
+<!-- start def depth(C) -->
+<a name="depth-C">
+
+<i>Depth of Term, Atom, Literal, Clause</i>
+<blockquote>
+<ul>
+<li>depth of variable, constant, or propositional atom: 0;
+<li>depth of term or atom with arguments: one more than the maximum argument depth;
+<li>depth of literal: depth of its atom (negation signs don't count);
+<li>depth of clause: maximum of depths of literals;
+</ul>
+For example, <tt>p(x) | -p(f(x))</tt> has depth 2.
+</blockquote>
+
+<hr>
+<!-- start def relational definition -->
+<a name="relational-def">
+
+<i>Relational Definition</i>
+<blockquote>
+A <i class="g">relational definition</i>
+for an <i>n</i>-ary relation
+(say <tt>P</tt> with <i>n</i>=3) is a
+<a href="glossary.html#quantifiers">closed formula</a> of the form
+(using Prover9 syntax)
+<blockquote>
+<tt>all x all y all z (P(x,y,z) <-> <i class="g">f</i>)</tt>
+</blockquote>
+for some formula <i>f</i> that does not contain the symbol <tt>P</tt>.
+</blockquote>
+
+<hr>
+<!-- start def equational definition -->
+<a name="equational-def">
+
+<i>Equational Definition</i>
+<blockquote>
+An <i class="g">equational definition</i> for an <i>n</i>-ary function
+(say <tt>f</tt> with <i>n</i>=3) is an equation
+(using Prover9 syntax)
+<blockquote>
+<tt>f(x,y,z) = <i class="g">t</i></tt>
+</blockquote>
+for some term <i>t</i> that does not contain the symbol <tt>f</tt>
+and that does not contain free variables other than
+<tt>x</tt>, <tt>y</tt>, and <tt>z</tt>.
+</blockquote>
+
+<hr>
+Next Section:
+<a href="references.html">References</a>
+
+</body>
+</html>

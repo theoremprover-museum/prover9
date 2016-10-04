@@ -1,0 +1,254 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+  <title>Prover9 Manual: Hints</title>
+ <link rel="stylesheet" href="manual.css">
+</head>
+
+<body>
+
+<!-- Site navigation menu -->
+
+<ul class="navbar">
+  <li><a href="index.html">Introduction</a>
+  <li><a href="install.html">Installation</a>
+  <li><a href="running.html">Running Prover9</a>
+  <li><a href="input.html">Input Files</a>
+  <li><a href="syntax.html">Clauses & Formulas</a>
+  <li>Search Prep
+  <ul class="navbar2">
+    <li><a href="auto.html">Auto Modes</a>
+    <li><a href="term-order.html">Term Ordering</a>
+    <li><a href="more-prep.html">More Prep</a>
+    <li><a href="limits.html">Search Limits</a>
+  </ul>
+  <li>Inference
+  <ul class="navbar2">
+    <li><a href="loop.html">The Loop</a>
+    <li><a href="select.html">Select Given</a>
+    <li><a href="inf-rules.html">Inference Rules</a>
+    <li><a href="process-inf.html">Process Inferred</a>
+  </ul>
+  <li><a href="output.html">Output Files</a>
+  <li>More Features
+  <ul class="navbar2">
+    <li><a href="weight.html">Weighting</a>
+    <li><a href="attributes.html">Attributes</a>
+    <li><a href="actions.html">Actions</a>
+    <li><a href="fof-reduction.html">FOF Reduction</a>
+    <li><a href="goals.html">Goals</a>
+    <li><a href="hints.html">Hints</a>
+    <li><a href="semantics.html">Semantics</a>
+  </ul>
+  <li>Related Programs
+  <ul class="navbar2">
+    <li><a href="prooftrans.html">Prooftrans</a>
+    <li><a href="mace4.html">Mace4</a>
+  </ul>
+  <li>Ending
+  <ul class="navbar2">
+    <li><a href="options.html">All Options</a>
+    <li><a href="glossary.html">Glossary</a>
+    <li><a href="manual-index.html">Index</a>
+    <li><a href="references.html">References</a>
+  </ul>
+</ul>
+
+<div class="header">Prover9 Manual Version June-2006</div>
+
+<!-- Main content -->
+
+<h1>Hints</h1>
+
+<i>Hint clauses</i> can be used to help guide Prover9's search.
+Prover9's input can contain any number of hint lists (which are
+simply concatenated by Prover9).
+
+<p>
+Each list of hint clauses must start with <tt>clauses(hints).</tt>
+and end with <tt>end_of_list</tt>.
+Any clause is acceptable as a hint.
+For example (the labels attributes are optional),
+
+<pre class="my_file">
+clauses(hints).
+    x ' * (x * y) = y       # label(6).
+    x * (x * y) = y         # label(7).
+    x * (y * (x * y)) = e   # label(8).
+    x ' ' * e = x           # label(9).
+    x ' * e = x             # label(10).
+    x ' = x                 # label(11).
+    x * e = x               # label(12).
+    x * (y * x) = y         # label(13).
+    x * y = y * x           # label(14).
+end_of_list.
+</pre>
+
+<p>
+Hints are used when selecting given clauses.  The mechanism for doing
+this is that when a derived clause matches a hint, its weight is
+adjusted so that it is selected sooner (or maybe later, if the
+hint is for avoiding paths) as the given clause.
+
+<p>
+A derived clause <i>matches</i> a hint if it subsumes the hint.
+If a clause matches more than one hint, the first matching hint
+is used.
+
+<blockquote class="otter_diff">
+In Otter, "matching a hint" can mean (depending on the parameter
+settings) subsumes, subsumed by, or equivalent to.
+These other types of matching may be added to Prover9
+if there is any demand for them.
+</blockquote>
+
+<h2>Where do Hints Come From?</h2>
+
+Hints frequently consist of proofs, perhaps many, of related theorems.
+
+<p>
+Bob Veroff developed the concept, installing code for hints
+in an early version of Otter, to experiment with his method
+of <i>proof sketches</i>
+[<a href="references.html#Veroff-hints">Veroff-hints</a>,
+<a href="references.html#Veroff-sketches">Veroff-sketches</a>].
+In the proof sketches
+method, a difficult conjecture is attacked by first proving
+several (or many) weakened variants of the conjecture, and
+using those proofs as hints to guide searches for a proof
+of the original conjecture.
+
+<p>
+The program <a href="prooftrans.html">Prooftrans</a>, which is distributed
+along with Prover9, can be used to extract proofs from a Prover9
+output file and transform the proofs to lists of hints suitable
+for input to subsequent Prover9 jobs.
+
+<h2>An Example</h2>
+
+This example consists of three jobs (<i>Author: make up an example</i>):
+<ol>
+
+<li>a Prover9 job that proves an easy theorem,
+<pre class="my_job">
+prover9 -f <a href="easy.in">easy.in</a> &gt; <a href="easy.out">easy.out</a>
+</pre>
+
+<li>a Prooftrans job that converts the proof to a list of hints,
+<pre class="my_job">
+prooftrans hints -f <a href="easy.out">easy.out</a> &gt; <a href="easy.hints">easy.hints</a>
+</pre>
+<li>and a Prover9 job that uses the hints to prove a more difficult theorem.
+<pre class="my_job">
+prover9 -f <a href="hard.in">hard.in</a> <a href="easy.hints">easy.hints</a>  &gt; <a href="hard.out">hard.out</a>
+</pre>
+</ol>
+
+<h2>Weight Adjustment with Hints</h2>
+
+When a clause matches a hint, the weight of the clause can be adjusted
+in two ways: (1) by assigning a fixed weight, or (2) by adding some value
+to the ordinary weight.  These two methods are determined by the following two
+parameters.
+
+<!-- start option bsub_hint_wt -->
+<a name="bsub_hint_wt">
+<pre class="my_option">
+assign(bsub_hint_wt, <i>n</i>).  % default <i>n</i>=INT_MAX, range [INT_MIN .. INT_MAX]
+</pre>
+
+<blockquote>
+If the clause being weighed matches a hint and <i>n</i> != INT_MAX,
+the clause receives <i>n</i> as its weight.
+</blockquote>
+<!-- end option -->
+
+<!-- start option bsub_hint_add_wt -->
+<a name="bsub_hint_add_wt">
+<pre class="my_option">
+assign(bsub_hint_add_wt, <i>n</i>).  % default <i>n</i>=-1000, range [INT_MIN .. INT_MAX]
+</pre>
+
+<blockquote>
+First the clause is weighed with the weighting rules.
+Then, if the clause matches a hint and <i>n</i> != INT_MAX, the value <i>n</i>
+added to the weight of the clause.  The typical use of this parameter is to
+subtract weight from the clause (to make it more preferable); that is, <i>n</i>
+is negative.
+</blockquote>
+<!-- end option -->
+
+<p>
+The preceding two parameters can be overridden for specific hints by
+including attributes on those hints.  The attribute names correspond to
+the two parameter names.  For example, consider the following hints.
+
+<pre class="my_file">
+clauses(hints).
+    x ' * (x * y) = y       # label(6) # bsub_hint_wt(-50).
+    x * (x * y) = y         # label(7) # bsub_hint_add_wt(-500).
+    x * (y * (x * y)) = e   # label(8).
+    x ' ' * e = x           # label(9).
+    x ' * e = x             # label(10).
+end_of_list.
+</pre>
+
+If a clause matches either of the first two hints, the attributes
+are used to adjust the weight of the clause.  If a clause matches
+any of the other hints, the ordinary parameters are used.
+
+<h2>Hint Degradation</h2>
+
+In many searches that use hints, a given hint can match many different
+derived clauses.  As a hint matches more ane more clauses, we wish
+its influence to diminish.
+This is the idea behind <i>hint degradation</i>
+[<a href="references.html#Veroff-hints">Veroff-hints</a>].
+
+
+<!-- start option degrade_hints -->
+<a name="degrade_hints">
+<pre class="my_option">
+set(degrade_hints).    % default set
+clear(degrade_hints).
+</pre>
+
+<blockquote>
+If this flag is set, then every time a hint matches a clause, the value of
+its <a href="hints.html#bsub_hint_add_wt"><tt><b>bsub_hint_add_wt</b></tt></a> is cut in half.  This parameter applies
+regardless of whether the <a href="hints.html#bsub_hint_add_wt"><tt><b>bsub_hint_add_wt</b></tt></a> is determined by
+the ordinary parameter of by an attribute on the clause.
+</blockquote>
+<!-- end option -->
+
+<h2>Labels on Hints</h2>
+
+Label attributes on hint clauses get special treatment.  When a hint containing
+a label matches a clause, the label attribute is copied to the clause.
+
+<p>
+The following flag addresses the situation in which the input contains
+sets of equivalent hints.  (This situation frequently occurs when the
+hints contain many proofs of similar theorems.)
+
+<!-- start option collect_hint_labels -->
+<a name="collect_hint_labels">
+<pre class="my_option">
+set(collect_hint_labels).
+clear(collect_hint_labels).    % default clear
+</pre>
+
+<blockquote>
+If this flag is set, and the hints list contains a set of equivalent hints,
+only the first copy of the hint is retained.  However, the labels from
+all of the other equivalent hints are collected and put on the retained
+copy.  When a clause matches the retained hint, it gets copies of all of the
+labels from the equivalent hints.
+<p>
+If this flag is clear, when a clause matches a set of equivalent hints,
+it receives the label (if any) from the first copy only.
+</blockquote>
+<!-- end option -->
+
+</body>
+</html>

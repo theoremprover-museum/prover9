@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+  <title>Prover9 Manual: Mace4</title>
+ <link rel="stylesheet" href="manual.css">
+</head>
+
+<body>
+
+<!-- Site navigation menu -->
+
+<ul class="navbar">
+  <li><a href="index.html">Introduction</a>
+  <li><a href="install.html">Installation</a>
+  <li><a href="running.html">Running Prover9</a>
+  <li><a href="input.html">Input Files</a>
+  <li><a href="syntax.html">Clauses & Formulas</a>
+  <li>Search Prep
+  <ul class="navbar2">
+    <li><a href="auto.html">Auto Modes</a>
+    <li><a href="term-order.html">Term Ordering</a>
+    <li><a href="more-prep.html">More Prep</a>
+    <li><a href="limits.html">Search Limits</a>
+  </ul>
+  <li>Inference
+  <ul class="navbar2">
+    <li><a href="loop.html">The Loop</a>
+    <li><a href="select.html">Select Given</a>
+    <li><a href="inf-rules.html">Inference Rules</a>
+    <li><a href="process-inf.html">Process Inferred</a>
+  </ul>
+  <li><a href="output.html">Output Files</a>
+  <li>More Features
+  <ul class="navbar2">
+    <li><a href="weight.html">Weighting</a>
+    <li><a href="attributes.html">Attributes</a>
+    <li><a href="actions.html">Actions</a>
+    <li><a href="fof-reduction.html">FOF Reduction</a>
+    <li><a href="goals.html">Goals</a>
+    <li><a href="hints.html">Hints</a>
+    <li><a href="semantics.html">Semantics</a>
+  </ul>
+  <li>Related Programs
+  <ul class="navbar2">
+    <li><a href="prooftrans.html">Prooftrans</a>
+    <li><a href="mace4.html">Mace4</a>
+  </ul>
+  <li>Ending
+  <ul class="navbar2">
+    <li><a href="options.html">All Options</a>
+    <li><a href="glossary.html">Glossary</a>
+    <li><a href="manual-index.html">Index</a>
+    <li><a href="references.html">References</a>
+  </ul>
+</ul>
+
+<div class="header">Prover9 Manual Version June-2006</div>
+
+<!-- Main content -->
+
+<h1>Mace4</h1>
+
+The program 
+<a href="http://www.mcs.anl.gov/AR/mace4/">Mace4</a>
+[<a href="references.html#McCune-Mace4">McCune-Mace4</a>]
+searches for finite models of first-order
+and equational statements, the same kind of statement that
+Prover9 accepts.  If the statement is the denial of
+some conjecture, any models found by Mace4 are
+counterexamples to the conjecture.
+
+<p>
+Mace4 can be a valuable complement to Prover9, looking
+for counterexamples before (or at the same time as)
+using Prover9 to search for a proof.  It can also be
+used to help debug input clauses and formulas for
+Prover9.
+
+<p>
+For the most part, Mace4 accepts the same input files
+as Prover9.  If the input file contains commands that
+Mace4 does not understand, then the argument "-c"
+must be given to tell Mace4 to ignore those commands.
+
+<p>
+For example, say you've just invented group theory,
+and you're wondering if all groups are commutative.
+You can run the following two jobs in parallel,
+with Prover9 looking for a proof, and Mace4 looking
+for a counterexample.
+
+<pre class="my_job">
+prover9  -f <a href="x2.in">x2.in</a> &gt; <a href="x2.prover9.out">x2.prover9.out</a>
+mace4 -c -N10 -f <a href="x2.in">x2.in</a> &gt; <a href="x2.mace4.out">x2.mace4.out</a>
+</pre>
+
+The following command is helpful.
+<p>
+<pre class="my_job">
+mace4 -help
+</pre>
+
+<p>
+The models in Mace4 output files can be transformed in various ways with
+the program Interpformat.  Here are examples.
+
+<pre class="my_job">
+interpformat portable -f <a href="x2.mace4.out">x2.mace4.out</a> &gt; <a href="x2.portable">x2.portable</a>
+interpformat portable2 -f <a href="x2.mace4.out">x2.mace4.out</a> &gt; <a href="x2.portable2">x2.portable2</a>
+interpformat tabular -f <a href="x2.mace4.out">x2.mace4.out</a> &gt; <a href="x2.tabular">x2.tabular</a>
+interpformat raw -f <a href="x2.mace4.out">x2.mace4.out</a> &gt; <a href="x2.raw">x2.raw</a>
+interpformat cooked -f <a href="x2.mace4.out">x2.mace4.out</a> &gt; <a href="x2.cooked">x2.cooked</a>
+interpformat xml -f <a href="x2.mace4.out">x2.mace4.out</a> &gt; <a href="x2.xml">x2.xml</a>
+interpformat tex -f <a href="x2.mace4.out">x2.mace4.out</a> &gt; <a href="x2.tex">x2.tex</a>
+</pre>
+
+<p>
+For further information see the <a href="http://www.mcs.anl.gov/AR/mace4/">Mace4 Web page</a>.
+(The PDF manual on the Mace4 Web page is somewhat out of date.)
+
+</body>
+</html>

@@ -1,0 +1,626 @@
+============================== Prover9 ===============================
+Prover9 (32) version 2009-11A, November 2009.
+Process 4533 was started by mccune on cleo,
+Tue Nov  3 09:39:06 2009
+The command was "/home/mccune/LADR/bin/prover9 -f lifsch.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file lifsch.in
+
+assign(max_seconds,30).
+
+formulas(goals).
+(exists x exists x1 all y exists z exists z1 ((-p(y,y) | p(x,x) | -s(z,x)) & (s(x,y) | -s(y,z) | q(z1,z1)) & (q(x1,y) | -q(y,z1) | s(x1,x1)))).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 (exists x exists x1 all y exists z exists z1 ((-p(y,y) | p(x,x) | -s(z,x)) & (s(x,y) | -s(y,z) | q(z1,z1)) & (q(x1,y) | -q(y,z1) | s(x1,x1)))) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+p(f1(x,y),f1(x,y)) | -s(x,f1(x,y)) | -q(y,f1(x,y)).  [deny(1)].
+p(f1(x,y),f1(x,y)) | -s(x,f1(x,y)) | q(f1(x,y),z).  [deny(1)].
+p(f1(x,y),f1(x,y)) | -s(x,f1(x,y)) | -s(y,y).  [deny(1)].
+p(f1(x,y),f1(x,y)) | s(f1(x,y),z) | -q(y,f1(x,y)).  [deny(1)].
+p(f1(x,y),f1(x,y)) | s(f1(x,y),z) | q(f1(x,y),u).  [deny(1)].
+p(f1(x,y),f1(x,y)) | s(f1(x,y),z) | -s(y,y).  [deny(1)].
+p(f1(x,y),f1(x,y)) | -q(z,z) | -q(y,f1(x,y)).  [deny(1)].
+p(f1(x,y),f1(x,y)) | -q(z,z) | q(f1(x,y),z).  [deny(1)].
+p(f1(x,y),f1(x,y)) | -q(z,z) | -s(y,y).  [deny(1)].
+-p(x,x) | -s(x,f1(x,y)) | -q(y,f1(x,y)).  [deny(1)].
+-p(x,x) | -s(x,f1(x,y)) | q(f1(x,y),z).  [deny(1)].
+-p(x,x) | -s(x,f1(x,y)) | -s(y,y).  [deny(1)].
+-p(x,x) | s(f1(x,y),z) | -q(y,f1(x,y)).  [deny(1)].
+-p(x,x) | s(f1(x,y),z) | q(f1(x,y),u).  [deny(1)].
+-p(x,x) | s(f1(x,y),z) | -s(y,y).  [deny(1)].
+-p(x,x) | -q(y,y) | -q(z,f1(x,z)).  [deny(1)].
+-p(x,x) | -q(y,y) | q(f1(x,z),y).  [deny(1)].
+-p(x,x) | -q(y,y) | -s(z,z).  [deny(1)].
+s(x,y) | -s(y,f1(y,z)) | -q(z,f1(y,z)).  [deny(1)].
+s(x,y) | -s(y,f1(y,z)) | q(f1(y,z),u).  [deny(1)].
+s(x,y) | -s(y,f1(y,z)) | -s(z,z).  [deny(1)].
+s(x,y) | s(f1(y,z),x) | -q(z,f1(y,z)).  [deny(1)].
+s(x,y) | s(f1(y,z),x) | q(f1(y,z),u).  [deny(1)].
+s(x,y) | s(f1(y,z),x) | -s(z,z).  [deny(1)].
+s(x,y) | -q(z,z) | -q(u,f1(y,u)).  [deny(1)].
+s(x,y) | -q(z,z) | q(f1(y,u),z).  [deny(1)].
+s(x,y) | -q(z,z) | -s(u,u).  [deny(1)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+Eliminating p/2
+2 -p(x,x) | -s(x,f1(x,y)) | -q(y,f1(x,y)).  [deny(1)].
+3 p(f1(x,y),f1(x,y)) | -s(x,f1(x,y)) | -q(y,f1(x,y)).  [deny(1)].
+4 p(f1(x,y),f1(x,y)) | -s(x,f1(x,y)) | q(f1(x,y),z).  [deny(1)].
+5 p(f1(x,y),f1(x,y)) | -s(x,f1(x,y)) | -s(y,y).  [deny(1)].
+6 p(f1(x,y),f1(x,y)) | s(f1(x,y),z) | -q(y,f1(x,y)).  [deny(1)].
+7 p(f1(x,y),f1(x,y)) | s(f1(x,y),z) | q(f1(x,y),u).  [deny(1)].
+8 p(f1(x,y),f1(x,y)) | s(f1(x,y),z) | -s(y,y).  [deny(1)].
+9 p(f1(x,y),f1(x,y)) | -q(z,z) | -q(y,f1(x,y)).  [deny(1)].
+10 p(f1(x,y),f1(x,y)) | -q(z,z) | q(f1(x,y),z).  [deny(1)].
+11 p(f1(x,y),f1(x,y)) | -q(z,z) | -s(y,y).  [deny(1)].
+Derived: -s(f1(x,y),f1(f1(x,y),z)) | -q(z,f1(f1(x,y),z)) | -s(x,f1(x,y)) | -q(y,f1(x,y)).  [resolve(2,a,3,a)].
+Derived: -s(f1(x,y),f1(f1(x,y),z)) | -q(z,f1(f1(x,y),z)) | -s(x,f1(x,y)) | q(f1(x,y),u).  [resolve(2,a,4,a)].
+Derived: -s(f1(x,y),f1(f1(x,y),z)) | -q(z,f1(f1(x,y),z)) | -s(x,f1(x,y)) | -s(y,y).  [resolve(2,a,5,a)].
+Derived: -s(f1(x,y),f1(f1(x,y),z)) | -q(z,f1(f1(x,y),z)) | s(f1(x,y),u) | -q(y,f1(x,y)).  [resolve(2,a,6,a)].
+Derived: -s(f1(x,y),f1(f1(x,y),z)) | -q(z,f1(f1(x,y),z)) | s(f1(x,y),u) | q(f1(x,y),w).  [resolve(2,a,7,a)].
+Derived: -s(f1(x,y),f1(f1(x,y),z)) | -q(z,f1(f1(x,y),z)) | s(f1(x,y),u) | -s(y,y).  [resolve(2,a,8,a)].
+Derived: -s(f1(x,y),f1(f1(x,y),z)) | -q(z,f1(f1(x,y),z)) | -q(u,u) | -q(y,f1(x,y)).  [resolve(2,a,9,a)].
+Derived: -s(f1(x,y),f1(f1(x,y),z)) | -q(z,f1(f1(x,y),z)) | -q(u,u) | q(f1(x,y),u).  [resolve(2,a,10,a)].
+Derived: -s(f1(x,y),f1(f1(x,y),z)) | -q(z,f1(f1(x,y),z)) | -q(u,u) | -s(y,y).  [resolve(2,a,11,a)].
+12 -p(x,x) | -s(x,f1(x,y)) | q(f1(x,y),z).  [deny(1)].
+Derived: -s(f1(x,y),f1(f1(x,y),z)) | q(f1(f1(x,y),z),u) | -s(x,f1(x,y)) | -q(y,f1(x,y)).  [resolve(12,a,3,a)].
+Derived: -s(f1(x,y),f1(f1(x,y),z)) | q(f1(f1(x,y),z),u) | -s(x,f1(x,y)) | q(f1(x,y),w).  [resolve(12,a,4,a)].
+Derived: -s(f1(x,y),f1(f1(x,y),z)) | q(f1(f1(x,y),z),u) | -s(x,f1(x,y)) | -s(y,y).  [resolve(12,a,5,a)].
+Derived: -s(f1(x,y),f1(f1(x,y),z)) | q(f1(f1(x,y),z),u) | s(f1(x,y),w) | -q(y,f1(x,y)).  [resolve(12,a,6,a)].
+Derived: -s(f1(x,y),f1(f1(x,y),z)) | q(f1(f1(x,y),z),u) | s(f1(x,y),w) | q(f1(x,y),v5).  [resolve(12,a,7,a)].
+Derived: -s(f1(x,y),f1(f1(x,y),z)) | q(f1(f1(x,y),z),u) | s(f1(x,y),w) | -s(y,y).  [resolve(12,a,8,a)].
+Derived: -s(f1(x,y),f1(f1(x,y),z)) | q(f1(f1(x,y),z),u) | -q(w,w) | -q(y,f1(x,y)).  [resolve(12,a,9,a)].
+Derived: -s(f1(x,y),f1(f1(x,y),z)) | q(f1(f1(x,y),z),u) | -q(w,w) | q(f1(x,y),w).  [resolve(12,a,10,a)].
+Derived: -s(f1(x,y),f1(f1(x,y),z)) | q(f1(f1(x,y),z),u) | -q(w,w) | -s(y,y).  [resolve(12,a,11,a)].
+13 -p(x,x) | -s(x,f1(x,y)) | -s(y,y).  [deny(1)].
+Derived: -s(f1(x,y),f1(f1(x,y),z)) | -s(z,z) | -s(x,f1(x,y)) | -q(y,f1(x,y)).  [resolve(13,a,3,a)].
+Derived: -s(f1(x,y),f1(f1(x,y),z)) | -s(z,z) | -s(x,f1(x,y)) | q(f1(x,y),u).  [resolve(13,a,4,a)].
+Derived: -s(f1(x,y),f1(f1(x,y),z)) | -s(z,z) | -s(x,f1(x,y)) | -s(y,y).  [resolve(13,a,5,a)].
+Derived: -s(f1(x,y),f1(f1(x,y),z)) | -s(z,z) | s(f1(x,y),u) | -q(y,f1(x,y)).  [resolve(13,a,6,a)].
+Derived: -s(f1(x,y),f1(f1(x,y),z)) | -s(z,z) | s(f1(x,y),u) | q(f1(x,y),w).  [resolve(13,a,7,a)].
+Derived: -s(f1(x,y),f1(f1(x,y),z)) | -s(z,z) | s(f1(x,y),u) | -s(y,y).  [resolve(13,a,8,a)].
+Derived: -s(f1(x,y),f1(f1(x,y),z)) | -s(z,z) | -q(u,u) | -q(y,f1(x,y)).  [resolve(13,a,9,a)].
+Derived: -s(f1(x,y),f1(f1(x,y),z)) | -s(z,z) | -q(u,u) | q(f1(x,y),u).  [resolve(13,a,10,a)].
+Derived: -s(f1(x,y),f1(f1(x,y),z)) | -s(z,z) | -q(u,u) | -s(y,y).  [resolve(13,a,11,a)].
+14 -p(x,x) | s(f1(x,y),z) | -q(y,f1(x,y)).  [deny(1)].
+Derived: s(f1(f1(x,y),z),u) | -q(z,f1(f1(x,y),z)) | -s(x,f1(x,y)) | -q(y,f1(x,y)).  [resolve(14,a,3,a)].
+Derived: s(f1(f1(x,y),z),u) | -q(z,f1(f1(x,y),z)) | -s(x,f1(x,y)) | q(f1(x,y),w).  [resolve(14,a,4,a)].
+Derived: s(f1(f1(x,y),z),u) | -q(z,f1(f1(x,y),z)) | -s(x,f1(x,y)) | -s(y,y).  [resolve(14,a,5,a)].
+Derived: s(f1(f1(x,y),z),u) | -q(z,f1(f1(x,y),z)) | s(f1(x,y),w) | -q(y,f1(x,y)).  [resolve(14,a,6,a)].
+Derived: s(f1(f1(x,y),z),u) | -q(z,f1(f1(x,y),z)) | s(f1(x,y),w) | q(f1(x,y),v5).  [resolve(14,a,7,a)].
+Derived: s(f1(f1(x,y),z),u) | -q(z,f1(f1(x,y),z)) | s(f1(x,y),w) | -s(y,y).  [resolve(14,a,8,a)].
+Derived: s(f1(f1(x,y),z),u) | -q(z,f1(f1(x,y),z)) | -q(w,w) | -q(y,f1(x,y)).  [resolve(14,a,9,a)].
+Derived: s(f1(f1(x,y),z),u) | -q(z,f1(f1(x,y),z)) | -q(w,w) | q(f1(x,y),w).  [resolve(14,a,10,a)].
+15 -p(x,x) | s(f1(x,y),z) | q(f1(x,y),u).  [deny(1)].
+Derived: s(f1(f1(x,y),z),u) | q(f1(f1(x,y),z),w) | -s(x,f1(x,y)) | -q(y,f1(x,y)).  [resolve(15,a,3,a)].
+Derived: s(f1(f1(x,y),z),u) | q(f1(f1(x,y),z),w) | -s(x,f1(x,y)) | q(f1(x,y),v5).  [resolve(15,a,4,a)].
+Derived: s(f1(f1(x,y),z),u) | q(f1(f1(x,y),z),w) | -s(x,f1(x,y)) | -s(y,y).  [resolve(15,a,5,a)].
+Derived: s(f1(f1(x,y),z),u) | q(f1(f1(x,y),z),w) | s(f1(x,y),v5) | -q(y,f1(x,y)).  [resolve(15,a,6,a)].
+Derived: s(f1(f1(x,y),z),u) | q(f1(f1(x,y),z),w) | s(f1(x,y),v5) | q(f1(x,y),v6).  [resolve(15,a,7,a)].
+Derived: s(f1(f1(x,y),z),u) | q(f1(f1(x,y),z),w) | s(f1(x,y),v5) | -s(y,y).  [resolve(15,a,8,a)].
+Derived: s(f1(f1(x,y),z),u) | q(f1(f1(x,y),z),w) | -q(v5,v5) | -q(y,f1(x,y)).  [resolve(15,a,9,a)].
+Derived: s(f1(f1(x,y),z),u) | q(f1(f1(x,y),z),w) | -q(v5,v5) | q(f1(x,y),v5).  [resolve(15,a,10,a)].
+16 -p(x,x) | s(f1(x,y),z) | -s(y,y).  [deny(1)].
+Derived: s(f1(f1(x,y),z),u) | -s(z,z) | -s(x,f1(x,y)) | -q(y,f1(x,y)).  [resolve(16,a,3,a)].
+Derived: s(f1(f1(x,y),z),u) | -s(z,z) | -s(x,f1(x,y)) | q(f1(x,y),w).  [resolve(16,a,4,a)].
+Derived: s(f1(f1(x,y),z),u) | -s(z,z) | -s(x,f1(x,y)) | -s(y,y).  [resolve(16,a,5,a)].
+Derived: s(f1(f1(x,y),z),u) | -s(z,z) | s(f1(x,y),w) | -q(y,f1(x,y)).  [resolve(16,a,6,a)].
+Derived: s(f1(f1(x,y),z),u) | -s(z,z) | s(f1(x,y),w) | q(f1(x,y),v5).  [resolve(16,a,7,a)].
+Derived: s(f1(f1(x,y),z),u) | -s(z,z) | s(f1(x,y),w) | -s(y,y).  [resolve(16,a,8,a)].
+17 -p(x,x) | -q(y,y) | -q(z,f1(x,z)).  [deny(1)].
+Derived: -q(x,x) | -q(y,f1(f1(z,u),y)) | -s(z,f1(z,u)) | -q(u,f1(z,u)).  [resolve(17,a,3,a)].
+Derived: -q(x,x) | -q(y,f1(f1(z,u),y)) | -s(z,f1(z,u)) | q(f1(z,u),w).  [resolve(17,a,4,a)].
+Derived: -q(x,x) | -q(y,f1(f1(z,u),y)) | -s(z,f1(z,u)) | -s(u,u).  [resolve(17,a,5,a)].
+Derived: -q(x,x) | -q(y,f1(f1(z,u),y)) | s(f1(z,u),w) | -q(u,f1(z,u)).  [resolve(17,a,6,a)].
+Derived: -q(x,x) | -q(y,f1(f1(z,u),y)) | s(f1(z,u),w) | q(f1(z,u),v5).  [resolve(17,a,7,a)].
+Derived: -q(x,x) | -q(y,f1(f1(z,u),y)) | -q(w,w) | -q(u,f1(z,u)).  [resolve(17,a,9,a)].
+Derived: -q(x,x) | -q(y,f1(f1(z,u),y)) | -q(w,w) | q(f1(z,u),w).  [resolve(17,a,10,a)].
+Derived: -q(x,x) | -q(y,f1(f1(z,u),y)) | -q(w,w) | -s(u,u).  [resolve(17,a,11,a)].
+18 -p(x,x) | -q(y,y) | q(f1(x,z),y).  [deny(1)].
+Derived: -q(x,x) | q(f1(f1(y,z),u),x) | -s(y,f1(y,z)) | -q(z,f1(y,z)).  [resolve(18,a,3,a)].
+Derived: -q(x,x) | q(f1(f1(y,z),u),x) | -s(y,f1(y,z)) | q(f1(y,z),w).  [resolve(18,a,4,a)].
+Derived: -q(x,x) | q(f1(f1(y,z),u),x) | -s(y,f1(y,z)) | -s(z,z).  [resolve(18,a,5,a)].
+Derived: -q(x,x) | q(f1(f1(y,z),u),x) | s(f1(y,z),w) | -q(z,f1(y,z)).  [resolve(18,a,6,a)].
+Derived: -q(x,x) | q(f1(f1(y,z),u),x) | s(f1(y,z),w) | q(f1(y,z),v5).  [resolve(18,a,7,a)].
+Derived: -q(x,x) | q(f1(f1(y,z),u),x) | -q(w,w) | -q(z,f1(y,z)).  [resolve(18,a,9,a)].
+Derived: -q(x,x) | q(f1(f1(y,z),u),x) | -q(w,w) | q(f1(y,z),w).  [resolve(18,a,10,a)].
+Derived: -q(x,x) | q(f1(f1(y,z),u),x) | -q(w,w) | -s(z,z).  [resolve(18,a,11,a)].
+19 -p(x,x) | -q(y,y) | -s(z,z).  [deny(1)].
+Derived: -q(x,x) | -s(y,y) | -s(z,f1(z,u)) | -q(u,f1(z,u)).  [resolve(19,a,3,a)].
+Derived: -q(x,x) | -s(y,y) | -s(z,f1(z,u)) | q(f1(z,u),w).  [resolve(19,a,4,a)].
+Derived: -q(x,x) | -s(y,y) | -s(z,f1(z,u)) | -s(u,u).  [resolve(19,a,5,a)].
+Derived: -q(x,x) | -s(y,y) | -q(z,z) | -q(u,f1(w,u)).  [resolve(19,a,9,a)].
+Derived: -q(x,x) | -s(y,y) | -q(z,z) | q(f1(u,w),z).  [resolve(19,a,10,a)].
+Derived: -q(x,x) | -s(y,y) | -q(z,z) | -s(u,u).  [resolve(19,a,11,a)].
+
+============================== end predicate elimination =============
+
+Auto_denials:  (non-Horn, no changes).
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ s, q ]).
+Function symbol precedence:  function_order([ f1 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+kept:      20 s(x,y) | -s(y,f1(y,z)) | -q(z,f1(y,z)).  [deny(1)].
+kept:      21 s(x,y) | -s(y,f1(y,z)) | q(f1(y,z),u).  [deny(1)].
+kept:      22 s(x,y) | -s(y,f1(y,z)) | -s(z,z).  [deny(1)].
+kept:      23 s(x,y) | s(f1(y,z),x) | -q(z,f1(y,z)).  [deny(1)].
+kept:      24 s(x,y) | s(f1(y,z),x) | q(f1(y,z),u).  [deny(1)].
+kept:      25 s(x,y) | s(f1(y,z),x) | -s(z,z).  [deny(1)].
+kept:      26 s(x,y) | -q(z,z) | -q(u,f1(y,u)).  [deny(1)].
+kept:      27 s(x,y) | -q(z,z) | q(f1(y,u),z).  [deny(1)].
+kept:      28 s(x,y) | -q(z,z) | -s(u,u).  [deny(1)].
+kept:      29 -s(f1(x,y),f1(f1(x,y),z)) | -q(z,f1(f1(x,y),z)) | -s(x,f1(x,y)) | -q(y,f1(x,y)).  [resolve(2,a,3,a)].
+kept:      30 -s(f1(x,y),f1(f1(x,y),z)) | -q(z,f1(f1(x,y),z)) | -s(x,f1(x,y)) | q(f1(x,y),u).  [resolve(2,a,4,a)].
+kept:      31 -s(f1(x,y),f1(f1(x,y),z)) | -q(z,f1(f1(x,y),z)) | -s(x,f1(x,y)) | -s(y,y).  [resolve(2,a,5,a)].
+kept:      32 -s(f1(x,y),f1(f1(x,y),z)) | -q(z,f1(f1(x,y),z)) | s(f1(x,y),u) | -q(y,f1(x,y)).  [resolve(2,a,6,a)].
+kept:      33 -s(f1(x,y),f1(f1(x,y),z)) | -q(z,f1(f1(x,y),z)) | s(f1(x,y),u) | q(f1(x,y),w).  [resolve(2,a,7,a)].
+kept:      34 -s(f1(x,y),f1(f1(x,y),z)) | -q(z,f1(f1(x,y),z)) | s(f1(x,y),u) | -s(y,y).  [resolve(2,a,8,a)].
+kept:      35 -s(f1(x,y),f1(f1(x,y),z)) | -q(z,f1(f1(x,y),z)) | -q(u,u) | -q(y,f1(x,y)).  [resolve(2,a,9,a)].
+kept:      36 -s(f1(x,y),f1(f1(x,y),z)) | -q(z,f1(f1(x,y),z)) | -q(u,u) | q(f1(x,y),u).  [resolve(2,a,10,a)].
+kept:      37 -s(f1(x,y),f1(f1(x,y),z)) | -q(z,f1(f1(x,y),z)) | -q(u,u) | -s(y,y).  [resolve(2,a,11,a)].
+kept:      38 -s(f1(x,y),f1(f1(x,y),z)) | q(f1(f1(x,y),z),u) | -s(x,f1(x,y)) | -q(y,f1(x,y)).  [resolve(12,a,3,a)].
+kept:      39 -s(f1(x,y),f1(f1(x,y),z)) | q(f1(f1(x,y),z),u) | -s(x,f1(x,y)) | q(f1(x,y),w).  [resolve(12,a,4,a)].
+kept:      40 -s(f1(x,y),f1(f1(x,y),z)) | q(f1(f1(x,y),z),u) | -s(x,f1(x,y)) | -s(y,y).  [resolve(12,a,5,a)].
+kept:      41 -s(f1(x,y),f1(f1(x,y),z)) | q(f1(f1(x,y),z),u) | s(f1(x,y),w) | -q(y,f1(x,y)).  [resolve(12,a,6,a)].
+kept:      42 -s(f1(x,y),f1(f1(x,y),z)) | q(f1(f1(x,y),z),u) | s(f1(x,y),w) | q(f1(x,y),v5).  [resolve(12,a,7,a)].
+kept:      43 -s(f1(x,y),f1(f1(x,y),z)) | q(f1(f1(x,y),z),u) | s(f1(x,y),w) | -s(y,y).  [resolve(12,a,8,a)].
+kept:      44 -s(f1(x,y),f1(f1(x,y),z)) | q(f1(f1(x,y),z),u) | -q(w,w) | -q(y,f1(x,y)).  [resolve(12,a,9,a)].
+kept:      45 -s(f1(x,y),f1(f1(x,y),z)) | q(f1(f1(x,y),z),u) | -q(w,w) | q(f1(x,y),w).  [resolve(12,a,10,a)].
+kept:      46 -s(f1(x,y),f1(f1(x,y),z)) | q(f1(f1(x,y),z),u) | -q(w,w) | -s(y,y).  [resolve(12,a,11,a)].
+kept:      47 -s(f1(x,y),f1(f1(x,y),z)) | -s(z,z) | -s(x,f1(x,y)) | -q(y,f1(x,y)).  [resolve(13,a,3,a)].
+kept:      48 -s(f1(x,y),f1(f1(x,y),z)) | -s(z,z) | -s(x,f1(x,y)) | q(f1(x,y),u).  [resolve(13,a,4,a)].
+kept:      49 -s(f1(x,y),f1(f1(x,y),z)) | -s(z,z) | -s(x,f1(x,y)) | -s(y,y).  [resolve(13,a,5,a)].
+kept:      50 -s(f1(x,y),f1(f1(x,y),z)) | -s(z,z) | s(f1(x,y),u) | -q(y,f1(x,y)).  [resolve(13,a,6,a)].
+kept:      51 -s(f1(x,y),f1(f1(x,y),z)) | -s(z,z) | s(f1(x,y),u) | q(f1(x,y),w).  [resolve(13,a,7,a)].
+kept:      52 -s(f1(x,y),f1(f1(x,y),z)) | -s(z,z) | s(f1(x,y),u) | -s(y,y).  [resolve(13,a,8,a)].
+kept:      53 -s(f1(x,y),f1(f1(x,y),z)) | -s(z,z) | -q(u,u) | -q(y,f1(x,y)).  [resolve(13,a,9,a)].
+kept:      54 -s(f1(x,y),f1(f1(x,y),z)) | -s(z,z) | -q(u,u) | q(f1(x,y),u).  [resolve(13,a,10,a)].
+kept:      55 -s(f1(x,y),f1(f1(x,y),z)) | -s(z,z) | -q(u,u) | -s(y,y).  [resolve(13,a,11,a)].
+kept:      56 s(f1(f1(x,y),z),u) | -q(z,f1(f1(x,y),z)) | -s(x,f1(x,y)) | -q(y,f1(x,y)).  [resolve(14,a,3,a)].
+kept:      57 s(f1(f1(x,y),z),u) | -q(z,f1(f1(x,y),z)) | -s(x,f1(x,y)) | q(f1(x,y),w).  [resolve(14,a,4,a)].
+kept:      58 s(f1(f1(x,y),z),u) | -q(z,f1(f1(x,y),z)) | -s(x,f1(x,y)) | -s(y,y).  [resolve(14,a,5,a)].
+kept:      59 s(f1(f1(x,y),z),u) | -q(z,f1(f1(x,y),z)) | s(f1(x,y),w) | -q(y,f1(x,y)).  [resolve(14,a,6,a)].
+kept:      60 s(f1(f1(x,y),z),u) | -q(z,f1(f1(x,y),z)) | s(f1(x,y),w) | q(f1(x,y),v5).  [resolve(14,a,7,a)].
+kept:      61 s(f1(f1(x,y),z),u) | -q(z,f1(f1(x,y),z)) | s(f1(x,y),w) | -s(y,y).  [resolve(14,a,8,a)].
+kept:      62 s(f1(f1(x,y),z),u) | -q(z,f1(f1(x,y),z)) | -q(w,w) | -q(y,f1(x,y)).  [resolve(14,a,9,a)].
+kept:      63 s(f1(f1(x,y),z),u) | -q(z,f1(f1(x,y),z)) | -q(w,w) | q(f1(x,y),w).  [resolve(14,a,10,a)].
+kept:      64 s(f1(f1(x,y),z),u) | q(f1(f1(x,y),z),w) | -s(x,f1(x,y)) | -q(y,f1(x,y)).  [resolve(15,a,3,a)].
+kept:      65 s(f1(f1(x,y),z),u) | q(f1(f1(x,y),z),w) | -s(x,f1(x,y)) | q(f1(x,y),v5).  [resolve(15,a,4,a)].
+kept:      66 s(f1(f1(x,y),z),u) | q(f1(f1(x,y),z),w) | -s(x,f1(x,y)) | -s(y,y).  [resolve(15,a,5,a)].
+kept:      67 s(f1(f1(x,y),z),u) | q(f1(f1(x,y),z),w) | s(f1(x,y),v5) | -q(y,f1(x,y)).  [resolve(15,a,6,a)].
+kept:      68 s(f1(f1(x,y),z),u) | q(f1(f1(x,y),z),w) | s(f1(x,y),v5) | q(f1(x,y),v6).  [resolve(15,a,7,a)].
+kept:      69 s(f1(f1(x,y),z),u) | q(f1(f1(x,y),z),w) | s(f1(x,y),v5) | -s(y,y).  [resolve(15,a,8,a)].
+kept:      70 s(f1(f1(x,y),z),u) | q(f1(f1(x,y),z),w) | -q(v5,v5) | -q(y,f1(x,y)).  [resolve(15,a,9,a)].
+kept:      71 s(f1(f1(x,y),z),u) | q(f1(f1(x,y),z),w) | -q(v5,v5) | q(f1(x,y),v5).  [resolve(15,a,10,a)].
+kept:      72 s(f1(f1(x,y),z),u) | -s(z,z) | -s(x,f1(x,y)) | -q(y,f1(x,y)).  [resolve(16,a,3,a)].
+kept:      73 s(f1(f1(x,y),z),u) | -s(z,z) | -s(x,f1(x,y)) | q(f1(x,y),w).  [resolve(16,a,4,a)].
+kept:      74 s(f1(f1(x,y),z),u) | -s(z,z) | -s(x,f1(x,y)) | -s(y,y).  [resolve(16,a,5,a)].
+kept:      75 s(f1(f1(x,y),z),u) | -s(z,z) | s(f1(x,y),w) | -q(y,f1(x,y)).  [resolve(16,a,6,a)].
+kept:      76 s(f1(f1(x,y),z),u) | -s(z,z) | s(f1(x,y),w) | q(f1(x,y),v5).  [resolve(16,a,7,a)].
+kept:      77 s(f1(f1(x,y),z),u) | -s(z,z) | s(f1(x,y),w) | -s(y,y).  [resolve(16,a,8,a)].
+kept:      78 -q(x,x) | -q(y,f1(f1(z,u),y)) | -s(z,f1(z,u)) | -q(u,f1(z,u)).  [resolve(17,a,3,a)].
+kept:      79 -q(x,x) | -q(y,f1(f1(z,u),y)) | -s(z,f1(z,u)) | q(f1(z,u),w).  [resolve(17,a,4,a)].
+kept:      80 -q(x,x) | -q(y,f1(f1(z,u),y)) | -s(z,f1(z,u)) | -s(u,u).  [resolve(17,a,5,a)].
+kept:      81 -q(x,x) | -q(y,f1(f1(z,u),y)) | s(f1(z,u),w) | -q(u,f1(z,u)).  [resolve(17,a,6,a)].
+kept:      82 -q(x,x) | -q(y,f1(f1(z,u),y)) | s(f1(z,u),w) | q(f1(z,u),v5).  [resolve(17,a,7,a)].
+kept:      83 -q(x,x) | -q(y,f1(f1(z,u),y)) | -q(w,w) | -q(u,f1(z,u)).  [resolve(17,a,9,a)].
+kept:      84 -q(x,x) | -q(y,f1(f1(z,u),y)) | -q(w,w) | q(f1(z,u),w).  [resolve(17,a,10,a)].
+kept:      85 -q(x,x) | -q(y,f1(f1(z,u),y)) | -q(w,w) | -s(u,u).  [resolve(17,a,11,a)].
+kept:      86 -q(x,x) | q(f1(f1(y,z),u),x) | -s(y,f1(y,z)) | -q(z,f1(y,z)).  [resolve(18,a,3,a)].
+kept:      87 -q(x,x) | q(f1(f1(y,z),u),x) | -s(y,f1(y,z)) | q(f1(y,z),w).  [resolve(18,a,4,a)].
+kept:      88 -q(x,x) | q(f1(f1(y,z),u),x) | -s(y,f1(y,z)) | -s(z,z).  [resolve(18,a,5,a)].
+kept:      89 -q(x,x) | q(f1(f1(y,z),u),x) | s(f1(y,z),w) | -q(z,f1(y,z)).  [resolve(18,a,6,a)].
+kept:      90 -q(x,x) | q(f1(f1(y,z),u),x) | s(f1(y,z),w) | q(f1(y,z),v5).  [resolve(18,a,7,a)].
+kept:      91 -q(x,x) | q(f1(f1(y,z),u),x) | -q(w,w) | -q(z,f1(y,z)).  [resolve(18,a,9,a)].
+kept:      92 -q(x,x) | q(f1(f1(y,z),u),x) | -q(w,w) | q(f1(y,z),w).  [resolve(18,a,10,a)].
+kept:      93 -q(x,x) | q(f1(f1(y,z),u),x) | -q(w,w) | -s(z,z).  [resolve(18,a,11,a)].
+kept:      94 -q(x,x) | -s(y,y) | -s(z,f1(z,u)) | -q(u,f1(z,u)).  [resolve(19,a,3,a)].
+kept:      95 -q(x,x) | -s(y,y) | -s(z,f1(z,u)) | q(f1(z,u),w).  [resolve(19,a,4,a)].
+kept:      96 -q(x,x) | -s(y,y) | -s(z,f1(z,u)) | -s(u,u).  [resolve(19,a,5,a)].
+kept:      97 -q(x,x) | -s(y,y) | -q(z,z) | -q(u,f1(w,u)).  [resolve(19,a,9,a)].
+kept:      98 -q(x,x) | -s(y,y) | -q(z,z) | q(f1(u,w),z).  [resolve(19,a,10,a)].
+kept:      99 -q(x,x) | -s(y,y) | -q(z,z) | -s(u,u).  [resolve(19,a,11,a)].
+kept:      100 -s(f1(x,y),f1(f1(x,y),y)) | -s(y,y) | -s(x,f1(x,y)).  [factor(49,b,d)].
+kept:      101 -s(f1(x,y),f1(f1(x,y),y)) | -s(y,y) | s(f1(x,y),z).  [factor(52,b,d)].
+kept:      102 -s(f1(x,y),f1(f1(x,y),y)) | -s(y,y) | -q(z,z).  [factor(55,b,d)].
+kept:      103 s(f1(f1(x,y),y),z) | -s(y,y) | -s(x,f1(x,y)).  [factor(74,b,d)].
+kept:      104 s(f1(f1(x,y),y),z) | -s(y,y) | s(f1(x,y),u).  [factor(77,b,d)].
+kept:      105 -q(x,x) | -q(y,f1(f1(z,u),y)) | -q(u,f1(z,u)).  [factor(83,a,c)].
+kept:      106 -q(x,x) | -q(y,f1(f1(z,u),y)) | q(f1(z,u),x).  [factor(84,a,c)].
+kept:      107 -q(x,x) | -q(y,f1(f1(z,u),y)) | -s(u,u).  [factor(85,a,c)].
+kept:      108 -q(x,x) | q(f1(f1(y,z),u),x) | -q(z,f1(y,z)).  [factor(91,a,c)].
+kept:      109 -q(x,x) | q(f1(f1(y,z),u),x) | q(f1(y,z),x).  [factor(92,a,c)].
+kept:      110 -q(x,x) | q(f1(f1(y,z),u),x) | -s(z,z).  [factor(93,a,c)].
+kept:      111 -q(x,x) | -s(y,y) | -s(z,f1(z,y)).  [factor(96,b,d)].
+kept:      112 -q(x,x) | -s(y,y) | -q(z,f1(u,z)).  [factor(97,a,c)].
+kept:      113 -q(x,x) | -s(y,y) | q(f1(z,u),x).  [factor(98,a,c)].
+kept:      114 -q(x,x) | -s(y,y) | -s(z,z).  [factor(99,a,c)].
+kept:      115 -q(x,x) | -s(y,y) | -q(z,z).  [factor(99,b,d)].
+kept:      116 -q(x,x) | -s(y,y).  [factor(114,b,c)].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+20 s(x,y) | -s(y,f1(y,z)) | -q(z,f1(y,z)).  [deny(1)].
+21 s(x,y) | -s(y,f1(y,z)) | q(f1(y,z),u).  [deny(1)].
+22 s(x,y) | -s(y,f1(y,z)) | -s(z,z).  [deny(1)].
+23 s(x,y) | s(f1(y,z),x) | -q(z,f1(y,z)).  [deny(1)].
+24 s(x,y) | s(f1(y,z),x) | q(f1(y,z),u).  [deny(1)].
+25 s(x,y) | s(f1(y,z),x) | -s(z,z).  [deny(1)].
+26 s(x,y) | -q(z,z) | -q(u,f1(y,u)).  [deny(1)].
+27 s(x,y) | -q(z,z) | q(f1(y,u),z).  [deny(1)].
+29 -s(f1(x,y),f1(f1(x,y),z)) | -q(z,f1(f1(x,y),z)) | -s(x,f1(x,y)) | -q(y,f1(x,y)).  [resolve(2,a,3,a)].
+30 -s(f1(x,y),f1(f1(x,y),z)) | -q(z,f1(f1(x,y),z)) | -s(x,f1(x,y)) | q(f1(x,y),u).  [resolve(2,a,4,a)].
+31 -s(f1(x,y),f1(f1(x,y),z)) | -q(z,f1(f1(x,y),z)) | -s(x,f1(x,y)) | -s(y,y).  [resolve(2,a,5,a)].
+32 -s(f1(x,y),f1(f1(x,y),z)) | -q(z,f1(f1(x,y),z)) | s(f1(x,y),u) | -q(y,f1(x,y)).  [resolve(2,a,6,a)].
+33 -s(f1(x,y),f1(f1(x,y),z)) | -q(z,f1(f1(x,y),z)) | s(f1(x,y),u) | q(f1(x,y),w).  [resolve(2,a,7,a)].
+34 -s(f1(x,y),f1(f1(x,y),z)) | -q(z,f1(f1(x,y),z)) | s(f1(x,y),u) | -s(y,y).  [resolve(2,a,8,a)].
+38 -s(f1(x,y),f1(f1(x,y),z)) | q(f1(f1(x,y),z),u) | -s(x,f1(x,y)) | -q(y,f1(x,y)).  [resolve(12,a,3,a)].
+39 -s(f1(x,y),f1(f1(x,y),z)) | q(f1(f1(x,y),z),u) | -s(x,f1(x,y)) | q(f1(x,y),w).  [resolve(12,a,4,a)].
+40 -s(f1(x,y),f1(f1(x,y),z)) | q(f1(f1(x,y),z),u) | -s(x,f1(x,y)) | -s(y,y).  [resolve(12,a,5,a)].
+41 -s(f1(x,y),f1(f1(x,y),z)) | q(f1(f1(x,y),z),u) | s(f1(x,y),w) | -q(y,f1(x,y)).  [resolve(12,a,6,a)].
+42 -s(f1(x,y),f1(f1(x,y),z)) | q(f1(f1(x,y),z),u) | s(f1(x,y),w) | q(f1(x,y),v5).  [resolve(12,a,7,a)].
+43 -s(f1(x,y),f1(f1(x,y),z)) | q(f1(f1(x,y),z),u) | s(f1(x,y),w) | -s(y,y).  [resolve(12,a,8,a)].
+44 -s(f1(x,y),f1(f1(x,y),z)) | q(f1(f1(x,y),z),u) | -q(w,w) | -q(y,f1(x,y)).  [resolve(12,a,9,a)].
+45 -s(f1(x,y),f1(f1(x,y),z)) | q(f1(f1(x,y),z),u) | -q(w,w) | q(f1(x,y),w).  [resolve(12,a,10,a)].
+47 -s(f1(x,y),f1(f1(x,y),z)) | -s(z,z) | -s(x,f1(x,y)) | -q(y,f1(x,y)).  [resolve(13,a,3,a)].
+48 -s(f1(x,y),f1(f1(x,y),z)) | -s(z,z) | -s(x,f1(x,y)) | q(f1(x,y),u).  [resolve(13,a,4,a)].
+49 -s(f1(x,y),f1(f1(x,y),z)) | -s(z,z) | -s(x,f1(x,y)) | -s(y,y).  [resolve(13,a,5,a)].
+50 -s(f1(x,y),f1(f1(x,y),z)) | -s(z,z) | s(f1(x,y),u) | -q(y,f1(x,y)).  [resolve(13,a,6,a)].
+51 -s(f1(x,y),f1(f1(x,y),z)) | -s(z,z) | s(f1(x,y),u) | q(f1(x,y),w).  [resolve(13,a,7,a)].
+52 -s(f1(x,y),f1(f1(x,y),z)) | -s(z,z) | s(f1(x,y),u) | -s(y,y).  [resolve(13,a,8,a)].
+56 s(f1(f1(x,y),z),u) | -q(z,f1(f1(x,y),z)) | -s(x,f1(x,y)) | -q(y,f1(x,y)).  [resolve(14,a,3,a)].
+57 s(f1(f1(x,y),z),u) | -q(z,f1(f1(x,y),z)) | -s(x,f1(x,y)) | q(f1(x,y),w).  [resolve(14,a,4,a)].
+58 s(f1(f1(x,y),z),u) | -q(z,f1(f1(x,y),z)) | -s(x,f1(x,y)) | -s(y,y).  [resolve(14,a,5,a)].
+59 s(f1(f1(x,y),z),u) | -q(z,f1(f1(x,y),z)) | s(f1(x,y),w) | -q(y,f1(x,y)).  [resolve(14,a,6,a)].
+60 s(f1(f1(x,y),z),u) | -q(z,f1(f1(x,y),z)) | s(f1(x,y),w) | q(f1(x,y),v5).  [resolve(14,a,7,a)].
+61 s(f1(f1(x,y),z),u) | -q(z,f1(f1(x,y),z)) | s(f1(x,y),w) | -s(y,y).  [resolve(14,a,8,a)].
+64 s(f1(f1(x,y),z),u) | q(f1(f1(x,y),z),w) | -s(x,f1(x,y)) | -q(y,f1(x,y)).  [resolve(15,a,3,a)].
+65 s(f1(f1(x,y),z),u) | q(f1(f1(x,y),z),w) | -s(x,f1(x,y)) | q(f1(x,y),v5).  [resolve(15,a,4,a)].
+66 s(f1(f1(x,y),z),u) | q(f1(f1(x,y),z),w) | -s(x,f1(x,y)) | -s(y,y).  [resolve(15,a,5,a)].
+67 s(f1(f1(x,y),z),u) | q(f1(f1(x,y),z),w) | s(f1(x,y),v5) | -q(y,f1(x,y)).  [resolve(15,a,6,a)].
+68 s(f1(f1(x,y),z),u) | q(f1(f1(x,y),z),w) | s(f1(x,y),v5) | q(f1(x,y),v6).  [resolve(15,a,7,a)].
+69 s(f1(f1(x,y),z),u) | q(f1(f1(x,y),z),w) | s(f1(x,y),v5) | -s(y,y).  [resolve(15,a,8,a)].
+70 s(f1(f1(x,y),z),u) | q(f1(f1(x,y),z),w) | -q(v5,v5) | -q(y,f1(x,y)).  [resolve(15,a,9,a)].
+71 s(f1(f1(x,y),z),u) | q(f1(f1(x,y),z),w) | -q(v5,v5) | q(f1(x,y),v5).  [resolve(15,a,10,a)].
+72 s(f1(f1(x,y),z),u) | -s(z,z) | -s(x,f1(x,y)) | -q(y,f1(x,y)).  [resolve(16,a,3,a)].
+73 s(f1(f1(x,y),z),u) | -s(z,z) | -s(x,f1(x,y)) | q(f1(x,y),w).  [resolve(16,a,4,a)].
+74 s(f1(f1(x,y),z),u) | -s(z,z) | -s(x,f1(x,y)) | -s(y,y).  [resolve(16,a,5,a)].
+75 s(f1(f1(x,y),z),u) | -s(z,z) | s(f1(x,y),w) | -q(y,f1(x,y)).  [resolve(16,a,6,a)].
+76 s(f1(f1(x,y),z),u) | -s(z,z) | s(f1(x,y),w) | q(f1(x,y),v5).  [resolve(16,a,7,a)].
+77 s(f1(f1(x,y),z),u) | -s(z,z) | s(f1(x,y),w) | -s(y,y).  [resolve(16,a,8,a)].
+79 -q(x,x) | -q(y,f1(f1(z,u),y)) | -s(z,f1(z,u)) | q(f1(z,u),w).  [resolve(17,a,4,a)].
+82 -q(x,x) | -q(y,f1(f1(z,u),y)) | s(f1(z,u),w) | q(f1(z,u),v5).  [resolve(17,a,7,a)].
+87 -q(x,x) | q(f1(f1(y,z),u),x) | -s(y,f1(y,z)) | q(f1(y,z),w).  [resolve(18,a,4,a)].
+90 -q(x,x) | q(f1(f1(y,z),u),x) | s(f1(y,z),w) | q(f1(y,z),v5).  [resolve(18,a,7,a)].
+92 -q(x,x) | q(f1(f1(y,z),u),x) | -q(w,w) | q(f1(y,z),w).  [resolve(18,a,10,a)].
+100 -s(f1(x,y),f1(f1(x,y),y)) | -s(y,y) | -s(x,f1(x,y)).  [factor(49,b,d)].
+101 -s(f1(x,y),f1(f1(x,y),y)) | -s(y,y) | s(f1(x,y),z).  [factor(52,b,d)].
+103 s(f1(f1(x,y),y),z) | -s(y,y) | -s(x,f1(x,y)).  [factor(74,b,d)].
+104 s(f1(f1(x,y),y),z) | -s(y,y) | s(f1(x,y),u).  [factor(77,b,d)].
+105 -q(x,x) | -q(y,f1(f1(z,u),y)) | -q(u,f1(z,u)).  [factor(83,a,c)].
+106 -q(x,x) | -q(y,f1(f1(z,u),y)) | q(f1(z,u),x).  [factor(84,a,c)].
+108 -q(x,x) | q(f1(f1(y,z),u),x) | -q(z,f1(y,z)).  [factor(91,a,c)].
+109 -q(x,x) | q(f1(f1(y,z),u),x) | q(f1(y,z),x).  [factor(92,a,c)].
+116 -q(x,x) | -s(y,y).  [factor(114,b,c)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.02 seconds.
+
+given #1 (I,wt=13): 20 s(x,y) | -s(y,f1(y,z)) | -q(z,f1(y,z)).  [deny(1)].
+
+given #2 (I,wt=13): 21 s(x,y) | -s(y,f1(y,z)) | q(f1(y,z),u).  [deny(1)].
+
+given #3 (I,wt=11): 22 s(x,y) | -s(y,f1(y,z)) | -s(z,z).  [deny(1)].
+
+given #4 (I,wt=13): 23 s(x,y) | s(f1(y,z),x) | -q(z,f1(y,z)).  [deny(1)].
+
+given #5 (I,wt=13): 24 s(x,y) | s(f1(y,z),x) | q(f1(y,z),u).  [deny(1)].
+
+given #6 (I,wt=11): 25 s(x,y) | s(f1(y,z),x) | -s(z,z).  [deny(1)].
+
+given #7 (I,wt=11): 26 s(x,y) | -q(z,z) | -q(u,f1(y,u)).  [deny(1)].
+
+given #8 (I,wt=11): 27 s(x,y) | -q(z,z) | q(f1(y,u),z).  [deny(1)].
+
+given #9 (I,wt=26): 29 -s(f1(x,y),f1(f1(x,y),z)) | -q(z,f1(f1(x,y),z)) | -s(x,f1(x,y)) | -q(y,f1(x,y)).  [resolve(2,a,3,a)].
+
+given #10 (I,wt=26): 30 -s(f1(x,y),f1(f1(x,y),z)) | -q(z,f1(f1(x,y),z)) | -s(x,f1(x,y)) | q(f1(x,y),u).  [resolve(2,a,4,a)].
+
+given #11 (I,wt=24): 31 -s(f1(x,y),f1(f1(x,y),z)) | -q(z,f1(f1(x,y),z)) | -s(x,f1(x,y)) | -s(y,y).  [resolve(2,a,5,a)].
+
+given #12 (I,wt=26): 32 -s(f1(x,y),f1(f1(x,y),z)) | -q(z,f1(f1(x,y),z)) | s(f1(x,y),u) | -q(y,f1(x,y)).  [resolve(2,a,6,a)].
+
+given #13 (I,wt=26): 33 -s(f1(x,y),f1(f1(x,y),z)) | -q(z,f1(f1(x,y),z)) | s(f1(x,y),u) | q(f1(x,y),w).  [resolve(2,a,7,a)].
+
+given #14 (I,wt=24): 34 -s(f1(x,y),f1(f1(x,y),z)) | -q(z,f1(f1(x,y),z)) | s(f1(x,y),u) | -s(y,y).  [resolve(2,a,8,a)].
+
+given #15 (I,wt=26): 38 -s(f1(x,y),f1(f1(x,y),z)) | q(f1(f1(x,y),z),u) | -s(x,f1(x,y)) | -q(y,f1(x,y)).  [resolve(12,a,3,a)].
+
+given #16 (I,wt=26): 39 -s(f1(x,y),f1(f1(x,y),z)) | q(f1(f1(x,y),z),u) | -s(x,f1(x,y)) | q(f1(x,y),w).  [resolve(12,a,4,a)].
+
+given #17 (I,wt=24): 40 -s(f1(x,y),f1(f1(x,y),z)) | q(f1(f1(x,y),z),u) | -s(x,f1(x,y)) | -s(y,y).  [resolve(12,a,5,a)].
+
+given #18 (I,wt=26): 41 -s(f1(x,y),f1(f1(x,y),z)) | q(f1(f1(x,y),z),u) | s(f1(x,y),w) | -q(y,f1(x,y)).  [resolve(12,a,6,a)].
+
+given #19 (I,wt=26): 42 -s(f1(x,y),f1(f1(x,y),z)) | q(f1(f1(x,y),z),u) | s(f1(x,y),w) | q(f1(x,y),v5).  [resolve(12,a,7,a)].
+
+given #20 (I,wt=24): 43 -s(f1(x,y),f1(f1(x,y),z)) | q(f1(f1(x,y),z),u) | s(f1(x,y),w) | -s(y,y).  [resolve(12,a,8,a)].
+
+given #21 (I,wt=24): 44 -s(f1(x,y),f1(f1(x,y),z)) | q(f1(f1(x,y),z),u) | -q(w,w) | -q(y,f1(x,y)).  [resolve(12,a,9,a)].
+
+given #22 (I,wt=24): 45 -s(f1(x,y),f1(f1(x,y),z)) | q(f1(f1(x,y),z),u) | -q(w,w) | q(f1(x,y),w).  [resolve(12,a,10,a)].
+
+given #23 (I,wt=22): 47 -s(f1(x,y),f1(f1(x,y),z)) | -s(z,z) | -s(x,f1(x,y)) | -q(y,f1(x,y)).  [resolve(13,a,3,a)].
+
+given #24 (I,wt=22): 48 -s(f1(x,y),f1(f1(x,y),z)) | -s(z,z) | -s(x,f1(x,y)) | q(f1(x,y),u).  [resolve(13,a,4,a)].
+
+given #25 (I,wt=20): 49 -s(f1(x,y),f1(f1(x,y),z)) | -s(z,z) | -s(x,f1(x,y)) | -s(y,y).  [resolve(13,a,5,a)].
+
+given #26 (I,wt=22): 50 -s(f1(x,y),f1(f1(x,y),z)) | -s(z,z) | s(f1(x,y),u) | -q(y,f1(x,y)).  [resolve(13,a,6,a)].
+
+given #27 (I,wt=22): 51 -s(f1(x,y),f1(f1(x,y),z)) | -s(z,z) | s(f1(x,y),u) | q(f1(x,y),w).  [resolve(13,a,7,a)].
+
+given #28 (I,wt=20): 52 -s(f1(x,y),f1(f1(x,y),z)) | -s(z,z) | s(f1(x,y),u) | -s(y,y).  [resolve(13,a,8,a)].
+
+given #29 (I,wt=24): 56 s(f1(f1(x,y),z),u) | -q(z,f1(f1(x,y),z)) | -s(x,f1(x,y)) | -q(y,f1(x,y)).  [resolve(14,a,3,a)].
+
+given #30 (I,wt=24): 57 s(f1(f1(x,y),z),u) | -q(z,f1(f1(x,y),z)) | -s(x,f1(x,y)) | q(f1(x,y),w).  [resolve(14,a,4,a)].
+
+given #31 (I,wt=22): 58 s(f1(f1(x,y),z),u) | -q(z,f1(f1(x,y),z)) | -s(x,f1(x,y)) | -s(y,y).  [resolve(14,a,5,a)].
+
+given #32 (I,wt=24): 59 s(f1(f1(x,y),z),u) | -q(z,f1(f1(x,y),z)) | s(f1(x,y),w) | -q(y,f1(x,y)).  [resolve(14,a,6,a)].
+
+given #33 (I,wt=24): 60 s(f1(f1(x,y),z),u) | -q(z,f1(f1(x,y),z)) | s(f1(x,y),w) | q(f1(x,y),v5).  [resolve(14,a,7,a)].
+
+given #34 (I,wt=22): 61 s(f1(f1(x,y),z),u) | -q(z,f1(f1(x,y),z)) | s(f1(x,y),w) | -s(y,y).  [resolve(14,a,8,a)].
+
+given #35 (I,wt=24): 64 s(f1(f1(x,y),z),u) | q(f1(f1(x,y),z),w) | -s(x,f1(x,y)) | -q(y,f1(x,y)).  [resolve(15,a,3,a)].
+
+given #36 (I,wt=24): 65 s(f1(f1(x,y),z),u) | q(f1(f1(x,y),z),w) | -s(x,f1(x,y)) | q(f1(x,y),v5).  [resolve(15,a,4,a)].
+
+given #37 (I,wt=22): 66 s(f1(f1(x,y),z),u) | q(f1(f1(x,y),z),w) | -s(x,f1(x,y)) | -s(y,y).  [resolve(15,a,5,a)].
+
+given #38 (I,wt=24): 67 s(f1(f1(x,y),z),u) | q(f1(f1(x,y),z),w) | s(f1(x,y),v5) | -q(y,f1(x,y)).  [resolve(15,a,6,a)].
+
+given #39 (I,wt=24): 68 s(f1(f1(x,y),z),u) | q(f1(f1(x,y),z),w) | s(f1(x,y),v5) | q(f1(x,y),v6).  [resolve(15,a,7,a)].
+
+given #40 (I,wt=22): 69 s(f1(f1(x,y),z),u) | q(f1(f1(x,y),z),w) | s(f1(x,y),v5) | -s(y,y).  [resolve(15,a,8,a)].
+
+given #41 (I,wt=22): 70 s(f1(f1(x,y),z),u) | q(f1(f1(x,y),z),w) | -q(v5,v5) | -q(y,f1(x,y)).  [resolve(15,a,9,a)].
+
+given #42 (I,wt=22): 71 s(f1(f1(x,y),z),u) | q(f1(f1(x,y),z),w) | -q(v5,v5) | q(f1(x,y),v5).  [resolve(15,a,10,a)].
+
+given #43 (I,wt=20): 72 s(f1(f1(x,y),z),u) | -s(z,z) | -s(x,f1(x,y)) | -q(y,f1(x,y)).  [resolve(16,a,3,a)].
+
+given #44 (I,wt=20): 73 s(f1(f1(x,y),z),u) | -s(z,z) | -s(x,f1(x,y)) | q(f1(x,y),w).  [resolve(16,a,4,a)].
+
+given #45 (I,wt=18): 74 s(f1(f1(x,y),z),u) | -s(z,z) | -s(x,f1(x,y)) | -s(y,y).  [resolve(16,a,5,a)].
+
+given #46 (I,wt=20): 75 s(f1(f1(x,y),z),u) | -s(z,z) | s(f1(x,y),w) | -q(y,f1(x,y)).  [resolve(16,a,6,a)].
+
+given #47 (I,wt=20): 76 s(f1(f1(x,y),z),u) | -s(z,z) | s(f1(x,y),w) | q(f1(x,y),v5).  [resolve(16,a,7,a)].
+
+given #48 (I,wt=18): 77 s(f1(f1(x,y),z),u) | -s(z,z) | s(f1(x,y),w) | -s(y,y).  [resolve(16,a,8,a)].
+
+given #49 (I,wt=20): 79 -q(x,x) | -q(y,f1(f1(z,u),y)) | -s(z,f1(z,u)) | q(f1(z,u),w).  [resolve(17,a,4,a)].
+
+given #50 (I,wt=20): 82 -q(x,x) | -q(y,f1(f1(z,u),y)) | s(f1(z,u),w) | q(f1(z,u),v5).  [resolve(17,a,7,a)].
+
+given #51 (I,wt=20): 87 -q(x,x) | q(f1(f1(y,z),u),x) | -s(y,f1(y,z)) | q(f1(y,z),w).  [resolve(18,a,4,a)].
+
+given #52 (I,wt=20): 90 -q(x,x) | q(f1(f1(y,z),u),x) | s(f1(y,z),w) | q(f1(y,z),v5).  [resolve(18,a,7,a)].
+
+given #53 (I,wt=18): 92 -q(x,x) | q(f1(f1(y,z),u),x) | -q(w,w) | q(f1(y,z),w).  [resolve(18,a,10,a)].
+
+given #54 (I,wt=17): 100 -s(f1(x,y),f1(f1(x,y),y)) | -s(y,y) | -s(x,f1(x,y)).  [factor(49,b,d)].
+
+given #55 (I,wt=17): 101 -s(f1(x,y),f1(f1(x,y),y)) | -s(y,y) | s(f1(x,y),z).  [factor(52,b,d)].
+
+given #56 (I,wt=15): 103 s(f1(f1(x,y),y),z) | -s(y,y) | -s(x,f1(x,y)).  [factor(74,b,d)].
+
+given #57 (I,wt=15): 104 s(f1(f1(x,y),y),z) | -s(y,y) | s(f1(x,y),u).  [factor(77,b,d)].
+
+given #58 (I,wt=15): 105 -q(x,x) | -q(y,f1(f1(z,u),y)) | -q(u,f1(z,u)).  [factor(83,a,c)].
+
+given #59 (I,wt=15): 106 -q(x,x) | -q(y,f1(f1(z,u),y)) | q(f1(z,u),x).  [factor(84,a,c)].
+
+given #60 (I,wt=15): 108 -q(x,x) | q(f1(f1(y,z),u),x) | -q(z,f1(y,z)).  [factor(91,a,c)].
+
+given #61 (I,wt=15): 109 -q(x,x) | q(f1(f1(y,z),u),x) | q(f1(y,z),x).  [factor(92,a,c)].
+
+given #62 (I,wt=6): 116 -q(x,x) | -s(y,y).  [factor(114,b,c)].
+
+given #63 (A,wt=18): 117 s(x,y) | s(f1(y,z),x) | s(u,w) | s(f1(w,f1(y,z)),u).  [resolve(24,c,23,c)].
+
+given #64 (T,wt=11): 128 s(x,y) | -q(z,z) | s(f1(y,u),x).  [factor(125,a,c)].
+
+given #65 (T,wt=8): 516 s(x,y) | s(f1(y,z),x).  [factor(508,b,d),merge(c)].
+
+given #66 (T,wt=10): 575 s(f1(x,y),x) | -s(x,f1(x,x)).  [factor(544,a,b)].
+
+given #67 (T,wt=10): 576 s(f1(f1(x,y),z),x) | -s(y,y).  [factor(545,a,b)].
+
+given #68 (A,wt=48): 170 s(f1(f1(x,y),z),u) | s(f1(x,y),w) | q(f1(x,y),v5) | s(f1(f1(v6,f1(f1(x,y),z)),v7),v8) | q(f1(f1(v6,f1(f1(x,y),z)),v7),v9) | s(f1(v6,f1(f1(x,y),z)),v10).  [resolve(68,b,67,d)].
+
+given #69 (T,wt=12): 562 s(f1(x,x),x) | s(f1(f1(x,x),x),y).  [factor(517,a,c)].
+
+given #70 (T,wt=12): 577 s(f1(f1(x,y),z),x) | q(f1(x,y),u).  [factor(546,a,b)].
+
+given #71 (T,wt=10): 728 s(f1(f1(x,y),z),x) | -s(u,u).  [resolve(577,b,116,a)].
+
+given #72 (T,wt=10): 778 s(f1(f1(x,y),z),x) | -q(u,u).  [factor(763,a,b)].
+
+given #73 (A,wt=48): 171 s(f1(f1(x,y),z),u) | s(f1(x,y),w) | q(f1(x,y),v5) | s(f1(f1(v6,f1(f1(x,y),z)),v7),v8) | q(f1(f1(v6,f1(f1(x,y),z)),v7),v9) | -s(v6,f1(v6,f1(f1(x,y),z))).  [resolve(68,b,64,d)].
+
+given #74 (T,wt=7): 784 s(f1(f1(x,y),z),x).  [factor(783,a,b)].
+
+given #75 (T,wt=12): 581 s(f1(x,y),x) | -s(x,f1(x,f1(x,y))).  [factor(559,a,b)].
+
+given #76 (T,wt=13): 544 s(f1(x,y),x) | s(z,u) | -s(u,f1(u,x)).  [resolve(516,a,22,c)].
+
+given #77 (T,wt=12): 789 s(f1(x,x),x) | s(y,f1(f1(x,x),x)).  [factor(788,a,c)].
+
+given #78 (A,wt=38): 173 s(f1(f1(x,y),z),u) | s(f1(x,y),w) | q(f1(x,y),v5) | s(f1(f1(v6,v7),f1(f1(x,y),z)),v8) | s(f1(v6,v7),v9) | q(f1(v6,v7),v10).  [resolve(68,b,60,b)].
+
+given #79 (T,wt=8): 799 s(f1(x,x),x) | -s(x,x).  [factor(793,a,c)].
+
+given #80 (T,wt=5): 950 s(f1(x,x),x).  [factor(949,a,b)].
+
+given #81 (T,wt=15): 559 s(f1(x,y),x) | s(z,u) | -s(u,f1(u,f1(x,y))).  [resolve(516,b,22,c)].
+
+given #82 (T,wt=15): 566 s(f1(x,y),x) | s(f1(f1(x,y),x),z) | -s(y,y).  [factor(523,a,c)].
+
+given #83 (A,wt=48): 174 s(f1(f1(x,y),z),u) | s(f1(x,y),w) | q(f1(x,y),v5) | s(f1(f1(v6,f1(f1(x,y),z)),v7),v8) | -q(v7,f1(f1(v6,f1(f1(x,y),z)),v7)) | s(f1(v6,f1(f1(x,y),z)),v9).  [resolve(68,b,59,d)].
+
+given #84 (T,wt=17): 517 s(f1(x,y),x) | s(f1(f1(z,x),x),u) | s(f1(z,x),w).  [resolve(516,a,104,b)].
+
+given #85 (T,wt=14): 1087 s(f1(x,y),x) | s(f1(f1(z,x),x),f1(z,x)).  [factor(1042,b,c)].
+
+given #86 (T,wt=14): 1106 s(f1(x,y),x) | s(f1(z,x),f1(f1(z,x),x)).  [factor(1067,b,c)].
+
+given #87 (T,wt=10): 1122 s(f1(x,y),x) | s(z,f1(u,x)).  [factor(1109,a,b)].
+
+given #88 (A,wt=38): 175 s(f1(f1(x,y),z),u) | s(f1(x,y),w) | q(f1(x,y),v5) | s(f1(f1(v6,v7),f1(f1(x,y),z)),v8) | s(f1(v6,v7),v9) | -q(v7,f1(v6,v7)).  [resolve(68,b,59,b)].
+
+given #89 (T,wt=5): 1133 s(f1(x,y),x).  [factor(1124,a,b)].
+
+given #90 (T,wt=20): 243 s(f1(f1(x,y),z),u) | s(f1(x,y),w) | q(f1(x,y),v5) | -q(v6,v6).  [factor(196,a,d)].
+
+given #91 (T,wt=17): 1212 s(f1(f1(x,y),z),u) | s(f1(x,y),w) | q(f1(x,y),v5).  [factor(1210,c,d)].
+
+given #92 (T,wt=15): 1213 s(f1(f1(x,y),z),u) | s(f1(x,y),w) | -s(v5,v5).  [resolve(1212,c,116,a)].
+
+given #93 (A,wt=34): 271 s(f1(f1(x,y),z),u) | q(f1(f1(x,y),z),w) | s(f1(x,y),v5) | -s(f1(f1(x,y),z),f1(f1(f1(x,y),z),f1(x,y))).  [factor(254,b,e)].
+
+given #94 (T,wt=15): 1262 s(f1(f1(x,y),z),u) | s(f1(x,y),w) | -q(v5,v5).  [factor(1248,a,c)].
+
+given #95 (T,wt=12): 1270 s(f1(f1(x,y),z),u) | s(f1(x,y),w).  [factor(1269,b,c)].
+
+given #96 (T,wt=12): 1313 s(f1(x,y),f1(f1(x,y),z)) | -s(u,u).  [factor(1289,a,b)].
+
+given #97 (T,wt=8): 1333 s(f1(x,y),z) | -s(u,u).  [back_unit_del(1273),unit_del(c,1322)].
+
+given #98 (A,wt=8): 1334 -s(x,x) | -s(y,f1(y,x)).  [back_unit_del(100),unit_del(a,1322)].
+
+given #99 (F,wt=13): 1336 -s(x,x) | -s(y,f1(y,z)) | -q(z,f1(y,z)).  [back_unit_del(47),unit_del(a,1322)].
+
+given #100 (F,wt=17): 1344 -q(x,f1(f1(y,z),x)) | -s(y,f1(y,z)) | -q(z,f1(y,z)).  [back_unit_del(29),unit_del(a,1322)].
+
+given #101 (T,wt=5): 1348 s(f1(x,y),z).  [factor(1346,a,b)].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.35 (+ 0.00) seconds.
+% Length of proof is 32.
+% Level of proof is 22.
+% Maximum clause weight is 34.000.
+% Given clauses 101.
+
+1 (exists x exists x1 all y exists z exists z1 ((-p(y,y) | p(x,x) | -s(z,x)) & (s(x,y) | -s(y,z) | q(z1,z1)) & (q(x1,y) | -q(y,z1) | s(x1,x1)))) # label(non_clause) # label(goal).  [goal].
+5 p(f1(x,y),f1(x,y)) | -s(x,f1(x,y)) | -s(y,y).  [deny(1)].
+7 p(f1(x,y),f1(x,y)) | s(f1(x,y),z) | q(f1(x,y),u).  [deny(1)].
+13 -p(x,x) | -s(x,f1(x,y)) | -s(y,y).  [deny(1)].
+15 -p(x,x) | s(f1(x,y),z) | q(f1(x,y),u).  [deny(1)].
+22 s(x,y) | -s(y,f1(y,z)) | -s(z,z).  [deny(1)].
+26 s(x,y) | -q(z,z) | -q(u,f1(y,u)).  [deny(1)].
+49 -s(f1(x,y),f1(f1(x,y),z)) | -s(z,z) | -s(x,f1(x,y)) | -s(y,y).  [resolve(13,a,5,a)].
+68 s(f1(f1(x,y),z),u) | q(f1(f1(x,y),z),w) | s(f1(x,y),v5) | q(f1(x,y),v6).  [resolve(15,a,7,a)].
+100 -s(f1(x,y),f1(f1(x,y),y)) | -s(y,y) | -s(x,f1(x,y)).  [factor(49,b,d)].
+196 s(f1(f1(x,y),z),u) | s(f1(x,y),w) | q(f1(x,y),v5) | s(v6,v7) | -q(v8,v8).  [resolve(68,b,26,c)].
+243 s(f1(f1(x,y),z),u) | s(f1(x,y),w) | q(f1(x,y),v5) | -q(v6,v6).  [factor(196,a,d)].
+1199 s(f1(f1(x,y),z),u) | s(f1(x,y),w) | q(f1(x,y),v5) | s(f1(f1(v6,v7),v8),v9) | s(f1(v6,v7),v10) | q(f1(v6,v7),v11).  [resolve(243,d,68,b)].
+1207 s(f1(f1(x,y),z),u) | s(f1(x,y),w) | q(f1(x,y),v5) | s(f1(x,y),v6) | q(f1(x,y),v7).  [factor(1199,a,d)].
+1210 s(f1(f1(x,y),z),u) | s(f1(x,y),w) | q(f1(x,y),v5) | q(f1(x,y),v6).  [factor(1207,b,d)].
+1212 s(f1(f1(x,y),z),u) | s(f1(x,y),w) | q(f1(x,y),v5).  [factor(1210,c,d)].
+1248 s(f1(f1(x,y),z),u) | s(f1(x,y),w) | s(v5,v6) | -q(v7,v7).  [resolve(1212,c,26,c)].
+1262 s(f1(f1(x,y),z),u) | s(f1(x,y),w) | -q(v5,v5).  [factor(1248,a,c)].
+1268 s(f1(f1(x,y),z),u) | s(f1(x,y),w) | s(f1(f1(v5,v6),v7),v8) | s(f1(v5,v6),v9).  [resolve(1262,c,1212,c)].
+1269 s(f1(f1(x,y),z),u) | s(f1(x,y),w) | s(f1(x,y),v5).  [factor(1268,a,c)].
+1270 s(f1(f1(x,y),z),u) | s(f1(x,y),w).  [factor(1269,b,c)].
+1273 s(f1(x,y),z) | -s(u,u) | -s(f1(x,y),f1(f1(x,y),u)).  [resolve(1270,a,100,a)].
+1289 s(f1(x,y),z) | s(u,f1(f1(x,y),w)) | -s(v5,v5).  [resolve(1270,a,22,b)].
+1313 s(f1(x,y),f1(f1(x,y),z)) | -s(u,u).  [factor(1289,a,b)].
+1320 s(f1(x,y),f1(f1(x,y),z)) | s(f1(u,w),v5).  [resolve(1313,b,1270,a)].
+1322 s(f1(x,y),f1(f1(x,y),z)).  [factor(1320,a,b)].
+1333 s(f1(x,y),z) | -s(u,u).  [back_unit_del(1273),unit_del(c,1322)].
+1334 -s(x,x) | -s(y,f1(y,x)).  [back_unit_del(100),unit_del(a,1322)].
+1346 s(f1(x,y),z) | s(f1(u,w),v5).  [resolve(1333,b,1270,a)].
+1348 s(f1(x,y),z).  [factor(1346,a,b)].
+1349 -s(x,x).  [resolve(1348,a,1334,b)].
+1350 $F.  [resolve(1349,a,1348,a)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=101. Generated=2997. Kept=1330. proofs=1.
+Usable=11. Sos=6. Demods=0. Limbo=0, Disabled=1410. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=14.
+Forward_subsumed=1653. Back_subsumed=1280.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=32.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=68887. Nonunit_bsub_feature_tests=45919.
+Megabytes=1.12.
+User_CPU=0.35, System_CPU=0.00, Wall_clock=1.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 1 proof.
+
+Process 4533 exit (max_proofs) Tue Nov  3 09:39:07 2009

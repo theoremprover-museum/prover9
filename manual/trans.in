@@ -1,0 +1,3 @@
+formulas(goals).
+  all x all y all z (subset(x,y) & subset(y,z) -> subset(x,z)).
+end_of_list.

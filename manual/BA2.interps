@@ -1,0 +1,50 @@
+interpretation( 6, [number = 1,seconds = 0], [
+    function(c1, [0]),
+    function(c2, [2]),
+    function(c3, [1]),
+    function(f(_,_), [3,3,1,1,1,1,3,4,5,0,1,2,1,5,5,1,1,1,1,0,1,0,1,1,1,1,1,1,1,1,1,2,1,1,1,2])]).
+interpretation( 6, [number = 2,seconds = 0], [
+    function(c1, [0]),
+    function(c2, [2]),
+    function(c3, [2]),
+    function(f(_,_), [3,3,1,1,1,1,3,4,5,0,1,2,1,5,5,1,1,1,1,0,1,0,1,1,1,1,1,1,1,1,1,2,1,1,1,2])]).
+interpretation( 6, [number = 3,seconds = 0], [
+    function(c1, [2]),
+    function(c2, [0]),
+    function(c3, [0]),
+    function(f(_,_), [3,3,1,1,1,1,3,4,5,0,1,2,1,5,5,1,1,1,1,0,1,0,1,1,1,1,1,1,1,1,1,2,1,1,1,2])]).
+interpretation( 6, [number = 4,seconds = 0], [
+    function(c1, [2]),
+    function(c2, [0]),
+    function(c3, [1]),
+    function(f(_,_), [3,3,1,1,1,1,3,4,5,0,1,2,1,5,5,1,1,1,1,0,1,0,1,1,1,1,1,1,1,1,1,2,1,1,1,2])]).
+interpretation( 6, [number = 5,seconds = 0], [
+    function(c1, [2]),
+    function(c2, [3]),
+    function(c3, [1]),
+    function(f(_,_), [1,1,1,1,1,1,1,0,4,5,2,3,1,4,4,1,1,1,1,5,1,5,1,1,1,2,1,1,2,1,1,3,1,1,1,3])]).
+interpretation( 6, [number = 6,seconds = 0], [
+    function(c1, [2]),
+    function(c2, [3]),
+    function(c3, [1]),
+    function(f(_,_), [2,2,1,1,1,1,2,4,0,5,1,3,1,0,0,1,1,1,1,5,1,5,1,1,1,1,1,1,1,1,1,3,1,1,1,3])]).
+interpretation( 6, [number = 7,seconds = 0], [
+    function(c1, [2]),
+    function(c2, [3]),
+    function(c3, [1]),
+    function(f(_,_), [3,3,1,1,1,1,3,4,5,0,1,2,1,5,5,1,1,1,1,0,1,0,1,1,1,1,1,1,1,1,1,2,1,1,1,2])]).
+interpretation( 6, [number = 8,seconds = 0], [
+    function(c1, [2]),
+    function(c2, [3]),
+    function(c3, [3]),
+    function(f(_,_), [1,1,1,1,1,1,1,0,4,5,2,3,1,4,4,1,1,1,1,5,1,5,1,1,1,2,1,1,2,1,1,3,1,1,1,3])]).
+interpretation( 6, [number = 9,seconds = 0], [
+    function(c1, [2]),
+    function(c2, [3]),
+    function(c3, [3]),
+    function(f(_,_), [2,2,1,1,1,1,2,4,0,5,1,3,1,0,0,1,1,1,1,5,1,5,1,1,1,1,1,1,1,1,1,3,1,1,1,3])]).
+interpretation( 6, [number = 10,seconds = 0], [
+    function(c1, [2]),
+    function(c2, [3]),
+    function(c3, [3]),
+    function(f(_,_), [3,3,1,1,1,1,3,4,5,0,1,2,1,5,5,1,1,1,1,0,1,0,1,1,1,1,1,1,1,1,1,2,1,1,1,2])]).

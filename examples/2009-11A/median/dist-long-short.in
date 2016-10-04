@@ -1,0 +1,23 @@
+assign(max_seconds, 300).
+
+assign(order, kbo).
+set(lex_order_vars).
+
+formulas(sos).
+
+  f(x,x,y) = x                       # label(majority).
+  f(x,y,z) = f(z,x,y)                # label(2a).
+  f(x,y,z) = f(x,z,y)                # label(2b).
+  f(f(x,w,y),w,z) = f(x,w,f(y,w,z))  # label(associativity).
+
+  f(f(x,y,z),u,w) = f(f(x,u,w),f(y,u,w),f(z,u,w))    # label(dist_long).
+% f(f(x,y,z),u,w) = f(x,       f(y,u,w),f(z,u,w))    # label(dist_short).
+
+end_of_list.
+
+formulas(goals).
+
+% f(f(x,y,z),u,w) = f(f(x,u,w),f(y,u,w),f(z,u,w))  # answer(dist_long).
+  f(f(x,y,z),u,w) = f(x,       f(y,u,w),f(z,u,w))  # answer(dist_short).
+
+end_of_list.

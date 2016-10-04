@@ -1,0 +1,23 @@
+interpretation( 6, [number = 1,seconds = 0], [
+    function(c1, [0]),
+    function(c2, [2]),
+    function(c3, [1]),
+    function(f(_,_), [
+        3,3,1,1,1,1,
+        3,4,5,0,1,2,
+        1,5,5,1,1,1,
+        1,0,1,0,1,1,
+        1,1,1,1,1,1,
+        1,2,1,1,1,2])]).
+interpretation( 6, [number = 2,seconds = 0], [
+    function(c1, [0]),
+    function(c2, [2]),
+    function(c3, [2]),
+    function(f(_,_), [
+        3,3,1,1,1,1,
+        3,4,5,0,1,2,
+        1,5,5,1,1,1,
+        1,0,1,0,1,1,
+        1,1,1,1,1,1,
+        1,2,1,1,1,2])]).
+% isofilter: input=10, kept=2, checks=8, perms=14, 0.01 seconds.

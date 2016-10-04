@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+  <title>Prover9 Manual: Automatic Modes</title>
+ <link rel="stylesheet" href="manual.css">
+</head>
+
+<body>
+
+<!-- Site navigation menu -->
+
+<ul class="navbar">
+  <li><a href="index.html">Introduction</a>
+  <li><a href="install.html">Installation</a>
+  <li><a href="running.html">Running Prover9</a>
+  <li><a href="input.html">Input Files</a>
+  <li><a href="syntax.html">Clauses & Formulas</a>
+  <li>Search Prep
+  <ul class="navbar2">
+    <li><a href="auto.html">Auto Modes</a>
+    <li><a href="term-order.html">Term Ordering</a>
+    <li><a href="more-prep.html">More Prep</a>
+    <li><a href="limits.html">Search Limits</a>
+  </ul>
+  <li>Inference
+  <ul class="navbar2">
+    <li><a href="loop.html">The Loop</a>
+    <li><a href="select.html">Select Given</a>
+    <li><a href="inf-rules.html">Inference Rules</a>
+    <li><a href="process-inf.html">Process Inferred</a>
+  </ul>
+  <li><a href="output.html">Output Files</a>
+  <li>More Features
+  <ul class="navbar2">
+    <li><a href="weight.html">Weighting</a>
+    <li><a href="attributes.html">Attributes</a>
+    <li><a href="actions.html">Actions</a>
+    <li><a href="fof-reduction.html">FOF Reduction</a>
+    <li><a href="goals.html">Goals</a>
+    <li><a href="hints.html">Hints</a>
+    <li><a href="semantics.html">Semantics</a>
+  </ul>
+  <li>Related Programs
+  <ul class="navbar2">
+    <li><a href="prooftrans.html">Prooftrans</a>
+    <li><a href="mace4.html">Mace4</a>
+  </ul>
+  <li>Ending
+  <ul class="navbar2">
+    <li><a href="options.html">All Options</a>
+    <li><a href="glossary.html">Glossary</a>
+    <li><a href="manual-index.html">Index</a>
+    <li><a href="references.html">References</a>
+  </ul>
+</ul>
+
+<div class="header">Prover9 Manual Version June-2006</div>
+
+<!-- Main content -->
+
+<h1>Automatic Modes</h1>
+
+<blockquote class="otter_diff">
+Prover9's automatic mode is set by default.
+Otter's automatic mode must be explicitly set.
+</blockquote>
+
+<p>
+If you simply give Prover9 a set of clauses and/or formulas,
+Prover9 will look at the clauses and decide which inference
+rules to use.  In addition, it will use two default
+limits (<a href="process-inf.html#max_weight"><tt><b>max_weight</b></tt></a> and <a href="limits.html#sos_limit"><tt><b>sos_limit</b></tt></a>)
+that, although good in practice, can prevent proofs from being found.
+
+<p>
+If don't like the inference rules that Prover9 selects,
+you can clear the flag <a href="auto.html#auto_inference"><tt><b>auto_inference</b></tt></a> and select your own rules.
+If you wish to remove the limits <a href="process-inf.html#max_weight"><tt><b>max_weight</b></tt></a> and <a href="limits.html#sos_limit"><tt><b>sos_limit</b></tt></a>,
+you can clear the flag <a href="auto.html#auto_limits"><tt><b>auto_limits</b></tt></a>.  If you wish to do
+both, you can clear the flag <a href="auto.html#auto"><tt><b>auto</b></tt></a>.  Prover9 output files
+show the effects of changing these flags.
+
+<!-- start option auto -->
+<a name="auto">
+<pre class="my_option">
+set(auto).    % default set
+clear(auto).
+</pre>
+
+<blockquote>
+This is the basic automatic mode of Prover9.
+</blockquote>
+<!-- end option -->
+
+<!-- start option auto_inference -->
+<a name="auto_inference">
+<pre class="my_option">
+set(auto_inference).    % default set
+clear(auto_inference).
+</pre>
+
+<blockquote>
+If this flag is set, the input clauses are checked for several
+syntactic properties such as the presence of equality and
+non-Horn clauses.  Based on the results of the checks,
+Prover9 decides which inference rules to use.
+In addition, changing this flag causes the following changes.
+<pre>
+  set(auto_inference) -> set(<a href="more-prep.html#predicate_elim"><tt><b>predicate_elim</b></tt></a>).
+  set(auto_inference) -> assign(<a href="term-order.html#eq_defs"><tt><b>eq_defs</b></tt></a>, unfold).
+  clear(auto_inference) -> clear(<a href="more-prep.html#predicate_elim"><tt><b>predicate_elim</b></tt></a>).
+  clear(auto_inference) -> assign(<a href="term-order.html#eq_defs"><tt><b>eq_defs</b></tt></a>, pass).
+</pre>
+</blockquote>
+<!-- end option -->
+
+<!-- start option auto_limits -->
+<a name="auto_limits">
+<pre class="my_option">
+set(auto_limits).    % default set
+clear(auto_limits).
+</pre>
+
+<blockquote>
+The only effect of changing this flag is that two parameters
+are changed in the following ways.
+<pre>
+  set(auto_limits) -> assign(<a href="process-inf.html#max_weight"><tt><b>max_weight</b></tt></a>, 100).
+  set(auto_limits) -> assign(<a href="limits.html#sos_limit"><tt><b>sos_limit</b></tt></a>, 10000).
+  clear(auto_limits) -> assign(<a href="process-inf.html#max_weight"><tt><b>max_weight</b></tt></a>, INT_MAX).
+  clear(auto_limits) -> assign(<a href="limits.html#sos_limit"><tt><b>sos_limit</b></tt></a>, -1).
+</pre>
+</blockquote>
+<!-- end option -->
+
+<h2>An Experimental Automatic Mode</h2>
+
+<!-- start option auto2 -->
+<a name="auto2">
+<pre class="my_option">
+set(auto2).
+clear(auto2).    % default clear
+</pre>
+
+<blockquote>
+This is an enhanced automatic mode, developed in preparation for CASC-2005.
+The only direct effect of changing this option is that it causes several
+other options to be changed.  See an output file to see the effects
+of setting this flag.
+</blockquote>
+<!-- end option -->
+
+<h2>Automatically Adjusting the <tt>sos</tt> List</h2>
+
+<!-- start option lrs_ticks -->
+<a name="lrs_ticks">
+<pre class="my_option">
+assign(lrs_ticks, <i>n</i>).  % default <i>n</i>=-1, range [-1 .. INT_MAX]
+</pre>
+<!-- end option -->
+<!-- start option lrs_interval -->
+<a name="lrs_interval">
+<pre class="my_option">
+assign(lrs_interval, <i>n</i>).  % default <i>n</i>=50, range [1 .. INT_MAX]
+</pre>
+<!-- end option -->
+<!-- start option min_sos_limit -->
+<a name="min_sos_limit">
+<pre class="my_option">
+assign(min_sos_limit, <i>n</i>).  % default <i>n</i>=0, range [0 .. INT_MAX]
+</pre>
+
+<blockquote>
+These three parameters work together and are used to automatically
+adjust the parameter
+<a href="limits.html#sos_limit"><tt><b>sos_limit</b></tt></a>
+by means of a "limited resource strategy"
+[<a href="references.html#RV-lrs">RV-lrs</a>].
+If <a href="auto.html#lrs_ticks"><tt><b>lrs_ticks</b></tt></a> &ge; 0, the method is applied.
+<p>
+This is an experimental feature and is not recommended for general use.
+</blockquote>
+<!-- end option -->
+
+</body>
+</html>

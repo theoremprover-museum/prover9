@@ -1,0 +1,28 @@
+formulas(sos).
+
+% lattice theory
+
+x v y = y v x.
+(x v y) v z = x v (y v z).
+x ^ y = y ^ x.
+(x ^ y) ^ z = x^ (y ^ z).
+x ^ (x v y) = x.
+x v (x ^ y) = x.
+
+% This input is for Mace4, so we can include the following,
+% because finite lattices always have 0 and 1.
+
+x v 0 = x.
+x ^ 1 = x.
+
+end_of_list.
+
+formulas(sos).
+end_of_list.
+
+% We want the following to be false, so we put it in the goals list.
+
+formulas(goals).
+x ^ (y v (x ^ z)) = x ^ (y v (z ^ ((x ^ (y v z)) v (y ^ z)))) # label(H2).
+end_of_list.
+

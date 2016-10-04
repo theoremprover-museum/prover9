@@ -1,0 +1,20 @@
+;; ============================== prooftrans ============================
+;; Prover9 (32) version 2009-11A, November 2009.
+;; Process 4306 was started by mccune on cleo,
+;; Tue Nov  3 09:37:44 2009
+;; The command was "/home/mccune/LADR/bin/prover9 -f cancel1.in".
+;; ============================== end of head ===========================
+
+;; BEGINNING OF PROOF OBJECT
+(
+(3 (input) (= (* v0 (* v0 v1)) v1) NIL)
+(6 (input) (= (* (c1) (c3)) (* (c1) (c2))) NIL)
+(7 (input) (not (= (c3) (c2))) NIL)
+(27 (instantiate 3 ((v0 . (c1)) (v1 . (c3)))) (= (* (c1) (* (c1) (c3))) (c3)) NIL)
+(23A (paramod 6 (1) 27 (1 2)) (= (* (c1) (* (c1) (c2))) (c3)) NIL)
+(28 (instantiate 3 ((v0 . (c1)) (v1 . (c2)))) (= (* (c1) (* (c1) (c2))) (c2)) NIL)
+(23B (paramod 28 (1) 23A (1)) (= (c2) (c3)) NIL)
+(23 (flip 23B ()) (= (c3) (c2)) NIL)
+(24 (resolve 23 () 7 ()) false NIL)
+)
+;; END OF PROOF OBJECT

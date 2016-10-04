@@ -1,0 +1,287 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+  <title>Prover9 Manual: Hints</title>
+ <link rel="stylesheet" href="manual.css">
+</head>
+
+<body>
+
+
+<hr>
+<table width="100%">
+<tr>
+<colgroup>
+<col width="33%">
+<col width="34%">
+<col width="33%">
+</colgroup>
+<td align="left"><i>Prover9 Manual</i>
+<td align="center"><img src="prover9-5a-256t.gif">
+<td align="right"><i>Version 2009-11A</i>
+</table>
+<hr>
+
+<!-- Main content -->
+
+<h1>Hints</h1>
+
+<i>Hint clauses</i> can be used to help guide Prover9's search.
+Prover9's input can contain any number of hint lists (which are
+simply concatenated by Prover9).
+
+<p>
+Each list of hint clauses must start with <tt>formulas(hints).</tt>
+and end with <tt>end_of_list</tt>.
+Any clause is acceptable as a hint.
+For example (the label attributes are optional),
+
+<pre class="my_file">
+formulas(hints).
+    x ' * (x * y) = y       # label(6).
+    x * (x * y) = y         # label(7).
+    x * (y * (x * y)) = e   # label(8).
+    x ' ' * e = x           # label(9).
+    x ' * e = x             # label(10).
+    x ' = x                 # label(11).
+    x * e = x               # label(12).
+    x * (y * x) = y         # label(13).
+    x * y = y * x           # label(14).
+end_of_list.
+</pre>
+
+<p>
+A derived clause <i>matches</i> a hint if it subsumes the hint.
+If a clause matches more than one hint, the first matching hint
+is used.
+
+<blockquote class="otter_diff">
+In Otter, "matching a hint" can mean (depending on the parameter
+settings) subsumes, subsumed by, or equivalent to.
+These other types of matching may be added to Prover9
+if there is any demand for them.
+</blockquote>
+
+<p>
+Hints are used primarily when selecting given clauses.
+The mechanism for doing this is the
+<a href="select.html">given-clause selection procedure</a>.
+In short, the default value of the
+<a href="select.html#hints_part"><tt><b>hints_part</b></tt></a>
+parameter says to select clauses that match hints (lightest
+first) whenever any are available.
+<p>
+Hints are also used when deciding to keep a new clause.
+Clauses that match hints are not deleted by any of the
+parameters
+<a href="process-inf.html#max_weight"><tt><b>max_weight</b></tt></a>,
+<a href="process-inf.html#max_vars"><tt><b>max_vars</b></tt></a>,
+<a href="process-inf.html#max_literals"><tt><b>max_literals</b></tt></a>, or
+<tt>max_depth</tt>.
+
+<h2>Where do Hints Come From?</h2>
+
+Hints frequently consist of proofs, perhaps many, of related theorems.
+
+<p>
+Bob Veroff developed the concept, installing code for hints
+in an early version of Otter, to experiment with his method
+of <i>proof sketches</i>
+[<a href="references.html#Veroff-hints">Veroff-hints</a>,
+<a href="references.html#Veroff-sketches">Veroff-sketches</a>].
+In the proof sketches
+method, a difficult conjecture is attacked by first proving
+several (or many) weakened variants of the conjecture, and
+using those proofs as hints to guide searches for a proof
+of the original conjecture.
+
+<p>
+The program <a href="prooftrans.html">Prooftrans</a>, which is distributed
+along with Prover9, can be used to extract proofs from a Prover9
+output file and transform the proofs to lists of hints suitable
+for input to subsequent Prover9 jobs.
+
+<h2>An Example</h2>
+
+This example consists of four jobs.  The first is a proof of a nontrivial
+theorem called "hard".  The other three jobs prove the hard theorem
+indirectly by first proving an easier theorem (in this case, the easier
+theorem simply the harder theorem with an extra assumption); then using
+the proof of the easier theorem as hints to help prove the hard theorem.
+
+<ol>
+<li>A Prover9 job that proves the hard theorem.
+<pre class="my_job">
+prover9 -f <a href="hard.in">hard.in</a> &gt; <a href="hard.out">hard.out</a>
+</pre>
+<li>A proof of the easier thorem.
+<pre class="my_job">
+prover9 -f <a href="easy.in">easy.in</a> &gt; <a href="easy.out">easy.out</a>
+</pre>
+<li>A Prooftrans job converts the proof of the easier theorem into a list of hints.
+<pre class="my_job">
+prooftrans hints -f <a href="easy.out">easy.out</a> &gt; <a href="easy.hints">easy.hints</a>
+</pre>
+<li>A Prover9 job that uses the hints to prove the harder theorem.
+<pre class="my_job">
+prover9 -f <a href="hard.in">hard.in</a> <a href="easy.hints">easy.hints</a>  &gt; <a href="hard-hints.out">hard-hints.out</a>
+</pre>
+</ol>
+
+Proving the hard theorem indirectly (jobs 2,3,4) takes about 1/4 the
+time as proving it directly (job 1).  Of course the difficult and
+interesting part of working this way is finding good "easy" theorems.
+
+<h2>Special Weight Assignments</h2>
+
+When the given clause selection procedure calls for
+a clause that matches a hint, the lightest such clause is chosen.
+Ordinarily, clauses that match hints are weighed just as any other clause
+is weighed.
+However, if one believes some hints are more important that others,
+one can, in effect, say "any clause that matches this hint gets
+a specific weight".  This is accomplished by attaching a <tt>bsub_hint_wt</tt>
+attribute to the hint, as in the following example.
+<pre class="my_file">
+formulas(hints).
+  x ' * (x * y) = y     # label("very important hint") # bsub_hint_wt(-100).
+end_of_list.
+</pre>
+
+Another way to assign a special weight is with the following flag.
+
+<!-- start option breadth_first_hints -->
+<a name="breadth_first_hints">
+<pre class="my_option">
+set(breadth_first_hints).
+clear(breadth_first_hints).    % default clear
+</pre>
+
+<blockquote>
+Setting this flag causes all clauses that match hints to receive weight 0.
+The effect is as if each hint had the attribute <tt>bsub_hint_wt(0)</tt>.
+This causes clauses that match hints to be selected in the order they
+are generated.
+</blockquote>
+<!-- end option -->
+
+<p>
+The weight assigned by any of the preceding methods may be modified
+if the flag <a href="hints.html#degrade_hints"><tt><b>degrade_hints</b></tt></a> is set.
+
+<h2>Hint Degradation</h2>
+
+In many searches that use hints, a given hint can match many different
+derived clauses.  As a hint matches more and more clauses, we wish
+its influence to diminish.
+This is the idea behind Veroff's <i>hint degradation</i> method.
+
+<!-- start option degrade_hints -->
+<a name="degrade_hints">
+<pre class="my_option">
+set(degrade_hints).    % default set
+clear(degrade_hints).
+</pre>
+
+<blockquote>
+If this flag is set, a weight penalty is added to clauses that match
+hints that have been previously matched.  The following procedure
+is used.  Given a newly derived clause, say <i>C</i>, assume we find
+a hint that matches the clause; let <i>n</i> be the number of times the hint
+has already been matched; then the weight of <i>C</i> is increased
+by (<i>n</i> * 1000).  In other words, 1000 is added for each
+previous match of the hint.
+<p>
+The effect of this procedure is (usually) that clauses matching hints
+are selected in the following order:
+clauses matching hints that have <i>not</i> been matched before,
+clauses matching hints that have been matched <i>once</i> before, and so on.
+</blockquote>
+<!-- end option -->
+
+<h2>Keeping/Limiting Clauses the Match Hints</h2>
+
+Ordinarily, when a clause matching a hint is derived,
+the clause will be retained even if it violates limits
+such as <a href="process-inf.html#max_weight"><tt><b>max_weight</b></tt></a>.  Setting the following flag
+will cause those limits to be applied to such clauses,
+and it may be useful with trying to simplify known proofs.
+
+<!-- start option limit_hint_matchers -->
+<a name="limit_hint_matchers">
+<pre class="my_option">
+set(limit_hint_matchers).
+clear(limit_hint_matchers).    % default clear
+</pre>
+
+<blockquote>
+If this flag is set, the parameters
+<a href="process-inf.html#max_weight"><tt><b>max_weight</b></tt></a>,
+<a href="process-inf.html#max_literals"><tt><b>max_literals</b></tt></a>,
+<tt>max_depth</tt>, and
+<a href="process-inf.html#max_vars"><tt><b>max_vars</b></tt></a>
+will be applied to clauses that match hints (as well as to
+clauses that don't match hints).
+<p>
+Otherwise (the default), those limits will not be
+applied to clauses that match hints.
+</blockquote>
+<!-- end option -->
+
+<h2>Back Demodulation of Hints</h2>
+
+When hints come from proofs in which equality and rewriting
+play a major role, they may have trouble guiding a search,
+because the rewriting may occur in different ways in the
+new search.  In particular, a hint may fail to match a
+clause, because the clause has been rewritten and the hint
+has not.  This is the motivation for the following feature.
+
+<!-- start option back_demod_hints -->
+<a name="back_demod_hints">
+<pre class="my_option">
+set(back_demod_hints).    % default set
+clear(back_demod_hints).
+</pre>
+
+<blockquote>
+If this flag is set, hints are back demodulated.  That is, they
+are kept simplified with respect to the current set of demodulators.
+</blockquote>
+<!-- end option -->
+
+<h2>Labels on Hints</h2>
+
+Label attributes on hint clauses get special treatment.  When a hint containing
+a label matches a clause, the label attribute is copied to the clause.
+
+<p>
+The following flag addresses the situation in which the input contains
+sets of equivalent hints.  (This situation frequently occurs when the
+hints contain many proofs of similar theorems.)
+
+<!-- start option collect_hint_labels -->
+<a name="collect_hint_labels">
+<pre class="my_option">
+set(collect_hint_labels).
+clear(collect_hint_labels).    % default clear
+</pre>
+
+<blockquote>
+If this flag is set, and the hints list contains a set of equivalent hints,
+only the first copy of the hint is retained.  However, the labels from
+all of the other equivalent hints are collected and put on the retained
+copy.  When a clause matches the retained hint, it gets copies of all of the
+labels from the equivalent hints.
+<p>
+If this flag is clear, when a clause matches a set of equivalent hints,
+it receives the label (if any) from the first copy only.
+</blockquote>
+<!-- end option -->
+
+<hr>
+Next Section:
+<a href="semantics.html">Semantics</a>
+
+</body>
+</html>

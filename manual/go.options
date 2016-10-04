@@ -1,0 +1,12 @@
+#!/bin/csh
+
+foreach i (*.html)
+
+    sed -n '/start option/,/end option/p' $i\
+    | egrep '^(set|clear|assign)\(.*default' \
+    | sed -e '/^set/s/)\..*/ TRUE/'\
+    | sed -e '/^clear/s/)\..*/ FALSE/'\
+    | sed -e '/^assign/s/,.*=/ /' -e 's/,.*//'\
+    | sed -e 's/.*(//'
+
+end

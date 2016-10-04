@@ -1,0 +1,17 @@
+#!/bin/tcsh
+
+# ./prover9 -f cs-ore/quot-comm.in > quot-comm.outr
+# ./prover9 -f cs-ore/quot-general.in > quot-general.outr
+# ./prover9 -f cs-ore/quot-np2.in > quot-np2.outr
+# ./prover9 -f cs-ore/quot-xy3a.in > quot-xy3a.outr
+# ./prover9 -f cs-ore/quot-xy3b.in > quot-xy3b.outr
+# ./prover9 -f ltsax/a1.in > a1.outr
+# ./prover9 -f ltsax/mckenzie.in > mckenzie.outr
+# ./prover9 -f median/dist-both.in > dist-both.outr
+# ./prover9 -f misc/BA3.in > BA3.outr
+# ./prover9 -f olsax/olsax2.in > olsax2.outr
+
+./prover9 -f semantics/BA2.in semantics/BA2-interp.out > BA2.outr
+./prover9 -f semantics/MOL-A.in semantics/MOL-A-interp.out > MOL-A.outr
+./prover9 -f semantics/MOL-base.in > MOL-base.outr
+./prover9 -f semantics/MOL-M.in semantics/MOL-A-interp.out > MOL-M.outr

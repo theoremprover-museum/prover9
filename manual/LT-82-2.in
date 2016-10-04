@@ -1,0 +1,48 @@
+assign(order, kbo).
+
+assign(max_weight, 25).
+
+assign(max_seconds, 3600).
+
+formulas(sos).
+
+% lattice theory
+
+x v y = y v x.
+(x v y) v z = x v (y v z).
+x ^ y = y ^ x.
+(x ^ y) ^ z = x^ (y ^ z).
+x ^ (x v y) = x.
+x v (x ^ y) = x.
+
+end_of_list.
+
+formulas(sos).
+(x ^ y) v (x ^ z) = x ^ ((y ^ (x v z)) v (z ^ (x v y))) # label(H82).
+end_of_list.
+
+formulas(goals).
+x ^ (y v (x ^ z)) = x ^ (y v (z ^ ((x ^ (y v z)) v (y ^ z)))) # label(H2).
+end_of_list.
+
+list(interpretations).
+
+% This is the smallest lattice in which H2 is false.
+
+interpretation(6, [], [
+    function(^(_,_), [
+        0,0,0,0,0,0,
+        0,1,2,3,4,5,
+        0,2,2,0,0,0,
+        0,3,0,3,5,5,
+        0,4,0,5,4,5,
+        0,5,0,5,5,5]),
+    function(v(_,_), [
+        0,1,2,3,4,5,
+        1,1,1,1,1,1,
+        2,1,2,1,1,1,
+        3,1,1,3,1,3,
+        4,1,1,1,4,4,
+        5,1,1,3,4,5])]).
+
+end_of_list.

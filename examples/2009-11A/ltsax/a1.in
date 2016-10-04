@@ -1,0 +1,25 @@
+assign(max_seconds, 30).
+
+% See www.mcs.anl.gov/~mccune/papers/ltsax
+
+formulas(sos).
+
+% Single axioms for lattice theory.
+
+  (((y v x) ^ x) v (((z ^ (x v x)) v (u ^ x)) ^ v)) ^ (w v ((v6 v x) ^ (x v v7))) = x # label(A1).
+% (((y v x) ^ x) v (((z ^ (x v x)) v (u ^ x)) ^ v)) ^ (((w v x) ^ (v6 v x)) v v7) = x # label(A2).
+
+end_of_list.
+
+set(restrict_denials).
+
+formulas(goals).
+
+% McKenzie 4-basis
+
+  y v (x ^ (y ^ z)) = y # answer(McKenzie_1).
+  y ^ (x v (y v z)) = y # answer(McKenzie_2).
+  ((x ^ y) v (y ^ z)) v y = y # answer(McKenzie_3).
+  ((x v y) ^ (y v z)) ^ y = y # answer(McKenzie_4).
+
+end_of_list.

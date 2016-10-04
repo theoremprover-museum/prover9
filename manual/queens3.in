@@ -1,0 +1,64 @@
+% The 8-queens problem.  Place 8 queens on a chessboard such that
+% none can capture any other.
+%
+% (This problem is more naturally done as a constraint-satisfaction
+% problem with Mace4.  This Prover9 version is just for illustration.)
+%
+% board([8,5,1]) means that queens are on the first 3 rows: 
+% (row 1, col 1), (row 2, col 5), (row 3, col 8).  The queens are
+% filled in row-by-row; for each row, a position is picked, and then
+% checked to see if it is consistent with the preceding rows.
+%
+%      1 2 3 4 5 6 7 8
+%   1 |x| | | | | | | |
+%   2 | | | | |x| | | |
+%   3 | | | | | | | |x|
+%   4 | | | | | | | | |
+%   5 | | | | | | | | |
+%   6 | | | | | | | | |
+%   7 | | | | | | | | |
+%   8 | | | | | | | | |
+%
+% For other board sizes/number of queens, change 'pick' property and
+% the denial.
+%
+
+set(production).
+set(prolog_style_variables).
+
+formulas(usable).
+
+board(B) &
+     pick(New_col) &
+     % check that new queen is consistent with each preceding row.
+     ok(B, 1, New_col) ->
+     board([New_col:B]).
+
+pick(1). pick(2). pick(3). pick(4). pick(5). pick(6). pick(7). pick(8).
+
+end_of_list.
+
+formulas(assumptions).
+% initial state: no queens on the board.
+board([]).
+end_of_list.
+
+formulas(usable).
+% goal state: 8 queens on the board.
+-board([X1,X2,X3,X4,X5,X6,X7,X8]) # answer([X1,X2,X3,X4,X5,X6,X7,X8]).
+end_of_list.
+
+formulas(demodulators).
+
+ok([], X, Y) <-> $T.
+
+ok([H:T], Rows_back, New_col) <->
+	-(H == New_col) &
+	-(H + -Rows_back == New_col) &
+	-(H + Rows_back == New_col) &
+	ok(T, Rows_back+1, New_col).
+
+end_of_list.
+
+
+

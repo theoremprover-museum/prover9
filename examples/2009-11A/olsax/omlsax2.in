@@ -1,0 +1,27 @@
+assign(max_seconds, 120).
+
+assign(new_constants, 1).
+
+assign(order, kbo).
+
+assign(eq_defs, fold).  % introduce defined operations
+
+assign(max_weight, 40).
+
+formulas(sos).
+
+  f(f(f(f(y,x),f(x,z)),u),f(x,f(f(z,f(f(x,x),z)),z))) = x # label(OML_Sh).
+
+  x v y = f(f(x,x),f(y,y))  # label(definition_join).
+  x ^ y = f(f(x,y),f(x,y))  # label(definition_meet).
+  x' = f(x,x)               # label(definition_complementation).
+
+end_of_list.
+
+formulas(goals).
+
+  f(x,f(f(y,z),f(y,z))) = f(y,f(f(x,z),f(x,z))) # answer(A_SS).
+  f(f(x,x),f(x,y)) = x # answer(B_SS).
+  f(x,f(x,f(x,y))) = f(x,y) # answer(OM_SS).
+
+end_of_list.

@@ -1,0 +1,160 @@
+============================== Prover9 ===============================
+Prover9 (32) version 2009-11A, November 2009.
+Process 25580 was started by mccune on cleo,
+Tue Nov  3 17:07:51 2009
+The command was "/home/mccune/LADR/bin/prover9 -f x2.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file x2.in
+
+assign(max_seconds,5).
+
+formulas(sos).
+(x * y) * z = x * (y * z).
+x * e = x.
+x * x' = e.
+end_of_list.
+
+formulas(goals).
+x * y = y * x.
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 x * y = y * x # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+(x * y) * z = x * (y * z).  [assumption].
+x * e = x.  [assumption].
+x * x' = e.  [assumption].
+c2 * c1 != c1 * c2.  [deny(1)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Auto_denials:  (no changes).
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ = ]).
+Function symbol precedence:  function_order([ e, c1, c2, *, ' ]).
+After inverse_order: Function symbol precedence:  function_order([ e, c1, c2, *, ' ]).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(paramodulation).  % (positive equality literals)
+
+Auto_process settings:  (no changes).
+
+kept:      2 (x * y) * z = x * (y * z).  [assumption].
+kept:      3 x * e = x.  [assumption].
+kept:      4 x * x' = e.  [assumption].
+kept:      5 c2 * c1 != c1 * c2.  [deny(1)].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+2 (x * y) * z = x * (y * z).  [assumption].
+3 x * e = x.  [assumption].
+4 x * x' = e.  [assumption].
+5 c2 * c1 != c1 * c2.  [deny(1)].
+end_of_list.
+
+formulas(demodulators).
+2 (x * y) * z = x * (y * z).  [assumption].
+3 x * e = x.  [assumption].
+4 x * x' = e.  [assumption].
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.01 seconds.
+
+given #1 (I,wt=11): 2 (x * y) * z = x * (y * z).  [assumption].
+
+given #2 (I,wt=5): 3 x * e = x.  [assumption].
+
+given #3 (I,wt=6): 4 x * x' = e.  [assumption].
+
+given #4 (I,wt=7): 5 c2 * c1 != c1 * c2.  [deny(1)].
+
+given #5 (A,wt=9): 6 x * (e * y) = x * y.  [para(3(a,1),2(a,1,1)),flip(a)].
+
+given #6 (T,wt=6): 9 x * e' = x.  [para(4(a,1),6(a,1,2)),rewrite([3(2)]),flip(a)].
+
+given #7 (T,wt=10): 7 x * (x' * y) = e * y.  [para(4(a,1),2(a,1,1)),flip(a)].
+
+given #8 (T,wt=7): 12 e * x'' = x.  [para(4(a,1),7(a,1,2)),rewrite([3(2)]),flip(a)].
+
+given #9 (T,wt=5): 15 e * x = x.  [para(12(a,1),6(a,2)),rewrite([14(5),6(4)])].
+
+given #10 (A,wt=10): 8 x * (y * (x * y)') = e.  [para(4(a,1),2(a,1)),flip(a)].
+
+given #11 (T,wt=4): 19 e' = e.  [para(15(a,1),4(a,1))].
+
+given #12 (T,wt=8): 18 x * (x' * y) = y.  [back_rewrite(7),rewrite([15(5)])].
+
+given #13 (T,wt=5): 21 x'' = x.  [para(4(a,1),18(a,1,2)),rewrite([3(2)]),flip(a)].
+
+given #14 (T,wt=6): 23 x' * x = e.  [para(21(a,1),4(a,1,2))].
+
+given #15 (A,wt=12): 17 x * (y * ((x * y)' * z)) = z.  [back_rewrite(11),rewrite([15(7)])].
+
+given #16 (T,wt=8): 24 x' * (x * y) = y.  [para(21(a,1),18(a,1,2,1))].
+
+given #17 (T,wt=9): 29 x * (y * x)' = y'.  [para(8(a,1),24(a,1,2)),rewrite([3(3)]),flip(a)].
+
+given #18 (T,wt=10): 34 (x * y)' = y' * x'.  [para(29(a,1),24(a,1,2)),flip(a)].
+
+============================== STATISTICS ============================
+
+Given=18. Generated=232. Kept=33. proofs=0.
+Usable=11. Sos=0. Demods=10. Limbo=0, Disabled=26. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=199. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=32 (0 lex), Back_demodulated=22. Back_unit_deleted=0.
+Demod_attempts=1806. Demod_rewrites=419.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.04.
+User_CPU=0.01, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+SEARCH FAILED
+
+Exiting with failure.
+
+Process 25580 exit (sos_empty) Tue Nov  3 17:07:51 2009

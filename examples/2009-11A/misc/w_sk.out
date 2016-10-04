@@ -1,0 +1,158 @@
+============================== Prover9 ===============================
+Prover9 (32) version 2009-11A, November 2009.
+Process 4527 was started by mccune on cleo,
+Tue Nov  3 09:39:04 2009
+The command was "/home/mccune/LADR/bin/prover9 -f w_sk.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file w_sk.in
+
+assign(max_seconds,30).
+
+formulas(sos).
+a(a(a(S,x),y),z) = a(a(x,z),a(y,z)) # label(S).
+a(a(K,x),y) = x # label(K).
+end_of_list.
+
+formulas(goals).
+(exists W all x all y a(a(W,x),y) = a(a(x,y),y)) # label(W).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 (exists W all x all y a(a(W,x),y) = a(a(x,y),y)) # label(W) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+a(a(a(S,x),y),z) = a(a(x,z),a(y,z)) # label(S).  [assumption].
+a(a(K,x),y) = x # label(K).  [assumption].
+a(a(x,f1(x)),f2(x)) != a(a(f1(x),f2(x)),f2(x)) # label(W).  [deny(1)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Auto_denials:
+  % copying label W to answer in negative clause
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ = ]).
+Function symbol precedence:  function_order([ K, S, a, f1, f2 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(paramodulation).  % (positive equality literals)
+
+Auto_process settings:  (no changes).
+
+kept:      2 a(a(a(S,x),y),z) = a(a(x,z),a(y,z)) # label(S).  [assumption].
+kept:      3 a(a(K,x),y) = x # label(K).  [assumption].
+           4 a(a(x,f1(x)),f2(x)) != a(a(f1(x),f2(x)),f2(x)) # label(W) # answer(W).  [deny(1)].
+kept:      5 a(a(f1(x),f2(x)),f2(x)) != a(a(x,f1(x)),f2(x)) # answer(W).  [copy(4),flip(a)].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+2 a(a(a(S,x),y),z) = a(a(x,z),a(y,z)) # label(S).  [assumption].
+3 a(a(K,x),y) = x # label(K).  [assumption].
+5 a(a(f1(x),f2(x)),f2(x)) != a(a(x,f1(x)),f2(x)) # answer(W).  [copy(4),flip(a)].
+end_of_list.
+
+formulas(demodulators).
+3 a(a(K,x),y) = x # label(K).  [assumption].
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.01 seconds.
+
+given #1 (I,wt=15): 2 a(a(a(S,x),y),z) = a(a(x,z),a(y,z)) # label(S).  [assumption].
+
+given #2 (I,wt=7): 3 a(a(K,x),y) = x # label(K).  [assumption].
+
+given #3 (I,wt=16): 5 a(a(f1(x),f2(x)),f2(x)) != a(a(x,f1(x)),f2(x)) # answer(W).  [copy(4),flip(a)].
+
+given #4 (A,wt=23): 6 a(a(a(S,a(a(S,x),y)),z),u) = a(a(a(x,u),a(y,u)),a(z,u)).  [para(2(a,1),2(a,2,1))].
+
+given #5 (F,wt=11): 18 a(a(f1(K),f2(K)),f2(K)) != f1(K) # answer(W).  [para(3(a,1),5(a,2))].
+
+given #6 (F,wt=21): 17 a(a(f1(a(K,x)),f2(a(K,x))),f2(a(K,x))) != a(x,f2(a(K,x))) # answer(W).  [para(3(a,1),5(a,2,1))].
+
+given #7 (F,wt=22): 50 a(a(f1(a(K,a(K,x))),f2(a(K,a(K,x)))),f2(a(K,a(K,x)))) != x # answer(W).  [para(3(a,1),17(a,2))].
+
+given #8 (F,wt=31): 16 a(a(f1(a(S,x)),f2(a(S,x))),f2(a(S,x))) != a(a(x,f2(a(S,x))),a(f1(a(S,x)),f2(a(S,x)))) # answer(W).  [para(2(a,1),5(a,2))].
+
+given #9 (T,wt=9): 14 a(a(a(S,K),x),y) = y.  [para(3(a,1),2(a,2))].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.02 (+ 0.00) seconds: W.
+% Length of proof is 9.
+% Level of proof is 4.
+% Maximum clause weight is 45.000.
+% Given clauses 9.
+
+1 (exists W all x all y a(a(W,x),y) = a(a(x,y),y)) # label(W) # label(non_clause) # label(goal).  [goal].
+2 a(a(a(S,x),y),z) = a(a(x,z),a(y,z)) # label(S).  [assumption].
+3 a(a(K,x),y) = x # label(K).  [assumption].
+4 a(a(x,f1(x)),f2(x)) != a(a(f1(x),f2(x)),f2(x)) # label(W) # answer(W).  [deny(1)].
+5 a(a(f1(x),f2(x)),f2(x)) != a(a(x,f1(x)),f2(x)) # answer(W).  [copy(4),flip(a)].
+14 a(a(a(S,K),x),y) = y.  [para(3(a,1),2(a,2))].
+15 a(a(f1(a(a(S,x),y)),f2(a(a(S,x),y))),f2(a(a(S,x),y))) != a(a(a(x,f1(a(a(S,x),y))),a(y,f1(a(a(S,x),y)))),f2(a(a(S,x),y))) # answer(W).  [para(2(a,1),5(a,2,1))].
+55 a(a(a(S,x),a(a(S,K),y)),z) = a(a(x,z),z).  [para(14(a,1),2(a,2,2))].
+56 $F # answer(W).  [resolve(55,a,15,a(flip))].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=9. Generated=79. Kept=53. proofs=1.
+Usable=9. Sos=43. Demods=3. Limbo=0, Disabled=3. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=2.
+Forward_subsumed=24. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=3 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=1668. Demod_rewrites=1.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.16.
+User_CPU=0.02, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 1 proof.
+
+Process 4527 exit (max_proofs) Tue Nov  3 09:39:04 2009

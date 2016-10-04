@@ -1,0 +1,15 @@
+assign(max_seconds, 30).
+
+formulas(sos).
+
+  (all x all y (subset(x,y) <-> (all z (member(z,x) -> member(z,y))))) # label(definition_subset).
+
+end_of_list.
+
+formulas(goals).
+
+  (all x all y all z (subset(x,y) & subset(y,z) -> subset(x,z))) # label(subset_is_transitive).
+
+end_of_list.
+
+

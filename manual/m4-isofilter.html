@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+  <title>Prover9 Manual: Isofilter</title>
+ <link rel="stylesheet" href="manual.css">
+</head>
+
+<body>
+
+<hr>
+<table width="100%">
+<tr>
+<colgroup>
+<col width="33%">
+<col width="34%">
+<col width="33%">
+</colgroup>
+<td align="left"><i>Prover9 Manual</i>
+<td align="center"><img src="prover9-5a-256t.gif">
+<td align="right"><i>Version 2009-11A</i>
+</table>
+<hr>
+
+<!-- Main content -->
+
+<h1>Isofilter</a></h1>
+
+If Mace4 produces more than one structure, some of them are
+very likely to be isomorphic to others.  The program Isofilter
+can be used to remove isomorphic structures.
+
+<p>
+Determining whether two structures are isomorphic is
+a hard problem in general, but isofilter can cope with
+some large structures in reasonable time.  It
+depends on the type of the strucure.  For example,
+quasigroups usually take more time than lattices.
+
+<p>
+Isofilter accepts structures in LADR standard format,
+which is the default format produced by Mace4.  However,
+the Mace4 output contains a lot of extraneous information,
+which can be stripped out with the command
+<tt><a href="m4-interpformat.html">interpformat standard</a></tt>.
+
+Isofilter also accepts the following command-line arguments,
+which are described in the examples below.
+
+<ul>
+<li><tt>ignore_constants</tt>:  ignore all constants during the isomorphism tests.
+<li><tt>check '&lt;operations&gt;' </tt>:  consider only the listed operations in the isomorphism tests.
+<li><tt>output '&lt;operations&gt;' </tt>:  output only the listed operations.
+<li><tt>wrap</tt>:  enclose the resulting structures in <tt>list(interpretations).  ...  end_of_list.</tt>
+<!-- <li><tt>discriminators '&lt;filename&gt;' </tt>:  use clauses in the file to help determine non-isomorphism. -->
+</ul>
+
+<h2>Examples</h2>
+
+We start with a Mace4 job and extract the interpretations; then we run Isofilter.
+
+<pre class="my_job">
+mace4 -N6 -m -1 -f <a href="BA2.in">BA2.in</a> | interpformat standard &gt; <a href="BA2.interps">BA2.interps</a> 
+isofilter &lt; <a href="BA2.interps">BA2.interps</a> &gt; <a href="BA2.interps2">BA2.interps2</a> 
+</pre>
+
+Note that the two models in BA2.interps2 differ only in one of the constants.
+In this case the constants come from existentially quantified variables in the
+goal, and all we really care about is the lattice.  We can tell Isofilter to
+ignore differences in constants by giving it the argument
+<tt>ignore_constants</tt> as in the following command.
+
+<pre class="my_job">
+isofilter ignore_constants &lt; <a href="BA2.interps">BA2.interps</a> &gt; <a href="BA2.interps3">BA2.interps3</a> 
+</pre>
+
+Another way to use only a subset of the operations is the
+<tt>check</tt> argument, which us used to specify <i>exactly</i>
+which operations to test for isomorphism.  In the following example,
+only the meet and join operations are checked.  (If there is more than
+one operation, or if the operation may be interpreted by the shell,
+they should be enclosed in single quotes.)
+
+<pre class="my_job">
+mace4 -N6 -m -1 -f <a href="MOL.in">MOL.in</a> | interpformat standard &gt; <a href="MOL.interps">MOL.interps</a> 
+isofilter check '^ v' output '^ v' &lt; <a href="MOL.interps">MOL.interps</a> &gt; <a href="MOL.interps2">MOL.interps2</a> 
+</pre>
+
+The output of isofilter is frequently used as input to a program that
+expects the interpretations to be in a list of interpretations;
+we can tell isofilter to put the output in that form by giving it
+the argument <tt>wrap</tt> as in the following command.
+
+<pre class="my_job">
+isofilter ignore_constants wrap &lt; <a href="BA2.interps">BA2.interps</a> &gt; <a href="BA2.interps4">BA2.interps4</a> 
+</pre>
+
+Finally, we can string together some of the preceding commands as follows.
+
+<pre class="my_job">
+mace4 -N6 -m -1 -f <a href="BA2.in">BA2.in</a> | interpformat standard | isofilter ignore_constants wrap &gt; <a href="BA2.interps5">BA2.interps5</a> 
+</pre>
+
+<hr>
+Next Section:
+<a href="prooftrans.html">Prooftrans</a>
+
+</body>
+</html>

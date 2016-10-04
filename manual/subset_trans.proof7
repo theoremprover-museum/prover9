@@ -1,0 +1,20 @@
+
+formulas(hints).
+
+% 14 hints from 1 proof(s) in file subset_trans.out, Tue Nov  3 17:08:14 2009
+
+(all x all y (subset(x,y) <-> (all z (member(z,x) -> member(z,y))))) # label(non_clause).
+(all x all y all z (subset(x,y) & subset(y,z) -> subset(x,z))) # label(non_clause) # label(goal).
+subset(x,y) | member(f1(x,y),x).
+-subset(x,y) | -member(z,x) | member(z,y).
+subset(x,y) | -member(f1(x,y),y).
+subset(c1,c2).
+subset(c2,c3).
+-subset(c1,c3).
+-member(x,c1) | member(x,c2).
+-member(x,c2) | member(x,c3).
+member(f1(c1,c3),c1).
+-member(f1(c1,c3),c3).
+member(f1(c1,c3),c2).
+$F.
+end_of_list.

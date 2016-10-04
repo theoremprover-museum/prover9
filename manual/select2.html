@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+  <title>Prover9 Manual: Given Selection (Advanced)</title>
+ <link rel="stylesheet" href="manual.css">
+</head>
+
+<body>
+
+
+<hr>
+<table width="100%">
+<tr>
+<colgroup>
+<col width="33%">
+<col width="34%">
+<col width="33%">
+</colgroup>
+<td align="left"><i>Prover9 Manual</i>
+<td align="center"><img src="prover9-5a-256t.gif">
+<td align="right"><i>Version 2009-11A</i>
+</table>
+<hr>
+
+<!-- Main content -->
+
+<h1>Given Selection (Advanced)</h1>
+
+This page describes a mechanism that allows the user to have
+more control over selection of given clauses than the ordinary
+parameters
+<a href="select.html#age_part"><tt><b>age_part</b></tt></a>,
+<a href="select.html#true_part"><tt><b>true_part</b></tt></a>,
+<a href="select.html#false_part"><tt><b>false_part</b></tt></a>,
+<a href="select.html#weight_part"><tt><b>weight_part</b></tt></a>,
+<a href="select.html#hints_part"><tt><b>hints_part</b></tt></a>,
+and
+<a href="select.html#random_part"><tt><b>random_part</b></tt></a>.
+(See the page <a href="select.html">Selecting the Given Clause</a>
+for the basic mechanism.)
+
+<p>
+The user can input a list "<tt>given_selection</tt>"
+rules that specify how given clauses are to be selected.
+Each rule has the form
+<pre class="my_file">
+part( <font color="#D10000"><i>name</i></font>, <font color="#D10000"><i>priority</i></font>, <font color="#D10000"><i>order</i></font> , <font color="#D10000"><i>property</i></font> ) = <font color="#D10000"><i>n</i></font>.
+</pre>
+<ul>
+<li><font color="#D10000"><i>name</i></font> is an identifier
+string chosen by the user; it is used when given clauses are
+printed to identify the rule that was used to select the given clause.
+
+<li><font color="#D10000"><i>priority</i></font> must be "high" or "low";
+All high-priority rules are used before any low-priority rules are used.
+
+<li><font color="#D10000"><i>order</i></font> must be "age"
+(increasing clause ID),
+"weight" (increasing clause weight),
+or "random";  it is used to order the clauses that satisfy
+the <font color="#D10000"><i>property</i></font>.
+
+<li><font color="#D10000"><i>property</i></font> is an expression
+in the <a href="clause-properties.html"> Clause Properties</a> language.
+
+<li><font color="#D10000"><i>n</i></font> is a positive integer; it
+specifies the number of given clauses that are selected according to
+the rule before moving to the next rule.
+
+</ul>
+
+For example the default settings
+(see <a href="select.html">Selecting the Given Clause</a>)
+<pre class="my_file">
+assign(hints_part, INT_MAX).
+assign(age_part, 1).
+assign(true_part, 4).
+assign(false_part, 4).
+</pre>
+are operationally similar to the following list of rules.
+<pre class="my_file">
+list(given_selection).
+  part(H, high, weight,  hint) = 1.
+  part(A,  low,    age,   all) = 1.
+  part(T,  low, weight,  true) = 4.
+  part(F,  low, weight, false) = 4.
+end_of_list.
+</pre>
+
+<h2>Selection by Ratio</h2>
+
+Ignore high-priority rules for a moment and consider a list of
+low-priority rules.  The positive integers (the parts) at the ends
+of the rules determine a <i>ratio cycle</i>.  If there are three
+rules with parts 3,1,4, the cycle has size 8, with 3 clauses selected
+by the first rule, 1 clause by the second rule, 4 by the third rule,
+and so on.  The ratio cycle is [3,1,4].  If no clauses of the
+required type are available, that part of the cycle is simply skipped.
+This much is essentially
+the same as the basic method described in
+<a href="select.html">Selecting the Given Clause</a>.
+
+<h2>Priority: High and Low</h2>
+
+The given_selection rules are partitioned into "high" and "low"
+priority, and each partition determines a ratio cycle.
+
+<p>
+When Prover9 needs a new given clause, it first tries to find
+one by using the high-priority rules, picking up in the high-priority
+cycle where it left off.
+Consider the following rules.
+<pre class="my_file">
+list(given_selection).
+  part(Hint_age,  high,    age,        hint) = 2.
+  part(Hint_wt,   high, weight,        hint) = 3.
+
+  part(Age,        low,    age,         all) = 1.
+  part(Pos,        low, weight,    positive) = 2.
+  part(Nonpos,     low, weight,   -positive) = 4.
+end_of_list.
+</pre>
+As long as clauses matching hints are available, they are selected
+in a cycle of size 5: 2 by age, then 3 by weight, and so on.
+When no more clauses matching hints are available, Prover9 reverts to
+the low-priority rules, selecting given clauses in a cycle of size 7.
+If any high-priority clauses become available, Prover9 immediately goes
+back to the high-priority cycle.
+
+<h2>Covering All Clauses</h2>
+
+We recommend that the list of rules cover all clauses that Prover9 keeps.
+(A rule with property "all" is sufficient, but not necessary.)
+If a kept clause does not match any of the rules, a warning message
+is printed.  In this case, there can be sos clauses that will never
+be selectedas.  (It is possible that such clauses can still be used by
+subsumption, back demodulation, or back unit deletion.)
+
+<h2>The Ordinary Selection Parameters (<a href="select.html#age_part"><tt><b>age_part</b></tt></a>, etc.)</h2>
+
+The ordinary parameters
+<a href="select.html#age_part"><tt><b>age_part</b></tt></a>,
+<a href="select.html#true_part"><tt><b>true_part</b></tt></a>,
+<a href="select.html#false_part"><tt><b>false_part</b></tt></a>,
+<a href="select.html#weight_part"><tt><b>weight_part</b></tt></a>,
+<a href="select.html#hints_part"><tt><b>hints_part</b></tt></a>,
+and
+<a href="select.html#random_part"><tt><b>random_part</b></tt></a>
+can be thought of as shorthand for given_selection rules.
+In fact, if the user does not input a list of given_selection
+rules, Prover9 constructs and uses an internal given_selection
+list by using those parameters.
+
+<p>
+However, if the user <i>does</i> input given_selection rules,
+<i>those five parameters are ignored</i>.  In particular, if the user
+inputs given_selection rules, and if hints are being used, there
+probably should be (at least) a high_priority rule with
+property "hint" so that the hints will be used.
+
+<h3>Input_sos_first</h3>
+
+The flag <a href="select.html#input_sos_first"><tt><b>input_sos_first</b></tt></a> (default set) says that all
+initial clauses (sos clauses that exist when the first given clause
+is selected) are to be selected as give clauses before any
+non-initial clauses.  <i>This flag is implemented with a high-priority
+rule</i>.
+
+<p>
+Contrary to the hints case, if the user inputs given_selection rules,
+and if the flag <a href="select.html#input_sos_first"><tt><b>input_sos_first</b></tt></a>, Prover9 will automatically
+insert the following rule as the first high-priority rule.
+<pre class="my_file">
+  part(I, high, age, initial) = INT_MAX.
+</pre>
+
+If the user wishes to override this behavior, for example by
+having initial clauses selected immediately by weight instead of age,
+the flag <a href="select.html#input_sos_first"><tt><b>input_sos_first</b></tt></a> can be cleared, and the
+following can be used as the first high-priority rule.
+<pre class="my_file">
+  part(I_wt, high, weight, initial) = INT_MAX.
+</pre>
+
+<!--
+<hr>
+Next Section:
+<a href="production.html">Production Mode</a>
+-->
+
+</body>
+</html>

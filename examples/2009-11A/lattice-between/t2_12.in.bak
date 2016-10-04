@@ -1,0 +1,11 @@
+formulas(sos).
+
+   % Theorem 2 (denials)
+
+% 1 -> 2
+
+x <= y | y <= x.
+D(ca,cx,cb).
+-A(ca,cx,cb).
+
+end_of_list.

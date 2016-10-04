@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE proofs SYSTEM "proof3.dtd">
+
+<?xml-stylesheet type="text/xsl" href="proof3.xsl"?>
+
+<proofs number_of_proofs="1">
+
+<source>subset_trans.out</source>
+
+<heading><![CDATA[
+Prover9 (32) version 2009-11A, November 2009.
+Process 25572 was started by mccune on cleo,
+Tue Nov  3 17:07:39 2009
+The command was "/home/mccune/LADR/bin/prover9 -f subset_trans.in".
+]]></heading>
+
+<proof number="1" length="14" max_count="20">
+
+<comments><![CDATA[
+% Proof 1 at 0.01 (+ 0.00) seconds.
+% Length of proof is 14.
+% Level of proof is 4.
+% Maximum clause weight is 6.000.
+% Given clauses 6.
+
+]]></comments>
+
+  <clause id="1" type="assumption">
+    <literal><![CDATA[
+      (all x all y (subset(x,y) <-> (all z (member(z,x) -> member(z,y)))))
+    ]]></literal>
+    <attribute><![CDATA[
+      label(non_clause)
+    ]]></attribute>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="2" type="goal">
+    <literal><![CDATA[
+      (all x all y all z (subset(x,y) & subset(y,z) -> subset(x,z)))
+    ]]></literal>
+    <attribute><![CDATA[
+      label(non_clause)
+    ]]></attribute>
+    <attribute><![CDATA[
+      label(goal)
+    ]]></attribute>
+    <justification jstring="[goal].">
+      <j1 rule="goal"/>
+    </justification>
+  </clause>
+
+  <clause id="3" type="clausify">
+    <literal><![CDATA[
+      subset(x,y)
+    ]]></literal>
+    <literal><![CDATA[
+      member(f1(x,y),x)
+    ]]></literal>
+    <justification jstring="[clausify(1)].">
+      <j1 rule="clausify" parents="1"/>
+    </justification>
+  </clause>
+
+  <clause id="4" type="clausify">
+    <literal><![CDATA[
+      -subset(x,y)
+    ]]></literal>
+    <literal><![CDATA[
+      -member(z,x)
+    ]]></literal>
+    <literal><![CDATA[
+      member(z,y)
+    ]]></literal>
+    <justification jstring="[clausify(1)].">
+      <j1 rule="clausify" parents="1"/>
+    </justification>
+  </clause>
+
+  <clause id="5" type="clausify">
+    <literal><![CDATA[
+      subset(x,y)
+    ]]></literal>
+    <literal><![CDATA[
+      -member(f1(x,y),y)
+    ]]></literal>
+    <justification jstring="[clausify(1)].">
+      <j1 rule="clausify" parents="1"/>
+    </justification>
+  </clause>
+
+  <clause id="6" type="deny">
+    <literal><![CDATA[
+      subset(c1,c2)
+    ]]></literal>
+    <justification jstring="[deny(2)].">
+      <j1 rule="deny" parents="2"/>
+    </justification>
+  </clause>
+
+  <clause id="7" type="deny">
+    <literal><![CDATA[
+      subset(c2,c3)
+    ]]></literal>
+    <justification jstring="[deny(2)].">
+      <j1 rule="deny" parents="2"/>
+    </justification>
+  </clause>
+
+  <clause id="8" type="deny">
+    <literal><![CDATA[
+      -subset(c1,c3)
+    ]]></literal>
+    <justification jstring="[deny(2)].">
+      <j1 rule="deny" parents="2"/>
+    </justification>
+  </clause>
+
+  <clause id="11">
+    <literal><![CDATA[
+      -member(x,c1)
+    ]]></literal>
+    <literal><![CDATA[
+      member(x,c2)
+    ]]></literal>
+    <justification jstring="[resolve(6,a,4,a)].">
+      <j1 rule="resolve" parents="6 4"/>
+    </justification>
+  </clause>
+
+  <clause id="12">
+    <literal><![CDATA[
+      -member(x,c2)
+    ]]></literal>
+    <literal><![CDATA[
+      member(x,c3)
+    ]]></literal>
+    <justification jstring="[resolve(7,a,4,a)].">
+      <j1 rule="resolve" parents="7 4"/>
+    </justification>
+  </clause>
+
+  <clause id="13">
+    <literal><![CDATA[
+      member(f1(c1,c3),c1)
+    ]]></literal>
+    <justification jstring="[resolve(8,a,3,a)].">
+      <j1 rule="resolve" parents="8 3"/>
+    </justification>
+  </clause>
+
+  <clause id="14">
+    <literal><![CDATA[
+      -member(f1(c1,c3),c3)
+    ]]></literal>
+    <justification jstring="[resolve(8,a,5,a)].">
+      <j1 rule="resolve" parents="8 5"/>
+    </justification>
+  </clause>
+
+  <clause id="15">
+    <literal><![CDATA[
+      member(f1(c1,c3),c2)
+    ]]></literal>
+    <justification jstring="[resolve(13,a,11,a)].">
+      <j1 rule="resolve" parents="13 11"/>
+    </justification>
+  </clause>
+
+  <clause id="18">
+    <literal><![CDATA[
+      $F
+    ]]></literal>
+    <justification jstring="[ur(12,b,14,a),unit_del(a,15)].">
+      <j1 rule="ur" parents="12 14"/>
+      <j2 rule="unit_del" parents="15"/>
+    </justification>
+  </clause>
+
+</proof>
+
+</proofs>

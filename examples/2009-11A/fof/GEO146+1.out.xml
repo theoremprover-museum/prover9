@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE proofs SYSTEM "proof3.dtd">
+
+<?xml-stylesheet type="text/xsl" href="proof3.xsl"?>
+
+<proofs number_of_proofs="2">
+
+<source>GEO146+1.out</source>
+
+<heading><![CDATA[
+FOF-Prover9 (32) version 2009-11A, November 2009.
+Process 23948 was started by mccune on cleo,
+Tue Nov  3 16:59:14 2009
+The command was "/home/mccune/LADR/bin/fof-prover9 -f GEO146+1.in".
+]]></heading>
+
+<proof number="1" length="8" max_count="12">
+
+<comments><![CDATA[
+% Proof 1 at 0.70 (+ 0.01) seconds.
+% Length of proof is 8.
+% Level of proof is 3.
+% Maximum clause weight is 12.000.
+% Given clauses 433.
+
+]]></comments>
+
+  <clause id="204" type="assumption">
+    <literal><![CDATA[
+      connect(A,B,C)
+    ]]></literal>
+    <literal><![CDATA[
+      -once(at_the_same_time(at(A,C),at(B,C)))
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="205" type="assumption">
+    <literal><![CDATA[
+      once(at_the_same_time(at(A,B),at(C,B)))
+    ]]></literal>
+    <literal><![CDATA[
+      -connect(A,C,B)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="206" type="assumption">
+    <literal><![CDATA[
+      once(at_the_same_time(A,B))
+    ]]></literal>
+    <literal><![CDATA[
+      -once(at_the_same_time(B,A))
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="218" type="assumption">
+    <literal><![CDATA[
+      connect(c1,c2,c3)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="219" type="assumption">
+    <literal><![CDATA[
+      -connect(c2,c1,c3)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="666">
+    <literal><![CDATA[
+      once(at_the_same_time(at(c1,c3),at(c2,c3)))
+    ]]></literal>
+    <justification jstring="[resolve(218,a,205,b)].">
+      <j1 rule="resolve" parents="218 205"/>
+    </justification>
+  </clause>
+
+  <clause id="2325">
+    <literal><![CDATA[
+      once(at_the_same_time(at(c2,c3),at(c1,c3)))
+    ]]></literal>
+    <justification jstring="[resolve(666,a,206,b)].">
+      <j1 rule="resolve" parents="666 206"/>
+    </justification>
+  </clause>
+
+  <clause id="2916">
+    <literal><![CDATA[
+      $F
+    ]]></literal>
+    <justification jstring="[resolve(2325,a,204,b),unit_del(a,219)].">
+      <j1 rule="resolve" parents="2325 204"/>
+      <j2 rule="unit_del" parents="219"/>
+    </justification>
+  </clause>
+
+</proof>
+
+<proof number="2" length="8" max_count="12">
+
+<comments><![CDATA[
+% Proof 1 at 0.68 (+ 0.01) seconds.
+% Length of proof is 8.
+% Level of proof is 3.
+% Maximum clause weight is 12.000.
+% Given clauses 433.
+
+]]></comments>
+
+  <clause id="204" type="assumption">
+    <literal><![CDATA[
+      connect(A,B,C)
+    ]]></literal>
+    <literal><![CDATA[
+      -once(at_the_same_time(at(A,C),at(B,C)))
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="205" type="assumption">
+    <literal><![CDATA[
+      once(at_the_same_time(at(A,B),at(C,B)))
+    ]]></literal>
+    <literal><![CDATA[
+      -connect(A,C,B)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="206" type="assumption">
+    <literal><![CDATA[
+      once(at_the_same_time(A,B))
+    ]]></literal>
+    <literal><![CDATA[
+      -once(at_the_same_time(B,A))
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="218" type="assumption">
+    <literal><![CDATA[
+      -connect(c1,c2,c3)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="219" type="assumption">
+    <literal><![CDATA[
+      connect(c2,c1,c3)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="666">
+    <literal><![CDATA[
+      once(at_the_same_time(at(c2,c3),at(c1,c3)))
+    ]]></literal>
+    <justification jstring="[resolve(219,a,205,b)].">
+      <j1 rule="resolve" parents="219 205"/>
+    </justification>
+  </clause>
+
+  <clause id="2325">
+    <literal><![CDATA[
+      once(at_the_same_time(at(c1,c3),at(c2,c3)))
+    ]]></literal>
+    <justification jstring="[resolve(666,a,206,b)].">
+      <j1 rule="resolve" parents="666 206"/>
+    </justification>
+  </clause>
+
+  <clause id="2916">
+    <literal><![CDATA[
+      $F
+    ]]></literal>
+    <justification jstring="[resolve(2325,a,204,b),unit_del(a,218)].">
+      <j1 rule="resolve" parents="2325 204"/>
+      <j2 rule="unit_del" parents="218"/>
+    </justification>
+  </clause>
+
+</proof>
+
+</proofs>

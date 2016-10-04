@@ -1,0 +1,33 @@
+<OL>
+
+<LI>
+D. Champeaux.
+ Sub-problem finder and instance checker, two cooperating modules for
+  theorem provers.
+ <I>J. ACM</I>, 33(4):633--657, 1986.
+
+<LI>
+W. McCune.
+ Otter 3.3 Reference Manual.
+ Tech. Memo ANL/MCS-TM-263, Mathematics and Computer Science Division,
+  Argonne National Laboratory, Argonne, IL, August 2003.
+
+<LI>
+W. McCune.
+ Mace4 Reference Manual and Guide.
+ Tech. Memo ANL/MCS-TM-264, Mathematics and Computer Science Division,
+  Argonne National Laboratory, Argonne, IL, August 2003.
+
+<LI>
+R. Veroff.
+ Using hints to increase the effectiveness of an automated reasoning
+  program: Case studies.
+ <I>J. Automated Reasoning</I>, 16(3):223--239, 1996.
+
+<LI>
+R. Veroff.
+ Solving open questions and other challenge problems using proof
+  sketches.
+ <I>J. Automated Reasoning</I>, 27(2):157--174, 2001.
+
+</OL>

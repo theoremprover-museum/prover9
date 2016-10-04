@@ -1,0 +1,709 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE proofs SYSTEM "proof3.dtd">
+
+<?xml-stylesheet type="text/xsl" href="proof3.xsl"?>
+
+<proofs number_of_proofs="7">
+
+<source>mol-ss1.out</source>
+
+<heading><![CDATA[
+Prover9 (32) version 2009-11A, November 2009.
+Process 5124 was started by mccune on cleo,
+Tue Nov  3 09:45:16 2009
+The command was "/home/mccune/LADR/bin/prover9 -f mol-ss1.in".
+]]></heading>
+
+<proof number="1" length="6" max_count="39">
+
+<comments><![CDATA[
+% Proof 1 at 0.01 (+ 0.00) seconds: AJ.
+% Length of proof is 6.
+% Level of proof is 3.
+% Maximum clause weight is 39.000.
+% Given clauses 0.
+
+]]></comments>
+
+  <clause id="1" type="goal">
+    <literal><![CDATA[
+      x v (y v z) = y v (x v z)
+    ]]></literal>
+    <attribute><![CDATA[
+      answer(AJ)
+    ]]></attribute>
+    <attribute><![CDATA[
+      label(non_clause)
+    ]]></attribute>
+    <attribute><![CDATA[
+      label(goal)
+    ]]></attribute>
+    <justification jstring="[goal].">
+      <j1 rule="goal"/>
+    </justification>
+  </clause>
+
+  <clause id="8" type="assumption">
+    <literal><![CDATA[
+      f(x,f(f(y,z),f(y,z))) = f(y,f(f(x,z),f(x,z)))
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="12" type="assumption">
+    <literal><![CDATA[
+      x v y = f(f(x,x),f(y,y))
+    ]]></literal>
+    <attribute><![CDATA[
+      label(definition_join)
+    ]]></attribute>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="15" type="deny">
+    <literal><![CDATA[
+      c2 v (c1 v c3) != c1 v (c2 v c3)
+    ]]></literal>
+    <attribute><![CDATA[
+      answer(AJ)
+    ]]></attribute>
+    <justification jstring="[deny(1)].">
+      <j1 rule="deny" parents="1"/>
+    </justification>
+  </clause>
+
+  <clause id="16">
+    <literal><![CDATA[
+      f(f(c1,c1),f(f(f(c2,c2),f(c3,c3)),f(f(c2,c2),f(c3,c3)))) != f(f(c2,c2),f(f(f(c1,c1),f(c3,c3)),f(f(c1,c1),f(c3,c3))))
+    ]]></literal>
+    <attribute><![CDATA[
+      answer(AJ)
+    ]]></attribute>
+    <justification jstring="[copy(15),rewrite([12(4),12(9),12(23),12(28)]),flip(a)].">
+      <j1 rule="copy" parents="15"/>
+      <j2 rule="rewrite" parents="12 12 12 12"/>
+      <j2 rule="flip"/>
+    </justification>
+  </clause>
+
+  <clause id="17">
+    <literal><![CDATA[
+      $F
+    ]]></literal>
+    <attribute><![CDATA[
+      answer(AJ)
+    ]]></attribute>
+    <justification jstring="[resolve(16,a,8,a)].">
+      <j1 rule="resolve" parents="16 8"/>
+    </justification>
+  </clause>
+
+</proof>
+
+<proof number="2" length="6" max_count="11">
+
+<comments><![CDATA[
+% Proof 2 at 0.01 (+ 0.00) seconds: B1.
+% Length of proof is 6.
+% Level of proof is 2.
+% Maximum clause weight is 11.000.
+% Given clauses 0.
+
+]]></comments>
+
+  <clause id="2" type="goal">
+    <literal><![CDATA[
+      x v (x ^ y) = x
+    ]]></literal>
+    <attribute><![CDATA[
+      answer(B1)
+    ]]></attribute>
+    <attribute><![CDATA[
+      label(non_clause)
+    ]]></attribute>
+    <attribute><![CDATA[
+      label(goal)
+    ]]></attribute>
+    <justification jstring="[goal].">
+      <j1 rule="goal"/>
+    </justification>
+  </clause>
+
+  <clause id="9" type="assumption">
+    <literal><![CDATA[
+      f(f(x,x),f(x,y)) = x
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="12" type="assumption">
+    <literal><![CDATA[
+      x v y = f(f(x,x),f(y,y))
+    ]]></literal>
+    <attribute><![CDATA[
+      label(definition_join)
+    ]]></attribute>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="13" type="assumption">
+    <literal><![CDATA[
+      x ^ y = f(f(x,y),f(x,y))
+    ]]></literal>
+    <attribute><![CDATA[
+      label(definition_meet)
+    ]]></attribute>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="19" type="deny">
+    <literal><![CDATA[
+      c4 v (c4 ^ c5) != c4
+    ]]></literal>
+    <attribute><![CDATA[
+      answer(B1)
+    ]]></attribute>
+    <justification jstring="[deny(2)].">
+      <j1 rule="deny" parents="2"/>
+    </justification>
+  </clause>
+
+  <clause id="20">
+    <literal><![CDATA[
+      $F
+    ]]></literal>
+    <attribute><![CDATA[
+      answer(B1)
+    ]]></attribute>
+    <justification jstring="[copy(19),rewrite([13(4),12(9),9(18),9(7)]),xx(a)].">
+      <j1 rule="copy" parents="19"/>
+      <j2 rule="rewrite" parents="13 12 9 9"/>
+      <j2 rule="xx"/>
+    </justification>
+  </clause>
+
+</proof>
+
+<proof number="3" length="7" max_count="11">
+
+<comments><![CDATA[
+% Proof 3 at 0.01 (+ 0.00) seconds: DM.
+% Length of proof is 7.
+% Level of proof is 2.
+% Maximum clause weight is 11.000.
+% Given clauses 0.
+
+]]></comments>
+
+  <clause id="3" type="goal">
+    <literal><![CDATA[
+      x ^ y = (x' v y')'
+    ]]></literal>
+    <attribute><![CDATA[
+      answer(DM)
+    ]]></attribute>
+    <attribute><![CDATA[
+      label(non_clause)
+    ]]></attribute>
+    <attribute><![CDATA[
+      label(goal)
+    ]]></attribute>
+    <justification jstring="[goal].">
+      <j1 rule="goal"/>
+    </justification>
+  </clause>
+
+  <clause id="9" type="assumption">
+    <literal><![CDATA[
+      f(f(x,x),f(x,y)) = x
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="12" type="assumption">
+    <literal><![CDATA[
+      x v y = f(f(x,x),f(y,y))
+    ]]></literal>
+    <attribute><![CDATA[
+      label(definition_join)
+    ]]></attribute>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="13" type="assumption">
+    <literal><![CDATA[
+      x ^ y = f(f(x,y),f(x,y))
+    ]]></literal>
+    <attribute><![CDATA[
+      label(definition_meet)
+    ]]></attribute>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="14" type="assumption">
+    <literal><![CDATA[
+      x' = f(x,x)
+    ]]></literal>
+    <attribute><![CDATA[
+      label(definition_complementation)
+    ]]></attribute>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="21" type="deny">
+    <literal><![CDATA[
+      (c6' v c7')' != c6 ^ c7
+    ]]></literal>
+    <attribute><![CDATA[
+      answer(DM)
+    ]]></attribute>
+    <justification jstring="[deny(3)].">
+      <j1 rule="deny" parents="3"/>
+    </justification>
+  </clause>
+
+  <clause id="22">
+    <literal><![CDATA[
+      $F
+    ]]></literal>
+    <attribute><![CDATA[
+      answer(DM)
+    ]]></attribute>
+    <justification jstring="[copy(21),rewrite([14(2),14(5),12(7),9(7),9(8),14(4),13(10)]),xx(a)].">
+      <j1 rule="copy" parents="21"/>
+      <j2 rule="rewrite" parents="14 14 12 9 9 14 13"/>
+      <j2 rule="xx"/>
+    </justification>
+  </clause>
+
+</proof>
+
+<proof number="4" length="5" max_count="9">
+
+<comments><![CDATA[
+% Proof 4 at 0.01 (+ 0.00) seconds: CC.
+% Length of proof is 5.
+% Level of proof is 2.
+% Maximum clause weight is 9.000.
+% Given clauses 0.
+
+]]></comments>
+
+  <clause id="4" type="goal">
+    <literal><![CDATA[
+      x'' = x
+    ]]></literal>
+    <attribute><![CDATA[
+      answer(CC)
+    ]]></attribute>
+    <attribute><![CDATA[
+      label(non_clause)
+    ]]></attribute>
+    <attribute><![CDATA[
+      label(goal)
+    ]]></attribute>
+    <justification jstring="[goal].">
+      <j1 rule="goal"/>
+    </justification>
+  </clause>
+
+  <clause id="9" type="assumption">
+    <literal><![CDATA[
+      f(f(x,x),f(x,y)) = x
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="14" type="assumption">
+    <literal><![CDATA[
+      x' = f(x,x)
+    ]]></literal>
+    <attribute><![CDATA[
+      label(definition_complementation)
+    ]]></attribute>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="23" type="deny">
+    <literal><![CDATA[
+      c8'' != c8
+    ]]></literal>
+    <attribute><![CDATA[
+      answer(CC)
+    ]]></attribute>
+    <justification jstring="[deny(4)].">
+      <j1 rule="deny" parents="4"/>
+    </justification>
+  </clause>
+
+  <clause id="24">
+    <literal><![CDATA[
+      $F
+    ]]></literal>
+    <attribute><![CDATA[
+      answer(CC)
+    ]]></attribute>
+    <justification jstring="[copy(23),rewrite([14(2),14(4),9(7)]),xx(a)].">
+      <j1 rule="copy" parents="23"/>
+      <j2 rule="rewrite" parents="14 14 9"/>
+      <j2 rule="xx"/>
+    </justification>
+  </clause>
+
+</proof>
+
+<proof number="5" length="8" max_count="27">
+
+<comments><![CDATA[
+% Proof 5 at 0.01 (+ 0.00) seconds: MOD.
+% Length of proof is 8.
+% Level of proof is 3.
+% Maximum clause weight is 27.000.
+% Given clauses 0.
+
+]]></comments>
+
+  <clause id="6" type="goal">
+    <literal><![CDATA[
+      x v (y ^ (x v z)) = x v (z ^ (x v y))
+    ]]></literal>
+    <attribute><![CDATA[
+      answer(MOD)
+    ]]></attribute>
+    <attribute><![CDATA[
+      label(non_clause)
+    ]]></attribute>
+    <attribute><![CDATA[
+      label(goal)
+    ]]></attribute>
+    <justification jstring="[goal].">
+      <j1 rule="goal"/>
+    </justification>
+  </clause>
+
+  <clause id="9" type="assumption">
+    <literal><![CDATA[
+      f(f(x,x),f(x,y)) = x
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="11" type="assumption">
+    <literal><![CDATA[
+      f(x,f(y,f(x,f(z,z)))) = f(x,f(z,f(x,f(y,y))))
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="12" type="assumption">
+    <literal><![CDATA[
+      x v y = f(f(x,x),f(y,y))
+    ]]></literal>
+    <attribute><![CDATA[
+      label(definition_join)
+    ]]></attribute>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="13" type="assumption">
+    <literal><![CDATA[
+      x ^ y = f(f(x,y),f(x,y))
+    ]]></literal>
+    <attribute><![CDATA[
+      label(definition_meet)
+    ]]></attribute>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="27" type="deny">
+    <literal><![CDATA[
+      c11 v (c13 ^ (c11 v c12)) != c11 v (c12 ^ (c11 v c13))
+    ]]></literal>
+    <attribute><![CDATA[
+      answer(MOD)
+    ]]></attribute>
+    <justification jstring="[deny(6)].">
+      <j1 rule="deny" parents="6"/>
+    </justification>
+  </clause>
+
+  <clause id="28">
+    <literal><![CDATA[
+      f(f(c11,c11),f(c12,f(f(c11,c11),f(c13,c13)))) != f(f(c11,c11),f(c13,f(f(c11,c11),f(c12,c12))))
+    ]]></literal>
+    <attribute><![CDATA[
+      answer(MOD)
+    ]]></attribute>
+    <justification jstring="[copy(27),rewrite([12(5),13(10),12(21),9(42),12(18),13(23),12(34),9(55)]),flip(a)].">
+      <j1 rule="copy" parents="27"/>
+      <j2 rule="rewrite" parents="12 13 12 9 12 13 12 9"/>
+      <j2 rule="flip"/>
+    </justification>
+  </clause>
+
+  <clause id="29">
+    <literal><![CDATA[
+      $F
+    ]]></literal>
+    <attribute><![CDATA[
+      answer(MOD)
+    ]]></attribute>
+    <justification jstring="[resolve(28,a,11,a)].">
+      <j1 rule="resolve" parents="28 11"/>
+    </justification>
+  </clause>
+
+</proof>
+
+<proof number="6" length="6" max_count="11">
+
+<comments><![CDATA[
+% Proof 6 at 0.01 (+ 0.00) seconds: DEF_SS.
+% Length of proof is 6.
+% Level of proof is 2.
+% Maximum clause weight is 11.000.
+% Given clauses 0.
+
+]]></comments>
+
+  <clause id="7" type="goal">
+    <literal><![CDATA[
+      f(x,y) = x' v y'
+    ]]></literal>
+    <attribute><![CDATA[
+      answer(DEF_SS)
+    ]]></attribute>
+    <attribute><![CDATA[
+      label(non_clause)
+    ]]></attribute>
+    <attribute><![CDATA[
+      label(goal)
+    ]]></attribute>
+    <justification jstring="[goal].">
+      <j1 rule="goal"/>
+    </justification>
+  </clause>
+
+  <clause id="9" type="assumption">
+    <literal><![CDATA[
+      f(f(x,x),f(x,y)) = x
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="12" type="assumption">
+    <literal><![CDATA[
+      x v y = f(f(x,x),f(y,y))
+    ]]></literal>
+    <attribute><![CDATA[
+      label(definition_join)
+    ]]></attribute>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="14" type="assumption">
+    <literal><![CDATA[
+      x' = f(x,x)
+    ]]></literal>
+    <attribute><![CDATA[
+      label(definition_complementation)
+    ]]></attribute>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="31" type="deny">
+    <literal><![CDATA[
+      f(c14,c15) != c14' v c15'
+    ]]></literal>
+    <attribute><![CDATA[
+      answer(DEF_SS)
+    ]]></attribute>
+    <justification jstring="[deny(7)].">
+      <j1 rule="deny" parents="7"/>
+    </justification>
+  </clause>
+
+  <clause id="32">
+    <literal><![CDATA[
+      $F
+    ]]></literal>
+    <attribute><![CDATA[
+      answer(DEF_SS)
+    ]]></attribute>
+    <justification jstring="[copy(31),rewrite([14(5),14(8),12(10),9(10),9(11)]),xx(a)].">
+      <j1 rule="copy" parents="31"/>
+      <j2 rule="rewrite" parents="14 14 12 9 9"/>
+      <j2 rule="xx"/>
+    </justification>
+  </clause>
+
+</proof>
+
+<proof number="7" length="10" max_count="11">
+
+<comments><![CDATA[
+% Proof 7 at 0.02 (+ 0.00) seconds: ONE.
+% Length of proof is 10.
+% Level of proof is 3.
+% Maximum clause weight is 11.000.
+% Given clauses 8.
+
+]]></comments>
+
+  <clause id="5" type="goal">
+    <literal><![CDATA[
+      x v x' = y v y'
+    ]]></literal>
+    <attribute><![CDATA[
+      answer(ONE)
+    ]]></attribute>
+    <attribute><![CDATA[
+      label(non_clause)
+    ]]></attribute>
+    <attribute><![CDATA[
+      label(goal)
+    ]]></attribute>
+    <justification jstring="[goal].">
+      <j1 rule="goal"/>
+    </justification>
+  </clause>
+
+  <clause id="9" type="assumption">
+    <literal><![CDATA[
+      f(f(x,x),f(x,y)) = x
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="10" type="assumption">
+    <literal><![CDATA[
+      f(x,f(x,x)) = f(y,f(y,y))
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="12" type="assumption">
+    <literal><![CDATA[
+      x v y = f(f(x,x),f(y,y))
+    ]]></literal>
+    <attribute><![CDATA[
+      label(definition_join)
+    ]]></attribute>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="14" type="assumption">
+    <literal><![CDATA[
+      x' = f(x,x)
+    ]]></literal>
+    <attribute><![CDATA[
+      label(definition_complementation)
+    ]]></attribute>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="25" type="deny">
+    <literal><![CDATA[
+      c10 v c10' != c9 v c9'
+    ]]></literal>
+    <attribute><![CDATA[
+      answer(ONE)
+    ]]></attribute>
+    <justification jstring="[deny(5)].">
+      <j1 rule="deny" parents="5"/>
+    </justification>
+  </clause>
+
+  <clause id="26">
+    <literal><![CDATA[
+      f(f(c10,c10),c10) != f(f(c9,c9),c9)
+    ]]></literal>
+    <attribute><![CDATA[
+      answer(ONE)
+    ]]></attribute>
+    <justification jstring="[copy(25),rewrite([14(3),12(5),9(10),14(8),12(10),9(15)])].">
+      <j1 rule="copy" parents="25"/>
+      <j2 rule="rewrite" parents="14 12 9 14 12 9"/>
+    </justification>
+  </clause>
+
+  <clause id="33">
+    <literal><![CDATA[
+      f(x,f(x,x)) = c_0
+    ]]></literal>
+    <justification jstring="[new_symbol(10)].">
+      <j1 rule="new_symbol" parents="10"/>
+    </justification>
+  </clause>
+
+  <clause id="59">
+    <literal><![CDATA[
+      f(f(x,x),x) = c_0
+    ]]></literal>
+    <justification jstring="[para(9(a,1),33(a,1,2))].">
+      <j1 rule="para" parents="9 33"/>
+    </justification>
+  </clause>
+
+  <clause id="61">
+    <literal><![CDATA[
+      $F
+    ]]></literal>
+    <attribute><![CDATA[
+      answer(ONE)
+    ]]></attribute>
+    <justification jstring="[back_rewrite(26),rewrite([59(5),59(6)]),xx(a)].">
+      <j1 rule="back_rewrite" parents="26"/>
+      <j2 rule="rewrite" parents="59 59"/>
+      <j2 rule="xx"/>
+    </justification>
+  </clause>
+
+</proof>
+
+</proofs>

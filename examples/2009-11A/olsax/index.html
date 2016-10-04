@@ -1,0 +1,69 @@
+<HTML>
+<HEAD>
+<TITLE>Prover9 Examples: Ortholattice Single Axioms
+</TITLE>
+</HEAD>
+
+<BODY BGCOLOR=white>
+<H1>Prover9 Examples: Ortholattice Single Axioms
+</H1>
+
+See
+<blockquote>
+    McCune, Padmanabhan, Rose, Veroff,
+    "Automated Discovery of Single Axioms for Ortholattices",
+    <I>Algebra Universalis</I>
+    52,
+    pp. 541-549
+    (2005).
+</blockquote>
+
+and
+
+<blockquote>
+     <A HREF="http://www.mcs.anl.gov/~mccune/papers/olsax/">
+     http://www.mcs.anl.gov/~mccune/papers/olsax/</A>.
+</blockquote>
+<HR>
+
+Starting with a single axiom for OL (ortholattices) in terms of the Sheffer stroke,
+prove an OL 3-basis, which is also in terms of the Sheffer stroke.  This
+job introduces the meet, join, and complememtation operations to help the search.
+
+<!-- job olsax2 -->
+<blockquote><tt>prover9 -f <a href="olsax2.in">olsax2.in</a> &gt; <a href="olsax2.out">olsax2.out</a> ; ### ( <a href="olsax2.out.xml">olsax2.out.xml</a> )</tt></blockquote>
+
+
+The following job is similar to the preceding, but for OML (orthomodular lattices).
+
+<!-- job omlsax2 -->
+<blockquote><tt>prover9 -f <a href="omlsax2.in">omlsax2.in</a> &gt; <a href="omlsax2.out">omlsax2.out</a> ; ### ( <a href="omlsax2.out.xml">omlsax2.out.xml</a> )</tt></blockquote>
+
+
+The following two jobs show that two MOL (modular ortholattice) bases
+are definitionally equivalent.  This one is in terms of the Sheffer stroke.
+
+<!-- job mol-ss1 -->
+<blockquote><tt>prover9 -f <a href="mol-ss1.in">mol-ss1.in</a> &gt; <a href="mol-ss1.out">mol-ss1.out</a> ; ### ( <a href="mol-ss1.out.xml">mol-ss1.out.xml</a> )</tt></blockquote>
+
+
+This one is in terms of meet, join, and complementation.
+
+<!-- job mol-ss2 -->
+<blockquote><tt>prover9 -f <a href="mol-ss2.in">mol-ss2.in</a> &gt; <a href="mol-ss2.out">mol-ss2.out</a> ; ### ( <a href="mol-ss2.out.xml">mol-ss2.out.xml</a> )</tt></blockquote>
+
+
+Prove some OML (orthomodudular lattice) properties from a nonstandard OML basis.
+
+<!-- job oml-4basis -->
+<blockquote><tt>prover9 -f <a href="oml-4basis.in">oml-4basis.in</a> &gt; <a href="oml-4basis.out">oml-4basis.out</a> ; ### ( <a href="oml-4basis.out.xml">oml-4basis.out.xml</a> )</tt></blockquote>
+
+
+Prove some BA properties from a nonstandard BA basis.
+
+<!-- job ba-4basis -->
+<blockquote><tt>prover9 -f <a href="ba-4basis.in">ba-4basis.in</a> &gt; <a href="ba-4basis.out">ba-4basis.out</a> ; ### ( <a href="ba-4basis.out.xml">ba-4basis.out.xml</a> )</tt></blockquote>
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,318 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+  <title>Prover9 Manual: Term Ordering</title>
+ <link rel="stylesheet" href="manual.css">
+</head>
+
+<body>
+
+
+<hr>
+<table width="100%">
+<tr>
+<colgroup>
+<col width="33%">
+<col width="34%">
+<col width="33%">
+</colgroup>
+<td align="left"><i>Prover9 Manual</i>
+<td align="center"><img src="prover9-5a-256t.gif">
+<td align="right"><i>Version 2009-11A</i>
+</table>
+<hr>
+
+<!-- Main content -->
+
+<h1>Term Ordering</h1>
+
+<blockquote class="otter_diff">
+Prover9's term ordering procedures and options are simpler than
+Otter's, but  somewhat less flexible.
+We recommend that those who use Otter's "ad hoc" ordering try
+Prover9's KBO ordering.
+</blockquote>
+
+<p>
+Prover9 has available several methods for comparing terms.
+(Although 
+<a href="glossary.html#atomic formula">atomic formula</a>s,
+<a href="glossary.html#literal">literal</a>s, and
+<a href="glossary.html#clause">clauses</a> are not,
+strictly speaking,
+<a href="glossary.html#term">terms</a>,
+the term orderings we
+write about here apply to those objects as well.)
+<p>
+The term orderings are partial (and sometimes total on ground terms),
+and they are used in two ways.
+<ul>
+<li>To orient equalities (positive and negative).  If one side of the
+equality is greater than the other, the greater side is placed on the
+left-hand side, and the equality is marked as oriented.
+<li>To decide which literals in clauses are admissible
+for application of inference rules.  Several of the resolution and
+paramodulation rules require that some of the literals be
+maximal in their clause.
+</ul>
+
+<p>
+For many problems,
+a good term ordering can determine the difference between
+success and failure.
+The default settings work well in many cases, but many difficult
+problems require adjustments to the term ordering.
+
+<p>
+The primary choice (via parameter <a href="term-order.html#order"><tt><b>order</b></tt></a>)
+is type of ordering: LPO, RPO, or KBO.
+Each of those types uses a symbol precedence (see the
+<a href="input.html#lists"><tt>function_order</tt>
+and <tt>predicate_order</tt> commands</a>),
+and KBO also uses a symbol weighting function (see the
+<a href="input.html#lists"><tt>list(kbo_weights)</tt> command</a>).
+In addition, the options
+<a href="term-order.html#eq_defs"><tt><b>eq_defs</b></tt></a> and 
+<a href="term-order.html#inverse_order"><tt><b>inverse_order</b></tt></a>
+cause changes to the term ordering.
+
+<p>
+See
+[<a href="references.html#Dershowitz-termination">Dershowitz-termination</a>]
+for a survey on term ordering.
+
+<h2>The Primary Choice</h2>
+
+The <i>symbol precedence</i> is is a total order on function and
+predicate symbols (including constants).  The symbol weighting
+function maps symbols to nonnegative integers.
+
+<ul>
+
+<li>LPO (Lexicographic Path Ordering).  The term ordering is determined
+entirely by the symbol precedence.  It is total on ground terms.
+
+<li>RPO (Recursive Path Ordering).  The term ordering is determined
+entirely by the symbol precedence.  It is not necessarily total
+on ground terms, because the order of subterms is not considered.
+
+<li>KBO (Knuth-Bendix Ordering).  This ordering uses a weighting
+function on symbols as well as the symbol precedence.  The
+weighting function is used first, and the symbol precedence
+breaks ties.  It is total on ground terms.
+
+</ul>
+
+<p>
+KBO is perhaps the most natural of the three,
+because it it based on weights of symbols, but it is more cumbersome
+to specify because it is determined both by the symbol weights and
+by the symbol precedence.  However, if one of the two terms being
+compared has more occurrences of a variable, it cannot be smaller.
+For example, the distributivity equation cannot be oriented so that
+it distributes (expands) terms.
+
+<p>
+LPO is perhaps the most powerful of the three, because it can usually
+orient more equations.  However, it allows rewrite rules that
+expand terms in explosive ways, for example (this is from a real problem),
+<blockquote>
+<tt>(x * y) * z</tt>  rewrites to    <tt>E * (x * (E * (x * (E * (y * (E * (x * (E * (x * (E * z))))))))))</tt>
+</blockquote>
+
+<p>
+RPO is perhaps the least useful of the three, because it is not necessarily
+total on ground terms.  That is, not all ground equations can be oriented.
+Also, see the sections on
+<a href="process-inf.html#demod-options">demodulation options</a> and on
+<a href="inf-rules.html">inference rules</a>.
+
+<p>
+The reasonable choice is usually between LPO (the default) and KBO.
+For many problems, either one is good.  The main reason LPO is the
+the default is that it is a bit faster than KBO.
+
+<p>
+Here is the primary option.
+
+<!-- start option order -->
+<a name="order">
+<pre class="my_option">
+assign(order, <i>string</i>).  % default <i>string</i>=lpo, range [lpo,rpo,kbo]
+</pre>
+
+<blockquote>
+This option is used to select the primary term ordering to be used
+for orienting equalities and for determining maximal literals in clauses.
+The choices are
+<tt>lpo</tt> (Lexicographic Path Ordering),
+<tt>rpo</tt> (Recursive Path Ordering), and
+<tt>kbo</tt> (Knuth-Bendix Ordering).
+</blockquote>
+<!-- end option -->
+
+<h2>Termination of Demodulation</h2>
+
+If each member of a set of demodulators (rewrite rules) is oriented
+with respect to the current ordering (LPO, RPO, or KBO), then
+demodulation (term rewriting) is guaranteed to terminate (in theory) on all
+terms, regardless of the the order in which the demodulators are
+applied or the order in which the subject terms are demodulated.
+However, there are sets of demodulators that are intractable in practice.
+
+<a name="default_lex"></a>
+<h2>The Default Term Ordering</h2>
+
+The default symbol precedence (for LPO, RPO, and KBO) is given by the following rules (in order).
+<ul>
+<li>function symbols &lt; equality symbol &lt; non-equality predicate symbols;
+<li>if the term ordering is KBO, and if there is exactly one unary function in the problem,
+    that function is greater than all other functions;
+<li>function symbols: arity-0 &lt; arity-2 &lt; arity-1 &lt; arity-3 &lt; arity-4 ...  (note the position of arity-1);
+<li>non-equality predicate symbols: lower arity &lt; higher arity;
+<li>non-Skolem symbols &lt; Skolem symbols;
+<li>for Skolem symbols, the lower index is the lesser;
+<li>for non-Skolem symbols, more occurrences &lt; fewer occurrences;
+<li>the lexical ASCII ordering (UNIX strcmp() function).
+</ul>
+The specific symbol precedence for a problem is given in the output
+file in the section <tt>PROCESS INPUT</tt>.
+
+<p>
+The default symbol-weighting function for KBO is given by the following rules.
+<ul>
+<li>Variables have weight 1;
+<li>if there is exactly one unary function in the problem, it has weight 0;
+<li>all other symbols have weight 1.
+</ul>
+
+<h2>Adjustments to the Term Ordering </h2>
+
+<a name="lex_command"></a>
+<h3>The Symbol Precedence</h3>
+
+The <tt>function_order</tt> and <tt>predicate_order</tt>
+commands can be used to assign a symbol precedence.
+(The <tt>lex</tt> command is synonym for <tt>function_order</tt>.)
+They contain lists of symbols ordered by increasing precedence.
+For example,
+<pre class="my_file">
+predicate_order([=, <=, P, Q]).          % = &lt; P &lt; Q
+function_order([a, b, c, +, *, h, g]).   % a &lt; b &lt; c &lt; + &lt; * &lt; h &lt; g
+</pre>
+There are two separate commands, because presecate symbols are
+always greater than function symbols.
+<p>
+If there are function or predicate symbols in the problem that
+do not appear in the corresponding command,
+a warning is issued, and Prover9 will complete
+the precedence inserting the missing symbols at the beginning of the
+precedence using its default rules.  In these cases, the
+user should check that Prover9 has constructed a reasonable
+precedence.
+
+<p>
+Note that Skolem symbols cannot appear in a function_order command,
+because Skolem symbols do not exist at the time the function_order command is
+written.  If there is a function_order command, and if Skolem symbols are
+generated, each one will be inserted, in effect, into the function_order command
+at a position just before the first symbol of higher arity.
+This method gives a symbol precedence similar to the default
+in many cases.
+
+<blockquote class="otter_diff">
+Otter's lex command has a syntax that shows the
+arities of the symbols; Prover9's function_order and predicate_order
+commands list only the symbols.
+The arities are not necessary for Prover9,
+because a string cannot represent two symbols with different arities.
+</blockquote>
+
+<h3>The KBO Weights</h3>
+
+If the term ordering is KBO, <tt>assign(<a href="term-order.html#order"><tt><b>order</b></tt></a>, kbo)</tt>, the user
+can change the default symbol-weighting function.  For example,
+<pre class="my_file">
+list(kbo_weights).
+  a = 3.
+  b = 2.
+  * = 5.
+  j = 22.
+end_of_list.
+</pre>
+(This has no relationship to the term-weighting function for
+selecting the given clause and discarding inferred clauses.)
+
+<p>
+If any symbols are absent from the list, they retain their
+default KBO weights of 1.
+The symbol weights must be greater than 0, with the exception
+that there may be one unary symbol of weight 0.  (The definition
+of KBO allows for one unary symbol of weight 0 which must also
+be greatest in the precedence.  This special case allows an
+such as <tt>g(f(x,y)) = f(g(y),g(x))</tt> to be oriented as
+shown and used as a rewrite rule.)
+
+<h3>Term Ordering Options</h3>
+
+<!-- start option inverse_order -->
+<a name="inverse_order">
+<pre class="my_option">
+set(inverse_order).    % default set
+clear(inverse_order).
+</pre>
+
+<blockquote>
+If this flag is set, if there is no
+<a href="input.html#lists">function_order command</a>
+(which defines the function symbol precedence), and if the term ordering is
+LPO or RPO, then Prover9
+will attempt to adjust the default symbol precedence if there are any
+input equations that specify an inverse operation.   For example,
+if <tt>f(x,g(x)) = c</tt> is input, <tt>g</tt> will be placed after
+<tt>f</tt> in the precedence.  This allows an equation such as
+<tt>g(f(x,y)) = f(g(y),g(x))</tt> to be oriented as shown for
+demodulation and paramodulation.  If this flag is set, the
+<tt>PROCESS INPUT</tt> section of the output file shows how
+the flag changes the symbol precedence.
+</blockquote>
+<!-- end option -->
+
+<!-- start option eq_defs -->
+<a name="eq_defs">
+<pre class="my_option">
+assign(eq_defs, <i>string</i>).  % default <i>string</i>=unfold, range [unfold,fold,pass]
+</pre>
+
+<blockquote>
+If <i>string</i>=unfold, and if the input contains an equational
+definition, say <tt>j(x,y) = f(f(x,x),f(y,y))</tt>, the defined
+symbol <tt>j</tt> will be eliminated from the problem before
+the search starts.
+This procedure works by adjusting the symbol precedence so that
+the defining equation becomes a demodulator.
+If there is more than one equational definition, cycles are
+avoided by choosing a cycle-free subset of the definitions.
+If the primary term ordering is KBO, this option may
+admit demodulators that do not satisfy the KBO ordering,
+because a variable may have more variables on the right-hand side.
+However, this exception is safe (does not cause non-termination).
+<p>
+If <i>string</i>=fold, and if the input contains an equational
+definition, say <tt>j(x,y) = f(f(x,x),f(y,y))</tt>, the term
+ordering will be adjusted so that equation is flipped
+and becomes a demodulator which introduces the defined symbol
+whenever possible during the search.
+<p>
+If <i>string</i>=pass, nothing special happens.  In this case,
+functions may still be unfolded or folded if the term ordering
+and symbol precedence happen to arrange the demodulators to do so.
+</blockquote>
+<!-- end option -->
+
+<hr>
+Next Section:
+<a href="more-prep.html">More Prep</a>
+
+</body>
+</html>

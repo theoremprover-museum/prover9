@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+  <title>Prover9 Manual: The Inference Loop</title>
+ <link rel="stylesheet" href="manual.css">
+</head>
+
+<body>
+
+
+<hr>
+<table width="100%">
+<tr>
+<colgroup>
+<col width="33%">
+<col width="34%">
+<col width="33%">
+</colgroup>
+<td align="left"><i>Prover9 Manual</i>
+<td align="center"><img src="prover9-5a-256t.gif">
+<td align="right"><i>Version 2009-11A</i>
+</table>
+<hr>
+
+<!-- Main content -->
+
+<h1>The Inference Loop</h1>
+
+The <i>main loop</i> for inferring and processing clauses
+and searching for a proof is sometimes called the <i>given
+clause algorithm</i>.
+It operates mainly on the <tt>sos</tt> and <tt>usable</tt> lists.
+
+<pre class="my_code">
+While the sos list is not empty:
+    1. <a href="select.html">Select a given clause</a> from sos and move it to the usable list;
+    2. <a href="inf-rules.html">Infer new clauses</a> using the inference rules in effect;
+       each new clause must have the given clause as one of its
+       parents and members of the usable list as its other parents;
+    3. <a href="process-inf.html">process each new clause</a>;
+    4. append new clauses that pass the retention tests to the sos list.
+end of while loop.
+</pre>
+
+<h2>Two Frequently Asked Questions</h2>
+
+<blockquote>
+<i>At some point in the search,
+Prover9 has all of the clauses needed to make an important
+inference, and one of the potential parents is selected as
+the given clause.  But Prover9 fails to make the inference.
+Why is that?</i>
+</blockquote>
+
+<blockquote>
+<i>Why do all parents have to be in the <tt>usable</tt> list?</i>
+</blockquote>
+
+The answer to both questions is the same, and it has to do
+with redundancy.  Assume 
+<ul>
+<li>clause <i>C</i> can be inferred from clauses
+<i>A</i> and <i>B</i>;
+<li>both <i>A</i> and <i>B</i> are in the
+<tt>sos</tt> list; and
+<li><i>A</i> is selected first.
+</ul>
+According to the algorithm, <i>C</i> is not derived
+until <i>B</i> has also been selected.
+Otherwise, <i>C</i> would be derived twice from
+<i>A</i> and <i>B</i>.
+
+<h2>Variations of the Loop</h2>
+
+<p>
+There are two common versions of the given clause algorithm
+that differ in how and when simplification (i.e., rewriting) occurs.
+
+<p>
+In the <i>Otter loop</i>, which Prover9 uses, clauses in
+the <tt>sos</tt> list can simplify new clauses,
+and new simplifiers are applied immediately to all clauses,
+including <tt>sos</tt> clauses.
+
+<p>
+In the <i>Discount loop</i>, clauses in the <tt>sos</tt>
+list (also called the <i>passive list</i>) cannot simplify
+or be simplified until they are selected as given clauses.
+
+<p>
+The tradeoff between the two versions is
+straightforward --- the Otter loop spends much more time
+simplifying with the possible benefit of
+making an important simplification sooner.
+
+<hr>
+Next Section:
+<a href="select.html">Select Given</a>
+
+</body>
+</html>

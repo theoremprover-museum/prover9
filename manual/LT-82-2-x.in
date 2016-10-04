@@ -1,0 +1,27 @@
+assign(order, kbo).
+
+assign(max_weight, 25).
+
+assign(max_seconds, 3600).
+
+formulas(sos).
+
+% lattice theory
+
+x v y = y v x.
+(x v y) v z = x v (y v z).
+x ^ y = y ^ x.
+(x ^ y) ^ z = x^ (y ^ z).
+x ^ (x v y) = x.
+x v (x ^ y) = x.
+
+end_of_list.
+
+formulas(sos).
+(x ^ y) v (x ^ z) = x ^ ((y ^ (x v z)) v (z ^ (x v y))) # label(H82).
+end_of_list.
+
+formulas(goals).
+x ^ (y v (x ^ z)) = x ^ (y v (z ^ ((x ^ (y v z)) v (y ^ z)))) # label(H2).
+end_of_list.
+

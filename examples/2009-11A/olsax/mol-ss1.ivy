@@ -1,0 +1,176 @@
+;; ============================== prooftrans ============================
+;; Prover9 (32) version 2009-11A, November 2009.
+;; Process 5124 was started by mccune on cleo,
+;; Tue Nov  3 09:45:16 2009
+;; The command was "/home/mccune/LADR/bin/prover9 -f mol-ss1.in".
+;; ============================== end of head ===========================
+
+;; BEGINNING OF PROOF OBJECT
+(
+(8 (input) (= (f v0 (f (f v1 v2) (f v1 v2))) (f v1 (f (f v0 v2) (f v0 v2)))) NIL)
+(12 (input) (= (v v0 v1) (f (f v0 v0) (f v1 v1))) NIL)
+(15 (input) (not (= (v (c2) (v (c1) (c3))) (v (c1) (v (c2) (c3))))) NIL)
+(22 (instantiate 12 ((v0 . (c1)) (v1 . (c3)))) (= (v (c1) (c3)) (f (f (c1) (c1)) (f (c3) (c3)))) NIL)
+(16A (paramod 22 (1) 15 (1 1 2)) (not (= (v (c2) (f (f (c1) (c1)) (f (c3) (c3)))) (v (c1) (v (c2) (c3))))) NIL)
+(23 (instantiate 12 ((v0 . (c2)) (v1 . (f (f (c1) (c1)) (f (c3) (c3)))))) (= (v (c2) (f (f (c1) (c1)) (f (c3) (c3)))) (f (f (c2) (c2)) (f (f (f (c1) (c1)) (f (c3) (c3))) (f (f (c1) (c1)) (f (c3) (c3)))))) NIL)
+(16B (paramod 23 (1) 16A (1 1)) (not (= (f (f (c2) (c2)) (f (f (f (c1) (c1)) (f (c3) (c3))) (f (f (c1) (c1)) (f (c3) (c3))))) (v (c1) (v (c2) (c3))))) NIL)
+(24 (instantiate 12 ((v0 . (c2)) (v1 . (c3)))) (= (v (c2) (c3)) (f (f (c2) (c2)) (f (c3) (c3)))) NIL)
+(16C (paramod 24 (1) 16B (1 2 2)) (not (= (f (f (c2) (c2)) (f (f (f (c1) (c1)) (f (c3) (c3))) (f (f (c1) (c1)) (f (c3) (c3))))) (v (c1) (f (f (c2) (c2)) (f (c3) (c3)))))) NIL)
+(25 (instantiate 12 ((v0 . (c1)) (v1 . (f (f (c2) (c2)) (f (c3) (c3)))))) (= (v (c1) (f (f (c2) (c2)) (f (c3) (c3)))) (f (f (c1) (c1)) (f (f (f (c2) (c2)) (f (c3) (c3))) (f (f (c2) (c2)) (f (c3) (c3)))))) NIL)
+(16D (paramod 25 (1) 16C (1 2)) (not (= (f (f (c2) (c2)) (f (f (f (c1) (c1)) (f (c3) (c3))) (f (f (c1) (c1)) (f (c3) (c3))))) (f (f (c1) (c1)) (f (f (f (c2) (c2)) (f (c3) (c3))) (f (f (c2) (c2)) (f (c3) (c3))))))) NIL)
+(16 (flip 16D ()) (not (= (f (f (c1) (c1)) (f (f (f (c2) (c2)) (f (c3) (c3))) (f (f (c2) (c2)) (f (c3) (c3))))) (f (f (c2) (c2)) (f (f (f (c1) (c1)) (f (c3) (c3))) (f (f (c1) (c1)) (f (c3) (c3))))))) NIL)
+(26 (instantiate 8 ((v0 . (f (c1) (c1))) (v1 . (f (c2) (c2))) (v2 . (f (c3) (c3))))) (= (f (f (c1) (c1)) (f (f (f (c2) (c2)) (f (c3) (c3))) (f (f (c2) (c2)) (f (c3) (c3))))) (f (f (c2) (c2)) (f (f (f (c1) (c1)) (f (c3) (c3))) (f (f (c1) (c1)) (f (c3) (c3)))))) NIL)
+(17 (resolve 16 () 26 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(9 (input) (= (f (f v0 v0) (f v0 v1)) v0) NIL)
+(12 (input) (= (v v0 v1) (f (f v0 v0) (f v1 v1))) NIL)
+(13 (input) (= (meet_for_ivy v0 v1) (f (f v0 v1) (f v0 v1))) NIL)
+(19 (input) (not (= (v (c4) (meet_for_ivy (c4) (c5))) (c4))) NIL)
+(25 (instantiate 13 ((v0 . (c4)) (v1 . (c5)))) (= (meet_for_ivy (c4) (c5)) (f (f (c4) (c5)) (f (c4) (c5)))) NIL)
+(20A (paramod 25 (1) 19 (1 1 2)) (not (= (v (c4) (f (f (c4) (c5)) (f (c4) (c5)))) (c4))) NIL)
+(26 (instantiate 12 ((v0 . (c4)) (v1 . (f (f (c4) (c5)) (f (c4) (c5)))))) (= (v (c4) (f (f (c4) (c5)) (f (c4) (c5)))) (f (f (c4) (c4)) (f (f (f (c4) (c5)) (f (c4) (c5))) (f (f (c4) (c5)) (f (c4) (c5)))))) NIL)
+(20B (paramod 26 (1) 20A (1 1)) (not (= (f (f (c4) (c4)) (f (f (f (c4) (c5)) (f (c4) (c5))) (f (f (c4) (c5)) (f (c4) (c5))))) (c4))) NIL)
+(27 (instantiate 9 ((v0 . (f (c4) (c5))) (v1 . (f (c4) (c5))))) (= (f (f (f (c4) (c5)) (f (c4) (c5))) (f (f (c4) (c5)) (f (c4) (c5)))) (f (c4) (c5))) NIL)
+(20C (paramod 27 (1) 20B (1 1 2)) (not (= (f (f (c4) (c4)) (f (c4) (c5))) (c4))) NIL)
+(28 (instantiate 9 ((v0 . (c4)) (v1 . (c5)))) (= (f (f (c4) (c4)) (f (c4) (c5))) (c4)) NIL)
+(20D (paramod 28 (1) 20C (1 1)) (not (= (c4) (c4))) NIL)
+(29 (instantiate 0 ((v0 . (c4)))) (= (c4) (c4)) NIL)
+(20 (resolve 20D () 29 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(9 (input) (= (f (f v0 v0) (f v0 v1)) v0) NIL)
+(12 (input) (= (v v0 v1) (f (f v0 v0) (f v1 v1))) NIL)
+(13 (input) (= (meet_for_ivy v0 v1) (f (f v0 v1) (f v0 v1))) NIL)
+(14 (input) (= (quote_for_ivy v0) (f v0 v0)) NIL)
+(21 (input) (not (= (quote_for_ivy (v (quote_for_ivy (c6)) (quote_for_ivy (c7)))) (meet_for_ivy (c6) (c7)))) NIL)
+(30 (instantiate 14 ((v0 . (c6)))) (= (quote_for_ivy (c6)) (f (c6) (c6))) NIL)
+(22A (paramod 30 (1) 21 (1 1 1 1)) (not (= (quote_for_ivy (v (f (c6) (c6)) (quote_for_ivy (c7)))) (meet_for_ivy (c6) (c7)))) NIL)
+(31 (instantiate 14 ((v0 . (c7)))) (= (quote_for_ivy (c7)) (f (c7) (c7))) NIL)
+(22B (paramod 31 (1) 22A (1 1 1 2)) (not (= (quote_for_ivy (v (f (c6) (c6)) (f (c7) (c7)))) (meet_for_ivy (c6) (c7)))) NIL)
+(32 (instantiate 12 ((v0 . (f (c6) (c6))) (v1 . (f (c7) (c7))))) (= (v (f (c6) (c6)) (f (c7) (c7))) (f (f (f (c6) (c6)) (f (c6) (c6))) (f (f (c7) (c7)) (f (c7) (c7))))) NIL)
+(22C (paramod 32 (1) 22B (1 1 1)) (not (= (quote_for_ivy (f (f (f (c6) (c6)) (f (c6) (c6))) (f (f (c7) (c7)) (f (c7) (c7))))) (meet_for_ivy (c6) (c7)))) NIL)
+(33 (instantiate 9 ((v0 . (c6)) (v1 . (c6)))) (= (f (f (c6) (c6)) (f (c6) (c6))) (c6)) NIL)
+(22D (paramod 33 (1) 22C (1 1 1 1)) (not (= (quote_for_ivy (f (c6) (f (f (c7) (c7)) (f (c7) (c7))))) (meet_for_ivy (c6) (c7)))) NIL)
+(34 (instantiate 9 ((v0 . (c7)) (v1 . (c7)))) (= (f (f (c7) (c7)) (f (c7) (c7))) (c7)) NIL)
+(22E (paramod 34 (1) 22D (1 1 1 2)) (not (= (quote_for_ivy (f (c6) (c7))) (meet_for_ivy (c6) (c7)))) NIL)
+(35 (instantiate 14 ((v0 . (f (c6) (c7))))) (= (quote_for_ivy (f (c6) (c7))) (f (f (c6) (c7)) (f (c6) (c7)))) NIL)
+(22F (paramod 35 (1) 22E (1 1)) (not (= (f (f (c6) (c7)) (f (c6) (c7))) (meet_for_ivy (c6) (c7)))) NIL)
+(36 (instantiate 13 ((v0 . (c6)) (v1 . (c7)))) (= (meet_for_ivy (c6) (c7)) (f (f (c6) (c7)) (f (c6) (c7)))) NIL)
+(22G (paramod 36 (1) 22F (1 2)) (not (= (f (f (c6) (c7)) (f (c6) (c7))) (f (f (c6) (c7)) (f (c6) (c7))))) NIL)
+(37 (instantiate 0 ((v0 . (f (f (c6) (c7)) (f (c6) (c7)))))) (= (f (f (c6) (c7)) (f (c6) (c7))) (f (f (c6) (c7)) (f (c6) (c7)))) NIL)
+(22 (resolve 22G () 37 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(9 (input) (= (f (f v0 v0) (f v0 v1)) v0) NIL)
+(14 (input) (= (quote_for_ivy v0) (f v0 v0)) NIL)
+(23 (input) (not (= (quote_for_ivy (quote_for_ivy (c8))) (c8))) NIL)
+(28 (instantiate 14 ((v0 . (c8)))) (= (quote_for_ivy (c8)) (f (c8) (c8))) NIL)
+(24A (paramod 28 (1) 23 (1 1 1)) (not (= (quote_for_ivy (f (c8) (c8))) (c8))) NIL)
+(29 (instantiate 14 ((v0 . (f (c8) (c8))))) (= (quote_for_ivy (f (c8) (c8))) (f (f (c8) (c8)) (f (c8) (c8)))) NIL)
+(24B (paramod 29 (1) 24A (1 1)) (not (= (f (f (c8) (c8)) (f (c8) (c8))) (c8))) NIL)
+(30 (instantiate 9 ((v0 . (c8)) (v1 . (c8)))) (= (f (f (c8) (c8)) (f (c8) (c8))) (c8)) NIL)
+(24C (paramod 30 (1) 24B (1 1)) (not (= (c8) (c8))) NIL)
+(31 (instantiate 0 ((v0 . (c8)))) (= (c8) (c8)) NIL)
+(24 (resolve 24C () 31 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(9 (input) (= (f (f v0 v0) (f v0 v1)) v0) NIL)
+(11 (input) (= (f v0 (f v1 (f v0 (f v2 v2)))) (f v0 (f v2 (f v0 (f v1 v1))))) NIL)
+(12 (input) (= (v v0 v1) (f (f v0 v0) (f v1 v1))) NIL)
+(13 (input) (= (meet_for_ivy v0 v1) (f (f v0 v1) (f v0 v1))) NIL)
+(27 (input) (not (= (v (c11) (meet_for_ivy (c13) (v (c11) (c12)))) (v (c11) (meet_for_ivy (c12) (v (c11) (c13)))))) NIL)
+(38 (instantiate 12 ((v0 . (c11)) (v1 . (c12)))) (= (v (c11) (c12)) (f (f (c11) (c11)) (f (c12) (c12)))) NIL)
+(28A (paramod 38 (1) 27 (1 1 2 2)) (not (= (v (c11) (meet_for_ivy (c13) (f (f (c11) (c11)) (f (c12) (c12))))) (v (c11) (meet_for_ivy (c12) (v (c11) (c13)))))) NIL)
+(39 (instantiate 13 ((v0 . (c13)) (v1 . (f (f (c11) (c11)) (f (c12) (c12)))))) (= (meet_for_ivy (c13) (f (f (c11) (c11)) (f (c12) (c12)))) (f (f (c13) (f (f (c11) (c11)) (f (c12) (c12)))) (f (c13) (f (f (c11) (c11)) (f (c12) (c12)))))) NIL)
+(28B (paramod 39 (1) 28A (1 1 2)) (not (= (v (c11) (f (f (c13) (f (f (c11) (c11)) (f (c12) (c12)))) (f (c13) (f (f (c11) (c11)) (f (c12) (c12)))))) (v (c11) (meet_for_ivy (c12) (v (c11) (c13)))))) NIL)
+(40 (instantiate 12 ((v0 . (c11)) (v1 . (f (f (c13) (f (f (c11) (c11)) (f (c12) (c12)))) (f (c13) (f (f (c11) (c11)) (f (c12) (c12)))))))) (= (v (c11) (f (f (c13) (f (f (c11) (c11)) (f (c12) (c12)))) (f (c13) (f (f (c11) (c11)) (f (c12) (c12)))))) (f (f (c11) (c11)) (f (f (f (c13) (f (f (c11) (c11)) (f (c12) (c12)))) (f (c13) (f (f (c11) (c11)) (f (c12) (c12))))) (f (f (c13) (f (f (c11) (c11)) (f (c12) (c12)))) (f (c13) (f (f (c11) (c11)) (f (c12) (c12)))))))) NIL)
+(28C (paramod 40 (1) 28B (1 1)) (not (= (f (f (c11) (c11)) (f (f (f (c13) (f (f (c11) (c11)) (f (c12) (c12)))) (f (c13) (f (f (c11) (c11)) (f (c12) (c12))))) (f (f (c13) (f (f (c11) (c11)) (f (c12) (c12)))) (f (c13) (f (f (c11) (c11)) (f (c12) (c12))))))) (v (c11) (meet_for_ivy (c12) (v (c11) (c13)))))) NIL)
+(41 (instantiate 9 ((v0 . (f (c13) (f (f (c11) (c11)) (f (c12) (c12))))) (v1 . (f (c13) (f (f (c11) (c11)) (f (c12) (c12))))))) (= (f (f (f (c13) (f (f (c11) (c11)) (f (c12) (c12)))) (f (c13) (f (f (c11) (c11)) (f (c12) (c12))))) (f (f (c13) (f (f (c11) (c11)) (f (c12) (c12)))) (f (c13) (f (f (c11) (c11)) (f (c12) (c12)))))) (f (c13) (f (f (c11) (c11)) (f (c12) (c12))))) NIL)
+(28D (paramod 41 (1) 28C (1 1 2)) (not (= (f (f (c11) (c11)) (f (c13) (f (f (c11) (c11)) (f (c12) (c12))))) (v (c11) (meet_for_ivy (c12) (v (c11) (c13)))))) NIL)
+(42 (instantiate 12 ((v0 . (c11)) (v1 . (c13)))) (= (v (c11) (c13)) (f (f (c11) (c11)) (f (c13) (c13)))) NIL)
+(28E (paramod 42 (1) 28D (1 2 2 2)) (not (= (f (f (c11) (c11)) (f (c13) (f (f (c11) (c11)) (f (c12) (c12))))) (v (c11) (meet_for_ivy (c12) (f (f (c11) (c11)) (f (c13) (c13))))))) NIL)
+(43 (instantiate 13 ((v0 . (c12)) (v1 . (f (f (c11) (c11)) (f (c13) (c13)))))) (= (meet_for_ivy (c12) (f (f (c11) (c11)) (f (c13) (c13)))) (f (f (c12) (f (f (c11) (c11)) (f (c13) (c13)))) (f (c12) (f (f (c11) (c11)) (f (c13) (c13)))))) NIL)
+(28F (paramod 43 (1) 28E (1 2 2)) (not (= (f (f (c11) (c11)) (f (c13) (f (f (c11) (c11)) (f (c12) (c12))))) (v (c11) (f (f (c12) (f (f (c11) (c11)) (f (c13) (c13)))) (f (c12) (f (f (c11) (c11)) (f (c13) (c13)))))))) NIL)
+(44 (instantiate 12 ((v0 . (c11)) (v1 . (f (f (c12) (f (f (c11) (c11)) (f (c13) (c13)))) (f (c12) (f (f (c11) (c11)) (f (c13) (c13)))))))) (= (v (c11) (f (f (c12) (f (f (c11) (c11)) (f (c13) (c13)))) (f (c12) (f (f (c11) (c11)) (f (c13) (c13)))))) (f (f (c11) (c11)) (f (f (f (c12) (f (f (c11) (c11)) (f (c13) (c13)))) (f (c12) (f (f (c11) (c11)) (f (c13) (c13))))) (f (f (c12) (f (f (c11) (c11)) (f (c13) (c13)))) (f (c12) (f (f (c11) (c11)) (f (c13) (c13)))))))) NIL)
+(28G (paramod 44 (1) 28F (1 2)) (not (= (f (f (c11) (c11)) (f (c13) (f (f (c11) (c11)) (f (c12) (c12))))) (f (f (c11) (c11)) (f (f (f (c12) (f (f (c11) (c11)) (f (c13) (c13)))) (f (c12) (f (f (c11) (c11)) (f (c13) (c13))))) (f (f (c12) (f (f (c11) (c11)) (f (c13) (c13)))) (f (c12) (f (f (c11) (c11)) (f (c13) (c13))))))))) NIL)
+(45 (instantiate 9 ((v0 . (f (c12) (f (f (c11) (c11)) (f (c13) (c13))))) (v1 . (f (c12) (f (f (c11) (c11)) (f (c13) (c13))))))) (= (f (f (f (c12) (f (f (c11) (c11)) (f (c13) (c13)))) (f (c12) (f (f (c11) (c11)) (f (c13) (c13))))) (f (f (c12) (f (f (c11) (c11)) (f (c13) (c13)))) (f (c12) (f (f (c11) (c11)) (f (c13) (c13)))))) (f (c12) (f (f (c11) (c11)) (f (c13) (c13))))) NIL)
+(28H (paramod 45 (1) 28G (1 2 2)) (not (= (f (f (c11) (c11)) (f (c13) (f (f (c11) (c11)) (f (c12) (c12))))) (f (f (c11) (c11)) (f (c12) (f (f (c11) (c11)) (f (c13) (c13))))))) NIL)
+(28 (flip 28H ()) (not (= (f (f (c11) (c11)) (f (c12) (f (f (c11) (c11)) (f (c13) (c13))))) (f (f (c11) (c11)) (f (c13) (f (f (c11) (c11)) (f (c12) (c12))))))) NIL)
+(46 (instantiate 11 ((v0 . (f (c11) (c11))) (v1 . (c12)) (v2 . (c13)))) (= (f (f (c11) (c11)) (f (c12) (f (f (c11) (c11)) (f (c13) (c13))))) (f (f (c11) (c11)) (f (c13) (f (f (c11) (c11)) (f (c12) (c12)))))) NIL)
+(29 (resolve 28 () 46 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(9 (input) (= (f (f v0 v0) (f v0 v1)) v0) NIL)
+(12 (input) (= (v v0 v1) (f (f v0 v0) (f v1 v1))) NIL)
+(14 (input) (= (quote_for_ivy v0) (f v0 v0)) NIL)
+(31 (input) (not (= (f (c14) (c15)) (v (quote_for_ivy (c14)) (quote_for_ivy (c15))))) NIL)
+(38 (instantiate 14 ((v0 . (c14)))) (= (quote_for_ivy (c14)) (f (c14) (c14))) NIL)
+(32A (paramod 38 (1) 31 (1 2 1)) (not (= (f (c14) (c15)) (v (f (c14) (c14)) (quote_for_ivy (c15))))) NIL)
+(39 (instantiate 14 ((v0 . (c15)))) (= (quote_for_ivy (c15)) (f (c15) (c15))) NIL)
+(32B (paramod 39 (1) 32A (1 2 2)) (not (= (f (c14) (c15)) (v (f (c14) (c14)) (f (c15) (c15))))) NIL)
+(40 (instantiate 12 ((v0 . (f (c14) (c14))) (v1 . (f (c15) (c15))))) (= (v (f (c14) (c14)) (f (c15) (c15))) (f (f (f (c14) (c14)) (f (c14) (c14))) (f (f (c15) (c15)) (f (c15) (c15))))) NIL)
+(32C (paramod 40 (1) 32B (1 2)) (not (= (f (c14) (c15)) (f (f (f (c14) (c14)) (f (c14) (c14))) (f (f (c15) (c15)) (f (c15) (c15)))))) NIL)
+(41 (instantiate 9 ((v0 . (c14)) (v1 . (c14)))) (= (f (f (c14) (c14)) (f (c14) (c14))) (c14)) NIL)
+(32D (paramod 41 (1) 32C (1 2 1)) (not (= (f (c14) (c15)) (f (c14) (f (f (c15) (c15)) (f (c15) (c15)))))) NIL)
+(42 (instantiate 9 ((v0 . (c15)) (v1 . (c15)))) (= (f (f (c15) (c15)) (f (c15) (c15))) (c15)) NIL)
+(32E (paramod 42 (1) 32D (1 2 2)) (not (= (f (c14) (c15)) (f (c14) (c15)))) NIL)
+(43 (instantiate 0 ((v0 . (f (c14) (c15))))) (= (f (c14) (c15)) (f (c14) (c15))) NIL)
+(32 (resolve 32E () 43 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; WARNING: IVY proof contains unaccepted NEW_SYMBOL justification.
+
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(9 (input) (= (f (f v0 v0) (f v0 v1)) v0) NIL)
+(10 (input) (= (f v0 (f v0 v0)) (f v1 (f v1 v1))) NIL)
+(12 (input) (= (v v0 v1) (f (f v0 v0) (f v1 v1))) NIL)
+(14 (input) (= (quote_for_ivy v0) (f v0 v0)) NIL)
+(25 (input) (not (= (v (c10) (quote_for_ivy (c10))) (v (c9) (quote_for_ivy (c9))))) NIL)
+(69 (instantiate 14 ((v0 . (c10)))) (= (quote_for_ivy (c10)) (f (c10) (c10))) NIL)
+(26A (paramod 69 (1) 25 (1 1 2)) (not (= (v (c10) (f (c10) (c10))) (v (c9) (quote_for_ivy (c9))))) NIL)
+(70 (instantiate 12 ((v0 . (c10)) (v1 . (f (c10) (c10))))) (= (v (c10) (f (c10) (c10))) (f (f (c10) (c10)) (f (f (c10) (c10)) (f (c10) (c10))))) NIL)
+(26B (paramod 70 (1) 26A (1 1)) (not (= (f (f (c10) (c10)) (f (f (c10) (c10)) (f (c10) (c10)))) (v (c9) (quote_for_ivy (c9))))) NIL)
+(71 (instantiate 9 ((v0 . (c10)) (v1 . (c10)))) (= (f (f (c10) (c10)) (f (c10) (c10))) (c10)) NIL)
+(26C (paramod 71 (1) 26B (1 1 2)) (not (= (f (f (c10) (c10)) (c10)) (v (c9) (quote_for_ivy (c9))))) NIL)
+(72 (instantiate 14 ((v0 . (c9)))) (= (quote_for_ivy (c9)) (f (c9) (c9))) NIL)
+(26D (paramod 72 (1) 26C (1 2 2)) (not (= (f (f (c10) (c10)) (c10)) (v (c9) (f (c9) (c9))))) NIL)
+(73 (instantiate 12 ((v0 . (c9)) (v1 . (f (c9) (c9))))) (= (v (c9) (f (c9) (c9))) (f (f (c9) (c9)) (f (f (c9) (c9)) (f (c9) (c9))))) NIL)
+(26E (paramod 73 (1) 26D (1 2)) (not (= (f (f (c10) (c10)) (c10)) (f (f (c9) (c9)) (f (f (c9) (c9)) (f (c9) (c9)))))) NIL)
+(74 (instantiate 9 ((v0 . (c9)) (v1 . (c9)))) (= (f (f (c9) (c9)) (f (c9) (c9))) (c9)) NIL)
+(26 (paramod 74 (1) 26E (1 2 2)) (not (= (f (f (c10) (c10)) (c10)) (f (f (c9) (c9)) (c9)))) NIL)
+(33 (new_symbol 10) (= (f v0 (f v0 v0)) (c_0)) NIL)
+(75 (instantiate 9 ((v1 . v0))) (= (f (f v0 v0) (f v0 v0)) v0) NIL)
+(76 (instantiate 33 ((v0 . (f v0 v0)))) (= (f (f v0 v0) (f (f v0 v0) (f v0 v0))) (c_0)) NIL)
+(59 (paramod 75 (1) 76 (1 2)) (= (f (f v0 v0) v0) (c_0)) NIL)
+(77 (instantiate 59 ((v0 . (c10)))) (= (f (f (c10) (c10)) (c10)) (c_0)) NIL)
+(61A (paramod 77 (1) 26 (1 1)) (not (= (c_0) (f (f (c9) (c9)) (c9)))) NIL)
+(78 (instantiate 59 ((v0 . (c9)))) (= (f (f (c9) (c9)) (c9)) (c_0)) NIL)
+(61B (paramod 78 (1) 61A (1 2)) (not (= (c_0) (c_0))) NIL)
+(79 (instantiate 0 ((v0 . (c_0)))) (= (c_0) (c_0)) NIL)
+(61 (resolve 61B () 79 ()) false NIL)
+)
+;; END OF PROOF OBJECT

@@ -1,0 +1,3 @@
+#!/bin/csh
+
+util/opt4.py install.html running.html input.html syntax.html auto.html term-order.html more-prep.html limits.html loop.html select.html inf-rules.html process-inf.html output.html weight.html attributes.html actions.html goals.html hints.html semantics.html

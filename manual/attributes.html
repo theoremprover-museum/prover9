@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+  <title>Prover9 Manual: Attributes</title>
+ <link rel="stylesheet" href="manual.css">
+</head>
+
+<body>
+
+
+<hr>
+<table width="100%">
+<tr>
+<colgroup>
+<col width="33%">
+<col width="34%">
+<col width="33%">
+</colgroup>
+<td align="left"><i>Prover9 Manual</i>
+<td align="center"><img src="prover9-5a-256t.gif">
+<td align="right"><i>Version 2009-11A</i>
+</table>
+<hr>
+
+<!-- Main content -->
+
+<h1>Attributes</h1>
+
+Several kinds of attribute can be attached to input formulas
+with the <tt>#</tt> operator, for example,
+
+<pre class="my_file">
+x * y = y * x              # label(commutativity).
+x * c != e                 # answer(x) # label("the denial").
+-p(c) | -q(c)              # answer("here it is").
+a * b != b * a             # action(in_proof -> exit) # answer(commutativity).
+x * (y * z) = y * (x * z)  # bsub_hint_wt(500).
+</pre>
+
+Each attribute has a data type of string, integer, or term.
+A string attribute is really just a term attribute that is
+a constant.  If a string attribute is not a legal constant,
+it can be enclosed in double quotes to make it so.
+
+<p>
+Attributes can be attached only to the top level of a formula;
+they cannot be attached to proper subformulas.
+(This restriction might be lifted in future versions of Prover9.)
+
+<p>
+The accepted attributes are shown in the following table.
+
+<p>
+<table "border" align="center" cellpadding="5">
+<tr>
+<th>Name              <th> Type     <th> Inheritable  <th> Purpose
+<tr>
+<td>label             <td> string   <td> No           <td> Comment
+<tr>
+<td>answer            <td> term     <td> Yes          <td> Record substitutions and what has been proved
+<tr>
+<td>action            <td> term     <td> No           <td> Triggers action when clause is used
+<!--
+<tr>
+<td>action2           <td> term     <td> Yes          <td> Triggers action when clause is used
+-->
+<tr>
+<td>bsub_hint_wt      <td> integer  <td> No           <td> Used for hints
+</table>
+
+<p>
+Inheritable attributes are passed from parent to child during most
+inference rules.
+
+<h2>Label Attributes</h2>
+
+Label attributes are simply comments that can be attached to input clauses,
+including hint clauses.
+
+<h2>Answer Attributes</h2>
+
+Answer attributes on clauses are essentially answer literals.
+They are inherited during application of inference rules, and if they contain
+variables, the variables are instantiated by the substitution
+used in the inference.
+<p>
+Answer attributes (like all other attributes) contain exactly
+one argument.  If you wish to record substitutions for more
+than one variable, you must use a term that contains all of the
+variables, for example, a list, as in the following clause.
+<pre class="my_file">
+-p(c,x,y,z)  # answer([x,y,z]).
+</pre>
+Answer attributes need not contain variables.  For example,
+when there are multiple goals, answer attributes can be used on
+the goal formulas to identify the goals that are proved.
+<p>
+Answer attributes on non-clausal formulas cannot contain variables.
+(This restriction might be lifted in future versions of Prover9.)
+
+<h2>Action Attributes</h2>
+
+Action attributes cause various things to happen when
+clauses are used in various ways.
+See the <a href="actions.html">section on Actions</a>.
+<!--
+<p>
+The only difference between <tt>action</tt> and <tt>action2</tt> attributes
+is that <tt>action2</tt> attributes are inherited during inferences.
+-->
+
+<h2>Bsub_hint_wt Attribute</h2>
+
+This attribute can be attached to a hint clause, and it is used
+to override ordinary weight assigned to clauses that match the hint.
+That is, if a hint matches
+a clause, and if the hint has a
+<a href="hints.html#bsub_hint_wt"><tt><b>bsub_hint_wt</b></tt></a> attribute,
+the clause gets the value of the attribute as its weight instead
+of the weight that would be assigned by the ordinary weighting
+method.
+
+<hr>
+Next Section:
+<a href="goals.html">Goals and Denials</a>
+
+</body>
+</html>

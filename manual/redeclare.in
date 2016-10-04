@@ -1,0 +1,36 @@
+% In this example, all of changable operations are
+% changed to other symbols.  (Not all of them are
+% used in the formulas below.)
+
+% Note that multi-character special symbols must be quoted.
+
+redeclare(true,                       TRUE    ).
+redeclare(false,                      FALSE   ).
+redeclare(negation,                   ~       ).
+redeclare(disjunction,                OR      ).
+redeclare(conjunction,                AND     ).
+redeclare(implication,                IMPLIES ).
+redeclare(backward_implication,       "<--"   ).
+redeclare(equivalence,                IFF     ).
+redeclare(universal_quantification,   ALL     ).
+redeclare(existential_quantification, EXISTS  ).
+redeclare(equality,                   "=="    ).
+redeclare(negated_equality,           "=/="   ).
+redeclare(attribute,                   @      ).
+
+formulas(assumptions).
+
+  (x * y) * z == z * (y * z)  @  label(associativity).
+
+  EXISTS e ((ALL x (e * x == x)) AND
+            (ALL x EXISTS y (y * x == e))) @ label(left_identity_inverse).
+
+end_of_list.
+
+formulas(goals).
+
+  x * y == x * z IMPLIES y == z  @ label(right_cancellation).
+
+end_of_list.
+
+

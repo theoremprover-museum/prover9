@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+  <title>Prover9 Manual: Installation</title>
+ <link rel="stylesheet" href="manual.css">
+</head>
+
+<body>
+
+<!-- Site navigation menu -->
+
+<ul class="navbar">
+  <li><a href="index.html">Introduction</a>
+  <li><a href="install.html">Installation</a>
+  <li><a href="running.html">Running Prover9</a>
+  <li><a href="input.html">Input Files</a>
+  <li><a href="syntax.html">Clauses & Formulas</a>
+  <li>Search Prep
+  <ul class="navbar2">
+    <li><a href="auto.html">Auto Modes</a>
+    <li><a href="term-order.html">Term Ordering</a>
+    <li><a href="more-prep.html">More Prep</a>
+    <li><a href="limits.html">Search Limits</a>
+  </ul>
+  <li>Inference
+  <ul class="navbar2">
+    <li><a href="loop.html">The Loop</a>
+    <li><a href="select.html">Select Given</a>
+    <li><a href="inf-rules.html">Inference Rules</a>
+    <li><a href="process-inf.html">Process Inferred</a>
+  </ul>
+  <li><a href="output.html">Output Files</a>
+  <li>More Features
+  <ul class="navbar2">
+    <li><a href="weight.html">Weighting</a>
+    <li><a href="attributes.html">Attributes</a>
+    <li><a href="actions.html">Actions</a>
+    <li><a href="fof-reduction.html">FOF Reduction</a>
+    <li><a href="goals.html">Goals</a>
+    <li><a href="hints.html">Hints</a>
+    <li><a href="semantics.html">Semantics</a>
+  </ul>
+  <li>Related Programs
+  <ul class="navbar2">
+    <li><a href="prooftrans.html">Prooftrans</a>
+    <li><a href="mace4.html">Mace4</a>
+  </ul>
+  <li>Ending
+  <ul class="navbar2">
+    <li><a href="options.html">All Options</a>
+    <li><a href="glossary.html">Glossary</a>
+    <li><a href="manual-index.html">Index</a>
+    <li><a href="references.html">References</a>
+  </ul>
+</ul>
+
+<div class="header">Prover9 Manual Version June-2006</div>
+
+<!-- Main content -->
+
+<h1>Installing Prover9, Mace4, and Friends</h1>
+
+<h2>Unix-like Systems</h2>
+
+Here is a quick example for Unix-like systems, including Linux and Macintosh OS X.
+Visit the <a href=http://www.mcs.anl.gov/~mccune/prover9/>Prover9 Web page</a>
+and download the current version of LADR.  The filename should be something
+like <tt>LADR-June-2006A.tar.gz</tt>; make sure that file is in your current
+directory.  Run the following commands.
+
+<pre class="my_job">
+% zcat LADR-June-2006A.tar.gz | tar xvf -
+% cd LADR-June-2006A
+% make all
+</pre>
+
+<p>
+Prover9, mace4, prooftrans, and several other programs should now
+be in the directory <tt>LADR-June-2006A/bin</tt>.   You can either include
+that directory in your search path or copy those programs to
+some directory that is already in your search path.
+
+<h2>Microsoft Windows</h2>
+
+Get a new hard drive, install Linux, then see the preceding section.
+Just kidding---there is a Windows version.  For now, see that the
+<a href=http://www.mcs.anl.gov/~mccune/prover9/>Prover9 Web page</a>.
+
+</body>
+</html>

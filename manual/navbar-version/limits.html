@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+  <title>Prover9 Manual: Search Limits</title>
+ <link rel="stylesheet" href="manual.css">
+</head>
+
+<body>
+
+<!-- Site navigation menu -->
+
+<ul class="navbar">
+  <li><a href="index.html">Introduction</a>
+  <li><a href="install.html">Installation</a>
+  <li><a href="running.html">Running Prover9</a>
+  <li><a href="input.html">Input Files</a>
+  <li><a href="syntax.html">Clauses & Formulas</a>
+  <li>Search Prep
+  <ul class="navbar2">
+    <li><a href="auto.html">Auto Modes</a>
+    <li><a href="term-order.html">Term Ordering</a>
+    <li><a href="more-prep.html">More Prep</a>
+    <li><a href="limits.html">Search Limits</a>
+  </ul>
+  <li>Inference
+  <ul class="navbar2">
+    <li><a href="loop.html">The Loop</a>
+    <li><a href="select.html">Select Given</a>
+    <li><a href="inf-rules.html">Inference Rules</a>
+    <li><a href="process-inf.html">Process Inferred</a>
+  </ul>
+  <li><a href="output.html">Output Files</a>
+  <li>More Features
+  <ul class="navbar2">
+    <li><a href="weight.html">Weighting</a>
+    <li><a href="attributes.html">Attributes</a>
+    <li><a href="actions.html">Actions</a>
+    <li><a href="fof-reduction.html">FOF Reduction</a>
+    <li><a href="goals.html">Goals</a>
+    <li><a href="hints.html">Hints</a>
+    <li><a href="semantics.html">Semantics</a>
+  </ul>
+  <li>Related Programs
+  <ul class="navbar2">
+    <li><a href="prooftrans.html">Prooftrans</a>
+    <li><a href="mace4.html">Mace4</a>
+  </ul>
+  <li>Ending
+  <ul class="navbar2">
+    <li><a href="options.html">All Options</a>
+    <li><a href="glossary.html">Glossary</a>
+    <li><a href="manual-index.html">Index</a>
+    <li><a href="references.html">References</a>
+  </ul>
+</ul>
+
+<div class="header">Prover9 Manual Version June-2006</div>
+
+<!-- Main content -->
+
+<h1>Search Limits</h1>
+
+<!-- start option sos_limit -->
+<a name="sos_limit">
+<pre class="my_option">
+assign(sos_limit, <i>n</i>).  % default <i>n</i>=10000, range [-1 .. INT_MAX]
+</pre>
+
+<blockquote>
+This parameter imposes a limit on the size of the <tt>sos</tt> list
+(<i>n</i>=-1 means there is no limit).
+It also activates a method for deleting clauses (in addition
+to, and after, application of the <a href="process-inf.html#max_weight"><tt><b>max_weight</b></tt></a> parameter).
+<p>
+This is a little bit tricky (and sometimes too clever for its own good).
+When the <tt>sos</tt> is half full, it starts being selective about keeping
+clauses, and as it fills up, it gradually becomes more selective.
+When it is full, it is very selective about keeping clauses.
+When it decides to keep a clause, and the <tt>sos</tt> is already full, the
+"worst" clause in <tt>sos</tt> is deleted to make room for the new clause.
+<p>
+More details will be added later.
+</blockquote>
+<!-- end option -->
+
+<!-- start option max_given -->
+<a name="max_given">
+<pre class="my_option">
+assign(max_given, <i>n</i>).  % default <i>n</i>=-1, range [-1 .. INT_MAX]
+</pre>
+
+<blockquote>
+This parameter will stop the search after <i>n</i>
+<a href="glossary.html#given_clause">given clauses</a>
+have been used.  A value of -1 means that there is no limit.
+</blockquote>
+<!-- end option -->
+
+<!-- start option max_kept -->
+<a name="max_kept">
+<pre class="my_option">
+assign(max_kept, <i>n</i>).  % default <i>n</i>=-1, range [-1 .. INT_MAX]
+</pre>
+
+<blockquote>
+The search will stop when more than <i>n</i> clauses have been retained.
+</blockquote>
+<!-- end option -->
+
+<!-- start option max_megs -->
+<a name="max_megs">
+<pre class="my_option">
+assign(max_megs, <i>n</i>).  % default <i>n</i>=200, range [-1 .. INT_MAX]
+</pre>
+
+<blockquote>
+The search will stop when about <i>n</i> megabytes of memory have been used.
+</blockquote>
+<!-- end option -->
+
+<!-- start option max_seconds -->
+<a name="max_seconds">
+<pre class="my_option">
+assign(max_seconds, <i>n</i>).  % default <i>n</i>=-1, range [-1 .. INT_MAX]
+</pre>
+
+<blockquote>
+The search will stop at about <i>n</i> seconds.  For UNIX-like systems,
+the "user CPU" time is used.
+</blockquote>
+<!-- end option -->
+
+</body>
+</html>

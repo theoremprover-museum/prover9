@@ -1,0 +1,2464 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE proofs SYSTEM "proof3.dtd">
+
+<?xml-stylesheet type="text/xsl" href="proof3.xsl"?>
+
+<proofs number_of_proofs="3">
+
+<source>MGT063+1.out</source>
+
+<heading><![CDATA[
+FOF-Prover9 (32) version 19B-April-2007, April 2007.
+Process 27465 was started by mccune on cleo,
+Mon May  7 18:04:39 2007
+The command was "/home/mccune/bin/fof-prover9 -f MGT063+1.in".
+]]></heading>
+
+<proof number="1" length="68" max_count="16">
+
+<comments><![CDATA[
+% Proof 1 at 0.04 (+ 0.00) seconds.
+% Length of proof is 68.
+% Level of proof is 13.
+% Maximum clause weight is 14.
+% Given clauses 240.
+]]></comments>
+
+  <clause id="17" type="assumption">
+    <literal><![CDATA[
+      -organization(A)
+    ]]></literal>
+    <literal><![CDATA[
+      has_endowment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -has_immunity(A,B)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="21" type="assumption">
+    <literal><![CDATA[
+      -organization(A)
+    ]]></literal>
+    <literal><![CDATA[
+      age(A,B) != zero
+    ]]></literal>
+    <literal><![CDATA[
+      is_aligned(A,B)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="23" type="assumption">
+    <literal><![CDATA[
+      -organization(A)
+    ]]></literal>
+    <literal><![CDATA[
+      age(A,B) != zero
+    ]]></literal>
+    <literal><![CDATA[
+      dissimilar(A,B,C)
+    ]]></literal>
+    <literal><![CDATA[
+      -greater(age(A,C),sigma)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="26" type="assumption">
+    <literal><![CDATA[
+      -organization(A)
+    ]]></literal>
+    <literal><![CDATA[
+      has_immunity(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      is_aligned(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -positional_advantage(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      hazard_of_mortality(A,B) = mod1
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="27" type="assumption">
+    <literal><![CDATA[
+      -organization(A)
+    ]]></literal>
+    <literal><![CDATA[
+      has_immunity(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -is_aligned(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      positional_advantage(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      hazard_of_mortality(A,B) = mod2
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="28" type="assumption">
+    <literal><![CDATA[
+      -organization(A)
+    ]]></literal>
+    <literal><![CDATA[
+      has_immunity(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      is_aligned(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      positional_advantage(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      hazard_of_mortality(A,B) = high
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="29" type="assumption">
+    <literal><![CDATA[
+      organization(c1)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="30" type="assumption">
+    <literal><![CDATA[
+      -smaller_or_equal(age(A,B),tau)
+    ]]></literal>
+    <literal><![CDATA[
+      -positional_advantage(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -robust_position(A)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="35" type="assumption">
+    <literal><![CDATA[
+      -greater(age(A,B),tau)
+    ]]></literal>
+    <literal><![CDATA[
+      positional_advantage(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -robust_position(A)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="36" type="assumption">
+    <literal><![CDATA[
+      robust_position(c1)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="37" type="assumption">
+    <literal><![CDATA[
+      smaller_or_equal(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -smaller(A,B)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="38" type="assumption">
+    <literal><![CDATA[
+      smaller_or_equal(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      B != A
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="39" type="assumption">
+    <literal><![CDATA[
+      smaller(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      B = A
+    ]]></literal>
+    <literal><![CDATA[
+      -smaller_or_equal(A,B)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="40" type="assumption">
+    <literal><![CDATA[
+      smaller(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -greater(B,A)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="41" type="assumption">
+    <literal><![CDATA[
+      greater(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -smaller(B,A)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="42" type="assumption">
+    <literal><![CDATA[
+      -greater(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -greater(B,A)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="43" type="assumption">
+    <literal><![CDATA[
+      -greater(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -greater(B,C)
+    ]]></literal>
+    <literal><![CDATA[
+      greater(A,C)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="44" type="assumption">
+    <literal><![CDATA[
+      smaller(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      B = A
+    ]]></literal>
+    <literal><![CDATA[
+      greater(A,B)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="48" type="assumption">
+    <literal><![CDATA[
+      -is_aligned(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -is_aligned(A,C)
+    ]]></literal>
+    <literal><![CDATA[
+      -dissimilar(A,B,C)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="57" type="assumption">
+    <literal><![CDATA[
+      greater(high,mod1)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="62" type="assumption">
+    <literal><![CDATA[
+      greater(mod2,mod1)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="65" type="assumption">
+    <literal><![CDATA[
+      smaller(sigma,tau)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="66" type="assumption">
+    <literal><![CDATA[
+      -has_endowment(c1)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="69" type="assumption">
+    <literal><![CDATA[
+      smaller_or_equal(age(c1,c3),sigma)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="70" type="assumption">
+    <literal><![CDATA[
+      greater(age(c1,c4),tau)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="71" type="assumption">
+    <literal><![CDATA[
+      -smaller(hazard_of_mortality(c1,c4),hazard_of_mortality(c1,c3))
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="72" type="assumption">
+    <literal><![CDATA[
+      age(c1,c5) = zero
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="122">
+    <literal><![CDATA[
+      has_endowment(c1)
+    ]]></literal>
+    <literal><![CDATA[
+      -has_immunity(c1,A)
+    ]]></literal>
+    <justification jstring="[resolve(29,a,17,a)].">
+      <j1 rule="resolve" parents="29 17"/>
+    </justification>
+  </clause>
+
+  <clause id="123">
+    <literal><![CDATA[
+      -has_immunity(c1,A)
+    ]]></literal>
+    <justification jstring="[copy(122),unit_del(a,66)].">
+      <j1 rule="copy" parents="122"/>
+      <j2 rule="unit_del" parents="66"/>
+    </justification>
+  </clause>
+
+  <clause id="126">
+    <literal><![CDATA[
+      age(c1,A) != zero
+    ]]></literal>
+    <literal><![CDATA[
+      is_aligned(c1,A)
+    ]]></literal>
+    <justification jstring="[resolve(29,a,21,a)].">
+      <j1 rule="resolve" parents="29 21"/>
+    </justification>
+  </clause>
+
+  <clause id="127">
+    <literal><![CDATA[
+      age(c1,A) != zero
+    ]]></literal>
+    <literal><![CDATA[
+      dissimilar(c1,A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -greater(age(c1,B),sigma)
+    ]]></literal>
+    <justification jstring="[resolve(29,a,23,a)].">
+      <j1 rule="resolve" parents="29 23"/>
+    </justification>
+  </clause>
+
+  <clause id="130">
+    <literal><![CDATA[
+      has_immunity(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      is_aligned(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      -positional_advantage(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      hazard_of_mortality(c1,A) = mod1
+    ]]></literal>
+    <justification jstring="[resolve(29,a,26,a)].">
+      <j1 rule="resolve" parents="29 26"/>
+    </justification>
+  </clause>
+
+  <clause id="131">
+    <literal><![CDATA[
+      is_aligned(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      -positional_advantage(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      hazard_of_mortality(c1,A) = mod1
+    ]]></literal>
+    <justification jstring="[copy(130),unit_del(a,123)].">
+      <j1 rule="copy" parents="130"/>
+      <j2 rule="unit_del" parents="123"/>
+    </justification>
+  </clause>
+
+  <clause id="132">
+    <literal><![CDATA[
+      has_immunity(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      -is_aligned(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      positional_advantage(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      hazard_of_mortality(c1,A) = mod2
+    ]]></literal>
+    <justification jstring="[resolve(29,a,27,a)].">
+      <j1 rule="resolve" parents="29 27"/>
+    </justification>
+  </clause>
+
+  <clause id="133">
+    <literal><![CDATA[
+      -is_aligned(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      positional_advantage(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      hazard_of_mortality(c1,A) = mod2
+    ]]></literal>
+    <justification jstring="[copy(132),unit_del(a,123)].">
+      <j1 rule="copy" parents="132"/>
+      <j2 rule="unit_del" parents="123"/>
+    </justification>
+  </clause>
+
+  <clause id="134">
+    <literal><![CDATA[
+      has_immunity(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      is_aligned(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      positional_advantage(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      hazard_of_mortality(c1,A) = high
+    ]]></literal>
+    <justification jstring="[resolve(29,a,28,a)].">
+      <j1 rule="resolve" parents="29 28"/>
+    </justification>
+  </clause>
+
+  <clause id="135">
+    <literal><![CDATA[
+      is_aligned(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      positional_advantage(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      hazard_of_mortality(c1,A) = high
+    ]]></literal>
+    <justification jstring="[copy(134),unit_del(a,123)].">
+      <j1 rule="copy" parents="134"/>
+      <j2 rule="unit_del" parents="123"/>
+    </justification>
+  </clause>
+
+  <clause id="144">
+    <literal><![CDATA[
+      -smaller_or_equal(age(c1,A),tau)
+    ]]></literal>
+    <literal><![CDATA[
+      -positional_advantage(c1,A)
+    ]]></literal>
+    <justification jstring="[resolve(36,a,30,c)].">
+      <j1 rule="resolve" parents="36 30"/>
+    </justification>
+  </clause>
+
+  <clause id="145">
+    <literal><![CDATA[
+      -greater(age(c1,A),tau)
+    ]]></literal>
+    <literal><![CDATA[
+      positional_advantage(c1,A)
+    ]]></literal>
+    <justification jstring="[resolve(36,a,35,c)].">
+      <j1 rule="resolve" parents="36 35"/>
+    </justification>
+  </clause>
+
+  <clause id="166">
+    <literal><![CDATA[
+      smaller(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      greater(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      smaller_or_equal(A,B)
+    ]]></literal>
+    <justification jstring="[resolve(44,b,38,b)].">
+      <j1 rule="resolve" parents="44 38"/>
+    </justification>
+  </clause>
+
+  <clause id="171">
+    <literal><![CDATA[
+      smaller(mod1,high)
+    ]]></literal>
+    <justification jstring="[resolve(57,a,40,b)].">
+      <j1 rule="resolve" parents="57 40"/>
+    </justification>
+  </clause>
+
+  <clause id="191">
+    <literal><![CDATA[
+      smaller(mod1,mod2)
+    ]]></literal>
+    <justification jstring="[resolve(62,a,40,b)].">
+      <j1 rule="resolve" parents="62 40"/>
+    </justification>
+  </clause>
+
+  <clause id="200">
+    <literal><![CDATA[
+      greater(tau,sigma)
+    ]]></literal>
+    <justification jstring="[resolve(65,a,41,b)].">
+      <j1 rule="resolve" parents="65 41"/>
+    </justification>
+  </clause>
+
+  <clause id="201">
+    <literal><![CDATA[
+      smaller_or_equal(sigma,tau)
+    ]]></literal>
+    <justification jstring="[resolve(65,a,37,b)].">
+      <j1 rule="resolve" parents="65 37"/>
+    </justification>
+  </clause>
+
+  <clause id="207">
+    <literal><![CDATA[
+      smaller(age(c1,c3),sigma)
+    ]]></literal>
+    <literal><![CDATA[
+      age(c1,c3) = sigma
+    ]]></literal>
+    <justification jstring="[resolve(69,a,39,c),flip(b)].">
+      <j1 rule="resolve" parents="69 39"/>
+      <j2 rule="flip"/>
+    </justification>
+  </clause>
+
+  <clause id="230">
+    <literal><![CDATA[
+      is_aligned(c1,c5)
+    ]]></literal>
+    <justification jstring="[resolve(126,a,72,a)].">
+      <j1 rule="resolve" parents="126 72"/>
+    </justification>
+  </clause>
+
+  <clause id="233">
+    <literal><![CDATA[
+      dissimilar(c1,c5,A)
+    ]]></literal>
+    <literal><![CDATA[
+      -greater(age(c1,A),sigma)
+    ]]></literal>
+    <justification jstring="[resolve(127,a,72,a)].">
+      <j1 rule="resolve" parents="127 72"/>
+    </justification>
+  </clause>
+
+  <clause id="247">
+    <literal><![CDATA[
+      positional_advantage(c1,c4)
+    ]]></literal>
+    <justification jstring="[resolve(145,a,70,a)].">
+      <j1 rule="resolve" parents="145 70"/>
+    </justification>
+  </clause>
+
+  <clause id="260">
+    <literal><![CDATA[
+      greater(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      smaller_or_equal(A,B)
+    ]]></literal>
+    <justification jstring="[resolve(166,a,37,b),merge(c)].">
+      <j1 rule="resolve" parents="166 37"/>
+      <j2 rule="merge"/>
+    </justification>
+  </clause>
+
+  <clause id="267">
+    <literal><![CDATA[
+      -greater(A,tau)
+    ]]></literal>
+    <literal><![CDATA[
+      greater(A,sigma)
+    ]]></literal>
+    <justification jstring="[resolve(200,a,43,b)].">
+      <j1 rule="resolve" parents="200 43"/>
+    </justification>
+  </clause>
+
+  <clause id="268">
+    <literal><![CDATA[
+      -greater(sigma,A)
+    ]]></literal>
+    <literal><![CDATA[
+      greater(tau,A)
+    ]]></literal>
+    <justification jstring="[resolve(200,a,43,a)].">
+      <j1 rule="resolve" parents="200 43"/>
+    </justification>
+  </clause>
+
+  <clause id="274">
+    <literal><![CDATA[
+      is_aligned(c1,c4)
+    ]]></literal>
+    <literal><![CDATA[
+      hazard_of_mortality(c1,c4) = mod1
+    ]]></literal>
+    <justification jstring="[resolve(247,a,131,b)].">
+      <j1 rule="resolve" parents="247 131"/>
+    </justification>
+  </clause>
+
+  <clause id="315">
+    <literal><![CDATA[
+      greater(age(c1,c4),sigma)
+    ]]></literal>
+    <justification jstring="[resolve(267,a,70,a)].">
+      <j1 rule="resolve" parents="267 70"/>
+    </justification>
+  </clause>
+
+  <clause id="351">
+    <literal><![CDATA[
+      smaller(age(c1,c3),sigma)
+    ]]></literal>
+    <literal><![CDATA[
+      -positional_advantage(c1,c3)
+    ]]></literal>
+    <justification jstring="[para(207(b,1),144(a,1)),unit_del(b,201)].">
+      <j1 rule="para" parents="207 144"/>
+      <j2 rule="unit_del" parents="201"/>
+    </justification>
+  </clause>
+
+  <clause id="355">
+    <literal><![CDATA[
+      is_aligned(c1,c4)
+    ]]></literal>
+    <literal><![CDATA[
+      -smaller(mod1,hazard_of_mortality(c1,c3))
+    ]]></literal>
+    <justification jstring="[para(274(b,1),71(a,1))].">
+      <j1 rule="para" parents="274 71"/>
+    </justification>
+  </clause>
+
+  <clause id="363">
+    <literal><![CDATA[
+      is_aligned(c1,c3)
+    ]]></literal>
+    <literal><![CDATA[
+      positional_advantage(c1,c3)
+    ]]></literal>
+    <literal><![CDATA[
+      is_aligned(c1,c4)
+    ]]></literal>
+    <justification jstring="[para(135(c,1),355(b,2)),unit_del(d,171)].">
+      <j1 rule="para" parents="135 355"/>
+      <j2 rule="unit_del" parents="171"/>
+    </justification>
+  </clause>
+
+  <clause id="364">
+    <literal><![CDATA[
+      dissimilar(c1,c5,c4)
+    ]]></literal>
+    <justification jstring="[resolve(233,b,315,a)].">
+      <j1 rule="resolve" parents="233 315"/>
+    </justification>
+  </clause>
+
+  <clause id="366">
+    <literal><![CDATA[
+      -is_aligned(c1,c4)
+    ]]></literal>
+    <justification jstring="[resolve(364,a,48,c),unit_del(a,230)].">
+      <j1 rule="resolve" parents="364 48"/>
+      <j2 rule="unit_del" parents="230"/>
+    </justification>
+  </clause>
+
+  <clause id="367">
+    <literal><![CDATA[
+      is_aligned(c1,c3)
+    ]]></literal>
+    <literal><![CDATA[
+      positional_advantage(c1,c3)
+    ]]></literal>
+    <justification jstring="[back_unit_del(363),unit_del(c,366)].">
+      <j1 rule="back_unit_del" parents="363"/>
+      <j2 rule="unit_del" parents="366"/>
+    </justification>
+  </clause>
+
+  <clause id="369">
+    <literal><![CDATA[
+      -smaller(mod1,hazard_of_mortality(c1,c3))
+    ]]></literal>
+    <justification jstring="[back_unit_del(355),unit_del(a,366)].">
+      <j1 rule="back_unit_del" parents="355"/>
+      <j2 rule="unit_del" parents="366"/>
+    </justification>
+  </clause>
+
+  <clause id="375">
+    <literal><![CDATA[
+      positional_advantage(c1,c3)
+    ]]></literal>
+    <literal><![CDATA[
+      hazard_of_mortality(c1,c3) = mod2
+    ]]></literal>
+    <justification jstring="[resolve(367,a,133,a),merge(b)].">
+      <j1 rule="resolve" parents="367 133"/>
+      <j2 rule="merge"/>
+    </justification>
+  </clause>
+
+  <clause id="380">
+    <literal><![CDATA[
+      positional_advantage(c1,c3)
+    ]]></literal>
+    <justification jstring="[para(375(b,1),369(a,2)),unit_del(b,191)].">
+      <j1 rule="para" parents="375 369"/>
+      <j2 rule="unit_del" parents="191"/>
+    </justification>
+  </clause>
+
+  <clause id="381">
+    <literal><![CDATA[
+      smaller(age(c1,c3),sigma)
+    ]]></literal>
+    <justification jstring="[back_unit_del(351),unit_del(b,380)].">
+      <j1 rule="back_unit_del" parents="351"/>
+      <j2 rule="unit_del" parents="380"/>
+    </justification>
+  </clause>
+
+  <clause id="382">
+    <literal><![CDATA[
+      -smaller_or_equal(age(c1,c3),tau)
+    ]]></literal>
+    <justification jstring="[resolve(380,a,144,b)].">
+      <j1 rule="resolve" parents="380 144"/>
+    </justification>
+  </clause>
+
+  <clause id="384">
+    <literal><![CDATA[
+      greater(age(c1,c3),tau)
+    ]]></literal>
+    <justification jstring="[resolve(382,a,260,b)].">
+      <j1 rule="resolve" parents="382 260"/>
+    </justification>
+  </clause>
+
+  <clause id="385">
+    <literal><![CDATA[
+      greater(sigma,age(c1,c3))
+    ]]></literal>
+    <justification jstring="[resolve(381,a,41,b)].">
+      <j1 rule="resolve" parents="381 41"/>
+    </justification>
+  </clause>
+
+  <clause id="390">
+    <literal><![CDATA[
+      -greater(tau,age(c1,c3))
+    ]]></literal>
+    <justification jstring="[resolve(384,a,42,b)].">
+      <j1 rule="resolve" parents="384 42"/>
+    </justification>
+  </clause>
+
+  <clause id="393">
+    <literal><![CDATA[
+      $F
+    ]]></literal>
+    <justification jstring="[resolve(385,a,268,a),unit_del(a,390)].">
+      <j1 rule="resolve" parents="385 268"/>
+      <j2 rule="unit_del" parents="390"/>
+    </justification>
+  </clause>
+
+</proof>
+
+<proof number="2" length="71" max_count="18">
+
+<comments><![CDATA[
+% Proof 1 at 0.06 (+ 0.00) seconds.
+% Length of proof is 71.
+% Level of proof is 13.
+% Maximum clause weight is 18.
+% Given clauses 284.
+]]></comments>
+
+  <clause id="17" type="assumption">
+    <literal><![CDATA[
+      -organization(A)
+    ]]></literal>
+    <literal><![CDATA[
+      has_endowment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -has_immunity(A,B)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="19" type="assumption">
+    <literal><![CDATA[
+      -organization(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -is_aligned(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      dissimilar(A,B,C)
+    ]]></literal>
+    <literal><![CDATA[
+      is_aligned(A,C)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="20" type="assumption">
+    <literal><![CDATA[
+      organization(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -dissimilar(A,B,C)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="21" type="assumption">
+    <literal><![CDATA[
+      -organization(A)
+    ]]></literal>
+    <literal><![CDATA[
+      age(A,B) != zero
+    ]]></literal>
+    <literal><![CDATA[
+      is_aligned(A,B)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="22" type="assumption">
+    <literal><![CDATA[
+      -organization(A)
+    ]]></literal>
+    <literal><![CDATA[
+      age(A,B) != zero
+    ]]></literal>
+    <literal><![CDATA[
+      greater(age(A,C),sigma)
+    ]]></literal>
+    <literal><![CDATA[
+      -dissimilar(A,B,C)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="23" type="assumption">
+    <literal><![CDATA[
+      -organization(A)
+    ]]></literal>
+    <literal><![CDATA[
+      age(A,B) != zero
+    ]]></literal>
+    <literal><![CDATA[
+      dissimilar(A,B,C)
+    ]]></literal>
+    <literal><![CDATA[
+      -greater(age(A,C),sigma)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="27" type="assumption">
+    <literal><![CDATA[
+      -organization(A)
+    ]]></literal>
+    <literal><![CDATA[
+      has_immunity(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -is_aligned(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      positional_advantage(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      hazard_of_mortality(A,B) = mod2
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="28" type="assumption">
+    <literal><![CDATA[
+      -organization(A)
+    ]]></literal>
+    <literal><![CDATA[
+      has_immunity(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      is_aligned(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      positional_advantage(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      hazard_of_mortality(A,B) = high
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="29" type="assumption">
+    <literal><![CDATA[
+      organization(c1)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="30" type="assumption">
+    <literal><![CDATA[
+      -smaller_or_equal(age(A,B),tau)
+    ]]></literal>
+    <literal><![CDATA[
+      -positional_advantage(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -robust_position(A)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="36" type="assumption">
+    <literal><![CDATA[
+      robust_position(c1)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="37" type="assumption">
+    <literal><![CDATA[
+      smaller_or_equal(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -smaller(A,B)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="38" type="assumption">
+    <literal><![CDATA[
+      smaller_or_equal(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      B != A
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="39" type="assumption">
+    <literal><![CDATA[
+      smaller(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      B = A
+    ]]></literal>
+    <literal><![CDATA[
+      -smaller_or_equal(A,B)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="40" type="assumption">
+    <literal><![CDATA[
+      smaller(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -greater(B,A)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="41" type="assumption">
+    <literal><![CDATA[
+      greater(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -smaller(B,A)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="42" type="assumption">
+    <literal><![CDATA[
+      -greater(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -greater(B,A)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="43" type="assumption">
+    <literal><![CDATA[
+      -greater(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -greater(B,C)
+    ]]></literal>
+    <literal><![CDATA[
+      greater(A,C)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="44" type="assumption">
+    <literal><![CDATA[
+      smaller(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      B = A
+    ]]></literal>
+    <literal><![CDATA[
+      greater(A,B)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="48" type="assumption">
+    <literal><![CDATA[
+      -is_aligned(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -is_aligned(A,C)
+    ]]></literal>
+    <literal><![CDATA[
+      -dissimilar(A,B,C)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="60" type="assumption">
+    <literal><![CDATA[
+      greater(high,mod2)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="65" type="assumption">
+    <literal><![CDATA[
+      smaller(sigma,tau)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="66" type="assumption">
+    <literal><![CDATA[
+      -has_endowment(c1)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="68" type="assumption">
+    <literal><![CDATA[
+      smaller_or_equal(age(c1,c3),sigma)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="69" type="assumption">
+    <literal><![CDATA[
+      greater(age(c1,c4),sigma)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="70" type="assumption">
+    <literal><![CDATA[
+      smaller_or_equal(age(c1,c4),tau)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="71" type="assumption">
+    <literal><![CDATA[
+      -smaller(hazard_of_mortality(c1,c3),hazard_of_mortality(c1,c4))
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="72" type="assumption">
+    <literal><![CDATA[
+      age(c1,c5) = zero
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="93">
+    <literal><![CDATA[
+      age(A,B) != zero
+    ]]></literal>
+    <literal><![CDATA[
+      greater(age(A,C),sigma)
+    ]]></literal>
+    <literal><![CDATA[
+      -dissimilar(A,B,C)
+    ]]></literal>
+    <literal><![CDATA[
+      -dissimilar(A,D,E)
+    ]]></literal>
+    <justification jstring="[resolve(22,a,20,a)].">
+      <j1 rule="resolve" parents="22 20"/>
+    </justification>
+  </clause>
+
+  <clause id="122">
+    <literal><![CDATA[
+      has_endowment(c1)
+    ]]></literal>
+    <literal><![CDATA[
+      -has_immunity(c1,A)
+    ]]></literal>
+    <justification jstring="[resolve(29,a,17,a)].">
+      <j1 rule="resolve" parents="29 17"/>
+    </justification>
+  </clause>
+
+  <clause id="123">
+    <literal><![CDATA[
+      -has_immunity(c1,A)
+    ]]></literal>
+    <justification jstring="[copy(122),unit_del(a,66)].">
+      <j1 rule="copy" parents="122"/>
+      <j2 rule="unit_del" parents="66"/>
+    </justification>
+  </clause>
+
+  <clause id="125">
+    <literal><![CDATA[
+      -is_aligned(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      dissimilar(c1,A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      is_aligned(c1,B)
+    ]]></literal>
+    <justification jstring="[resolve(29,a,19,a)].">
+      <j1 rule="resolve" parents="29 19"/>
+    </justification>
+  </clause>
+
+  <clause id="126">
+    <literal><![CDATA[
+      age(c1,A) != zero
+    ]]></literal>
+    <literal><![CDATA[
+      is_aligned(c1,A)
+    ]]></literal>
+    <justification jstring="[resolve(29,a,21,a)].">
+      <j1 rule="resolve" parents="29 21"/>
+    </justification>
+  </clause>
+
+  <clause id="127">
+    <literal><![CDATA[
+      age(c1,A) != zero
+    ]]></literal>
+    <literal><![CDATA[
+      dissimilar(c1,A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -greater(age(c1,B),sigma)
+    ]]></literal>
+    <justification jstring="[resolve(29,a,23,a)].">
+      <j1 rule="resolve" parents="29 23"/>
+    </justification>
+  </clause>
+
+  <clause id="132">
+    <literal><![CDATA[
+      has_immunity(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      -is_aligned(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      positional_advantage(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      hazard_of_mortality(c1,A) = mod2
+    ]]></literal>
+    <justification jstring="[resolve(29,a,27,a)].">
+      <j1 rule="resolve" parents="29 27"/>
+    </justification>
+  </clause>
+
+  <clause id="133">
+    <literal><![CDATA[
+      -is_aligned(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      positional_advantage(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      hazard_of_mortality(c1,A) = mod2
+    ]]></literal>
+    <justification jstring="[copy(132),unit_del(a,123)].">
+      <j1 rule="copy" parents="132"/>
+      <j2 rule="unit_del" parents="123"/>
+    </justification>
+  </clause>
+
+  <clause id="134">
+    <literal><![CDATA[
+      has_immunity(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      is_aligned(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      positional_advantage(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      hazard_of_mortality(c1,A) = high
+    ]]></literal>
+    <justification jstring="[resolve(29,a,28,a)].">
+      <j1 rule="resolve" parents="29 28"/>
+    </justification>
+  </clause>
+
+  <clause id="135">
+    <literal><![CDATA[
+      is_aligned(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      positional_advantage(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      hazard_of_mortality(c1,A) = high
+    ]]></literal>
+    <justification jstring="[copy(134),unit_del(a,123)].">
+      <j1 rule="copy" parents="134"/>
+      <j2 rule="unit_del" parents="123"/>
+    </justification>
+  </clause>
+
+  <clause id="144">
+    <literal><![CDATA[
+      -smaller_or_equal(age(c1,A),tau)
+    ]]></literal>
+    <literal><![CDATA[
+      -positional_advantage(c1,A)
+    ]]></literal>
+    <justification jstring="[resolve(36,a,30,c)].">
+      <j1 rule="resolve" parents="36 30"/>
+    </justification>
+  </clause>
+
+  <clause id="146">
+    <literal><![CDATA[
+      -greater(A,A)
+    ]]></literal>
+    <justification jstring="[factor(42,a,b)].">
+      <j1 rule="factor" parents="42"/>
+    </justification>
+  </clause>
+
+  <clause id="157">
+    <literal><![CDATA[
+      age(A,B) != zero
+    ]]></literal>
+    <literal><![CDATA[
+      greater(age(A,C),sigma)
+    ]]></literal>
+    <literal><![CDATA[
+      -dissimilar(A,B,C)
+    ]]></literal>
+    <justification jstring="[factor(93,c,d)].">
+      <j1 rule="factor" parents="93"/>
+    </justification>
+  </clause>
+
+  <clause id="166">
+    <literal><![CDATA[
+      smaller(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      greater(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      smaller_or_equal(A,B)
+    ]]></literal>
+    <justification jstring="[resolve(44,b,38,b)].">
+      <j1 rule="resolve" parents="44 38"/>
+    </justification>
+  </clause>
+
+  <clause id="183">
+    <literal><![CDATA[
+      smaller(mod2,high)
+    ]]></literal>
+    <justification jstring="[resolve(60,a,40,b)].">
+      <j1 rule="resolve" parents="60 40"/>
+    </justification>
+  </clause>
+
+  <clause id="200">
+    <literal><![CDATA[
+      greater(tau,sigma)
+    ]]></literal>
+    <justification jstring="[resolve(65,a,41,b)].">
+      <j1 rule="resolve" parents="65 41"/>
+    </justification>
+  </clause>
+
+  <clause id="201">
+    <literal><![CDATA[
+      smaller_or_equal(sigma,tau)
+    ]]></literal>
+    <justification jstring="[resolve(65,a,37,b)].">
+      <j1 rule="resolve" parents="65 37"/>
+    </justification>
+  </clause>
+
+  <clause id="208">
+    <literal><![CDATA[
+      smaller(age(c1,c3),sigma)
+    ]]></literal>
+    <literal><![CDATA[
+      age(c1,c3) = sigma
+    ]]></literal>
+    <justification jstring="[resolve(68,a,39,c),flip(b)].">
+      <j1 rule="resolve" parents="68 39"/>
+      <j2 rule="flip"/>
+    </justification>
+  </clause>
+
+  <clause id="230">
+    <literal><![CDATA[
+      is_aligned(c1,c5)
+    ]]></literal>
+    <justification jstring="[resolve(126,a,72,a)].">
+      <j1 rule="resolve" parents="126 72"/>
+    </justification>
+  </clause>
+
+  <clause id="233">
+    <literal><![CDATA[
+      dissimilar(c1,c5,A)
+    ]]></literal>
+    <literal><![CDATA[
+      -greater(age(c1,A),sigma)
+    ]]></literal>
+    <justification jstring="[resolve(127,a,72,a)].">
+      <j1 rule="resolve" parents="127 72"/>
+    </justification>
+  </clause>
+
+  <clause id="239">
+    <literal><![CDATA[
+      is_aligned(c1,c4)
+    ]]></literal>
+    <literal><![CDATA[
+      positional_advantage(c1,c4)
+    ]]></literal>
+    <literal><![CDATA[
+      -smaller(hazard_of_mortality(c1,c3),high)
+    ]]></literal>
+    <justification jstring="[para(135(c,1),71(a,2))].">
+      <j1 rule="para" parents="135 71"/>
+    </justification>
+  </clause>
+
+  <clause id="248">
+    <literal><![CDATA[
+      greater(age(c1,A),sigma)
+    ]]></literal>
+    <literal><![CDATA[
+      -dissimilar(c1,c5,A)
+    ]]></literal>
+    <justification jstring="[resolve(157,a,72,a)].">
+      <j1 rule="resolve" parents="157 72"/>
+    </justification>
+  </clause>
+
+  <clause id="260">
+    <literal><![CDATA[
+      greater(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      smaller_or_equal(A,B)
+    ]]></literal>
+    <justification jstring="[resolve(166,a,37,b),merge(c)].">
+      <j1 rule="resolve" parents="166 37"/>
+      <j2 rule="merge"/>
+    </justification>
+  </clause>
+
+  <clause id="267">
+    <literal><![CDATA[
+      -greater(A,tau)
+    ]]></literal>
+    <literal><![CDATA[
+      greater(A,sigma)
+    ]]></literal>
+    <justification jstring="[resolve(200,a,43,b)].">
+      <j1 rule="resolve" parents="200 43"/>
+    </justification>
+  </clause>
+
+  <clause id="271">
+    <literal><![CDATA[
+      dissimilar(c1,c5,A)
+    ]]></literal>
+    <literal><![CDATA[
+      is_aligned(c1,A)
+    ]]></literal>
+    <justification jstring="[resolve(230,a,125,a)].">
+      <j1 rule="resolve" parents="230 125"/>
+    </justification>
+  </clause>
+
+  <clause id="334">
+    <literal><![CDATA[
+      smaller(age(c1,c3),sigma)
+    ]]></literal>
+    <literal><![CDATA[
+      -positional_advantage(c1,c3)
+    ]]></literal>
+    <justification jstring="[para(208(b,1),144(a,1)),unit_del(b,201)].">
+      <j1 rule="para" parents="208 144"/>
+      <j2 rule="unit_del" parents="201"/>
+    </justification>
+  </clause>
+
+  <clause id="362">
+    <literal><![CDATA[
+      dissimilar(c1,c5,c4)
+    ]]></literal>
+    <justification jstring="[resolve(233,b,69,a)].">
+      <j1 rule="resolve" parents="233 69"/>
+    </justification>
+  </clause>
+
+  <clause id="367">
+    <literal><![CDATA[
+      -is_aligned(c1,c4)
+    ]]></literal>
+    <justification jstring="[resolve(362,a,48,c),unit_del(a,230)].">
+      <j1 rule="resolve" parents="362 48"/>
+      <j2 rule="unit_del" parents="230"/>
+    </justification>
+  </clause>
+
+  <clause id="369">
+    <literal><![CDATA[
+      positional_advantage(c1,c4)
+    ]]></literal>
+    <literal><![CDATA[
+      -smaller(hazard_of_mortality(c1,c3),high)
+    ]]></literal>
+    <justification jstring="[back_unit_del(239),unit_del(a,367)].">
+      <j1 rule="back_unit_del" parents="239"/>
+      <j2 rule="unit_del" parents="367"/>
+    </justification>
+  </clause>
+
+  <clause id="372">
+    <literal><![CDATA[
+      greater(age(c1,A),sigma)
+    ]]></literal>
+    <literal><![CDATA[
+      is_aligned(c1,A)
+    ]]></literal>
+    <justification jstring="[resolve(248,b,271,a)].">
+      <j1 rule="resolve" parents="248 271"/>
+    </justification>
+  </clause>
+
+  <clause id="373">
+    <literal><![CDATA[
+      greater(age(c1,A),sigma)
+    ]]></literal>
+    <literal><![CDATA[
+      positional_advantage(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      hazard_of_mortality(c1,A) = mod2
+    ]]></literal>
+    <justification jstring="[resolve(372,b,133,a)].">
+      <j1 rule="resolve" parents="372 133"/>
+    </justification>
+  </clause>
+
+  <clause id="471">
+    <literal><![CDATA[
+      greater(age(c1,c3),sigma)
+    ]]></literal>
+    <literal><![CDATA[
+      positional_advantage(c1,c3)
+    ]]></literal>
+    <literal><![CDATA[
+      positional_advantage(c1,c4)
+    ]]></literal>
+    <justification jstring="[para(373(c,1),369(b,1)),unit_del(d,183)].">
+      <j1 rule="para" parents="373 369"/>
+      <j2 rule="unit_del" parents="183"/>
+    </justification>
+  </clause>
+
+  <clause id="480">
+    <literal><![CDATA[
+      greater(age(c1,c3),sigma)
+    ]]></literal>
+    <literal><![CDATA[
+      positional_advantage(c1,c3)
+    ]]></literal>
+    <justification jstring="[resolve(471,c,144,b),unit_del(c,70)].">
+      <j1 rule="resolve" parents="471 144"/>
+      <j2 rule="unit_del" parents="70"/>
+    </justification>
+  </clause>
+
+  <clause id="481">
+    <literal><![CDATA[
+      greater(age(c1,c3),sigma)
+    ]]></literal>
+    <literal><![CDATA[
+      smaller(age(c1,c3),sigma)
+    ]]></literal>
+    <justification jstring="[resolve(480,b,334,b)].">
+      <j1 rule="resolve" parents="480 334"/>
+    </justification>
+  </clause>
+
+  <clause id="482">
+    <literal><![CDATA[
+      greater(age(c1,c3),sigma)
+    ]]></literal>
+    <literal><![CDATA[
+      -smaller_or_equal(age(c1,c3),tau)
+    ]]></literal>
+    <justification jstring="[resolve(480,b,144,b)].">
+      <j1 rule="resolve" parents="480 144"/>
+    </justification>
+  </clause>
+
+  <clause id="483">
+    <literal><![CDATA[
+      greater(age(c1,c3),sigma)
+    ]]></literal>
+    <literal><![CDATA[
+      greater(sigma,age(c1,c3))
+    ]]></literal>
+    <justification jstring="[resolve(481,b,41,b)].">
+      <j1 rule="resolve" parents="481 41"/>
+    </justification>
+  </clause>
+
+  <clause id="484">
+    <literal><![CDATA[
+      greater(age(c1,c3),sigma)
+    ]]></literal>
+    <literal><![CDATA[
+      greater(age(c1,c3),tau)
+    ]]></literal>
+    <justification jstring="[resolve(482,b,260,b)].">
+      <j1 rule="resolve" parents="482 260"/>
+    </justification>
+  </clause>
+
+  <clause id="496">
+    <literal><![CDATA[
+      smaller(age(c1,c3),sigma)
+    ]]></literal>
+    <literal><![CDATA[
+      greater(sigma,age(c1,c3))
+    ]]></literal>
+    <justification jstring="[para(208(b,1),483(a,1)),unit_del(b,146)].">
+      <j1 rule="para" parents="208 483"/>
+      <j2 rule="unit_del" parents="146"/>
+    </justification>
+  </clause>
+
+  <clause id="506">
+    <literal><![CDATA[
+      greater(age(c1,c3),tau)
+    ]]></literal>
+    <literal><![CDATA[
+      -greater(sigma,age(c1,c3))
+    ]]></literal>
+    <justification jstring="[resolve(484,a,42,b)].">
+      <j1 rule="resolve" parents="484 42"/>
+    </justification>
+  </clause>
+
+  <clause id="515">
+    <literal><![CDATA[
+      greater(sigma,age(c1,c3))
+    ]]></literal>
+    <justification jstring="[resolve(496,a,41,b),merge(b)].">
+      <j1 rule="resolve" parents="496 41"/>
+      <j2 rule="merge"/>
+    </justification>
+  </clause>
+
+  <clause id="516">
+    <literal><![CDATA[
+      greater(age(c1,c3),tau)
+    ]]></literal>
+    <justification jstring="[back_unit_del(506),unit_del(b,515)].">
+      <j1 rule="back_unit_del" parents="506"/>
+      <j2 rule="unit_del" parents="515"/>
+    </justification>
+  </clause>
+
+  <clause id="522">
+    <literal><![CDATA[
+      -greater(age(c1,c3),sigma)
+    ]]></literal>
+    <justification jstring="[resolve(515,a,42,b)].">
+      <j1 rule="resolve" parents="515 42"/>
+    </justification>
+  </clause>
+
+  <clause id="527">
+    <literal><![CDATA[
+      $F
+    ]]></literal>
+    <justification jstring="[resolve(516,a,267,a),unit_del(a,522)].">
+      <j1 rule="resolve" parents="516 267"/>
+      <j2 rule="unit_del" parents="522"/>
+    </justification>
+  </clause>
+
+</proof>
+
+<proof number="3" length="55" max_count="18">
+
+<comments><![CDATA[
+% Proof 1 at 0.06 (+ 0.00) seconds.
+% Length of proof is 55.
+% Level of proof is 11.
+% Maximum clause weight is 18.
+% Given clauses 244.
+]]></comments>
+
+  <clause id="1" type="assumption">
+    <literal><![CDATA[
+      smaller(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      B = A
+    ]]></literal>
+    <literal><![CDATA[
+      -smaller_or_equal(A,B)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="2" type="assumption">
+    <literal><![CDATA[
+      smaller_or_equal(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -smaller(A,B)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="3" type="assumption">
+    <literal><![CDATA[
+      smaller(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -greater(B,A)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="4" type="assumption">
+    <literal><![CDATA[
+      greater(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -smaller(B,A)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="6" type="assumption">
+    <literal><![CDATA[
+      smaller(sigma,tau)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="23" type="assumption">
+    <literal><![CDATA[
+      -organization(A)
+    ]]></literal>
+    <literal><![CDATA[
+      has_endowment(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -has_immunity(A,B)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="25" type="assumption">
+    <literal><![CDATA[
+      -organization(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -is_aligned(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      dissimilar(A,B,C)
+    ]]></literal>
+    <literal><![CDATA[
+      is_aligned(A,C)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="26" type="assumption">
+    <literal><![CDATA[
+      organization(A)
+    ]]></literal>
+    <literal><![CDATA[
+      -dissimilar(A,B,C)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="27" type="assumption">
+    <literal><![CDATA[
+      -organization(A)
+    ]]></literal>
+    <literal><![CDATA[
+      age(A,B) != zero
+    ]]></literal>
+    <literal><![CDATA[
+      is_aligned(A,B)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="28" type="assumption">
+    <literal><![CDATA[
+      -organization(A)
+    ]]></literal>
+    <literal><![CDATA[
+      age(A,B) != zero
+    ]]></literal>
+    <literal><![CDATA[
+      greater(age(A,C),sigma)
+    ]]></literal>
+    <literal><![CDATA[
+      -dissimilar(A,B,C)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="33" type="assumption">
+    <literal><![CDATA[
+      -organization(A)
+    ]]></literal>
+    <literal><![CDATA[
+      has_immunity(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -is_aligned(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      positional_advantage(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      hazard_of_mortality(A,B) = mod2
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="35" type="assumption">
+    <literal><![CDATA[
+      organization(c1)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="36" type="assumption">
+    <literal><![CDATA[
+      -smaller_or_equal(age(A,B),tau)
+    ]]></literal>
+    <literal><![CDATA[
+      -positional_advantage(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -robust_position(A)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="42" type="assumption">
+    <literal><![CDATA[
+      robust_position(c1)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="44" type="assumption">
+    <literal><![CDATA[
+      -greater(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -greater(B,A)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="45" type="assumption">
+    <literal><![CDATA[
+      -greater(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -greater(B,C)
+    ]]></literal>
+    <literal><![CDATA[
+      greater(A,C)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="65" type="assumption">
+    <literal><![CDATA[
+      greater(tau,zero)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="66" type="assumption">
+    <literal><![CDATA[
+      -has_endowment(c1)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="70" type="assumption">
+    <literal><![CDATA[
+      age(c1,c4) = zero
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="71" type="assumption">
+    <literal><![CDATA[
+      smaller_or_equal(age(c1,c5),sigma)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="72" type="assumption">
+    <literal><![CDATA[
+      hazard_of_mortality(c1,c5) != hazard_of_mortality(c1,c4)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="73">
+    <literal><![CDATA[
+      -greater(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      smaller_or_equal(B,A)
+    ]]></literal>
+    <justification jstring="[resolve(3,a,2,b)].">
+      <j1 rule="resolve" parents="3 2"/>
+    </justification>
+  </clause>
+
+  <clause id="74">
+    <literal><![CDATA[
+      greater(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      A = B
+    ]]></literal>
+    <literal><![CDATA[
+      -smaller_or_equal(B,A)
+    ]]></literal>
+    <justification jstring="[resolve(4,b,1,a)].">
+      <j1 rule="resolve" parents="4 1"/>
+    </justification>
+  </clause>
+
+  <clause id="77">
+    <literal><![CDATA[
+      smaller_or_equal(sigma,tau)
+    ]]></literal>
+    <justification jstring="[resolve(6,a,2,b)].">
+      <j1 rule="resolve" parents="6 2"/>
+    </justification>
+  </clause>
+
+  <clause id="78">
+    <literal><![CDATA[
+      greater(tau,sigma)
+    ]]></literal>
+    <justification jstring="[resolve(6,a,4,b)].">
+      <j1 rule="resolve" parents="6 4"/>
+    </justification>
+  </clause>
+
+  <clause id="99">
+    <literal><![CDATA[
+      age(A,B) != zero
+    ]]></literal>
+    <literal><![CDATA[
+      greater(age(A,C),sigma)
+    ]]></literal>
+    <literal><![CDATA[
+      -dissimilar(A,B,C)
+    ]]></literal>
+    <literal><![CDATA[
+      -dissimilar(A,D,E)
+    ]]></literal>
+    <justification jstring="[resolve(28,a,26,a)].">
+      <j1 rule="resolve" parents="28 26"/>
+    </justification>
+  </clause>
+
+  <clause id="128">
+    <literal><![CDATA[
+      has_endowment(c1)
+    ]]></literal>
+    <literal><![CDATA[
+      -has_immunity(c1,A)
+    ]]></literal>
+    <justification jstring="[resolve(35,a,23,a)].">
+      <j1 rule="resolve" parents="35 23"/>
+    </justification>
+  </clause>
+
+  <clause id="129">
+    <literal><![CDATA[
+      -has_immunity(c1,A)
+    ]]></literal>
+    <justification jstring="[copy(128),unit_del(a,66)].">
+      <j1 rule="copy" parents="128"/>
+      <j2 rule="unit_del" parents="66"/>
+    </justification>
+  </clause>
+
+  <clause id="131">
+    <literal><![CDATA[
+      -is_aligned(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      dissimilar(c1,A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      is_aligned(c1,B)
+    ]]></literal>
+    <justification jstring="[resolve(35,a,25,a)].">
+      <j1 rule="resolve" parents="35 25"/>
+    </justification>
+  </clause>
+
+  <clause id="132">
+    <literal><![CDATA[
+      age(c1,A) != zero
+    ]]></literal>
+    <literal><![CDATA[
+      is_aligned(c1,A)
+    ]]></literal>
+    <justification jstring="[resolve(35,a,27,a)].">
+      <j1 rule="resolve" parents="35 27"/>
+    </justification>
+  </clause>
+
+  <clause id="138">
+    <literal><![CDATA[
+      has_immunity(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      -is_aligned(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      positional_advantage(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      hazard_of_mortality(c1,A) = mod2
+    ]]></literal>
+    <justification jstring="[resolve(35,a,33,a)].">
+      <j1 rule="resolve" parents="35 33"/>
+    </justification>
+  </clause>
+
+  <clause id="139">
+    <literal><![CDATA[
+      -is_aligned(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      positional_advantage(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      hazard_of_mortality(c1,A) = mod2
+    ]]></literal>
+    <justification jstring="[copy(138),unit_del(a,129)].">
+      <j1 rule="copy" parents="138"/>
+      <j2 rule="unit_del" parents="129"/>
+    </justification>
+  </clause>
+
+  <clause id="150">
+    <literal><![CDATA[
+      -smaller_or_equal(age(c1,A),tau)
+    ]]></literal>
+    <literal><![CDATA[
+      -positional_advantage(c1,A)
+    ]]></literal>
+    <justification jstring="[resolve(42,a,36,c)].">
+      <j1 rule="resolve" parents="42 36"/>
+    </justification>
+  </clause>
+
+  <clause id="152">
+    <literal><![CDATA[
+      -greater(A,A)
+    ]]></literal>
+    <justification jstring="[factor(44,a,b)].">
+      <j1 rule="factor" parents="44"/>
+    </justification>
+  </clause>
+
+  <clause id="163">
+    <literal><![CDATA[
+      age(A,B) != zero
+    ]]></literal>
+    <literal><![CDATA[
+      greater(age(A,C),sigma)
+    ]]></literal>
+    <literal><![CDATA[
+      -dissimilar(A,B,C)
+    ]]></literal>
+    <justification jstring="[factor(99,c,d)].">
+      <j1 rule="factor" parents="99"/>
+    </justification>
+  </clause>
+
+  <clause id="210">
+    <literal><![CDATA[
+      smaller_or_equal(zero,tau)
+    ]]></literal>
+    <justification jstring="[resolve(73,a,65,a)].">
+      <j1 rule="resolve" parents="73 65"/>
+    </justification>
+  </clause>
+
+  <clause id="222">
+    <literal><![CDATA[
+      greater(sigma,age(c1,c5))
+    ]]></literal>
+    <literal><![CDATA[
+      age(c1,c5) = sigma
+    ]]></literal>
+    <justification jstring="[resolve(74,c,71,a),flip(b)].">
+      <j1 rule="resolve" parents="74 71"/>
+      <j2 rule="flip"/>
+    </justification>
+  </clause>
+
+  <clause id="228">
+    <literal><![CDATA[
+      -greater(sigma,A)
+    ]]></literal>
+    <literal><![CDATA[
+      greater(tau,A)
+    ]]></literal>
+    <justification jstring="[resolve(78,a,45,a)].">
+      <j1 rule="resolve" parents="78 45"/>
+    </justification>
+  </clause>
+
+  <clause id="239">
+    <literal><![CDATA[
+      is_aligned(c1,c4)
+    ]]></literal>
+    <justification jstring="[resolve(132,a,70,a)].">
+      <j1 rule="resolve" parents="132 70"/>
+    </justification>
+  </clause>
+
+  <clause id="251">
+    <literal><![CDATA[
+      -positional_advantage(c1,c4)
+    ]]></literal>
+    <justification jstring="[para(70(a,1),150(a,1)),unit_del(a,210)].">
+      <j1 rule="para" parents="70 150"/>
+      <j2 rule="unit_del" parents="210"/>
+    </justification>
+  </clause>
+
+  <clause id="254">
+    <literal><![CDATA[
+      greater(age(c1,A),sigma)
+    ]]></literal>
+    <literal><![CDATA[
+      -dissimilar(c1,c4,A)
+    ]]></literal>
+    <justification jstring="[resolve(163,a,70,a)].">
+      <j1 rule="resolve" parents="163 70"/>
+    </justification>
+  </clause>
+
+  <clause id="259">
+    <literal><![CDATA[
+      hazard_of_mortality(c1,c4) = mod2
+    ]]></literal>
+    <justification jstring="[resolve(239,a,139,a),unit_del(a,251)].">
+      <j1 rule="resolve" parents="239 139"/>
+      <j2 rule="unit_del" parents="251"/>
+    </justification>
+  </clause>
+
+  <clause id="260">
+    <literal><![CDATA[
+      dissimilar(c1,c4,A)
+    ]]></literal>
+    <literal><![CDATA[
+      is_aligned(c1,A)
+    ]]></literal>
+    <justification jstring="[resolve(239,a,131,a)].">
+      <j1 rule="resolve" parents="239 131"/>
+    </justification>
+  </clause>
+
+  <clause id="264">
+    <literal><![CDATA[
+      hazard_of_mortality(c1,c5) != mod2
+    ]]></literal>
+    <justification jstring="[back_rewrite(72),rewrite([259(6)])].">
+      <j1 rule="back_rewrite" parents="72"/>
+      <j2 rule="rewrite" parents="259"/>
+    </justification>
+  </clause>
+
+  <clause id="317">
+    <literal><![CDATA[
+      greater(sigma,age(c1,c5))
+    ]]></literal>
+    <literal><![CDATA[
+      -positional_advantage(c1,c5)
+    ]]></literal>
+    <justification jstring="[para(222(b,1),150(a,1)),unit_del(b,77)].">
+      <j1 rule="para" parents="222 150"/>
+      <j2 rule="unit_del" parents="77"/>
+    </justification>
+  </clause>
+
+  <clause id="349">
+    <literal><![CDATA[
+      greater(age(c1,A),sigma)
+    ]]></literal>
+    <literal><![CDATA[
+      is_aligned(c1,A)
+    ]]></literal>
+    <justification jstring="[resolve(254,b,260,a)].">
+      <j1 rule="resolve" parents="254 260"/>
+    </justification>
+  </clause>
+
+  <clause id="350">
+    <literal><![CDATA[
+      greater(age(c1,A),sigma)
+    ]]></literal>
+    <literal><![CDATA[
+      positional_advantage(c1,A)
+    ]]></literal>
+    <literal><![CDATA[
+      hazard_of_mortality(c1,A) = mod2
+    ]]></literal>
+    <justification jstring="[resolve(349,b,139,a)].">
+      <j1 rule="resolve" parents="349 139"/>
+    </justification>
+  </clause>
+
+  <clause id="448">
+    <literal><![CDATA[
+      greater(age(c1,c5),sigma)
+    ]]></literal>
+    <literal><![CDATA[
+      positional_advantage(c1,c5)
+    ]]></literal>
+    <justification jstring="[resolve(350,c,264,a)].">
+      <j1 rule="resolve" parents="350 264"/>
+    </justification>
+  </clause>
+
+  <clause id="451">
+    <literal><![CDATA[
+      greater(age(c1,c5),sigma)
+    ]]></literal>
+    <literal><![CDATA[
+      greater(sigma,age(c1,c5))
+    ]]></literal>
+    <justification jstring="[resolve(448,b,317,b)].">
+      <j1 rule="resolve" parents="448 317"/>
+    </justification>
+  </clause>
+
+  <clause id="452">
+    <literal><![CDATA[
+      greater(age(c1,c5),sigma)
+    ]]></literal>
+    <literal><![CDATA[
+      -smaller_or_equal(age(c1,c5),tau)
+    ]]></literal>
+    <justification jstring="[resolve(448,b,150,b)].">
+      <j1 rule="resolve" parents="448 150"/>
+    </justification>
+  </clause>
+
+  <clause id="458">
+    <literal><![CDATA[
+      greater(sigma,age(c1,c5))
+    ]]></literal>
+    <justification jstring="[para(222(b,1),451(a,1)),merge(c),unit_del(b,152)].">
+      <j1 rule="para" parents="222 451"/>
+      <j2 rule="merge"/>
+      <j2 rule="unit_del" parents="152"/>
+    </justification>
+  </clause>
+
+  <clause id="462">
+    <literal><![CDATA[
+      greater(tau,age(c1,c5))
+    ]]></literal>
+    <justification jstring="[resolve(458,a,228,a)].">
+      <j1 rule="resolve" parents="458 228"/>
+    </justification>
+  </clause>
+
+  <clause id="466">
+    <literal><![CDATA[
+      -greater(age(c1,c5),sigma)
+    ]]></literal>
+    <justification jstring="[resolve(458,a,44,b)].">
+      <j1 rule="resolve" parents="458 44"/>
+    </justification>
+  </clause>
+
+  <clause id="467">
+    <literal><![CDATA[
+      -smaller_or_equal(age(c1,c5),tau)
+    ]]></literal>
+    <justification jstring="[back_unit_del(452),unit_del(a,466)].">
+      <j1 rule="back_unit_del" parents="452"/>
+      <j2 rule="unit_del" parents="466"/>
+    </justification>
+  </clause>
+
+  <clause id="470">
+    <literal><![CDATA[
+      $F
+    ]]></literal>
+    <justification jstring="[resolve(462,a,73,a),unit_del(a,467)].">
+      <j1 rule="resolve" parents="462 73"/>
+      <j2 rule="unit_del" parents="467"/>
+    </justification>
+  </clause>
+
+</proof>
+
+</proofs>

@@ -1,0 +1,266 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+  <title>Prover9 Manual: Goals and Denials</title>
+ <link rel="stylesheet" href="manual.css">
+</head>
+
+<body>
+
+
+<hr>
+<table width="100%">
+<tr>
+<colgroup>
+<col width="33%">
+<col width="34%">
+<col width="33%">
+</colgroup>
+<td align="left"><i>Prover9 Manual</i>
+<td align="center"><img src="prover9-5a-256t.gif">
+<td align="right"><i>Version 2009-11A</i>
+</table>
+<hr>
+
+<!-- Main content -->
+
+<h1>Goals and Denials</h1>
+
+This section shows how the conclusion(s) of a conjecture
+can be stated in positive form, how one can search for
+direct proofs as opposed to bidirectional proofs, and
+how multiple conclusions are stated and handled.
+
+<p>
+Terminology
+<ul>
+<li><i>Conclusion</i>: this term is used informally.
+<li><i>Goal</i>: this term refers to a conclusion stated in positive form.
+<li><i>Denial clause</i>: this term refers to a negative clause in a
+<a href="glossary.html#horn">Horn set</a>,
+because such clauses usually correspond to the negation
+of a conclusion.
+</ul>
+
+<h2>Goals: Stating Conclusions in Positive Form</h2>
+
+<blockquote class="otter_diff">
+In Otter, the conclusions are always stated in negated form.
+</blockquote>
+
+Prover9 allows the user to state conclusions in positive
+form by using the list
+<tt>formulas(goals)</tt>.
+However, Prover9 always works by refutation, so 
+the clauses or formulas in the <tt>goals</tt> lists
+are negated as described below, and the
+results are appended to the <tt>sos</tt> clause list
+before the search starts.
+In other words, goals are "syntactic sugar"
+for input, and have nothing to do with the way Prover9
+conducts its search for refutations.
+
+<p>
+When the conclusion is given in positive form, the
+user has no control over the <a href="glossary.html#skolemization">Skolem</a> symbols (if any)
+that Prover9 introduces.  If the user needs some control
+of the Skolem symbols, for example, to insert them
+into the symbol precedence at a particular spot,
+or to include them in the weighting function,
+the user should do the Skolemizing and give the
+conclusion in negated form.
+
+<p>
+If there is just one formula in <tt>formulas(goals)</tt>,
+the meaning is clear: the formula is processed by
+first taking its universal closure, then negating.
+The formula is then handled exactly as if it had
+been input in <tt>formulas(sos)</tt>, that is, by
+Skolemizing and transforming to clauses.
+
+<h3>Multiple Goals</h3>
+
+<p>
+If there is more than one formula in <tt>formulas(goals)</tt>,
+the meaning is not clear.  Is the conclusion the
+disjunction of those formulas?  Or the conjunction?
+<i>The answer: disjunction</i>: if any goal is proved,
+the proof is reported, printed, and counted.
+
+<p>
+Multiple <i>complex</i> goals are not allowed, because
+the quantification of free variables can be very confusing.
+Therefore Prover9 enforces the following rule.
+
+<blockquote>
+<i>If there is more than one formula in the goals list,
+each must be a positive universal conjunctive formula, that is
+a formula constructed from atomic formulas, universal
+quantification, and conjunction only.</i>
+</blockquote>
+
+To avoid this restriction, one can always
+write the conclusion clearly as a single goal formula
+containing any of the logic connectives and quantification.
+However, if the conjecture involves multiple
+complex conclusions, we recommend, for search efficiency,
+separate Prover9 searches.
+
+<p>
+If there are multiple goals, each is processed separately
+by applying universal closure, negation, and transformation
+to clauses.  After this processing, Prover9 forgets that
+there were multiple goals and simply searches for
+refutations.
+
+<p>
+When there are multiple goals,
+and when the user wishes to prove more than one goal,
+the parameter <a href="goals.html#max_proofs"><tt><b>max_proofs</b></tt></a> should be set to an
+appropriate value.  (The flag <a href="goals.html#auto_denials"><tt><b>auto_denials</b></tt></a>
+(default set) can do so automatically.)
+
+<h2>Multiple Proofs</h2>
+
+<!-- start option max_proofs -->
+<a name="max_proofs">
+<pre class="my_option">
+assign(max_proofs, <i>n</i>).  % default <i>n</i>=1, range [-1 .. <tt>INT_MAX</tt>]
+</pre>
+
+<blockquote>
+This parameter tells Prover9 to stop searching when the
+<i>n</i>-th proof has been found.
+</blockquote>
+<!-- end option -->
+
+<h2>Denials: Negative Clauses in Horn Sets</h2>
+
+Denial clauses (negative clauses in Horn sets)
+can be derived from goals,
+or they can be input directly as negative clauses.
+
+<h3>Multiple Proofs of the Same Conclusion</h3>
+
+<!-- start option reuse_denials -->
+<a name="reuse_denials">
+<pre class="my_option">
+set(reuse_denials).
+clear(reuse_denials).    % default clear
+</pre>
+
+<blockquote>
+If this flag is set, when a denial clause
+(a negative clause in a Horn set) is used in
+a proof, and when <a href="goals.html#max_proofs"><tt><b>max_proofs</b></tt></a> says
+to search for more proofs, subsequent proofs
+may be of the same conclusion.  (Multiple
+proofs of the same conclusion may be useful
+when one is searching for <i>short</i> proofs.)
+<p>
+If this flag is clear, then when a proof is found,
+the denial and all of its descendants are disabled so that they
+will not appear in subsequent proofs.
+<p>
+This flag is independent of the flag
+<a href="goals.html#restrict_denials"><tt><b>restrict_denials</b></tt></a>.
+</blockquote>
+<!-- end option -->
+
+<h3>Auto_denials</h3>
+
+<!-- start option auto_denials -->
+<a name="auto_denials">
+<pre class="my_option">
+set(auto_denials).    % default set
+clear(auto_denials).
+</pre>
+
+<blockquote>
+If this flag is set (the default), negative clauses in
+<a href="glossary.html#horn">Horn sets</a> 
+receive some special initial processing.
+<p>
+If a Horn set has more than one denial (negative) clause, we
+assume they correspond to separate conclusions, and the user
+wishes to have a separate proof of each conclusion.
+Therefore, if 
+<a href="goals.html#max_proofs"><tt><b>max_proofs</b></tt></a>
+has not been changed from its default value of 1,
+we assign to
+<a href="goals.html#max_proofs"><tt><b>max_proofs</b></tt></a>
+the number of negative clauses.
+(Note that when
+<a href="goals.html#reuse_denials"><tt><b>reuse_denials</b></tt></a>
+is clear (the default),
+Prover9 prevents multiple proofs of the same conclusion.)
+<p>
+Also, if a negative clause in a Horn set has label attribute
+but no answer attribute, the clause is given an answer attribute
+corresponding to the first label attribute.  This saves the user
+from changing "label" to "answer" when moving formulas from
+the <tt>sos</tt> list to the <tt>goals</tt> list.
+</blockquote>
+<!-- end option -->
+
+<h3>Forward or Direct Proofs</h3>
+
+<p>
+The following flag restricts the use of negative clauses,
+with the aim of finding proofs that are more direct; that
+is, proofs that go forward from the hypotheses to the conclusion
+rather than proofs that reason backward from the conclusion.
+<p>
+Ordinarily, the term <i>denial</i> refers to a negative
+clause in a Horn set.  Here, we use it for any negative
+clause.  Originally, the flag <a href="goals.html#restrict_denials"><tt><b>restrict_denials</b></tt></a>
+applied only to Horn sets, but we eliminated that restriction
+when we realized that it can be useful for non-Horn sets.
+However, its use has been well analyzed for non-Horn sets.
+
+<!-- start option restrict_denials -->
+<a name="restrict_denials">
+<pre class="my_option">
+set(restrict_denials).
+clear(restrict_denials).    % default clear
+</pre>
+
+<blockquote>
+<p>
+If the flag is set, negative clauses (clauses in which all
+literals are negative) are referred to as
+<i>restricted denials</i> and are given special treatment.
+<p>
+The inference rules (i.e., paramodulation and the
+resolution rules) will not be applied to restricted denials.
+However, restricted denials will be simplified by
+<a href="glossary.html#demodulation">back demodulation</a> and <a href="glossary.html#unit-deletion">back unit deletion</a>.
+<p>
+In addition, restricted denials will not be deleted if they
+are over the weight limit (<a href="process-inf.html#max_weight"><tt><b>max_weight</b></tt></a>).
+<p>
+The effect of setting <a href="goals.html#restrict_denials"><tt><b>restrict_denials</b></tt></a> is that proofs
+will usually be more forward or direct.
+This option can speed up proofs, it can delay proofs, and it can
+block all proofs.
+</blockquote>
+<!-- end option -->
+
+<h2>An Example</h2>
+
+The following example illustrates multiple goals
+(including a goal that is a combination of other goals),
+<a href="goals.html#auto_denials"><tt><b>auto_denials</b></tt></a>,
+and
+<a href="goals.html#restrict_denials"><tt><b>restrict_denials</b></tt></a>.
+
+<pre class="my_job">
+prover9 -f <a href="olsax.in">olsax.in</a> &gt; <a href="olsax.out">olsax.out</a>
+</pre>
+
+<hr>
+Next Section:
+<a href="production.html">Production Mode</a>
+
+</body>
+</html>

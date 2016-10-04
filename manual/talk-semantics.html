@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+  <title>Semantic Guidance in Prover9</title>
+</head>
+
+<body>
+
+<h1>Semantic Guidance in Prover9</h1>
+
+Using finite interpretations (models, algebras)
+to <i>guide</i> the search for a proof.
+
+<h2>Evaluating a Clause in an Interpretation</h2>
+<ul>
+<li>If all the symbols in the clause are interpreted,
+the clause evaluates to TRUE or to FALSE.
+<li>It can be expensive: If the interpretation has
+<i>n</i> elements, and the clause has <i>v</i> variables,
+there are <i>n<sup>v</sup></i> instances to consider.
+</ul>
+
+<h2>Semantic Restrictions on Inference Rules</h2>
+(old method)
+<ul>
+<li>Example: one parent must be false in the interpretation.
+<li>Problems:
+<ul>
+<li>blocks very useful clauses
+<li>frequently incompatible with simplification strategies
+</ul>
+</ul>
+
+<hr>
+<h2>Semantic Guidance</h2>
+<ul>
+<li>Use interpretations to help 
+<a href="select.html">select the given clause</a>.
+<li><a href="semantics.html">Example</a>.
+</ul>
+
+<hr>
+<h2>Non-standard Uses of Semantic Guidance</h2>
+
+<ul>
+<li>Generate a lot of FALSE identities as candidates
+to replace a quasi-identity (Kinyon).
+</ul>
+
+</body>
+</html>
+
+

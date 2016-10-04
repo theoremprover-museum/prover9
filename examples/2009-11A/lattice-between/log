@@ -1,0 +1,20 @@
+ERROR, not in the go file: bc
+ERROR, not in the go file: bcs
+ERROR, not in the go file: cd
+ERROR, not in the go file: csd
+ERROR, not in the go file: t2_12
+ERROR, not in the go file: t2_23
+ERROR, not in the go file: t3_12
+ERROR, not in the go file: t4_12
+ERROR, not in the HTML file: csdout, <blockquote><tt>prover9 -f <a href="head.in">head.in</a> <a href="csd.in">csd.in</a> &gt; <a href="csd.ou">csd.ou</a></tt></blockquote>
+ERROR, not in the HTML file: bc.$out, <blockquote><tt>prover9 -f <a href="head.in">head.in</a> <a href="bc.in">bc.in</a> &gt; <a href="bc.">bc.</a></tt></blockquote>
+ERROR, not in the HTML file: t2_23.$out, <blockquote><tt>prover9 -f <a href="head.in">head.in</a> <a href="t2_23.in">t2_23.in</a> &gt; t2_23</tt></blockquote>
+ERROR, not in the HTML file: cdcs.$out, <blockquote><tt>prover9 -f <a href="head.in">head.in</a> <a href="cd.in">cd.in</a> &gt; <a href="cd.">cd.</a></tt></blockquote>
+ERROR, not in the HTML file: t3_12.$out, <blockquote><tt>prover9 -f <a href="head.in">head.in</a> <a href="t3_12.in">t3_12.in</a> &gt; t3_12</tt></blockquote>
+ERROR, not in the HTML file: t4_12.$out, <blockquote><tt>prover9 -f <a href="head.in">head.in</a> <a href="t4_12.in">t4_12.in</a> &gt; <a href="t4_12.out">t4_12.out</a></tt></blockquote>
+ERROR, not in the HTML file: t2_12t, <blockquote><tt>prover9 -f <a href="head.in">head.in</a> <a href="t2_12.in">t2_12.in</a> &gt; t2_12</tt></blockquote>
+ERROR, not in the HTML file: bcsout, <blockquote><tt>prover9 -f <a href="head.in">head.in</a> <a href="bcs.in">bcs.in</a> &gt; b</tt></blockquote>
+
+errors=16, file index.html not changed
+partly constructed HTML in index.html.work
+

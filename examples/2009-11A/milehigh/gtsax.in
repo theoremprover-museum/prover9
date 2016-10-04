@@ -1,0 +1,17 @@
+assign(max_seconds, 30).
+
+formulas(sos).
+
+  y * (z * (((u * u') * (x * z)') * y))' = x # label(gt_sax).
+
+end_of_list.
+
+formulas(goals).
+
+  (x * y) * z = x * (y * z) # label(associativity).
+
+  x * x' = y * y' # label(inverse).
+
+  x * (y * y') = x # label(identity).
+
+end_of_list.

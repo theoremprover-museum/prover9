@@ -1,0 +1,29 @@
+assign(max_seconds, 30).
+
+% The following op commands allow us to use an additional infix
+% operation (@) and omit some parentheses (for *).
+%
+% * is the semigroup operation; @ is the commutator.
+% x*y*z is right associated; x*y@z is (x*y)@z
+
+op(450, infix, @).
+op(400, infix_right, *).
+
+assign(new_constants, 1).
+
+assign(max_weight, 25).
+
+formulas(sos).
+ x * y != x * z | y = z.           % left cancellation
+ y * x != z * x | y = z.           % right cancellation
+
+% The following forms of cancellation are logically equivalent
+% to the preceding, but they sometimes work better in practice.
+
+% x * y != u | x * z != u | y = z.  % left cancellation
+% y * x != u | z * x != u | y = z.  % right cancellation
+
+(x * y) * z = x * (y * z).          % * is a semigroup
+y * x * (x @ y) = x * y.            % CS admits commutator
+end_of_list.
+

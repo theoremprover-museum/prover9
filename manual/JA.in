@@ -1,0 +1,23 @@
+formulas(theory).
+
+% Abundant Semigroups
+
+(x * y) * z = x * (y * z).  % associativity
+
+R(u,v) <-> (x * u = y * u <-> x * v = y * v).
+
+L(u,v) <-> (u * x = u * y <-> v * x = v * y).
+
+all x exists y (y * y = y & R(x,y)).
+
+all x exists y (y * y = y & L(x,y)).
+
+end_of_list.
+
+formulas(goals).
+
+% Regular Semigroups
+
+all x exists y ( (x * y) * x = x).
+
+end_of_list.

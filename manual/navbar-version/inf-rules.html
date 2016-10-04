@@ -1,0 +1,427 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+  <title>Prover9 Manual: Inference Rules</title>
+ <link rel="stylesheet" href="manual.css">
+</head>
+
+<body>
+
+<!-- Site navigation menu -->
+
+<ul class="navbar">
+  <li><a href="index.html">Introduction</a>
+  <li><a href="install.html">Installation</a>
+  <li><a href="running.html">Running Prover9</a>
+  <li><a href="input.html">Input Files</a>
+  <li><a href="syntax.html">Clauses & Formulas</a>
+  <li>Search Prep
+  <ul class="navbar2">
+    <li><a href="auto.html">Auto Modes</a>
+    <li><a href="term-order.html">Term Ordering</a>
+    <li><a href="more-prep.html">More Prep</a>
+    <li><a href="limits.html">Search Limits</a>
+  </ul>
+  <li>Inference
+  <ul class="navbar2">
+    <li><a href="loop.html">The Loop</a>
+    <li><a href="select.html">Select Given</a>
+    <li><a href="inf-rules.html">Inference Rules</a>
+    <li><a href="process-inf.html">Process Inferred</a>
+  </ul>
+  <li><a href="output.html">Output Files</a>
+  <li>More Features
+  <ul class="navbar2">
+    <li><a href="weight.html">Weighting</a>
+    <li><a href="attributes.html">Attributes</a>
+    <li><a href="actions.html">Actions</a>
+    <li><a href="fof-reduction.html">FOF Reduction</a>
+    <li><a href="goals.html">Goals</a>
+    <li><a href="hints.html">Hints</a>
+    <li><a href="semantics.html">Semantics</a>
+  </ul>
+  <li>Related Programs
+  <ul class="navbar2">
+    <li><a href="prooftrans.html">Prooftrans</a>
+    <li><a href="mace4.html">Mace4</a>
+  </ul>
+  <li>Ending
+  <ul class="navbar2">
+    <li><a href="options.html">All Options</a>
+    <li><a href="glossary.html">Glossary</a>
+    <li><a href="manual-index.html">Index</a>
+    <li><a href="references.html">References</a>
+  </ul>
+</ul>
+
+<div class="header">Prover9 Manual Version June-2006</div>
+
+<!-- Main content -->
+
+<h1>Inference Rules</h1>
+
+When a given clause is selected, all of the inference rules
+in effect are applied to it.  For each inference, one of
+the parents is the given clause, and all other parents
+must be in the <tt>usable</tt> list.
+<p>
+Most inference rules distinguish the parents by the roles
+they play in the inference, e.g., positive and nonpositive for
+binary resolution, nucleus and satellite for hyper rules,
+and from and into for paramodulation.  The given clause can
+play any role in the inference.
+<p>
+After an inference rule generates a new clause,
+the clause is <a href="process-inf.html">processed</a>,
+which includes simplification operations such
+as demodulation and <a href="process-inf.html#unit_deletion"><tt><b>unit_deletion</b></tt></a>,
+and retention tests, such as <a href="process-inf.html#max_weight"><tt><b>max_weight</b></tt></a>.
+Processing also includes several operations
+that might be considered inference rules,
+such as <a href="process-inf.html#factor"><tt><b>factor</b></tt></a> and <a href="process-inf.html#new_constants"><tt><b>new_constants</b></tt></a>.
+
+<h2>Binary Resolution Rules and Options</h2>
+
+<!-- start option binary_resolution -->
+<a name="binary_resolution">
+<pre class="my_option">
+set(binary_resolution).
+clear(binary_resolution).    % default clear
+</pre>
+
+<blockquote>
+If this flag is set, <g>positive binary resolution</g> will be
+applied to the given clause.
+<p>
+If the flag <a href="inf-rules.html#ordered_res"><tt><b>ordered_res</b></tt></a> is set, there
+are additional restrictions on both parents:  the literal
+resolved in the positive parent must be <g>maximal</g>,
+and the literal in the nonpositive parent must satisfy
+the <a href="inf-rules.html#literal_selection"><tt><b>literal_selection</b></tt></a> parameter.
+<p>
+If the flags <a href="inf-rules.html#check_res_instances"><tt><b>check_res_instances</b></tt></a> and
+<a href="inf-rules.html#ordered_res"><tt><b>ordered_res</b></tt></a> aren both set, then the ordering
+tests described in the preceding paragraphs are applied
+after the substitution for the inference has been applied
+to the parent clauses.
+</blockquote>
+<!-- end option -->
+
+<!-- start option neg_binary_resolution -->
+<a name="neg_binary_resolution">
+<pre class="my_option">
+set(neg_binary_resolution).
+clear(neg_binary_resolution).    % default clear
+</pre>
+
+<blockquote>
+If this flag is set, <g>negative binary resolution</g> will be
+applied to the given clause.
+<p>
+If the flag <a href="inf-rules.html#ordered_res"><tt><b>ordered_res</b></tt></a> is set, there
+are additional restrictions on both parents:  the literal
+resolved in the negative parent must be <g>maximal</g>,
+and the literal in the nonnegative parent must satisfy
+the <a href="inf-rules.html#literal_selection"><tt><b>literal_selection</b></tt></a> parameter.
+<p>
+If the flags <a href="inf-rules.html#check_res_instances"><tt><b>check_res_instances</b></tt></a> and
+<a href="inf-rules.html#ordered_res"><tt><b>ordered_res</b></tt></a> aren both set, then the ordering
+tests described in the preceding paratgraphs are applied
+after the substitution for the inference has been applied
+to the parent clauses.
+</blockquote>
+<!-- end option -->
+
+<!-- start option literal_selection -->
+<a name="literal_selection">
+<pre class="my_option">
+assign(literal_selection, <i>string</i>).  % default <i>string</i>=maximal, range [maximal, first_maximal, all, first]
+</pre>
+
+<blockquote>
+This parameters applies to the binary resolution inference rules,
+and it determines which literals of the "other" parent are eligible
+for resolution.
+That is, for <a href="inf-rules.html#binary_resolution"><tt><b>binary_resolution</b></tt></a>, it applies to the
+nonpositive parent, and for <a href="inf-rules.html#neg_binary_resolution"><tt><b>neg_binary_resolution</b></tt></a>,
+it applies to the nonnegative parent.  Here are the accepted values.
+<ul>
+<li><tt>maximal</tt>: maximal literals are eligible;
+<li><tt>first_maximal</tt>: the first maximal literal is eligible;
+<li><tt>all</tt>: all literals are eligible;
+<li><tt>first</tt>: the first literal is eligible.
+</ul>
+</blockquote>
+<!-- end option -->
+
+<h2>Hyper and UR Resolution Rules and Options</h2>
+
+<!-- start option hyper_resolution -->
+<a name="hyper_resolution">
+<pre class="my_option">
+set(hyper_resolution).
+clear(hyper_resolution).    % default clear
+</pre>
+
+<blockquote>
+If this flag is set, <g>positive hyperresolution</g> will be applied
+to the given clause.  If the flag <a href="inf-rules.html#ordered_res"><tt><b>ordered_res</b></tt></a> is set, the
+resolved literals in the satellites (positive parents)
+must be </tt>maximal</tt>.
+If the flags <a href="inf-rules.html#ordered_res"><tt><b>ordered_res</b></tt></a> and <a href="inf-rules.html#check_res_instances"><tt><b>check_res_instances</b></tt></a>
+are both set, the maximality check is done after the substitution
+for the inference has been applied to the parents.
+</blockquote>
+<!-- end option -->
+
+<!-- start option neg_hyper_resolution -->
+<a name="neg_hyper_resolution">
+<pre class="my_option">
+set(neg_hyper_resolution).
+clear(neg_hyper_resolution).    % default clear
+</pre>
+
+<blockquote>
+If this flag is set, <g>negative hyperresolution</g> will be applied
+to the given clause.
+If the flag <a href="inf-rules.html#ordered_res"><tt><b>ordered_res</b></tt></a> is set, the
+resolved literals in the satellites (negative parents)
+must be </tt>maximal</tt>.
+If the flags <a href="inf-rules.html#ordered_res"><tt><b>ordered_res</b></tt></a> and <a href="inf-rules.html#check_res_instances"><tt><b>check_res_instances</b></tt></a>
+are both set, the maximality check is done after the substitution
+for the inference has been applied to the parents.
+</blockquote>
+<!-- end option -->
+
+<!-- start option ur_resolution -->
+<a name="ur_resolution">
+<pre class="my_option">
+set(ur_resolution).
+clear(ur_resolution).    % default clear
+</pre>
+
+<blockquote>
+If this flag is set, <g>UR resolution</g> (unit-resulting
+resolution) will be applied to the given clause.  In fact, the
+only effect of this flag is that it automatically sets
+the flags <a href="inf-rules.html#pos_ur_resolution"><tt><b>pos_ur_resolution</b></tt></a> and
+<a href="inf-rules.html#neg_ur_resolution"><tt><b>neg_ur_resolution</b></tt></a>
+</blockquote>
+<!-- end option -->
+
+<!-- start option pos_ur_resolution -->
+<a name="pos_ur_resolution">
+<pre class="my_option">
+set(pos_ur_resolution).
+clear(pos_ur_resolution).    % default clear
+</pre>
+
+<blockquote>
+If this flag is set, positive <g>UR resolution</g> is applied
+to the given clause.  That is, the resulting unit clause is
+a positive clause.  Ordering constraints are <i>not</i> applied
+to UR resolution.
+</blockquote>
+<!-- end option -->
+
+<!-- start option neg_ur_resolution -->
+<a name="neg_ur_resolution">
+<pre class="my_option">
+set(neg_ur_resolution).
+clear(neg_ur_resolution).    % default clear
+</pre>
+
+<blockquote>
+If this flag is set, negative <g>UR resolution</g> is applied
+to the given clause.  That is, the resulting unit clause is
+a negative clause.  Ordering constraints are <i>not</i> applied
+to UR resolution.
+</blockquote>
+<!-- end option -->
+
+<!-- start option initial_nuclei -->
+<a name="initial_nuclei">
+<pre class="my_option">
+set(initial_nuclei).
+clear(initial_nuclei).    % default clear
+</pre>
+
+<blockquote>
+This flag puts a restriction on the <g>nucleus</g> for the
+hyperresolution and UR-resolution inference rules.  It says
+that each nucleus must be an input clauses (more precisely,
+an <g>initial clause</g>).
+</blockquote>
+<!-- end option -->
+
+<!-- start option nucleus_limit -->
+<a name="nucleus_limit">
+<pre class="my_option">
+assign(ur_nucleus_limit, <i>n</i>).  % default <i>n</i>=-1, range [-1 .. INT_MAX]
+</pre>
+
+<blockquote>
+If <i>n</i> != -1, then the <g>nucleus</g> for each UR-resolution
+inference can have at most <i>n</i> literals.
+</blockquote>
+<!-- end option -->
+
+<!-- start option ordered_res -->
+<a name="ordered_res">
+<pre class="my_option">
+set(ordered_res).    % default set
+clear(ordered_res).
+</pre>
+
+<blockquote>
+This option puts restrictions on the binary and hyperresolution
+inference rules (but not on UR-resolution).
+It says that resolved literals in one or
+more of the parents must be <g>maximal</g> in the clause.
+For <a href="inf-rules.html#binary_resolution"><tt><b>binary_resolution</b></tt></a> and
+<a href="inf-rules.html#hyper_resolution"><tt><b>hyper_resolution</b></tt></a>,
+the resolved literals in the positive parents must be maximal,
+and for <a href="inf-rules.html#neg_binary_resolution"><tt><b>neg_binary_resolution</b></tt></a> and
+ <a href="inf-rules.html#neg_hyper_resolution"><tt><b>neg_hyper_resolution</b></tt></a>,
+the resolved literals in the negative parents must be maximal.
+</blockquote>
+<!-- end option -->
+
+<!-- start option check_res_instances -->
+<a name="check_res_instances">
+<pre class="my_option">
+set(check_res_instances).
+clear(check_res_instances).    % default clear
+</pre>
+
+<blockquote>
+This flag applies to the binary and hyperresolution inference rules
+if the flag <tt>ordered_res</tt> is also set.  If 
+<tt>check_res_instances</tt> is set,
+the <tt>ordered_res</tt> test is is applied after the
+substitution for the inference has been applied to the parents.
+</blockquote>
+<!-- end option -->
+
+<h2>Paramodulation Rules and Options</h2>
+
+<!-- start option paramodulation -->
+<a name="paramodulation">
+<pre class="my_option">
+set(paramodulation).
+clear(paramodulation).    % default clear
+</pre>
+
+<blockquote>
+If this flag is set, paramodulation is applied to the given clause.
+If the
+<g>from literal</g>
+is oriented (oriented equalities are always <i>heavy=light</i>),
+the paramodulation is applied left-to-right. If the
+<g>from literal</g>
+cannot be oriented Prover9 attempts
+to paramodulate from both sides of it according to the flag
+<tt>check_para_instances</tt>.
+<p>
+
+If the flag <tt>ordered_para</tt> is also set, the 
+<g>from clause</g> must be positive, and
+equality literal that is used in the <g>from clause</g>
+must be maximal.
+
+If the flag <tt>check_para_instances</tt> is also set, the equality
+
+<p>
+Setting this flag causes the flag <a href="process-inf.html#back_demod"><tt><b>back_demod</b></tt></a> to be
+automatically set.  Back demodulation can be disabled by
+placing <tt>clear(back_demod)</tt> after <tt>set(paramodulation)</tt>
+in the input file.
+</blockquote>
+<!-- end option -->
+
+<!-- start option para_units_only -->
+<a name="para_units_only">
+<pre class="my_option">
+set(para_units_only).
+clear(para_units_only).    % default clear
+</pre>
+
+<blockquote>
+This flag says that both parents for paramodulation must be
+unit clauses.  The only effect of this flag is to assign 1 to
+the parameter <a href="inf-rules.html#para_lit_limit"><tt><b>para_lit_limit</b></tt></a>.
+</blockquote>
+<!-- end option -->
+
+<!-- start option para_lit_limit -->
+<a name="para_lit_limit">
+<pre class="my_option">
+assign(para_lit_limit, <i>n</i>).  % default <i>n</i>=-1, range [-1 .. INT_MAX]
+</pre>
+
+<blockquote>
+If <i>n</i> != -1, each parent in paramodulation can have at most
+<n> literals.
+</blockquote>
+<!-- end option -->
+
+<!-- start option basic_paramodulation -->
+<a name="basic_paramodulation">
+<pre class="my_option">
+set(basic_paramodulation).
+clear(basic_paramodulation).    % default clear
+</pre>
+
+<blockquote>
+This option hasn't been implemented yet.
+</blockquote>
+<!-- end option -->
+
+<!-- start option ordered_para -->
+<a name="ordered_para">
+<pre class="my_option">
+set(ordered_para).    % default set
+clear(ordered_para).
+</pre>
+
+<blockquote>
+This flag places a restrictions on the
+<a href="inf-rules.html#paramodulation"><tt><b>paramodulation</b></tt></a>
+inference rule.  It says that the
+<g>from parent</g>
+must be positive and the
+<g>from literal</g>
+must be maximal.
+</blockquote>
+<!-- end option -->
+
+<!-- start option check_para_instances -->
+<a name="check_para_instances">
+<pre class="my_option">
+set(check_para_instances).
+clear(check_para_instances).    % default clear
+</pre>
+
+<blockquote>
+This flag applies to the
+<a href="inf-rules.html#paramodulation"><tt><b>paramodulation</b></tt></a>
+inference rule when the
+<g>from literal</g>
+cannot be oriented.
+<p>
+If this flag is set and the
+<g>from literal</g>
+cannot be oriented,
+Prover9 applies the substitution for
+the inference to the
+<g>from literal</g> to determine if the instance can
+be oriented.  If so, it will not apply the paramodulation
+backward (light-to-heavy).
+<p>
+If this flag is clear, paramodulation occurs from
+both sides of nonorientedable equality literals.
+</blockquote>
+<!-- end option -->
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+% Find an orthomodular lattice that is not modular.
+
+formulas(assumptions).
+
+% Lattice Axioms
+
+x ^ y = y ^ x.
+(x ^ y) ^ z = x ^ (y ^ z).
+x v y = y v x.
+(x v y) v z = x v (y v z).
+x v (x ^ y) = x.
+x ^ (x v y) = x.
+
+% Idempotence (follows from the lattice axioms)
+
+x ^ x = x.
+x v x = x.
+
+% The following gives us ortholattices.
+
+c(x) ^ x = 0.
+c(x) v x = 1.
+c(c(x)) = x.
+x ^ y = c(c(x) v c(y)).
+
+% Ortholattice lemmas.
+
+1 v x = 1.
+1 ^ x = x.
+
+0 ^ x = 0.
+0 v x = x.
+
+% Make it an orthomodular lattice
+
+x v (c(x) ^ (x v y)) = x v y.  % (OML)
+
+% Denial of Modularity:
+
+A v (B ^ (A v C)) != (A v B) ^ (A v C).
+
+end_of_list.

@@ -1,0 +1,70 @@
+#!/bin/csh
+
+# NAME Mace4 Miscellaneous Examples
+
+if ($#argv != 2) then
+	echo "need 2 args: bin-directory ouput-extension"
+	exit(1)
+endif
+
+set d=$1
+set out=$2
+
+# job steam
+
+$d/mace4 -f steam.in > steam.$out
+
+# job toughnut
+
+$d/mace4 -f toughnut.in > toughnut.$out
+
+# job kauer
+
+$d/mace4 -f kauer.in > kauer.$out
+
+# job group2
+
+$d/mace4 -f group2.in > group2.$out
+
+# job ncg-48
+
+$d/mace4 -f ncg-48.in > ncg-48.$out
+
+# job noncommutative-ring
+
+$d/mace4 -f noncommutative-ring.in > noncommutative-ring.$out
+
+# job qg
+
+$d/mace4 -f qg.in > qg.$out
+
+# job ring19
+
+$d/mace4 -f ring19.in > ring19.$out
+
+# job nonmodular-oml
+
+$d/mace4 -f nonmodular-oml.in > nonmodular-oml.$out
+
+# job rw1
+
+$d/mace4 -f rw1.in > rw1.$out
+
+# job sheffer8
+
+$d/mace4 -f cl_ql.in > cl_ql.$out
+
+# job ec
+
+$d/mace4 -f sheffer8.in > sheffer8.$out
+
+# job cl_ql
+
+$d/mace4 -f ec.in > ec.$out
+
+# job tba
+
+$d/mace4 -f tba.in > tba.$out
+
+
+

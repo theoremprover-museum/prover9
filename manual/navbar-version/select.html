@@ -1,0 +1,199 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+  <title>Prover9 Manual: Selecting the Given Clause</title>
+ <link rel="stylesheet" href="manual.css">
+</head>
+
+<body>
+
+<!-- Site navigation menu -->
+
+<ul class="navbar">
+  <li><a href="index.html">Introduction</a>
+  <li><a href="install.html">Installation</a>
+  <li><a href="running.html">Running Prover9</a>
+  <li><a href="input.html">Input Files</a>
+  <li><a href="syntax.html">Clauses & Formulas</a>
+  <li>Search Prep
+  <ul class="navbar2">
+    <li><a href="auto.html">Auto Modes</a>
+    <li><a href="term-order.html">Term Ordering</a>
+    <li><a href="more-prep.html">More Prep</a>
+    <li><a href="limits.html">Search Limits</a>
+  </ul>
+  <li>Inference
+  <ul class="navbar2">
+    <li><a href="loop.html">The Loop</a>
+    <li><a href="select.html">Select Given</a>
+    <li><a href="inf-rules.html">Inference Rules</a>
+    <li><a href="process-inf.html">Process Inferred</a>
+  </ul>
+  <li><a href="output.html">Output Files</a>
+  <li>More Features
+  <ul class="navbar2">
+    <li><a href="weight.html">Weighting</a>
+    <li><a href="attributes.html">Attributes</a>
+    <li><a href="actions.html">Actions</a>
+    <li><a href="fof-reduction.html">FOF Reduction</a>
+    <li><a href="goals.html">Goals</a>
+    <li><a href="hints.html">Hints</a>
+    <li><a href="semantics.html">Semantics</a>
+  </ul>
+  <li>Related Programs
+  <ul class="navbar2">
+    <li><a href="prooftrans.html">Prooftrans</a>
+    <li><a href="mace4.html">Mace4</a>
+  </ul>
+  <li>Ending
+  <ul class="navbar2">
+    <li><a href="options.html">All Options</a>
+    <li><a href="glossary.html">Glossary</a>
+    <li><a href="manual-index.html">Index</a>
+    <li><a href="references.html">References</a>
+  </ul>
+</ul>
+
+<div class="header">Prover9 Manual Version June-2006</div>
+
+<!-- Main content -->
+
+<h1>Selecting the Given Clause</h1>
+
+At each iteration of the <a href="loop.html">main loop</a>,
+Prover9 selects a <i>given clause</i> from the <tt>sos</tt> list,
+moves it to the <tt>usable</tt> list, and makes inferences
+from it and other clauses in the <tt>usable</tt> list.
+
+<p>
+A basic way to select the given clause is to always select
+the lightest clause in <tt>sos</tt>.
+Otter has the ability to mix two methods of selecting
+the given clause in a ratio determined by a parameter ---
+selecting the lightest clause and selecting the oldest
+clause.  This method adds a breadth-first component
+to the search.  See the <a href="select.html#pick_given_ratio"><tt><b>pick_given_ratio</b></tt></a> parameter
+below.
+
+<p>
+Prover9 uses three components, dividing the "lightest"
+component into two components based on semantics.
+The following options are used.
+
+<!-- start option age_part -->
+<a name="age_part">
+<pre class="my_option">
+assign(age_part, <i>n</i>).    % default <i>n</i>=1, range [0 .. INT_MAX]
+</pre>
+<!-- end option -->
+
+<!-- start option true_part -->
+<a name="true_part">
+<pre class="my_option">
+assign(true_part, <i>n</i>).   % default <i>n</i>=2, range [0 .. INT_MAX]
+</pre>
+<!-- end option -->
+
+<!-- start option false_part -->
+<a name="false_part">
+<pre class="my_option">
+assign(false_part, <i>n</i>).  % default <i>n</i>=2, range [0 .. INT_MAX]
+</pre>
+<!-- end option -->
+
+<blockquote>
+These three parameters work together to specify a 3-way ratio for
+selection of the given clauses:
+<ul>
+<li><a href="select.html#age_part"><tt><b>age_part</b></tt></a> refers to the clause with lowest ID,
+<li><a href="select.html#true_part"><tt><b>true_part</b></tt></a> refers to the lightest <i>true</i> clause, and
+<li><a href="select.html#false_part"><tt><b>false_part</b></tt></a> refers to the lightest <i>false</i> clause.
+</ul>
+The <i>true/false</i> distinction is determined by a set of interpretations.
+The default interpretation is that non-negative clauses are
+true, and negative clauses are false.  To use explicit interpretations,
+see the <a href="semantics.html">section on semantic guidance</a>.
+<p>
+Under the default interpretation, for example, if
+<a href="select.html#age_part"><tt><b>age_part</b></tt></a> = 1,
+<a href="select.html#true_part"><tt><b>true_part</b></tt></a> = 2, and
+<a href="select.html#false_part"><tt><b>false_part</b></tt></a> = 3,
+given clauses will be selected in a cycle of size six: one clause
+by lowest ID, then two clauses because they are the lightest
+non-negative (i.e., true) clauses, then three clauses because they are the
+lightest negative (i.e., false) clauses.  And so on.
+
+<p>
+Anomalies:
+<ul>
+<li>
+If one of <a href="select.html#false_part"><tt><b>false_part</b></tt></a> and <a href="select.html#true_part"><tt><b>true_part</b></tt></a> is 0 and the other is not,
+the false/true distinction disappears,
+and selection for that part is simply by weight.
+<li>
+If it is time to select a <i>false</i> clause, and none is available,
+a <i>true</i> clause is selected instead (and vice versa).
+That is, we don't skip the selection of the
+<i>false</i> clause; we substitute a <i>true</i> one.
+</ul>
+</ul
+</blockquote>
+<!-- end option -->
+
+<h2>Other Options</h2>
+
+<!-- start option pick_given_ratio -->
+<a name="pick_given_ratio">
+<pre class="my_option">
+assign(pick_given_ratio, <i>n</i>).  % default <i>n</i>=0, range [0 .. INT_MAX]
+</pre>
+
+<blockquote>
+If <i>n</i>&gt;0, the given clauses are chosen in the ratio
+one part by age, and <i>n</i> parts by weight.  The false/true
+distinction is ignored.
+This parameter works by making the following changes.
+<pre>
+  assign(pick_given_ratio, <i>n</i>) -> assign(age_part, 1).
+  assign(pick_given_ratio, <i>n</i>) -> assign(true_part, <i>n</i>).
+  assign(pick_given_ratio, <i>n</i>) -> assign(false_part, 0).
+</pre>
+</blockquote>
+<!-- end option -->
+
+<!-- start option breadth_first -->
+<a name="breadth_first">
+<pre class="my_option">
+set(breadth_first).
+clear(breadth_first).    % default clear
+</pre>
+
+<blockquote>
+If this flag is set, the <tt>sos</tt> list operates as a queue, giving a breadth-first
+search.  That is, the oldest clause is always selected as the given clause.
+This flag operates by making the following changes.
+<pre>
+  set(breadth_first) -> assign(age_part, 1).
+  set(breadth_first) -> assign(true_part, 0).
+  set(breadth_first) -> assign(false_part, 0).
+</pre>
+</blockquote>
+<!-- end option -->
+
+<!-- start option input_sos_first -->
+<a name="input_sos_first">
+<pre class="my_option">
+set(input_sos_first).    % default set
+clear(input_sos_first).
+</pre>
+
+<blockquote>
+If this flag is set, the clauses in the initial <tt>sos</tt> list are selected
+as given clauses (in the order in which they occur in the <tt>sos</tt> list)
+before any derived clauses are selected.  This flag is useful if the input
+contains heavy clauses that should enter the search right away.
+</blockquote>
+<!-- end option -->
+
+</body>
+</html>

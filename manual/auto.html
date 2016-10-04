@@ -1,0 +1,268 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+  <title>Prover9 Manual: Automatic Modes</title>
+ <link rel="stylesheet" href="manual.css">
+</head>
+
+<body>
+
+<hr>
+<table width="100%">
+<tr>
+<colgroup>
+<col width="33%">
+<col width="34%">
+<col width="33%">
+</colgroup>
+<td align="left"><i>Prover9 Manual</i>
+<td align="center"><img src="prover9-5a-256t.gif">
+<td align="right"><i>Version 2009-11A</i>
+</table>
+<hr>
+
+<!-- Main content -->
+
+<h1>Automatic Modes</h1>
+
+<blockquote class="otter_diff">
+Prover9's automatic mode is set by default.
+Otter's automatic mode must be explicitly set.
+</blockquote>
+
+<p>
+If you simply give Prover9 a set of clauses and/or formulas,
+Prover9 will look at the clauses and decide which inference
+rules and clause-processing operations to use.
+If you don't like the automatic decisions that Prover9 makes,
+you can clear the flag <a href="auto.html#auto"><tt><b>auto</b></tt></a>
+or any of the secondary auto flags that depend on it.
+Prover9 output files show in detail the effects of changing these flags.
+
+<!-- start option auto -->
+<a name="auto">
+<pre class="my_option">
+set(auto).    % default set
+clear(auto).
+</pre>
+
+<blockquote>
+This is the basic automatic mode of Prover9.
+The only direct effect
+of this flag is that it changes four secondary auto flags as follows.
+<pre>
+  set(auto) -> set(<a href="auto.html#auto_inference"><tt><b>auto_inference</b></tt></a>).
+  set(auto) -> set(<a href="auto.html#auto_process"><tt><b>auto_process</b></tt></a>).
+  set(auto) -> set(<a href="auto.html#auto_setup"><tt><b>auto_setup</b></tt></a>).
+  set(auto) -> set(<a href="auto.html#auto_limits"><tt><b>auto_limits</b></tt></a>).
+  set(auto) -> set(<a href="goals.html#auto_denials"><tt><b>auto_denials</b></tt></a>).
+
+  clear(auto) -> clear(<a href="auto.html#auto_inference"><tt><b>auto_inference</b></tt></a>).
+  clear(auto) -> clear(<a href="auto.html#auto_process"><tt><b>auto_process</b></tt></a>).
+  clear(auto) -> clear(<a href="auto.html#auto_setup"><tt><b>auto_setup</b></tt></a>).
+  clear(auto) -> clear(<a href="auto.html#auto_limits"><tt><b>auto_limits</b></tt></a>).
+  clear(auto) -> clear(<a href="goals.html#auto_denials"><tt><b>auto_denials</b></tt></a>).
+</pre>
+Any of the secondary flags, as well as the entire automatic mode can be cleared
+by the user.
+</blockquote>
+<!-- end option -->
+
+<!-- start option auto_inference -->
+<a name="auto_inference">
+<pre class="my_option">
+set(auto_inference).    % default set
+clear(auto_inference).
+</pre>
+
+<blockquote>
+If this flag is set, the input clauses are checked for several
+syntactic properties such as the presence of equality and
+<a href="glossary.html#horn">non-Horn</a> clauses.
+Based on the results of the checks,
+Prover9 decides which inference rules to use.
+<p>
+Unlike ordinary option dependencies, the options that are changed by
+<a href="auto.html#auto_inference"><tt><b>auto_inference</b></tt></a>
+cannot be undone by placing commands in the input file,
+because they depend on the structure of the clauses.
+</blockquote>
+<!-- end option -->
+
+<!-- start option auto_process -->
+<a name="auto_process">
+<pre class="my_option">
+set(auto_process).    % default set
+clear(auto_process).
+</pre>
+
+<blockquote>
+This flag causes several other flags that affect clause processing
+to be altered based syntactic properties of the initial clauses.
+<p>
+If all clauses are Horn and there are negative nonunits,
+the flag
+<a href="process-inf.html#back_unit_deletion"><tt><b>back_unit_deletion</b></tt></a>
+is automatically set.
+If there are non-Horn clauses, the flags
+<a href="process-inf.html#back_unit_deletion"><tt><b>back_unit_deletion</b></tt></a>
+and
+<a href="process-inf.html#factor"><tt><b>factor</b></tt></a>
+are automatically set.
+<p>
+Unlike ordinary option dependencies, the options that are changed by
+<a href="auto.html#auto_process"><tt><b>auto_process</b></tt></a>
+cannot be undone by placing commands in the input file,
+because they depend on the structure of the clauses.
+</blockquote>
+<!-- end option -->
+
+<!-- start option auto_setup -->
+<a name="auto_setup">
+<pre class="my_option">
+set(auto_setup).    % default set
+clear(auto_setup).
+</pre>
+
+<blockquote>
+The only effect of changing this flag is that two parameters
+are changed in the following ways.
+<pre>
+  set(auto_setup) -> set(<a href="more-prep.html#predicate_elim"><tt><b>predicate_elim</b></tt></a>).
+  set(auto_setup) -> assign(<a href="term-order.html#eq_defs"><tt><b>eq_defs</b></tt></a>, unfold).
+
+  clear(auto_setup) -> clear(<a href="more-prep.html#predicate_elim"><tt><b>predicate_elim</b></tt></a>).
+  clear(auto_setup) -> assign(<a href="term-order.html#eq_defs"><tt><b>eq_defs</b></tt></a>, pass).
+</pre>
+</blockquote>
+<!-- end option -->
+
+<!-- start option auto_limits -->
+<a name="auto_limits">
+<pre class="my_option">
+set(auto_limits).    % default set
+clear(auto_limits).
+</pre>
+
+<blockquote>
+The only effect of changing this flag is that two parameters
+are changed in the following ways.
+<pre>
+  set(auto_limits) -> assign(<a href="process-inf.html#max_weight"><tt><b>max_weight</b></tt></a>, 100).
+  set(auto_limits) -> assign(<a href="limits.html#sos_limit"><tt><b>sos_limit</b></tt></a>, 10000).
+
+  clear(auto_limits) -> assign(<a href="process-inf.html#max_weight"><tt><b>max_weight</b></tt></a>, <tt>INT_MAX</tt>).
+  clear(auto_limits) -> assign(<a href="limits.html#sos_limit"><tt><b>sos_limit</b></tt></a>, -1).
+</pre>
+</blockquote>
+<!-- end option -->
+
+<h2>An Experimental Automatic Mode</h2>
+
+<!-- start option auto2 -->
+<a name="auto2">
+<pre class="my_option">
+set(auto2).
+clear(auto2).    % default clear
+</pre>
+
+<blockquote>
+This is an enhanced automatic mode, developed in preparation for CASC-2005.
+The only direct effect of changing this option is that it causes several
+other options to be changed.  See an output file to see the effects
+of setting this flag.
+</blockquote>
+<!-- end option -->
+
+<h2>Automatically Adjusting the <a href="limits.html#sos_limit"><tt><b>sos_limit</b></tt></a> Parameter</h2>
+
+<!-- start option lrs_ticks -->
+<a name="lrs_ticks">
+<pre class="my_option">
+assign(lrs_ticks, <i>n</i>).  % default <i>n</i>=-1, range [-1 .. <tt>INT_MAX</tt>]
+</pre>
+<!-- end option -->
+<!-- start option lrs_interval -->
+<a name="lrs_interval">
+<pre class="my_option">
+assign(lrs_interval, <i>n</i>).  % default <i>n</i>=50, range [1 .. <tt>INT_MAX</tt>]
+</pre>
+<!-- end option -->
+<!-- start option min_sos_limit -->
+<a name="min_sos_limit">
+<pre class="my_option">
+assign(min_sos_limit, <i>n</i>).  % default <i>n</i>=0, range [0 .. <tt>INT_MAX</tt>]
+</pre>
+
+<blockquote>
+These three parameters work together and are used to automatically
+adjust the parameter
+<a href="limits.html#sos_limit"><tt><b>sos_limit</b></tt></a>
+by means of a "limited resource strategy"
+[<a href="references.html#RV-lrs">RV-lrs</a>].
+If <a href="auto.html#lrs_ticks"><tt><b>lrs_ticks</b></tt></a> &ge; 0, the method is applied.
+<p>
+This is an experimental feature and is not recommended for general use.
+</blockquote>
+<!-- end option -->
+
+<h2>Raw Mode</h2>
+
+The default values of the options can interfere with specialized
+search strategies.  To avoid some of those problems, one can
+start from scratch by setting the following option.
+
+<!-- start option auto2 -->
+<a name="auto2">
+<pre class="my_option">
+set(raw).
+clear(raw).    % default clear
+</pre>
+
+<blockquote>
+This is a sort of anti-automatic mode, which allows the user
+to completely specify the search strategy, with less chance
+of interference from the default settings of various
+options.  For example, to generate all binary
+resolvents, one can simply set the flags
+<tt>raw</tt>
+and
+<a href="inf-rules.html#binary_resolution"><tt><b>binary_resolution</b></tt></a>
+instead of finding and clearing the flags that restrict resolution.
+<p>
+The flag works by making the following changes.
+<pre>
+   set(raw) -> clear(auto).
+   clear(auto) -> clear(auto_inference).
+   clear(auto) -> clear(auto_setup).
+   clear(auto_setup) -> clear(predicate_elim).
+   clear(auto_setup) -> assign(eq_defs, pass).
+   clear(auto) -> clear(auto_limits).
+   clear(auto_limits) -> assign(max_weight, 2147483647).
+   clear(auto_limits) -> assign(sos_limit, -1).
+   clear(auto) -> clear(auto_denials).
+   clear(auto) -> clear(auto_process).
+   set(raw) -> clear(ordered_res).
+   set(raw) -> clear(ordered_para).
+   set(raw) -> assign(literal_selection, none).
+   set(raw) -> clear(back_demod).
+   set(raw) -> clear(cac_redundancy).
+   set(raw) -> assign(backsub_check, 2147483647).
+   set(raw) -> set(lightest_first).
+   set(lightest_first) -> assign(weight_part, 1).
+   set(lightest_first) -> assign(age_part, 0).
+   set(lightest_first) -> assign(false_part, 0).
+   set(lightest_first) -> assign(true_part, 0).
+   set(lightest_first) -> assign(random_part, 0).
+</pre>
+
+
+</blockquote>
+<!-- end option -->
+
+<hr>
+Next Section:
+<a href="term-order.html">Term Ordering</a>
+
+</body>
+</html>

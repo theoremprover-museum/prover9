@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+  <title>Prover9 Manual: Actions</title>
+ <link rel="stylesheet" href="manual.css">
+</head>
+
+<body>
+
+<!-- Site navigation menu -->
+
+<ul class="navbar">
+  <li><a href="index.html">Introduction</a>
+  <li><a href="install.html">Installation</a>
+  <li><a href="running.html">Running Prover9</a>
+  <li><a href="input.html">Input Files</a>
+  <li><a href="syntax.html">Clauses & Formulas</a>
+  <li>Search Prep
+  <ul class="navbar2">
+    <li><a href="auto.html">Auto Modes</a>
+    <li><a href="term-order.html">Term Ordering</a>
+    <li><a href="more-prep.html">More Prep</a>
+    <li><a href="limits.html">Search Limits</a>
+  </ul>
+  <li>Inference
+  <ul class="navbar2">
+    <li><a href="loop.html">The Loop</a>
+    <li><a href="select.html">Select Given</a>
+    <li><a href="inf-rules.html">Inference Rules</a>
+    <li><a href="process-inf.html">Process Inferred</a>
+  </ul>
+  <li><a href="output.html">Output Files</a>
+  <li>More Features
+  <ul class="navbar2">
+    <li><a href="weight.html">Weighting</a>
+    <li><a href="attributes.html">Attributes</a>
+    <li><a href="actions.html">Actions</a>
+    <li><a href="fof-reduction.html">FOF Reduction</a>
+    <li><a href="goals.html">Goals</a>
+    <li><a href="hints.html">Hints</a>
+    <li><a href="semantics.html">Semantics</a>
+  </ul>
+  <li>Related Programs
+  <ul class="navbar2">
+    <li><a href="prooftrans.html">Prooftrans</a>
+    <li><a href="mace4.html">Mace4</a>
+  </ul>
+  <li>Ending
+  <ul class="navbar2">
+    <li><a href="options.html">All Options</a>
+    <li><a href="glossary.html">Glossary</a>
+    <li><a href="manual-index.html">Index</a>
+    <li><a href="references.html">References</a>
+  </ul>
+</ul>
+
+<div class="header">Prover9 Manual Version June-2006</div>
+
+<!-- Main content -->
+
+<h1>Actions</h1>
+
+Prover9's actions allow the user to change the search
+strategy during the search.  For example, after a certain number
+of given clauses have been used, the <a href="process-inf.html#max_weight"><tt><b>max_weight</b></tt></a>
+can be changed.
+<p>
+Actions can be triggered in two ways:
+<ul>
+<li>by statistics, for example, after 100 clauses have been retained, and
+<li>when a clause containing an action attribute is used, for example,
+when it is used in a proof.
+</ul>
+
+<h2>Accepted Actions</h2>
+<p>
+The currently accepted actions are <tt>exit</tt> (which
+terminates the search) and a subset of the ordinary flags and parameters.
+<p>
+<i>Author: list the subset here!</i>
+
+<h2>Actions Triggered by Statistics</h2>
+
+<i>Statistic actions</i> are given as a list of rules <i>trigger -> action</i>
+in the input file.
+Here are the currently recognized triggers for statistic actions.
+<ul>
+<li>given: the number of given clauses that have been processed.
+<li>generated: the number of clauses that have been inferred.
+<li>kept: the number of clauses that have been inferred and retained.
+<li>level: the search level (this applies to breadth-first searches).
+</ul>
+The list must start with <tt>terms(actions).</tt>
+and end with <tt>end_of_list</tt>.
+<p>
+Here is an example list of statistic action rules.
+
+<pre class="my_file">
+terms(actions).
+
+  given=10        -> set(print_kept).
+  kept=1000       -> assign(max_weight, 30).
+  generated=5000  -> assign(pick_given_ratio, 4).
+  level=3         -> exit.
+
+end_of_list.
+</pre>
+
+<h2>Actions Triggered by Clauses</h2>
+
+<i>Clause actions</i> occur as attributes on clauses, for example,
+
+<pre class="my_file">
+A * B != B * A  # action(in_proof -> assign(max_weight, 30)).
+</pre>
+
+In this example (which only makes sense if <a href="limits.html#max_proofs"><tt><b>max_proofs</b></tt></a> &gt; 1),
+if the clause occurs in a proof, the action is applied.
+<p>
+The only trigger currently recognized for clause actions is <tt>in_proof</tt>.
+Others will likely be added.
+
+</body>
+</html>

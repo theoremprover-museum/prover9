@@ -1,0 +1,17 @@
+#
+if ($#argv == 0) then
+    set files="references"
+else
+    set files=$argv
+endif
+
+foreach i ($files)
+    latex $i
+    bibtex $i
+    if (-e $i-ready.tex) /bin/mv $i-ready.tex $i-ready.tex~
+    sed -f sed.cite $i.bbl > $i-ready.tex
+    /bin/rm $i.aux $i.blg $i.bbl $i.log $i.dvi
+end
+
+
+

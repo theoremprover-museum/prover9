@@ -1,0 +1,42 @@
+% This is a problem, from Norm Megill, on weak orthomodular lattices.
+
+formulas(assumptions).
+
+% Lattice Axioms
+
+x ^ y = y ^ x.
+(x ^ y) ^ z = x ^ (y ^ z).
+x v y = y v x.
+(x v y) v z = x v (y v z).
+x v (x ^ y) = x.
+x ^ (x v y) = x.
+
+% Idempotence (follows from the lattice axioms)
+
+x ^ x = x.
+x v x = x.
+
+% The following gives us ortholattices.
+
+c(x) ^ x = 0.
+c(x) v x = 1.
+c(c(x)) = x.
+x ^ y = c(c(x) v c(y)).
+
+% Ortholattice lemmas.
+
+1 v x = 1.
+1 ^ x = x.
+
+0 ^ x = 0.
+0 v x = x.
+
+% Weak orthomodular law (*1 of mail 68).
+
+(c(x) ^ (x v y)) v (c(y) v (x ^ y)) = 1.
+
+% Denial of equation in question (*3 of mail 68).
+
+A ^ (B v (A ^ (c(A) v (A ^ B)))) != A ^ (c(A) v (A ^ B)).
+
+end_of_list.

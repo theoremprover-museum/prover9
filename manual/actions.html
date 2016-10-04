@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+  <title>Prover9 Manual: Actions</title>
+ <link rel="stylesheet" href="manual.css">
+</head>
+
+<body>
+
+
+<hr>
+<table width="100%">
+<tr>
+<colgroup>
+<col width="33%">
+<col width="34%">
+<col width="33%">
+</colgroup>
+<td align="left"><i>Prover9 Manual</i>
+<td align="center"><img src="prover9-5a-256t.gif">
+<td align="right"><i>Version 2009-11A</i>
+</table>
+<hr>
+
+<!-- Main content -->
+
+<h1>Actions</h1>
+
+Prover9's actions allow the user to change the search
+strategy during the search.  For example, after a certain number
+of given clauses have been used, the <a href="process-inf.html#max_weight"><tt><b>max_weight</b></tt></a>
+can be changed.
+<p>
+Actions can be triggered in two ways:
+<ul>
+<li>by some counter, for example, after 100 clauses have been retained, and
+<li>when a clause containing an action attribute is used, for example,
+when it is used in a proof.
+</ul>
+
+<h2>Accepted Actions</h2>
+<p>
+The currently accepted actions are <tt>exit</tt> (which
+terminates the search) and a subset of the ordinary flags and parameters.
+<ul>
+<li>Changable flags:
+<a href="goals.html#reuse_denials"><tt><b>reuse_denials</b></tt></a>,
+<a href="output.html#print_gen"><tt><b>print_gen</b></tt></a>,
+<a href="output.html#print_kept"><tt><b>print_kept</b></tt></a>,
+<a href="output.html#print_given"><tt><b>print_given</b></tt></a>,
+<a href="select.html#breadth_first"><tt><b>breadth_first</b></tt></a>.
+<a href="select.html#lightest_first"><tt><b>lightest_first</b></tt></a>.
+<a href="select.html#breadth_first_hints"><tt><b>breadth_first_hints</b></tt></a>.
+<li>Changable parameters:
+<a href="process-inf.html#demod_step_limit"><tt><b>demod_step_limit</b></tt></a>,
+<a href="process-inf.html#demod_increase_limit"><tt><b>demod_increase_limit</b></tt></a>,
+<a href="process-inf.html#new_constants"><tt><b>new_constants</b></tt></a>,
+<a href="inf-rules.html#para_lit_limit"><tt><b>para_lit_limit</b></tt></a>,
+<a href="output.html#stats"><tt><b>stats</b></tt></a>,
+<a href="limits.html#max_given"><tt><b>max_given</b></tt></a>,
+<a href="process-inf.html#max_weight"><tt><b>max_weight</b></tt></a>,
+<a href="process-inf.html#max_depth"><tt><b>max_depth</b></tt></a>,
+<a href="process-inf.html#max_vars"><tt><b>max_vars</b></tt></a>,
+<a href="goals.html#max_proofs"><tt><b>max_proofs</b></tt></a>,
+<a href="process-inf.html#max_literals"><tt><b>max_literals</b></tt></a>,
+<a href="weight.html#constant_weight"><tt><b>constant_weight</b></tt></a>,
+<a href="weight.html#variable_weight"><tt><b>variable_weight</b></tt></a>,
+<a href="weight.html#not_weight"><tt><b>not_weight</b></tt></a>,
+<a href="weight.html#or_weight"><tt><b>or_weight</b></tt></a>,
+<a href="weight.html#prop_atom_weight"><tt><b>prop_atom_weight</b></tt></a>,
+<a href="weight.html#nest_penalty"><tt><b>nest_penalty</b></tt></a>,
+<a href="weight.html#depth_penalty"><tt><b>depth_penalty</b></tt></a>,
+<a href="weight.html#default_weight"><tt><b>default_weight</b></tt></a>,
+<a href="select.html#pick_given_ratio"><tt><b>pick_given_ratio</b></tt></a>,
+<a href="select.html#age_part"><tt><b>age_part</b></tt></a>,
+<a href="select.html#weight_part"><tt><b>weight_part</b></tt></a>,
+<a href="select.html#hints_part"><tt><b>hints_part</b></tt></a>,
+<a href="select.html#false_part"><tt><b>false_part</b></tt></a>,
+<a href="select.html#true_part"><tt><b>true_part</b></tt></a>.
+</ul>
+
+<h2>Actions Triggered by Counters</h2>
+
+<i>Counter actions</i> are given as a list of rules <i>trigger -> action</i>
+in the input file.
+Here are the currently recognized triggers for counter actions.
+<ul>
+<li>given: the number of given clauses that have been processed.
+<li>generated: the number of clauses that have been inferred.
+<li>kept: the number of clauses that have been inferred and retained.
+<li>level: the search level (this applies to breadth-first searches).
+</ul>
+The list must start with <tt>list(actions).</tt>
+and end with <tt>end_of_list</tt>.
+<p>
+Here is an example list of counter actions.
+
+<pre class="my_file">
+list(actions).
+
+  given=10        -> set(print_kept).
+  kept=1000       -> assign(max_weight, 30).
+  generated=5000  -> assign(pick_given_ratio, 4).
+  level=3         -> exit.
+
+end_of_list.
+</pre>
+
+<h2>Actions Triggered by Clauses</h2>
+
+<i>Clause actions</i> occur as attributes on clauses, for example,
+
+<pre class="my_file">
+A * B != B * A  # action(in_proof -> assign(max_weight, 30)).
+</pre>
+
+In this example (which only makes sense if <a href="limits.html#max_proofs"><tt><b>max_proofs</b></tt></a> &gt; 1),
+if the clause occurs in a proof, the action is applied.
+<p>
+The only trigger currently recognized for clause actions is <tt>in_proof</tt>.
+Others will likely be added.
+
+<hr>
+Next Section:
+<a href="goals.html">Goals and Denials</a>
+
+</body>
+</html>

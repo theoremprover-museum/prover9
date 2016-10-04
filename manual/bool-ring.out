@@ -1,0 +1,2 @@
+a3 + b3 + a2 * b2 + a2 * a0 * b0 * a1 + a2 * a0 * b0 * b1 + a2 * a0 * a1 * cin + a2 * a0 * b1 * cin + a2 * b0 * a1 * cin + a2 * b0 * b1 * cin + a2 * a1 * b1 + b2 * a0 * b0 * a1 + b2 * a0 * b0 * b1 + b2 * a0 * a1 * cin + b2 * a0 * b1 * cin + b2 * b0 * a1 * cin + b2 * b0 * b1 * cin + b2 * a1 * b1.
+% rewriter bool-ring.demods: rewrote 1 terms with 5682 rewrite steps in 0.62 seconds.

@@ -1,0 +1,1339 @@
+============================== Prover9 ===============================
+Prover9 (32) version 2009-11A, November 2009.
+Process 4529 was started by mccune on cleo,
+Tue Nov  3 09:39:04 2009
+The command was "/home/mccune/LADR/bin/prover9 -f xcb-reflex.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file xcb-reflex.in
+
+assign(max_seconds,30).
+set(breadth_first).
+    % set(breadth_first) -> assign(age_part, 1).
+    % set(breadth_first) -> assign(weight_part, 0).
+    % set(breadth_first) -> assign(false_part, 0).
+    % set(breadth_first) -> assign(true_part, 0).
+    % set(breadth_first) -> assign(random_part, 0).
+assign(max_weight,48).
+
+formulas(usable).
+-P(e(x,y)) | -P(x) | P(y) # label(condensed_detachment).
+end_of_list.
+
+formulas(sos).
+P(e(x,e(e(e(x,y),e(z,y)),z))) # label(XCB).
+end_of_list.
+
+formulas(goals).
+P(e(x,x)) # answer(Reflex).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 P(e(x,x)) # answer(Reflex) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+-P(e(x,y)) | -P(x) | P(y) # label(condensed_detachment).  [assumption].
+end_of_list.
+
+formulas(sos).
+P(e(x,e(e(e(x,y),e(z,y)),z))) # label(XCB).  [assumption].
+-P(e(c1,c1)) # answer(Reflex).  [deny(1)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+Auto_denials:  (no changes).
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ P ]).
+Function symbol precedence:  function_order([ c1, e ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(hyper_resolution).  % (HNE depth_diff=1)
+    % set(hyper_resolution) -> set(pos_hyper_resolution).
+
+Auto_process settings:  (no changes).
+
+kept:      3 P(e(x,e(e(e(x,y),e(z,y)),z))) # label(XCB).  [assumption].
+kept:      4 -P(e(c1,c1)) # answer(Reflex).  [deny(1)].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+2 -P(e(x,y)) | -P(x) | P(y) # label(condensed_detachment).  [assumption].
+end_of_list.
+
+formulas(sos).
+3 P(e(x,e(e(e(x,y),e(z,y)),z))) # label(XCB).  [assumption].
+4 -P(e(c1,c1)) # answer(Reflex).  [deny(1)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.01 seconds.
+
+given #1 (I,wt=12): 3 P(e(x,e(e(e(x,y),e(z,y)),z))) # label(XCB).  [assumption].
+
+given #2 (I,wt=4): 4 -P(e(c1,c1)) # answer(Reflex).  [deny(1)].
+
+NOTE: Starting on level 1, last clause of level 0 is 5.
+
+given #3 (A,wt=20): 5 P(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w)).  [hyper(2,a,3,a,b,3,a)].
+
+NOTE: Starting on level 2, last clause of level 1 is 7.
+
+given #4 (A,wt=28): 6 P(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),v5),e(v6,v5)),v6)).  [hyper(2,a,3,a,b,5,a)].
+
+given #5 (A,wt=20): 7 P(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w))).  [hyper(2,a,5,a,b,3,a)].
+
+NOTE: Starting on level 3, last clause of level 2 is 14.
+
+given #6 (A,wt=36): 8 P(e(e(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),v5),e(v6,v5)),v6),v7),e(v8,v7)),v8)).  [hyper(2,a,3,a,b,6,a)].
+
+given #7 (A,wt=28): 9 P(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),v5),v6),e(v5,v6))).  [hyper(2,a,6,a,b,3,a)].
+
+given #8 (A,wt=24): 10 P(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),x))).  [hyper(2,a,7,a,b,7,a)].
+
+given #9 (A,wt=28): 11 P(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),v5),e(v6,v5)),v6)).  [hyper(2,a,3,a,b,7,a)].
+
+given #10 (A,wt=32): 12 P(e(e(x,e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),v6),e(v7,v6)),v7)),x)).  [hyper(2,a,7,a,b,6,a)].
+
+given #11 (A,wt=24): 13 P(e(e(x,e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5)),x)).  [hyper(2,a,7,a,b,5,a)].
+
+given #12 (A,wt=24): 14 P(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),x),w),e(v5,w)),v5))).  [hyper(2,a,7,a,b,3,a)].
+
+NOTE: Starting on level 4, last clause of level 3 is 65.
+
+given #13 (A,wt=40): 15 P(e(e(x,e(e(e(e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),v6),e(v7,v6)),v7),v8),e(v9,v8)),v9)),x)).  [hyper(2,a,7,a,b,8,a)].
+
+given #14 (A,wt=44): 16 P(e(e(e(e(e(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),v5),e(v6,v5)),v6),v7),e(v8,v7)),v8),v9),e(v10,v9)),v10)).  [hyper(2,a,3,a,b,8,a)].
+
+given #15 (A,wt=36): 17 P(e(e(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),v5),e(v6,v5)),v6),v7),v8),e(v7,v8))).  [hyper(2,a,8,a,b,3,a)].
+
+given #16 (A,wt=32): 18 P(e(x,e(e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),v6),e(v7,v6)),v7),x))).  [hyper(2,a,7,a,b,9,a)].
+
+given #17 (A,wt=36): 19 P(e(e(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),v5),v6),e(v5,v6)),v7),e(v8,v7)),v8)).  [hyper(2,a,3,a,b,9,a)].
+
+given #18 (A,wt=24): 20 P(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),v5),e(w,v5)),x))).  [hyper(2,a,9,a,b,7,a)].
+
+given #19 (A,wt=24): 21 P(e(e(x,e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),v5),e(w,v5))),x)).  [hyper(2,a,9,a,b,5,a)].
+
+given #20 (A,wt=32): 22 P(e(x,e(e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),x),v6),e(v7,v6)),v7))).  [hyper(2,a,9,a,b,3,a)].
+
+given #21 (A,wt=44): 23 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),e(v5,e(e(e(e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),v9),e(v10,v9)),v10),v5)))).  [hyper(2,a,10,a,b,10,a)].
+
+given #22 (A,wt=44): 24 P(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),e(e(e(e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),v9),e(v10,v9)),v10),x)))).  [hyper(2,a,9,a,b,10,a)].
+
+given #23 (A,wt=36): 25 P(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),x)))).  [hyper(2,a,7,a,b,10,a)].
+
+given #24 (A,wt=32): 26 P(e(e(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),x)),v6),e(v7,v6)),v7)).  [hyper(2,a,3,a,b,10,a)].
+
+given #25 (A,wt=48): 27 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),e(e(e(e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),e(v9,v8)),v9),v10),v11),e(v10,v11)))).  [hyper(2,a,10,a,b,9,a)].
+
+given #26 (A,wt=40): 28 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),v9),e(v8,v9)))).  [hyper(2,a,10,a,b,7,a)].
+
+given #27 (A,wt=48): 29 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),e(e(e(e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),e(v9,v8)),v9),v10),e(v11,v10)),v11))).  [hyper(2,a,10,a,b,6,a)].
+
+given #28 (A,wt=40): 30 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),e(v9,v8)),v9))).  [hyper(2,a,10,a,b,5,a)].
+
+given #29 (A,wt=32): 31 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),e(v5,e(e(e(v5,v6),e(v7,v6)),v7)))).  [hyper(2,a,10,a,b,3,a)].
+
+given #30 (A,wt=48): 32 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),e(e(e(e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),v9),e(v8,v9)),v10),e(v11,v10)),v11))).  [hyper(2,a,10,a,b,11,a)].
+
+given #31 (A,wt=32): 33 P(e(e(x,e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),v5),e(w,v5)),v6),e(v7,v6)),v7)),x)).  [hyper(2,a,7,a,b,11,a)].
+
+given #32 (A,wt=36): 34 P(e(e(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),v5),e(v6,v5)),v6),v7),e(v8,v7)),v8)).  [hyper(2,a,3,a,b,11,a)].
+
+given #33 (A,wt=28): 35 P(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),v5),v6),e(v5,v6))).  [hyper(2,a,11,a,b,3,a)].
+
+given #34 (A,wt=40): 36 P(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6),e(v7,v6)),v7),v8),e(v9,v8))),v9)).  [hyper(2,a,11,a,b,12,a)].
+
+given #35 (A,wt=48): 37 P(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),v5),e(v6,v5)),v6),e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),e(v11,v10)),v11))).  [hyper(2,a,9,a,b,12,a)].
+
+given #36 (A,wt=40): 38 P(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),v5),e(v6,v5)),v6),e(v7,e(e(e(v7,v8),e(v9,v8)),v9)))).  [hyper(2,a,7,a,b,12,a)].
+
+given #37 (A,wt=44): 39 P(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(e(e(e(e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7),e(v8,v7)),v8),v9),e(v10,v9)),v10),u))).  [hyper(2,a,6,a,b,12,a)].
+
+given #38 (A,wt=40): 40 P(e(e(e(e(e(x,e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),v6),e(v7,v6)),v7)),x),v8),e(v9,v8)),v9)).  [hyper(2,a,3,a,b,12,a)].
+
+given #39 (A,wt=48): 41 P(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),e(e(e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),e(v9,v8)),v9),v10),e(v11,v10))),v11)).  [hyper(2,a,12,a,b,9,a)].
+
+given #40 (A,wt=32): 42 P(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6),e(v7,v6))),v7)).  [hyper(2,a,11,a,b,13,a)].
+
+given #41 (A,wt=44): 43 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),e(e(v5,e(e(e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),v9),e(v10,v9)),v10)),v5))).  [hyper(2,a,10,a,b,13,a)].
+
+given #42 (A,wt=44): 44 P(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),v5),e(e(e(e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),v9),e(v10,v9)),v10),v5))).  [hyper(2,a,8,a,b,13,a)].
+
+given #43 (A,wt=36): 45 P(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7),e(v8,v7)),v8),u))).  [hyper(2,a,6,a,b,13,a)].
+
+given #44 (A,wt=32): 46 P(e(e(e(e(e(x,e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5)),x),v6),e(v7,v6)),v7)).  [hyper(2,a,3,a,b,13,a)].
+
+given #45 (A,wt=44): 47 P(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),v5),e(e(e(e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),v9),e(v10,v9)),v10),v5))).  [hyper(2,a,13,a,b,11,a)].
+
+given #46 (A,wt=40): 48 P(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),e(v9,v8))),v9)).  [hyper(2,a,13,a,b,9,a)].
+
+given #47 (A,wt=44): 49 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(u,e(e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),u),v7),e(v8,v7)),v8))),v9),e(v10,v9)),v10)).  [hyper(2,a,14,a,b,14,a)].
+
+given #48 (A,wt=40): 50 P(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6),v7),e(v6,v7)),v8)),v9),e(v8,v9))).  [hyper(2,a,11,a,b,14,a)].
+
+given #49 (A,wt=44): 51 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),e(v5,e(e(e(e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),v5),v9),e(v10,v9)),v10)))).  [hyper(2,a,10,a,b,14,a)].
+
+given #50 (A,wt=44): 52 P(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),e(e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7),e(v8,v7)),v8),x)),v9),e(v10,v9)),v10))).  [hyper(2,a,9,a,b,14,a)].
+
+given #51 (A,wt=48): 53 P(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(e(e(e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6),e(v7,v6)),v7),v8),e(v9,v8)),v9),v10)),v11),e(v10,v11))).  [hyper(2,a,8,a,b,14,a)].
+
+given #52 (A,wt=36): 54 P(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),x)),v7),e(v8,v7)),v8))).  [hyper(2,a,7,a,b,14,a)].
+
+given #53 (A,wt=40): 55 P(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6),e(v7,v6)),v7),v8)),v9),e(v8,v9))).  [hyper(2,a,6,a,b,14,a)].
+
+given #54 (A,wt=32): 56 P(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6)),v7),e(v6,v7))).  [hyper(2,a,5,a,b,14,a)].
+
+given #55 (A,wt=32): 57 P(e(e(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),x),w),e(v5,w)),v5)),v6),e(v7,v6)),v7)).  [hyper(2,a,3,a,b,14,a)].
+
+given #56 (A,wt=44): 58 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(u,e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7),e(v8,v7)),v8)),u)),v9),e(v10,v9)),v10)).  [hyper(2,a,14,a,b,13,a)].
+
+given #57 (A,wt=48): 59 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(e(e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6),v7),e(v6,v7)),v8),e(v9,v8)),v9)),v10),e(v11,v10)),v11)).  [hyper(2,a,14,a,b,11,a)].
+
+given #58 (A,wt=44): 60 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(u,e(e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7),e(v8,v7)),v8),u))),v9),e(v10,v9)),v10)).  [hyper(2,a,14,a,b,10,a)].
+
+given #59 (A,wt=48): 61 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(e(e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6),e(v7,v6)),v7),v8),v9),e(v8,v9))),v10),e(v11,v10)),v11)).  [hyper(2,a,14,a,b,9,a)].
+
+given #60 (A,wt=40): 62 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6),v7),e(v6,v7))),v8),e(v9,v8)),v9)).  [hyper(2,a,14,a,b,7,a)].
+
+given #61 (A,wt=48): 63 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(e(e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6),e(v7,v6)),v7),v8),e(v9,v8)),v9)),v10),e(v11,v10)),v11)).  [hyper(2,a,14,a,b,6,a)].
+
+given #62 (A,wt=40): 64 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6),e(v7,v6)),v7)),v8),e(v9,v8)),v9)).  [hyper(2,a,14,a,b,5,a)].
+
+given #63 (A,wt=32): 65 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(u,e(e(e(u,w),e(v5,w)),v5))),v6),e(v7,v6)),v7)).  [hyper(2,a,14,a,b,3,a)].
+
+NOTE: Starting on level 5, last clause of level 4 is 297.
+
+given #64 (A,wt=48): 66 P(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(e(e(e(e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6),e(v7,v6)),v7),v8),e(v9,v8)),v9),v10),e(v11,v10))),v11)).  [hyper(2,a,11,a,b,15,a)].
+
+given #65 (A,wt=48): 67 P(e(e(e(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),v5),e(v6,v5)),v6),v7),e(v8,v7)),v8),e(v9,e(e(e(v9,v10),e(v11,v10)),v11)))).  [hyper(2,a,7,a,b,15,a)].
+
+given #66 (A,wt=48): 68 P(e(e(e(e(e(x,e(e(e(e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),v6),e(v7,v6)),v7),v8),e(v9,v8)),v9)),x),v10),e(v11,v10)),v11)).  [hyper(2,a,3,a,b,15,a)].
+
+given #67 (A,wt=48): 69 P(e(e(x,e(e(e(e(e(e(e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),v6),e(v7,v6)),v7),v8),e(v9,v8)),v9),v10),e(v11,v10)),v11)),x)).  [hyper(2,a,7,a,b,16,a)].
+
+given #68 (A,wt=44): 70 P(e(e(e(e(e(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),v5),e(v6,v5)),v6),v7),e(v8,v7)),v8),v9),v10),e(v9,v10))).  [hyper(2,a,16,a,b,3,a)].
+
+given #69 (A,wt=48): 71 P(e(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),v5),e(v6,v5)),v6),e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),e(v11,v10))),v11)).  [hyper(2,a,13,a,b,17,a)].
+
+given #70 (A,wt=40): 72 P(e(x,e(e(e(e(e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),v6),e(v7,v6)),v7),v8),e(v9,v8)),v9),x))).  [hyper(2,a,7,a,b,17,a)].
+
+given #71 (A,wt=44): 73 P(e(e(e(e(e(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),v5),e(v6,v5)),v6),v7),v8),e(v7,v8)),v9),e(v10,v9)),v10)).  [hyper(2,a,3,a,b,17,a)].
+
+given #72 (A,wt=32): 74 P(e(x,e(e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),v6),v7),e(v6,v7)),x))).  [hyper(2,a,17,a,b,7,a)].
+
+given #73 (A,wt=32): 75 P(e(e(x,e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),v6),v7),e(v6,v7))),x)).  [hyper(2,a,17,a,b,5,a)].
+
+given #74 (A,wt=40): 76 P(e(x,e(e(e(e(e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),v6),e(v7,v6)),v7),x),v8),e(v9,v8)),v9))).  [hyper(2,a,17,a,b,3,a)].
+
+given #75 (A,wt=44): 77 P(e(x,e(e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),v6),e(v7,v6)),v7),e(e(v8,e(e(e(v8,v9),e(v10,v9)),v10)),x)))).  [hyper(2,a,7,a,b,18,a)].
+
+given #76 (A,wt=40): 78 P(e(e(e(e(x,e(e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),v6),e(v7,v6)),v7),x)),v8),e(v9,v8)),v9)).  [hyper(2,a,3,a,b,18,a)].
+
+given #77 (A,wt=48): 79 P(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),v5),e(v6,v5)),v6),e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),v11),e(v10,v11)))).  [hyper(2,a,18,a,b,7,a)].
+
+given #78 (A,wt=40): 80 P(e(e(x,e(e(e(e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),v6),v7),e(v6,v7)),v8),e(v9,v8)),v9)),x)).  [hyper(2,a,7,a,b,19,a)].
+
+given #79 (A,wt=44): 81 P(e(e(e(e(e(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),v5),v6),e(v5,v6)),v7),e(v8,v7)),v8),v9),e(v10,v9)),v10)).  [hyper(2,a,3,a,b,19,a)].
+
+given #80 (A,wt=48): 82 P(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(e(e(e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6),e(v7,v6)),v7),v8),v9),e(v8,v9)),v10)),v11),e(v10,v11))).  [hyper(2,a,19,a,b,14,a)].
+
+given #81 (A,wt=36): 83 P(e(e(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),v5),v6),e(v5,v6)),v7),v8),e(v7,v8))).  [hyper(2,a,19,a,b,3,a)].
+
+given #82 (A,wt=44): 84 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),e(v5,e(e(e(e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),v9),v10),e(v9,v10)),v5)))).  [hyper(2,a,20,a,b,20,a)].
+
+given #83 (A,wt=44): 85 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(u,e(e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7),v8),e(v7,v8)),u))),v9),e(v10,v9)),v10)).  [hyper(2,a,14,a,b,20,a)].
+
+given #84 (A,wt=44): 86 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),e(v5,e(e(e(e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),v9),v10),e(v9,v10)),v5)))).  [hyper(2,a,10,a,b,20,a)].
+
+given #85 (A,wt=44): 87 P(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),v5),e(w,v5)),e(e(e(e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),v9),e(v10,v9)),v10),x)))).  [hyper(2,a,9,a,b,20,a)].
+
+given #86 (A,wt=36): 88 P(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),v5),e(w,v5)),e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),x)))).  [hyper(2,a,7,a,b,20,a)].
+
+given #87 (A,wt=32): 89 P(e(e(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),v5),e(w,v5)),x)),v6),e(v7,v6)),v7)).  [hyper(2,a,3,a,b,20,a)].
+
+given #88 (A,wt=44): 90 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),e(v5,e(e(e(e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),v5),v9),e(v10,v9)),v10)))).  [hyper(2,a,20,a,b,14,a)].
+
+given #89 (A,wt=44): 91 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),e(e(v5,e(e(e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),v9),e(v10,v9)),v10)),v5))).  [hyper(2,a,20,a,b,13,a)].
+
+given #90 (A,wt=48): 92 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),e(e(e(e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),v9),e(v8,v9)),v10),e(v11,v10)),v11))).  [hyper(2,a,20,a,b,11,a)].
+
+given #91 (A,wt=44): 93 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),e(v5,e(e(e(e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),v9),e(v10,v9)),v10),v5)))).  [hyper(2,a,20,a,b,10,a)].
+
+given #92 (A,wt=48): 94 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),e(e(e(e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),e(v9,v8)),v9),v10),v11),e(v10,v11)))).  [hyper(2,a,20,a,b,9,a)].
+
+given #93 (A,wt=40): 95 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),v9),e(v8,v9)))).  [hyper(2,a,20,a,b,7,a)].
+
+given #94 (A,wt=48): 96 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),e(e(e(e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),e(v9,v8)),v9),v10),e(v11,v10)),v11))).  [hyper(2,a,20,a,b,6,a)].
+
+given #95 (A,wt=40): 97 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),e(v9,v8)),v9))).  [hyper(2,a,20,a,b,5,a)].
+
+given #96 (A,wt=32): 98 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),e(v5,e(e(e(v5,v6),e(v7,v6)),v7)))).  [hyper(2,a,20,a,b,3,a)].
+
+given #97 (A,wt=44): 99 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),e(e(v5,e(e(e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),v9),v10),e(v9,v10))),v5))).  [hyper(2,a,20,a,b,21,a)].
+
+given #98 (A,wt=40): 100 P(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),v9)),e(v8,v9))).  [hyper(2,a,19,a,b,21,a)].
+
+given #99 (A,wt=44): 101 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(u,e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7),v8),e(v7,v8))),u)),v9),e(v10,v9)),v10)).  [hyper(2,a,14,a,b,21,a)].
+
+given #100 (A,wt=32): 102 P(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6),v7)),e(v6,v7))).  [hyper(2,a,11,a,b,21,a)].
+
+given #101 (A,wt=44): 103 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),e(e(v5,e(e(e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),v9),v10),e(v9,v10))),v5))).  [hyper(2,a,10,a,b,21,a)].
+
+given #102 (A,wt=44): 104 P(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),v5),e(e(e(e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),v9),v10),e(v9,v10)),v5))).  [hyper(2,a,8,a,b,21,a)].
+
+given #103 (A,wt=36): 105 P(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7),v8),e(v7,v8)),u))).  [hyper(2,a,6,a,b,21,a)].
+
+given #104 (A,wt=32): 106 P(e(e(e(e(e(x,e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),v5),e(w,v5))),x),v6),e(v7,v6)),v7)).  [hyper(2,a,3,a,b,21,a)].
+
+given #105 (A,wt=48): 107 P(e(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),v5),e(v6,v5)),v6),e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),v11)),e(v10,v11))).  [hyper(2,a,21,a,b,17,a)].
+
+given #106 (A,wt=44): 108 P(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),v5),e(e(e(e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),v9),v10),e(v9,v10)),v5))).  [hyper(2,a,21,a,b,11,a)].
+
+given #107 (A,wt=48): 109 P(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),e(e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),v9),e(v8,v9)),v10)),v11),e(v10,v11))).  [hyper(2,a,11,a,b,22,a)].
+
+given #108 (A,wt=44): 110 P(e(x,e(e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),x)),v9),e(v10,v9)),v10))).  [hyper(2,a,7,a,b,22,a)].
+
+given #109 (A,wt=48): 111 P(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),e(e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),e(v9,v8)),v9),v10)),v11),e(v10,v11))).  [hyper(2,a,6,a,b,22,a)].
+
+given #110 (A,wt=40): 112 P(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8)),v9),e(v8,v9))).  [hyper(2,a,5,a,b,22,a)].
+
+given #111 (A,wt=40): 113 P(e(e(e(e(x,e(e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),x),v6),e(v7,v6)),v7)),v8),e(v9,v8)),v9)).  [hyper(2,a,3,a,b,22,a)].
+
+given #112 (A,wt=48): 114 P(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),v9),e(v8,v9))),v10),e(v11,v10)),v11)).  [hyper(2,a,22,a,b,7,a)].
+
+given #113 (A,wt=48): 115 P(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),e(v9,v8)),v9)),v10),e(v11,v10)),v11)).  [hyper(2,a,22,a,b,5,a)].
+
+given #114 (A,wt=40): 116 P(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),e(v5,e(e(e(v5,v6),e(v7,v6)),v7))),v8),e(v9,v8)),v9)).  [hyper(2,a,22,a,b,3,a)].
+
+given #115 (A,wt=48): 117 P(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),e(e(v9,e(e(e(v9,v10),e(v11,v10)),v11)),x))))).  [hyper(2,a,7,a,b,25,a)].
+
+given #116 (A,wt=44): 118 P(e(e(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),x))),v9),e(v10,v9)),v10)).  [hyper(2,a,3,a,b,25,a)].
+
+given #117 (A,wt=44): 119 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),e(v8,e(e(e(v8,v9),e(v10,v9)),v10))))).  [hyper(2,a,25,a,b,3,a)].
+
+given #118 (A,wt=48): 120 P(e(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),x)),v6),e(e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),v11),e(v10,v11)),v6))).  [hyper(2,a,21,a,b,26,a)].
+
+given #119 (A,wt=48): 121 P(e(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),x)),v6),e(e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),e(v11,v10)),v11),v6))).  [hyper(2,a,13,a,b,26,a)].
+
+given #120 (A,wt=36): 122 P(e(e(x,e(e(e(e(y,e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6),y)),v7),e(v8,v7)),v8)),x)).  [hyper(2,a,7,a,b,26,a)].
+
+given #121 (A,wt=40): 123 P(e(e(e(e(e(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),x)),v6),e(v7,v6)),v7),v8),e(v9,v8)),v9)).  [hyper(2,a,3,a,b,26,a)].
+
+given #122 (A,wt=44): 124 P(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(u,e(e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7),e(v8,v7)),v8),u)),v9)),v10),e(v9,v10))).  [hyper(2,a,26,a,b,14,a)].
+
+given #123 (A,wt=32): 125 P(e(e(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),x)),v6),v7),e(v6,v7))).  [hyper(2,a,26,a,b,3,a)].
+
+given #124 (A,wt=48): 126 P(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),e(e(e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),v9),e(v8,v9)),v10),e(v11,v10))),v11)).  [hyper(2,a,19,a,b,33,a)].
+
+given #125 (A,wt=40): 127 P(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6),v7),e(v6,v7)),v8),e(v9,v8))),v9)).  [hyper(2,a,11,a,b,33,a)].
+
+given #126 (A,wt=48): 128 P(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),v5),e(v6,v5)),v6),e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),e(v11,v10)),v11))).  [hyper(2,a,9,a,b,33,a)].
+
+given #127 (A,wt=40): 129 P(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),v5),e(v6,v5)),v6),e(v7,e(e(e(v7,v8),e(v9,v8)),v9)))).  [hyper(2,a,7,a,b,33,a)].
+
+given #128 (A,wt=44): 130 P(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(e(e(e(e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7),v8),e(v7,v8)),v9),e(v10,v9)),v10),u))).  [hyper(2,a,6,a,b,33,a)].
+
+given #129 (A,wt=40): 131 P(e(e(e(e(e(x,e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),v5),e(w,v5)),v6),e(v7,v6)),v7)),x),v8),e(v9,v8)),v9)).  [hyper(2,a,3,a,b,33,a)].
+
+given #130 (A,wt=48): 132 P(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),v5),e(v6,v5)),v6),e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),v11),e(v10,v11)))).  [hyper(2,a,33,a,b,21,a)].
+
+given #131 (A,wt=40): 133 P(e(e(x,e(e(e(e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),v5),e(w,v5)),v6),e(v7,v6)),v7),v8),e(v9,v8)),v9)),x)).  [hyper(2,a,7,a,b,34,a)].
+
+given #132 (A,wt=44): 134 P(e(e(e(e(e(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),v5),e(v6,v5)),v6),v7),e(v8,v7)),v8),v9),e(v10,v9)),v10)).  [hyper(2,a,3,a,b,34,a)].
+
+given #133 (A,wt=48): 135 P(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(e(e(e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6),v7),e(v6,v7)),v8),e(v9,v8)),v9),v10)),v11),e(v10,v11))).  [hyper(2,a,34,a,b,14,a)].
+
+given #134 (A,wt=36): 136 P(e(e(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),v5),e(v6,v5)),v6),v7),v8),e(v7,v8))).  [hyper(2,a,34,a,b,3,a)].
+
+given #135 (A,wt=28): 137 P(e(x,e(e(y,e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6),y)),x))).  [hyper(2,a,35,a,b,35,a)].
+
+given #136 (A,wt=48): 138 P(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),e(e(e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),v9),e(v8,v9)),v10),e(v11,v10))),v11)).  [hyper(2,a,33,a,b,35,a)].
+
+given #137 (A,wt=40): 139 P(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),v9)),e(v8,v9))).  [hyper(2,a,21,a,b,35,a)].
+
+given #138 (A,wt=48): 140 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),e(e(e(e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),v9),e(v8,v9)),v10),v11),e(v10,v11)))).  [hyper(2,a,20,a,b,35,a)].
+
+given #139 (A,wt=48): 141 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(e(e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6),v7),e(v6,v7)),v8),v9),e(v8,v9))),v10),e(v11,v10)),v11)).  [hyper(2,a,14,a,b,35,a)].
+
+given #140 (A,wt=40): 142 P(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),e(v9,v8))),v9)).  [hyper(2,a,13,a,b,35,a)].
+
+given #141 (A,wt=48): 143 P(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),e(e(e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),e(v9,v8)),v9),v10),e(v11,v10))),v11)).  [hyper(2,a,12,a,b,35,a)].
+
+given #142 (A,wt=48): 144 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),e(e(e(e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),v9),e(v8,v9)),v10),v11),e(v10,v11)))).  [hyper(2,a,10,a,b,35,a)].
+
+given #143 (A,wt=32): 145 P(e(x,e(e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),v5),e(w,v5)),v6),e(v7,v6)),v7),x))).  [hyper(2,a,7,a,b,35,a)].
+
+given #144 (A,wt=36): 146 P(e(e(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),v5),v6),e(v5,v6)),v7),e(v8,v7)),v8)).  [hyper(2,a,3,a,b,35,a)].
+
+given #145 (A,wt=36): 147 P(e(e(x,e(e(y,e(e(e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),v6),e(v5,v6)),v7),e(v8,v7)),v8)),y)),x)).  [hyper(2,a,35,a,b,34,a)].
+
+given #146 (A,wt=40): 148 P(e(e(x,e(y,e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6),e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),y)))),x)).  [hyper(2,a,35,a,b,26,a)].
+
+given #147 (A,wt=44): 149 P(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),v5),e(w,v5)),e(e(e(e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),v9),v10),e(v9,v10)),x)))).  [hyper(2,a,35,a,b,20,a)].
+
+given #148 (A,wt=36): 150 P(e(e(x,e(y,e(e(e(e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6),v7),e(v8,v7)),v8),y))),x)).  [hyper(2,a,35,a,b,19,a)].
+
+given #149 (A,wt=36): 151 P(e(x,e(e(e(y,e(e(e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6),v7),e(v8,v7)),v8)),y),x))).  [hyper(2,a,35,a,b,17,a)].
+
+given #150 (A,wt=44): 152 P(e(e(x,e(e(y,e(e(e(e(e(e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6),v7),e(v8,v7)),v8),v9),e(v10,v9)),v10)),y)),x)).  [hyper(2,a,35,a,b,16,a)].
+
+given #151 (A,wt=44): 153 P(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),e(e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7),v8),e(v7,v8)),x)),v9),e(v10,v9)),v10))).  [hyper(2,a,35,a,b,14,a)].
+
+given #152 (A,wt=28): 154 P(e(e(x,e(y,e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6),y))),x)).  [hyper(2,a,35,a,b,11,a)].
+
+given #153 (A,wt=44): 155 P(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),e(e(e(e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),v9),v10),e(v9,v10)),x)))).  [hyper(2,a,35,a,b,10,a)].
+
+given #154 (A,wt=28): 156 P(e(x,e(e(e(y,e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6)),y),x))).  [hyper(2,a,35,a,b,9,a)].
+
+given #155 (A,wt=36): 157 P(e(e(x,e(e(y,e(e(e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6),v7),e(v8,v7)),v8)),y)),x)).  [hyper(2,a,35,a,b,8,a)].
+
+given #156 (A,wt=28): 158 P(e(x,e(e(y,e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),y),v5),e(v6,v5)),v6)),x))).  [hyper(2,a,35,a,b,7,a)].
+
+given #157 (A,wt=28): 159 P(e(e(x,e(e(y,e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6)),y)),x)).  [hyper(2,a,35,a,b,6,a)].
+
+given #158 (A,wt=28): 160 P(e(e(x,e(y,e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),y),v5),e(v6,v5)),v6))),x)).  [hyper(2,a,35,a,b,5,a)].
+
+given #159 (A,wt=32): 161 P(e(x,e(e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),v5),e(w,v5)),x),v6),e(v7,v6)),v7))).  [hyper(2,a,35,a,b,3,a)].
+
+given #160 (A,wt=48): 162 P(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6),e(v7,v6)),v7),v8),e(v9,v8))),v9),v10),e(v11,v10)),v11)).  [hyper(2,a,3,a,b,36,a)].
+
+given #161 (A,wt=48): 163 P(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),e(e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),e(v9,v8)),v9),v10)),v11),e(v10,v11))).  [hyper(2,a,36,a,b,35,a)].
+
+given #162 (A,wt=48): 164 P(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),v5),v6),e(v5,v6)),e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),e(v11,v10)),v11))).  [hyper(2,a,7,a,b,37,a)].
+
+given #163 (A,wt=44): 165 P(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(e(e(e(e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7),e(v8,v7)),v8),v9),v10),e(v9,v10)),u))).  [hyper(2,a,5,a,b,37,a)].
+
+given #164 (A,wt=40): 166 P(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),v5),v6),e(v5,v6)),e(v7,e(e(e(v7,v8),e(v9,v8)),v9)))).  [hyper(2,a,7,a,b,38,a)].
+
+given #165 (A,wt=48): 167 P(e(e(e(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),v5),e(v6,v5)),v6),e(v7,e(e(e(v7,v8),e(v9,v8)),v9))),v10),e(v11,v10)),v11)).  [hyper(2,a,3,a,b,38,a)].
+
+given #166 (A,wt=44): 168 P(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(u,e(e(e(e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7),e(v8,v7)),v8),v9),e(v10,v9)),v10)),u))).  [hyper(2,a,21,a,b,39,a)].
+
+given #167 (A,wt=44): 169 P(e(e(x,e(e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),v6),e(v7,v6)),v7),e(v8,e(e(e(v8,v9),e(v10,v9)),v10)))),x)).  [hyper(2,a,35,a,b,40,a)].
+
+given #168 (A,wt=48): 170 P(e(e(x,e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(e(e(e(e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),e(v9,v8)),v9),v10),e(v11,v10)),v11),w))),x)).  [hyper(2,a,17,a,b,40,a)].
+
+given #169 (A,wt=44): 171 P(e(e(x,e(e(e(e(e(y,e(e(e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6),v7),e(v8,v7)),v8)),y),v9),e(v10,v9)),v10)),x)).  [hyper(2,a,7,a,b,40,a)].
+
+given #170 (A,wt=48): 172 P(e(e(e(e(e(e(e(e(x,e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),v6),e(v7,v6)),v7)),x),v8),e(v9,v8)),v9),v10),e(v11,v10)),v11)).  [hyper(2,a,3,a,b,40,a)].
+
+given #171 (A,wt=40): 173 P(e(e(e(e(e(x,e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),v6),e(v7,v6)),v7)),x),v8),v9),e(v8,v9))).  [hyper(2,a,40,a,b,3,a)].
+
+given #172 (A,wt=40): 174 P(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(e(w,e(e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),w),v8),e(v9,v8)),v9)),u))).  [hyper(2,a,41,a,b,35,a)].
+
+given #173 (A,wt=40): 175 P(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(e(e(w,e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),e(v9,v8)),v9)),w),u))).  [hyper(2,a,41,a,b,20,a)].
+
+given #174 (A,wt=48): 176 P(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6),e(e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),v11),e(v10,v11)),v6)))).  [hyper(2,a,21,a,b,42,a)].
+
+given #175 (A,wt=48): 177 P(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6),e(e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),e(v11,v10)),v11),v6)))).  [hyper(2,a,13,a,b,42,a)].
+
+given #176 (A,wt=40): 178 P(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6),e(v7,v6))),v7),v8),e(v9,v8)),v9)).  [hyper(2,a,3,a,b,42,a)].
+
+given #177 (A,wt=40): 179 P(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8)),v9),e(v8,v9))).  [hyper(2,a,42,a,b,35,a)].
+
+given #178 (A,wt=48): 180 P(e(e(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),v5),e(v6,v5)),v6),e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10)),v11),e(v10,v11))).  [hyper(2,a,42,a,b,17,a)].
+
+given #179 (A,wt=48): 181 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),e(e(v5,e(v6,e(e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v6),v10),e(v11,v10)),v11))),v5))).  [hyper(2,a,44,a,b,35,a)].
+
+given #180 (A,wt=36): 182 P(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(u,e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7),e(v8,v7)),v8)),u))).  [hyper(2,a,21,a,b,45,a)].
+
+given #181 (A,wt=44): 183 P(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7),e(v8,v7)),v8),u)),v9),e(v10,v9)),v10)).  [hyper(2,a,3,a,b,45,a)].
+
+given #182 (A,wt=36): 184 P(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),e(v6,e(e(e(v6,v7),e(v8,v7)),v8)))),x)).  [hyper(2,a,35,a,b,46,a)].
+
+given #183 (A,wt=48): 185 P(e(e(e(e(x,e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5)),x),v6),e(e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),v11),e(v10,v11)),v6))).  [hyper(2,a,21,a,b,46,a)].
+
+given #184 (A,wt=40): 186 P(e(e(x,e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),e(v9,v8)),v9),w))),x)).  [hyper(2,a,17,a,b,46,a)].
+
+given #185 (A,wt=48): 187 P(e(e(e(e(x,e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5)),x),v6),e(e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),e(v11,v10)),v11),v6))).  [hyper(2,a,13,a,b,46,a)].
+
+given #186 (A,wt=16): 188 P(e(e(x,e(y,e(e(e(y,z),e(u,z)),u))),x)).  [hyper(2,a,9,a,b,46,a)].
+
+given #187 (A,wt=36): 189 P(e(e(x,e(e(e(e(e(y,e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6)),y),v7),e(v8,v7)),v8)),x)).  [hyper(2,a,7,a,b,46,a)].
+
+given #188 (A,wt=40): 190 P(e(e(e(e(e(e(e(e(x,e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5)),x),v6),e(v7,v6)),v7),v8),e(v9,v8)),v9)).  [hyper(2,a,3,a,b,46,a)].
+
+given #189 (A,wt=32): 191 P(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6),e(v7,v6)),v7))).  [hyper(2,a,46,a,b,43,a)].
+
+given #190 (A,wt=36): 192 P(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),v5),e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),v5))).  [hyper(2,a,46,a,b,32,a)].
+
+given #191 (A,wt=28): 193 P(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),u))).  [hyper(2,a,46,a,b,30,a)].
+
+given #192 (A,wt=36): 194 P(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),v5),e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),v5))).  [hyper(2,a,46,a,b,29,a)].
+
+given #193 (A,wt=24): 195 P(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(e(e(u,w),e(v5,w)),v5))).  [hyper(2,a,46,a,b,28,a)].
+
+given #194 (A,wt=32): 196 P(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),v5),e(e(e(v5,v6),e(v7,v6)),v7))).  [hyper(2,a,46,a,b,27,a)].
+
+given #195 (A,wt=44): 197 P(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(u,e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7),e(v8,v7)),v8)),u),v9)),v10),e(v9,v10))).  [hyper(2,a,46,a,b,14,a)].
+
+given #196 (A,wt=32): 198 P(e(e(e(e(e(x,e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5)),x),v6),v7),e(v6,v7))).  [hyper(2,a,46,a,b,3,a)].
+
+given #197 (A,wt=48): 199 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),e(v5,e(e(v6,e(e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v6),v10),e(v11,v10)),v11)),v5)))).  [hyper(2,a,47,a,b,35,a)].
+
+given #198 (A,wt=48): 200 P(e(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),e(v9,v8))),v9),v10),e(v11,v10)),v11)).  [hyper(2,a,3,a,b,48,a)].
+
+given #199 (A,wt=40): 201 P(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6),e(v7,v6)),v7),v8),v9)),e(v8,v9))).  [hyper(2,a,48,a,b,39,a)].
+
+given #200 (A,wt=48): 202 P(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),e(v6,e(e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v6),v10),e(v11,v10)),v11)))),x)).  [hyper(2,a,35,a,b,49,a)].
+
+given #201 (A,wt=48): 203 P(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),e(w,e(e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),w),v8),e(v9,v8)),v9))),v10),e(v11,v10)),v11)),x)).  [hyper(2,a,7,a,b,49,a)].
+
+given #202 (A,wt=44): 204 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(u,e(e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),u),v7),e(v8,v7)),v8))),v9),v10),e(v9,v10))).  [hyper(2,a,49,a,b,3,a)].
+
+given #203 (A,wt=44): 205 P(e(x,e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7),v8),e(v7,v8))),v9),e(v10,v9)),v10),x))).  [hyper(2,a,35,a,b,50,a)].
+
+given #204 (A,wt=28): 206 P(e(x,e(e(y,e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),v6),e(v5,v6)),y)),x))).  [hyper(2,a,17,a,b,50,a)].
+
+given #205 (A,wt=48): 207 P(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6),v7),e(v6,v7)),v8)),v9),e(v8,v9)),v10),e(v11,v10)),v11)).  [hyper(2,a,3,a,b,50,a)].
+
+given #206 (A,wt=48): 208 P(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),x)),e(e(v6,e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),e(v11,v10)),v11)),v6))).  [hyper(2,a,50,a,b,43,a)].
+
+given #207 (A,wt=36): 209 P(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),v5),e(w,v5)),x)),e(v6,e(e(e(v6,v7),e(v8,v7)),v8)))).  [hyper(2,a,50,a,b,38,a)].
+
+given #208 (A,wt=44): 210 P(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),v5),e(w,v5)),x)),e(e(e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),v9),e(v10,v9)),v10))).  [hyper(2,a,50,a,b,37,a)].
+
+given #209 (A,wt=36): 211 P(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),x),w),e(v5,w)),v5)),e(v6,e(e(e(v6,v7),e(v8,v7)),v8)))).  [hyper(2,a,50,a,b,33,a)].
+
+given #210 (A,wt=36): 212 P(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),x)),e(v6,e(e(e(v6,v7),e(v8,v7)),v8)))).  [hyper(2,a,50,a,b,31,a)].
+
+given #211 (A,wt=44): 213 P(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),x)),e(e(e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),v9),e(v10,v9)),v10))).  [hyper(2,a,50,a,b,30,a)].
+
+given #212 (A,wt=44): 214 P(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),x)),e(e(e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),v9),v10),e(v9,v10)))).  [hyper(2,a,50,a,b,28,a)].
+
+given #213 (A,wt=48): 215 P(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),x)),e(v6,e(e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),e(v11,v10)),v11),v6)))).  [hyper(2,a,50,a,b,23,a)].
+
+given #214 (A,wt=48): 216 P(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),x)),e(v6,e(e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v6),v10),e(v11,v10)),v11)))).  [hyper(2,a,50,a,b,51,a)].
+
+given #215 (A,wt=44): 217 P(e(e(e(x,e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),v6),e(v7,v6)),v7)),x),e(v8,e(e(e(v8,v9),e(v10,v9)),v10)))).  [hyper(2,a,53,a,b,31,a)].
+
+given #216 (A,wt=48): 218 P(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),x))),v10),e(v11,v10)),v11))).  [hyper(2,a,7,a,b,54,a)].
+
+given #217 (A,wt=44): 219 P(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(u,e(e(e(u,w),e(v5,w)),v5)),e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),v9))),v10),e(v9,v10))).  [hyper(2,a,5,a,b,54,a)].
+
+given #218 (A,wt=44): 220 P(e(e(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),x)),v7),e(v8,v7)),v8)),v9),e(v10,v9)),v10)).  [hyper(2,a,3,a,b,54,a)].
+
+given #219 (A,wt=44): 221 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(u,e(e(e(u,w),e(v5,w)),v5)),e(v6,e(e(e(v6,v7),e(v8,v7)),v8)))),v9),e(v10,v9)),v10)).  [hyper(2,a,54,a,b,3,a)].
+
+given #220 (A,wt=44): 222 P(e(x,e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7),e(v8,v7)),v8)),v9),e(v10,v9)),v10),x))).  [hyper(2,a,35,a,b,55,a)].
+
+given #221 (A,wt=28): 223 P(e(x,e(e(e(y,e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),v6),e(v5,v6))),y),x))).  [hyper(2,a,17,a,b,55,a)].
+
+given #222 (A,wt=48): 224 P(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6),e(v7,v6)),v7),v8)),v9),e(v8,v9)),v10),e(v11,v10)),v11)).  [hyper(2,a,3,a,b,55,a)].
+
+given #223 (A,wt=48): 225 P(e(e(e(x,e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5)),x),e(v6,e(e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v6),v10),e(v11,v10)),v11)))).  [hyper(2,a,55,a,b,51,a)].
+
+given #224 (A,wt=48): 226 P(e(e(e(x,e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5)),x),e(e(v6,e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),e(v11,v10)),v11)),v6))).  [hyper(2,a,55,a,b,43,a)].
+
+given #225 (A,wt=36): 227 P(e(e(e(x,e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),v5),e(w,v5))),x),e(v6,e(e(e(v6,v7),e(v8,v7)),v8)))).  [hyper(2,a,55,a,b,38,a)].
+
+given #226 (A,wt=44): 228 P(e(e(e(x,e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),v5),e(w,v5))),x),e(e(e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),v9),e(v10,v9)),v10))).  [hyper(2,a,55,a,b,37,a)].
+
+given #227 (A,wt=36): 229 P(e(e(e(x,e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5)),x),e(v6,e(e(e(v6,v7),e(v8,v7)),v8)))).  [hyper(2,a,55,a,b,31,a)].
+
+given #228 (A,wt=44): 230 P(e(e(e(x,e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5)),x),e(e(e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),v9),e(v10,v9)),v10))).  [hyper(2,a,55,a,b,30,a)].
+
+given #229 (A,wt=44): 231 P(e(e(e(x,e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5)),x),e(e(e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),v9),v10),e(v9,v10)))).  [hyper(2,a,55,a,b,28,a)].
+
+given #230 (A,wt=48): 232 P(e(e(e(x,e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5)),x),e(v6,e(e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),e(v11,v10)),v11),v6)))).  [hyper(2,a,55,a,b,23,a)].
+
+given #231 (A,wt=36): 233 P(e(x,e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),e(w,e(e(e(w,v5),e(v6,v5)),v6))),v7),e(v8,v7)),v8),x))).  [hyper(2,a,35,a,b,56,a)].
+
+given #232 (A,wt=44): 234 P(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(u,e(e(e(u,w),e(v5,w)),v5)),e(e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),v9),v10))),e(v9,v10))).  [hyper(2,a,21,a,b,56,a)].
+
+given #233 (A,wt=36): 235 P(e(x,e(e(y,e(e(e(e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6),y),v7),e(v8,v7)),v8)),x))).  [hyper(2,a,17,a,b,56,a)].
+
+given #234 (A,wt=44): 236 P(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(u,e(e(e(u,w),e(v5,w)),v5)),e(e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),v9),e(v10,v9)))),v10)).  [hyper(2,a,13,a,b,56,a)].
+
+given #235 (A,wt=40): 237 P(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6)),v7),e(v6,v7)),v8),e(v9,v8)),v9)).  [hyper(2,a,3,a,b,56,a)].
+
+given #236 (A,wt=48): 238 P(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),x),w),e(v5,w)),v5)),e(v6,e(e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v6),v10),e(v11,v10)),v11)))).  [hyper(2,a,56,a,b,51,a)].
+
+given #237 (A,wt=44): 239 P(e(e(e(e(e(e(x,e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5)),x),v6),e(v7,v6)),v7),e(v8,e(e(e(v8,v9),e(v10,v9)),v10)))).  [hyper(2,a,56,a,b,46,a)].
+
+given #238 (A,wt=48): 240 P(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),x),w),e(v5,w)),v5)),e(e(v6,e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),e(v11,v10)),v11)),v6))).  [hyper(2,a,56,a,b,43,a)].
+
+given #239 (A,wt=44): 241 P(e(e(x,e(e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),x),v6),e(v7,v6)),v7)),e(v8,e(e(e(v8,v9),e(v10,v9)),v10)))).  [hyper(2,a,56,a,b,38,a)].
+
+given #240 (A,wt=44): 242 P(e(x,e(e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),v5),e(w,v5)),v6),e(v7,v6)),v7),e(e(v8,e(e(e(v8,v9),e(v10,v9)),v10)),x)))).  [hyper(2,a,56,a,b,35,a)].
+
+given #241 (A,wt=48): 243 P(e(e(e(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),v5),e(v6,v5)),v6),v7),e(v8,v7)),v8),e(v9,e(e(e(v9,v10),e(v11,v10)),v11)))).  [hyper(2,a,56,a,b,34,a)].
+
+given #242 (A,wt=40): 244 P(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),v5),v6),e(v5,v6)),e(v7,e(e(e(v7,v8),e(v9,v8)),v9)))).  [hyper(2,a,56,a,b,33,a)].
+
+given #243 (A,wt=44): 245 P(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),x),w),e(v5,w)),v5)),e(e(e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),v9),e(v10,v9)),v10))).  [hyper(2,a,56,a,b,30,a)].
+
+given #244 (A,wt=44): 246 P(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),x),w),e(v5,w)),v5)),e(e(e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),v9),v10),e(v9,v10)))).  [hyper(2,a,56,a,b,28,a)].
+
+given #245 (A,wt=44): 247 P(e(e(e(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),x)),v6),e(v7,v6)),v7),e(v8,e(e(e(v8,v9),e(v10,v9)),v10)))).  [hyper(2,a,56,a,b,26,a)].
+
+given #246 (A,wt=48): 248 P(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),x),w),e(v5,w)),v5)),e(v6,e(e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),e(v11,v10)),v11),v6)))).  [hyper(2,a,56,a,b,23,a)].
+
+given #247 (A,wt=48): 249 P(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),v5),e(w,v5)),e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),e(e(v9,e(e(e(v9,v10),e(v11,v10)),v11)),x))))).  [hyper(2,a,56,a,b,20,a)].
+
+given #248 (A,wt=48): 250 P(e(e(e(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),v5),v6),e(v5,v6)),v7),e(v8,v7)),v8),e(v9,e(e(e(v9,v10),e(v11,v10)),v11)))).  [hyper(2,a,56,a,b,19,a)].
+
+given #249 (A,wt=48): 251 P(e(e(e(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),v5),e(v6,v5)),v6),v7),v8),e(v7,v8)),e(v9,e(e(e(v9,v10),e(v11,v10)),v11)))).  [hyper(2,a,56,a,b,15,a)].
+
+given #250 (A,wt=44): 252 P(e(e(e(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),x),w),e(v5,w)),v5)),v6),e(v7,v6)),v7),e(v8,e(e(e(v8,v9),e(v10,v9)),v10)))).  [hyper(2,a,56,a,b,57,a)].
+
+given #251 (A,wt=40): 253 P(e(e(x,e(y,e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),y)),v8),e(v9,v8)),v9))),x)).  [hyper(2,a,35,a,b,57,a)].
+
+given #252 (A,wt=48): 254 P(e(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),x),w),e(v5,w)),v5)),v6),e(e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),v11),e(v10,v11)),v6))).  [hyper(2,a,21,a,b,57,a)].
+
+given #253 (A,wt=44): 255 P(e(e(x,e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),e(e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7),e(v8,v7)),v8),v9)),v10),e(v9,v10))),x)).  [hyper(2,a,17,a,b,57,a)].
+
+given #254 (A,wt=48): 256 P(e(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),x),w),e(v5,w)),v5)),v6),e(e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),e(v11,v10)),v11),v6))).  [hyper(2,a,13,a,b,57,a)].
+
+given #255 (A,wt=36): 257 P(e(e(x,e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7)),v8),e(v7,v8))),x)).  [hyper(2,a,9,a,b,57,a)].
+
+given #256 (A,wt=36): 258 P(e(e(x,e(e(e(e(y,e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),y),v5),e(v6,v5)),v6)),v7),e(v8,v7)),v8)),x)).  [hyper(2,a,7,a,b,57,a)].
+
+given #257 (A,wt=40): 259 P(e(e(e(e(e(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),x),w),e(v5,w)),v5)),v6),e(v7,v6)),v7),v8),e(v9,v8)),v9)).  [hyper(2,a,3,a,b,57,a)].
+
+given #258 (A,wt=32): 260 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(u,e(e(e(u,w),e(v5,w)),v5))),v6),v7),e(v6,v7))).  [hyper(2,a,57,a,b,56,a)].
+
+given #259 (A,wt=48): 261 P(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10)),v11),e(v10,v11)),u))).  [hyper(2,a,57,a,b,30,a)].
+
+given #260 (A,wt=44): 262 P(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),v9)),v10)),e(v9,v10))).  [hyper(2,a,57,a,b,28,a)].
+
+given #261 (A,wt=44): 263 P(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(u,e(e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),u),v7),e(v8,v7)),v8)),v9)),v10),e(v9,v10))).  [hyper(2,a,57,a,b,14,a)].
+
+given #262 (A,wt=32): 264 P(e(e(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),x),w),e(v5,w)),v5)),v6),v7),e(v6,v7))).  [hyper(2,a,57,a,b,3,a)].
+
+given #263 (A,wt=48): 265 P(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),e(e(v6,e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),e(v11,v10)),v11)),v6))),x)).  [hyper(2,a,35,a,b,58,a)].
+
+given #264 (A,wt=44): 266 P(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),e(e(e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),v9),e(v10,v9)),v10))),x)).  [hyper(2,a,9,a,b,58,a)].
+
+given #265 (A,wt=48): 267 P(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),e(e(w,e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),e(v9,v8)),v9)),w)),v10),e(v11,v10)),v11)),x)).  [hyper(2,a,7,a,b,58,a)].
+
+given #266 (A,wt=44): 268 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(u,e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7),e(v8,v7)),v8)),u)),v9),v10),e(v9,v10))).  [hyper(2,a,58,a,b,3,a)].
+
+given #267 (A,wt=48): 269 P(e(e(x,e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),v5),e(w,v5)),v6),e(e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),e(v11,v10)),v11),v6))),x)).  [hyper(2,a,9,a,b,59,a)].
+
+given #268 (A,wt=48): 270 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(e(e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6),v7),e(v6,v7)),v8),e(v9,v8)),v9)),v10),v11),e(v10,v11))).  [hyper(2,a,59,a,b,3,a)].
+
+given #269 (A,wt=48): 271 P(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),e(v6,e(e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),e(v11,v10)),v11),v6)))),x)).  [hyper(2,a,35,a,b,60,a)].
+
+given #270 (A,wt=48): 272 P(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),e(w,e(e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),e(v9,v8)),v9),w))),v10),e(v11,v10)),v11)),x)).  [hyper(2,a,7,a,b,60,a)].
+
+given #271 (A,wt=44): 273 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(u,e(e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7),e(v8,v7)),v8),u))),v9),v10),e(v9,v10))).  [hyper(2,a,60,a,b,3,a)].
+
+given #272 (A,wt=44): 274 P(e(e(x,e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),e(e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),v9),e(v10,v9))),v10)),x)).  [hyper(2,a,9,a,b,61,a)].
+
+given #273 (A,wt=36): 275 P(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),u),e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7),e(v8,v7)),v8))).  [hyper(2,a,61,a,b,51,a)].
+
+given #274 (A,wt=40): 276 P(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(e(e(e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7),e(v8,v7)),v8),v9),v9),u))).  [hyper(2,a,61,a,b,38,a)].
+
+given #275 (A,wt=32): 277 P(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7),v7),u))).  [hyper(2,a,61,a,b,31,a)].
+
+given #276 (A,wt=48): 278 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(e(e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6),e(v7,v6)),v7),v8),v9),e(v8,v9))),v10),v11),e(v10,v11))).  [hyper(2,a,61,a,b,3,a)].
+
+given #277 (A,wt=44): 279 P(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),e(e(e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),v9),v10),e(v9,v10)))),x)).  [hyper(2,a,35,a,b,62,a)].
+
+given #278 (A,wt=44): 280 P(e(e(x,e(e(e(y,e(e(e(y,z),e(u,z)),u)),e(e(e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7),e(v8,v7)),v8),v9),e(v10,v9))),v10)),x)).  [hyper(2,a,17,a,b,62,a)].
+
+given #279 (A,wt=36): 281 P(e(e(x,e(e(e(y,e(e(e(y,z),e(u,z)),u)),e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7),e(v8,v7))),v8)),x)).  [hyper(2,a,9,a,b,62,a)].
+
+given #280 (A,wt=44): 282 P(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7),v8),e(v7,v8))),v9),e(v10,v9)),v10)),x)).  [hyper(2,a,7,a,b,62,a)].
+
+given #281 (A,wt=48): 283 P(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6),v7),e(v6,v7))),v8),e(v9,v8)),v9),v10),e(v11,v10)),v11)).  [hyper(2,a,3,a,b,62,a)].
+
+given #282 (A,wt=48): 284 P(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),e(v11,v10))),v11),u))).  [hyper(2,a,62,a,b,30,a)].
+
+given #283 (A,wt=40): 285 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6),v7),e(v6,v7))),v8),v9),e(v8,v9))).  [hyper(2,a,62,a,b,3,a)].
+
+given #284 (A,wt=48): 286 P(e(e(x,e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),v6),e(e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),e(v11,v10)),v11),v6))),x)).  [hyper(2,a,9,a,b,63,a)].
+
+given #285 (A,wt=48): 287 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(e(e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6),e(v7,v6)),v7),v8),e(v9,v8)),v9)),v10),v11),e(v10,v11))).  [hyper(2,a,63,a,b,3,a)].
+
+given #286 (A,wt=44): 288 P(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7),e(v8,v7)),v8)),v9),e(v10,v9)),v10)),x)).  [hyper(2,a,7,a,b,64,a)].
+
+given #287 (A,wt=48): 289 P(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6),e(v7,v6)),v7)),v8),e(v9,v8)),v9),v10),e(v11,v10)),v11)).  [hyper(2,a,3,a,b,64,a)].
+
+given #288 (A,wt=48): 290 P(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6)),e(e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),e(v11,v10)),v11),v6))).  [hyper(2,a,64,a,b,28,a)].
+
+given #289 (A,wt=40): 291 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6),e(v7,v6)),v7)),v8),v9),e(v8,v9))).  [hyper(2,a,64,a,b,3,a)].
+
+given #290 (A,wt=44): 292 P(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(u,e(e(e(u,w),e(v5,w)),v5))),v6),e(v7,v6)),v7),e(v8,e(e(e(v8,v9),e(v10,v9)),v10)))).  [hyper(2,a,56,a,b,65,a)].
+
+given #291 (A,wt=48): 293 P(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(u,e(e(e(u,w),e(v5,w)),v5))),v6),e(e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),v11),e(v10,v11)),v6))).  [hyper(2,a,21,a,b,65,a)].
+
+given #292 (A,wt=48): 294 P(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(u,e(e(e(u,w),e(v5,w)),v5))),v6),e(e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),e(v11,v10)),v11),v6))).  [hyper(2,a,13,a,b,65,a)].
+
+given #293 (A,wt=36): 295 P(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),e(w,e(e(e(w,v5),e(v6,v5)),v6))),v7),e(v8,v7)),v8)),x)).  [hyper(2,a,7,a,b,65,a)].
+
+given #294 (A,wt=40): 296 P(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(u,e(e(e(u,w),e(v5,w)),v5))),v6),e(v7,v6)),v7),v8),e(v9,v8)),v9)).  [hyper(2,a,3,a,b,65,a)].
+
+given #295 (A,wt=44): 297 P(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),e(v6,e(e(e(v6,v7),e(v8,v7)),v8))),v9)),v10),e(v9,v10))).  [hyper(2,a,65,a,b,14,a)].
+
+NOTE: Starting on level 6, last clause of level 5 is 1164.
+
+given #296 (A,wt=48): 298 P(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(e(e(e(e(e(e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7),e(v8,v7)),v8),v9),e(v10,v9)),v10),v11),v11),u))).  [hyper(2,a,61,a,b,67,a)].
+
+given #297 (A,wt=44): 299 P(e(e(e(x,e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),v6),v7),e(v6,v7))),x),e(v8,e(e(e(v8,v9),e(v10,v9)),v10)))).  [hyper(2,a,55,a,b,67,a)].
+
+given #298 (A,wt=44): 300 P(e(e(x,e(e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),v6),v7),e(v6,v7)),x)),e(v8,e(e(e(v8,v9),e(v10,v9)),v10)))).  [hyper(2,a,50,a,b,67,a)].
+
+given #299 (A,wt=48): 301 P(e(e(e(e(e(x,e(e(e(e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),v6),e(v7,v6)),v7),v8),e(v9,v8)),v9)),x),v10),v11),e(v10,v11))).  [hyper(2,a,68,a,b,3,a)].
+
+given #300 (A,wt=44): 302 P(e(x,e(e(e(y,e(e(e(e(e(e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6),v7),e(v8,v7)),v8),v9),e(v10,v9)),v10)),y),x))).  [hyper(2,a,35,a,b,70,a)].
+
+given #301 (A,wt=48): 303 P(e(x,e(e(e(e(e(e(e(e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),v6),e(v7,v6)),v7),v8),e(v9,v8)),v9),v10),e(v11,v10)),v11),x))).  [hyper(2,a,7,a,b,70,a)].
+
+given #302 (A,wt=44): 304 P(e(x,e(e(y,e(e(e(e(e(e(e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6),v7),e(v8,v7)),v8),y),v9),e(v10,v9)),v10)),x))).  [hyper(2,a,70,a,b,56,a)].
+
+given #303 (A,wt=36): 305 P(e(x,e(e(e(y,e(e(e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6),v7),v8),e(v7,v8))),y),x))).  [hyper(2,a,70,a,b,55,a)].
+
+given #304 (A,wt=36): 306 P(e(x,e(e(y,e(e(e(e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6),v7),v8),e(v7,v8)),y)),x))).  [hyper(2,a,70,a,b,50,a)].
+
+given #305 (A,wt=40): 307 P(e(x,e(e(e(e(e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),v6),e(v7,v6)),v7),v8),v9),e(v8,v9)),x))).  [hyper(2,a,70,a,b,7,a)].
+
+given #306 (A,wt=40): 308 P(e(e(x,e(e(e(e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),v6),e(v7,v6)),v7),v8),v9),e(v8,v9))),x)).  [hyper(2,a,70,a,b,5,a)].
+
+given #307 (A,wt=48): 309 P(e(x,e(e(e(e(e(e(e(e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),v6),e(v7,v6)),v7),v8),e(v9,v8)),v9),x),v10),e(v11,v10)),v11))).  [hyper(2,a,70,a,b,3,a)].
+
+given #308 (A,wt=48): 310 P(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),e(e(e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),e(v9,v8)),v9),v10),v11)),e(v10,v11))).  [hyper(2,a,71,a,b,39,a)].
+
+given #309 (A,wt=48): 311 P(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),v5),e(e(v6,e(e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v6),v10),e(v11,v10)),v11)),v5))).  [hyper(2,a,71,a,b,20,a)].
+
+given #310 (A,wt=48): 312 P(e(e(e(e(x,e(e(e(e(e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),v6),e(v7,v6)),v7),v8),e(v9,v8)),v9),x)),v10),e(v11,v10)),v11)).  [hyper(2,a,3,a,b,72,a)].
+
+given #311 (A,wt=44): 313 P(e(e(x,e(y,e(e(e(e(e(e(e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6),v7),e(v8,v7)),v8),v9),e(v10,v9)),v10),y))),x)).  [hyper(2,a,35,a,b,73,a)].
+
+given #312 (A,wt=48): 314 P(e(e(x,e(e(e(e(e(e(e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),v6),e(v7,v6)),v7),v8),v9),e(v8,v9)),v10),e(v11,v10)),v11)),x)).  [hyper(2,a,7,a,b,73,a)].
+
+given #313 (A,wt=44): 315 P(e(e(e(e(e(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),v5),e(v6,v5)),v6),v7),v8),e(v7,v8)),v9),v10),e(v9,v10))).  [hyper(2,a,73,a,b,3,a)].
+
+given #314 (A,wt=48): 316 P(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(e(w,e(e(e(e(e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),e(v9,v8)),v9),w),v10),e(v11,v10)),v11)),u))).  [hyper(2,a,48,a,b,74,a)].
+
+given #315 (A,wt=40): 317 P(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(e(e(w,e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),v9),e(v8,v9))),w),u))).  [hyper(2,a,41,a,b,74,a)].
+
+given #316 (A,wt=44): 318 P(e(x,e(e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),v6),v7),e(v6,v7)),e(e(v8,e(e(e(v8,v9),e(v10,v9)),v10)),x)))).  [hyper(2,a,7,a,b,74,a)].
+
+given #317 (A,wt=40): 319 P(e(e(e(e(x,e(e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),v6),v7),e(v6,v7)),x)),v8),e(v9,v8)),v9)).  [hyper(2,a,3,a,b,74,a)].
+
+given #318 (A,wt=48): 320 P(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),v5),v6),e(v5,v6)),e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),v11),e(v10,v11)))).  [hyper(2,a,74,a,b,7,a)].
+
+given #319 (A,wt=40): 321 P(e(e(e(e(e(x,e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),v6),v7),e(v6,v7))),x),v8),e(v9,v8)),v9)).  [hyper(2,a,3,a,b,75,a)].
+
+given #320 (A,wt=36): 322 P(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(u,e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7),v8),e(v7,v8))),u))).  [hyper(2,a,75,a,b,45,a)].
+
+given #321 (A,wt=48): 323 P(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),e(e(e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),e(v9,v8)),v9),v10),v11)),e(v10,v11))).  [hyper(2,a,75,a,b,35,a)].
+
+given #322 (A,wt=48): 324 P(e(e(e(e(x,e(e(e(e(e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),v6),e(v7,v6)),v7),x),v8),e(v9,v8)),v9)),v10),e(v11,v10)),v11)).  [hyper(2,a,3,a,b,76,a)].
+
+given #323 (A,wt=48): 325 P(e(e(x,e(y,e(e(e(e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6),v7),e(v8,v7)),v8),e(e(v9,e(e(e(v9,v10),e(v11,v10)),v11)),y)))),x)).  [hyper(2,a,35,a,b,78,a)].
+
+given #324 (A,wt=44): 326 P(e(e(x,e(e(e(e(y,e(e(e(e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6),v7),e(v8,v7)),v8),y)),v9),e(v10,v9)),v10)),x)).  [hyper(2,a,7,a,b,78,a)].
+
+given #325 (A,wt=48): 327 P(e(e(e(e(e(e(e(x,e(e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),v6),e(v7,v6)),v7),x)),v8),e(v9,v8)),v9),v10),e(v11,v10)),v11)).  [hyper(2,a,3,a,b,78,a)].
+
+given #326 (A,wt=40): 328 P(e(e(e(e(x,e(e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),v6),e(v7,v6)),v7),x)),v8),v9),e(v8,v9))).  [hyper(2,a,78,a,b,3,a)].
+
+given #327 (A,wt=44): 329 P(e(e(e(x,e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),v5),e(w,v5))),x),e(e(e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),v9),v10),e(v9,v10)))).  [hyper(2,a,55,a,b,79,a)].
+
+given #328 (A,wt=44): 330 P(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),v5),e(w,v5)),x)),e(e(e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),v9),v10),e(v9,v10)))).  [hyper(2,a,50,a,b,79,a)].
+
+given #329 (A,wt=48): 331 P(e(e(e(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),v5),v6),e(v5,v6)),v7),v8),e(v7,v8)),e(v9,e(e(e(v9,v10),e(v11,v10)),v11)))).  [hyper(2,a,56,a,b,80,a)].
+
+given #330 (A,wt=48): 332 P(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(e(e(e(e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6),e(v7,v6)),v7),v8),v9),e(v8,v9)),v10),e(v11,v10))),v11)).  [hyper(2,a,11,a,b,80,a)].
+
+given #331 (A,wt=48): 333 P(e(e(e(e(e(x,e(e(e(e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),v6),v7),e(v6,v7)),v8),e(v9,v8)),v9)),x),v10),e(v11,v10)),v11)).  [hyper(2,a,3,a,b,80,a)].
+
+given #332 (A,wt=44): 334 P(e(e(x,e(e(y,e(e(e(e(e(e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6),v7),v8),e(v7,v8)),v9),e(v10,v9)),v10)),y)),x)).  [hyper(2,a,35,a,b,81,a)].
+
+given #333 (A,wt=48): 335 P(e(e(x,e(e(e(e(e(e(e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),v6),v7),e(v6,v7)),v8),e(v9,v8)),v9),v10),e(v11,v10)),v11)),x)).  [hyper(2,a,7,a,b,81,a)].
+
+given #334 (A,wt=40): 336 P(e(x,e(e(e(e(e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),v6),v7),e(v6,v7)),x),v8),e(v9,v8)),v9))).  [hyper(2,a,81,a,b,56,a)].
+
+given #335 (A,wt=36): 337 P(e(e(x,e(y,e(e(e(e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6),y),v7),e(v8,v7)),v8))),x)).  [hyper(2,a,81,a,b,55,a)].
+
+given #336 (A,wt=28): 338 P(e(e(x,e(e(y,e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),v6),e(v5,v6))),y)),x)).  [hyper(2,a,81,a,b,53,a)].
+
+given #337 (A,wt=44): 339 P(e(e(e(e(e(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),v5),v6),e(v5,v6)),v7),e(v8,v7)),v8),v9),v10),e(v9,v10))).  [hyper(2,a,81,a,b,3,a)].
+
+given #338 (A,wt=36): 340 P(e(x,e(e(y,e(e(e(e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6),v7),e(v8,v7)),v8),y)),x))).  [hyper(2,a,9,a,b,82,a)].
+
+given #339 (A,wt=44): 341 P(e(e(x,e(e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),v6),e(v7,v6)),v7),x)),e(v8,e(e(e(v8,v9),e(v10,v9)),v10)))).  [hyper(2,a,82,a,b,31,a)].
+
+given #340 (A,wt=48): 342 P(e(e(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),v5),v6),e(v5,v6)),e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10)),v11),e(v10,v11))).  [hyper(2,a,42,a,b,83,a)].
+
+given #341 (A,wt=48): 343 P(e(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),v5),v6),e(v5,v6)),e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),v11)),e(v10,v11))).  [hyper(2,a,21,a,b,83,a)].
+
+given #342 (A,wt=48): 344 P(e(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),v5),v6),e(v5,v6)),e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),e(v11,v10))),v11)).  [hyper(2,a,13,a,b,83,a)].
+
+given #343 (A,wt=40): 345 P(e(x,e(e(e(e(e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),v6),v7),e(v6,v7)),v8),e(v9,v8)),v9),x))).  [hyper(2,a,7,a,b,83,a)].
+
+given #344 (A,wt=44): 346 P(e(e(e(e(e(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),v5),v6),e(v5,v6)),v7),v8),e(v7,v8)),v9),e(v10,v9)),v10)).  [hyper(2,a,3,a,b,83,a)].
+
+given #345 (A,wt=48): 347 P(e(e(x,e(y,e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),e(e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),e(v9,v8)),v9),y)),v10),e(v11,v10)),v11))),x)).  [hyper(2,a,83,a,b,57,a)].
+
+given #346 (A,wt=44): 348 P(e(x,e(e(e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),e(v6,e(e(e(v6,v7),e(v8,v7)),v8))),v9),e(v10,v9)),v10),x))).  [hyper(2,a,83,a,b,56,a)].
+
+given #347 (A,wt=48): 349 P(e(e(x,e(y,e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6),e(e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),e(v11,v10)),v11),y)))),x)).  [hyper(2,a,83,a,b,26,a)].
+
+given #348 (A,wt=28): 350 P(e(e(x,e(y,e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),v6),e(v5,v6)),y))),x)).  [hyper(2,a,83,a,b,11,a)].
+
+given #349 (A,wt=48): 351 P(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),x)),e(v6,e(e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),v11),e(v10,v11)),v6)))).  [hyper(2,a,35,a,b,84,a)].
+
+given #350 (A,wt=48): 352 P(e(e(e(x,e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5)),x),e(v6,e(e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),v11),e(v10,v11)),v6)))).  [hyper(2,a,9,a,b,84,a)].
+
+given #351 (A,wt=48): 353 P(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),x),w),e(v5,w)),v5)),e(v6,e(e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),v11),e(v10,v11)),v6)))).  [hyper(2,a,7,a,b,84,a)].
+
+given #352 (A,wt=48): 354 P(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),e(v6,e(e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),v11),e(v10,v11)),v6)))),x)).  [hyper(2,a,35,a,b,85,a)].
+
+given #353 (A,wt=48): 355 P(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),e(w,e(e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),v9),e(v8,v9)),w))),v10),e(v11,v10)),v11)),x)).  [hyper(2,a,7,a,b,85,a)].
+
+given #354 (A,wt=44): 356 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(u,e(e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7),v8),e(v7,v8)),u))),v9),v10),e(v9,v10))).  [hyper(2,a,85,a,b,3,a)].
+
+given #355 (A,wt=44): 357 P(e(e(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),v5),e(w,v5)),e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),x))),v9),e(v10,v9)),v10)).  [hyper(2,a,3,a,b,88,a)].
+
+given #356 (A,wt=44): 358 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),e(v8,e(e(e(v8,v9),e(v10,v9)),v10))))).  [hyper(2,a,88,a,b,3,a)].
+
+given #357 (A,wt=48): 359 P(e(e(x,e(y,e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),v6),e(v5,v6)),e(e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),e(v11,v10)),v11),y)))),x)).  [hyper(2,a,83,a,b,89,a)].
+
+given #358 (A,wt=44): 360 P(e(e(e(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),v5),e(w,v5)),x)),v6),e(v7,v6)),v7),e(v8,e(e(e(v8,v9),e(v10,v9)),v10)))).  [hyper(2,a,56,a,b,89,a)].
+
+given #359 (A,wt=40): 361 P(e(e(x,e(y,e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),v6),e(v5,v6)),e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),y)))),x)).  [hyper(2,a,35,a,b,89,a)].
+
+given #360 (A,wt=48): 362 P(e(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),v5),e(w,v5)),x)),v6),e(e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),v11),e(v10,v11)),v6))).  [hyper(2,a,21,a,b,89,a)].
+
+given #361 (A,wt=48): 363 P(e(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),v5),e(w,v5)),x)),v6),e(e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),e(v11,v10)),v11),v6))).  [hyper(2,a,13,a,b,89,a)].
+
+given #362 (A,wt=36): 364 P(e(e(x,e(e(e(e(y,e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),v6),e(v5,v6)),y)),v7),e(v8,v7)),v8)),x)).  [hyper(2,a,7,a,b,89,a)].
+
+given #363 (A,wt=40): 365 P(e(e(e(e(e(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),v5),e(w,v5)),x)),v6),e(v7,v6)),v7),v8),e(v9,v8)),v9)).  [hyper(2,a,3,a,b,89,a)].
+
+given #364 (A,wt=44): 366 P(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(u,e(e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7),v8),e(v7,v8)),u)),v9)),v10),e(v9,v10))).  [hyper(2,a,89,a,b,14,a)].
+
+given #365 (A,wt=32): 367 P(e(e(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),v5),e(w,v5)),x)),v6),v7),e(v6,v7))).  [hyper(2,a,89,a,b,3,a)].
+
+given #366 (A,wt=48): 368 P(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),v5),e(e(v6,e(e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),e(v11,v10)),v11),v6)),v5))).  [hyper(2,a,11,a,b,92,a)].
+
+given #367 (A,wt=48): 369 P(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),v5),e(e(e(v6,e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),e(v11,v10)),v11)),v6),v5))).  [hyper(2,a,6,a,b,92,a)].
+
+given #368 (A,wt=48): 370 P(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),v5),e(e(v6,e(e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v6),v10),e(v11,v10)),v11)),v5))).  [hyper(2,a,5,a,b,92,a)].
+
+given #369 (A,wt=44): 371 P(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),e(v5,e(e(e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),v9),e(v10,v9)),v10))),v5)).  [hyper(2,a,6,a,b,94,a)].
+
+given #370 (A,wt=44): 372 P(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),v5),e(e(e(e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),v5),v9),e(v10,v9)),v10))).  [hyper(2,a,5,a,b,94,a)].
+
+given #371 (A,wt=48): 373 P(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7),v8),e(v7,v8)),e(e(v9,e(e(e(v9,v10),e(v11,v10)),v11)),u)))).  [hyper(2,a,89,a,b,95,a)].
+
+given #372 (A,wt=44): 374 P(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6),e(v7,v6)),v7)),e(v8,e(e(e(v8,v9),e(v10,v9)),v10)))).  [hyper(2,a,65,a,b,95,a)].
+
+given #373 (A,wt=48): 375 P(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),u)),v10),e(v11,v10)),v11))).  [hyper(2,a,57,a,b,95,a)].
+
+given #374 (A,wt=44): 376 P(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(u,e(e(e(e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7),v8),e(v7,v8)),v9),e(v10,v9)),v10))),u)).  [hyper(2,a,34,a,b,95,a)].
+
+given #375 (A,wt=48): 377 P(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7),e(v8,v7)),v8),e(e(v9,e(e(e(v9,v10),e(v11,v10)),v11)),u)))).  [hyper(2,a,26,a,b,95,a)].
+
+given #376 (A,wt=44): 378 P(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(u,e(e(e(e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7),e(v8,v7)),v8),v9),e(v10,v9)),v10))),u)).  [hyper(2,a,8,a,b,95,a)].
+
+given #377 (A,wt=36): 379 P(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(u,e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7),e(v8,v7)),v8))),u)).  [hyper(2,a,6,a,b,95,a)].
+
+given #378 (A,wt=36): 380 P(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),u),v7),e(v8,v7)),v8))).  [hyper(2,a,5,a,b,95,a)].
+
+given #379 (A,wt=48): 381 P(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),v9),e(v8,v9))),v10),e(v11,v10)),v11)).  [hyper(2,a,3,a,b,95,a)].
+
+given #380 (A,wt=48): 382 P(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),v5),e(e(v6,e(e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),e(v11,v10)),v11),v6)),v5))).  [hyper(2,a,11,a,b,96,a)].
+
+given #381 (A,wt=48): 383 P(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),v5),e(e(e(v6,e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),e(v11,v10)),v11)),v6),v5))).  [hyper(2,a,6,a,b,96,a)].
+
+given #382 (A,wt=48): 384 P(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(e(e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7),e(v8,v7)),v8),e(v9,e(e(e(v9,v10),e(v11,v10)),v11))),u))).  [hyper(2,a,65,a,b,97,a)].
+
+given #383 (A,wt=48): 385 P(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(e(e(w,e(e(e(e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),v9),e(v8,v9)),v10),e(v11,v10)),v11)),w),u))).  [hyper(2,a,34,a,b,97,a)].
+
+given #384 (A,wt=48): 386 P(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(e(w,e(e(e(e(e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),e(v9,v8)),v9),v10),e(v11,v10)),v11),w)),u))).  [hyper(2,a,19,a,b,97,a)].
+
+given #385 (A,wt=40): 387 P(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(e(w,e(e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),e(v9,v8)),v9),w)),u))).  [hyper(2,a,11,a,b,97,a)].
+
+given #386 (A,wt=48): 388 P(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(e(e(w,e(e(e(e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),e(v9,v8)),v9),v10),e(v11,v10)),v11)),w),u))).  [hyper(2,a,8,a,b,97,a)].
+
+given #387 (A,wt=48): 389 P(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),e(v9,v8)),v9)),v10),e(v11,v10)),v11)).  [hyper(2,a,3,a,b,97,a)].
+
+given #388 (A,wt=40): 390 P(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),e(v5,e(e(e(v5,v6),e(v7,v6)),v7))),v8),e(v9,v8)),v9)).  [hyper(2,a,3,a,b,98,a)].
+
+given #389 (A,wt=48): 391 P(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),x)),e(e(v6,e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),v11),e(v10,v11))),v6))).  [hyper(2,a,35,a,b,99,a)].
+
+given #390 (A,wt=48): 392 P(e(e(e(x,e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5)),x),e(e(v6,e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),v11),e(v10,v11))),v6))).  [hyper(2,a,9,a,b,99,a)].
+
+given #391 (A,wt=48): 393 P(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),x),w),e(v5,w)),v5)),e(e(v6,e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),v11),e(v10,v11))),v6))).  [hyper(2,a,7,a,b,99,a)].
+
+given #392 (A,wt=48): 394 P(e(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),v9)),e(v8,v9)),v10),e(v11,v10)),v11)).  [hyper(2,a,3,a,b,100,a)].
+
+given #393 (A,wt=48): 395 P(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),e(e(v6,e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),v11),e(v10,v11))),v6))),x)).  [hyper(2,a,35,a,b,101,a)].
+
+given #394 (A,wt=48): 396 P(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),e(e(w,e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),v9),e(v8,v9))),w)),v10),e(v11,v10)),v11)),x)).  [hyper(2,a,7,a,b,101,a)].
+
+given #395 (A,wt=44): 397 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(u,e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7),v8),e(v7,v8))),u)),v9),v10),e(v9,v10))).  [hyper(2,a,101,a,b,3,a)].
+
+given #396 (A,wt=44): 398 P(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),e(e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),v9),v10)),e(v9,v10)))).  [hyper(2,a,21,a,b,102,a)].
+
+given #397 (A,wt=44): 399 P(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),e(e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),v9),e(v10,v9))),v10))).  [hyper(2,a,13,a,b,102,a)].
+
+given #398 (A,wt=40): 400 P(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6),v7)),e(v6,v7)),v8),e(v9,v8)),v9)).  [hyper(2,a,3,a,b,102,a)].
+
+given #399 (A,wt=48): 401 P(e(x,e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),e(e(w,e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),v9),e(v8,v9))),w)),v10),e(v11,v10)),v11),x))).  [hyper(2,a,102,a,b,101,a)].
+
+given #400 (A,wt=36): 402 P(e(x,e(e(e(e(e(y,e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),v6),e(v5,v6)),y)),v7),e(v8,v7)),v8),x))).  [hyper(2,a,102,a,b,89,a)].
+
+given #401 (A,wt=48): 403 P(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),x),w),e(v5,w)),v5)),e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),e(v9,e(e(e(v9,v10),e(v11,v10)),v11))))).  [hyper(2,a,102,a,b,88,a)].
+
+given #402 (A,wt=48): 404 P(e(x,e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),e(w,e(e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),v9),e(v8,v9)),w))),v10),e(v11,v10)),v11),x))).  [hyper(2,a,102,a,b,85,a)].
+
+given #403 (A,wt=48): 405 P(e(x,e(e(e(e(e(e(e(e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),v6),v7),e(v6,v7)),v8),e(v9,v8)),v9),v10),e(v11,v10)),v11),x))).  [hyper(2,a,102,a,b,81,a)].
+
+given #404 (A,wt=44): 406 P(e(x,e(e(e(e(e(y,e(e(e(e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6),v7),e(v8,v7)),v8),y)),v9),e(v10,v9)),v10),x))).  [hyper(2,a,102,a,b,78,a)].
+
+given #405 (A,wt=48): 407 P(e(x,e(e(e(e(e(e(e(e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),v6),e(v7,v6)),v7),v8),v9),e(v8,v9)),v10),e(v11,v10)),v11),x))).  [hyper(2,a,102,a,b,73,a)].
+
+given #406 (A,wt=48): 408 P(e(x,e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),e(w,e(e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),e(v9,v8)),v9),w))),v10),e(v11,v10)),v11),x))).  [hyper(2,a,102,a,b,60,a)].
+
+given #407 (A,wt=48): 409 P(e(x,e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),e(e(w,e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),e(v9,v8)),v9)),w)),v10),e(v11,v10)),v11),x))).  [hyper(2,a,102,a,b,58,a)].
+
+given #408 (A,wt=36): 410 P(e(x,e(e(e(e(e(y,e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),y),v5),e(v6,v5)),v6)),v7),e(v8,v7)),v8),x))).  [hyper(2,a,102,a,b,57,a)].
+
+given #409 (A,wt=48): 411 P(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),e(v7,e(e(e(v7,v8),e(v9,v8)),v9)))),v10),e(v11,v10)),v11)),x)).  [hyper(2,a,102,a,b,54,a)].
+
+given #410 (A,wt=48): 412 P(e(x,e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),e(w,e(e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),w),v8),e(v9,v8)),v9))),v10),e(v11,v10)),v11),x))).  [hyper(2,a,102,a,b,49,a)].
+
+given #411 (A,wt=36): 413 P(e(x,e(e(e(e(e(e(y,e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6)),y),v7),e(v8,v7)),v8),x))).  [hyper(2,a,102,a,b,46,a)].
+
+given #412 (A,wt=44): 414 P(e(x,e(e(e(e(e(e(y,e(e(e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6),v7),e(v8,v7)),v8)),y),v9),e(v10,v9)),v10),x))).  [hyper(2,a,102,a,b,40,a)].
+
+given #413 (A,wt=44): 415 P(e(x,e(e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),v5),e(w,v5)),e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),x)),v9),e(v10,v9)),v10))).  [hyper(2,a,102,a,b,35,a)].
+
+given #414 (A,wt=40): 416 P(e(x,e(e(e(e(e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),v5),e(w,v5)),v6),e(v7,v6)),v7),v8),e(v9,v8)),v9),x))).  [hyper(2,a,102,a,b,34,a)].
+
+given #415 (A,wt=36): 417 P(e(x,e(e(e(e(e(y,e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6),y)),v7),e(v8,v7)),v8),x))).  [hyper(2,a,102,a,b,26,a)].
+
+given #416 (A,wt=44): 418 P(e(e(x,e(e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),e(v6,e(e(e(v6,v7),e(v8,v7)),v8))),v9),e(v10,v9)),v10)),x)).  [hyper(2,a,102,a,b,22,a)].
+
+given #417 (A,wt=32): 419 P(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6),v7),e(v6,v7)))).  [hyper(2,a,65,a,b,103,a)].
+
+given #418 (A,wt=48): 420 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),e(e(v5,e(v6,e(e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v6),v10),e(v11,v10)),v11))),v5))).  [hyper(2,a,104,a,b,35,a)].
+
+given #419 (A,wt=44): 421 P(e(e(x,e(e(e(x,y),e(z,y)),z)),e(u,e(e(e(e(e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7),e(v8,v7)),v8),u),v9),e(v10,v9)),v10)))).  [hyper(2,a,80,a,b,105,a)].
+
+given #420 (A,wt=36): 422 P(e(e(x,e(e(e(x,y),e(z,y)),z)),e(u,e(e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7),v8),e(v7,v8)),u)))).  [hyper(2,a,75,a,b,105,a)].
+
+given #421 (A,wt=48): 423 P(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(e(e(e(e(e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6),e(v7,v6)),v7),v8),e(v9,v8)),v9),v10),v11),e(v10,v11)))).  [hyper(2,a,69,a,b,105,a)].
+
+given #422 (A,wt=36): 424 P(e(e(x,e(e(e(x,y),e(z,y)),z)),e(u,e(e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),u),v7),e(v8,v7)),v8)))).  [hyper(2,a,33,a,b,105,a)].
+
+given #423 (A,wt=36): 425 P(e(e(x,e(e(e(x,y),e(z,y)),z)),e(u,e(e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7),e(v8,v7)),v8),u)))).  [hyper(2,a,21,a,b,105,a)].
+
+given #424 (A,wt=40): 426 P(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(e(e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6),e(v7,v6)),v7),v8),v9),e(v8,v9)))).  [hyper(2,a,15,a,b,105,a)].
+
+given #425 (A,wt=44): 427 P(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7),v8),e(v7,v8)),u)),v9),e(v10,v9)),v10)).  [hyper(2,a,3,a,b,105,a)].
+
+given #426 (A,wt=36): 428 P(e(x,e(e(e(e(e(e(y,e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),v6),e(v5,v6))),y),v7),e(v8,v7)),v8),x))).  [hyper(2,a,102,a,b,106,a)].
+
+given #427 (A,wt=44): 429 P(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),v5),e(w,v5)),e(e(e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),v9),e(v10,v9)),v10))),x)).  [hyper(2,a,83,a,b,106,a)].
+
+given #428 (A,wt=48): 430 P(e(e(x,e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),v6),e(e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),v11),e(v10,v11)),v6))),x)).  [hyper(2,a,70,a,b,106,a)].
+
+given #429 (A,wt=44): 431 P(e(e(e(e(e(e(x,e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),v5),e(w,v5))),x),v6),e(v7,v6)),v7),e(v8,e(e(e(v8,v9),e(v10,v9)),v10)))).  [hyper(2,a,56,a,b,106,a)].
+
+given #430 (A,wt=36): 432 P(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),v5),e(w,v5)),e(v6,e(e(e(v6,v7),e(v8,v7)),v8)))),x)).  [hyper(2,a,35,a,b,106,a)].
+
+given #431 (A,wt=48): 433 P(e(e(e(e(x,e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),v5),e(w,v5))),x),v6),e(e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),v11),e(v10,v11)),v6))).  [hyper(2,a,21,a,b,106,a)].
+
+given #432 (A,wt=40): 434 P(e(e(x,e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),v9),e(v8,v9)),w))),x)).  [hyper(2,a,17,a,b,106,a)].
+
+given #433 (A,wt=48): 435 P(e(e(e(e(x,e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),v5),e(w,v5))),x),v6),e(e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),e(v11,v10)),v11),v6))).  [hyper(2,a,13,a,b,106,a)].
+
+given #434 (A,wt=36): 436 P(e(e(x,e(e(e(e(e(y,e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),v6),e(v5,v6))),y),v7),e(v8,v7)),v8)),x)).  [hyper(2,a,7,a,b,106,a)].
+
+given #435 (A,wt=40): 437 P(e(e(e(e(e(e(e(e(x,e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),v5),e(w,v5))),x),v6),e(v7,v6)),v7),v8),e(v9,v8)),v9)).  [hyper(2,a,3,a,b,106,a)].
+
+given #436 (A,wt=24): 438 P(e(e(x,e(e(e(x,y),e(z,y)),z)),e(u,e(e(e(u,w),e(v5,w)),v5)))).  [hyper(2,a,106,a,b,98,a)].
+
+given #437 (A,wt=48): 439 P(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(e(e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7),v8),e(v7,v8)),e(v9,e(e(e(v9,v10),e(v11,v10)),v11))),u))).  [hyper(2,a,106,a,b,97,a)].
+
+given #438 (A,wt=44): 440 P(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6),v7),e(v6,v7))),e(v8,e(e(e(v8,v9),e(v10,v9)),v10)))).  [hyper(2,a,106,a,b,95,a)].
+
+given #439 (A,wt=48): 441 P(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6)),e(e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),v11),e(v10,v11)),v6))).  [hyper(2,a,106,a,b,79,a)].
+
+given #440 (A,wt=44): 442 P(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(u,e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7),v8),e(v7,v8))),u),v9)),v10),e(v9,v10))).  [hyper(2,a,106,a,b,14,a)].
+
+given #441 (A,wt=32): 443 P(e(e(e(e(e(x,e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),v5),e(w,v5))),x),v6),v7),e(v6,v7))).  [hyper(2,a,106,a,b,3,a)].
+
+given #442 (A,wt=48): 444 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),e(v5,e(e(v6,e(e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v6),v10),e(v11,v10)),v11)),v5)))).  [hyper(2,a,108,a,b,35,a)].
+
+given #443 (A,wt=36): 445 P(e(x,e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7),v8)),e(v7,v8)),x))).  [hyper(2,a,83,a,b,109,a)].
+
+given #444 (A,wt=36): 446 P(e(x,e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7),e(v8,v7))),v8),x))).  [hyper(2,a,35,a,b,109,a)].
+
+given #445 (A,wt=44): 447 P(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6),e(v7,v6))),v7),e(v8,e(e(e(v8,v9),e(v10,v9)),v10)))).  [hyper(2,a,109,a,b,98,a)].
+
+given #446 (A,wt=48): 448 P(e(x,e(e(y,e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),y),v5),e(v6,v5)),v6)),e(e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),v11),e(v10,v11)),x)))).  [hyper(2,a,109,a,b,56,a)].
+
+given #447 (A,wt=48): 449 P(e(x,e(e(e(y,e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6)),y),e(e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),v11),e(v10,v11)),x)))).  [hyper(2,a,109,a,b,55,a)].
+
+given #448 (A,wt=48): 450 P(e(x,e(e(y,e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6),y)),e(e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),v11),e(v10,v11)),x)))).  [hyper(2,a,109,a,b,50,a)].
+
+given #449 (A,wt=40): 451 P(e(x,e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),v9),e(v8,v9)),w)),x))).  [hyper(2,a,83,a,b,111,a)].
+
+given #450 (A,wt=40): 452 P(e(x,e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),e(v9,v8)),v9),w)),x))).  [hyper(2,a,35,a,b,111,a)].
+
+given #451 (A,wt=48): 453 P(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7),e(v8,v7)),v8),u)),e(v9,e(e(e(v9,v10),e(v11,v10)),v11)))).  [hyper(2,a,111,a,b,98,a)].
+
+given #452 (A,wt=48): 454 P(e(x,e(e(y,e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),y),v5),e(v6,v5)),v6)),e(e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),e(v11,v10)),v11),x)))).  [hyper(2,a,111,a,b,56,a)].
+
+given #453 (A,wt=48): 455 P(e(x,e(e(e(y,e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6)),y),e(e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),e(v11,v10)),v11),x)))).  [hyper(2,a,111,a,b,55,a)].
+
+given #454 (A,wt=48): 456 P(e(x,e(e(y,e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6),y)),e(e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),e(v11,v10)),v11),x)))).  [hyper(2,a,111,a,b,50,a)].
+
+given #455 (A,wt=16): 457 P(e(x,e(e(y,e(e(e(y,z),e(u,z)),u)),x))).  [hyper(2,a,35,a,b,112,a)].
+
+given #456 (A,wt=48): 458 P(e(e(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8)),v9),e(v8,v9)),v10),e(v11,v10)),v11)).  [hyper(2,a,3,a,b,112,a)].
+
+given #457 (A,wt=40): 459 P(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(e(e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6),e(v7,v6)),v7),v8),e(v9,v8)),v9))).  [hyper(2,a,112,a,b,96,a)].
+
+given #458 (A,wt=40): 460 P(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(e(e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6),v7),e(v6,v7)),v8),e(v9,v8)),v9))).  [hyper(2,a,112,a,b,92,a)].
+
+given #459 (A,wt=48): 461 P(e(x,e(e(y,e(e(e(e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6),v7),e(v8,v7)),v8),y)),e(e(v9,e(e(e(v9,v10),e(v11,v10)),v11)),x)))).  [hyper(2,a,112,a,b,82,a)].
+
+given #460 (A,wt=44): 462 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6)),v7),e(v6,v7)),e(v8,e(e(e(v8,v9),e(v10,v9)),v10)))).  [hyper(2,a,112,a,b,57,a)].
+
+given #461 (A,wt=40): 463 P(e(x,e(e(y,e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),y),v5),e(v6,v5)),v6)),e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),x)))).  [hyper(2,a,112,a,b,56,a)].
+
+given #462 (A,wt=40): 464 P(e(x,e(e(e(y,e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6)),y),e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),x)))).  [hyper(2,a,112,a,b,55,a)].
+
+given #463 (A,wt=48): 465 P(e(x,e(e(e(y,e(e(e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6),v7),e(v8,v7)),v8)),y),e(e(v9,e(e(e(v9,v10),e(v11,v10)),v11)),x)))).  [hyper(2,a,112,a,b,53,a)].
+
+given #464 (A,wt=40): 466 P(e(x,e(e(y,e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6),y)),e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),x)))).  [hyper(2,a,112,a,b,50,a)].
+
+given #465 (A,wt=48): 467 P(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),v5),v6),e(v5,v6)),e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),e(v11,v10)),v11))).  [hyper(2,a,112,a,b,33,a)].
+
+given #466 (A,wt=44): 468 P(e(x,e(e(e(e(e(y,e(e(e(e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6),y),v7),e(v8,v7)),v8)),v9),e(v10,v9)),v10),x))).  [hyper(2,a,102,a,b,113,a)].
+
+given #467 (A,wt=48): 469 P(e(e(x,e(y,e(e(e(e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6),e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),y)),v10),e(v11,v10)),v11))),x)).  [hyper(2,a,35,a,b,113,a)].
+
+given #468 (A,wt=44): 470 P(e(e(x,e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),v9)),v10),e(v9,v10))),x)).  [hyper(2,a,9,a,b,113,a)].
+
+given #469 (A,wt=44): 471 P(e(e(x,e(e(e(e(y,e(e(e(e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6),y),v7),e(v8,v7)),v8)),v9),e(v10,v9)),v10)),x)).  [hyper(2,a,7,a,b,113,a)].
+
+given #470 (A,wt=48): 472 P(e(e(e(e(e(e(e(x,e(e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),x),v6),e(v7,v6)),v7)),v8),e(v9,v8)),v9),v10),e(v11,v10)),v11)).  [hyper(2,a,3,a,b,113,a)].
+
+given #471 (A,wt=48): 473 P(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),e(v9,v8)),v9)),v10),v11),e(v10,v11))).  [hyper(2,a,113,a,b,112,a)].
+
+given #472 (A,wt=40): 474 P(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),e(v5,e(e(e(v5,v6),e(v7,v6)),v7))),v8),v9),e(v8,v9))).  [hyper(2,a,113,a,b,56,a)].
+
+given #473 (A,wt=40): 475 P(e(e(e(e(x,e(e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),x),v6),e(v7,v6)),v7)),v8),v9),e(v8,v9))).  [hyper(2,a,113,a,b,3,a)].
+
+given #474 (A,wt=44): 476 P(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6),v7)),e(v6,v7)),e(v8,e(e(e(v8,v9),e(v10,v9)),v10)))).  [hyper(2,a,112,a,b,114,a)].
+
+given #475 (A,wt=44): 477 P(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),v5),e(w,v5)),e(e(e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),v9),v10),e(v9,v10)))),x)).  [hyper(2,a,35,a,b,114,a)].
+
+given #476 (A,wt=36): 478 P(e(e(x,e(e(e(y,e(e(e(y,z),e(u,z)),u)),e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7),v8)),e(v7,v8))),x)).  [hyper(2,a,9,a,b,114,a)].
+
+given #477 (A,wt=48): 479 P(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),v11)),e(v10,v11)),u))).  [hyper(2,a,114,a,b,30,a)].
+
+given #478 (A,wt=48): 480 P(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),v9),e(v8,v9))),v10),v11),e(v10,v11))).  [hyper(2,a,114,a,b,3,a)].
+
+given #479 (A,wt=48): 481 P(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7),v8),e(v7,v8)),u)),e(v9,e(e(e(v9,v10),e(v11,v10)),v11)))).  [hyper(2,a,112,a,b,115,a)].
+
+given #480 (A,wt=48): 482 P(e(e(e(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),e(v5,e(e(e(v5,v6),e(v7,v6)),v7))),v8),e(v9,v8)),v9),v10),e(v11,v10)),v11)).  [hyper(2,a,3,a,b,116,a)].
+
+given #481 (A,wt=48): 483 P(e(x,e(e(e(e(e(y,e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6),e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),y))),v10),e(v11,v10)),v11),x))).  [hyper(2,a,102,a,b,118,a)].
+
+given #482 (A,wt=48): 484 P(e(e(x,e(e(e(e(y,e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6),e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),y))),v10),e(v11,v10)),v11)),x)).  [hyper(2,a,7,a,b,118,a)].
+
+given #483 (A,wt=44): 485 P(e(e(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),x))),v9),v10),e(v9,v10))).  [hyper(2,a,118,a,b,3,a)].
+
+given #484 (A,wt=48): 486 P(e(e(e(x,e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5)),x),e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),e(v9,e(e(e(v9,v10),e(v11,v10)),v11))))).  [hyper(2,a,55,a,b,119,a)].
+
+given #485 (A,wt=48): 487 P(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),x)),e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),e(v9,e(e(e(v9,v10),e(v11,v10)),v11))))).  [hyper(2,a,50,a,b,119,a)].
+
+given #486 (A,wt=44): 488 P(e(e(e(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),x)),v6),v7),e(v6,v7)),e(v8,e(e(e(v8,v9),e(v10,v9)),v10)))).  [hyper(2,a,56,a,b,122,a)].
+
+given #487 (A,wt=44): 489 P(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),e(v5,e(e(e(v5,v6),e(v7,v6)),v7))),e(v8,e(e(e(v8,v9),e(v10,v9)),v10)))).  [hyper(2,a,50,a,b,122,a)].
+
+given #488 (A,wt=44): 490 P(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(u,e(e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7),e(v8,v7)),v8),u)),v9),e(v10,v9))),v10)).  [hyper(2,a,11,a,b,122,a)].
+
+given #489 (A,wt=48): 491 P(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(e(e(e(e(w,e(e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),e(v9,v8)),v9),w)),v10),e(v11,v10)),v11),u))).  [hyper(2,a,6,a,b,122,a)].
+
+given #490 (A,wt=44): 492 P(e(e(e(e(e(x,e(e(e(e(y,e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6),y)),v7),e(v8,v7)),v8)),x),v9),e(v10,v9)),v10)).  [hyper(2,a,3,a,b,122,a)].
+
+given #491 (A,wt=44): 493 P(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6),e(v7,v6)),v7),e(v8,e(e(e(v8,v9),e(v10,v9)),v10))))).  [hyper(2,a,122,a,b,105,a)].
+
+given #492 (A,wt=44): 494 P(e(x,e(e(e(e(e(e(e(e(y,e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6),y)),v7),e(v8,v7)),v8),v9),e(v10,v9)),v10),x))).  [hyper(2,a,102,a,b,123,a)].
+
+given #493 (A,wt=40): 495 P(e(e(x,e(e(y,e(e(e(e(z,e(e(e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6),e(v7,v6)),v7),z)),v8),e(v9,v8)),v9)),y)),x)).  [hyper(2,a,35,a,b,123,a)].
+
+given #494 (A,wt=44): 496 P(e(e(x,e(e(e(e(e(e(e(y,e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6),y)),v7),e(v8,v7)),v8),v9),e(v10,v9)),v10)),x)).  [hyper(2,a,7,a,b,123,a)].
+
+given #495 (A,wt=48): 497 P(e(e(e(e(e(e(e(e(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),x)),v6),e(v7,v6)),v7),v8),e(v9,v8)),v9),v10),e(v11,v10)),v11)).  [hyper(2,a,3,a,b,123,a)].
+
+given #496 (A,wt=48): 498 P(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(u,e(e(e(e(w,e(e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),e(v9,v8)),v9),w)),v10),e(v11,v10)),v11))),u)).  [hyper(2,a,123,a,b,95,a)].
+
+given #497 (A,wt=44): 499 P(e(x,e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),e(e(e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),v9),e(v10,v9)),v10)),x))).  [hyper(2,a,123,a,b,82,a)].
+
+given #498 (A,wt=36): 500 P(e(x,e(e(e(e(e(y,e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6),y)),x),v7),e(v8,v7)),v8))).  [hyper(2,a,123,a,b,56,a)].
+
+given #499 (A,wt=36): 501 P(e(x,e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),e(v6,e(e(e(v6,v7),e(v8,v7)),v8))),x))).  [hyper(2,a,123,a,b,50,a)].
+
+NOTE: Back_subsumption disabled, ratio of kept to back_subsumed is 2147483647 (0.00 of 1.97 sec).
+
+given #500 (A,wt=40): 502 P(e(e(e(e(e(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),x)),v6),e(v7,v6)),v7),v8),v9),e(v8,v9))).  [hyper(2,a,123,a,b,3,a)].
+
+given #501 (A,wt=48): 503 P(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),e(e(v6,e(e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),e(v11,v10)),v11),v6)),x)))).  [hyper(2,a,123,a,b,124,a)].
+
+given #502 (A,wt=48): 504 P(e(x,e(e(y,e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6),e(e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),e(v11,v10)),v11),y))),x))).  [hyper(2,a,17,a,b,124,a)].
+
+given #503 (A,wt=40): 505 P(e(x,e(e(y,e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6),e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),y))),x))).  [hyper(2,a,9,a,b,124,a)].
+
+given #504 (A,wt=48): 506 P(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),v5),e(w,v5)),e(e(v6,e(e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),e(v11,v10)),v11),v6)),x)))).  [hyper(2,a,124,a,b,109,a)].
+
+given #505 (A,wt=48): 507 P(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),x))),e(v9,e(e(e(v9,v10),e(v11,v10)),v11)))).  [hyper(2,a,124,a,b,31,a)].
+
+given #506 (A,wt=48): 508 P(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),e(e(w,e(e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),e(v9,v8)),v9),w)),x)),v10),e(v11,v10)),v11))).  [hyper(2,a,124,a,b,3,a)].
+
+given #507 (A,wt=48): 509 P(e(x,e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),e(v6,e(e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),e(v11,v10)),v11),v6))),x))).  [hyper(2,a,125,a,b,125,a)].
+
+given #508 (A,wt=48): 510 P(e(x,e(e(e(e(e(y,e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6),y)),e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),x)),v10),e(v11,v10)),v11))).  [hyper(2,a,102,a,b,125,a)].
+
+given #509 (A,wt=48): 511 P(e(x,e(e(e(e(e(y,e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6),y)),v7),e(v8,v7)),v8),e(e(v9,e(e(e(v9,v10),e(v11,v10)),v11)),x)))).  [hyper(2,a,56,a,b,125,a)].
+
+given #510 (A,wt=44): 512 P(e(e(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),x)),e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),v9)),v10),e(v9,v10))).  [hyper(2,a,42,a,b,125,a)].
+
+given #511 (A,wt=44): 513 P(e(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),x)),e(e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),v9),v10)),e(v9,v10))).  [hyper(2,a,21,a,b,125,a)].
+
+given #512 (A,wt=44): 514 P(e(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),x)),e(e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),v9),e(v10,v9))),v10)).  [hyper(2,a,13,a,b,125,a)].
+
+given #513 (A,wt=40): 515 P(e(e(e(e(e(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),x)),v6),v7),e(v6,v7)),v8),e(v9,v8)),v9)).  [hyper(2,a,3,a,b,125,a)].
+
+given #514 (A,wt=48): 516 P(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),e(v9,e(e(e(v9,v10),e(v11,v10)),v11))))),x)).  [hyper(2,a,125,a,b,65,a)].
+
+given #515 (A,wt=44): 517 P(e(x,e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),e(e(e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),v9),v10),e(v9,v10))),x))).  [hyper(2,a,125,a,b,35,a)].
+
+given #516 (A,wt=44): 518 P(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(e(e(e(e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7),e(v8,v7)),v8),u),v9),e(v10,v9)),v10))).  [hyper(2,a,126,a,b,83,a)].
+
+given #517 (A,wt=40): 519 P(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(e(w,e(e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),v9),e(v8,v9)),w)),u))).  [hyper(2,a,126,a,b,74,a)].
+
+given #518 (A,wt=48): 520 P(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(e(e(e(e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6),e(v7,v6)),v7),v8),e(v9,v8)),v9),v10),v11)),e(v10,v11))).  [hyper(2,a,126,a,b,70,a)].
+
+given #519 (A,wt=48): 521 P(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6),v7),e(v6,v7)),v8),e(v9,v8))),v9),v10),e(v11,v10)),v11)).  [hyper(2,a,3,a,b,127,a)].
+
+given #520 (A,wt=48): 522 P(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),e(e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),v9),e(v8,v9)),v10)),v11),e(v10,v11))).  [hyper(2,a,127,a,b,35,a)].
+
+given #521 (A,wt=48): 523 P(e(e(x,e(e(e(y,e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6)),y),x)),e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),e(v11,v10)),v11))).  [hyper(2,a,82,a,b,128,a)].
+
+given #522 (A,wt=48): 524 P(e(e(e(x,e(y,e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),y),v5),e(v6,v5)),v6))),x),e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),e(v11,v10)),v11))).  [hyper(2,a,55,a,b,128,a)].
+
+given #523 (A,wt=48): 525 P(e(e(e(x,e(e(y,e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6)),y)),x),e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),e(v11,v10)),v11))).  [hyper(2,a,53,a,b,128,a)].
+
+given #524 (A,wt=48): 526 P(e(e(x,e(e(y,e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),y),v5),e(v6,v5)),v6)),x)),e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),e(v11,v10)),v11))).  [hyper(2,a,50,a,b,128,a)].
+
+given #525 (A,wt=44): 527 P(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(e(e(e(e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7),v8),e(v7,v8)),v9),v10),e(v9,v10)),u))).  [hyper(2,a,5,a,b,128,a)].
+
+given #526 (A,wt=40): 528 P(e(e(x,e(e(e(y,e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6)),y),x)),e(v7,e(e(e(v7,v8),e(v9,v8)),v9)))).  [hyper(2,a,82,a,b,129,a)].
+
+given #527 (A,wt=40): 529 P(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(e(e(e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7),v8),e(v7,v8)),v9),v9),u))).  [hyper(2,a,61,a,b,129,a)].
+
+given #528 (A,wt=44): 530 P(e(e(x,e(e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),v5),e(w,v5)),x),v6),e(v7,v6)),v7)),e(v8,e(e(e(v8,v9),e(v10,v9)),v10)))).  [hyper(2,a,56,a,b,129,a)].
+
+given #529 (A,wt=40): 531 P(e(e(e(x,e(y,e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),y),v5),e(v6,v5)),v6))),x),e(v7,e(e(e(v7,v8),e(v9,v8)),v9)))).  [hyper(2,a,55,a,b,129,a)].
+
+given #530 (A,wt=40): 532 P(e(e(e(x,e(e(y,e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6)),y)),x),e(v7,e(e(e(v7,v8),e(v9,v8)),v9)))).  [hyper(2,a,53,a,b,129,a)].
+
+given #531 (A,wt=40): 533 P(e(e(x,e(e(y,e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),y),v5),e(v6,v5)),v6)),x)),e(v7,e(e(e(v7,v8),e(v9,v8)),v9)))).  [hyper(2,a,50,a,b,129,a)].
+
+given #532 (A,wt=48): 534 P(e(e(e(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),v5),e(v6,v5)),v6),e(v7,e(e(e(v7,v8),e(v9,v8)),v9))),v10),e(v11,v10)),v11)).  [hyper(2,a,3,a,b,129,a)].
+
+given #533 (A,wt=48): 535 P(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),v5),v6),e(v5,v6)),e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),v11),e(v10,v11)))).  [hyper(2,a,100,a,b,130,a)].
+
+given #534 (A,wt=48): 536 P(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),e(e(e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),v9),e(v8,v9)),v10),v11)),e(v10,v11))).  [hyper(2,a,71,a,b,130,a)].
+
+given #535 (A,wt=40): 537 P(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6),v7),e(v6,v7)),v8),v9)),e(v8,v9))).  [hyper(2,a,48,a,b,130,a)].
+
+given #536 (A,wt=44): 538 P(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(u,e(e(e(e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7),v8),e(v7,v8)),v9),e(v10,v9)),v10)),u))).  [hyper(2,a,21,a,b,130,a)].
+
+given #537 (A,wt=44): 539 P(e(x,e(e(e(e(e(e(y,e(e(e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),v6),e(v5,v6)),v7),e(v8,v7)),v8)),y),v9),e(v10,v9)),v10),x))).  [hyper(2,a,102,a,b,131,a)].
+
+given #538 (A,wt=44): 540 P(e(e(x,e(e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),v5),e(w,v5)),v6),e(v7,v6)),v7),e(v8,e(e(e(v8,v9),e(v10,v9)),v10)))),x)).  [hyper(2,a,35,a,b,131,a)].
+
+given #539 (A,wt=48): 541 P(e(e(x,e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(e(e(e(e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),v9),e(v8,v9)),v10),e(v11,v10)),v11),w))),x)).  [hyper(2,a,17,a,b,131,a)].
+
+given #540 (A,wt=44): 542 P(e(e(x,e(e(e(e(e(y,e(e(e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),v6),e(v5,v6)),v7),e(v8,v7)),v8)),y),v9),e(v10,v9)),v10)),x)).  [hyper(2,a,7,a,b,131,a)].
+
+given #541 (A,wt=48): 543 P(e(e(e(e(e(e(e(e(x,e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),v5),e(w,v5)),v6),e(v7,v6)),v7)),x),v8),e(v9,v8)),v9),v10),e(v11,v10)),v11)).  [hyper(2,a,3,a,b,131,a)].
+
+given #542 (A,wt=40): 544 P(e(e(e(e(e(x,e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),v5),e(w,v5)),v6),e(v7,v6)),v7)),x),v8),v9),e(v8,v9))).  [hyper(2,a,131,a,b,3,a)].
+
+given #543 (A,wt=48): 545 P(e(e(x,e(e(e(y,e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6)),y),x)),e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),v11),e(v10,v11)))).  [hyper(2,a,82,a,b,132,a)].
+
+given #544 (A,wt=48): 546 P(e(e(e(x,e(y,e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),y),v5),e(v6,v5)),v6))),x),e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),v11),e(v10,v11)))).  [hyper(2,a,55,a,b,132,a)].
+
+given #545 (A,wt=48): 547 P(e(e(e(x,e(e(y,e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6)),y)),x),e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),v11),e(v10,v11)))).  [hyper(2,a,53,a,b,132,a)].
+
+given #546 (A,wt=48): 548 P(e(e(x,e(e(y,e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),y),v5),e(v6,v5)),v6)),x)),e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),v11),e(v10,v11)))).  [hyper(2,a,50,a,b,132,a)].
+
+given #547 (A,wt=48): 549 P(e(e(e(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),v5),e(v6,v5)),v6),v7),v8),e(v7,v8)),e(v9,e(e(e(v9,v10),e(v11,v10)),v11)))).  [hyper(2,a,56,a,b,133,a)].
+
+given #548 (A,wt=48): 550 P(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(e(e(e(e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6),v7),e(v6,v7)),v8),e(v9,v8)),v9),v10),e(v11,v10))),v11)).  [hyper(2,a,11,a,b,133,a)].
+
+given #549 (A,wt=48): 551 P(e(e(e(e(e(x,e(e(e(e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),v5),e(w,v5)),v6),e(v7,v6)),v7),v8),e(v9,v8)),v9)),x),v10),e(v11,v10)),v11)).  [hyper(2,a,3,a,b,133,a)].
+
+given #550 (A,wt=40): 552 P(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(e(e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6),v7),e(v6,v7)),v8),v9),e(v8,v9)))).  [hyper(2,a,133,a,b,105,a)].
+
+given #551 (A,wt=48): 553 P(e(x,e(e(e(e(e(e(e(e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),v5),e(w,v5)),v6),e(v7,v6)),v7),v8),e(v9,v8)),v9),v10),e(v11,v10)),v11),x))).  [hyper(2,a,102,a,b,134,a)].
+
+given #552 (A,wt=44): 554 P(e(e(x,e(e(y,e(e(e(e(e(e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),v6),e(v5,v6)),v7),e(v8,v7)),v8),v9),e(v10,v9)),v10)),y)),x)).  [hyper(2,a,35,a,b,134,a)].
+
+given #553 (A,wt=48): 555 P(e(e(x,e(e(e(e(e(e(e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),v5),e(w,v5)),v6),e(v7,v6)),v7),v8),e(v9,v8)),v9),v10),e(v11,v10)),v11)),x)).  [hyper(2,a,7,a,b,134,a)].
+
+given #554 (A,wt=40): 556 P(e(x,e(e(e(e(e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),v5),e(w,v5)),v6),e(v7,v6)),v7),x),v8),e(v9,v8)),v9))).  [hyper(2,a,134,a,b,56,a)].
+
+given #555 (A,wt=32): 557 P(e(e(x,e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),v5),e(w,v5)),v6),v7),e(v6,v7))),x)).  [hyper(2,a,134,a,b,55,a)].
+
+given #556 (A,wt=32): 558 P(e(x,e(e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),v5),e(w,v5)),v6),v7),e(v6,v7)),x))).  [hyper(2,a,134,a,b,50,a)].
+
+given #557 (A,wt=44): 559 P(e(e(e(e(e(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),v5),e(v6,v5)),v6),v7),e(v8,v7)),v8),v9),v10),e(v9,v10))).  [hyper(2,a,134,a,b,3,a)].
+
+given #558 (A,wt=48): 560 P(e(x,e(e(e(y,e(e(e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),v6),e(v5,v6)),v7),e(v8,v7)),v8)),y),e(e(v9,e(e(e(v9,v10),e(v11,v10)),v11)),x)))).  [hyper(2,a,112,a,b,135,a)].
+
+given #559 (A,wt=36): 561 P(e(x,e(e(e(y,e(e(e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),v6),e(v5,v6)),v7),e(v8,v7)),v8)),y),x))).  [hyper(2,a,9,a,b,135,a)].
+
+given #560 (A,wt=48): 562 P(e(e(e(x,e(y,e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6),y))),x),e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),v11),e(v10,v11)))).  [hyper(2,a,135,a,b,132,a)].
+
+given #561 (A,wt=40): 563 P(e(e(e(x,e(y,e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6),y))),x),e(v7,e(e(e(v7,v8),e(v9,v8)),v9)))).  [hyper(2,a,135,a,b,129,a)].
+
+given #562 (A,wt=48): 564 P(e(e(e(x,e(y,e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6),y))),x),e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),e(v11,v10)),v11))).  [hyper(2,a,135,a,b,128,a)].
+
+given #563 (A,wt=44): 565 P(e(e(e(x,e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),v5),e(w,v5)),v6),e(v7,v6)),v7)),x),e(v8,e(e(e(v8,v9),e(v10,v9)),v10)))).  [hyper(2,a,135,a,b,31,a)].
+
+given #564 (A,wt=48): 566 P(e(e(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),v5),e(v6,v5)),v6),e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10)),v11),e(v10,v11))).  [hyper(2,a,42,a,b,136,a)].
+
+given #565 (A,wt=48): 567 P(e(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),v5),e(v6,v5)),v6),e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),v11)),e(v10,v11))).  [hyper(2,a,21,a,b,136,a)].
+
+given #566 (A,wt=48): 568 P(e(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),v5),e(v6,v5)),v6),e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),e(v11,v10))),v11)).  [hyper(2,a,13,a,b,136,a)].
+
+given #567 (A,wt=44): 569 P(e(e(e(e(e(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),v5),e(v6,v5)),v6),v7),v8),e(v7,v8)),v9),e(v10,v9)),v10)).  [hyper(2,a,3,a,b,136,a)].
+
+given #568 (A,wt=32): 570 P(e(x,e(e(e(y,e(z,e(e(e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6),e(v7,v6)),v7),z))),y),x))).  [hyper(2,a,136,a,b,135,a)].
+
+given #569 (A,wt=44): 571 P(e(e(x,e(e(e(y,e(e(e(y,z),e(u,z)),u)),e(e(e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7),v8),e(v7,v8)),v9),e(v10,v9))),v10)),x)).  [hyper(2,a,136,a,b,131,a)].
+
+given #570 (A,wt=48): 572 P(e(x,e(e(y,e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6),e(e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),v11),e(v10,v11)),y))),x))).  [hyper(2,a,136,a,b,124,a)].
+
+given #571 (A,wt=32): 573 P(e(x,e(e(y,e(e(e(z,e(e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6),e(v7,v6)),v7)),z),y)),x))).  [hyper(2,a,136,a,b,82,a)].
+
+given #572 (A,wt=44): 574 P(e(e(x,e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),e(e(e(e(e(w,e(e(e(w,v5),e(v6,v5)),v6)),v7),v8),e(v7,v8)),v9)),v10),e(v9,v10))),x)).  [hyper(2,a,136,a,b,57,a)].
+
+given #573 (A,wt=36): 575 P(e(x,e(e(y,e(e(e(e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),v6),e(v5,v6)),y),v7),e(v8,v7)),v8)),x))).  [hyper(2,a,136,a,b,56,a)].
+
+given #574 (A,wt=32): 576 P(e(x,e(e(e(y,e(z,e(e(e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),z),v6),e(v7,v6)),v7))),y),x))).  [hyper(2,a,136,a,b,55,a)].
+
+given #575 (A,wt=32): 577 P(e(x,e(e(e(y,e(e(z,e(e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6),e(v7,v6)),v7)),z)),y),x))).  [hyper(2,a,136,a,b,53,a)].
+
+given #576 (A,wt=32): 578 P(e(x,e(e(y,e(e(z,e(e(e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),z),v6),e(v7,v6)),v7)),y)),x))).  [hyper(2,a,136,a,b,50,a)].
+
+given #577 (A,wt=48): 579 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),e(v5,e(e(v6,e(e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),e(v11,v10)),v11),v6)),v5)))).  [hyper(2,a,20,a,b,137,a)].
+
+given #578 (A,wt=48): 580 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(u,e(e(w,e(e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),e(v9,v8)),v9),w)),u))),v10),e(v11,v10)),v11)).  [hyper(2,a,14,a,b,137,a)].
+
+given #579 (A,wt=48): 581 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),e(v5,e(e(v6,e(e(e(e(e(v7,e(e(e(v7,v8),e(v9,v8)),v9)),v10),e(v11,v10)),v11),v6)),v5)))).  [hyper(2,a,10,a,b,137,a)].
+
+given #580 (A,wt=36): 582 P(e(e(e(e(x,e(e(y,e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6),y)),x)),v7),e(v8,v7)),v8)).  [hyper(2,a,3,a,b,137,a)].
+
+given #581 (A,wt=48): 583 P(e(e(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),v9)),e(v8,v9)),v10),e(v11,v10)),v11)).  [hyper(2,a,3,a,b,139,a)].
+
+given #582 (A,wt=44): 584 P(e(x,e(e(e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),v5),e(w,v5)),v6),v7),e(v6,v7)),e(e(v8,e(e(e(v8,v9),e(v10,v9)),v10)),x)))).  [hyper(2,a,139,a,b,136,a)].
+
+given #583 (A,wt=48): 585 P(e(x,e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),e(v6,e(e(e(v6,v7),e(v8,v7)),v8))),e(e(v9,e(e(e(v9,v10),e(v11,v10)),v11)),x)))).  [hyper(2,a,139,a,b,125,a)].
+
+given #584 (A,wt=48): 586 P(e(x,e(e(y,e(e(e(e(e(e(e(e(z,e(e(e(z,u),e(w,u)),w)),v5),e(v6,v5)),v6),y),v7),e(v8,v7)),v8)),e(e(v9,e(e(e(v9,v10),e(v11,v10)),v11)),x)))).  [hyper(2,a,139,a,b,83,a)].
+
+given #585 (A,wt=44): 587 P(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),e(v5,e(e(e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),v9),e(v10,v9)),v10))),v5)).  [hyper(2,a,6,a,b,140,a)].
+
+given #586 (A,wt=44): 588 P(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),v5),e(e(e(e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),v5),v9),e(v10,v9)),v10))).  [hyper(2,a,5,a,b,140,a)].
+
+given #587 (A,wt=44): 589 P(e(e(x,e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),v5),e(w,v5)),e(e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),v9),e(v10,v9))),v10)),x)).  [hyper(2,a,9,a,b,141,a)].
+
+============================== PROOF =================================
+
+% Proof 1 at 2.69 (+ 0.05) seconds: Reflex.
+% Length of proof is 19.
+% Level of proof is 8.
+% Maximum clause weight is 48.000.
+% Given clauses 587.
+
+1 P(e(x,x)) # answer(Reflex) # label(non_clause) # label(goal).  [goal].
+2 -P(e(x,y)) | -P(x) | P(y) # label(condensed_detachment).  [assumption].
+3 P(e(x,e(e(e(x,y),e(z,y)),z))) # label(XCB).  [assumption].
+4 -P(e(c1,c1)) # answer(Reflex).  [deny(1)].
+5 P(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w)).  [hyper(2,a,3,a,b,3,a)].
+6 P(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),v5),e(v6,v5)),v6)).  [hyper(2,a,3,a,b,5,a)].
+7 P(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w))).  [hyper(2,a,5,a,b,3,a)].
+9 P(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),v5),v6),e(v5,v6))).  [hyper(2,a,6,a,b,3,a)].
+10 P(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),e(v5,w)),v5),x))).  [hyper(2,a,7,a,b,7,a)].
+11 P(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),v5),e(v6,v5)),v6)).  [hyper(2,a,3,a,b,7,a)].
+14 P(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),x),w),e(v5,w)),v5))).  [hyper(2,a,7,a,b,3,a)].
+28 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),e(w,u)),w),e(e(e(e(v5,e(e(e(v5,v6),e(v7,v6)),v7)),v8),v9),e(v8,v9)))).  [hyper(2,a,10,a,b,7,a)].
+35 P(e(e(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),u),w),e(u,w)),v5),v6),e(v5,v6))).  [hyper(2,a,11,a,b,3,a)].
+57 P(e(e(e(e(x,e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),x),w),e(v5,w)),v5)),v6),e(v7,v6)),v7)).  [hyper(2,a,3,a,b,14,a)].
+141 P(e(e(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(e(e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),v6),v7),e(v6,v7)),v8),v9),e(v8,v9))),v10),e(v11,v10)),v11)).  [hyper(2,a,14,a,b,35,a)].
+262 P(e(e(e(x,e(e(e(x,y),e(z,y)),z)),e(e(e(u,e(e(e(u,w),e(v5,w)),v5)),e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),v9)),v10)),e(v9,v10))).  [hyper(2,a,57,a,b,28,a)].
+589 P(e(e(x,e(e(e(e(e(e(y,e(e(e(y,z),e(u,z)),u)),w),v5),e(w,v5)),e(e(e(v6,e(e(e(v6,v7),e(v8,v7)),v8)),v9),e(v10,v9))),v10)),x)).  [hyper(2,a,9,a,b,141,a)].
+1754 P(e(x,x)).  [hyper(2,a,262,a,b,589,a)].
+1755 $F # answer(Reflex).  [resolve(1754,a,4,a)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=587. Generated=169003. Kept=1752. proofs=1.
+Usable=588. Sos=1162. Demods=0. Limbo=2, Disabled=2. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=148208.
+Forward_subsumed=19043. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=3.38.
+User_CPU=2.69, System_CPU=0.05, Wall_clock=2.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 1 proof.
+
+Process 4529 exit (max_proofs) Tue Nov  3 09:39:06 2009

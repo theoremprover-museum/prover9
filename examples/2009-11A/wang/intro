@@ -1,0 +1,13 @@
+These are the three ExQ challenge from the paper
+
+<blockquote>
+
+Hao Wang, "Formalization and automatic theorem proving", in Wayne A. Kalenich (ed.),
+Proceedings of IFIP Congress 65, pp. 51--58, Washington, D.C., 1965.
+
+</blockquote>
+
+<P>
+There are two versions of each: with equality axiomatized
+(resolution with equality axioms), and with equality built in
+(paramodulation and demodulation).

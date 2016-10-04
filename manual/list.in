@@ -1,0 +1,80 @@
+% This Prover9 input doesn't do anything meaningful.  It simply contains
+% some list-processing functions and relations, and it shows how they
+% can be tested.
+
+set(production).
+
+formulas(demodulators).
+
+% Relations and Properties
+
+-member(x,[]).
+member(x,[y:z]) <-> if(x == y, $T, member(x,z)).
+
+subset([], x).
+subset([x:y], z) <-> member(x,z) & subset(y,z).
+
+is_set([]).
+is_set([x:y]) <-> -member(x,y) & is_set(y).
+
+% Functions
+
+set([]) = [].
+set([x:y]) = if(member(x,y), set(y), [x:set(y)]).
+
+append([], x) = x.
+append([x:y], z) = [x:append(y,z)].
+
+intersect([], x) = [].
+intersect([x:y],z) = if(member(x,z),[x:intersect(y,z)],intersect(y,z)).
+
+union([], x) = x.
+union([x:y], z) = if(member(x,z),union(y,z),[x:union(y,z)]).
+
+diff([], x) = [].
+diff([x:y], z) = if(member(x,z),diff(y,z),[x:diff(y,z)]).
+
+reverse(x) = rev_app(x,[]).
+rev_app([], x) = x.
+rev_app([x:y],z) = rev_app(y,[x:z]).
+
+quick_sort([]) = [].               % naive quicksort
+quick_sort([x:y]) = append(quick_sort(le_list(x,y)),
+                           [x:quick_sort(gt_list(x,y))]).
+
+le_list(z,[]) = [].
+le_list(z,[x:y]) = if(x @<= z,[x:le_list(z,y)], le_list(z,y)).
+
+gt_list(z,[]) = [].
+gt_list(z,[x:y]) = if(x @> z, [x:gt_list(z,y)], gt_list(z,y)).
+
+end_of_list.
+
+formulas(assumptions).
+
+% We're simply going to test some of the function and relations written
+% above.  The assumptions here will be rewritten by the rules above,
+% and the results will appear in the output just after the line
+% "Clauses after input processing:".
+
+% Test functions, we can simply use a dummy predicate.
+
+Test1(2+3).
+Test2(reverse(union([a,b,c],[d,b,f]))).
+Test3(quick_sort([r,e,g,d,f,w,x,c,e,d,r,y,i,b,j,h,v,x,e,d,d,e,t])).
+Test4(diff([a,b,c,d,e],[c,d,e,f,g])).
+Test5(set([a,b,a,b,b,c])).
+
+% Testing relations and properties is awkward, because if a literal
+% rewrites to $T (true), the clause becomes a tautology and disappears;
+% if a literal rewrites to $F (false), the literal disappears.  We can
+% use implications as follows.
+
+ member(b,[a,b,c]) -> Member_test_true.
+-member(b,[a,b,c]) -> Member_test_false.
+
+ is_set([a,b,c,a,d]) -> Set_test_true.
+-is_set([a,b,c,a,d]) -> Set_test_false.
+
+end_of_list.
+

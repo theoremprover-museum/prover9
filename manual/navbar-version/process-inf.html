@@ -1,0 +1,487 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+  <title>Prover9 Manual: Processing Inferred Clauses</title>
+ <link rel="stylesheet" href="manual.css">
+</head>
+
+<body>
+
+<!-- Site navigation menu -->
+
+<ul class="navbar">
+  <li><a href="index.html">Introduction</a>
+  <li><a href="install.html">Installation</a>
+  <li><a href="running.html">Running Prover9</a>
+  <li><a href="input.html">Input Files</a>
+  <li><a href="syntax.html">Clauses & Formulas</a>
+  <li>Search Prep
+  <ul class="navbar2">
+    <li><a href="auto.html">Auto Modes</a>
+    <li><a href="term-order.html">Term Ordering</a>
+    <li><a href="more-prep.html">More Prep</a>
+    <li><a href="limits.html">Search Limits</a>
+  </ul>
+  <li>Inference
+  <ul class="navbar2">
+    <li><a href="loop.html">The Loop</a>
+    <li><a href="select.html">Select Given</a>
+    <li><a href="inf-rules.html">Inference Rules</a>
+    <li><a href="process-inf.html">Process Inferred</a>
+  </ul>
+  <li><a href="output.html">Output Files</a>
+  <li>More Features
+  <ul class="navbar2">
+    <li><a href="weight.html">Weighting</a>
+    <li><a href="attributes.html">Attributes</a>
+    <li><a href="actions.html">Actions</a>
+    <li><a href="fof-reduction.html">FOF Reduction</a>
+    <li><a href="goals.html">Goals</a>
+    <li><a href="hints.html">Hints</a>
+    <li><a href="semantics.html">Semantics</a>
+  </ul>
+  <li>Related Programs
+  <ul class="navbar2">
+    <li><a href="prooftrans.html">Prooftrans</a>
+    <li><a href="mace4.html">Mace4</a>
+  </ul>
+  <li>Ending
+  <ul class="navbar2">
+    <li><a href="options.html">All Options</a>
+    <li><a href="glossary.html">Glossary</a>
+    <li><a href="manual-index.html">Index</a>
+    <li><a href="references.html">References</a>
+  </ul>
+</ul>
+
+<div class="header">Prover9 Manual Version June-2006</div>
+
+<!-- Main content -->
+
+<h1>Processing Inferred Clauses</h1>
+
+Processing of inferred clauses is separated into two
+stages: (1) simplifying the clause and deciding whether
+to keep it, and if it is kept, (2) using the clause to
+operate on other clauses.
+
+<h2>Processing Initial Clauses</h2>
+
+Initial clauses in the <tt>sos</tt> list are processed,
+for the most part, as if they were derived by some inference
+rule.  This process helps to ensure that Prover9's working set
+of clauses starts out in a good state, in particular, that
+no clause subsumes another, and that all clauses are simplified
+according the the working set of demodulators.
+Note the following exceptions.
+
+<ul>
+<li>
+The main exceptions to processing initial clauses is that
+the parameters
+<a href="process-inf.html#max_literals"><tt><b>max_literals</b></tt></a>,
+<a href="process-inf.html#max_vars"><tt><b>max_vars</b></tt></a>, and
+<a href="process-inf.html#max_weight"><tt><b>max_weight</b></tt></a>
+are not applied.
+<li>
+All processing of initial <tt>sos</tt> clauses can be disabled
+by clearing the flag
+<a href="more-prep.html#process_initial_sos"><tt><b>process_initial_sos</b></tt></a>.
+<li>
+Clauses in the initial <tt>usable</tt> list are never processed.
+<li>
+If there is an initial <tt>demodulators</tt> list,
+the clauses therein will be checked.
+If an equation is orientable but backward,
+it will be flipped, and a warning message will be printed.
+Otherwise, it must satisfy all of the ordinary constraints
+on demodulators.
+Having an initial <tt>demodulators</tt> list is useful,
+along with clearing the flag
+<a href="process-inf.html#back_demod"><tt><b>back_demod</b></tt></a>,
+if the user wishes to have a set of demodulators that is fixed throughout
+the search.
+</ul>
+
+<h2>Processing Denials</h2>
+
+If the flag <a href="goals.html#restrict_denials"><tt><b>restrict_denials</b></tt></a> has been set,
+initial negative <tt>sos</tt> clauses are moved to
+the special list <tt>denials</tt>.
+Processing of clauses in the <tt>denials</tt> list
+is restricted to simplification, and after processing,
+clauses are replaced in the <tt>denials</tt> list.
+<p>
+The options <a href="process-inf.html#back_demod"><tt><b>back_demod</b></tt></a> and
+<a href="process-inf.html#back_unit_deletion"><tt><b>back_unit_deletion</b></tt></a>
+are applied to clauses in the <tt>denials</tt> list;
+in fact, these operations are often the keys to the
+success of the <tt>denials</tt> list.
+
+<h2>Algorithms for Processing Clauses</h2>
+
+Processing initial and inferred clauses.
+
+<pre class="my_code">
+Start with clause c:
+    1.  Simplify c:
+        1a.  demodulate
+	1b.  orient equalities
+	1c.  simplify literals
+        1d.  merge identical literals
+	1e.  <a href="process-inf.html#unit_deletion"><tt><b>unit_deletion</b></tt></a>
+	1f.  <a href="process-inf.html#cac_redundancy"><tt><b>cac_redundancy</b></tt></a>
+    2.  <a href="process-inf.html#max_literals"><tt><b>max_literals</b></tt></a> check
+    3.  <a href="process-inf.html#max_vars"><tt><b>max_vars</b></tt></a> check
+    4.  <a href="process-inf.html#safe_unit_conflict"><tt><b>safe_unit_conflict</b></tt></a> check
+    5.  <a href="process-inf.html#max_weight"><tt><b>max_weight</b></tt></a> check
+    6.  subsumption check (forward)
+    7.  assign an ID and keep the clause
+    8.  unsafe unit conflict check
+    9.  check if the clause should be a demodulator
+    ---- (the following steps are delayed until finished with the given clause) ---
+    15. <a href="process-inf.html#factor"><tt><b>factor</b></tt></a> c
+    16. apply <a href="process-inf.html#new_constants"><tt><b>new_constants</b></tt></a> to c
+    17. apply <a href="process-inf.html#back_subsume"><tt><b>back_subsume</b></tt></a> with c
+    18. apply <a href="process-inf.html#back_demod"><tt><b>back_demod</b></tt></a> with c
+    19. apply <a href="process-inf.html#back_unit_deletion"><tt><b>back_unit_deletion</b></tt></a> with c
+    20. move c to the sos list
+</pre>
+
+Processing clauses in <tt>denials</tt>, both initial clauses
+and clauses from <a href="process-inf.html#back_demod"><tt><b>back_demod</b></tt></a> and <a href="process-inf.html#back_unit_deletion"><tt><b>back_unit_deletion</b></tt></a>.
+
+<pre class="my_code">
+Start with clause c:
+    1.  Simplify c:
+        1a.  demodulate
+	1b.  orient equalities
+	1c.  simplify literals
+        1d.  merge identical literals
+	1e.  <a href="process-inf.html#unit_deletion"><tt><b>unit_deletion</b></tt></a>
+	1f.  <a href="process-inf.html#cac_redundancy"><tt><b>cac_redundancy</b></tt></a>
+    2.  unit conflict check
+    3.  append c to the denials list
+</pre>
+
+<h2>Options for Processing Inferred Clauses</h2>
+
+<a name="demod-options"</a>
+<h3>Demodulation Options</h3>
+
+Dedmodulation is the process of using equations (demodulators)
+to rewrite terms.  If a demodulator is oriented by the
+term ordering in effect (KBO, LPO, or RPO),
+it is applied unconditionally, heavy-to-light.
+If a demodulator is not oriented,
+it is applied only if the instance that would be used
+is oriented.
+
+<!-- start option lex_order_vars -->
+<a name="lex_order_vars">
+<pre class="my_option">
+set(lex_order_vars).
+clear(lex_order_vars).    % default clear
+</pre>
+
+<blockquote>
+This flag allows an exception to the rule for applying nonorientable
+demodulators.   If the flag is set, variables are treated as
+constants when comparing terms, with the precedence
+<p>
+<tt>lex([x,y,z,u,v,w,v6,v7,v8, ...]).</tt>
+<p>
+For example, with the (nonorientable) demodulator <tt>x*y = y*x</tt>,
+the term <tt>v7*v6</tt> can be rewritten to <tt>v6*v7</tt>.
+Setting this flag can easily block proofs, but it can also drastically
+reduce the search space and still allow some proofs to be found.
+</blockquote>
+<!-- end option -->
+
+<!-- start option demod_step_limit -->
+<a name="demod_step_limit">
+<pre class="my_option">
+assign(demod_step_limit, <i>n</i>).  % default <i>n</i>=1000, range [-1 .. INT_MAX]
+</pre>
+
+<blockquote>
+This parameter limits the number of rewrite steps that are applied
+to a clause during demodulation.  If <i>n</i>=-1, there is no limit.
+</blockquote>
+<!-- end option -->
+
+<!-- start option demod_size_limit -->
+<a name="demod_size_limit">
+<pre class="my_option">
+assign(demod_size_limit, <i>n</i>).  % default <i>n</i>=1000, range [-1 .. INT_MAX]
+</pre>
+
+<blockquote>
+This parameter limits the size (measured as symbol count) of
+terms as they are demodulated.  If any term being demodulated
+has more than <n>n</n> symbols, demodulation of the clause stops.
+If <i>n</i>=-1, there is no limit.
+</blockquote>
+<!-- end option -->
+
+<!-- start option back_demod -->
+<a name="back_demod">
+<pre class="my_option">
+set(back_demod).
+clear(back_demod).    % default clear
+</pre>
+
+<blockquote>
+If this flag is set,
+<g>back demodulation</g> is applied.
+If an orientable equation is derived, it is
+appended to the <tt>demodulators</tt> list.
+Non-orientable equations are appended based
+on the settings of the flags
+<a href="process-inf.html#lex_dep_demod"><tt><b>lex_dep_demod</b></tt></a> and
+<a href="process-inf.html#lex_dep_demod_sane"><tt><b>lex_dep_demod_sane</b></tt></a>
+and the parameter
+<a href="process-inf.html#lex_dep_demod_lim"><tt><b>lex_dep_demod_lim</b></tt></a>.
+
+<p>
+If an equation is added to <tt>demodulators</tt>,
+Then each clause in <tt>usable</tt> or <tt>sos</tt>
+that can be rewritten with the equation is copied
+and deleted, then the copy is treated as if it were
+generated by an inference rule.  In particular,
+it will be processed, including demodulation, which
+will apply the new demodulator.
+Clauses in <tt>denials</tt> will also be back
+demodulated and reprocessed, but if they
+are kept, they will be placed back in <tt>denials</tt>
+instead of in <tt>sos</tt>.
+
+</blockquote>
+<!-- end option -->
+
+<!-- start option lex_dep_demod -->
+<a name="lex_dep_demod">
+<pre class="my_option">
+set(lex_dep_demod).    % default set
+clear(lex_dep_demod).
+</pre>
+
+<blockquote>
+If this flag is set, then non-orientable equations can
+become demodulators (via the flag <a href="process-inf.html#back_demod"><tt><b>back_demod</b></tt></a>).
+</blockquote>
+<!-- end option -->
+
+<!-- start option lex_dep_demod_lim -->
+<a name="lex_dep_demod_lim">
+<pre class="my_option">
+assign(lex_dep_demod_lim, <i>n</i>).  % default <i>n</i>=11, range [-1 .. INT_MAX]
+</pre>
+
+<blockquote>
+This parameter is a limit on the flag <a href="process-inf.html#lex_dep_demod"><tt><b>lex_dep_demod</b></tt></a>.
+A non-orientable equation cannot become a demodulator
+if it has more than <i>n</i> symbols.  (The equation <tt>(x*y)*z=x*(y*z)</tt> has 11 symbols.)
+If <i>n</i> = -1, there is no limit.
+</blockquote>
+<!-- end option -->
+
+<!-- start option lex_dep_demod_sane -->
+<a name="lex_dep_demod_sane">
+<pre class="my_option">
+set(lex_dep_demod_sane).    % default set
+clear(lex_dep_demod_sane).
+</pre>
+
+<blockquote>
+This flag is a restriction on the flag <a href="process-inf.html#lex_dep_demod"><tt><b>lex_dep_demod</b></tt></a>.
+If set, a non-orientable equation can become a demodulator
+only if its two sides have the same number of symbols.
+</blockquote>
+<!-- end option -->
+
+<!-- start option unit_deletion -->
+<a name="unit_deletion">
+<pre class="my_option">
+set(unit_deletion).
+clear(unit_deletion).    % default clear
+</pre>
+
+<blockquote>
+This flag extends demodulation to include rewriting
+of literals with unit clauses.  For example, if
+we have the unit clause <tt>p(x,a)</tt>, then
+we can use it to remove instances of <tt>-p(x,a)</tt>
+from generated clauses.  This process is like using
+the unit clause as the demodulator <tt>p(x,a) = TRUE</tt>.
+(Unit deletion is not actually implemented as demodulation.)
+</blockquote>
+<!-- end option -->
+
+<!-- start option back_unit_deletion -->
+<a name="back_unit_deletion">
+<pre class="my_option">
+set(back_unit_deletion).
+clear(back_unit_deletion).    % default clear
+</pre>
+
+<blockquote>
+This flag is analogous to back demodulation.
+If set, then each time a unit clause is kept, it is
+used to apply unit deletion to all clauses in
+<tt>sos</tt>, <tt>usable</tt>, and <tt>denials</tt>
+in the same way that <tt>back_demodulation</tt> works.
+</blockquote>
+<!-- end option -->
+
+<h3>Simplifying and Deciding Whether to Keep Clauses</h3>
+
+The options in this section appear in the order in which they are applied.
+
+<!-- start option cac_redundancy -->
+<a name="cac_redundancy">
+<pre class="my_option">
+set(cac_redundancy).    % default set
+clear(cac_redundancy).
+</pre>
+
+<blockquote>
+If this flag is set, then an equational redundancy criterion is applied.
+If Prover9 finds that a binary operation is commutative or
+associative-commutative, it makes a note and uses that information to simplify
+clauses that are derived later in the search.
+<p>
+If a derived clause contains an equality <i>alpha=beta</i>,
+in which <i>alpha</i> and <i>beta</i> are equal with respect to
+commutativity or associativity-commutativity of the the previously
+noted operations, the equality is simplified to <tt>TRUE</tt>.
+<p>
+For example, if Prover9 notes that <tt>x*y=y*x</tt>, and then some
+time later a clause containing the literal <tt>g(u*v)=g(v*u)</tt> is
+derived, that literal will be simplified to TRUE and the clause
+will be deleted.  (Demodulation will not rewrite the two sides
+to the same term unless the flag <a href="process-inf.html#lex_dep_demod"><tt><b>lex_dep_demod</b></tt></a> is set.)
+</blockquote>
+<!-- end option -->
+
+<!-- start option max_literals -->
+<a name="max_literals">
+<pre class="my_option">
+assign(max_literals, <i>n</i>).  % default <i>n</i>=-1, range [-1 .. INT_MAX]
+</pre>
+
+<blockquote>
+Clauses containing more than <i>n</i> literals will be deleted.
+If <n> = -1, there is no limit.
+This parameter is never applied to <g>initial clause</g>s.
+</blockquote>
+<!-- end option -->
+
+<!-- start option max_vars -->
+<a name="max_vars">
+<pre class="my_option">
+assign(max_vars, <i>n</i>).  % default <i>n</i>=-1, range [-1 .. INT_MAX]
+</pre>
+
+<blockquote>
+Clauses containing more than <i>n</i> (distinct) variables will be deleted.
+If <n> = -1, there is no limit.
+This parameter is never applied to <g>initial clause</g>s.
+</blockquote>
+<!-- end option -->
+
+<!-- start option safe_unit_conflict -->
+<a name="safe_unit_conflict">
+<pre class="my_option">
+set(safe_unit_conflict).
+clear(safe_unit_conflict).    % default clear
+</pre>
+
+<blockquote>
+This flag provides for a safe, but more expensive,
+<g>unit conflict</g> test.
+If set, the unit conflict test will be done
+<i>before</i> the <a href="process-inf.html#max_weight"><tt><b>max_weight</b></tt></a> test is applied.
+If the flag is clear, the test will be done <i>after</i>
+the <a href="process-inf.html#max_weight"><tt><b>max_weight</b></tt></a> test is applied, allowing the possibility that
+a proof will be missed, because the final step was deleted
+by the <a href="process-inf.html#max_weight"><tt><b>max_weight</b></tt></a> parameter.
+</blockquote>
+<!-- end option -->
+
+<!-- start option max_weight -->
+<a name="max_weight">
+<pre class="my_option">
+assign(max_weight, <i>n</i>).  % default <i>n</i>=100, range [INT_MIN .. INT_MAX]
+</pre>
+
+<blockquote>
+Derived clauses with weight greater then <i>n</i> will be discarded.
+If <n> = -1, there is no limit.
+This parameter is never applied to <g>initial clause</g>s.
+</blockquote>
+<!-- end option -->
+
+<h3>Performing Operations with the New Clause</h3>
+
+The options in this section appear in the order in which they are applied.
+
+<!-- start option factor -->
+<a name="factor">
+<pre class="my_option">
+set(factor).
+clear(factor).    % default clear
+</pre>
+
+<blockquote>
+If this flag is set, <g>binary factoring<g> is applied to
+newly-kept clauses.
+</blockquote>
+<!-- end option -->
+
+<!-- start option new_constants -->
+<a name="new_constants">
+<pre class="my_option">
+assign(new_constants, <i>n</i>).  % default <i>n</i>=0, range [-1 .. INT_MAX]
+</pre>
+
+<blockquote>
+If this parameter is greater than 0, then Prover9 will apply a
+rule that introduces a new constant when it derives an equation
+that shows the existence of a constant.  In particular, if
+a derived equation has the property that each side has
+variables and the two sides share no variables, a new constant
+will be introduced and set equal to one side of the equation.
+(Back demodulation will derive that the constant is equal to
+the other side.)
+<p>
+For example, if <tt>x' * x = y * y'</tt> is derived, the
+equation <tt>x' * x = c</tt> is produced, where the constant <tt>c</tt>
+does not occur anywhere else.
+<p>
+The value of the parameter limits the number of new constants
+that can be introduced by this rule.
+<p>
+(There is an extension to this rule that introduces (non-constant)
+function symbols based on the intersection of the variables
+of the two sides.  We have not found the extension to be useful
+in practice, so we have not included it in Prover9.)
+</blockquote>
+<!-- end option -->
+
+<!-- start option back_subsume -->
+<a name="back_subsume">
+<pre class="my_option">
+set(back_subsume).    % default set
+clear(back_subsume).
+</pre>
+
+<blockquote>
+If this flag is set, then <g>back subsumption</g> is applied
+with all new clauses.  That is, when a new clause is kept,
+each clause subsumed by the new clause is deleted.
+</blockquote>
+<!-- end option -->
+
+</body>
+</html>

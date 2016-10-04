@@ -1,0 +1,19 @@
+1. Update the content of the manual.  Check against
+
+   /home/mccune/LADR/Changelog
+
+2. Run all of the example jobs for the manual and
+check against the old versions
+
+  % ./run-and-check /home/mccune/bin
+  % less checked-jobs/*.diffs
+  % /bin/rm checked-jobs/*
+
+3. Update the version number of the manual:
+
+   % emacs sed.version
+   % rewrite-files sed.version *.html
+   % /bin/rm *.bak
+   
+
+

@@ -1,0 +1,17 @@
+
+formulas(assumptions).
+
+    x v (y v z) = y v (x v z).  % AJ
+    x v (x ^ y) = x.            % B1
+    x ^ y = (x' v y')'.         % DM
+    x'' = x.                    % CC
+    x v x' = y v y'.            % ONE
+    x v (y ^ (x v z)) = x v (z ^ (x v y)).  % MOD
+
+end_of_list.
+
+formulas(goals).
+
+    x ^ (y v z) = (x ^ y) v (x ^ z).
+
+end_of_list.

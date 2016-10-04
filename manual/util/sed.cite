@@ -1,0 +1,4 @@
+s/begin{thebibliography}{.*}/begin{enumerate}/
+s/end{thebibliography}/end{enumerate}/
+s/bibitem.*/item/
+s/\\newblock//g

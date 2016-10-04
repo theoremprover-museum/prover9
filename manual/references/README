@@ -1,0 +1,23 @@
+1.  Put correct citations in 
+        books.tex
+        journal.tex
+        drafts.tex
+        reports.tex
+
+1.  ./prepare-refs  (don't worry about LaTeX "undefinded reference" messages)
+
+2.  latex vita.tex
+    dvips vita
+    pdflatex vita
+
+-----------------  To install in FTP area:
+
+./install-web        (This copies .ps and .pdf files to webspace
+
+-----------------  To create html version of publications list:
+
+./www-pubs > temp.html
+
+(then check file://localhost/home/mccune/papers/vita/temp.html )
+
+cp temp.html ~/public_html/papers/pubs.html

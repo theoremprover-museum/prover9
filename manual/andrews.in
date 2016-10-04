@@ -1,0 +1,20 @@
+
+formulas(goals).
+
+% Andrews challenge problem (stated positively)
+
+(
+   (
+     (exists x all y (p(x) <-> p(y)))
+     <->
+     ((exists u q(u)) <-> (all v p(v)))
+   )
+   <->
+   (
+     (exists w all z (q(z) <-> q(w)))
+     <->
+     ((exists x1 p(x1)) <-> (all x2 q(x2)))
+   )
+).
+
+end_of_list.

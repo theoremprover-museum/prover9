@@ -1,0 +1,414 @@
+============================== Prover9 ===============================
+Prover9 (32) version 2009-11A, November 2009.
+Process 25629 was started by mccune on cleo,
+Tue Nov  3 17:08:19 2009
+The command was "/home/mccune/LADR/bin/prover9".
+============================== end of head ===========================
+
+============================== INPUT =================================
+set(prolog_style_variables).
+
+formulas(assumptions).
+animal(X) | -wolf(X) # label(wolf_is_an_animal) # label(axiom).
+animal(X) | -fox(X) # label(fox_is_an_animal) # label(axiom).
+animal(X) | -bird(X) # label(bird_is_an_animal) # label(axiom).
+animal(X) | -caterpillar(X) # label(caterpillar_is_an_animal) # label(axiom).
+animal(X) | -snail(X) # label(snail_is_an_animal) # label(axiom).
+wolf(a_wolf) # label(there_is_a_wolf) # label(axiom).
+fox(a_fox) # label(there_is_a_fox) # label(axiom).
+bird(a_bird) # label(there_is_a_bird) # label(axiom).
+caterpillar(a_caterpillar) # label(there_is_a_caterpillar) # label(axiom).
+snail(a_snail) # label(there_is_a_snail) # label(axiom).
+grain(a_grain) # label(there_is_a_grain) # label(axiom).
+plant(X) | -grain(X) # label(grain_is_a_plant) # label(axiom).
+eats(Animal,Plant) | eats(Animal,Small_animal) | -animal(Animal) | -plant(Plant) | -animal(Small_animal) | -plant(Other_plant) | -much_smaller(Small_animal,Animal) | -eats(Small_animal,Other_plant) # label(eating_habits) # label(axiom).
+much_smaller(Catapillar,Bird) | -caterpillar(Catapillar) | -bird(Bird) # label(caterpillar_smaller_than_bird) # label(axiom).
+much_smaller(Snail,Bird) | -snail(Snail) | -bird(Bird) # label(snail_smaller_than_bird) # label(axiom).
+much_smaller(Bird,Fox) | -bird(Bird) | -fox(Fox) # label(bird_smaller_than_fox) # label(axiom).
+much_smaller(Fox,Wolf) | -fox(Fox) | -wolf(Wolf) # label(fox_smaller_than_wolf) # label(axiom).
+-wolf(Wolf) | -fox(Fox) | -eats(Wolf,Fox) # label(wolf_dont_eat_fox) # label(axiom).
+-wolf(Wolf) | -grain(Grain) | -eats(Wolf,Grain) # label(wolf_dont_eat_grain) # label(axiom).
+eats(Bird,Catapillar) | -bird(Bird) | -caterpillar(Catapillar) # label(bird_eats_caterpillar) # label(axiom).
+-bird(Bird) | -snail(Snail) | -eats(Bird,Snail) # label(bird_dont_eat_snail) # label(axiom).
+plant(caterpillar_food_of(Catapillar)) | -caterpillar(Catapillar) # label(caterpillar_food_is_a_plant) # label(axiom).
+eats(Catapillar,caterpillar_food_of(Catapillar)) | -caterpillar(Catapillar) # label(caterpillar_eats_caterpillar_food) # label(axiom).
+plant(snail_food_of(Snail)) | -snail(Snail) # label(snail_food_is_a_plant) # label(axiom).
+eats(Snail,snail_food_of(Snail)) | -snail(Snail) # label(snail_eats_snail_food) # label(axiom).
+-animal(Animal) | -animal(Grain_eater) | -grain(Grain) | -eats(Animal,Grain_eater) | -eats(Grain_eater,Grain) # label(prove_the_animal_exists) # label(negated_conjecture).
+end_of_list.
+
+formulas(goals).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+animal(A) | -wolf(A) # label(wolf_is_an_animal) # label(axiom).  [assumption].
+animal(A) | -fox(A) # label(fox_is_an_animal) # label(axiom).  [assumption].
+animal(A) | -bird(A) # label(bird_is_an_animal) # label(axiom).  [assumption].
+animal(A) | -caterpillar(A) # label(caterpillar_is_an_animal) # label(axiom).  [assumption].
+animal(A) | -snail(A) # label(snail_is_an_animal) # label(axiom).  [assumption].
+wolf(a_wolf) # label(there_is_a_wolf) # label(axiom).  [assumption].
+fox(a_fox) # label(there_is_a_fox) # label(axiom).  [assumption].
+bird(a_bird) # label(there_is_a_bird) # label(axiom).  [assumption].
+caterpillar(a_caterpillar) # label(there_is_a_caterpillar) # label(axiom).  [assumption].
+snail(a_snail) # label(there_is_a_snail) # label(axiom).  [assumption].
+grain(a_grain) # label(there_is_a_grain) # label(axiom).  [assumption].
+plant(A) | -grain(A) # label(grain_is_a_plant) # label(axiom).  [assumption].
+eats(A,B) | eats(A,C) | -animal(A) | -plant(B) | -animal(C) | -plant(D) | -much_smaller(C,A) | -eats(C,D) # label(eating_habits) # label(axiom).  [assumption].
+much_smaller(A,B) | -caterpillar(A) | -bird(B) # label(caterpillar_smaller_than_bird) # label(axiom).  [assumption].
+much_smaller(A,B) | -snail(A) | -bird(B) # label(snail_smaller_than_bird) # label(axiom).  [assumption].
+much_smaller(A,B) | -bird(A) | -fox(B) # label(bird_smaller_than_fox) # label(axiom).  [assumption].
+much_smaller(A,B) | -fox(A) | -wolf(B) # label(fox_smaller_than_wolf) # label(axiom).  [assumption].
+-wolf(A) | -fox(B) | -eats(A,B) # label(wolf_dont_eat_fox) # label(axiom).  [assumption].
+-wolf(A) | -grain(B) | -eats(A,B) # label(wolf_dont_eat_grain) # label(axiom).  [assumption].
+eats(A,B) | -bird(A) | -caterpillar(B) # label(bird_eats_caterpillar) # label(axiom).  [assumption].
+-bird(A) | -snail(B) | -eats(A,B) # label(bird_dont_eat_snail) # label(axiom).  [assumption].
+plant(caterpillar_food_of(A)) | -caterpillar(A) # label(caterpillar_food_is_a_plant) # label(axiom).  [assumption].
+eats(A,caterpillar_food_of(A)) | -caterpillar(A) # label(caterpillar_eats_caterpillar_food) # label(axiom).  [assumption].
+plant(snail_food_of(A)) | -snail(A) # label(snail_food_is_a_plant) # label(axiom).  [assumption].
+eats(A,snail_food_of(A)) | -snail(A) # label(snail_eats_snail_food) # label(axiom).  [assumption].
+-animal(A) | -animal(B) | -grain(C) | -eats(A,B) | -eats(B,C) # label(prove_the_animal_exists) # label(negated_conjecture).  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+Eliminating wolf/1
+1 wolf(a_wolf) # label(there_is_a_wolf) # label(axiom).  [assumption].
+2 animal(A) | -wolf(A) # label(wolf_is_an_animal) # label(axiom).  [assumption].
+Derived: animal(a_wolf).  [resolve(1,a,2,b)].
+3 much_smaller(A,B) | -fox(A) | -wolf(B) # label(fox_smaller_than_wolf) # label(axiom).  [assumption].
+Derived: much_smaller(A,a_wolf) | -fox(A).  [resolve(3,c,1,a)].
+4 -wolf(A) | -fox(B) | -eats(A,B) # label(wolf_dont_eat_fox) # label(axiom).  [assumption].
+Derived: -fox(A) | -eats(a_wolf,A).  [resolve(4,a,1,a)].
+5 -wolf(A) | -grain(B) | -eats(A,B) # label(wolf_dont_eat_grain) # label(axiom).  [assumption].
+Derived: -grain(A) | -eats(a_wolf,A).  [resolve(5,a,1,a)].
+
+Eliminating fox/1
+6 fox(a_fox) # label(there_is_a_fox) # label(axiom).  [assumption].
+7 animal(A) | -fox(A) # label(fox_is_an_animal) # label(axiom).  [assumption].
+Derived: animal(a_fox).  [resolve(6,a,7,b)].
+8 much_smaller(A,B) | -bird(A) | -fox(B) # label(bird_smaller_than_fox) # label(axiom).  [assumption].
+Derived: much_smaller(A,a_fox) | -bird(A).  [resolve(8,c,6,a)].
+9 much_smaller(A,a_wolf) | -fox(A).  [resolve(3,c,1,a)].
+Derived: much_smaller(a_fox,a_wolf).  [resolve(9,b,6,a)].
+10 -fox(A) | -eats(a_wolf,A).  [resolve(4,a,1,a)].
+Derived: -eats(a_wolf,a_fox).  [resolve(10,a,6,a)].
+
+Eliminating bird/1
+11 bird(a_bird) # label(there_is_a_bird) # label(axiom).  [assumption].
+12 animal(A) | -bird(A) # label(bird_is_an_animal) # label(axiom).  [assumption].
+Derived: animal(a_bird).  [resolve(11,a,12,b)].
+13 much_smaller(A,B) | -caterpillar(A) | -bird(B) # label(caterpillar_smaller_than_bird) # label(axiom).  [assumption].
+Derived: much_smaller(A,a_bird) | -caterpillar(A).  [resolve(13,c,11,a)].
+14 much_smaller(A,B) | -snail(A) | -bird(B) # label(snail_smaller_than_bird) # label(axiom).  [assumption].
+Derived: much_smaller(A,a_bird) | -snail(A).  [resolve(14,c,11,a)].
+15 eats(A,B) | -bird(A) | -caterpillar(B) # label(bird_eats_caterpillar) # label(axiom).  [assumption].
+Derived: eats(a_bird,A) | -caterpillar(A).  [resolve(15,b,11,a)].
+16 -bird(A) | -snail(B) | -eats(A,B) # label(bird_dont_eat_snail) # label(axiom).  [assumption].
+Derived: -snail(A) | -eats(a_bird,A).  [resolve(16,a,11,a)].
+17 much_smaller(A,a_fox) | -bird(A).  [resolve(8,c,6,a)].
+Derived: much_smaller(a_bird,a_fox).  [resolve(17,b,11,a)].
+
+Eliminating caterpillar/1
+18 caterpillar(a_caterpillar) # label(there_is_a_caterpillar) # label(axiom).  [assumption].
+19 animal(A) | -caterpillar(A) # label(caterpillar_is_an_animal) # label(axiom).  [assumption].
+Derived: animal(a_caterpillar).  [resolve(18,a,19,b)].
+20 plant(caterpillar_food_of(A)) | -caterpillar(A) # label(caterpillar_food_is_a_plant) # label(axiom).  [assumption].
+Derived: plant(caterpillar_food_of(a_caterpillar)).  [resolve(20,b,18,a)].
+21 eats(A,caterpillar_food_of(A)) | -caterpillar(A) # label(caterpillar_eats_caterpillar_food) # label(axiom).  [assumption].
+Derived: eats(a_caterpillar,caterpillar_food_of(a_caterpillar)).  [resolve(21,b,18,a)].
+22 much_smaller(A,a_bird) | -caterpillar(A).  [resolve(13,c,11,a)].
+Derived: much_smaller(a_caterpillar,a_bird).  [resolve(22,b,18,a)].
+23 eats(a_bird,A) | -caterpillar(A).  [resolve(15,b,11,a)].
+Derived: eats(a_bird,a_caterpillar).  [resolve(23,b,18,a)].
+
+Eliminating snail/1
+24 snail(a_snail) # label(there_is_a_snail) # label(axiom).  [assumption].
+25 animal(A) | -snail(A) # label(snail_is_an_animal) # label(axiom).  [assumption].
+Derived: animal(a_snail).  [resolve(24,a,25,b)].
+26 plant(snail_food_of(A)) | -snail(A) # label(snail_food_is_a_plant) # label(axiom).  [assumption].
+Derived: plant(snail_food_of(a_snail)).  [resolve(26,b,24,a)].
+27 eats(A,snail_food_of(A)) | -snail(A) # label(snail_eats_snail_food) # label(axiom).  [assumption].
+Derived: eats(a_snail,snail_food_of(a_snail)).  [resolve(27,b,24,a)].
+28 much_smaller(A,a_bird) | -snail(A).  [resolve(14,c,11,a)].
+Derived: much_smaller(a_snail,a_bird).  [resolve(28,b,24,a)].
+29 -snail(A) | -eats(a_bird,A).  [resolve(16,a,11,a)].
+Derived: -eats(a_bird,a_snail).  [resolve(29,a,24,a)].
+
+Eliminating grain/1
+30 plant(A) | -grain(A) # label(grain_is_a_plant) # label(axiom).  [assumption].
+31 grain(a_grain) # label(there_is_a_grain) # label(axiom).  [assumption].
+Derived: plant(a_grain).  [resolve(30,b,31,a)].
+32 -animal(A) | -animal(B) | -grain(C) | -eats(A,B) | -eats(B,C) # label(prove_the_animal_exists) # label(negated_conjecture).  [assumption].
+Derived: -animal(A) | -animal(B) | -eats(A,B) | -eats(B,a_grain).  [resolve(32,c,31,a)].
+33 -grain(A) | -eats(a_wolf,A).  [resolve(5,a,1,a)].
+Derived: -eats(a_wolf,a_grain).  [resolve(33,a,31,a)].
+
+Eliminating much_smaller/2
+34 much_smaller(a_fox,a_wolf).  [resolve(9,b,6,a)].
+35 eats(A,B) | eats(A,C) | -animal(A) | -plant(B) | -animal(C) | -plant(D) | -much_smaller(C,A) | -eats(C,D) # label(eating_habits) # label(axiom).  [assumption].
+Derived: eats(a_wolf,A) | eats(a_wolf,a_fox) | -animal(a_wolf) | -plant(A) | -animal(a_fox) | -plant(B) | -eats(a_fox,B).  [resolve(34,a,35,g)].
+36 much_smaller(a_bird,a_fox).  [resolve(17,b,11,a)].
+Derived: eats(a_fox,A) | eats(a_fox,a_bird) | -animal(a_fox) | -plant(A) | -animal(a_bird) | -plant(B) | -eats(a_bird,B).  [resolve(36,a,35,g)].
+37 much_smaller(a_caterpillar,a_bird).  [resolve(22,b,18,a)].
+38 much_smaller(a_snail,a_bird).  [resolve(28,b,24,a)].
+Derived: eats(a_bird,A) | eats(a_bird,a_snail) | -animal(a_bird) | -plant(A) | -animal(a_snail) | -plant(B) | -eats(a_snail,B).  [resolve(38,a,35,g)].
+
+============================== end predicate elimination =============
+
+Auto_denials:  (non-Horn, no changes).
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ animal, plant, eats ]).
+Function symbol precedence:  function_order([ a_bird, a_fox, a_snail, a_caterpillar, a_wolf, a_grain, caterpillar_food_of, snail_food_of ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+kept:      39 animal(a_wolf).  [resolve(1,a,2,b)].
+kept:      40 animal(a_fox).  [resolve(6,a,7,b)].
+kept:      41 -eats(a_wolf,a_fox).  [resolve(10,a,6,a)].
+kept:      42 animal(a_bird).  [resolve(11,a,12,b)].
+kept:      43 animal(a_caterpillar).  [resolve(18,a,19,b)].
+kept:      44 plant(caterpillar_food_of(a_caterpillar)).  [resolve(20,b,18,a)].
+kept:      45 eats(a_caterpillar,caterpillar_food_of(a_caterpillar)).  [resolve(21,b,18,a)].
+kept:      46 eats(a_bird,a_caterpillar).  [resolve(23,b,18,a)].
+kept:      47 animal(a_snail).  [resolve(24,a,25,b)].
+kept:      48 plant(snail_food_of(a_snail)).  [resolve(26,b,24,a)].
+kept:      49 eats(a_snail,snail_food_of(a_snail)).  [resolve(27,b,24,a)].
+kept:      50 -eats(a_bird,a_snail).  [resolve(29,a,24,a)].
+kept:      51 plant(a_grain).  [resolve(30,b,31,a)].
+kept:      52 -animal(A) | -animal(B) | -eats(A,B) | -eats(B,a_grain).  [resolve(32,c,31,a)].
+kept:      53 -eats(a_wolf,a_grain).  [resolve(33,a,31,a)].
+           54 eats(a_wolf,A) | eats(a_wolf,a_fox) | -animal(a_wolf) | -plant(A) | -animal(a_fox) | -plant(B) | -eats(a_fox,B).  [resolve(34,a,35,g)].
+kept:      55 eats(a_wolf,A) | -plant(A) | -plant(B) | -eats(a_fox,B).  [copy(54),unit_del(b,41),unit_del(c,39),unit_del(e,40)].
+           56 eats(a_fox,A) | eats(a_fox,a_bird) | -animal(a_fox) | -plant(A) | -animal(a_bird) | -plant(B) | -eats(a_bird,B).  [resolve(36,a,35,g)].
+kept:      57 eats(a_fox,A) | eats(a_fox,a_bird) | -plant(A) | -plant(B) | -eats(a_bird,B).  [copy(56),unit_del(c,40),unit_del(e,42)].
+           58 eats(a_bird,A) | eats(a_bird,a_snail) | -animal(a_bird) | -plant(A) | -animal(a_snail) | -plant(B) | -eats(a_snail,B).  [resolve(38,a,35,g)].
+kept:      59 eats(a_bird,A) | -plant(A) | -plant(B) | -eats(a_snail,B).  [copy(58),unit_del(b,50),unit_del(c,42),unit_del(e,47)].
+kept:      60 -animal(A) | -eats(A,A) | -eats(A,a_grain).  [factor(52,a,b)].
+kept:      61 -animal(a_grain) | -eats(a_grain,a_grain).  [factor(52,c,d),merge(b)].
+kept:      62 eats(a_wolf,A) | -plant(A) | -eats(a_fox,A).  [factor(55,b,c)].
+kept:      63 eats(a_fox,a_bird) | -plant(a_bird) | -plant(A) | -eats(a_bird,A).  [factor(57,a,b)].
+kept:      64 eats(a_fox,A) | eats(a_fox,a_bird) | -plant(A) | -eats(a_bird,A).  [factor(57,c,d)].
+kept:      65 eats(a_bird,A) | -plant(A) | -eats(a_snail,A).  [factor(59,b,c)].
+kept:      66 eats(a_fox,a_bird) | -plant(a_bird) | -eats(a_bird,a_bird).  [factor(63,b,c)].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+39 animal(a_wolf).  [resolve(1,a,2,b)].
+40 animal(a_fox).  [resolve(6,a,7,b)].
+41 -eats(a_wolf,a_fox).  [resolve(10,a,6,a)].
+42 animal(a_bird).  [resolve(11,a,12,b)].
+43 animal(a_caterpillar).  [resolve(18,a,19,b)].
+44 plant(caterpillar_food_of(a_caterpillar)).  [resolve(20,b,18,a)].
+45 eats(a_caterpillar,caterpillar_food_of(a_caterpillar)).  [resolve(21,b,18,a)].
+46 eats(a_bird,a_caterpillar).  [resolve(23,b,18,a)].
+47 animal(a_snail).  [resolve(24,a,25,b)].
+48 plant(snail_food_of(a_snail)).  [resolve(26,b,24,a)].
+49 eats(a_snail,snail_food_of(a_snail)).  [resolve(27,b,24,a)].
+50 -eats(a_bird,a_snail).  [resolve(29,a,24,a)].
+51 plant(a_grain).  [resolve(30,b,31,a)].
+52 -animal(A) | -animal(B) | -eats(A,B) | -eats(B,a_grain).  [resolve(32,c,31,a)].
+53 -eats(a_wolf,a_grain).  [resolve(33,a,31,a)].
+55 eats(a_wolf,A) | -plant(A) | -plant(B) | -eats(a_fox,B).  [copy(54),unit_del(b,41),unit_del(c,39),unit_del(e,40)].
+57 eats(a_fox,A) | eats(a_fox,a_bird) | -plant(A) | -plant(B) | -eats(a_bird,B).  [copy(56),unit_del(c,40),unit_del(e,42)].
+59 eats(a_bird,A) | -plant(A) | -plant(B) | -eats(a_snail,B).  [copy(58),unit_del(b,50),unit_del(c,42),unit_del(e,47)].
+60 -animal(A) | -eats(A,A) | -eats(A,a_grain).  [factor(52,a,b)].
+61 -animal(a_grain) | -eats(a_grain,a_grain).  [factor(52,c,d),merge(b)].
+62 eats(a_wolf,A) | -plant(A) | -eats(a_fox,A).  [factor(55,b,c)].
+63 eats(a_fox,a_bird) | -plant(a_bird) | -plant(A) | -eats(a_bird,A).  [factor(57,a,b)].
+64 eats(a_fox,A) | eats(a_fox,a_bird) | -plant(A) | -eats(a_bird,A).  [factor(57,c,d)].
+65 eats(a_bird,A) | -plant(A) | -eats(a_snail,A).  [factor(59,b,c)].
+66 eats(a_fox,a_bird) | -plant(a_bird) | -eats(a_bird,a_bird).  [factor(63,b,c)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.02 seconds.
+
+given #1 (I,wt=2): 39 animal(a_wolf).  [resolve(1,a,2,b)].
+
+given #2 (I,wt=2): 40 animal(a_fox).  [resolve(6,a,7,b)].
+
+given #3 (I,wt=3): 41 -eats(a_wolf,a_fox).  [resolve(10,a,6,a)].
+
+given #4 (I,wt=2): 42 animal(a_bird).  [resolve(11,a,12,b)].
+
+given #5 (I,wt=2): 43 animal(a_caterpillar).  [resolve(18,a,19,b)].
+
+given #6 (I,wt=3): 44 plant(caterpillar_food_of(a_caterpillar)).  [resolve(20,b,18,a)].
+
+given #7 (I,wt=4): 45 eats(a_caterpillar,caterpillar_food_of(a_caterpillar)).  [resolve(21,b,18,a)].
+
+given #8 (I,wt=3): 46 eats(a_bird,a_caterpillar).  [resolve(23,b,18,a)].
+
+given #9 (I,wt=2): 47 animal(a_snail).  [resolve(24,a,25,b)].
+
+given #10 (I,wt=3): 48 plant(snail_food_of(a_snail)).  [resolve(26,b,24,a)].
+
+given #11 (I,wt=4): 49 eats(a_snail,snail_food_of(a_snail)).  [resolve(27,b,24,a)].
+
+given #12 (I,wt=3): 50 -eats(a_bird,a_snail).  [resolve(29,a,24,a)].
+
+given #13 (I,wt=2): 51 plant(a_grain).  [resolve(30,b,31,a)].
+
+given #14 (I,wt=10): 52 -animal(A) | -animal(B) | -eats(A,B) | -eats(B,a_grain).  [resolve(32,c,31,a)].
+
+given #15 (I,wt=3): 53 -eats(a_wolf,a_grain).  [resolve(33,a,31,a)].
+
+given #16 (I,wt=10): 55 eats(a_wolf,A) | -plant(A) | -plant(B) | -eats(a_fox,B).  [copy(54),unit_del(b,41),unit_del(c,39),unit_del(e,40)].
+
+given #17 (I,wt=13): 57 eats(a_fox,A) | eats(a_fox,a_bird) | -plant(A) | -plant(B) | -eats(a_bird,B).  [copy(56),unit_del(c,40),unit_del(e,42)].
+
+given #18 (I,wt=10): 59 eats(a_bird,A) | -plant(A) | -plant(B) | -eats(a_snail,B).  [copy(58),unit_del(b,50),unit_del(c,42),unit_del(e,47)].
+
+given #19 (I,wt=8): 60 -animal(A) | -eats(A,A) | -eats(A,a_grain).  [factor(52,a,b)].
+
+given #20 (I,wt=5): 61 -animal(a_grain) | -eats(a_grain,a_grain).  [factor(52,c,d),merge(b)].
+
+given #21 (I,wt=8): 62 eats(a_wolf,A) | -plant(A) | -eats(a_fox,A).  [factor(55,b,c)].
+
+given #22 (I,wt=10): 63 eats(a_fox,a_bird) | -plant(a_bird) | -plant(A) | -eats(a_bird,A).  [factor(57,a,b)].
+
+given #23 (I,wt=11): 64 eats(a_fox,A) | eats(a_fox,a_bird) | -plant(A) | -eats(a_bird,A).  [factor(57,c,d)].
+
+given #24 (I,wt=8): 66 eats(a_fox,a_bird) | -plant(a_bird) | -eats(a_bird,a_bird).  [factor(63,b,c)].
+
+given #25 (A,wt=7): 67 -animal(snail_food_of(a_snail)) | -eats(snail_food_of(a_snail),a_grain).  [resolve(52,c,49,a),unit_del(a,47)].
+
+given #26 (F,wt=2): 77 -plant(a_snail).  [ur(59,a,50,a,c,48,a,d,49,a)].
+
+given #27 (F,wt=3): 68 -eats(a_caterpillar,a_grain).  [resolve(52,c,46,a),unit_del(a,42),unit_del(b,43)].
+
+given #28 (F,wt=3): 70 -eats(a_fox,a_grain).  [ur(55,a,53,a,b,51,a,c,51,a)].
+
+given #29 (F,wt=4): 71 -eats(a_fox,snail_food_of(a_snail)).  [ur(55,a,53,a,b,51,a,c,48,a)].
+
+given #30 (T,wt=5): 76 eats(a_bird,A) | -plant(A).  [resolve(59,d,49,a),unit_del(c,48)].
+
+given #31 (T,wt=3): 78 eats(a_bird,a_grain).  [resolve(76,b,51,a)].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.02 (+ 0.00) seconds.
+% Length of proof is 52.
+% Level of proof is 8.
+% Maximum clause weight is 13.000.
+% Given clauses 31.
+
+1 wolf(a_wolf) # label(there_is_a_wolf) # label(axiom).  [assumption].
+2 animal(A) | -wolf(A) # label(wolf_is_an_animal) # label(axiom).  [assumption].
+3 much_smaller(A,B) | -fox(A) | -wolf(B) # label(fox_smaller_than_wolf) # label(axiom).  [assumption].
+4 -wolf(A) | -fox(B) | -eats(A,B) # label(wolf_dont_eat_fox) # label(axiom).  [assumption].
+5 -wolf(A) | -grain(B) | -eats(A,B) # label(wolf_dont_eat_grain) # label(axiom).  [assumption].
+6 fox(a_fox) # label(there_is_a_fox) # label(axiom).  [assumption].
+7 animal(A) | -fox(A) # label(fox_is_an_animal) # label(axiom).  [assumption].
+8 much_smaller(A,B) | -bird(A) | -fox(B) # label(bird_smaller_than_fox) # label(axiom).  [assumption].
+9 much_smaller(A,a_wolf) | -fox(A).  [resolve(3,c,1,a)].
+10 -fox(A) | -eats(a_wolf,A).  [resolve(4,a,1,a)].
+11 bird(a_bird) # label(there_is_a_bird) # label(axiom).  [assumption].
+12 animal(A) | -bird(A) # label(bird_is_an_animal) # label(axiom).  [assumption].
+14 much_smaller(A,B) | -snail(A) | -bird(B) # label(snail_smaller_than_bird) # label(axiom).  [assumption].
+16 -bird(A) | -snail(B) | -eats(A,B) # label(bird_dont_eat_snail) # label(axiom).  [assumption].
+17 much_smaller(A,a_fox) | -bird(A).  [resolve(8,c,6,a)].
+24 snail(a_snail) # label(there_is_a_snail) # label(axiom).  [assumption].
+25 animal(A) | -snail(A) # label(snail_is_an_animal) # label(axiom).  [assumption].
+26 plant(snail_food_of(A)) | -snail(A) # label(snail_food_is_a_plant) # label(axiom).  [assumption].
+27 eats(A,snail_food_of(A)) | -snail(A) # label(snail_eats_snail_food) # label(axiom).  [assumption].
+28 much_smaller(A,a_bird) | -snail(A).  [resolve(14,c,11,a)].
+29 -snail(A) | -eats(a_bird,A).  [resolve(16,a,11,a)].
+30 plant(A) | -grain(A) # label(grain_is_a_plant) # label(axiom).  [assumption].
+31 grain(a_grain) # label(there_is_a_grain) # label(axiom).  [assumption].
+32 -animal(A) | -animal(B) | -grain(C) | -eats(A,B) | -eats(B,C) # label(prove_the_animal_exists) # label(negated_conjecture).  [assumption].
+33 -grain(A) | -eats(a_wolf,A).  [resolve(5,a,1,a)].
+34 much_smaller(a_fox,a_wolf).  [resolve(9,b,6,a)].
+35 eats(A,B) | eats(A,C) | -animal(A) | -plant(B) | -animal(C) | -plant(D) | -much_smaller(C,A) | -eats(C,D) # label(eating_habits) # label(axiom).  [assumption].
+36 much_smaller(a_bird,a_fox).  [resolve(17,b,11,a)].
+38 much_smaller(a_snail,a_bird).  [resolve(28,b,24,a)].
+39 animal(a_wolf).  [resolve(1,a,2,b)].
+40 animal(a_fox).  [resolve(6,a,7,b)].
+41 -eats(a_wolf,a_fox).  [resolve(10,a,6,a)].
+42 animal(a_bird).  [resolve(11,a,12,b)].
+47 animal(a_snail).  [resolve(24,a,25,b)].
+48 plant(snail_food_of(a_snail)).  [resolve(26,b,24,a)].
+49 eats(a_snail,snail_food_of(a_snail)).  [resolve(27,b,24,a)].
+50 -eats(a_bird,a_snail).  [resolve(29,a,24,a)].
+51 plant(a_grain).  [resolve(30,b,31,a)].
+52 -animal(A) | -animal(B) | -eats(A,B) | -eats(B,a_grain).  [resolve(32,c,31,a)].
+53 -eats(a_wolf,a_grain).  [resolve(33,a,31,a)].
+54 eats(a_wolf,A) | eats(a_wolf,a_fox) | -animal(a_wolf) | -plant(A) | -animal(a_fox) | -plant(B) | -eats(a_fox,B).  [resolve(34,a,35,g)].
+55 eats(a_wolf,A) | -plant(A) | -plant(B) | -eats(a_fox,B).  [copy(54),unit_del(b,41),unit_del(c,39),unit_del(e,40)].
+56 eats(a_fox,A) | eats(a_fox,a_bird) | -animal(a_fox) | -plant(A) | -animal(a_bird) | -plant(B) | -eats(a_bird,B).  [resolve(36,a,35,g)].
+57 eats(a_fox,A) | eats(a_fox,a_bird) | -plant(A) | -plant(B) | -eats(a_bird,B).  [copy(56),unit_del(c,40),unit_del(e,42)].
+58 eats(a_bird,A) | eats(a_bird,a_snail) | -animal(a_bird) | -plant(A) | -animal(a_snail) | -plant(B) | -eats(a_snail,B).  [resolve(38,a,35,g)].
+59 eats(a_bird,A) | -plant(A) | -plant(B) | -eats(a_snail,B).  [copy(58),unit_del(b,50),unit_del(c,42),unit_del(e,47)].
+64 eats(a_fox,A) | eats(a_fox,a_bird) | -plant(A) | -eats(a_bird,A).  [factor(57,c,d)].
+70 -eats(a_fox,a_grain).  [ur(55,a,53,a,b,51,a,c,51,a)].
+76 eats(a_bird,A) | -plant(A).  [resolve(59,d,49,a),unit_del(c,48)].
+78 eats(a_bird,a_grain).  [resolve(76,b,51,a)].
+81 eats(a_fox,a_bird).  [resolve(78,a,64,d),unit_del(a,70),unit_del(c,51)].
+86 $F.  [ur(52,a,40,a,b,42,a,d,78,a),unit_del(a,81)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=31. Generated=57. Kept=44. proofs=1.
+Usable=30. Sos=7. Demods=0. Limbo=5, Disabled=58. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=12. Back_subsumed=2.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=7. Nonunit_bsub_feature_tests=31.
+Megabytes=0.07.
+User_CPU=0.02, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 1 proof.
+
+Process 25629 exit (max_proofs) Tue Nov  3 17:08:19 2009

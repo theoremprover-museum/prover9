@@ -1,0 +1,392 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+  <title>Prover9 Manual: Output Files</title>
+ <link rel="stylesheet" href="manual.css">
+</head>
+
+<body>
+
+<!-- Site navigation menu -->
+
+<ul class="navbar">
+  <li><a href="index.html">Introduction</a>
+  <li><a href="install.html">Installation</a>
+  <li><a href="running.html">Running Prover9</a>
+  <li><a href="input.html">Input Files</a>
+  <li><a href="syntax.html">Clauses & Formulas</a>
+  <li>Search Prep
+  <ul class="navbar2">
+    <li><a href="auto.html">Auto Modes</a>
+    <li><a href="term-order.html">Term Ordering</a>
+    <li><a href="more-prep.html">More Prep</a>
+    <li><a href="limits.html">Search Limits</a>
+  </ul>
+  <li>Inference
+  <ul class="navbar2">
+    <li><a href="loop.html">The Loop</a>
+    <li><a href="select.html">Select Given</a>
+    <li><a href="inf-rules.html">Inference Rules</a>
+    <li><a href="process-inf.html">Process Inferred</a>
+  </ul>
+  <li><a href="output.html">Output Files</a>
+  <li>More Features
+  <ul class="navbar2">
+    <li><a href="weight.html">Weighting</a>
+    <li><a href="attributes.html">Attributes</a>
+    <li><a href="actions.html">Actions</a>
+    <li><a href="fof-reduction.html">FOF Reduction</a>
+    <li><a href="goals.html">Goals</a>
+    <li><a href="hints.html">Hints</a>
+    <li><a href="semantics.html">Semantics</a>
+  </ul>
+  <li>Related Programs
+  <ul class="navbar2">
+    <li><a href="prooftrans.html">Prooftrans</a>
+    <li><a href="mace4.html">Mace4</a>
+  </ul>
+  <li>Ending
+  <ul class="navbar2">
+    <li><a href="options.html">All Options</a>
+    <li><a href="glossary.html">Glossary</a>
+    <li><a href="manual-index.html">Index</a>
+    <li><a href="references.html">References</a>
+  </ul>
+</ul>
+
+<div class="header">Prover9 Manual Version June-2006</div>
+
+<!-- Main content -->
+
+<h1>Output Files</h1>
+
+Even when Prover9 fails to find a proof, its output file
+usually has lots of valuable information about the search.
+The output file can suggest many ways of improving the
+search for subsequent jobs as in the following examples.
+
+<ul>
+<li>The output shows how equalities are oriented; different
+<a href="term-order.html">term ordering parameters</a>
+may give better or more intuitive orientations.
+<li>If Prover9 focused the search on uninteresting clauses
+(see the sequence of given clauses), different
+<a href="inf-rules.html">inference rules</a>, a different
+<a href="select.html#pick_given_ratio"><tt><b>pick_given_ratio</b></tt></a>, or a specialized
+<a href="weight.html">weighting function</a>
+can be used.
+<li>If Prover9 ran out of time or memory with a huge <tt>sos</tt> list
+and small <tt>usable</tt> list (i.e., few given clauses were used),
+the <a href="limits.html#sos_limit"><tt><b>sos_limit</b></tt></a> should be reduced.
+</ul>
+
+<h2>Basic Structure of Output Files</h2>
+
+Prover9 output files are divided into sections and subsections
+so the users (people and programs) can find what they are looking
+for.  The delimiters are self-explanatory.  A few comments about
+the sections are given here.  For a specific example, see
+the output file <a href="subset_trans.out">subset_trans.out</a>.
+
+<pre class="my_file">
+============================== Prover9 ===============================
+    <font color="#D10000"><i>Version, date, host computer, command</a>.</i></font>
+============================== end of head ===========================
+
+============================== INPUT =================================
+    <font color="#D10000"><i>Echo of the input.  Everything in this section that is not
+    in the input is commented with "%", so copy-and-paste can be
+    done on this section to create a new input file.</i></font>
+============================== end of input ==========================
+
+============================== PROCESS GOALS =========================
+    <font color="#D10000"><i>The search is always by refutation, and this section shows
+    how goals are negated in preparation for the search.</i></font>
+============================== end of process goals ==================
+
+============================== PROCESS INITIAL CLAUSES ===============
+    <font color="#D10000"><i>This section shows the starting clauses (after Skomemization,
+    if applicable) and then some of what Prover9 does in preparation
+    for the search.  This includes <a href="more-prep.html#predicate_elim"><tt><b>predicate_elim</b></tt></a>, term ordering
+    decisions, and <a href="auto.html#auto_inference"><tt><b>auto_inference</b></tt></a> settings.  At this stage, clauses
+    may be deleted by subsumption and equations may be copied to the
+    list <tt>demodulators</tt>.  See the flag <a href="more-prep.html#process_initial_sos"><tt><b>process_initial_sos</b></tt></a>.</i></font>
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+    <font color="#D10000"><i>This section shows the clauses just before the start of the
+    search, that is, just before selection of the first given clause.</i></font>
+    
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+    <font color="#D10000"><i>This section typically shows the sequence of given clauses,
+    and it may also include PROOF and STATISTICS sections.</i></font>
+
+============================== PROOF =================================
+    <font color="#D10000"><i>A proof in standard form.</i></font>
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+    <font color="#D10000"><i>We encourage users to look at statistics!</i></font>
+============================== end of statistics =====================
+
+============================== end of search =========================
+</pre>
+
+<a name="just">
+<h2>Clause Justifications</h2>
+
+After the initial stage of the output, each clause in the file has an
+integer identifier (ID) and a justification that may refer to IDs
+of other clauses.  A justification is a list consisting of one
+primary step and some number of secondary steps.  Most primary steps
+are inference rules applied to given clauses, and most secondary
+steps consist of simplification, rewriting, or orienting equalities.
+
+<p>
+Many of the types of step refer to positions of literals or terms
+in the parent clauses.  Literals are identified by the characters
+'a' (first literal), 'b' (second literal), etc.  Terms are identified
+by the literal identifier followed by a sequence of integers giving
+the position of the term within the literal.  For example, the
+position 'c,1,3,2' means third literal, first argument, third
+argument, second argument.  Negation signs on literals are not
+included in the sequence.
+
+<p>
+Primary Steps.
+
+<ul>
+<li><tt>input</tt> -- input clause.
+<li><tt>clausify</tt> -- from CNF translation of an input formula.
+<li><tt>resolve(59,b,47,c)</tt> -- resolve the second literal of clause 59
+     with the third literal of clause 47.
+<li><tt>hyper(59, b,47,a, c,38,a)</tt> -- hyperresolution; interpret the
+    list as a clause ID followed by a sequence of triples,
+    &lt;literal,clause-ID,literal&gt; the inference is presented as a sequence
+    of binary resolution steps.  In the example shown, start with clause 59;
+    then resolve literal b with clause 47 on literal a; with the result of
+    the first step, resolve literal c with clause 38 on literal a.
+    The special case "<tt>xx</tt>" means resolution with <tt>x=x</tt>.
+<li><tt>ur(39, a,48,a, b,88,a, c,87,a, d,86,a)</tt> -- unit-resulting
+    resolution; the list is interpreted as in hyperresolution.
+<li><tt>para(47(a,1),28(a,1,2,2,1))</tt> -- paramodulate from the clause 47
+    into clause 28 at the positions shown.
+<li><tt>copy(59)</tt> -- copy clause 59.
+<li><tt>back_demod(59)</tt> -- copy clause 59.
+<li><tt>back_unit_del(59)</tt> -- copy clause 59.
+<li><tt>new_symbol(59)</tt> -- introduce a new constant (see parameter
+    <a href="inf-rules.html#new_constants"><tt><b>new_constants</b></tt></a>).
+<li><tt>factor(59,b,c)</tt> -- factor clause 59 by unifying the second
+     and third literals.
+<li><tt>xx_res(59,b)</tt> -- resolve the second literal of clause 59 with
+    <tt>x=x</tt>.
+<li><tt>propositional</tt> -- not used in standard proofs.
+<li><tt>instantiate</tt> -- not used in standard proofs.
+<li><tt>ivy</tt> -- not used in standard proofs.
+</ul>
+
+<p>
+Secondary Steps (each assumes a working clause, which is either the result of a
+primary step or a previous secondary step).
+<ul>
+<li><tt>demod(38(5,R),47(5),59(6,R))</tt> -- demodulation with clauses
+    38, 47, then 59; the arguments (5), (5), and (6) identify the positions
+    of the rewritten subterms (in an obscure way), and the argument R
+    indicates that the demodulator is used backward (right-to-left).
+<li><tt>flip(c)</tt> -- the third literal is an equality that has been
+    flipped by the term ordering.  This does not necessarily mean that
+    the equality is orientable by the primary term ordering, e.g., KBO.
+<li><tt>merge(d)</tt> -- the fourth literal has been removed because it
+    was identical to a preceding literal.
+<li><tt>unit_del(b,38)</tt> -- the second literal has been removed because
+    it was an instance of the negation clause 38 (which is a unit clause).
+<li><tt>xx(b)</tt> -- the second literal has been removed because it was
+    an instance of <tt>x!=x</tt>.
+</ul>
+
+<h2>Standard Proofs</h2>
+
+Prover9 proofs may be transformed by separate programs,
+e.g., by <a href="prooftrans.html">Prooftrans</a>.
+
+<h2>Options That Say What Goes To the Output File </h2>
+
+<!-- start option echo_input -->
+<a name="echo_input">
+<pre class="my_option">
+set(echo_input).    % default set
+clear(echo_input).
+</pre>
+
+<blockquote>
+Clearing this flag suppresses printing of clauses, formulas,
+weighting rules (and everything else that ends with <tt>end_of_list</tt>)
+that would ordinarily appear in the <tt>INPUT</tt> section of the
+output file.
+</blockquote>
+<!-- end option -->
+
+<!-- start option quiet -->
+<a name="quiet">
+<pre class="my_option">
+set(quiet).
+clear(quiet).    % default clear
+</pre>
+
+<blockquote>
+Setting this flag causes most messages to the standard error file
+(usually the user's screen) to be suppressed.
+These messages include 
+notifications about proofs and statistics reports, and
+warnings about demodulation limits.
+This flag also suppresses several messages to the ordinary
+output file.
+</blockquote>
+<!-- end option -->
+
+<!-- start option print_initial_clauses -->
+<a name="print_initial_clauses">
+<pre class="my_option">
+set(print_initial_clauses).    % default set
+clear(print_initial_clauses).
+</pre>
+
+<blockquote>
+If this flag is set, clauses are printed in the
+<tt>PROCESS INITIAL CLAUSES</tt> and
+<tt>CLAUSES FOR SEARCH</tt> sections of the output file.
+</blockquote>
+<!-- end option -->
+
+<!-- start option print_given -->
+<a name="print_given">
+<pre class="my_option">
+set(print_given).    % default set
+clear(print_given).
+</pre>
+
+<blockquote>
+Clearing this flag prevents given clauses from being printed to
+the output file.
+</blockquote>
+<!-- end option -->
+
+<!-- start option print_gen -->
+<a name="print_gen">
+<pre class="my_option">
+set(print_gen).
+clear(print_gen).    % default clear
+</pre>
+
+<blockquote>
+Setting this flag causes all generated clauses to be printed to
+the the output file.  This can be output files to be really huge.
+</blockquote>
+<!-- end option -->
+
+<!-- start option print_kept -->
+<a name="print_kept">
+<pre class="my_option">
+set(print_kept).
+clear(print_kept).    % default clear
+</pre>
+
+<blockquote>
+Setting this flag causes all kept clauses to be printed to the the output file.
+</blockquote>
+<!-- end option -->
+
+<!-- start option print_labeled -->
+<a name="print_labeled">
+<pre class="my_option">
+set(print_labeled).
+clear(print_labeled).    % default clear
+</pre>
+
+<blockquote>
+Setting this flag causes kept clauses containing label attributes
+to be printed, even when the flag <a href="output.html#print_kept"><tt><b>print_kept</b></tt></a> is clear.
+This flag is useful when using <a href="hints.html">the hints strategy</a>,
+because when a clause matches a hint containing a label, the
+label is copied to the clause.  That is, clauses matching labeled hints
+will be printed.
+</blockquote>
+<!-- end option -->
+
+<!-- start option print_proofs -->
+<a name="print_proofs">
+<pre class="my_option">
+set(print_proofs).    % default set
+clear(print_proofs).
+</pre>
+
+<blockquote>
+Clearing this flag prevents proofs from being printed to
+the output file.  The proof message still goes to the standard
+error file (usually the user's screen), unless the flag
+<a href="output.html#quiet"><tt><b>quiet</b></tt></a> has been set.
+</blockquote>
+<!-- end option -->
+
+<!-- start option default_output -->
+<a name="default_output">
+<pre class="my_option">
+set(default_output).    % default set
+clear(default_output).
+</pre>
+
+<blockquote>
+Setting this flag restores most of the output flags and parameters
+to their default values.  (I don't remember the purpose of this.)
+Clearing this flag does nothing.
+</blockquote>
+<!-- end option -->
+
+<!-- start option report -->
+<a name="report">
+<pre class="my_option">
+assign(report, <i>n</i>).  % default <i>n</i>=-1, range [-1 .. INT_MAX]
+</pre>
+
+<blockquote>
+If <i>n</i> &gt; 0, statistics are sent to the output
+file approximately every <i>n</i> seconds.
+(On Unix-like systems, one can also tell Prover9 to print statistics to the
+output file by sending the signal <tt>USR1</tt> to a
+running Prover9 process, e.g., <tt>kill -USR1 4223</tt>.)
+</blockquote>
+<!-- end option -->
+
+<!-- start option stats -->
+<a name="stats">
+<pre class="my_option">
+assign(stats, <i>string</i>).  % default <i>string</i>=lots, range [none,some,lots,all]
+</pre>
+
+<blockquote>
+This parameter determines how many statistics are sent to the output file.
+</blockquote>
+<!-- end option -->
+
+<!-- start option clocks -->
+<a name="clocks">
+<pre class="my_option">
+set(clocks).
+clear(clocks).    % default clear
+</pre>
+
+<blockquote>
+If this flag is set, various operations during the Prover9 job
+are timed (e.g., inference, demodulation, and subsumption),
+and timing reports are sent to the output file.
+<p>
+Timing the operations can be expensive, especially
+in Solaris and Macintosh systems.  On Linux systems,
+<tt>set(clocks)</tt> typically adds 5% -- 10% to the run time.
+</blockquote>
+<!-- end option -->
+
+</body>
+</html>

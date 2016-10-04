@@ -1,0 +1,40 @@
+;; ============================== prooftrans ============================
+;; FOF-Prover9 (32) version 2009-11A, November 2009.
+;; Process 23948 was started by mccune on cleo,
+;; Tue Nov  3 16:59:14 2009
+;; The command was "/home/mccune/LADR/bin/fof-prover9 -f GEO146+1.in".
+;; ============================== end of head ===========================
+
+;; BEGINNING OF PROOF OBJECT
+(
+(204 (input) (or (connect v0 v1 v2) (not (once (at_the_same_time (at v0 v2) (at v1 v2))))) NIL)
+(205 (input) (or (once (at_the_same_time (at v0 v1) (at v2 v1))) (not (connect v0 v2 v1))) NIL)
+(206 (input) (or (once (at_the_same_time v0 v1)) (not (once (at_the_same_time v1 v0)))) NIL)
+(218 (input) (connect (c1) (c2) (c3)) NIL)
+(219 (input) (not (connect (c2) (c1) (c3))) NIL)
+(2918 (instantiate 205 ((v0 . (c1)) (v1 . (c3)) (v2 . (c2)))) (or (once (at_the_same_time (at (c1) (c3)) (at (c2) (c3)))) (not (connect (c1) (c2) (c3)))) NIL)
+(666 (resolve 218 () 2918 (2)) (once (at_the_same_time (at (c1) (c3)) (at (c2) (c3)))) NIL)
+(2919 (instantiate 206 ((v0 . (at (c2) (c3))) (v1 . (at (c1) (c3))))) (or (once (at_the_same_time (at (c2) (c3)) (at (c1) (c3)))) (not (once (at_the_same_time (at (c1) (c3)) (at (c2) (c3)))))) NIL)
+(2325 (resolve 666 () 2919 (2)) (once (at_the_same_time (at (c2) (c3)) (at (c1) (c3)))) NIL)
+(2920 (instantiate 204 ((v0 . (c2)) (v1 . (c1)) (v2 . (c3)))) (or (connect (c2) (c1) (c3)) (not (once (at_the_same_time (at (c2) (c3)) (at (c1) (c3)))))) NIL)
+(2916A (resolve 2325 () 2920 (2)) (connect (c2) (c1) (c3)) NIL)
+(2916 (resolve 219 () 2916A ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(204 (input) (or (connect v0 v1 v2) (not (once (at_the_same_time (at v0 v2) (at v1 v2))))) NIL)
+(205 (input) (or (once (at_the_same_time (at v0 v1) (at v2 v1))) (not (connect v0 v2 v1))) NIL)
+(206 (input) (or (once (at_the_same_time v0 v1)) (not (once (at_the_same_time v1 v0)))) NIL)
+(218 (input) (not (connect (c1) (c2) (c3))) NIL)
+(219 (input) (connect (c2) (c1) (c3)) NIL)
+(2918 (instantiate 205 ((v0 . (c2)) (v1 . (c3)) (v2 . (c1)))) (or (once (at_the_same_time (at (c2) (c3)) (at (c1) (c3)))) (not (connect (c2) (c1) (c3)))) NIL)
+(666 (resolve 219 () 2918 (2)) (once (at_the_same_time (at (c2) (c3)) (at (c1) (c3)))) NIL)
+(2919 (instantiate 206 ((v0 . (at (c1) (c3))) (v1 . (at (c2) (c3))))) (or (once (at_the_same_time (at (c1) (c3)) (at (c2) (c3)))) (not (once (at_the_same_time (at (c2) (c3)) (at (c1) (c3)))))) NIL)
+(2325 (resolve 666 () 2919 (2)) (once (at_the_same_time (at (c1) (c3)) (at (c2) (c3)))) NIL)
+(2920 (instantiate 204 ((v0 . (c1)) (v1 . (c2)) (v2 . (c3)))) (or (connect (c1) (c2) (c3)) (not (once (at_the_same_time (at (c1) (c3)) (at (c2) (c3)))))) NIL)
+(2916A (resolve 2325 () 2920 (2)) (connect (c1) (c2) (c3)) NIL)
+(2916 (resolve 218 () 2916A ()) false NIL)
+)
+;; END OF PROOF OBJECT

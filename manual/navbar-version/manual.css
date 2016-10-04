@@ -1,0 +1,142 @@
+/* margins and padding: top right bottom left */
+
+div.header
+{
+	text-align: right;
+	margin: 1em 0 0 0;
+}
+
+body
+{
+	background-color: #ffeebb;
+	padding-left: 12em;
+	padding-right: 5em;
+}
+
+ul.navbar
+{
+	padding: 0;
+	margin: 0;
+	position: fixed;
+	top: .5em;
+	left: 1em;
+	width: 10em;
+}
+
+ul.navbar li
+{
+	background: #ffdd75;
+	list-style-type: none;
+	margin: 0.1em 0;
+	padding: 0.1em;
+	border-right: 2px solid darkred;
+	border-bottom: 2px solid darkred;
+	border-left: 2px solid white;
+	border-top: 2px solid white;
+}
+
+ul.navbar ul
+{
+	padding: 0 0 0 1em;  /* inner lists */
+}
+
+ul.navbar2 li
+{
+	list-style-type: none;
+        font-size: 80% ;
+	padding: 0 ;
+	margin: 0 ;
+	border-right: none;
+	border-bottom: none;
+	border-left: none;
+	border-top: none;
+}
+
+ul.navbar a
+{
+	text-decoration: none;
+}
+
+pre.my_file
+{
+	background-color : white;
+	font : small/1.0 "Courier New", courier, monospace;
+	text-align : left;
+	border : 2px solid;
+	border-color : darkred;
+	vertical-align : middle;
+	padding : 5px;  /* within box, all 4 sides */
+	margin : 10px;  /* outside of box, all 4 sides */
+	overflow : auto;
+}
+
+pre.my_job
+{
+	background-color : #d9e1eb;
+	font : small/1.2 "Courier New", courier, monospace;
+	text-align : left;
+	border : 2px solid;
+	border-color : darkred;
+	vertical-align : middle;
+	padding : 5px;  /* within box, all 4 sides */
+	margin : 10px;  /* outside of box, all 4 sides */
+	overflow : auto;
+}
+
+pre.my_screen
+{
+	background-color : #a8e7a8;
+	font : small/1.2 "Courier New", courier, monospace;
+	text-align : left;
+	border : 2px solid;
+	border-color : darkred;
+	vertical-align : middle;
+	padding : 5px;  /* within box, all 4 sides */
+	margin : 10px;  /* outside of box, all 4 sides */
+	overflow : auto;
+}
+
+pre.my_code
+{
+	background-color : #f7c9b5;
+	font : small/1.2 "Courier New", courier, monospace;
+	text-align : left;
+	border : 2px solid;
+	border-color : darkred;
+	vertical-align : middle;
+	padding : 5px;  /* within box, all 4 sides */
+	margin : 10px;  /* outside of box, all 4 sides */
+	overflow : auto;
+}
+
+pre.my_option
+{
+	background-color : white;
+	font : small/1.2 "Courier New", courier, monospace;
+	text-align : left;
+	border : 2px solid;
+	border-color : darkred;
+	vertical-align : middle;
+	padding : 5px;  /* within box, all 4 sides */
+	margin : 10px;  /* outside of box, all 4 sides */
+	overflow : auto;
+}
+
+blockquote.otter_diff
+{
+	background-color : #ffffaa;
+	font-style: italic;
+	text-align : left;
+	border : 2px solid;
+	border-color : darkred;
+	vertical-align : middle;
+	padding : 5px;  /* within box, all 4 sides */
+	margin : 10px;  /* outside of box, all 4 sides */
+	overflow : auto;
+}
+
+dl.references dt
+{
+	padding: 1em 0 0 0;
+}
+

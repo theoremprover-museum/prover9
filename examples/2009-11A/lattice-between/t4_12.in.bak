@@ -1,0 +1,12 @@
+formulas(sos).
+
+   % Theorem 4
+
+x v (y ^ (x v z)) = (x v y) ^ (x v z) # label("modularity_1").
+x ^ (y v (x ^ z)) = (x ^ y) v (x ^ z) # label("modularity_2").
+
+B(ca,cy,cx).
+B(ca,cx,cb).
+-B(ca,cy,cb).
+
+end_of_list.

@@ -1,0 +1,51 @@
+set(production).
+set(prolog_style_variables).
+
+formulas(usable).
+
+% A farmer has a wolf, a goat, a cabbage, and a boat on the west side
+% of a river, and he wants to get everything across the river.  However,
+% he can take only one thing at a time in the boat, and if the wolf
+% and goat are ever together without the farmer, or if the goat and the
+% cabbage are ever together without the farmer, something will be eaten.
+%
+% state(S, W, G, C]) means that (1) the farmer and the boat are on the
+% S (east or west) side of the river, and (2) W, G, C (Boolean)
+% tell whether the wolf, goat, and cabbage are with the boat and farmer.
+%
+% For each transition, the answer attribute tells which object he takes
+% across the river.
+
+state(Side, W,G,C) & ok(W,G,C) -> state(otherside(Side), flip(W),flip(G),flip(C)) # answer(none).
+state(Side, 1,G,C) & ok(0,G,C) -> state(otherside(Side), 1,flip(G),flip(C)) # answer(wolf).
+state(Side, W,1,C) & ok(W,0,C) -> state(otherside(Side), flip(W),1,flip(C)) # answer(goat).
+state(Side, W,G,1) & ok(W,G,0) -> state(otherside(Side), flip(W),flip(G),1) # answer(cabbage).
+
+end_of_list.
+
+formulas(assumptions).
+state(west, 1,1,1).  % initial state: everything on the west side.
+end_of_list.
+
+formulas(goals).
+state(east, 1,1,1).  % goal state: everything on the east side..
+end_of_list.
+
+formulas(demodulators).
+
+flip(0) = 1.
+flip(1) = 0.
+
+otherside(east) = west.
+otherside(west) = east.
+
+% Here are two different ways of writing the "ok" relation.
+% The first uses two conditional rules, and the second
+% uses one rule with a conditional "if" term.
+
+% (W==1 & G==1) | (G==1 & C==1) -> (ok(W,G,C) <-> $F).
+% -(W==1 & G==1) & -(G==1 & C==1) -> (ok(W,G,C) <-> $T).
+
+ok(W,G,C) <-> if((W==1 & G==1) | (G==1 & C==1), $F, $T).
+                 
+end_of_list.

@@ -1,0 +1,6 @@
+% This is a 4-basis for Boolean Algebra
+
+x v (y v z) = y v (x v z).    % AJ
+x ^ y = (x' v y')'.           % DM
+x v x' = y v y'.              % ONE
+(x v y') ^ (x v y) = x.       % CUT

@@ -1,0 +1,8 @@
+#!/bin/csh
+
+#-------------------
+
+sed -f sed.www-pubs references-ready.tex
+
+#-------------------
+

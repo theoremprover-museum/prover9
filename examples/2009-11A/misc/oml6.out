@@ -1,0 +1,2238 @@
+============================== Prover9 ===============================
+Prover9 (32) version 2009-11A, November 2009.
+Process 4332 was started by mccune on cleo,
+Tue Nov  3 09:38:49 2009
+The command was "/home/mccune/LADR/bin/prover9 -f oml6.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file oml6.in
+
+assign(max_seconds,120).
+assign(max_weight,50).
+function_order([v,c,^,f]).
+
+formulas(sos).
+f(f(f(f(y,x),f(x,z)),u),f(x,f(f(z,f(f(x,x),z)),z))) = x # label(OML_Sh).
+x v y = f(f(x,x),f(y,y)) # label(Def_join).
+x ^ y = f(f(x,y),f(x,y)) # label(Def_meet).
+c(x) = f(x,x) # label(Def_complement).
+end_of_list.
+
+formulas(goals).
+x v (x ^ y) = x # answer(B1).
+x v (c(x) ^ (x v y)) = x v y # answer(OM).
+x v (y v z) = y v (x v z) # answer(AJ).
+x ^ y = c(c(x) v c(y)) # answer(DM).
+f(x,y) = c(x) v c(y) # answer(DEF_SS).
+x v x = x # answer(idempotence_join).
+x ^ x = x # answer(idempotence_meet).
+c(c(x)) = x # answer(cc).
+y v x = x v y # answer(commutativity_join).
+y v x = x v y # answer(commutativity_meet).
+x v c(x) = y v c(y) # answer(1).
+x ^ c(x) = y ^ c(y) # answer(0).
+(x v y) v z = x v (y v z) # answer(assoc_join).
+(x ^ y) ^ z = x ^ (y ^ z) # answer(assoc_meet).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 x v (x ^ y) = x # answer(B1) # label(non_clause) # label(goal).  [goal].
+2 x v (c(x) ^ (x v y)) = x v y # answer(OM) # label(non_clause) # label(goal).  [goal].
+3 x v (y v z) = y v (x v z) # answer(AJ) # label(non_clause) # label(goal).  [goal].
+4 x ^ y = c(c(x) v c(y)) # answer(DM) # label(non_clause) # label(goal).  [goal].
+5 f(x,y) = c(x) v c(y) # answer(DEF_SS) # label(non_clause) # label(goal).  [goal].
+6 x v x = x # answer(idempotence_join) # label(non_clause) # label(goal).  [goal].
+7 x ^ x = x # answer(idempotence_meet) # label(non_clause) # label(goal).  [goal].
+8 c(c(x)) = x # answer(cc) # label(non_clause) # label(goal).  [goal].
+9 y v x = x v y # answer(commutativity_join) # label(non_clause) # label(goal).  [goal].
+10 y v x = x v y # answer(commutativity_meet) # label(non_clause) # label(goal).  [goal].
+11 x v c(x) = y v c(y) # answer(1) # label(non_clause) # label(goal).  [goal].
+12 x ^ c(x) = y ^ c(y) # answer(0) # label(non_clause) # label(goal).  [goal].
+13 (x v y) v z = x v (y v z) # answer(assoc_join) # label(non_clause) # label(goal).  [goal].
+14 (x ^ y) ^ z = x ^ (y ^ z) # answer(assoc_meet) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(f(y,y),z)),z))) = y # label(OML_Sh).  [assumption].
+x v y = f(f(x,x),f(y,y)) # label(Def_join).  [assumption].
+x ^ y = f(f(x,y),f(x,y)) # label(Def_meet).  [assumption].
+c(x) = f(x,x) # label(Def_complement).  [assumption].
+c1 v (c1 ^ c2) != c1 # answer(B1).  [deny(1)].
+c3 v (c(c3) ^ (c3 v c4)) != c3 v c4 # answer(OM).  [deny(2)].
+c5 v (c6 v c7) != c6 v (c5 v c7) # answer(AJ).  [deny(3)].
+c(c(c8) v c(c9)) != c8 ^ c9 # answer(DM).  [deny(4)].
+f(c10,c11) != c(c10) v c(c11) # answer(DEF_SS).  [deny(5)].
+c12 v c12 != c12 # answer(idempotence_join).  [deny(6)].
+c13 ^ c13 != c13 # answer(idempotence_meet).  [deny(7)].
+c(c(c14)) != c14 # answer(cc).  [deny(8)].
+c16 v c15 != c15 v c16 # answer(commutativity_join).  [deny(9)].
+c18 v c17 != c17 v c18 # answer(commutativity_meet).  [deny(10)].
+c19 v c(c19) != c20 v c(c20) # answer(1).  [deny(11)].
+c21 ^ c(c21) != c22 ^ c(c22) # answer(0).  [deny(12)].
+(c23 v c24) v c25 != c23 v (c24 v c25) # answer(assoc_join).  [deny(13)].
+(c26 ^ c27) ^ c28 != c26 ^ (c27 ^ c28) # answer(assoc_meet).  [deny(14)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Auto_denials:
+  % assign(max_proofs, 14).  % (Horn set with more than one neg. clause)
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ = ]).
+Function symbol precedence:  function_order([ c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, v, c, ^, f ]).
+Skipping inverse_order, because there is a function_order (lex) command.
+Skipping unfold_eq, because there is a function_order (lex) command.
+
+Auto_inference settings:
+  % set(paramodulation).  % (positive equality literals)
+
+Auto_process settings:  (no changes).
+
+kept:      15 f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(f(y,y),z)),z))) = y # label(OML_Sh).  [assumption].
+           16 x v y = f(f(x,x),f(y,y)) # label(Def_join).  [assumption].
+kept:      17 f(f(x,x),f(y,y)) = x v y.  [copy(16),flip(a)].
+           18 x ^ y = f(f(x,y),f(x,y)) # label(Def_meet).  [assumption].
+kept:      19 f(f(x,y),f(x,y)) = x ^ y.  [copy(18),flip(a)].
+           20 c(x) = f(x,x) # label(Def_complement).  [assumption].
+kept:      21 f(x,x) = c(x).  [copy(20),flip(a)].
+kept:      22 c1 v (c1 ^ c2) != c1 # answer(B1).  [deny(1)].
+kept:      23 c3 v (c(c3) ^ (c3 v c4)) != c3 v c4 # answer(OM).  [deny(2)].
+           24 c5 v (c6 v c7) != c6 v (c5 v c7) # answer(AJ).  [deny(3)].
+kept:      25 c6 v (c5 v c7) != c5 v (c6 v c7) # answer(AJ).  [copy(24),flip(a)].
+           26 c(c(c8) v c(c9)) != c8 ^ c9 # answer(DM).  [deny(4)].
+kept:      27 c8 ^ c9 != c(c(c8) v c(c9)) # answer(DM).  [copy(26),flip(a)].
+kept:      28 f(c10,c11) != c(c10) v c(c11) # answer(DEF_SS).  [deny(5)].
+kept:      29 c12 v c12 != c12 # answer(idempotence_join).  [deny(6)].
+kept:      30 c13 ^ c13 != c13 # answer(idempotence_meet).  [deny(7)].
+kept:      31 c(c(c14)) != c14 # answer(cc).  [deny(8)].
+kept:      32 c16 v c15 != c15 v c16 # answer(commutativity_join).  [deny(9)].
+kept:      33 c18 v c17 != c17 v c18 # answer(commutativity_meet).  [deny(10)].
+           34 c19 v c(c19) != c20 v c(c20) # answer(1).  [deny(11)].
+kept:      35 c20 v c(c20) != c19 v c(c19) # answer(1).  [copy(34),flip(a)].
+           36 c21 ^ c(c21) != c22 ^ c(c22) # answer(0).  [deny(12)].
+kept:      37 c22 ^ c(c22) != c21 ^ c(c21) # answer(0).  [copy(36),flip(a)].
+kept:      38 (c23 v c24) v c25 != c23 v (c24 v c25) # answer(assoc_join).  [deny(13)].
+kept:      39 (c26 ^ c27) ^ c28 != c26 ^ (c27 ^ c28) # answer(assoc_meet).  [deny(14)].
+kept:      40 c(f(x,y)) = x ^ y.  [back_rewrite(19),rewrite([21(3)])].
+kept:      41 f(c(x),c(y)) = x v y.  [back_rewrite(17),rewrite([21(1),21(2)])].
+kept:      42 f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(c(y),z)),z))) = y.  [back_rewrite(15),rewrite([21(5)])].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+21 f(x,x) = c(x).  [copy(20),flip(a)].
+22 c1 v (c1 ^ c2) != c1 # answer(B1).  [deny(1)].
+23 c3 v (c(c3) ^ (c3 v c4)) != c3 v c4 # answer(OM).  [deny(2)].
+25 c6 v (c5 v c7) != c5 v (c6 v c7) # answer(AJ).  [copy(24),flip(a)].
+27 c8 ^ c9 != c(c(c8) v c(c9)) # answer(DM).  [copy(26),flip(a)].
+28 f(c10,c11) != c(c10) v c(c11) # answer(DEF_SS).  [deny(5)].
+29 c12 v c12 != c12 # answer(idempotence_join).  [deny(6)].
+30 c13 ^ c13 != c13 # answer(idempotence_meet).  [deny(7)].
+31 c(c(c14)) != c14 # answer(cc).  [deny(8)].
+32 c16 v c15 != c15 v c16 # answer(commutativity_join).  [deny(9)].
+33 c18 v c17 != c17 v c18 # answer(commutativity_meet).  [deny(10)].
+35 c20 v c(c20) != c19 v c(c19) # answer(1).  [copy(34),flip(a)].
+37 c22 ^ c(c22) != c21 ^ c(c21) # answer(0).  [copy(36),flip(a)].
+38 (c23 v c24) v c25 != c23 v (c24 v c25) # answer(assoc_join).  [deny(13)].
+39 (c26 ^ c27) ^ c28 != c26 ^ (c27 ^ c28) # answer(assoc_meet).  [deny(14)].
+40 c(f(x,y)) = x ^ y.  [back_rewrite(19),rewrite([21(3)])].
+41 f(c(x),c(y)) = x v y.  [back_rewrite(17),rewrite([21(1),21(2)])].
+42 f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(c(y),z)),z))) = y.  [back_rewrite(15),rewrite([21(5)])].
+end_of_list.
+
+formulas(demodulators).
+21 f(x,x) = c(x).  [copy(20),flip(a)].
+40 c(f(x,y)) = x ^ y.  [back_rewrite(19),rewrite([21(3)])].
+41 f(c(x),c(y)) = x v y.  [back_rewrite(17),rewrite([21(1),21(2)])].
+42 f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(c(y),z)),z))) = y.  [back_rewrite(15),rewrite([21(5)])].
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.02 seconds.
+
+given #1 (I,wt=6): 21 f(x,x) = c(x).  [copy(20),flip(a)].
+
+given #2 (I,wt=7): 22 c1 v (c1 ^ c2) != c1 # answer(B1).  [deny(1)].
+
+given #3 (I,wt=12): 23 c3 v (c(c3) ^ (c3 v c4)) != c3 v c4 # answer(OM).  [deny(2)].
+
+given #4 (I,wt=11): 25 c6 v (c5 v c7) != c5 v (c6 v c7) # answer(AJ).  [copy(24),flip(a)].
+
+given #5 (I,wt=10): 27 c8 ^ c9 != c(c(c8) v c(c9)) # answer(DM).  [copy(26),flip(a)].
+
+given #6 (I,wt=9): 28 f(c10,c11) != c(c10) v c(c11) # answer(DEF_SS).  [deny(5)].
+
+given #7 (I,wt=5): 29 c12 v c12 != c12 # answer(idempotence_join).  [deny(6)].
+
+given #8 (I,wt=5): 30 c13 ^ c13 != c13 # answer(idempotence_meet).  [deny(7)].
+
+given #9 (I,wt=5): 31 c(c(c14)) != c14 # answer(cc).  [deny(8)].
+
+given #10 (I,wt=7): 32 c16 v c15 != c15 v c16 # answer(commutativity_join).  [deny(9)].
+
+given #11 (I,wt=7): 33 c18 v c17 != c17 v c18 # answer(commutativity_meet).  [deny(10)].
+
+given #12 (I,wt=9): 35 c20 v c(c20) != c19 v c(c19) # answer(1).  [copy(34),flip(a)].
+
+given #13 (I,wt=9): 37 c22 ^ c(c22) != c21 ^ c(c21) # answer(0).  [copy(36),flip(a)].
+
+given #14 (I,wt=11): 38 (c23 v c24) v c25 != c23 v (c24 v c25) # answer(assoc_join).  [deny(13)].
+
+given #15 (I,wt=11): 39 (c26 ^ c27) ^ c28 != c26 ^ (c27 ^ c28) # answer(assoc_meet).  [deny(14)].
+
+given #16 (I,wt=8): 40 c(f(x,y)) = x ^ y.  [back_rewrite(19),rewrite([21(3)])].
+
+given #17 (I,wt=9): 41 f(c(x),c(y)) = x v y.  [back_rewrite(17),rewrite([21(1),21(2)])].
+
+given #18 (I,wt=22): 42 f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(c(y),z)),z))) = y.  [back_rewrite(15),rewrite([21(5)])].
+
+given #19 (A,wt=7): 45 c(c(x)) = x v x.  [para(41(a,1),21(a,1)),flip(a)].
+
+given #20 (F,wt=5): 49 c13 v c13 != c13 # answer(idempotence_meet).  [back_rewrite(44),rewrite([45(3)])].
+
+given #21 (F,wt=5): 51 c14 v c14 != c14 # answer(cc).  [back_rewrite(31),rewrite([45(3)])].
+
+given #22 (T,wt=7): 50 x ^ x = x v x.  [back_rewrite(43),rewrite([45(3)])].
+
+given #23 (T,wt=10): 46 c(x) ^ c(y) = c(x v y).  [para(41(a,1),40(a,1,1)),flip(a)].
+
+given #24 (T,wt=10): 68 c(x v x) = c(x) v c(x).  [para(45(a,1),45(a,1,1))].
+
+given #25 (T,wt=11): 65 f(x v x,c(y)) = c(x) v y.  [para(45(a,1),41(a,1,1))].
+
+given #26 (A,wt=12): 47 f(x ^ y,c(z)) = f(x,y) v z.  [para(40(a,1),41(a,1,1))].
+
+given #27 (T,wt=11): 66 f(c(x),y v y) = x v c(y).  [para(45(a,1),41(a,1,2))].
+
+given #28 (T,wt=12): 48 f(c(x),y ^ z) = x v f(y,z).  [para(40(a,1),41(a,1,2))].
+
+given #29 (T,wt=12): 64 f(x,y) v f(x,y) = c(x ^ y).  [para(40(a,1),45(a,1,1)),flip(a)].
+
+given #30 (T,wt=12): 72 (x v x) ^ c(y) = c(c(x) v y).  [para(45(a,1),46(a,1,1))].
+
+given #31 (A,wt=21): 52 f(f(f(c(x),f(x,y)),z),f(x,f(f(y,f(c(x),y)),y))) = x.  [para(21(a,1),42(a,1,1,1,1))].
+
+given #32 (T,wt=12): 73 c(x) ^ (y v y) = c(x v c(y)).  [para(45(a,1),46(a,1,2))].
+
+given #33 (T,wt=13): 70 c(f(x,y) v z) = (x ^ y) ^ c(z).  [para(40(a,1),46(a,1,1)),flip(a)].
+
+given #34 (T,wt=13): 71 c(x v f(y,z)) = c(x) ^ (y ^ z).  [para(40(a,1),46(a,1,2)),flip(a)].
+
+given #35 (T,wt=13): 77 f(x v x,y v y) = c(x) v c(y).  [para(45(a,1),65(a,1,2))].
+
+given #36 (A,wt=21): 53 f(f(f(f(x,y),c(y)),z),f(y,f(f(y,f(c(y),y)),y))) = y.  [para(21(a,1),42(a,1,1,1,2))].
+
+given #37 (T,wt=14): 75 f(x v x,y ^ z) = c(x) v f(y,z).  [para(40(a,1),65(a,1,2))].
+
+given #38 (T,wt=14): 80 f(x ^ y,z v z) = f(x,y) v c(z).  [para(45(a,1),47(a,1,2))].
+
+given #39 (T,wt=14): 95 (x v x) ^ (y v y) = c(c(x) v c(y)).  [para(45(a,1),72(a,1,2))].
+
+given #40 (T,wt=15): 78 f(x ^ y,z ^ u) = f(x,y) v f(z,u).  [para(40(a,1),47(a,1,2))].
+
+given #41 (A,wt=18): 54 f(f(x v x,y),f(x,f(f(x,f(c(x),x)),x))) = x.  [para(21(a,1),42(a,1,1,1)),rewrite([21(1),45(2)])].
+
+given #42 (T,wt=15): 94 c(c(x) v f(y,z)) = (x v x) ^ (y ^ z).  [para(40(a,1),72(a,1,2)),flip(a)].
+
+given #43 (T,wt=15): 108 c(f(x,y) v c(z)) = (x ^ y) ^ (z v z).  [para(40(a,1),73(a,1,1)),flip(a)].
+
+given #44 (T,wt=16): 88 f(c(x),y ^ z) v u = (x v f(y,z)) v u.  [para(48(a,1),47(a,2,1)),rewrite([47(5)])].
+
+given #45 (T,wt=16): 109 c(f(x,y) v f(z,u)) = (x ^ y) ^ (z ^ u).  [para(40(a,1),70(a,2,2))].
+
+given #46 (A,wt=20): 55 f(f(x,y) ^ f(y,z),f(y,f(f(z,f(c(y),z)),z))) = y.  [para(21(a,1),42(a,1,1)),rewrite([40(4)])].
+
+given #47 (T,wt=16): 140 x v f(c(y),z ^ u) = x v (y v f(z,u)).  [para(71(a,2),48(a,1,2)),rewrite([41(5)]),flip(a)].
+
+given #48 (T,wt=17): 87 f(c(x) v c(x),y ^ z) = (x v x) v f(y,z).  [para(68(a,1),48(a,1,1))].
+
+given #49 (T,wt=17): 89 f(c(x),(y ^ z) ^ c(u)) = x v (f(y,z) v u).  [para(47(a,1),48(a,2,2))].
+
+given #50 (T,wt=17): 90 f(c(x),c(y) ^ (z ^ u)) = x v (y v f(z,u)).  [para(48(a,1),48(a,2,2))].
+
+given #51 (A,wt=23): 57 f(f(f(x,y),f(y,z)),u) ^ f(y,f(f(z,f(c(y),z)),z)) = c(y).  [para(42(a,1),40(a,1,1)),flip(a)].
+
+given #52 (T,wt=17): 117 c(f(x,y) v z) v u = ((x ^ y) ^ c(z)) v u.  [para(70(a,1),65(a,2,1)),rewrite([65(7)])].
+
+given #53 (T,wt=17): 119 x v c(f(y,z) v u) = x v ((y ^ z) ^ c(u)).  [para(70(a,1),66(a,2,2)),rewrite([66(7)])].
+
+given #54 (T,wt=17): 136 c(x v f(y,z)) v u = (c(x) ^ (y ^ z)) v u.  [para(71(a,1),65(a,2,1)),rewrite([65(7)])].
+
+given #55 (T,wt=17): 138 x v c(y v f(z,u)) = x v (c(y) ^ (z ^ u)).  [para(71(a,1),66(a,2,2)),rewrite([66(7)])].
+
+given #56 (A,wt=31): 58 f(f(f(f(x,f(y,z)),f(f(y,z),u)),w),f(f(y,z),f(f(u,f(y ^ z,u)),u))) = f(y,z).  [para(40(a,1),42(a,1,2,2,1,2,1))].
+
+given #57 (T,wt=17): 158 f(x,f(c(x),f(f(y,f(x v x,y)),y))) = c(x).  [para(53(a,1),42(a,1,1)),rewrite([45(3)])].
+
+given #58 (T,wt=17): 203 f(c(x) v y,f(x,f(f(x,f(c(x),x)),x))) = x.  [para(65(a,1),54(a,1,1))].
+
+given #59 (T,wt=18): 111 c((f(x,y) v z) v u) = ((x ^ y) ^ c(z)) ^ c(u).  [para(70(a,1),46(a,1,1)),flip(a)].
+
+given #60 (T,wt=18): 112 c(x v (f(y,z) v u)) = c(x) ^ ((y ^ z) ^ c(u)).  [para(70(a,1),46(a,1,2)),flip(a)].
+
+given #61 (A,wt=26): 59 f(f(f(x v y,f(c(y),z)),u),f(c(y),f(f(z,f(y v y,z)),z))) = c(y).  [para(41(a,1),42(a,1,1,1,1)),rewrite([45(8)])].
+
+given #62 (T,wt=18): 115 c(f(x,y) v (z v z)) = (x ^ y) ^ (c(z) v c(z)).  [para(68(a,1),70(a,2,2))].
+
+given #63 (T,wt=18): 121 c((x v f(y,z)) v u) = (c(x) ^ (y ^ z)) ^ c(u).  [para(48(a,1),70(a,1,1,1))].
+
+given #64 (T,wt=18): 131 c(x v (y v f(z,u))) = c(x) ^ (c(y) ^ (z ^ u)).  [para(71(a,1),46(a,1,2)),flip(a)].
+
+given #65 (T,wt=18): 134 c((x v x) v f(y,z)) = (c(x) v c(x)) ^ (y ^ z).  [para(68(a,1),71(a,2,1))].
+
+given #66 (A,wt=24): 61 f(f(f(f(x,y),f(y,c(z))),u),f(y,f(f(c(z),y v z),c(z)))) = y.  [para(41(a,1),42(a,1,2,2,1,2))].
+
+given #67 (T,wt=18): 148 c(f(c(x),y ^ z) v u) = c((x v f(y,z)) v u).  [para(71(a,2),70(a,2,1)),rewrite([46(10)])].
+
+given #68 (T,wt=18): 151 c(x v f(c(y),z ^ u)) = c(x v (y v f(z,u))).  [para(71(a,2),71(a,2,2)),rewrite([46(10)])].
+
+given #69 (T,wt=18): 165 f(x v x,y ^ z) v u = (c(x) v f(y,z)) v u.  [para(75(a,1),47(a,2,1)),rewrite([47(5)])].
+
+given #70 (T,wt=18): 214 x v f(y v y,z ^ u) = x v (c(y) v f(z,u)).  [para(94(a,2),48(a,1,2)),rewrite([41(6)]),flip(a)].
+
+given #71 (A,wt=37): 62 f(f(x,y),f(x,f(f(f(f(z,f(c(x),z)),z),f(c(x),f(f(z,f(c(x),z)),z))),f(f(z,f(c(x),z)),z)))) = x.  [para(42(a,1),42(a,1,1,1))].
+
+given #72 (T,wt=12): 1630 f(c(x),f(x v x,x)) = x v x.  [back_rewrite(785),rewrite([1623(14)])].
+
+given #73 (T,wt=14): 1631 c(x) ^ f(x v x,x) = c(x) v c(x).  [para(1630(a,1),40(a,1,1)),rewrite([68(2)]),flip(a)].
+
+given #74 (T,wt=15): 1625 f(c(x),f(x,f(f(y,f(c(x),y)),y))) = x.  [para(62(a,1),52(a,1,1))].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.20 (+ 0.02) seconds: cc.
+% Length of proof is 17.
+% Level of proof is 6.
+% Maximum clause weight is 37.000.
+% Given clauses 74.
+
+8 c(c(x)) = x # answer(cc) # label(non_clause) # label(goal).  [goal].
+15 f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(f(y,y),z)),z))) = y # label(OML_Sh).  [assumption].
+16 x v y = f(f(x,x),f(y,y)) # label(Def_join).  [assumption].
+17 f(f(x,x),f(y,y)) = x v y.  [copy(16),flip(a)].
+20 c(x) = f(x,x) # label(Def_complement).  [assumption].
+21 f(x,x) = c(x).  [copy(20),flip(a)].
+31 c(c(c14)) != c14 # answer(cc).  [deny(8)].
+41 f(c(x),c(y)) = x v y.  [back_rewrite(17),rewrite([21(1),21(2)])].
+42 f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(c(y),z)),z))) = y.  [back_rewrite(15),rewrite([21(5)])].
+45 c(c(x)) = x v x.  [para(41(a,1),21(a,1)),flip(a)].
+51 c14 v c14 != c14 # answer(cc).  [back_rewrite(31),rewrite([45(3)])].
+52 f(f(f(c(x),f(x,y)),z),f(x,f(f(y,f(c(x),y)),y))) = x.  [para(21(a,1),42(a,1,1,1,1))].
+62 f(f(x,y),f(x,f(f(f(f(z,f(c(x),z)),z),f(c(x),f(f(z,f(c(x),z)),z))),f(f(z,f(c(x),z)),z)))) = x.  [para(42(a,1),42(a,1,1,1))].
+1623 f(f(x,y),f(y,f(f(z,f(c(y),z)),z))) = y.  [para(62(a,1),42(a,1,1))].
+1625 f(c(x),f(x,f(f(y,f(c(x),y)),y))) = x.  [para(62(a,1),52(a,1,1))].
+1739 x v x = x.  [para(1625(a,1),1625(a,1,2,2,1,2)),rewrite([1623(13),21(2),21(3),45(2)])].
+1740 $F # answer(cc).  [resolve(1739,a,51,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% Proof 2 at 0.20 (+ 0.02) seconds: idempotence_meet.
+% Length of proof is 22.
+% Level of proof is 6.
+% Maximum clause weight is 37.000.
+% Given clauses 74.
+
+7 x ^ x = x # answer(idempotence_meet) # label(non_clause) # label(goal).  [goal].
+15 f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(f(y,y),z)),z))) = y # label(OML_Sh).  [assumption].
+16 x v y = f(f(x,x),f(y,y)) # label(Def_join).  [assumption].
+17 f(f(x,x),f(y,y)) = x v y.  [copy(16),flip(a)].
+18 x ^ y = f(f(x,y),f(x,y)) # label(Def_meet).  [assumption].
+19 f(f(x,y),f(x,y)) = x ^ y.  [copy(18),flip(a)].
+20 c(x) = f(x,x) # label(Def_complement).  [assumption].
+21 f(x,x) = c(x).  [copy(20),flip(a)].
+30 c13 ^ c13 != c13 # answer(idempotence_meet).  [deny(7)].
+40 c(f(x,y)) = x ^ y.  [back_rewrite(19),rewrite([21(3)])].
+41 f(c(x),c(y)) = x v y.  [back_rewrite(17),rewrite([21(1),21(2)])].
+42 f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(c(y),z)),z))) = y.  [back_rewrite(15),rewrite([21(5)])].
+43 x ^ x = c(c(x)).  [para(21(a,1),40(a,1,1)),flip(a)].
+44 c(c(c13)) != c13 # answer(idempotence_meet).  [back_rewrite(30),rewrite([43(3)])].
+45 c(c(x)) = x v x.  [para(41(a,1),21(a,1)),flip(a)].
+49 c13 v c13 != c13 # answer(idempotence_meet).  [back_rewrite(44),rewrite([45(3)])].
+52 f(f(f(c(x),f(x,y)),z),f(x,f(f(y,f(c(x),y)),y))) = x.  [para(21(a,1),42(a,1,1,1,1))].
+62 f(f(x,y),f(x,f(f(f(f(z,f(c(x),z)),z),f(c(x),f(f(z,f(c(x),z)),z))),f(f(z,f(c(x),z)),z)))) = x.  [para(42(a,1),42(a,1,1,1))].
+1623 f(f(x,y),f(y,f(f(z,f(c(y),z)),z))) = y.  [para(62(a,1),42(a,1,1))].
+1625 f(c(x),f(x,f(f(y,f(c(x),y)),y))) = x.  [para(62(a,1),52(a,1,1))].
+1739 x v x = x.  [para(1625(a,1),1625(a,1,2,2,1,2)),rewrite([1623(13),21(2),21(3),45(2)])].
+1741 $F # answer(idempotence_meet).  [resolve(1739,a,49,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% Proof 3 at 0.20 (+ 0.02) seconds: idempotence_join.
+% Length of proof is 16.
+% Level of proof is 6.
+% Maximum clause weight is 37.000.
+% Given clauses 74.
+
+6 x v x = x # answer(idempotence_join) # label(non_clause) # label(goal).  [goal].
+15 f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(f(y,y),z)),z))) = y # label(OML_Sh).  [assumption].
+16 x v y = f(f(x,x),f(y,y)) # label(Def_join).  [assumption].
+17 f(f(x,x),f(y,y)) = x v y.  [copy(16),flip(a)].
+20 c(x) = f(x,x) # label(Def_complement).  [assumption].
+21 f(x,x) = c(x).  [copy(20),flip(a)].
+29 c12 v c12 != c12 # answer(idempotence_join).  [deny(6)].
+41 f(c(x),c(y)) = x v y.  [back_rewrite(17),rewrite([21(1),21(2)])].
+42 f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(c(y),z)),z))) = y.  [back_rewrite(15),rewrite([21(5)])].
+45 c(c(x)) = x v x.  [para(41(a,1),21(a,1)),flip(a)].
+52 f(f(f(c(x),f(x,y)),z),f(x,f(f(y,f(c(x),y)),y))) = x.  [para(21(a,1),42(a,1,1,1,1))].
+62 f(f(x,y),f(x,f(f(f(f(z,f(c(x),z)),z),f(c(x),f(f(z,f(c(x),z)),z))),f(f(z,f(c(x),z)),z)))) = x.  [para(42(a,1),42(a,1,1,1))].
+1623 f(f(x,y),f(y,f(f(z,f(c(y),z)),z))) = y.  [para(62(a,1),42(a,1,1))].
+1625 f(c(x),f(x,f(f(y,f(c(x),y)),y))) = x.  [para(62(a,1),52(a,1,1))].
+1739 x v x = x.  [para(1625(a,1),1625(a,1,2,2,1,2)),rewrite([1623(13),21(2),21(3),45(2)])].
+1742 $F # answer(idempotence_join).  [resolve(1739,a,29,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% Proof 4 at 0.30 (+ 0.02) seconds: DM.
+% Length of proof is 24.
+% Level of proof is 7.
+% Maximum clause weight is 37.000.
+% Given clauses 74.
+
+4 x ^ y = c(c(x) v c(y)) # answer(DM) # label(non_clause) # label(goal).  [goal].
+15 f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(f(y,y),z)),z))) = y # label(OML_Sh).  [assumption].
+16 x v y = f(f(x,x),f(y,y)) # label(Def_join).  [assumption].
+17 f(f(x,x),f(y,y)) = x v y.  [copy(16),flip(a)].
+18 x ^ y = f(f(x,y),f(x,y)) # label(Def_meet).  [assumption].
+19 f(f(x,y),f(x,y)) = x ^ y.  [copy(18),flip(a)].
+20 c(x) = f(x,x) # label(Def_complement).  [assumption].
+21 f(x,x) = c(x).  [copy(20),flip(a)].
+26 c(c(c8) v c(c9)) != c8 ^ c9 # answer(DM).  [deny(4)].
+27 c8 ^ c9 != c(c(c8) v c(c9)) # answer(DM).  [copy(26),flip(a)].
+40 c(f(x,y)) = x ^ y.  [back_rewrite(19),rewrite([21(3)])].
+41 f(c(x),c(y)) = x v y.  [back_rewrite(17),rewrite([21(1),21(2)])].
+42 f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(c(y),z)),z))) = y.  [back_rewrite(15),rewrite([21(5)])].
+45 c(c(x)) = x v x.  [para(41(a,1),21(a,1)),flip(a)].
+46 c(x) ^ c(y) = c(x v y).  [para(41(a,1),40(a,1,1)),flip(a)].
+52 f(f(f(c(x),f(x,y)),z),f(x,f(f(y,f(c(x),y)),y))) = x.  [para(21(a,1),42(a,1,1,1,1))].
+62 f(f(x,y),f(x,f(f(f(f(z,f(c(x),z)),z),f(c(x),f(f(z,f(c(x),z)),z))),f(f(z,f(c(x),z)),z)))) = x.  [para(42(a,1),42(a,1,1,1))].
+72 (x v x) ^ c(y) = c(c(x) v y).  [para(45(a,1),46(a,1,1))].
+95 (x v x) ^ (y v y) = c(c(x) v c(y)).  [para(45(a,1),72(a,1,2))].
+1623 f(f(x,y),f(y,f(f(z,f(c(y),z)),z))) = y.  [para(62(a,1),42(a,1,1))].
+1625 f(c(x),f(x,f(f(y,f(c(x),y)),y))) = x.  [para(62(a,1),52(a,1,1))].
+1739 x v x = x.  [para(1625(a,1),1625(a,1,2,2,1,2)),rewrite([1623(13),21(2),21(3),45(2)])].
+2374 x ^ y = c(c(x) v c(y)).  [back_rewrite(95),rewrite([1739(1),1739(1)])].
+2375 $F # answer(DM).  [resolve(2374,a,27,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% Proof 5 at 0.30 (+ 0.02) seconds: DEF_SS.
+% Length of proof is 19.
+% Level of proof is 7.
+% Maximum clause weight is 37.000.
+% Given clauses 74.
+
+5 f(x,y) = c(x) v c(y) # answer(DEF_SS) # label(non_clause) # label(goal).  [goal].
+15 f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(f(y,y),z)),z))) = y # label(OML_Sh).  [assumption].
+16 x v y = f(f(x,x),f(y,y)) # label(Def_join).  [assumption].
+17 f(f(x,x),f(y,y)) = x v y.  [copy(16),flip(a)].
+20 c(x) = f(x,x) # label(Def_complement).  [assumption].
+21 f(x,x) = c(x).  [copy(20),flip(a)].
+28 f(c10,c11) != c(c10) v c(c11) # answer(DEF_SS).  [deny(5)].
+41 f(c(x),c(y)) = x v y.  [back_rewrite(17),rewrite([21(1),21(2)])].
+42 f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(c(y),z)),z))) = y.  [back_rewrite(15),rewrite([21(5)])].
+45 c(c(x)) = x v x.  [para(41(a,1),21(a,1)),flip(a)].
+52 f(f(f(c(x),f(x,y)),z),f(x,f(f(y,f(c(x),y)),y))) = x.  [para(21(a,1),42(a,1,1,1,1))].
+62 f(f(x,y),f(x,f(f(f(f(z,f(c(x),z)),z),f(c(x),f(f(z,f(c(x),z)),z))),f(f(z,f(c(x),z)),z)))) = x.  [para(42(a,1),42(a,1,1,1))].
+65 f(x v x,c(y)) = c(x) v y.  [para(45(a,1),41(a,1,1))].
+77 f(x v x,y v y) = c(x) v c(y).  [para(45(a,1),65(a,1,2))].
+1623 f(f(x,y),f(y,f(f(z,f(c(y),z)),z))) = y.  [para(62(a,1),42(a,1,1))].
+1625 f(c(x),f(x,f(f(y,f(c(x),y)),y))) = x.  [para(62(a,1),52(a,1,1))].
+1739 x v x = x.  [para(1625(a,1),1625(a,1,2,2,1,2)),rewrite([1623(13),21(2),21(3),45(2)])].
+2384 f(x,y) = c(x) v c(y).  [back_rewrite(77),rewrite([1739(1),1739(1)])].
+2385 $F # answer(DEF_SS).  [resolve(2384,a,28,a)].
+
+============================== end of proof ==========================
+% Redundant proof: 2390 $F # answer(cc).  [back_rewrite(51),rewrite([1739(3)]),xx(a)].
+% Redundant proof: 2391 $F # answer(idempotence_meet).  [back_rewrite(49),rewrite([1739(3)]),xx(a)].
+% Redundant proof: 2393 $F # answer(idempotence_join).  [back_rewrite(29),rewrite([1739(3)]),xx(a)].
+% Redundant proof: 2439 $F # answer(DM).  [back_rewrite(27),rewrite([2374(3)]),xx(a)].
+% Redundant proof: 2472 $F # answer(DEF_SS).  [back_rewrite(28),rewrite([2384(3)]),xx(a)].
+
+% Disable descendants (x means already disabled):
+ 28x 26x 27x 29x 30x 44x 49x 31x 51x
+
+given #75 (T,wt=5): 1739 x v x = x.  [para(1625(a,1),1625(a,1,2,2,1,2)),rewrite([1623(13),21(2),21(3),45(2)])].
+
+given #76 (A,wt=10): 2374 x ^ y = c(c(x) v c(y)).  [back_rewrite(95),rewrite([1739(1),1739(1)])].
+
+given #77 (F,wt=10): 2441 c1 v c(c(c1) v c(c2)) != c1 # answer(B1).  [back_rewrite(22),rewrite([2374(4)])].
+
+given #78 (F,wt=11): 2438 c(c(c22) v c22) != c(c(c21) v c21) # answer(0).  [back_rewrite(37),rewrite([2374(4),2392(5),2374(9),2392(10)])].
+
+given #79 (F,wt=13): 2440 c3 v c(c3 v c(c3 v c4)) != c3 v c4 # answer(OM).  [back_rewrite(23),rewrite([2374(7),2392(4)])].
+
+given #80 (F,wt=19): 2437 c((c(c26) v c(c27)) v c(c28)) != c(c(c26) v (c(c27) v c(c28))) # answer(assoc_meet).  [back_rewrite(39),rewrite([2374(3),2374(8),2392(7),2374(13),2374(17),2392(18)])].
+
+given #81 (T,wt=5): 2392 c(c(x)) = x.  [back_rewrite(45),rewrite([1739(3)])].
+
+given #82 (T,wt=9): 2384 f(x,y) = c(x) v c(y).  [back_rewrite(77),rewrite([1739(1),1739(1)])].
+
+given #83 (T,wt=16): 2462 x v c(c(x) v c(c(x v c(x)) v x)) = x.  [back_rewrite(1743),rewrite([2384(3),2392(3),2384(5),2392(6),2384(6),2384(9),2392(2)])].
+
+given #84 (T,wt=18): 2448 c(x) v c(x v c(c(c(x) v x) v c(x))) = c(x).  [back_rewrite(2140),rewrite([2384(4),2384(7),2392(2),2384(8)])].
+
+given #85 (A,wt=31): 2399 (c(x v y) v c(y v c(z))) v c(y v c(c(c(z) v c(c(y) v c(z))) v c(z))) = c(y).  [back_rewrite(2304),rewrite([2384(3),2392(3),2374(4),2384(9),2384(12),2384(15),2384(18),2392(9),2384(19),2392(8)])].
+
+given #86 (T,wt=18): 2465 x v c(c(x) v c(c(y v c(x v y)) v y)) = x.  [back_rewrite(1693),rewrite([2384(4),2392(3),2384(6),2392(7),2384(7),2384(10),2392(2)])].
+
+given #87 (T,wt=20): 2470 c(x) v c(x v c(c(y v c(c(x) v y)) v y)) = c(x).  [back_rewrite(754),rewrite([2384(5),2392(3),2384(7),2392(8),2384(8),2392(2),2384(9)])].
+
+given #88 (T,wt=22): 2450 c(x v y) v c(x v c(c(x v c(c(x) v x)) v x)) = c(x).  [back_rewrite(2130),rewrite([2384(6),2392(4),2384(8),2392(9),2384(9),2392(3),2384(10)])].
+
+given #89 (T,wt=10): 2481 c(x v y) v c(x) = c(x).  [para(2450(a,1),2384(a,2)),rewrite([2384(10),2479(11)])].
+
+given #90 (A,wt=29): 2400 (c(c(x) v c(y)) v c(c(y) v z)) v c(c(y) v c(c(z v c(y v z)) v z)) = y.  [back_rewrite(2302),rewrite([2384(1),2374(6),2384(12),2392(11),2384(14),2392(15),2384(15),2384(18),2392(10)])].
+
+given #91 (T,wt=9): 2486 c(c(x) v y) v x = x.  [para(2392(a,1),2481(a,1,2)),rewrite([2392(6)])].
+
+given #92 (T,wt=9): 2487 x v (x v y) = x v y.  [para(2481(a,1),2481(a,1,1,1)),rewrite([2392(2),2392(3),2392(5)])].
+
+given #93 (T,wt=14): 2485 (c(c(x) v y) v c(y)) v c(y) = c(y).  [back_rewrite(2411),rewrite([2479(14)])].
+
+given #94 (T,wt=12): 2500 (c(c(x) v c(y)) v y) v y = y.  [para(2392(a,1),2485(a,1,1,2)),rewrite([2392(7),2392(8)])].
+
+given #95 (A,wt=29): 2410 (c(x) v c(x v c(y))) v c(x v c(c(c(y) v c(c(x) v c(y))) v c(y))) = c(x).  [back_rewrite(1787),rewrite([2384(2),2392(2),2374(3),2384(8),2384(11),2384(14),2384(17),2392(8),2384(18),2392(7)])].
+
+given #96 (T,wt=11): 2507 (c(x v c(y)) v y) v y = y.  [para(2392(a,1),2500(a,1,1,1,1,1))].
+
+given #97 (T,wt=11): 2517 c(x) v c(x v c(y)) = c(x).  [para(2410(a,1),2487(a,1,2)),rewrite([2513(7),2511(23)])].
+
+============================== PROOF =================================
+
+% Proof 6 at 0.47 (+ 0.02) seconds: B1.
+% Length of proof is 57.
+% Level of proof is 15.
+% Maximum clause weight is 37.000.
+% Given clauses 97.
+
+1 x v (x ^ y) = x # answer(B1) # label(non_clause) # label(goal).  [goal].
+15 f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(f(y,y),z)),z))) = y # label(OML_Sh).  [assumption].
+16 x v y = f(f(x,x),f(y,y)) # label(Def_join).  [assumption].
+17 f(f(x,x),f(y,y)) = x v y.  [copy(16),flip(a)].
+18 x ^ y = f(f(x,y),f(x,y)) # label(Def_meet).  [assumption].
+19 f(f(x,y),f(x,y)) = x ^ y.  [copy(18),flip(a)].
+20 c(x) = f(x,x) # label(Def_complement).  [assumption].
+21 f(x,x) = c(x).  [copy(20),flip(a)].
+22 c1 v (c1 ^ c2) != c1 # answer(B1).  [deny(1)].
+40 c(f(x,y)) = x ^ y.  [back_rewrite(19),rewrite([21(3)])].
+41 f(c(x),c(y)) = x v y.  [back_rewrite(17),rewrite([21(1),21(2)])].
+42 f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(c(y),z)),z))) = y.  [back_rewrite(15),rewrite([21(5)])].
+43 x ^ x = c(c(x)).  [para(21(a,1),40(a,1,1)),flip(a)].
+45 c(c(x)) = x v x.  [para(41(a,1),21(a,1)),flip(a)].
+46 c(x) ^ c(y) = c(x v y).  [para(41(a,1),40(a,1,1)),flip(a)].
+50 x ^ x = x v x.  [back_rewrite(43),rewrite([45(3)])].
+52 f(f(f(c(x),f(x,y)),z),f(x,f(f(y,f(c(x),y)),y))) = x.  [para(21(a,1),42(a,1,1,1,1))].
+53 f(f(f(f(x,y),c(y)),z),f(y,f(f(y,f(c(y),y)),y))) = y.  [para(21(a,1),42(a,1,1,1,2))].
+54 f(f(x v x,y),f(x,f(f(x,f(c(x),x)),x))) = x.  [para(21(a,1),42(a,1,1,1)),rewrite([21(1),45(2)])].
+55 f(f(x,y) ^ f(y,z),f(y,f(f(z,f(c(y),z)),z))) = y.  [para(21(a,1),42(a,1,1)),rewrite([40(4)])].
+59 f(f(f(x v y,f(c(y),z)),u),f(c(y),f(f(z,f(y v y,z)),z))) = c(y).  [para(41(a,1),42(a,1,1,1,1)),rewrite([45(8)])].
+62 f(f(x,y),f(x,f(f(f(f(z,f(c(x),z)),z),f(c(x),f(f(z,f(c(x),z)),z))),f(f(z,f(c(x),z)),z)))) = x.  [para(42(a,1),42(a,1,1,1))].
+65 f(x v x,c(y)) = c(x) v y.  [para(45(a,1),41(a,1,1))].
+72 (x v x) ^ c(y) = c(c(x) v y).  [para(45(a,1),46(a,1,1))].
+77 f(x v x,y v y) = c(x) v c(y).  [para(45(a,1),65(a,1,2))].
+95 (x v x) ^ (y v y) = c(c(x) v c(y)).  [para(45(a,1),72(a,1,2))].
+158 f(x,f(c(x),f(f(y,f(x v x,y)),y))) = c(x).  [para(53(a,1),42(a,1,1)),rewrite([45(3)])].
+203 f(c(x) v y,f(x,f(f(x,f(c(x),x)),x))) = x.  [para(65(a,1),54(a,1,1))].
+776 f((x v x) v y,f(c(x),f(f(c(x),c(x) v x),c(x)))) = c(x).  [para(41(a,1),203(a,1,2,2,1,2)),rewrite([45(2)])].
+785 f(c(x),f(x v x,f(f(f(x,f(f(x,f(c(x),x)),x)),x),f(x,f(f(x,f(c(x),x)),x))))) = x v x.  [para(203(a,1),158(a,1,2,2,1,2)),rewrite([45(3),45(18)])].
+1623 f(f(x,y),f(y,f(f(z,f(c(y),z)),z))) = y.  [para(62(a,1),42(a,1,1))].
+1625 f(c(x),f(x,f(f(y,f(c(x),y)),y))) = x.  [para(62(a,1),52(a,1,1))].
+1628 f(x v y,f(c(y),f(f(z,f(y v y,z)),z))) = c(y).  [para(62(a,1),59(a,1,1))].
+1630 f(c(x),f(x v x,x)) = x v x.  [back_rewrite(785),rewrite([1623(14)])].
+1647 f((x v x) ^ f(f(x v x,x),y),f(f(x v x,x),f(f(y,f((x v x) ^ x,y)),y))) = f(x v x,x).  [para(1630(a,1),55(a,1,1,1)),rewrite([40(10)])].
+1693 f(c(x),f(x,f(f(c(y),x v y),c(y)))) = x.  [para(41(a,1),1625(a,1,2,2,1,2))].
+1739 x v x = x.  [para(1625(a,1),1625(a,1,2,2,1,2)),rewrite([1623(13),21(2),21(3),45(2)])].
+1787 f(x ^ f(c(x),y),f(c(x),f(f(y,f(x,y)),y))) = c(x).  [back_rewrite(1647),rewrite([1739(1),1739(1),21(1),1739(4),21(4),1739(5),50(5),1739(5),1739(10),21(10)])].
+1798 f(x v y,f(c(y),f(f(z,f(y,z)),z))) = c(y).  [back_rewrite(1628),rewrite([1739(3)])].
+2130 f(x v y,f(c(x),f(f(c(x),c(x) v x),c(x)))) = c(x).  [back_rewrite(776),rewrite([1739(1)])].
+2374 x ^ y = c(c(x) v c(y)).  [back_rewrite(95),rewrite([1739(1),1739(1)])].
+2384 f(x,y) = c(x) v c(y).  [back_rewrite(77),rewrite([1739(1),1739(1)])].
+2392 c(c(x)) = x.  [back_rewrite(45),rewrite([1739(3)])].
+2410 (c(x) v c(x v c(y))) v c(x v c(c(c(y) v c(c(x) v c(y))) v c(y))) = c(x).  [back_rewrite(1787),rewrite([2384(2),2392(2),2374(3),2384(8),2384(11),2384(14),2384(17),2392(8),2384(18),2392(7)])].
+2441 c1 v c(c(c1) v c(c2)) != c1 # answer(B1).  [back_rewrite(22),rewrite([2374(4)])].
+2450 c(x v y) v c(x v c(c(x v c(c(x) v x)) v x)) = c(x).  [back_rewrite(2130),rewrite([2384(6),2392(4),2384(8),2392(9),2384(9),2392(3),2384(10)])].
+2454 c(x v y) v c(y v c(c(c(z) v c(c(y) v c(z))) v c(z))) = c(y).  [back_rewrite(1798),rewrite([2384(3),2384(6),2384(9),2384(12),2392(3),2384(13)])].
+2465 x v c(c(x) v c(c(y v c(x v y)) v y)) = x.  [back_rewrite(1693),rewrite([2384(4),2392(3),2384(6),2392(7),2384(7),2384(10),2392(2)])].
+2479 c(x v c(c(x v c(c(x) v x)) v x)) = c(x).  [para(2450(a,1),1739(a,1)),flip(a)].
+2481 c(x v y) v c(x) = c(x).  [para(2450(a,1),2384(a,2)),rewrite([2384(10),2479(11)])].
+2486 c(c(x) v y) v x = x.  [para(2392(a,1),2481(a,1,2)),rewrite([2392(6)])].
+2487 x v (x v y) = x v y.  [para(2481(a,1),2481(a,1,1,1)),rewrite([2392(2),2392(3),2392(5)])].
+2511 (c(x) v c(x v y)) v c(x v c(c(y v c(c(x) v y)) v y)) = c(x).  [para(2392(a,1),2410(a,1,1,2,1,2)),rewrite([2392(6),2392(7),2392(11)])].
+2513 (c(x) v c(x v c(y))) v c(x) = c(x) v c(x v c(y)).  [para(2410(a,1),2465(a,1,2,1,2,1,1,1,2,1)),rewrite([2392(25),2454(38),2392(13),2486(12)])].
+2517 c(x) v c(x v c(y)) = c(x).  [para(2410(a,1),2487(a,1,2)),rewrite([2513(7),2511(23)])].
+2526 x v c(c(x) v c(y)) = x.  [para(2392(a,1),2517(a,1,1)),rewrite([2392(7)])].
+2527 $F # answer(B1).  [resolve(2526,a,2441,a)].
+
+============================== end of proof ==========================
+% Redundant proof: 2531 $F # answer(B1).  [back_rewrite(2441),rewrite([2526(8)]),xx(a)].
+
+% Disable descendants (x means already disabled):
+ 22x 2441x
+
+given #98 (T,wt=9): 2529 (x v y) v x = x v y.  [para(2481(a,1),2517(a,1,2,1)),rewrite([2392(3),2392(3),2392(5)])].
+
+given #99 (T,wt=9): 2533 x v c(c(x) v y) = x.  [para(2486(a,1),2529(a,1,1)),rewrite([2486(8)])].
+
+given #100 (A,wt=31): 2443 c(x) v c(c(c(x) v c(y)) v c(c(z v c((c(x) v c(y)) v z)) v z)) = c(x) v c(y).  [back_rewrite(1261),rewrite([2384(1),2384(5),2384(9),2392(5),2384(11),2392(12),2384(12),2384(15),2384(18)])].
+
+given #101 (T,wt=10): 2528 c(x) v c(x v y) = c(x).  [para(2392(a,1),2517(a,1,2,1,2))].
+
+given #102 (T,wt=11): 2534 x v (c(y v c(x)) v x) = x.  [para(2507(a,1),2529(a,1,1)),rewrite([2507(10)])].
+
+given #103 (T,wt=13): 2499 (c(x v y) v c(y)) v c(y) = c(y).  [para(2392(a,1),2485(a,1,1,1,1,1))].
+
+given #104 (T,wt=13): 2546 c(x) v (c(y v x) v c(x)) = c(x).  [para(2392(a,1),2534(a,1,2,1,1,2))].
+
+given #105 (A,wt=33): 2453 c(c(c(x v c(y)) v c(c(y) v z)) v c(u)) v c(c(y) v c(c(z v c(y v z)) v z)) = y.  [back_rewrite(1958),rewrite([2384(5),2384(8),2384(13),2392(12),2384(15),2392(16),2384(16),2384(19)])].
+
+given #106 (T,wt=9): 2574 c(x v c(y)) v y = y.  [back_rewrite(2553),rewrite([2560(12)])].
+
+given #107 (T,wt=9): 2585 x v c(y v c(x)) = x.  [para(2574(a,1),2529(a,1,1)),rewrite([2574(8)])].
+
+given #108 (T,wt=10): 2583 c(x v y) v c(y) = c(y).  [para(2392(a,1),2574(a,1,1,1,2))].
+
+given #109 (T,wt=9): 2591 x v (y v x) = y v x.  [para(2583(a,1),2481(a,1,1,1)),rewrite([2392(2),2392(3),2392(5)])].
+
+given #110 (A,wt=25): 2454 c(x v y) v c(y v c(c(c(z) v c(c(y) v c(z))) v c(z))) = c(y).  [back_rewrite(1798),rewrite([2384(3),2384(6),2384(9),2384(12),2392(3),2384(13)])].
+
+given #111 (T,wt=9): 2592 (x v y) v y = x v y.  [para(2583(a,1),2533(a,1,2,1)),rewrite([2392(3)])].
+
+given #112 (T,wt=10): 2590 c(x) v c(y v x) = c(x).  [para(2392(a,1),2585(a,1,2,1,2))].
+
+given #113 (T,wt=12): 2575 c((c(x) v y) v c(z)) v x = x.  [back_rewrite(2552),rewrite([2560(14)])].
+
+given #114 (T,wt=11): 2599 c((c(x) v y) v z) v x = x.  [para(2392(a,1),2575(a,1,1,1,2))].
+
+given #115 (A,wt=32): 2469 c(c(c(x v y) v c(y v z)) v c(u)) v c(y v c(c(z v c(c(y) v z)) v z)) = c(y).  [back_rewrite(929),rewrite([2384(3),2384(6),2384(13),2392(11),2384(15),2392(16),2384(16),2392(10),2384(17)])].
+
+given #116 (T,wt=11): 2614 x v c((c(x) v y) v z) = x.  [para(2599(a,1),2529(a,1,1)),rewrite([2599(10)])].
+
+given #117 (T,wt=11): 2618 c((x v c(y)) v z) v y = y.  [para(2591(a,1),2599(a,1,1,1,1))].
+
+given #118 (T,wt=11): 2619 c(x v (c(y) v z)) v y = y.  [para(2591(a,1),2599(a,1,1,1))].
+
+given #119 (T,wt=11): 2649 x v c((y v c(x)) v z) = x.  [para(2591(a,1),2614(a,1,2,1,1))].
+
+given #120 (A,wt=30): 2492 c(x) v c(c(c(y) v c(x)) v c(c(x) v z)) = c(c(c(y) v c(x)) v c(c(x) v z)).  [para(2400(a,1),2481(a,1,1,1))].
+
+given #121 (T,wt=11): 2650 x v c(y v (c(x) v z)) = x.  [para(2591(a,1),2614(a,1,2,1))].
+
+given #122 (T,wt=11): 2656 c(x v (y v c(z))) v z = z.  [para(2591(a,1),2618(a,1,1,1))].
+
+given #123 (T,wt=11): 2674 x v c(y v (z v c(x))) = x.  [para(2591(a,1),2649(a,1,2,1))].
+
+given #124 (T,wt=12): 2610 c((x v y) v z) v c(x) = c(x).  [para(2392(a,1),2599(a,1,1,1,1,1))].
+
+given #125 (A,wt=36): 2544 c(x) v (c(c(c(c(x) v c(y)) v z) v c(c(x) v c(y))) v c(c(c(x) v c(y)) v z)) = c(x) v c(y).  [para(2533(a,1),2443(a,1,2,1,2,1,1,1,2,1)),rewrite([2492(26),2392(22)])].
+
+given #126 (T,wt=12): 2644 c(x) v c((x v y) v z) = c(x).  [para(2392(a,1),2614(a,1,2,1,1,1))].
+
+given #127 (T,wt=12): 2653 c((x v y) v z) v c(y) = c(y).  [para(2392(a,1),2618(a,1,1,1,1,2))].
+
+given #128 (T,wt=12): 2660 c(x v (y v z)) v c(y) = c(y).  [para(2392(a,1),2619(a,1,1,1,2,1))].
+
+given #129 (T,wt=12): 2673 c(x) v c((y v x) v z) = c(x).  [para(2392(a,1),2649(a,1,2,1,1,2))].
+
+given #130 (A,wt=16): 2560 c(c(x) v c(c(y v c(x v y)) v y)) = x.  [para(2453(a,1),2507(a,1,1)),rewrite([2533(10)]),flip(a)].
+
+given #131 (T,wt=12): 2697 c(x) v c(y v (x v z)) = c(x).  [para(2392(a,1),2650(a,1,2,1,2,1))].
+
+given #132 (T,wt=12): 2706 c(x v (y v z)) v c(z) = c(z).  [para(2392(a,1),2656(a,1,1,1,2,2))].
+
+given #133 (T,wt=12): 2714 c(x) v c(y v (z v x)) = c(x).  [para(2392(a,1),2674(a,1,2,1,2,2))].
+
+given #134 (T,wt=13): 2612 c(c(x) v y) v (x v z) = x v z.  [para(2481(a,1),2599(a,1,1,1,1))].
+
+given #135 (A,wt=20): 2561 x v c(c(c(y v c(x)) v c(c(x) v z)) v c(u)) = x.  [para(2453(a,1),2529(a,1,1)),rewrite([2560(32),2557(24)])].
+
+given #136 (T,wt=13): 2617 c(c(x) v y) v (z v x) = z v x.  [para(2583(a,1),2599(a,1,1,1,1))].
+
+given #137 (T,wt=13): 2645 (x v y) v c(c(x) v z) = x v y.  [para(2481(a,1),2614(a,1,2,1,1))].
+
+given #138 (T,wt=13): 2648 (x v y) v c(c(y) v z) = x v y.  [para(2583(a,1),2614(a,1,2,1,1))].
+
+given #139 (T,wt=13): 2662 c(x v c(y)) v (y v z) = y v z.  [para(2481(a,1),2619(a,1,1,1,2))].
+
+given #140 (A,wt=20): 2562 c(c(c(c(x) v y) v c(c(x) v z)) v c(u)) v x = x.  [para(2529(a,1),2453(a,1,1,1,1,1,1,1)),rewrite([2560(20)])].
+
+given #141 (T,wt=13): 2666 c(x v c(y)) v (z v y) = z v y.  [para(2583(a,1),2619(a,1,1,1,2))].
+
+given #142 (T,wt=13): 2698 (x v y) v c(z v c(x)) = x v y.  [para(2481(a,1),2650(a,1,2,1,2))].
+
+given #143 (T,wt=13): 2701 (x v y) v c(z v c(y)) = x v y.  [para(2583(a,1),2650(a,1,2,1,2))].
+
+given #144 (T,wt=13): 2715 x v ((x v y) v z) = (x v y) v z.  [para(2610(a,1),2481(a,1,1,1)),rewrite([2392(2),2392(4),2392(7)])].
+
+given #145 (A,wt=15): 2566 (c(x v c(y)) v c(c(y) v z)) v y = y.  [para(2533(a,1),2453(a,1,1,1)),rewrite([2392(9),2560(16)])].
+
+given #146 (T,wt=13): 2716 ((x v y) v z) v x = (x v y) v z.  [para(2610(a,1),2533(a,1,2,1)),rewrite([2392(4)])].
+
+given #147 (T,wt=13): 2731 x v ((y v x) v z) = (y v x) v z.  [para(2653(a,1),2481(a,1,1,1)),rewrite([2392(2),2392(4),2392(7)])].
+
+given #148 (T,wt=13): 2732 ((x v y) v z) v y = (x v y) v z.  [para(2653(a,1),2533(a,1,2,1)),rewrite([2392(4)])].
+
+given #149 (T,wt=13): 2737 x v (y v (x v z)) = y v (x v z).  [para(2660(a,1),2481(a,1,1,1)),rewrite([2392(2),2392(4),2392(7)])].
+
+given #150 (A,wt=22): 2568 c(c(x v c(c(x v y) v z)) v c(u)) v (x v y) = x v y.  [para(2528(a,1),2453(a,1,1,1,1,1,1,1)),rewrite([2392(2),2560(20)])].
+
+given #151 (T,wt=13): 2738 (x v (y v z)) v y = x v (y v z).  [para(2660(a,1),2533(a,1,2,1)),rewrite([2392(4)])].
+
+given #152 (T,wt=13): 2764 x v (y v (z v x)) = y v (z v x).  [para(2706(a,1),2481(a,1,1,1)),rewrite([2392(2),2392(4),2392(7)])].
+
+given #153 (T,wt=13): 2765 (x v (y v z)) v z = x v (y v z).  [para(2706(a,1),2533(a,1,2,1)),rewrite([2392(4)])].
+
+given #154 (T,wt=13): 2772 c(((c(x) v y) v z) v u) v x = x.  [para(2599(a,1),2612(a,1,2)),rewrite([2392(5),2599(11)])].
+
+given #155 (A,wt=22): 2576 c(c(c(x v c(y v z)) v y) v c(u)) v (y v z) = y v z.  [back_rewrite(2551),rewrite([2560(23)])].
+
+given #156 (T,wt=13): 2775 c(((x v c(y)) v z) v u) v y = y.  [para(2618(a,1),2612(a,1,2)),rewrite([2392(5),2618(11)])].
+
+given #157 (T,wt=13): 2778 c((x v (c(y) v z)) v u) v y = y.  [para(2619(a,1),2612(a,1,2)),rewrite([2392(5),2619(11)])].
+
+given #158 (T,wt=13): 2781 c((x v (y v c(z))) v u) v z = z.  [para(2656(a,1),2612(a,1,2)),rewrite([2392(5),2656(11)])].
+
+given #159 (T,wt=13): 2836 x v c(((c(x) v y) v z) v u) = x.  [para(2599(a,1),2645(a,1,1)),rewrite([2392(5),2599(11)])].
+
+given #160 (A,wt=19): 2577 c(c(c(x v c(y)) v c(c(y) v z)) v u) v y = y.  [back_rewrite(2549),rewrite([2560(19)])].
+
+given #161 (T,wt=13): 2838 x v c(((y v c(x)) v z) v u) = x.  [para(2618(a,1),2645(a,1,1)),rewrite([2392(5),2618(11)])].
+
+given #162 (T,wt=13): 2840 x v c((y v (c(x) v z)) v u) = x.  [para(2619(a,1),2645(a,1,1)),rewrite([2392(5),2619(11)])].
+
+given #163 (T,wt=13): 2842 x v c((y v (z v c(x))) v u) = x.  [para(2656(a,1),2645(a,1,1)),rewrite([2392(5),2656(11)])].
+
+given #164 (T,wt=13): 2863 c(x v ((c(y) v z) v u)) v y = y.  [para(2599(a,1),2662(a,1,2)),rewrite([2392(5),2599(11)])].
+
+given #165 (A,wt=14): 2613 c(x v y) v (c(x) v z) = c(x) v z.  [para(2486(a,1),2599(a,1,1,1,1))].
+
+given #166 (T,wt=13): 2865 c(x v ((y v c(z)) v u)) v z = z.  [para(2618(a,1),2662(a,1,2)),rewrite([2392(5),2618(11)])].
+
+given #167 (T,wt=13): 2867 c(x v (y v (c(z) v u))) v z = z.  [para(2619(a,1),2662(a,1,2)),rewrite([2392(5),2619(11)])].
+
+given #168 (T,wt=13): 2869 c(x v (y v (z v c(u)))) v u = u.  [para(2656(a,1),2662(a,1,2)),rewrite([2392(5),2656(11)])].
+
+given #169 (T,wt=13): 2927 x v c(y v ((c(x) v z) v u)) = x.  [para(2599(a,1),2698(a,1,1)),rewrite([2392(5),2599(11)])].
+
+given #170 (A,wt=14): 2616 c(x v y) v (z v c(x)) = z v c(x).  [para(2574(a,1),2599(a,1,1,1,1))].
+
+given #171 (T,wt=13): 2928 x v c(y v ((z v c(x)) v u)) = x.  [para(2618(a,1),2698(a,1,1)),rewrite([2392(5),2618(11)])].
+
+given #172 (T,wt=13): 2929 x v c(y v (z v (c(x) v u))) = x.  [para(2619(a,1),2698(a,1,1)),rewrite([2392(5),2619(11)])].
+
+given #173 (T,wt=13): 2930 x v c(y v (z v (u v c(x)))) = x.  [para(2656(a,1),2698(a,1,1)),rewrite([2392(5),2656(11)])].
+
+given #174 (T,wt=14): 2646 (c(x) v y) v c(x v z) = c(x) v y.  [para(2486(a,1),2614(a,1,2,1,1))].
+
+given #175 (A,wt=18): 2620 c(x v y) v ((c(x) v z) v u) = (c(x) v z) v u.  [para(2599(a,1),2599(a,1,1,1,1))].
+
+given #176 (T,wt=14): 2647 (x v c(y)) v c(y v z) = x v c(y).  [para(2574(a,1),2614(a,1,2,1,1))].
+
+given #177 (T,wt=14): 2663 c(x v y) v (c(y) v z) = c(y) v z.  [para(2486(a,1),2619(a,1,1,1,2))].
+
+given #178 (T,wt=14): 2665 c(x v y) v (z v c(y)) = z v c(y).  [para(2574(a,1),2619(a,1,1,1,2))].
+
+given #179 (T,wt=14): 2699 (c(x) v y) v c(z v x) = c(x) v y.  [para(2486(a,1),2650(a,1,2,1,2))].
+
+given #180 (A,wt=29): 2622 x v (c(c(y v x) v c(x v z)) v c(u)) = c(c(y v x) v c(x v z)) v c(u).  [para(2469(a,1),2481(a,1,1,1)),rewrite([2392(2),2392(10),2392(19)])].
+
+given #181 (T,wt=14): 2700 (x v c(y)) v c(z v y) = x v c(y).  [para(2574(a,1),2650(a,1,2,1,2))].
+
+given #182 (T,wt=14): 2783 c(((x v y) v z) v u) v c(x) = c(x).  [para(2610(a,1),2612(a,1,2)),rewrite([2392(4),2610(11)])].
+
+given #183 (T,wt=14): 2785 c(((x v y) v z) v u) v c(y) = c(y).  [para(2653(a,1),2612(a,1,2)),rewrite([2392(4),2653(11)])].
+
+given #184 (T,wt=14): 2787 c((x v (y v z)) v u) v c(y) = c(y).  [para(2660(a,1),2612(a,1,2)),rewrite([2392(4),2660(11)])].
+
+given #185 (A,wt=20): 2627 c(x) v c(c(c(y v x) v c(x v z)) v c(u)) = c(x).  [para(2469(a,1),2529(a,1,1)),rewrite([2621(30)])].
+
+given #186 (T,wt=14): 2789 c((x v (y v z)) v u) v c(z) = c(z).  [para(2706(a,1),2612(a,1,2)),rewrite([2392(4),2706(11)])].
+
+given #187 (T,wt=14): 2844 c(x) v c(((x v y) v z) v u) = c(x).  [para(2610(a,1),2645(a,1,1)),rewrite([2392(5),2610(11)])].
+
+given #188 (T,wt=14): 2846 c(x) v c(((y v x) v z) v u) = c(x).  [para(2653(a,1),2645(a,1,1)),rewrite([2392(5),2653(11)])].
+
+given #189 (T,wt=14): 2848 c(x) v c((y v (x v z)) v u) = c(x).  [para(2660(a,1),2645(a,1,1)),rewrite([2392(5),2660(11)])].
+
+given #190 (A,wt=29): 2629 (c(c(x v y) v c(y v z)) v c(u)) v y = c(c(x v y) v c(y v z)) v c(u).  [para(2469(a,1),2533(a,1,2,1)),rewrite([2392(10)])].
+
+given #191 (T,wt=14): 2850 c(x) v c((y v (z v x)) v u) = c(x).  [para(2706(a,1),2645(a,1,1)),rewrite([2392(5),2706(11)])].
+
+given #192 (T,wt=14): 2870 c(x v ((y v z) v u)) v c(y) = c(y).  [para(2610(a,1),2662(a,1,2)),rewrite([2392(4),2610(11)])].
+
+given #193 (T,wt=14): 2871 c(x v ((y v z) v u)) v c(z) = c(z).  [para(2653(a,1),2662(a,1,2)),rewrite([2392(4),2653(11)])].
+
+given #194 (T,wt=14): 2872 c(x v (y v (z v u))) v c(z) = c(z).  [para(2660(a,1),2662(a,1,2)),rewrite([2392(4),2660(11)])].
+
+given #195 (A,wt=17): 2630 c(x v c(c(y v c(c(x) v y)) v y)) = c(x).  [para(2469(a,1),2574(a,1)),flip(a)].
+
+given #196 (T,wt=14): 2873 c(x v (y v (z v u))) v c(u) = c(u).  [para(2706(a,1),2662(a,1,2)),rewrite([2392(4),2706(11)])].
+
+given #197 (T,wt=14): 2931 c(x) v c(y v ((x v z) v u)) = c(x).  [para(2610(a,1),2698(a,1,1)),rewrite([2392(5),2610(11)])].
+
+given #198 (T,wt=14): 2932 c(x) v c(y v ((z v x) v u)) = c(x).  [para(2653(a,1),2698(a,1,1)),rewrite([2392(5),2653(11)])].
+
+given #199 (T,wt=14): 2933 c(x) v c(y v (z v (x v u))) = c(x).  [para(2660(a,1),2698(a,1,1)),rewrite([2392(5),2660(11)])].
+
+given #200 (A,wt=15): 2634 (c(x v y) v c(y v z)) v c(y) = c(y).  [para(2585(a,1),2469(a,1,1,1)),rewrite([2392(7),2630(14)])].
+
+given #201 (T,wt=14): 2934 c(x) v c(y v (z v (u v x))) = c(x).  [para(2706(a,1),2698(a,1,1)),rewrite([2392(5),2706(11)])].
+
+given #202 (T,wt=15): 2746 c(c(x v y) v x) v c(x v y) = c(x).  [para(2528(a,1),2560(a,1,1,2,1,1,1,2,1)),rewrite([2392(2),2392(4),2675(9),2392(9)])].
+
+given #203 (T,wt=13): 4044 c(x v c(x v y)) v x = x v y.  [para(2481(a,1),2746(a,1,1,1,1,1)),rewrite([2392(2),2481(8),2392(6),2392(8)])].
+
+given #204 (T,wt=9): 4089 c(x) v x = x v c(x).  [para(2585(a,1),4044(a,1,1,1))].
+
+given #205 (A,wt=20): 2637 c(c(c(x v y) v c(z v y)) v c(u)) v c(y) = c(y).  [para(2591(a,1),2469(a,1,1,1,1,1,2,1)),rewrite([2630(21)])].
+
+given #206 (F,wt=11): 4129 c(c22 v c(c22)) != c(c21 v c(c21)) # answer(0).  [back_rewrite(2438),rewrite([4089(4),4089(9)])].
+
+given #207 (T,wt=9): 4133 c(x v c(x)) v y = y.  [para(4089(a,1),2781(a,1,1,1,1)),rewrite([4094(6),4130(4),4132(3)])].
+
+============================== PROOF =================================
+
+% Proof 7 at 0.85 (+ 0.03) seconds: 1.
+% Length of proof is 111.
+% Level of proof is 27.
+% Maximum clause weight is 37.000.
+% Given clauses 207.
+
+11 x v c(x) = y v c(y) # answer(1) # label(non_clause) # label(goal).  [goal].
+15 f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(f(y,y),z)),z))) = y # label(OML_Sh).  [assumption].
+16 x v y = f(f(x,x),f(y,y)) # label(Def_join).  [assumption].
+17 f(f(x,x),f(y,y)) = x v y.  [copy(16),flip(a)].
+18 x ^ y = f(f(x,y),f(x,y)) # label(Def_meet).  [assumption].
+19 f(f(x,y),f(x,y)) = x ^ y.  [copy(18),flip(a)].
+20 c(x) = f(x,x) # label(Def_complement).  [assumption].
+21 f(x,x) = c(x).  [copy(20),flip(a)].
+34 c19 v c(c19) != c20 v c(c20) # answer(1).  [deny(11)].
+35 c20 v c(c20) != c19 v c(c19) # answer(1).  [copy(34),flip(a)].
+40 c(f(x,y)) = x ^ y.  [back_rewrite(19),rewrite([21(3)])].
+41 f(c(x),c(y)) = x v y.  [back_rewrite(17),rewrite([21(1),21(2)])].
+42 f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(c(y),z)),z))) = y.  [back_rewrite(15),rewrite([21(5)])].
+43 x ^ x = c(c(x)).  [para(21(a,1),40(a,1,1)),flip(a)].
+45 c(c(x)) = x v x.  [para(41(a,1),21(a,1)),flip(a)].
+46 c(x) ^ c(y) = c(x v y).  [para(41(a,1),40(a,1,1)),flip(a)].
+50 x ^ x = x v x.  [back_rewrite(43),rewrite([45(3)])].
+52 f(f(f(c(x),f(x,y)),z),f(x,f(f(y,f(c(x),y)),y))) = x.  [para(21(a,1),42(a,1,1,1,1))].
+53 f(f(f(f(x,y),c(y)),z),f(y,f(f(y,f(c(y),y)),y))) = y.  [para(21(a,1),42(a,1,1,1,2))].
+54 f(f(x v x,y),f(x,f(f(x,f(c(x),x)),x))) = x.  [para(21(a,1),42(a,1,1,1)),rewrite([21(1),45(2)])].
+55 f(f(x,y) ^ f(y,z),f(y,f(f(z,f(c(y),z)),z))) = y.  [para(21(a,1),42(a,1,1)),rewrite([40(4)])].
+59 f(f(f(x v y,f(c(y),z)),u),f(c(y),f(f(z,f(y v y,z)),z))) = c(y).  [para(41(a,1),42(a,1,1,1,1)),rewrite([45(8)])].
+61 f(f(f(f(x,y),f(y,c(z))),u),f(y,f(f(c(z),y v z),c(z)))) = y.  [para(41(a,1),42(a,1,2,2,1,2))].
+62 f(f(x,y),f(x,f(f(f(f(z,f(c(x),z)),z),f(c(x),f(f(z,f(c(x),z)),z))),f(f(z,f(c(x),z)),z)))) = x.  [para(42(a,1),42(a,1,1,1))].
+65 f(x v x,c(y)) = c(x) v y.  [para(45(a,1),41(a,1,1))].
+66 f(c(x),y v y) = x v c(y).  [para(45(a,1),41(a,1,2))].
+68 c(x v x) = c(x) v c(x).  [para(45(a,1),45(a,1,1))].
+72 (x v x) ^ c(y) = c(c(x) v y).  [para(45(a,1),46(a,1,1))].
+77 f(x v x,y v y) = c(x) v c(y).  [para(45(a,1),65(a,1,2))].
+95 (x v x) ^ (y v y) = c(c(x) v c(y)).  [para(45(a,1),72(a,1,2))].
+158 f(x,f(c(x),f(f(y,f(x v x,y)),y))) = c(x).  [para(53(a,1),42(a,1,1)),rewrite([45(3)])].
+203 f(c(x) v y,f(x,f(f(x,f(c(x),x)),x))) = x.  [para(65(a,1),54(a,1,1))].
+304 f(f(x,y v y) ^ (c(y) v z),f(y v y,f(f(c(z),(y v y) v z),c(z)))) = y v y.  [para(65(a,1),55(a,1,1,2)),rewrite([68(9),65(12),45(9)])].
+776 f((x v x) v y,f(c(x),f(f(c(x),c(x) v x),c(x)))) = c(x).  [para(41(a,1),203(a,1,2,2,1,2)),rewrite([45(2)])].
+785 f(c(x),f(x v x,f(f(f(x,f(f(x,f(c(x),x)),x)),x),f(x,f(f(x,f(c(x),x)),x))))) = x v x.  [para(203(a,1),158(a,1,2,2,1,2)),rewrite([45(3),45(18)])].
+1263 f(f(f(x v c(y),c(y) v z),u),f(y v y,f(f(c(z),(y v y) v z),c(z)))) = y v y.  [para(66(a,1),61(a,1,1,1,1)),rewrite([65(5)])].
+1623 f(f(x,y),f(y,f(f(z,f(c(y),z)),z))) = y.  [para(62(a,1),42(a,1,1))].
+1625 f(c(x),f(x,f(f(y,f(c(x),y)),y))) = x.  [para(62(a,1),52(a,1,1))].
+1628 f(x v y,f(c(y),f(f(z,f(y v y,z)),z))) = c(y).  [para(62(a,1),59(a,1,1))].
+1630 f(c(x),f(x v x,x)) = x v x.  [back_rewrite(785),rewrite([1623(14)])].
+1647 f((x v x) ^ f(f(x v x,x),y),f(f(x v x,x),f(f(y,f((x v x) ^ x,y)),y))) = f(x v x,x).  [para(1630(a,1),55(a,1,1,1)),rewrite([40(10)])].
+1648 f(f(x,c(y)) ^ (y v y),f(c(y),f(f(f(y v y,y),f(y v y,f(y v y,y))),f(y v y,y)))) = c(y).  [para(1630(a,1),55(a,1,1,2)),rewrite([45(9)])].
+1693 f(c(x),f(x,f(f(c(y),x v y),c(y)))) = x.  [para(41(a,1),1625(a,1,2,2,1,2))].
+1739 x v x = x.  [para(1625(a,1),1625(a,1,2,2,1,2)),rewrite([1623(13),21(2),21(3),45(2)])].
+1786 f(f(x,c(y)) ^ y,f(c(y),f(f(c(y),f(y,c(y))),c(y)))) = c(y).  [back_rewrite(1648),rewrite([1739(3),1739(5),21(5),1739(6),1739(6),21(6),1739(9),21(9)])].
+1787 f(x ^ f(c(x),y),f(c(x),f(f(y,f(x,y)),y))) = c(x).  [back_rewrite(1647),rewrite([1739(1),1739(1),21(1),1739(4),21(4),1739(5),50(5),1739(5),1739(10),21(10)])].
+1798 f(x v y,f(c(y),f(f(z,f(y,z)),z))) = c(y).  [back_rewrite(1628),rewrite([1739(3)])].
+1958 f(f(f(x v c(y),c(y) v z),u),f(y,f(f(c(z),y v z),c(z)))) = y.  [back_rewrite(1263),rewrite([1739(7),1739(8),1739(14)])].
+2130 f(x v y,f(c(x),f(f(c(x),c(x) v x),c(x)))) = c(x).  [back_rewrite(776),rewrite([1739(1)])].
+2302 f(f(x,y) ^ (c(y) v z),f(y,f(f(c(z),y v z),c(z)))) = y.  [back_rewrite(304),rewrite([1739(1),1739(5),1739(6),1739(12)])].
+2374 x ^ y = c(c(x) v c(y)).  [back_rewrite(95),rewrite([1739(1),1739(1)])].
+2384 f(x,y) = c(x) v c(y).  [back_rewrite(77),rewrite([1739(1),1739(1)])].
+2392 c(c(x)) = x.  [back_rewrite(45),rewrite([1739(3)])].
+2400 (c(c(x) v c(y)) v c(c(y) v z)) v c(c(y) v c(c(z v c(y v z)) v z)) = y.  [back_rewrite(2302),rewrite([2384(1),2374(6),2384(12),2392(11),2384(14),2392(15),2384(15),2384(18),2392(10)])].
+2410 (c(x) v c(x v c(y))) v c(x v c(c(c(y) v c(c(x) v c(y))) v c(y))) = c(x).  [back_rewrite(1787),rewrite([2384(2),2392(2),2374(3),2384(8),2384(11),2384(14),2384(17),2392(8),2384(18),2392(7)])].
+2411 (c(c(x) v y) v c(y)) v c(y v c(c(y v c(c(y) v y)) v y)) = c(y).  [back_rewrite(1786),rewrite([2384(2),2392(3),2374(3),2384(10),2392(11),2384(11),2392(9),2384(13),2392(14),2384(14),2392(8),2384(15),2392(7)])].
+2450 c(x v y) v c(x v c(c(x v c(c(x) v x)) v x)) = c(x).  [back_rewrite(2130),rewrite([2384(6),2392(4),2384(8),2392(9),2384(9),2392(3),2384(10)])].
+2453 c(c(c(x v c(y)) v c(c(y) v z)) v c(u)) v c(c(y) v c(c(z v c(y v z)) v z)) = y.  [back_rewrite(1958),rewrite([2384(5),2384(8),2384(13),2392(12),2384(15),2392(16),2384(16),2384(19)])].
+2454 c(x v y) v c(y v c(c(c(z) v c(c(y) v c(z))) v c(z))) = c(y).  [back_rewrite(1798),rewrite([2384(3),2384(6),2384(9),2384(12),2392(3),2384(13)])].
+2465 x v c(c(x) v c(c(y v c(x v y)) v y)) = x.  [back_rewrite(1693),rewrite([2384(4),2392(3),2384(6),2392(7),2384(7),2384(10),2392(2)])].
+2479 c(x v c(c(x v c(c(x) v x)) v x)) = c(x).  [para(2450(a,1),1739(a,1)),flip(a)].
+2481 c(x v y) v c(x) = c(x).  [para(2450(a,1),2384(a,2)),rewrite([2384(10),2479(11)])].
+2485 (c(c(x) v y) v c(y)) v c(y) = c(y).  [back_rewrite(2411),rewrite([2479(14)])].
+2486 c(c(x) v y) v x = x.  [para(2392(a,1),2481(a,1,2)),rewrite([2392(6)])].
+2487 x v (x v y) = x v y.  [para(2481(a,1),2481(a,1,1,1)),rewrite([2392(2),2392(3),2392(5)])].
+2492 c(x) v c(c(c(y) v c(x)) v c(c(x) v z)) = c(c(c(y) v c(x)) v c(c(x) v z)).  [para(2400(a,1),2481(a,1,1,1))].
+2500 (c(c(x) v c(y)) v y) v y = y.  [para(2392(a,1),2485(a,1,1,2)),rewrite([2392(7),2392(8)])].
+2507 (c(x v c(y)) v y) v y = y.  [para(2392(a,1),2500(a,1,1,1,1,1))].
+2511 (c(x) v c(x v y)) v c(x v c(c(y v c(c(x) v y)) v y)) = c(x).  [para(2392(a,1),2410(a,1,1,2,1,2)),rewrite([2392(6),2392(7),2392(11)])].
+2513 (c(x) v c(x v c(y))) v c(x) = c(x) v c(x v c(y)).  [para(2410(a,1),2465(a,1,2,1,2,1,1,1,2,1)),rewrite([2392(25),2454(38),2392(13),2486(12)])].
+2517 c(x) v c(x v c(y)) = c(x).  [para(2410(a,1),2487(a,1,2)),rewrite([2513(7),2511(23)])].
+2528 c(x) v c(x v y) = c(x).  [para(2392(a,1),2517(a,1,2,1,2))].
+2529 (x v y) v x = x v y.  [para(2481(a,1),2517(a,1,2,1)),rewrite([2392(3),2392(3),2392(5)])].
+2533 x v c(c(x) v y) = x.  [para(2486(a,1),2529(a,1,1)),rewrite([2486(8)])].
+2552 c((c(x) v y) v c(z)) v c(c(x) v c(c(y v c(x v y)) v y)) = x.  [para(2481(a,1),2453(a,1,1,1,1,1)),rewrite([2392(4)])].
+2553 c(x v c(y)) v c(c(y) v c(c(z v c(y v z)) v z)) = y.  [para(2481(a,1),2453(a,1,1,1)),rewrite([2392(4)])].
+2560 c(c(x) v c(c(y v c(x v y)) v y)) = x.  [para(2453(a,1),2507(a,1,1)),rewrite([2533(10)]),flip(a)].
+2574 c(x v c(y)) v y = y.  [back_rewrite(2553),rewrite([2560(12)])].
+2575 c((c(x) v y) v c(z)) v x = x.  [back_rewrite(2552),rewrite([2560(14)])].
+2583 c(x v y) v c(y) = c(y).  [para(2392(a,1),2574(a,1,1,1,2))].
+2585 x v c(y v c(x)) = x.  [para(2574(a,1),2529(a,1,1)),rewrite([2574(8)])].
+2591 x v (y v x) = y v x.  [para(2583(a,1),2481(a,1,1,1)),rewrite([2392(2),2392(3),2392(5)])].
+2599 c((c(x) v y) v z) v x = x.  [para(2392(a,1),2575(a,1,1,1,2))].
+2612 c(c(x) v y) v (x v z) = x v z.  [para(2481(a,1),2599(a,1,1,1,1))].
+2614 x v c((c(x) v y) v z) = x.  [para(2599(a,1),2529(a,1,1)),rewrite([2599(10)])].
+2618 c((x v c(y)) v z) v y = y.  [para(2591(a,1),2599(a,1,1,1,1))].
+2619 c(x v (c(y) v z)) v y = y.  [para(2591(a,1),2599(a,1,1,1))].
+2645 (x v y) v c(c(x) v z) = x v y.  [para(2481(a,1),2614(a,1,2,1,1))].
+2649 x v c((y v c(x)) v z) = x.  [para(2591(a,1),2614(a,1,2,1,1))].
+2650 x v c(y v (c(x) v z)) = x.  [para(2591(a,1),2614(a,1,2,1))].
+2656 c(x v (y v c(z))) v z = z.  [para(2591(a,1),2618(a,1,1,1))].
+2660 c(x v (y v z)) v c(y) = c(y).  [para(2392(a,1),2619(a,1,1,1,2,1))].
+2674 x v c(y v (z v c(x))) = x.  [para(2591(a,1),2649(a,1,2,1))].
+2675 x v c(c(c(y) v x) v c(x v z)) = c(c(c(y) v x) v c(x v z)).  [para(2392(a,1),2492(a,1,1)),rewrite([2392(3),2392(5),2392(11),2392(13)])].
+2698 (x v y) v c(z v c(x)) = x v y.  [para(2481(a,1),2650(a,1,2,1,2))].
+2706 c(x v (y v z)) v c(z) = c(z).  [para(2392(a,1),2656(a,1,1,1,2,2))].
+2737 x v (y v (x v z)) = y v (x v z).  [para(2660(a,1),2481(a,1,1,1)),rewrite([2392(2),2392(4),2392(7)])].
+2746 c(c(x v y) v x) v c(x v y) = c(x).  [para(2528(a,1),2560(a,1,1,2,1,1,1,2,1)),rewrite([2392(2),2392(4),2675(9),2392(9)])].
+2765 (x v (y v z)) v z = x v (y v z).  [para(2706(a,1),2533(a,1,2,1)),rewrite([2392(4)])].
+2781 c((x v (y v c(z))) v u) v z = z.  [para(2656(a,1),2612(a,1,2)),rewrite([2392(5),2656(11)])].
+2842 x v c((y v (z v c(x))) v u) = x.  [para(2656(a,1),2645(a,1,1)),rewrite([2392(5),2656(11)])].
+4044 c(x v c(x v y)) v x = x v y.  [para(2481(a,1),2746(a,1,1,1,1,1)),rewrite([2392(2),2481(8),2392(6),2392(8)])].
+4089 c(x) v x = x v c(x).  [para(2585(a,1),4044(a,1,1,1))].
+4091 x v (y v c(x)) = x v c(x).  [para(2674(a,1),4044(a,1,1,1)),rewrite([4089(2)]),flip(a)].
+4094 (x v y) v c(x v y) = (x v y) v c(x).  [para(2698(a,1),4044(a,1,1,1)),rewrite([4089(4)])].
+4130 (x v y) v c(x) = x v c(x).  [para(4089(a,1),2737(a,1,2)),rewrite([4094(4),4091(4),4089(6),4094(6)]),flip(a)].
+4132 (x v c(x)) v y = x v c(x).  [para(4089(a,1),2765(a,1,1)),rewrite([4094(4),4130(3),4089(7),4094(7),4130(6)])].
+4133 c(x v c(x)) v y = y.  [para(4089(a,1),2781(a,1,1,1,1)),rewrite([4094(6),4130(4),4132(3)])].
+4134 x v c(y v c(y)) = x.  [para(4089(a,1),2842(a,1,2,1,1)),rewrite([4094(6),4130(4),4132(3)])].
+4207 x v c(x) = y v c(y).  [para(4133(a,1),2746(a,1,1,1,1,1)),rewrite([4134(5),2392(2),4133(4),2392(6)])].
+4208 $F # answer(1).  [resolve(4207,a,35,a)].
+
+============================== end of proof ==========================
+
+% Disable descendants (x means already disabled):
+ 34x 35
+
+given #208 (T,wt=9): 4134 x v c(y v c(y)) = x.  [para(4089(a,1),2842(a,1,2,1,1)),rewrite([4094(6),4130(4),4132(3)])].
+
+============================== PROOF =================================
+
+% Proof 8 at 0.86 (+ 0.03) seconds: 0.
+% Length of proof is 113.
+% Level of proof is 27.
+% Maximum clause weight is 37.000.
+% Given clauses 208.
+
+12 x ^ c(x) = y ^ c(y) # answer(0) # label(non_clause) # label(goal).  [goal].
+15 f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(f(y,y),z)),z))) = y # label(OML_Sh).  [assumption].
+16 x v y = f(f(x,x),f(y,y)) # label(Def_join).  [assumption].
+17 f(f(x,x),f(y,y)) = x v y.  [copy(16),flip(a)].
+18 x ^ y = f(f(x,y),f(x,y)) # label(Def_meet).  [assumption].
+19 f(f(x,y),f(x,y)) = x ^ y.  [copy(18),flip(a)].
+20 c(x) = f(x,x) # label(Def_complement).  [assumption].
+21 f(x,x) = c(x).  [copy(20),flip(a)].
+36 c21 ^ c(c21) != c22 ^ c(c22) # answer(0).  [deny(12)].
+37 c22 ^ c(c22) != c21 ^ c(c21) # answer(0).  [copy(36),flip(a)].
+40 c(f(x,y)) = x ^ y.  [back_rewrite(19),rewrite([21(3)])].
+41 f(c(x),c(y)) = x v y.  [back_rewrite(17),rewrite([21(1),21(2)])].
+42 f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(c(y),z)),z))) = y.  [back_rewrite(15),rewrite([21(5)])].
+43 x ^ x = c(c(x)).  [para(21(a,1),40(a,1,1)),flip(a)].
+45 c(c(x)) = x v x.  [para(41(a,1),21(a,1)),flip(a)].
+46 c(x) ^ c(y) = c(x v y).  [para(41(a,1),40(a,1,1)),flip(a)].
+50 x ^ x = x v x.  [back_rewrite(43),rewrite([45(3)])].
+52 f(f(f(c(x),f(x,y)),z),f(x,f(f(y,f(c(x),y)),y))) = x.  [para(21(a,1),42(a,1,1,1,1))].
+53 f(f(f(f(x,y),c(y)),z),f(y,f(f(y,f(c(y),y)),y))) = y.  [para(21(a,1),42(a,1,1,1,2))].
+54 f(f(x v x,y),f(x,f(f(x,f(c(x),x)),x))) = x.  [para(21(a,1),42(a,1,1,1)),rewrite([21(1),45(2)])].
+55 f(f(x,y) ^ f(y,z),f(y,f(f(z,f(c(y),z)),z))) = y.  [para(21(a,1),42(a,1,1)),rewrite([40(4)])].
+59 f(f(f(x v y,f(c(y),z)),u),f(c(y),f(f(z,f(y v y,z)),z))) = c(y).  [para(41(a,1),42(a,1,1,1,1)),rewrite([45(8)])].
+61 f(f(f(f(x,y),f(y,c(z))),u),f(y,f(f(c(z),y v z),c(z)))) = y.  [para(41(a,1),42(a,1,2,2,1,2))].
+62 f(f(x,y),f(x,f(f(f(f(z,f(c(x),z)),z),f(c(x),f(f(z,f(c(x),z)),z))),f(f(z,f(c(x),z)),z)))) = x.  [para(42(a,1),42(a,1,1,1))].
+65 f(x v x,c(y)) = c(x) v y.  [para(45(a,1),41(a,1,1))].
+66 f(c(x),y v y) = x v c(y).  [para(45(a,1),41(a,1,2))].
+68 c(x v x) = c(x) v c(x).  [para(45(a,1),45(a,1,1))].
+72 (x v x) ^ c(y) = c(c(x) v y).  [para(45(a,1),46(a,1,1))].
+77 f(x v x,y v y) = c(x) v c(y).  [para(45(a,1),65(a,1,2))].
+95 (x v x) ^ (y v y) = c(c(x) v c(y)).  [para(45(a,1),72(a,1,2))].
+158 f(x,f(c(x),f(f(y,f(x v x,y)),y))) = c(x).  [para(53(a,1),42(a,1,1)),rewrite([45(3)])].
+203 f(c(x) v y,f(x,f(f(x,f(c(x),x)),x))) = x.  [para(65(a,1),54(a,1,1))].
+304 f(f(x,y v y) ^ (c(y) v z),f(y v y,f(f(c(z),(y v y) v z),c(z)))) = y v y.  [para(65(a,1),55(a,1,1,2)),rewrite([68(9),65(12),45(9)])].
+776 f((x v x) v y,f(c(x),f(f(c(x),c(x) v x),c(x)))) = c(x).  [para(41(a,1),203(a,1,2,2,1,2)),rewrite([45(2)])].
+785 f(c(x),f(x v x,f(f(f(x,f(f(x,f(c(x),x)),x)),x),f(x,f(f(x,f(c(x),x)),x))))) = x v x.  [para(203(a,1),158(a,1,2,2,1,2)),rewrite([45(3),45(18)])].
+1263 f(f(f(x v c(y),c(y) v z),u),f(y v y,f(f(c(z),(y v y) v z),c(z)))) = y v y.  [para(66(a,1),61(a,1,1,1,1)),rewrite([65(5)])].
+1623 f(f(x,y),f(y,f(f(z,f(c(y),z)),z))) = y.  [para(62(a,1),42(a,1,1))].
+1625 f(c(x),f(x,f(f(y,f(c(x),y)),y))) = x.  [para(62(a,1),52(a,1,1))].
+1628 f(x v y,f(c(y),f(f(z,f(y v y,z)),z))) = c(y).  [para(62(a,1),59(a,1,1))].
+1630 f(c(x),f(x v x,x)) = x v x.  [back_rewrite(785),rewrite([1623(14)])].
+1647 f((x v x) ^ f(f(x v x,x),y),f(f(x v x,x),f(f(y,f((x v x) ^ x,y)),y))) = f(x v x,x).  [para(1630(a,1),55(a,1,1,1)),rewrite([40(10)])].
+1648 f(f(x,c(y)) ^ (y v y),f(c(y),f(f(f(y v y,y),f(y v y,f(y v y,y))),f(y v y,y)))) = c(y).  [para(1630(a,1),55(a,1,1,2)),rewrite([45(9)])].
+1693 f(c(x),f(x,f(f(c(y),x v y),c(y)))) = x.  [para(41(a,1),1625(a,1,2,2,1,2))].
+1739 x v x = x.  [para(1625(a,1),1625(a,1,2,2,1,2)),rewrite([1623(13),21(2),21(3),45(2)])].
+1786 f(f(x,c(y)) ^ y,f(c(y),f(f(c(y),f(y,c(y))),c(y)))) = c(y).  [back_rewrite(1648),rewrite([1739(3),1739(5),21(5),1739(6),1739(6),21(6),1739(9),21(9)])].
+1787 f(x ^ f(c(x),y),f(c(x),f(f(y,f(x,y)),y))) = c(x).  [back_rewrite(1647),rewrite([1739(1),1739(1),21(1),1739(4),21(4),1739(5),50(5),1739(5),1739(10),21(10)])].
+1798 f(x v y,f(c(y),f(f(z,f(y,z)),z))) = c(y).  [back_rewrite(1628),rewrite([1739(3)])].
+1958 f(f(f(x v c(y),c(y) v z),u),f(y,f(f(c(z),y v z),c(z)))) = y.  [back_rewrite(1263),rewrite([1739(7),1739(8),1739(14)])].
+2130 f(x v y,f(c(x),f(f(c(x),c(x) v x),c(x)))) = c(x).  [back_rewrite(776),rewrite([1739(1)])].
+2302 f(f(x,y) ^ (c(y) v z),f(y,f(f(c(z),y v z),c(z)))) = y.  [back_rewrite(304),rewrite([1739(1),1739(5),1739(6),1739(12)])].
+2374 x ^ y = c(c(x) v c(y)).  [back_rewrite(95),rewrite([1739(1),1739(1)])].
+2384 f(x,y) = c(x) v c(y).  [back_rewrite(77),rewrite([1739(1),1739(1)])].
+2392 c(c(x)) = x.  [back_rewrite(45),rewrite([1739(3)])].
+2400 (c(c(x) v c(y)) v c(c(y) v z)) v c(c(y) v c(c(z v c(y v z)) v z)) = y.  [back_rewrite(2302),rewrite([2384(1),2374(6),2384(12),2392(11),2384(14),2392(15),2384(15),2384(18),2392(10)])].
+2410 (c(x) v c(x v c(y))) v c(x v c(c(c(y) v c(c(x) v c(y))) v c(y))) = c(x).  [back_rewrite(1787),rewrite([2384(2),2392(2),2374(3),2384(8),2384(11),2384(14),2384(17),2392(8),2384(18),2392(7)])].
+2411 (c(c(x) v y) v c(y)) v c(y v c(c(y v c(c(y) v y)) v y)) = c(y).  [back_rewrite(1786),rewrite([2384(2),2392(3),2374(3),2384(10),2392(11),2384(11),2392(9),2384(13),2392(14),2384(14),2392(8),2384(15),2392(7)])].
+2438 c(c(c22) v c22) != c(c(c21) v c21) # answer(0).  [back_rewrite(37),rewrite([2374(4),2392(5),2374(9),2392(10)])].
+2450 c(x v y) v c(x v c(c(x v c(c(x) v x)) v x)) = c(x).  [back_rewrite(2130),rewrite([2384(6),2392(4),2384(8),2392(9),2384(9),2392(3),2384(10)])].
+2453 c(c(c(x v c(y)) v c(c(y) v z)) v c(u)) v c(c(y) v c(c(z v c(y v z)) v z)) = y.  [back_rewrite(1958),rewrite([2384(5),2384(8),2384(13),2392(12),2384(15),2392(16),2384(16),2384(19)])].
+2454 c(x v y) v c(y v c(c(c(z) v c(c(y) v c(z))) v c(z))) = c(y).  [back_rewrite(1798),rewrite([2384(3),2384(6),2384(9),2384(12),2392(3),2384(13)])].
+2465 x v c(c(x) v c(c(y v c(x v y)) v y)) = x.  [back_rewrite(1693),rewrite([2384(4),2392(3),2384(6),2392(7),2384(7),2384(10),2392(2)])].
+2479 c(x v c(c(x v c(c(x) v x)) v x)) = c(x).  [para(2450(a,1),1739(a,1)),flip(a)].
+2481 c(x v y) v c(x) = c(x).  [para(2450(a,1),2384(a,2)),rewrite([2384(10),2479(11)])].
+2485 (c(c(x) v y) v c(y)) v c(y) = c(y).  [back_rewrite(2411),rewrite([2479(14)])].
+2486 c(c(x) v y) v x = x.  [para(2392(a,1),2481(a,1,2)),rewrite([2392(6)])].
+2487 x v (x v y) = x v y.  [para(2481(a,1),2481(a,1,1,1)),rewrite([2392(2),2392(3),2392(5)])].
+2492 c(x) v c(c(c(y) v c(x)) v c(c(x) v z)) = c(c(c(y) v c(x)) v c(c(x) v z)).  [para(2400(a,1),2481(a,1,1,1))].
+2500 (c(c(x) v c(y)) v y) v y = y.  [para(2392(a,1),2485(a,1,1,2)),rewrite([2392(7),2392(8)])].
+2507 (c(x v c(y)) v y) v y = y.  [para(2392(a,1),2500(a,1,1,1,1,1))].
+2511 (c(x) v c(x v y)) v c(x v c(c(y v c(c(x) v y)) v y)) = c(x).  [para(2392(a,1),2410(a,1,1,2,1,2)),rewrite([2392(6),2392(7),2392(11)])].
+2513 (c(x) v c(x v c(y))) v c(x) = c(x) v c(x v c(y)).  [para(2410(a,1),2465(a,1,2,1,2,1,1,1,2,1)),rewrite([2392(25),2454(38),2392(13),2486(12)])].
+2517 c(x) v c(x v c(y)) = c(x).  [para(2410(a,1),2487(a,1,2)),rewrite([2513(7),2511(23)])].
+2528 c(x) v c(x v y) = c(x).  [para(2392(a,1),2517(a,1,2,1,2))].
+2529 (x v y) v x = x v y.  [para(2481(a,1),2517(a,1,2,1)),rewrite([2392(3),2392(3),2392(5)])].
+2533 x v c(c(x) v y) = x.  [para(2486(a,1),2529(a,1,1)),rewrite([2486(8)])].
+2552 c((c(x) v y) v c(z)) v c(c(x) v c(c(y v c(x v y)) v y)) = x.  [para(2481(a,1),2453(a,1,1,1,1,1)),rewrite([2392(4)])].
+2553 c(x v c(y)) v c(c(y) v c(c(z v c(y v z)) v z)) = y.  [para(2481(a,1),2453(a,1,1,1)),rewrite([2392(4)])].
+2560 c(c(x) v c(c(y v c(x v y)) v y)) = x.  [para(2453(a,1),2507(a,1,1)),rewrite([2533(10)]),flip(a)].
+2574 c(x v c(y)) v y = y.  [back_rewrite(2553),rewrite([2560(12)])].
+2575 c((c(x) v y) v c(z)) v x = x.  [back_rewrite(2552),rewrite([2560(14)])].
+2583 c(x v y) v c(y) = c(y).  [para(2392(a,1),2574(a,1,1,1,2))].
+2585 x v c(y v c(x)) = x.  [para(2574(a,1),2529(a,1,1)),rewrite([2574(8)])].
+2591 x v (y v x) = y v x.  [para(2583(a,1),2481(a,1,1,1)),rewrite([2392(2),2392(3),2392(5)])].
+2599 c((c(x) v y) v z) v x = x.  [para(2392(a,1),2575(a,1,1,1,2))].
+2612 c(c(x) v y) v (x v z) = x v z.  [para(2481(a,1),2599(a,1,1,1,1))].
+2614 x v c((c(x) v y) v z) = x.  [para(2599(a,1),2529(a,1,1)),rewrite([2599(10)])].
+2618 c((x v c(y)) v z) v y = y.  [para(2591(a,1),2599(a,1,1,1,1))].
+2619 c(x v (c(y) v z)) v y = y.  [para(2591(a,1),2599(a,1,1,1))].
+2645 (x v y) v c(c(x) v z) = x v y.  [para(2481(a,1),2614(a,1,2,1,1))].
+2649 x v c((y v c(x)) v z) = x.  [para(2591(a,1),2614(a,1,2,1,1))].
+2650 x v c(y v (c(x) v z)) = x.  [para(2591(a,1),2614(a,1,2,1))].
+2656 c(x v (y v c(z))) v z = z.  [para(2591(a,1),2618(a,1,1,1))].
+2660 c(x v (y v z)) v c(y) = c(y).  [para(2392(a,1),2619(a,1,1,1,2,1))].
+2674 x v c(y v (z v c(x))) = x.  [para(2591(a,1),2649(a,1,2,1))].
+2675 x v c(c(c(y) v x) v c(x v z)) = c(c(c(y) v x) v c(x v z)).  [para(2392(a,1),2492(a,1,1)),rewrite([2392(3),2392(5),2392(11),2392(13)])].
+2698 (x v y) v c(z v c(x)) = x v y.  [para(2481(a,1),2650(a,1,2,1,2))].
+2706 c(x v (y v z)) v c(z) = c(z).  [para(2392(a,1),2656(a,1,1,1,2,2))].
+2737 x v (y v (x v z)) = y v (x v z).  [para(2660(a,1),2481(a,1,1,1)),rewrite([2392(2),2392(4),2392(7)])].
+2746 c(c(x v y) v x) v c(x v y) = c(x).  [para(2528(a,1),2560(a,1,1,2,1,1,1,2,1)),rewrite([2392(2),2392(4),2675(9),2392(9)])].
+2765 (x v (y v z)) v z = x v (y v z).  [para(2706(a,1),2533(a,1,2,1)),rewrite([2392(4)])].
+2781 c((x v (y v c(z))) v u) v z = z.  [para(2656(a,1),2612(a,1,2)),rewrite([2392(5),2656(11)])].
+2842 x v c((y v (z v c(x))) v u) = x.  [para(2656(a,1),2645(a,1,1)),rewrite([2392(5),2656(11)])].
+4044 c(x v c(x v y)) v x = x v y.  [para(2481(a,1),2746(a,1,1,1,1,1)),rewrite([2392(2),2481(8),2392(6),2392(8)])].
+4089 c(x) v x = x v c(x).  [para(2585(a,1),4044(a,1,1,1))].
+4091 x v (y v c(x)) = x v c(x).  [para(2674(a,1),4044(a,1,1,1)),rewrite([4089(2)]),flip(a)].
+4094 (x v y) v c(x v y) = (x v y) v c(x).  [para(2698(a,1),4044(a,1,1,1)),rewrite([4089(4)])].
+4129 c(c22 v c(c22)) != c(c21 v c(c21)) # answer(0).  [back_rewrite(2438),rewrite([4089(4),4089(9)])].
+4130 (x v y) v c(x) = x v c(x).  [para(4089(a,1),2737(a,1,2)),rewrite([4094(4),4091(4),4089(6),4094(6)]),flip(a)].
+4132 (x v c(x)) v y = x v c(x).  [para(4089(a,1),2765(a,1,1)),rewrite([4094(4),4130(3),4089(7),4094(7),4130(6)])].
+4133 c(x v c(x)) v y = y.  [para(4089(a,1),2781(a,1,1,1,1)),rewrite([4094(6),4130(4),4132(3)])].
+4134 x v c(y v c(y)) = x.  [para(4089(a,1),2842(a,1,2,1,1)),rewrite([4094(6),4130(4),4132(3)])].
+4209 c(x v c(x)) = c(y v c(y)).  [para(4134(a,1),4133(a,1))].
+4210 $F # answer(0).  [resolve(4209,a,4129,a)].
+
+============================== end of proof ==========================
+
+% Disable descendants (x means already disabled):
+ 36x 37x 2438x 4129
+
+given #209 (T,wt=9): 4207 x v c(x) = y v c(y).  [para(4133(a,1),2746(a,1,1,1,1,1)),rewrite([4134(5),2392(2),4133(4),2392(6)])].
+
+given #210 (T,wt=11): 4090 x v (c(x) v y) = x v c(x).  [para(2650(a,1),4044(a,1,1,1)),rewrite([4089(2)]),flip(a)].
+
+given #211 (A,wt=33): 2639 c(c(x) v y) v (c(c(z v x) v c(x v u)) v c(w)) = c(c(z v x) v c(x v u)) v c(w).  [para(2469(a,1),2599(a,1,1,1,1))].
+
+given #212 (T,wt=11): 4091 x v (y v c(x)) = x v c(x).  [para(2674(a,1),4044(a,1,1,1)),rewrite([4089(2)]),flip(a)].
+
+given #213 (T,wt=11): 4092 c(x) v (x v y) = x v c(x).  [para(2697(a,1),4044(a,1,1,1)),rewrite([2392(2)]),flip(a)].
+
+given #214 (T,wt=11): 4093 c(x) v (y v x) = x v c(x).  [para(2714(a,1),4044(a,1,1,1)),rewrite([2392(2)]),flip(a)].
+
+given #215 (T,wt=11): 4130 (x v y) v c(x) = x v c(x).  [para(4089(a,1),2737(a,1,2)),rewrite([4094(4),4091(4),4089(6),4094(6)]),flip(a)].
+
+given #216 (A,wt=20): 2641 c(c(c(x v y) v c(x v z)) v c(u)) v c(x) = c(x).  [back_rewrite(2628),rewrite([2630(18)])].
+
+given #217 (T,wt=11): 4131 x v (y v c(y)) = y v c(y).  [para(4089(a,1),2764(a,1,2)),rewrite([4094(4),4130(3),4089(7),4094(7),4130(6)])].
+
+given #218 (T,wt=11): 4132 (x v c(x)) v y = x v c(x).  [para(4089(a,1),2765(a,1,1)),rewrite([4094(4),4130(3),4089(7),4094(7),4130(6)])].
+
+given #219 (T,wt=11): 4209 c(x v c(x)) = c(y v c(y)).  [para(4134(a,1),4133(a,1))].
+
+given #220 (T,wt=11): 4227 (x v y) v c(y) = y v c(y).  [para(4090(a,1),2731(a,1,2)),rewrite([4213(4),4091(4),4090(7),4213(6)]),flip(a)].
+
+given #221 (A,wt=19): 2642 c(c(c(x v y) v c(y v z)) v u) v c(y) = c(y).  [back_rewrite(2621),rewrite([2630(17)])].
+
+given #222 (T,wt=11): 4374 (c(x) v y) v x = x v c(x).  [para(4091(a,1),2612(a,1)),rewrite([2392(7),4089(6),4365(6),2392(7),4090(6)])].
+
+given #223 (T,wt=11): 4377 (x v c(y)) v y = y v c(y).  [para(4091(a,1),2662(a,1)),rewrite([2392(7),4089(6),4366(6),2392(7),4091(6)])].
+
+given #224 (T,wt=13): 4046 c(x v c(y v x)) v x = y v x.  [para(2583(a,1),2746(a,1,1,1,1,1)),rewrite([2392(2),2583(8),2392(6),2392(8)])].
+
+given #225 (T,wt=13): 4088 x v c(c(x v y) v x) = x v y.  [para(2746(a,1),2746(a,1,1,1)),rewrite([2392(2),2392(8)])].
+
+given #226 (A,wt=18): 2651 ((c(x) v y) v z) v c(x v u) = (c(x) v y) v z.  [para(2599(a,1),2614(a,1,2,1,1))].
+
+given #227 (T,wt=13): 4106 x v ((c(x) v y) v z) = x v c(x).  [para(2927(a,1),4044(a,1,1,1)),rewrite([4089(2)]),flip(a)].
+
+given #228 (T,wt=13): 4107 x v ((y v c(x)) v z) = x v c(x).  [para(2928(a,1),4044(a,1,1,1)),rewrite([4089(2)]),flip(a)].
+
+given #229 (T,wt=13): 4108 x v (y v (c(x) v z)) = x v c(x).  [para(2929(a,1),4044(a,1,1,1)),rewrite([4089(2)]),flip(a)].
+
+given #230 (T,wt=13): 4109 x v (y v (z v c(x))) = x v c(x).  [para(2930(a,1),4044(a,1,1,1)),rewrite([4089(2)]),flip(a)].
+
+given #231 (A,wt=18): 2657 c(x v y) v ((z v c(x)) v u) = (z v c(x)) v u.  [para(2618(a,1),2599(a,1,1,1,1))].
+
+given #232 (T,wt=13): 4120 c(x) v ((x v y) v z) = x v c(x).  [para(2931(a,1),4044(a,1,1,1)),rewrite([2392(2)]),flip(a)].
+
+given #233 (T,wt=13): 4121 c(x) v ((y v x) v z) = x v c(x).  [para(2932(a,1),4044(a,1,1,1)),rewrite([2392(2)]),flip(a)].
+
+given #234 (T,wt=13): 4122 c(x) v (y v (x v z)) = x v c(x).  [para(2933(a,1),4044(a,1,1,1)),rewrite([2392(2)]),flip(a)].
+
+given #235 (T,wt=13): 4124 c(x) v (y v (z v x)) = x v c(x).  [para(2934(a,1),4044(a,1,1,1)),rewrite([2392(2)]),flip(a)].
+
+given #236 (A,wt=18): 2658 ((x v c(y)) v z) v c(y v u) = (x v c(y)) v z.  [para(2618(a,1),2614(a,1,2,1,1))].
+
+given #237 (T,wt=13): 4240 (x v y) v (c(y) v z) = y v c(y).  [para(2663(a,1),4090(a,1,2)),rewrite([4213(8),4227(7)])].
+
+given #238 (T,wt=13): 4241 (x v y) v (z v c(y)) = y v c(y).  [para(2665(a,1),4090(a,1,2)),rewrite([4213(8),4227(7)])].
+
+given #239 (T,wt=13): 4375 (c(x) v y) v (x v z) = x v c(x).  [para(2645(a,1),4091(a,1,2)),rewrite([4365(10),4374(7)])].
+
+given #240 (T,wt=13): 4376 (c(x) v y) v (z v x) = x v c(x).  [para(2648(a,1),4091(a,1,2)),rewrite([4365(10),4374(7)])].
+
+given #241 (A,wt=18): 2667 c(x v y) v (z v (c(x) v u)) = z v (c(x) v u).  [para(2619(a,1),2599(a,1,1,1,1))].
+
+given #242 (T,wt=13): 4399 (x v (y v c(z))) v z = z v c(z).  [back_rewrite(4251),rewrite([4377(7)])].
+
+given #243 (T,wt=13): 4401 (x v c(y)) v (z v y) = y v c(y).  [back_rewrite(4226),rewrite([4377(7)])].
+
+given #244 (T,wt=13): 4402 (x v c(y)) v (y v z) = y v c(y).  [back_rewrite(4225),rewrite([4377(7)])].
+
+given #245 (T,wt=13): 4409 ((c(x) v y) v z) v x = x v c(x).  [para(2599(a,1),4130(a,1,1)),rewrite([2392(5),4106(4),2392(11),4089(10),4371(10),2392(7)]),flip(a)].
+
+given #246 (A,wt=18): 2668 c(x v y) v ((c(y) v z) v u) = (c(y) v z) v u.  [para(2599(a,1),2619(a,1,1,1,2))].
+
+given #247 (T,wt=13): 4411 (x v (c(y) v z)) v y = y v c(y).  [para(2619(a,1),4130(a,1,1)),rewrite([2392(5),4108(4),2392(11),4089(10),4373(10),2392(7)]),flip(a)].
+
+given #248 (T,wt=13): 4412 ((x v y) v z) v c(x) = x v c(x).  [para(2610(a,1),4130(a,1,1)),rewrite([2392(5),4120(4),2392(9),4089(8),4371(8)]),flip(a)].
+
+given #249 (T,wt=13): 4413 (x v (y v z)) v c(y) = y v c(y).  [para(2660(a,1),4130(a,1,1)),rewrite([2392(5),4122(4),2392(9),4089(8),4373(8)]),flip(a)].
+
+given #250 (T,wt=13): 4417 ((x v y) v z) v c(y) = y v c(y).  [para(2731(a,1),4130(a,1,1))].
+
+given #251 (A,wt=18): 2669 (x v (c(y) v z)) v c(y v u) = x v (c(y) v z).  [para(2619(a,1),2614(a,1,2,1,1))].
+
+given #252 (T,wt=13): 4418 (x v (y v z)) v c(z) = z v c(z).  [para(2764(a,1),4130(a,1,1))].
+
+given #253 (T,wt=13): 4577 ((x v c(y)) v z) v y = y v c(y).  [para(2731(a,1),4374(a,1,1))].
+
+given #254 (T,wt=13): 4579 x v c(c(y v x) v x) = y v x.  [para(2591(a,1),4088(a,1,2,1,1,1)),rewrite([2591(7)])].
+
+given #255 (T,wt=13): 4718 (x v y) v (c(x) v z) = x v c(x).  [para(4108(a,1),2715(a,1)),flip(a)].
+
+given #256 (A,wt=18): 2670 c(x v y) v ((z v c(y)) v u) = (z v c(y)) v u.  [para(2618(a,1),2619(a,1,1,1,2))].
+
+given #257 (T,wt=13): 4743 (x v y) v (z v c(x)) = x v c(x).  [para(4109(a,1),2715(a,1)),flip(a)].
+
+given #258 (T,wt=15): 2790 c((c(x) v y) v z) v (x v u) = x v u.  [para(2612(a,1),2612(a,1,2)),rewrite([2392(4),2612(11)])].
+
+given #259 (T,wt=15): 2791 x v (c(y v c(x)) v c(c(x) v z)) = x.  [para(1739(a,1),2561(a,1,2,1)),rewrite([2392(9)])].
+
+given #260 (T,wt=15): 2835 c((c(x) v y) v z) v (u v x) = u v x.  [para(2617(a,1),2612(a,1,2)),rewrite([2392(4),2617(11)])].
+
+given #261 (A,wt=18): 2671 c(x v y) v (z v (c(y) v u)) = z v (c(y) v u).  [para(2619(a,1),2619(a,1,1,1,2))].
+
+given #262 (T,wt=15): 2852 (x v y) v c((c(x) v z) v u) = x v y.  [para(2612(a,1),2645(a,1,1)),rewrite([2392(5),2612(11)])].
+
+given #263 (T,wt=15): 2853 (x v y) v c((c(y) v z) v u) = x v y.  [para(2617(a,1),2645(a,1,1)),rewrite([2392(5),2617(11)])].
+
+given #264 (T,wt=15): 2874 c((x v c(y)) v z) v (y v u) = y v u.  [para(2662(a,1),2612(a,1,2)),rewrite([2392(4),2662(11)])].
+
+given #265 (T,wt=15): 2875 c(x v (c(y) v z)) v (y v u) = y v u.  [para(2612(a,1),2662(a,1,2)),rewrite([2392(4),2612(11)])].
+
+given #266 (A,wt=28): 2677 c(x v y) v c(c(c(z) v c(x v y)) v x) = c(c(c(z) v c(x v y)) v x).  [para(2481(a,1),2492(a,1,2,1,2,1)),rewrite([2392(9),2481(19),2392(17)])].
+
+given #267 (T,wt=14): 5628 c(x v y) v c(y v x) = c(y v x).  [para(2585(a,1),2677(a,1,2,1,1,1)),rewrite([2392(2),2392(4),2392(8),2590(9),2392(7)])].
+
+% Operation v is commutative; C redundancy checks enabled.
+
+============================== PROOF =================================
+
+% Proof 9 at 1.39 (+ 0.05) seconds: commutativity_meet.
+% Length of proof is 82.
+% Level of proof is 23.
+% Maximum clause weight is 37.000.
+% Given clauses 267.
+
+10 y v x = x v y # answer(commutativity_meet) # label(non_clause) # label(goal).  [goal].
+15 f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(f(y,y),z)),z))) = y # label(OML_Sh).  [assumption].
+16 x v y = f(f(x,x),f(y,y)) # label(Def_join).  [assumption].
+17 f(f(x,x),f(y,y)) = x v y.  [copy(16),flip(a)].
+18 x ^ y = f(f(x,y),f(x,y)) # label(Def_meet).  [assumption].
+19 f(f(x,y),f(x,y)) = x ^ y.  [copy(18),flip(a)].
+20 c(x) = f(x,x) # label(Def_complement).  [assumption].
+21 f(x,x) = c(x).  [copy(20),flip(a)].
+33 c18 v c17 != c17 v c18 # answer(commutativity_meet).  [deny(10)].
+40 c(f(x,y)) = x ^ y.  [back_rewrite(19),rewrite([21(3)])].
+41 f(c(x),c(y)) = x v y.  [back_rewrite(17),rewrite([21(1),21(2)])].
+42 f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(c(y),z)),z))) = y.  [back_rewrite(15),rewrite([21(5)])].
+43 x ^ x = c(c(x)).  [para(21(a,1),40(a,1,1)),flip(a)].
+45 c(c(x)) = x v x.  [para(41(a,1),21(a,1)),flip(a)].
+46 c(x) ^ c(y) = c(x v y).  [para(41(a,1),40(a,1,1)),flip(a)].
+50 x ^ x = x v x.  [back_rewrite(43),rewrite([45(3)])].
+52 f(f(f(c(x),f(x,y)),z),f(x,f(f(y,f(c(x),y)),y))) = x.  [para(21(a,1),42(a,1,1,1,1))].
+53 f(f(f(f(x,y),c(y)),z),f(y,f(f(y,f(c(y),y)),y))) = y.  [para(21(a,1),42(a,1,1,1,2))].
+54 f(f(x v x,y),f(x,f(f(x,f(c(x),x)),x))) = x.  [para(21(a,1),42(a,1,1,1)),rewrite([21(1),45(2)])].
+55 f(f(x,y) ^ f(y,z),f(y,f(f(z,f(c(y),z)),z))) = y.  [para(21(a,1),42(a,1,1)),rewrite([40(4)])].
+59 f(f(f(x v y,f(c(y),z)),u),f(c(y),f(f(z,f(y v y,z)),z))) = c(y).  [para(41(a,1),42(a,1,1,1,1)),rewrite([45(8)])].
+61 f(f(f(f(x,y),f(y,c(z))),u),f(y,f(f(c(z),y v z),c(z)))) = y.  [para(41(a,1),42(a,1,2,2,1,2))].
+62 f(f(x,y),f(x,f(f(f(f(z,f(c(x),z)),z),f(c(x),f(f(z,f(c(x),z)),z))),f(f(z,f(c(x),z)),z)))) = x.  [para(42(a,1),42(a,1,1,1))].
+65 f(x v x,c(y)) = c(x) v y.  [para(45(a,1),41(a,1,1))].
+66 f(c(x),y v y) = x v c(y).  [para(45(a,1),41(a,1,2))].
+68 c(x v x) = c(x) v c(x).  [para(45(a,1),45(a,1,1))].
+72 (x v x) ^ c(y) = c(c(x) v y).  [para(45(a,1),46(a,1,1))].
+77 f(x v x,y v y) = c(x) v c(y).  [para(45(a,1),65(a,1,2))].
+95 (x v x) ^ (y v y) = c(c(x) v c(y)).  [para(45(a,1),72(a,1,2))].
+158 f(x,f(c(x),f(f(y,f(x v x,y)),y))) = c(x).  [para(53(a,1),42(a,1,1)),rewrite([45(3)])].
+203 f(c(x) v y,f(x,f(f(x,f(c(x),x)),x))) = x.  [para(65(a,1),54(a,1,1))].
+304 f(f(x,y v y) ^ (c(y) v z),f(y v y,f(f(c(z),(y v y) v z),c(z)))) = y v y.  [para(65(a,1),55(a,1,1,2)),rewrite([68(9),65(12),45(9)])].
+776 f((x v x) v y,f(c(x),f(f(c(x),c(x) v x),c(x)))) = c(x).  [para(41(a,1),203(a,1,2,2,1,2)),rewrite([45(2)])].
+785 f(c(x),f(x v x,f(f(f(x,f(f(x,f(c(x),x)),x)),x),f(x,f(f(x,f(c(x),x)),x))))) = x v x.  [para(203(a,1),158(a,1,2,2,1,2)),rewrite([45(3),45(18)])].
+1263 f(f(f(x v c(y),c(y) v z),u),f(y v y,f(f(c(z),(y v y) v z),c(z)))) = y v y.  [para(66(a,1),61(a,1,1,1,1)),rewrite([65(5)])].
+1623 f(f(x,y),f(y,f(f(z,f(c(y),z)),z))) = y.  [para(62(a,1),42(a,1,1))].
+1625 f(c(x),f(x,f(f(y,f(c(x),y)),y))) = x.  [para(62(a,1),52(a,1,1))].
+1628 f(x v y,f(c(y),f(f(z,f(y v y,z)),z))) = c(y).  [para(62(a,1),59(a,1,1))].
+1630 f(c(x),f(x v x,x)) = x v x.  [back_rewrite(785),rewrite([1623(14)])].
+1647 f((x v x) ^ f(f(x v x,x),y),f(f(x v x,x),f(f(y,f((x v x) ^ x,y)),y))) = f(x v x,x).  [para(1630(a,1),55(a,1,1,1)),rewrite([40(10)])].
+1648 f(f(x,c(y)) ^ (y v y),f(c(y),f(f(f(y v y,y),f(y v y,f(y v y,y))),f(y v y,y)))) = c(y).  [para(1630(a,1),55(a,1,1,2)),rewrite([45(9)])].
+1693 f(c(x),f(x,f(f(c(y),x v y),c(y)))) = x.  [para(41(a,1),1625(a,1,2,2,1,2))].
+1739 x v x = x.  [para(1625(a,1),1625(a,1,2,2,1,2)),rewrite([1623(13),21(2),21(3),45(2)])].
+1786 f(f(x,c(y)) ^ y,f(c(y),f(f(c(y),f(y,c(y))),c(y)))) = c(y).  [back_rewrite(1648),rewrite([1739(3),1739(5),21(5),1739(6),1739(6),21(6),1739(9),21(9)])].
+1787 f(x ^ f(c(x),y),f(c(x),f(f(y,f(x,y)),y))) = c(x).  [back_rewrite(1647),rewrite([1739(1),1739(1),21(1),1739(4),21(4),1739(5),50(5),1739(5),1739(10),21(10)])].
+1798 f(x v y,f(c(y),f(f(z,f(y,z)),z))) = c(y).  [back_rewrite(1628),rewrite([1739(3)])].
+1958 f(f(f(x v c(y),c(y) v z),u),f(y,f(f(c(z),y v z),c(z)))) = y.  [back_rewrite(1263),rewrite([1739(7),1739(8),1739(14)])].
+2130 f(x v y,f(c(x),f(f(c(x),c(x) v x),c(x)))) = c(x).  [back_rewrite(776),rewrite([1739(1)])].
+2302 f(f(x,y) ^ (c(y) v z),f(y,f(f(c(z),y v z),c(z)))) = y.  [back_rewrite(304),rewrite([1739(1),1739(5),1739(6),1739(12)])].
+2374 x ^ y = c(c(x) v c(y)).  [back_rewrite(95),rewrite([1739(1),1739(1)])].
+2384 f(x,y) = c(x) v c(y).  [back_rewrite(77),rewrite([1739(1),1739(1)])].
+2392 c(c(x)) = x.  [back_rewrite(45),rewrite([1739(3)])].
+2400 (c(c(x) v c(y)) v c(c(y) v z)) v c(c(y) v c(c(z v c(y v z)) v z)) = y.  [back_rewrite(2302),rewrite([2384(1),2374(6),2384(12),2392(11),2384(14),2392(15),2384(15),2384(18),2392(10)])].
+2410 (c(x) v c(x v c(y))) v c(x v c(c(c(y) v c(c(x) v c(y))) v c(y))) = c(x).  [back_rewrite(1787),rewrite([2384(2),2392(2),2374(3),2384(8),2384(11),2384(14),2384(17),2392(8),2384(18),2392(7)])].
+2411 (c(c(x) v y) v c(y)) v c(y v c(c(y v c(c(y) v y)) v y)) = c(y).  [back_rewrite(1786),rewrite([2384(2),2392(3),2374(3),2384(10),2392(11),2384(11),2392(9),2384(13),2392(14),2384(14),2392(8),2384(15),2392(7)])].
+2450 c(x v y) v c(x v c(c(x v c(c(x) v x)) v x)) = c(x).  [back_rewrite(2130),rewrite([2384(6),2392(4),2384(8),2392(9),2384(9),2392(3),2384(10)])].
+2453 c(c(c(x v c(y)) v c(c(y) v z)) v c(u)) v c(c(y) v c(c(z v c(y v z)) v z)) = y.  [back_rewrite(1958),rewrite([2384(5),2384(8),2384(13),2392(12),2384(15),2392(16),2384(16),2384(19)])].
+2454 c(x v y) v c(y v c(c(c(z) v c(c(y) v c(z))) v c(z))) = c(y).  [back_rewrite(1798),rewrite([2384(3),2384(6),2384(9),2384(12),2392(3),2384(13)])].
+2465 x v c(c(x) v c(c(y v c(x v y)) v y)) = x.  [back_rewrite(1693),rewrite([2384(4),2392(3),2384(6),2392(7),2384(7),2384(10),2392(2)])].
+2479 c(x v c(c(x v c(c(x) v x)) v x)) = c(x).  [para(2450(a,1),1739(a,1)),flip(a)].
+2481 c(x v y) v c(x) = c(x).  [para(2450(a,1),2384(a,2)),rewrite([2384(10),2479(11)])].
+2485 (c(c(x) v y) v c(y)) v c(y) = c(y).  [back_rewrite(2411),rewrite([2479(14)])].
+2486 c(c(x) v y) v x = x.  [para(2392(a,1),2481(a,1,2)),rewrite([2392(6)])].
+2487 x v (x v y) = x v y.  [para(2481(a,1),2481(a,1,1,1)),rewrite([2392(2),2392(3),2392(5)])].
+2492 c(x) v c(c(c(y) v c(x)) v c(c(x) v z)) = c(c(c(y) v c(x)) v c(c(x) v z)).  [para(2400(a,1),2481(a,1,1,1))].
+2500 (c(c(x) v c(y)) v y) v y = y.  [para(2392(a,1),2485(a,1,1,2)),rewrite([2392(7),2392(8)])].
+2507 (c(x v c(y)) v y) v y = y.  [para(2392(a,1),2500(a,1,1,1,1,1))].
+2511 (c(x) v c(x v y)) v c(x v c(c(y v c(c(x) v y)) v y)) = c(x).  [para(2392(a,1),2410(a,1,1,2,1,2)),rewrite([2392(6),2392(7),2392(11)])].
+2513 (c(x) v c(x v c(y))) v c(x) = c(x) v c(x v c(y)).  [para(2410(a,1),2465(a,1,2,1,2,1,1,1,2,1)),rewrite([2392(25),2454(38),2392(13),2486(12)])].
+2517 c(x) v c(x v c(y)) = c(x).  [para(2410(a,1),2487(a,1,2)),rewrite([2513(7),2511(23)])].
+2529 (x v y) v x = x v y.  [para(2481(a,1),2517(a,1,2,1)),rewrite([2392(3),2392(3),2392(5)])].
+2533 x v c(c(x) v y) = x.  [para(2486(a,1),2529(a,1,1)),rewrite([2486(8)])].
+2553 c(x v c(y)) v c(c(y) v c(c(z v c(y v z)) v z)) = y.  [para(2481(a,1),2453(a,1,1,1)),rewrite([2392(4)])].
+2560 c(c(x) v c(c(y v c(x v y)) v y)) = x.  [para(2453(a,1),2507(a,1,1)),rewrite([2533(10)]),flip(a)].
+2574 c(x v c(y)) v y = y.  [back_rewrite(2553),rewrite([2560(12)])].
+2585 x v c(y v c(x)) = x.  [para(2574(a,1),2529(a,1,1)),rewrite([2574(8)])].
+2590 c(x) v c(y v x) = c(x).  [para(2392(a,1),2585(a,1,2,1,2))].
+2677 c(x v y) v c(c(c(z) v c(x v y)) v x) = c(c(c(z) v c(x v y)) v x).  [para(2481(a,1),2492(a,1,2,1,2,1)),rewrite([2392(9),2481(19),2392(17)])].
+5628 c(x v y) v c(y v x) = c(y v x).  [para(2585(a,1),2677(a,1,2,1,1,1)),rewrite([2392(2),2392(4),2392(8),2590(9),2392(7)])].
+5749 (x v y) v (y v x) = y v x.  [para(5628(a,1),2481(a,1,1,1)),rewrite([2392(3),2392(4),2392(6)])].
+5751 x v y = y v x.  [para(5628(a,1),2533(a,1,2,1)),rewrite([2392(4),5749(3)])].
+5752 $F # answer(commutativity_meet).  [resolve(5751,a,33,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% Proof 10 at 1.40 (+ 0.05) seconds: commutativity_join.
+% Length of proof is 82.
+% Level of proof is 23.
+% Maximum clause weight is 37.000.
+% Given clauses 267.
+
+9 y v x = x v y # answer(commutativity_join) # label(non_clause) # label(goal).  [goal].
+15 f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(f(y,y),z)),z))) = y # label(OML_Sh).  [assumption].
+16 x v y = f(f(x,x),f(y,y)) # label(Def_join).  [assumption].
+17 f(f(x,x),f(y,y)) = x v y.  [copy(16),flip(a)].
+18 x ^ y = f(f(x,y),f(x,y)) # label(Def_meet).  [assumption].
+19 f(f(x,y),f(x,y)) = x ^ y.  [copy(18),flip(a)].
+20 c(x) = f(x,x) # label(Def_complement).  [assumption].
+21 f(x,x) = c(x).  [copy(20),flip(a)].
+32 c16 v c15 != c15 v c16 # answer(commutativity_join).  [deny(9)].
+40 c(f(x,y)) = x ^ y.  [back_rewrite(19),rewrite([21(3)])].
+41 f(c(x),c(y)) = x v y.  [back_rewrite(17),rewrite([21(1),21(2)])].
+42 f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(c(y),z)),z))) = y.  [back_rewrite(15),rewrite([21(5)])].
+43 x ^ x = c(c(x)).  [para(21(a,1),40(a,1,1)),flip(a)].
+45 c(c(x)) = x v x.  [para(41(a,1),21(a,1)),flip(a)].
+46 c(x) ^ c(y) = c(x v y).  [para(41(a,1),40(a,1,1)),flip(a)].
+50 x ^ x = x v x.  [back_rewrite(43),rewrite([45(3)])].
+52 f(f(f(c(x),f(x,y)),z),f(x,f(f(y,f(c(x),y)),y))) = x.  [para(21(a,1),42(a,1,1,1,1))].
+53 f(f(f(f(x,y),c(y)),z),f(y,f(f(y,f(c(y),y)),y))) = y.  [para(21(a,1),42(a,1,1,1,2))].
+54 f(f(x v x,y),f(x,f(f(x,f(c(x),x)),x))) = x.  [para(21(a,1),42(a,1,1,1)),rewrite([21(1),45(2)])].
+55 f(f(x,y) ^ f(y,z),f(y,f(f(z,f(c(y),z)),z))) = y.  [para(21(a,1),42(a,1,1)),rewrite([40(4)])].
+59 f(f(f(x v y,f(c(y),z)),u),f(c(y),f(f(z,f(y v y,z)),z))) = c(y).  [para(41(a,1),42(a,1,1,1,1)),rewrite([45(8)])].
+61 f(f(f(f(x,y),f(y,c(z))),u),f(y,f(f(c(z),y v z),c(z)))) = y.  [para(41(a,1),42(a,1,2,2,1,2))].
+62 f(f(x,y),f(x,f(f(f(f(z,f(c(x),z)),z),f(c(x),f(f(z,f(c(x),z)),z))),f(f(z,f(c(x),z)),z)))) = x.  [para(42(a,1),42(a,1,1,1))].
+65 f(x v x,c(y)) = c(x) v y.  [para(45(a,1),41(a,1,1))].
+66 f(c(x),y v y) = x v c(y).  [para(45(a,1),41(a,1,2))].
+68 c(x v x) = c(x) v c(x).  [para(45(a,1),45(a,1,1))].
+72 (x v x) ^ c(y) = c(c(x) v y).  [para(45(a,1),46(a,1,1))].
+77 f(x v x,y v y) = c(x) v c(y).  [para(45(a,1),65(a,1,2))].
+95 (x v x) ^ (y v y) = c(c(x) v c(y)).  [para(45(a,1),72(a,1,2))].
+158 f(x,f(c(x),f(f(y,f(x v x,y)),y))) = c(x).  [para(53(a,1),42(a,1,1)),rewrite([45(3)])].
+203 f(c(x) v y,f(x,f(f(x,f(c(x),x)),x))) = x.  [para(65(a,1),54(a,1,1))].
+304 f(f(x,y v y) ^ (c(y) v z),f(y v y,f(f(c(z),(y v y) v z),c(z)))) = y v y.  [para(65(a,1),55(a,1,1,2)),rewrite([68(9),65(12),45(9)])].
+776 f((x v x) v y,f(c(x),f(f(c(x),c(x) v x),c(x)))) = c(x).  [para(41(a,1),203(a,1,2,2,1,2)),rewrite([45(2)])].
+785 f(c(x),f(x v x,f(f(f(x,f(f(x,f(c(x),x)),x)),x),f(x,f(f(x,f(c(x),x)),x))))) = x v x.  [para(203(a,1),158(a,1,2,2,1,2)),rewrite([45(3),45(18)])].
+1263 f(f(f(x v c(y),c(y) v z),u),f(y v y,f(f(c(z),(y v y) v z),c(z)))) = y v y.  [para(66(a,1),61(a,1,1,1,1)),rewrite([65(5)])].
+1623 f(f(x,y),f(y,f(f(z,f(c(y),z)),z))) = y.  [para(62(a,1),42(a,1,1))].
+1625 f(c(x),f(x,f(f(y,f(c(x),y)),y))) = x.  [para(62(a,1),52(a,1,1))].
+1628 f(x v y,f(c(y),f(f(z,f(y v y,z)),z))) = c(y).  [para(62(a,1),59(a,1,1))].
+1630 f(c(x),f(x v x,x)) = x v x.  [back_rewrite(785),rewrite([1623(14)])].
+1647 f((x v x) ^ f(f(x v x,x),y),f(f(x v x,x),f(f(y,f((x v x) ^ x,y)),y))) = f(x v x,x).  [para(1630(a,1),55(a,1,1,1)),rewrite([40(10)])].
+1648 f(f(x,c(y)) ^ (y v y),f(c(y),f(f(f(y v y,y),f(y v y,f(y v y,y))),f(y v y,y)))) = c(y).  [para(1630(a,1),55(a,1,1,2)),rewrite([45(9)])].
+1693 f(c(x),f(x,f(f(c(y),x v y),c(y)))) = x.  [para(41(a,1),1625(a,1,2,2,1,2))].
+1739 x v x = x.  [para(1625(a,1),1625(a,1,2,2,1,2)),rewrite([1623(13),21(2),21(3),45(2)])].
+1786 f(f(x,c(y)) ^ y,f(c(y),f(f(c(y),f(y,c(y))),c(y)))) = c(y).  [back_rewrite(1648),rewrite([1739(3),1739(5),21(5),1739(6),1739(6),21(6),1739(9),21(9)])].
+1787 f(x ^ f(c(x),y),f(c(x),f(f(y,f(x,y)),y))) = c(x).  [back_rewrite(1647),rewrite([1739(1),1739(1),21(1),1739(4),21(4),1739(5),50(5),1739(5),1739(10),21(10)])].
+1798 f(x v y,f(c(y),f(f(z,f(y,z)),z))) = c(y).  [back_rewrite(1628),rewrite([1739(3)])].
+1958 f(f(f(x v c(y),c(y) v z),u),f(y,f(f(c(z),y v z),c(z)))) = y.  [back_rewrite(1263),rewrite([1739(7),1739(8),1739(14)])].
+2130 f(x v y,f(c(x),f(f(c(x),c(x) v x),c(x)))) = c(x).  [back_rewrite(776),rewrite([1739(1)])].
+2302 f(f(x,y) ^ (c(y) v z),f(y,f(f(c(z),y v z),c(z)))) = y.  [back_rewrite(304),rewrite([1739(1),1739(5),1739(6),1739(12)])].
+2374 x ^ y = c(c(x) v c(y)).  [back_rewrite(95),rewrite([1739(1),1739(1)])].
+2384 f(x,y) = c(x) v c(y).  [back_rewrite(77),rewrite([1739(1),1739(1)])].
+2392 c(c(x)) = x.  [back_rewrite(45),rewrite([1739(3)])].
+2400 (c(c(x) v c(y)) v c(c(y) v z)) v c(c(y) v c(c(z v c(y v z)) v z)) = y.  [back_rewrite(2302),rewrite([2384(1),2374(6),2384(12),2392(11),2384(14),2392(15),2384(15),2384(18),2392(10)])].
+2410 (c(x) v c(x v c(y))) v c(x v c(c(c(y) v c(c(x) v c(y))) v c(y))) = c(x).  [back_rewrite(1787),rewrite([2384(2),2392(2),2374(3),2384(8),2384(11),2384(14),2384(17),2392(8),2384(18),2392(7)])].
+2411 (c(c(x) v y) v c(y)) v c(y v c(c(y v c(c(y) v y)) v y)) = c(y).  [back_rewrite(1786),rewrite([2384(2),2392(3),2374(3),2384(10),2392(11),2384(11),2392(9),2384(13),2392(14),2384(14),2392(8),2384(15),2392(7)])].
+2450 c(x v y) v c(x v c(c(x v c(c(x) v x)) v x)) = c(x).  [back_rewrite(2130),rewrite([2384(6),2392(4),2384(8),2392(9),2384(9),2392(3),2384(10)])].
+2453 c(c(c(x v c(y)) v c(c(y) v z)) v c(u)) v c(c(y) v c(c(z v c(y v z)) v z)) = y.  [back_rewrite(1958),rewrite([2384(5),2384(8),2384(13),2392(12),2384(15),2392(16),2384(16),2384(19)])].
+2454 c(x v y) v c(y v c(c(c(z) v c(c(y) v c(z))) v c(z))) = c(y).  [back_rewrite(1798),rewrite([2384(3),2384(6),2384(9),2384(12),2392(3),2384(13)])].
+2465 x v c(c(x) v c(c(y v c(x v y)) v y)) = x.  [back_rewrite(1693),rewrite([2384(4),2392(3),2384(6),2392(7),2384(7),2384(10),2392(2)])].
+2479 c(x v c(c(x v c(c(x) v x)) v x)) = c(x).  [para(2450(a,1),1739(a,1)),flip(a)].
+2481 c(x v y) v c(x) = c(x).  [para(2450(a,1),2384(a,2)),rewrite([2384(10),2479(11)])].
+2485 (c(c(x) v y) v c(y)) v c(y) = c(y).  [back_rewrite(2411),rewrite([2479(14)])].
+2486 c(c(x) v y) v x = x.  [para(2392(a,1),2481(a,1,2)),rewrite([2392(6)])].
+2487 x v (x v y) = x v y.  [para(2481(a,1),2481(a,1,1,1)),rewrite([2392(2),2392(3),2392(5)])].
+2492 c(x) v c(c(c(y) v c(x)) v c(c(x) v z)) = c(c(c(y) v c(x)) v c(c(x) v z)).  [para(2400(a,1),2481(a,1,1,1))].
+2500 (c(c(x) v c(y)) v y) v y = y.  [para(2392(a,1),2485(a,1,1,2)),rewrite([2392(7),2392(8)])].
+2507 (c(x v c(y)) v y) v y = y.  [para(2392(a,1),2500(a,1,1,1,1,1))].
+2511 (c(x) v c(x v y)) v c(x v c(c(y v c(c(x) v y)) v y)) = c(x).  [para(2392(a,1),2410(a,1,1,2,1,2)),rewrite([2392(6),2392(7),2392(11)])].
+2513 (c(x) v c(x v c(y))) v c(x) = c(x) v c(x v c(y)).  [para(2410(a,1),2465(a,1,2,1,2,1,1,1,2,1)),rewrite([2392(25),2454(38),2392(13),2486(12)])].
+2517 c(x) v c(x v c(y)) = c(x).  [para(2410(a,1),2487(a,1,2)),rewrite([2513(7),2511(23)])].
+2529 (x v y) v x = x v y.  [para(2481(a,1),2517(a,1,2,1)),rewrite([2392(3),2392(3),2392(5)])].
+2533 x v c(c(x) v y) = x.  [para(2486(a,1),2529(a,1,1)),rewrite([2486(8)])].
+2553 c(x v c(y)) v c(c(y) v c(c(z v c(y v z)) v z)) = y.  [para(2481(a,1),2453(a,1,1,1)),rewrite([2392(4)])].
+2560 c(c(x) v c(c(y v c(x v y)) v y)) = x.  [para(2453(a,1),2507(a,1,1)),rewrite([2533(10)]),flip(a)].
+2574 c(x v c(y)) v y = y.  [back_rewrite(2553),rewrite([2560(12)])].
+2585 x v c(y v c(x)) = x.  [para(2574(a,1),2529(a,1,1)),rewrite([2574(8)])].
+2590 c(x) v c(y v x) = c(x).  [para(2392(a,1),2585(a,1,2,1,2))].
+2677 c(x v y) v c(c(c(z) v c(x v y)) v x) = c(c(c(z) v c(x v y)) v x).  [para(2481(a,1),2492(a,1,2,1,2,1)),rewrite([2392(9),2481(19),2392(17)])].
+5628 c(x v y) v c(y v x) = c(y v x).  [para(2585(a,1),2677(a,1,2,1,1,1)),rewrite([2392(2),2392(4),2392(8),2590(9),2392(7)])].
+5749 (x v y) v (y v x) = y v x.  [para(5628(a,1),2481(a,1,1,1)),rewrite([2392(3),2392(4),2392(6)])].
+5751 x v y = y v x.  [para(5628(a,1),2533(a,1,2,1)),rewrite([2392(4),5749(3)])].
+5753 $F # answer(commutativity_join).  [resolve(5751,a,32,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% Proof 11 at 1.43 (+ 0.05) seconds: OM.
+% Length of proof is 88.
+% Level of proof is 24.
+% Maximum clause weight is 37.000.
+% Given clauses 267.
+
+2 x v (c(x) ^ (x v y)) = x v y # answer(OM) # label(non_clause) # label(goal).  [goal].
+15 f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(f(y,y),z)),z))) = y # label(OML_Sh).  [assumption].
+16 x v y = f(f(x,x),f(y,y)) # label(Def_join).  [assumption].
+17 f(f(x,x),f(y,y)) = x v y.  [copy(16),flip(a)].
+18 x ^ y = f(f(x,y),f(x,y)) # label(Def_meet).  [assumption].
+19 f(f(x,y),f(x,y)) = x ^ y.  [copy(18),flip(a)].
+20 c(x) = f(x,x) # label(Def_complement).  [assumption].
+21 f(x,x) = c(x).  [copy(20),flip(a)].
+23 c3 v (c(c3) ^ (c3 v c4)) != c3 v c4 # answer(OM).  [deny(2)].
+40 c(f(x,y)) = x ^ y.  [back_rewrite(19),rewrite([21(3)])].
+41 f(c(x),c(y)) = x v y.  [back_rewrite(17),rewrite([21(1),21(2)])].
+42 f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(c(y),z)),z))) = y.  [back_rewrite(15),rewrite([21(5)])].
+43 x ^ x = c(c(x)).  [para(21(a,1),40(a,1,1)),flip(a)].
+45 c(c(x)) = x v x.  [para(41(a,1),21(a,1)),flip(a)].
+46 c(x) ^ c(y) = c(x v y).  [para(41(a,1),40(a,1,1)),flip(a)].
+50 x ^ x = x v x.  [back_rewrite(43),rewrite([45(3)])].
+52 f(f(f(c(x),f(x,y)),z),f(x,f(f(y,f(c(x),y)),y))) = x.  [para(21(a,1),42(a,1,1,1,1))].
+53 f(f(f(f(x,y),c(y)),z),f(y,f(f(y,f(c(y),y)),y))) = y.  [para(21(a,1),42(a,1,1,1,2))].
+54 f(f(x v x,y),f(x,f(f(x,f(c(x),x)),x))) = x.  [para(21(a,1),42(a,1,1,1)),rewrite([21(1),45(2)])].
+55 f(f(x,y) ^ f(y,z),f(y,f(f(z,f(c(y),z)),z))) = y.  [para(21(a,1),42(a,1,1)),rewrite([40(4)])].
+59 f(f(f(x v y,f(c(y),z)),u),f(c(y),f(f(z,f(y v y,z)),z))) = c(y).  [para(41(a,1),42(a,1,1,1,1)),rewrite([45(8)])].
+61 f(f(f(f(x,y),f(y,c(z))),u),f(y,f(f(c(z),y v z),c(z)))) = y.  [para(41(a,1),42(a,1,2,2,1,2))].
+62 f(f(x,y),f(x,f(f(f(f(z,f(c(x),z)),z),f(c(x),f(f(z,f(c(x),z)),z))),f(f(z,f(c(x),z)),z)))) = x.  [para(42(a,1),42(a,1,1,1))].
+65 f(x v x,c(y)) = c(x) v y.  [para(45(a,1),41(a,1,1))].
+66 f(c(x),y v y) = x v c(y).  [para(45(a,1),41(a,1,2))].
+68 c(x v x) = c(x) v c(x).  [para(45(a,1),45(a,1,1))].
+72 (x v x) ^ c(y) = c(c(x) v y).  [para(45(a,1),46(a,1,1))].
+77 f(x v x,y v y) = c(x) v c(y).  [para(45(a,1),65(a,1,2))].
+95 (x v x) ^ (y v y) = c(c(x) v c(y)).  [para(45(a,1),72(a,1,2))].
+158 f(x,f(c(x),f(f(y,f(x v x,y)),y))) = c(x).  [para(53(a,1),42(a,1,1)),rewrite([45(3)])].
+203 f(c(x) v y,f(x,f(f(x,f(c(x),x)),x))) = x.  [para(65(a,1),54(a,1,1))].
+304 f(f(x,y v y) ^ (c(y) v z),f(y v y,f(f(c(z),(y v y) v z),c(z)))) = y v y.  [para(65(a,1),55(a,1,1,2)),rewrite([68(9),65(12),45(9)])].
+776 f((x v x) v y,f(c(x),f(f(c(x),c(x) v x),c(x)))) = c(x).  [para(41(a,1),203(a,1,2,2,1,2)),rewrite([45(2)])].
+785 f(c(x),f(x v x,f(f(f(x,f(f(x,f(c(x),x)),x)),x),f(x,f(f(x,f(c(x),x)),x))))) = x v x.  [para(203(a,1),158(a,1,2,2,1,2)),rewrite([45(3),45(18)])].
+1263 f(f(f(x v c(y),c(y) v z),u),f(y v y,f(f(c(z),(y v y) v z),c(z)))) = y v y.  [para(66(a,1),61(a,1,1,1,1)),rewrite([65(5)])].
+1623 f(f(x,y),f(y,f(f(z,f(c(y),z)),z))) = y.  [para(62(a,1),42(a,1,1))].
+1625 f(c(x),f(x,f(f(y,f(c(x),y)),y))) = x.  [para(62(a,1),52(a,1,1))].
+1628 f(x v y,f(c(y),f(f(z,f(y v y,z)),z))) = c(y).  [para(62(a,1),59(a,1,1))].
+1630 f(c(x),f(x v x,x)) = x v x.  [back_rewrite(785),rewrite([1623(14)])].
+1647 f((x v x) ^ f(f(x v x,x),y),f(f(x v x,x),f(f(y,f((x v x) ^ x,y)),y))) = f(x v x,x).  [para(1630(a,1),55(a,1,1,1)),rewrite([40(10)])].
+1648 f(f(x,c(y)) ^ (y v y),f(c(y),f(f(f(y v y,y),f(y v y,f(y v y,y))),f(y v y,y)))) = c(y).  [para(1630(a,1),55(a,1,1,2)),rewrite([45(9)])].
+1693 f(c(x),f(x,f(f(c(y),x v y),c(y)))) = x.  [para(41(a,1),1625(a,1,2,2,1,2))].
+1739 x v x = x.  [para(1625(a,1),1625(a,1,2,2,1,2)),rewrite([1623(13),21(2),21(3),45(2)])].
+1786 f(f(x,c(y)) ^ y,f(c(y),f(f(c(y),f(y,c(y))),c(y)))) = c(y).  [back_rewrite(1648),rewrite([1739(3),1739(5),21(5),1739(6),1739(6),21(6),1739(9),21(9)])].
+1787 f(x ^ f(c(x),y),f(c(x),f(f(y,f(x,y)),y))) = c(x).  [back_rewrite(1647),rewrite([1739(1),1739(1),21(1),1739(4),21(4),1739(5),50(5),1739(5),1739(10),21(10)])].
+1798 f(x v y,f(c(y),f(f(z,f(y,z)),z))) = c(y).  [back_rewrite(1628),rewrite([1739(3)])].
+1958 f(f(f(x v c(y),c(y) v z),u),f(y,f(f(c(z),y v z),c(z)))) = y.  [back_rewrite(1263),rewrite([1739(7),1739(8),1739(14)])].
+2130 f(x v y,f(c(x),f(f(c(x),c(x) v x),c(x)))) = c(x).  [back_rewrite(776),rewrite([1739(1)])].
+2302 f(f(x,y) ^ (c(y) v z),f(y,f(f(c(z),y v z),c(z)))) = y.  [back_rewrite(304),rewrite([1739(1),1739(5),1739(6),1739(12)])].
+2374 x ^ y = c(c(x) v c(y)).  [back_rewrite(95),rewrite([1739(1),1739(1)])].
+2384 f(x,y) = c(x) v c(y).  [back_rewrite(77),rewrite([1739(1),1739(1)])].
+2392 c(c(x)) = x.  [back_rewrite(45),rewrite([1739(3)])].
+2400 (c(c(x) v c(y)) v c(c(y) v z)) v c(c(y) v c(c(z v c(y v z)) v z)) = y.  [back_rewrite(2302),rewrite([2384(1),2374(6),2384(12),2392(11),2384(14),2392(15),2384(15),2384(18),2392(10)])].
+2410 (c(x) v c(x v c(y))) v c(x v c(c(c(y) v c(c(x) v c(y))) v c(y))) = c(x).  [back_rewrite(1787),rewrite([2384(2),2392(2),2374(3),2384(8),2384(11),2384(14),2384(17),2392(8),2384(18),2392(7)])].
+2411 (c(c(x) v y) v c(y)) v c(y v c(c(y v c(c(y) v y)) v y)) = c(y).  [back_rewrite(1786),rewrite([2384(2),2392(3),2374(3),2384(10),2392(11),2384(11),2392(9),2384(13),2392(14),2384(14),2392(8),2384(15),2392(7)])].
+2440 c3 v c(c3 v c(c3 v c4)) != c3 v c4 # answer(OM).  [back_rewrite(23),rewrite([2374(7),2392(4)])].
+2450 c(x v y) v c(x v c(c(x v c(c(x) v x)) v x)) = c(x).  [back_rewrite(2130),rewrite([2384(6),2392(4),2384(8),2392(9),2384(9),2392(3),2384(10)])].
+2453 c(c(c(x v c(y)) v c(c(y) v z)) v c(u)) v c(c(y) v c(c(z v c(y v z)) v z)) = y.  [back_rewrite(1958),rewrite([2384(5),2384(8),2384(13),2392(12),2384(15),2392(16),2384(16),2384(19)])].
+2454 c(x v y) v c(y v c(c(c(z) v c(c(y) v c(z))) v c(z))) = c(y).  [back_rewrite(1798),rewrite([2384(3),2384(6),2384(9),2384(12),2392(3),2384(13)])].
+2465 x v c(c(x) v c(c(y v c(x v y)) v y)) = x.  [back_rewrite(1693),rewrite([2384(4),2392(3),2384(6),2392(7),2384(7),2384(10),2392(2)])].
+2479 c(x v c(c(x v c(c(x) v x)) v x)) = c(x).  [para(2450(a,1),1739(a,1)),flip(a)].
+2481 c(x v y) v c(x) = c(x).  [para(2450(a,1),2384(a,2)),rewrite([2384(10),2479(11)])].
+2485 (c(c(x) v y) v c(y)) v c(y) = c(y).  [back_rewrite(2411),rewrite([2479(14)])].
+2486 c(c(x) v y) v x = x.  [para(2392(a,1),2481(a,1,2)),rewrite([2392(6)])].
+2487 x v (x v y) = x v y.  [para(2481(a,1),2481(a,1,1,1)),rewrite([2392(2),2392(3),2392(5)])].
+2492 c(x) v c(c(c(y) v c(x)) v c(c(x) v z)) = c(c(c(y) v c(x)) v c(c(x) v z)).  [para(2400(a,1),2481(a,1,1,1))].
+2500 (c(c(x) v c(y)) v y) v y = y.  [para(2392(a,1),2485(a,1,1,2)),rewrite([2392(7),2392(8)])].
+2507 (c(x v c(y)) v y) v y = y.  [para(2392(a,1),2500(a,1,1,1,1,1))].
+2511 (c(x) v c(x v y)) v c(x v c(c(y v c(c(x) v y)) v y)) = c(x).  [para(2392(a,1),2410(a,1,1,2,1,2)),rewrite([2392(6),2392(7),2392(11)])].
+2513 (c(x) v c(x v c(y))) v c(x) = c(x) v c(x v c(y)).  [para(2410(a,1),2465(a,1,2,1,2,1,1,1,2,1)),rewrite([2392(25),2454(38),2392(13),2486(12)])].
+2517 c(x) v c(x v c(y)) = c(x).  [para(2410(a,1),2487(a,1,2)),rewrite([2513(7),2511(23)])].
+2528 c(x) v c(x v y) = c(x).  [para(2392(a,1),2517(a,1,2,1,2))].
+2529 (x v y) v x = x v y.  [para(2481(a,1),2517(a,1,2,1)),rewrite([2392(3),2392(3),2392(5)])].
+2533 x v c(c(x) v y) = x.  [para(2486(a,1),2529(a,1,1)),rewrite([2486(8)])].
+2553 c(x v c(y)) v c(c(y) v c(c(z v c(y v z)) v z)) = y.  [para(2481(a,1),2453(a,1,1,1)),rewrite([2392(4)])].
+2560 c(c(x) v c(c(y v c(x v y)) v y)) = x.  [para(2453(a,1),2507(a,1,1)),rewrite([2533(10)]),flip(a)].
+2574 c(x v c(y)) v y = y.  [back_rewrite(2553),rewrite([2560(12)])].
+2585 x v c(y v c(x)) = x.  [para(2574(a,1),2529(a,1,1)),rewrite([2574(8)])].
+2590 c(x) v c(y v x) = c(x).  [para(2392(a,1),2585(a,1,2,1,2))].
+2675 x v c(c(c(y) v x) v c(x v z)) = c(c(c(y) v x) v c(x v z)).  [para(2392(a,1),2492(a,1,1)),rewrite([2392(3),2392(5),2392(11),2392(13)])].
+2677 c(x v y) v c(c(c(z) v c(x v y)) v x) = c(c(c(z) v c(x v y)) v x).  [para(2481(a,1),2492(a,1,2,1,2,1)),rewrite([2392(9),2481(19),2392(17)])].
+2746 c(c(x v y) v x) v c(x v y) = c(x).  [para(2528(a,1),2560(a,1,1,2,1,1,1,2,1)),rewrite([2392(2),2392(4),2675(9),2392(9)])].
+4088 x v c(c(x v y) v x) = x v y.  [para(2746(a,1),2746(a,1,1,1)),rewrite([2392(2),2392(8)])].
+5628 c(x v y) v c(y v x) = c(y v x).  [para(2585(a,1),2677(a,1,2,1,1,1)),rewrite([2392(2),2392(4),2392(8),2590(9),2392(7)])].
+5749 (x v y) v (y v x) = y v x.  [para(5628(a,1),2481(a,1,1,1)),rewrite([2392(3),2392(4),2392(6)])].
+5751 x v y = y v x.  [para(5628(a,1),2533(a,1,2,1)),rewrite([2392(4),5749(3)])].
+5872 x v c(x v c(x v y)) = x v y.  [back_rewrite(4088),rewrite([5751(3)])].
+5873 $F # answer(OM).  [resolve(5872,a,2440,a)].
+
+============================== end of proof ==========================
+% Redundant proof: 6161 $F # answer(commutativity_meet).  [back_rewrite(33),rewrite([5751(3)]),xx(a)].
+% Redundant proof: 6162 $F # answer(commutativity_join).  [back_rewrite(32),rewrite([5751(3)]),xx(a)].
+% back CAC tautology: 5750 c(x v y) = c(y v x).  [para(5628(a,1),2529(a,1,1)),rewrite([5628(5),5628(7)])].
+% Redundant proof: 6163 $F # answer(OM).  [back_rewrite(2440),rewrite([5872(9)]),xx(a)].
+
+% Disable descendants (x means already disabled):
+ 23x 2440x 32x 33x
+
+given #268 (T,wt=7): 5751 x v y = y v x.  [para(5628(a,1),2533(a,1,2,1)),rewrite([2392(4),5749(3)])].
+
+given #269 (T,wt=11): 5749 (x v y) v (y v x) = y v x.  [para(5628(a,1),2481(a,1,1,1)),rewrite([2392(3),2392(4),2392(6)])].
+
+given #270 (T,wt=13): 5845 x v c(x v c(y v x)) = y v x.  [back_rewrite(4579),rewrite([5751(3)])].
+
+given #271 (A,wt=26): 2680 c(x v y) v c(x v c(c(x v y) v z)) = c(x v c(c(x v y) v z)).  [para(2533(a,1),2492(a,1,2,1,1,1)),rewrite([2392(2),2392(4),2392(4),2392(12),2528(13),2392(11),2392(11)])].
+
+given #272 (F,wt=11): 6160 c25 v (c23 v c24) != c23 v (c24 v c25) # answer(assoc_join).  [back_rewrite(38),rewrite([5751(5)])].
+
+given #273 (T,wt=13): 5872 x v c(x v c(x v y)) = x v y.  [back_rewrite(4088),rewrite([5751(3)])].
+
+given #274 (T,wt=15): 2876 c(x v (c(y) v z)) v (u v y) = u v y.  [para(2617(a,1),2662(a,1,2)),rewrite([2392(4),2617(11)])].
+
+given #275 (T,wt=15): 2877 (x v y) v c((z v c(x)) v u) = x v y.  [para(2662(a,1),2645(a,1,1)),rewrite([2392(5),2662(11)])].
+
+given #276 (T,wt=15): 2878 c(x v (y v c(z))) v (z v u) = z v u.  [para(2662(a,1),2662(a,1,2)),rewrite([2392(4),2662(11)])].
+
+given #277 (A,wt=26): 2682 c(x v y) v c(y v c(c(x v y) v z)) = c(y v c(c(x v y) v z)).  [para(2585(a,1),2492(a,1,2,1,1,1)),rewrite([2392(2),2392(4),2392(4),2392(12),2590(13),2392(11),2392(11)])].
+
+given #278 (T,wt=15): 2924 c((x v c(y)) v z) v (u v y) = u v y.  [para(2666(a,1),2612(a,1,2)),rewrite([2392(4),2666(11)])].
+
+given #279 (T,wt=15): 2925 (x v y) v c((z v c(y)) v u) = x v y.  [para(2666(a,1),2645(a,1,1)),rewrite([2392(5),2666(11)])].
+
+given #280 (T,wt=15): 2926 c(x v (y v c(z))) v (u v z) = u v z.  [para(2666(a,1),2662(a,1,2)),rewrite([2392(4),2666(11)])].
+
+given #281 (T,wt=15): 2935 (x v y) v c(z v (c(x) v u)) = x v y.  [para(2612(a,1),2698(a,1,1)),rewrite([2392(5),2612(11)])].
+
+given #282 (A,wt=32): 2687 c((x v y) v z) v c(x v c(c((x v y) v z) v u)) = c(x v c(c((x v y) v z) v u)).  [para(2614(a,1),2492(a,1,2,1,1,1)),rewrite([2392(2),2392(5),2392(5),2392(14),2644(16),2392(13),2392(13)])].
+
+given #283 (T,wt=15): 2936 (x v y) v c(z v (c(y) v u)) = x v y.  [para(2617(a,1),2698(a,1,1)),rewrite([2392(5),2617(11)])].
+
+given #284 (T,wt=15): 2937 (x v y) v c(z v (u v c(x))) = x v y.  [para(2662(a,1),2698(a,1,1)),rewrite([2392(5),2662(11)])].
+
+given #285 (T,wt=15): 2938 (x v y) v c(z v (u v c(y))) = x v y.  [para(2666(a,1),2698(a,1,1)),rewrite([2392(5),2666(11)])].
+
+given #286 (T,wt=15): 3051 x v c((((c(x) v y) v z) v u) v w) = x.  [para(2772(a,1),2645(a,1,1)),rewrite([2392(6),2772(13)])].
+
+given #287 (A,wt=32): 2691 c((x v y) v z) v c(y v c(c((x v y) v z) v u)) = c(y v c(c((x v y) v z) v u)).  [para(2649(a,1),2492(a,1,2,1,1,1)),rewrite([2392(2),2392(5),2392(5),2392(14),2673(16),2392(13),2392(13)])].
+
+given #288 (T,wt=15): 3057 x v c(y v (((c(x) v z) v u) v w)) = x.  [para(2772(a,1),2698(a,1,1)),rewrite([2392(6),2772(13)])].
+
+given #289 (T,wt=15): 3129 x v c((((y v c(x)) v z) v u) v w) = x.  [para(2775(a,1),2645(a,1,1)),rewrite([2392(6),2775(13)])].
+
+given #290 (T,wt=15): 3133 x v c(y v (((z v c(x)) v u) v w)) = x.  [para(2775(a,1),2698(a,1,1)),rewrite([2392(6),2775(13)])].
+
+given #291 (T,wt=15): 3159 x v c(((y v (c(x) v z)) v u) v w) = x.  [para(2778(a,1),2645(a,1,1)),rewrite([2392(6),2778(13)])].
+
+given #292 (A,wt=18): 2702 ((c(x) v y) v z) v c(u v x) = (c(x) v y) v z.  [para(2599(a,1),2650(a,1,2,1,2))].
+
+given #293 (T,wt=15): 3165 x v c(y v ((z v (c(x) v u)) v w)) = x.  [para(2778(a,1),2698(a,1,1)),rewrite([2392(6),2778(13)])].
+
+given #294 (T,wt=15): 3182 x v c(((y v (z v c(x))) v u) v w) = x.  [para(2781(a,1),2645(a,1,1)),rewrite([2392(6),2781(13)])].
+
+given #295 (T,wt=15): 3186 x v c(y v ((z v (u v c(x))) v w)) = x.  [para(2781(a,1),2698(a,1,1)),rewrite([2392(6),2781(13)])].
+
+given #296 (T,wt=15): 3208 x v c((y v ((c(x) v z) v u)) v w) = x.  [para(2731(a,1),2836(a,1,2,1))].
+
+given #297 (A,wt=18): 2703 ((x v c(y)) v z) v c(u v y) = (x v c(y)) v z.  [para(2618(a,1),2650(a,1,2,1,2))].
+
+given #298 (T,wt=15): 3209 x v c((y v (z v (c(x) v u))) v w) = x.  [para(2764(a,1),2836(a,1,2,1,1))].
+
+given #299 (T,wt=15): 3210 x v c(y v (z v ((c(x) v u) v w))) = x.  [para(2764(a,1),2836(a,1,2,1))].
+
+given #300 (T,wt=15): 3281 x v c((y v ((z v c(x)) v u)) v w) = x.  [para(2731(a,1),2838(a,1,2,1))].
+
+given #301 (T,wt=15): 3282 x v c((y v (z v (u v c(x)))) v w) = x.  [para(2764(a,1),2838(a,1,2,1,1))].
+
+given #302 (A,wt=18): 2704 (x v (c(y) v z)) v c(u v y) = x v (c(y) v z).  [para(2619(a,1),2650(a,1,2,1,2))].
+
+given #303 (T,wt=15): 3283 x v c(y v (z v ((u v c(x)) v w))) = x.  [para(2764(a,1),2838(a,1,2,1))].
+
+given #304 (T,wt=15): 3298 x v c(y v (z v (u v (c(x) v w)))) = x.  [para(2764(a,1),2840(a,1,2,1))].
+
+given #305 (T,wt=15): 3306 x v c(y v (z v (u v (w v c(x))))) = x.  [para(2764(a,1),2842(a,1,2,1))].
+
+given #306 (T,wt=15): 3721 c(x) v (c(y v x) v c(x v z)) = c(x).  [para(1739(a,1),2627(a,1,2,1)),rewrite([2392(8)])].
+
+given #307 (A,wt=18): 2709 c(x v y) v (z v (u v c(x))) = z v (u v c(x)).  [para(2656(a,1),2599(a,1,1,1,1))].
+
+given #308 (T,wt=15): 4125 c(x v y) v c(x v c(x v y)) = c(x).  [para(4044(a,1),2746(a,1,1,1))].
+
+given #309 (T,wt=15): 4249 (x v (y v (z v u))) v c(u) = u v c(u).  [para(2873(a,1),4090(a,1,2)),rewrite([4213(13),4227(12),4213(11),4227(10),4213(9),4227(8)])].
+
+given #310 (T,wt=15): 4578 c(x v y) v c(y v c(x v y)) = c(y).  [para(4046(a,1),2746(a,1,1,1))].
+
+given #311 (T,wt=15): 4669 x v (((c(x) v y) v z) v u) = x v c(x).  [para(2715(a,1),4106(a,1,2,1))].
+
+given #312 (A,wt=18): 2710 (x v (y v c(z))) v c(z v u) = x v (y v c(z)).  [para(2656(a,1),2614(a,1,2,1,1))].
+
+given #313 (T,wt=15): 4670 x v (((y v c(x)) v z) v u) = x v c(x).  [para(2731(a,1),4106(a,1,2,1))].
+
+given #314 (T,wt=15): 4671 x v ((y v (c(x) v z)) v u) = x v c(x).  [para(2731(a,1),4106(a,1,2))].
+
+given #315 (T,wt=15): 4672 x v (y v ((c(x) v z) v u)) = x v c(x).  [para(2737(a,1),4106(a,1,2))].
+
+given #316 (T,wt=15): 4673 x v ((y v (z v c(x))) v u) = x v c(x).  [para(2764(a,1),4106(a,1,2,1))].
+
+given #317 (A,wt=18): 2711 c(x v y) v (z v (u v c(y))) = z v (u v c(y)).  [para(2656(a,1),2619(a,1,1,1,2))].
+
+given #318 (T,wt=15): 4674 x v (y v (z v (c(x) v u))) = x v c(x).  [para(2764(a,1),4106(a,1,2))].
+
+given #319 (T,wt=15): 4701 x v (y v ((z v c(x)) v u)) = x v c(x).  [para(2737(a,1),4107(a,1,2))].
+
+given #320 (T,wt=15): 4702 x v (y v (z v (u v c(x)))) = x v c(x).  [para(2764(a,1),4107(a,1,2))].
+
+given #321 (T,wt=15): 4779 c(x) v (((x v y) v z) v u) = x v c(x).  [para(2715(a,1),4120(a,1,2,1))].
+
+given #322 (A,wt=18): 2712 (x v (y v c(z))) v c(u v z) = x v (y v c(z)).  [para(2656(a,1),2650(a,1,2,1,2))].
+
+given #323 (T,wt=15): 4781 c(x) v (((y v x) v z) v u) = x v c(x).  [para(2731(a,1),4120(a,1,2,1))].
+
+given #324 (T,wt=15): 4782 c(x) v ((y v (x v z)) v u) = x v c(x).  [para(2731(a,1),4120(a,1,2))].
+
+given #325 (T,wt=15): 4783 c(x) v (y v ((x v z) v u)) = x v c(x).  [para(2737(a,1),4120(a,1,2))].
+
+given #326 (T,wt=15): 4784 c(x) v ((y v (z v x)) v u) = x v c(x).  [para(2764(a,1),4120(a,1,2,1))].
+
+given #327 (A,wt=17): 2717 c(c(x) v y) v ((x v z) v u) = (x v z) v u.  [para(2610(a,1),2599(a,1,1,1,1))].
+
+given #328 (T,wt=15): 4785 c(x) v (y v (z v (x v u))) = x v c(x).  [para(2764(a,1),4120(a,1,2))].
+
+given #329 (T,wt=15): 4807 c(x) v (y v ((z v x) v u)) = x v c(x).  [para(2737(a,1),4121(a,1,2))].
+
+given #330 (T,wt=15): 4808 c(x) v (y v (z v (u v x))) = x v c(x).  [para(2764(a,1),4121(a,1,2))].
+
+given #331 (T,wt=15): 4857 (x v y) v ((c(y) v z) v u) = y v c(y).  [para(2715(a,1),4240(a,1,2))].
+
+given #332 (A,wt=17): 2718 ((x v y) v z) v c(c(x) v u) = (x v y) v z.  [para(2610(a,1),2614(a,1,2,1,1))].
+
+given #333 (T,wt=15): 4858 ((x v y) v z) v (c(x) v u) = x v c(x).  [para(2716(a,1),4240(a,1,1))].
+
+given #334 (T,wt=15): 4859 (x v y) v ((z v c(y)) v u) = y v c(y).  [para(2731(a,1),4240(a,1,2))].
+
+given #335 (T,wt=15): 4860 ((x v y) v z) v (c(y) v u) = y v c(y).  [para(2732(a,1),4240(a,1,1))].
+
+given #336 (T,wt=15): 4861 (x v y) v (z v (c(y) v u)) = y v c(y).  [para(2737(a,1),4240(a,1,2))].
+
+given #337 (A,wt=17): 2719 c(x v c(y)) v ((y v z) v u) = (y v z) v u.  [para(2610(a,1),2619(a,1,1,1,2))].
+
+given #338 (T,wt=15): 4862 (x v (y v z)) v (c(y) v u) = y v c(y).  [para(2738(a,1),4240(a,1,1))].
+
+given #339 (T,wt=15): 4863 (x v y) v (z v (u v c(y))) = y v c(y).  [para(2764(a,1),4240(a,1,2))].
+
+given #340 (T,wt=15): 4864 (x v (y v z)) v (c(z) v u) = z v c(z).  [para(2765(a,1),4240(a,1,1))].
+
+given #341 (T,wt=15): 4909 ((x v y) v z) v (u v c(x)) = x v c(x).  [para(2716(a,1),4241(a,1,1))].
+
+given #342 (A,wt=17): 2720 ((x v y) v z) v c(u v c(x)) = (x v y) v z.  [para(2610(a,1),2650(a,1,2,1,2))].
+
+given #343 (T,wt=15): 4910 ((x v y) v z) v (u v c(y)) = y v c(y).  [para(2732(a,1),4241(a,1,1))].
+
+given #344 (T,wt=15): 4911 (x v (y v z)) v (u v c(y)) = y v c(y).  [para(2738(a,1),4241(a,1,1))].
+
+given #345 (T,wt=15): 4912 (x v (y v z)) v (u v c(z)) = z v c(z).  [para(2765(a,1),4241(a,1,1))].
+
+given #346 (T,wt=15): 4945 ((c(x) v y) v z) v (x v u) = x v c(x).  [para(2715(a,1),4375(a,1,1))].
+
+given #347 (A,wt=17): 2733 c(c(x) v y) v ((z v x) v u) = (z v x) v u.  [para(2653(a,1),2599(a,1,1,1,1))].
+
+given #348 (T,wt=15): 4946 (c(x) v y) v ((x v z) v u) = x v c(x).  [para(2715(a,1),4375(a,1,2))].
+
+given #349 (T,wt=15): 4948 ((x v c(y)) v z) v (y v u) = y v c(y).  [para(2731(a,1),4375(a,1,1))].
+
+given #350 (T,wt=15): 4949 (c(x) v y) v ((z v x) v u) = x v c(x).  [para(2731(a,1),4375(a,1,2))].
+
+given #351 (T,wt=15): 4950 (x v (c(y) v z)) v (y v u) = y v c(y).  [para(2737(a,1),4375(a,1,1))].
+
+given #352 (A,wt=17): 2734 ((x v y) v z) v c(c(y) v u) = (x v y) v z.  [para(2653(a,1),2614(a,1,2,1,1))].
+
+given #353 (T,wt=15): 4951 (c(x) v y) v (z v (x v u)) = x v c(x).  [para(2737(a,1),4375(a,1,2))].
+
+given #354 (T,wt=15): 4952 (x v (y v c(z))) v (z v u) = z v c(z).  [para(2764(a,1),4375(a,1,1))].
+
+given #355 (T,wt=15): 4953 (c(x) v y) v (z v (u v x)) = x v c(x).  [para(2764(a,1),4375(a,1,2))].
+
+given #356 (T,wt=15): 4987 ((c(x) v y) v z) v (u v x) = x v c(x).  [para(2715(a,1),4376(a,1,1))].
+
+given #357 (A,wt=17): 2735 c(x v c(y)) v ((z v y) v u) = (z v y) v u.  [para(2653(a,1),2619(a,1,1,1,2))].
+
+given #358 (T,wt=15): 4988 ((x v c(y)) v z) v (u v y) = y v c(y).  [para(2731(a,1),4376(a,1,1))].
+
+given #359 (T,wt=15): 4989 (x v (c(y) v z)) v (u v y) = y v c(y).  [para(2737(a,1),4376(a,1,1))].
+
+given #360 (T,wt=15): 4990 (x v (y v c(z))) v (u v z) = z v c(z).  [para(2764(a,1),4376(a,1,1))].
+
+given #361 (T,wt=15): 5071 (x v c(y)) v ((y v z) v u) = y v c(y).  [para(2716(a,1),4401(a,1,2))].
+
+given #362 (A,wt=17): 2736 ((x v y) v z) v c(u v c(y)) = (x v y) v z.  [para(2653(a,1),2650(a,1,2,1,2))].
+
+given #363 (T,wt=15): 5072 (x v c(y)) v ((z v y) v u) = y v c(y).  [para(2732(a,1),4401(a,1,2))].
+
+given #364 (T,wt=15): 5073 (x v c(y)) v (z v (y v u)) = y v c(y).  [para(2738(a,1),4401(a,1,2))].
+
+given #365 (T,wt=15): 5074 (x v c(y)) v (z v (u v y)) = y v c(y).  [para(2765(a,1),4401(a,1,2))].
+
+given #366 (T,wt=15): 5146 (((x v y) v z) v u) v c(x) = x v c(x).  [para(2715(a,1),4412(a,1,1,1))].
+
+given #367 (A,wt=17): 2739 c(c(x) v y) v (z v (x v u)) = z v (x v u).  [para(2660(a,1),2599(a,1,1,1,1))].
+
+given #368 (T,wt=15): 5148 (((x v y) v z) v u) v c(y) = y v c(y).  [para(2731(a,1),4412(a,1,1,1))].
+
+given #369 (T,wt=15): 5149 ((x v (y v z)) v u) v c(y) = y v c(y).  [para(2731(a,1),4412(a,1,1))].
+
+given #370 (T,wt=15): 5150 (x v ((y v z) v u)) v c(y) = y v c(y).  [para(2737(a,1),4412(a,1,1))].
+
+given #371 (T,wt=15): 5151 ((x v (y v z)) v u) v c(z) = z v c(z).  [para(2764(a,1),4412(a,1,1,1))].
+
+given #372 (A,wt=17): 2740 (x v (y v z)) v c(c(y) v u) = x v (y v z).  [para(2660(a,1),2614(a,1,2,1,1))].
+
+given #373 (T,wt=15): 5152 (x v (y v (z v u))) v c(z) = z v c(z).  [para(2764(a,1),4412(a,1,1))].
+
+given #374 (T,wt=15): 5158 (x v ((y v z) v u)) v c(z) = z v c(z).  [para(2731(a,1),4413(a,1,1,2))].
+
+given #375 (T,wt=15): 5196 (x v y) v ((c(x) v z) v u) = x v c(x).  [para(2715(a,1),4718(a,1,2))].
+
+given #376 (T,wt=15): 5198 (x v y) v ((z v c(x)) v u) = x v c(x).  [para(2731(a,1),4718(a,1,2))].
+
+given #377 (A,wt=17): 2741 c(x v c(y)) v (z v (y v u)) = z v (y v u).  [para(2660(a,1),2619(a,1,1,1,2))].
+
+given #378 (T,wt=15): 5199 (x v y) v (z v (c(x) v u)) = x v c(x).  [para(2737(a,1),4718(a,1,2))].
+
+given #379 (T,wt=15): 5200 (x v y) v (z v (u v c(x))) = x v c(x).  [para(2764(a,1),4718(a,1,2))].
+
+given #380 (T,wt=15): 5291 x v (c(c(x) v y) v c(c(x) v z)) = x.  [para(2529(a,1),2791(a,1,2,1,1))].
+
+given #381 (T,wt=15): 5297 x v (c(y v c(x)) v c(z v c(x))) = x.  [para(2591(a,1),2791(a,1,2,2,1))].
+
+given #382 (A,wt=17): 2742 (x v (y v z)) v c(u v c(y)) = x v (y v z).  [para(2660(a,1),2650(a,1,2,1,2))].
+
+given #383 (T,wt=15): 5754 (x v y) v c(c(y v x) v z) = x v y.  [para(5628(a,1),2599(a,1,1,1,1)),rewrite([5751(6)])].
+
+given #384 (T,wt=15): 5755 (x v y) v c(z v c(y v x)) = x v y.  [para(5628(a,1),2619(a,1,1,1,2)),rewrite([5751(6)])].
+
+given #385 (T,wt=15): 5756 (x v y) v ((y v x) v z) = (y v x) v z.  [para(5628(a,1),2612(a,1,1,1)),rewrite([2392(3)])].
+
+given #386 (T,wt=15): 5758 (x v y) v (z v (y v x)) = z v (y v x).  [para(5628(a,1),2617(a,1,1,1)),rewrite([2392(3)])].
+
+given #387 (A,wt=17): 2766 c(c(x) v y) v (z v (u v x)) = z v (u v x).  [para(2706(a,1),2599(a,1,1,1,1))].
+
+given #388 (T,wt=15): 5759 (x v (y v z)) v (z v y) = x v (y v z).  [para(5628(a,1),2648(a,1,2,1)),rewrite([2392(5)])].
+
+given #389 (T,wt=15): 5768 x v (c(c(x) v y) v c(z v c(x))) = x.  [para(5628(a,1),2577(a,1,1,1)),rewrite([2392(9),5751(8)])].
+
+given #390 (T,wt=15): 5775 c(x) v (c(x v y) v c(z v x)) = c(x).  [para(5628(a,1),2642(a,1,1,1)),rewrite([2392(7),5751(7)])].
+
+given #391 (T,wt=15): 6090 c(x) v (c(y v x) v c(z v x)) = c(x).  [back_rewrite(4010),rewrite([5751(7)])].
+
+given #392 (A,wt=17): 2767 (x v (y v z)) v c(c(z) v u) = x v (y v z).  [para(2706(a,1),2614(a,1,2,1,1))].
+
+given #393 (T,wt=15): 6091 c(x) v (c(x v y) v c(x v z)) = c(x).  [back_rewrite(4009),rewrite([5751(7)])].
+
+given #394 (T,wt=15): 7744 c(x v y) v c(y v c(y v x)) = c(y).  [para(5751(a,1),4125(a,1,1,1))].
+
+given #395 (T,wt=15): 7745 c(x v y) v c(x v c(y v x)) = c(x).  [para(5751(a,1),4125(a,1,2,1,2,1))].
+
+given #396 (T,wt=15): 10245 (x v y) v (y v c(y v x)) = y v c(y).  [para(7744(a,1),4091(a,1,2)),rewrite([5751(5),4092(5),9712(10)]),flip(a)].
+
+given #397 (A,wt=17): 2768 c(x v c(y)) v (z v (u v y)) = z v (u v y).  [para(2706(a,1),2619(a,1,1,1,2))].
+
+given #398 (T,wt=15): 10246 (x v y) v (x v c(y v x)) = x v c(x).  [para(7745(a,1),4091(a,1,2)),rewrite([5751(5),4092(5),9712(10)]),flip(a)].
+
+given #399 (T,wt=16): 2770 c((x v y) v z) v (c(x) v u) = c(x) v u.  [para(2612(a,1),2599(a,1,1,1,1))].
+
+given #400 (T,wt=16): 2773 (c(x) v y) v c((x v z) v u) = c(x) v y.  [para(2612(a,1),2614(a,1,2,1,1))].
+
+given #401 (T,wt=16): 2776 c(x v (y v z)) v (c(y) v u) = c(y) v u.  [para(2612(a,1),2619(a,1,1,1,2))].
+
+given #402 (A,wt=17): 2769 (x v (y v z)) v c(u v c(z)) = x v (y v z).  [para(2706(a,1),2650(a,1,2,1,2))].
+
+given #403 (T,wt=16): 2779 (c(x) v y) v c(z v (x v u)) = c(x) v y.  [para(2612(a,1),2650(a,1,2,1,2))].
+
+given #404 (T,wt=16): 2823 c((x v y) v z) v (c(y) v u) = c(y) v u.  [para(2617(a,1),2599(a,1,1,1,1))].
+
+given #405 (T,wt=16): 2825 (c(x) v y) v c((z v x) v u) = c(x) v y.  [para(2617(a,1),2614(a,1,2,1,1))].
+
+given #406 (T,wt=16): 2827 c(x v (y v z)) v (c(z) v u) = c(z) v u.  [para(2617(a,1),2619(a,1,1,1,2))].
+
+given #407 (A,wt=17): 2782 x v (((x v y) v z) v u) = ((x v y) v z) v u.  [para(2610(a,1),2612(a,1,1,1)),rewrite([2392(2)])].
+
+given #408 (T,wt=16): 2829 (c(x) v y) v c(z v (u v x)) = c(x) v y.  [para(2617(a,1),2650(a,1,2,1,2))].
+
+given #409 (T,wt=16): 2862 c((x v y) v z) v (u v c(x)) = u v c(x).  [para(2662(a,1),2599(a,1,1,1,1))].
+
+given #410 (T,wt=16): 2864 (x v c(y)) v c((y v z) v u) = x v c(y).  [para(2662(a,1),2614(a,1,2,1,1))].
+
+given #411 (T,wt=16): 2866 c(x v (y v z)) v (u v c(y)) = u v c(y).  [para(2662(a,1),2619(a,1,1,1,2))].
+
+given #412 (A,wt=17): 2784 x v (((y v x) v z) v u) = ((y v x) v z) v u.  [para(2653(a,1),2612(a,1,1,1)),rewrite([2392(2)])].
+
+given #413 (T,wt=16): 2868 (x v c(y)) v c(z v (y v u)) = x v c(y).  [para(2662(a,1),2650(a,1,2,1,2))].
+
+given #414 (T,wt=16): 2920 c((x v y) v z) v (u v c(y)) = u v c(y).  [para(2666(a,1),2599(a,1,1,1,1))].
+
+given #415 (T,wt=16): 2921 (x v c(y)) v c((z v y) v u) = x v c(y).  [para(2666(a,1),2614(a,1,2,1,1))].
+
+given #416 (T,wt=16): 2922 c(x v (y v z)) v (u v c(z)) = u v c(z).  [para(2666(a,1),2619(a,1,1,1,2))].
+
+given #417 (A,wt=17): 2786 x v ((y v (x v z)) v u) = (y v (x v z)) v u.  [para(2660(a,1),2612(a,1,1,1)),rewrite([2392(2)])].
+
+given #418 (T,wt=16): 2923 (x v c(y)) v c(z v (u v y)) = x v c(y).  [para(2666(a,1),2650(a,1,2,1,2))].
+
+given #419 (T,wt=16): 3651 c(x) v c((((x v y) v z) v u) v w) = c(x).  [para(2783(a,1),2645(a,1,1)),rewrite([2392(6),2783(13)])].
+
+given #420 (T,wt=16): 3655 c(x) v c(y v (((x v z) v u) v w)) = c(x).  [para(2783(a,1),2698(a,1,1)),rewrite([2392(6),2783(13)])].
+
+given #421 (T,wt=16): 3677 c(x) v c((((y v x) v z) v u) v w) = c(x).  [para(2785(a,1),2645(a,1,1)),rewrite([2392(6),2785(13)])].
+
+given #422 (A,wt=17): 2788 x v ((y v (z v x)) v u) = (y v (z v x)) v u.  [para(2706(a,1),2612(a,1,1,1)),rewrite([2392(2)])].
+
+given #423 (T,wt=16): 3681 c(x) v c(y v (((z v x) v u) v w)) = c(x).  [para(2785(a,1),2698(a,1,1)),rewrite([2392(6),2785(13)])].
+
+given #424 (T,wt=16): 3702 c(x) v c(((y v (x v z)) v u) v w) = c(x).  [para(2787(a,1),2645(a,1,1)),rewrite([2392(6),2787(13)])].
+
+given #425 (T,wt=16): 3706 c(x) v c(y v ((z v (x v u)) v w)) = c(x).  [para(2787(a,1),2698(a,1,1)),rewrite([2392(6),2787(13)])].
+
+given #426 (T,wt=16): 3783 c(x) v c(((y v (z v x)) v u) v w) = c(x).  [para(2789(a,1),2645(a,1,1)),rewrite([2392(6),2789(13)])].
+
+given #427 (A,wt=19): 2792 x v c(c(c(y v c(x)) v c(c(x) v z)) v u) = x.  [para(2392(a,1),2561(a,1,2,1,2))].
+
+given #428 (T,wt=16): 3787 c(x) v c(y v ((z v (u v x)) v w)) = c(x).  [para(2789(a,1),2698(a,1,1)),rewrite([2392(6),2789(13)])].
+
+given #429 (T,wt=16): 3803 c(x) v c((y v ((x v z) v u)) v w) = c(x).  [para(2731(a,1),2844(a,1,2,1))].
+
+given #430 (T,wt=16): 3804 c(x) v c((y v (z v (x v u))) v w) = c(x).  [para(2764(a,1),2844(a,1,2,1,1))].
+
+given #431 (T,wt=16): 3805 c(x) v c(y v (z v ((x v u) v w))) = c(x).  [para(2764(a,1),2844(a,1,2,1))].
+
+given #432 (A,wt=17): 2831 x v (y v ((x v z) v u)) = y v ((x v z) v u).  [para(2610(a,1),2617(a,1,1,1)),rewrite([2392(2)])].
+
+given #433 (T,wt=16): 3808 c(x) v c((y v ((z v x) v u)) v w) = c(x).  [para(2731(a,1),2846(a,1,2,1))].
+
+given #434 (T,wt=16): 3809 c(x) v c((y v (z v (u v x))) v w) = c(x).  [para(2764(a,1),2846(a,1,2,1,1))].
+
+given #435 (T,wt=16): 3810 c(x) v c(y v (z v ((u v x) v w))) = c(x).  [para(2764(a,1),2846(a,1,2,1))].
+
+given #436 (T,wt=16): 3814 c(x) v c(y v (z v (u v (x v w)))) = c(x).  [para(2764(a,1),2848(a,1,2,1))].
+
+given #437 (A,wt=17): 2832 x v (y v ((z v x) v u)) = y v ((z v x) v u).  [para(2653(a,1),2617(a,1,1,1)),rewrite([2392(2)])].
+
+given #438 (T,wt=16): 3898 c(x) v c(y v (z v (u v (w v x)))) = c(x).  [para(2764(a,1),2850(a,1,2,1))].
+
+given #439 (T,wt=16): 5636 c(x v (y v z)) v c(y v x) = c(y v x).  [para(2650(a,1),2677(a,1,2,1,1,1)),rewrite([2392(2),2392(5),2392(9),2697(11),2392(8)])].
+
+given #440 (T,wt=15): 12548 (x v (y v z)) v (y v x) = x v (y v z).  [para(5636(a,1),2533(a,1,2,1)),rewrite([2392(5)])].
+
+given #441 (T,wt=15): 12684 (x v y) v ((x v z) v y) = (x v z) v y.  [para(5636(a,1),5754(a,1,2,1)),rewrite([2392(5),5751(4)])].
+
+given #442 (A,wt=17): 2833 x v (y v (z v (x v u))) = y v (z v (x v u)).  [para(2660(a,1),2617(a,1,1,1)),rewrite([2392(2)])].
+
+given #443 (T,wt=13): 13060 x v (y v c(y v x)) = y v c(y).  [para(10245(a,1),12684(a,1,1)),rewrite([8825(8),12916(6),4132(7),8825(8),12916(6)]),flip(a)].
+
+given #444 (T,wt=13): 13101 (x v y) v (x v z) = (x v y) v z.  [para(12684(a,1),12548(a,1,1)),rewrite([12730(6),12684(7)])].
+
+% Operation v is associative-commutative; CAC redundancy checks enabled.
+
+============================== PROOF =================================
+
+% Proof 12 at 7.04 (+ 0.12) seconds: AJ.
+% Length of proof is 111.
+% Level of proof is 29.
+% Maximum clause weight is 37.000.
+% Given clauses 444.
+
+3 x v (y v z) = y v (x v z) # answer(AJ) # label(non_clause) # label(goal).  [goal].
+15 f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(f(y,y),z)),z))) = y # label(OML_Sh).  [assumption].
+16 x v y = f(f(x,x),f(y,y)) # label(Def_join).  [assumption].
+17 f(f(x,x),f(y,y)) = x v y.  [copy(16),flip(a)].
+18 x ^ y = f(f(x,y),f(x,y)) # label(Def_meet).  [assumption].
+19 f(f(x,y),f(x,y)) = x ^ y.  [copy(18),flip(a)].
+20 c(x) = f(x,x) # label(Def_complement).  [assumption].
+21 f(x,x) = c(x).  [copy(20),flip(a)].
+24 c5 v (c6 v c7) != c6 v (c5 v c7) # answer(AJ).  [deny(3)].
+25 c6 v (c5 v c7) != c5 v (c6 v c7) # answer(AJ).  [copy(24),flip(a)].
+40 c(f(x,y)) = x ^ y.  [back_rewrite(19),rewrite([21(3)])].
+41 f(c(x),c(y)) = x v y.  [back_rewrite(17),rewrite([21(1),21(2)])].
+42 f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(c(y),z)),z))) = y.  [back_rewrite(15),rewrite([21(5)])].
+43 x ^ x = c(c(x)).  [para(21(a,1),40(a,1,1)),flip(a)].
+45 c(c(x)) = x v x.  [para(41(a,1),21(a,1)),flip(a)].
+46 c(x) ^ c(y) = c(x v y).  [para(41(a,1),40(a,1,1)),flip(a)].
+50 x ^ x = x v x.  [back_rewrite(43),rewrite([45(3)])].
+52 f(f(f(c(x),f(x,y)),z),f(x,f(f(y,f(c(x),y)),y))) = x.  [para(21(a,1),42(a,1,1,1,1))].
+53 f(f(f(f(x,y),c(y)),z),f(y,f(f(y,f(c(y),y)),y))) = y.  [para(21(a,1),42(a,1,1,1,2))].
+54 f(f(x v x,y),f(x,f(f(x,f(c(x),x)),x))) = x.  [para(21(a,1),42(a,1,1,1)),rewrite([21(1),45(2)])].
+55 f(f(x,y) ^ f(y,z),f(y,f(f(z,f(c(y),z)),z))) = y.  [para(21(a,1),42(a,1,1)),rewrite([40(4)])].
+59 f(f(f(x v y,f(c(y),z)),u),f(c(y),f(f(z,f(y v y,z)),z))) = c(y).  [para(41(a,1),42(a,1,1,1,1)),rewrite([45(8)])].
+61 f(f(f(f(x,y),f(y,c(z))),u),f(y,f(f(c(z),y v z),c(z)))) = y.  [para(41(a,1),42(a,1,2,2,1,2))].
+62 f(f(x,y),f(x,f(f(f(f(z,f(c(x),z)),z),f(c(x),f(f(z,f(c(x),z)),z))),f(f(z,f(c(x),z)),z)))) = x.  [para(42(a,1),42(a,1,1,1))].
+65 f(x v x,c(y)) = c(x) v y.  [para(45(a,1),41(a,1,1))].
+66 f(c(x),y v y) = x v c(y).  [para(45(a,1),41(a,1,2))].
+68 c(x v x) = c(x) v c(x).  [para(45(a,1),45(a,1,1))].
+72 (x v x) ^ c(y) = c(c(x) v y).  [para(45(a,1),46(a,1,1))].
+77 f(x v x,y v y) = c(x) v c(y).  [para(45(a,1),65(a,1,2))].
+95 (x v x) ^ (y v y) = c(c(x) v c(y)).  [para(45(a,1),72(a,1,2))].
+158 f(x,f(c(x),f(f(y,f(x v x,y)),y))) = c(x).  [para(53(a,1),42(a,1,1)),rewrite([45(3)])].
+203 f(c(x) v y,f(x,f(f(x,f(c(x),x)),x))) = x.  [para(65(a,1),54(a,1,1))].
+304 f(f(x,y v y) ^ (c(y) v z),f(y v y,f(f(c(z),(y v y) v z),c(z)))) = y v y.  [para(65(a,1),55(a,1,1,2)),rewrite([68(9),65(12),45(9)])].
+776 f((x v x) v y,f(c(x),f(f(c(x),c(x) v x),c(x)))) = c(x).  [para(41(a,1),203(a,1,2,2,1,2)),rewrite([45(2)])].
+785 f(c(x),f(x v x,f(f(f(x,f(f(x,f(c(x),x)),x)),x),f(x,f(f(x,f(c(x),x)),x))))) = x v x.  [para(203(a,1),158(a,1,2,2,1,2)),rewrite([45(3),45(18)])].
+1263 f(f(f(x v c(y),c(y) v z),u),f(y v y,f(f(c(z),(y v y) v z),c(z)))) = y v y.  [para(66(a,1),61(a,1,1,1,1)),rewrite([65(5)])].
+1623 f(f(x,y),f(y,f(f(z,f(c(y),z)),z))) = y.  [para(62(a,1),42(a,1,1))].
+1625 f(c(x),f(x,f(f(y,f(c(x),y)),y))) = x.  [para(62(a,1),52(a,1,1))].
+1628 f(x v y,f(c(y),f(f(z,f(y v y,z)),z))) = c(y).  [para(62(a,1),59(a,1,1))].
+1630 f(c(x),f(x v x,x)) = x v x.  [back_rewrite(785),rewrite([1623(14)])].
+1647 f((x v x) ^ f(f(x v x,x),y),f(f(x v x,x),f(f(y,f((x v x) ^ x,y)),y))) = f(x v x,x).  [para(1630(a,1),55(a,1,1,1)),rewrite([40(10)])].
+1648 f(f(x,c(y)) ^ (y v y),f(c(y),f(f(f(y v y,y),f(y v y,f(y v y,y))),f(y v y,y)))) = c(y).  [para(1630(a,1),55(a,1,1,2)),rewrite([45(9)])].
+1693 f(c(x),f(x,f(f(c(y),x v y),c(y)))) = x.  [para(41(a,1),1625(a,1,2,2,1,2))].
+1739 x v x = x.  [para(1625(a,1),1625(a,1,2,2,1,2)),rewrite([1623(13),21(2),21(3),45(2)])].
+1786 f(f(x,c(y)) ^ y,f(c(y),f(f(c(y),f(y,c(y))),c(y)))) = c(y).  [back_rewrite(1648),rewrite([1739(3),1739(5),21(5),1739(6),1739(6),21(6),1739(9),21(9)])].
+1787 f(x ^ f(c(x),y),f(c(x),f(f(y,f(x,y)),y))) = c(x).  [back_rewrite(1647),rewrite([1739(1),1739(1),21(1),1739(4),21(4),1739(5),50(5),1739(5),1739(10),21(10)])].
+1798 f(x v y,f(c(y),f(f(z,f(y,z)),z))) = c(y).  [back_rewrite(1628),rewrite([1739(3)])].
+1958 f(f(f(x v c(y),c(y) v z),u),f(y,f(f(c(z),y v z),c(z)))) = y.  [back_rewrite(1263),rewrite([1739(7),1739(8),1739(14)])].
+2130 f(x v y,f(c(x),f(f(c(x),c(x) v x),c(x)))) = c(x).  [back_rewrite(776),rewrite([1739(1)])].
+2302 f(f(x,y) ^ (c(y) v z),f(y,f(f(c(z),y v z),c(z)))) = y.  [back_rewrite(304),rewrite([1739(1),1739(5),1739(6),1739(12)])].
+2374 x ^ y = c(c(x) v c(y)).  [back_rewrite(95),rewrite([1739(1),1739(1)])].
+2384 f(x,y) = c(x) v c(y).  [back_rewrite(77),rewrite([1739(1),1739(1)])].
+2392 c(c(x)) = x.  [back_rewrite(45),rewrite([1739(3)])].
+2400 (c(c(x) v c(y)) v c(c(y) v z)) v c(c(y) v c(c(z v c(y v z)) v z)) = y.  [back_rewrite(2302),rewrite([2384(1),2374(6),2384(12),2392(11),2384(14),2392(15),2384(15),2384(18),2392(10)])].
+2410 (c(x) v c(x v c(y))) v c(x v c(c(c(y) v c(c(x) v c(y))) v c(y))) = c(x).  [back_rewrite(1787),rewrite([2384(2),2392(2),2374(3),2384(8),2384(11),2384(14),2384(17),2392(8),2384(18),2392(7)])].
+2411 (c(c(x) v y) v c(y)) v c(y v c(c(y v c(c(y) v y)) v y)) = c(y).  [back_rewrite(1786),rewrite([2384(2),2392(3),2374(3),2384(10),2392(11),2384(11),2392(9),2384(13),2392(14),2384(14),2392(8),2384(15),2392(7)])].
+2450 c(x v y) v c(x v c(c(x v c(c(x) v x)) v x)) = c(x).  [back_rewrite(2130),rewrite([2384(6),2392(4),2384(8),2392(9),2384(9),2392(3),2384(10)])].
+2453 c(c(c(x v c(y)) v c(c(y) v z)) v c(u)) v c(c(y) v c(c(z v c(y v z)) v z)) = y.  [back_rewrite(1958),rewrite([2384(5),2384(8),2384(13),2392(12),2384(15),2392(16),2384(16),2384(19)])].
+2454 c(x v y) v c(y v c(c(c(z) v c(c(y) v c(z))) v c(z))) = c(y).  [back_rewrite(1798),rewrite([2384(3),2384(6),2384(9),2384(12),2392(3),2384(13)])].
+2465 x v c(c(x) v c(c(y v c(x v y)) v y)) = x.  [back_rewrite(1693),rewrite([2384(4),2392(3),2384(6),2392(7),2384(7),2384(10),2392(2)])].
+2479 c(x v c(c(x v c(c(x) v x)) v x)) = c(x).  [para(2450(a,1),1739(a,1)),flip(a)].
+2481 c(x v y) v c(x) = c(x).  [para(2450(a,1),2384(a,2)),rewrite([2384(10),2479(11)])].
+2485 (c(c(x) v y) v c(y)) v c(y) = c(y).  [back_rewrite(2411),rewrite([2479(14)])].
+2486 c(c(x) v y) v x = x.  [para(2392(a,1),2481(a,1,2)),rewrite([2392(6)])].
+2487 x v (x v y) = x v y.  [para(2481(a,1),2481(a,1,1,1)),rewrite([2392(2),2392(3),2392(5)])].
+2492 c(x) v c(c(c(y) v c(x)) v c(c(x) v z)) = c(c(c(y) v c(x)) v c(c(x) v z)).  [para(2400(a,1),2481(a,1,1,1))].
+2500 (c(c(x) v c(y)) v y) v y = y.  [para(2392(a,1),2485(a,1,1,2)),rewrite([2392(7),2392(8)])].
+2507 (c(x v c(y)) v y) v y = y.  [para(2392(a,1),2500(a,1,1,1,1,1))].
+2511 (c(x) v c(x v y)) v c(x v c(c(y v c(c(x) v y)) v y)) = c(x).  [para(2392(a,1),2410(a,1,1,2,1,2)),rewrite([2392(6),2392(7),2392(11)])].
+2513 (c(x) v c(x v c(y))) v c(x) = c(x) v c(x v c(y)).  [para(2410(a,1),2465(a,1,2,1,2,1,1,1,2,1)),rewrite([2392(25),2454(38),2392(13),2486(12)])].
+2517 c(x) v c(x v c(y)) = c(x).  [para(2410(a,1),2487(a,1,2)),rewrite([2513(7),2511(23)])].
+2529 (x v y) v x = x v y.  [para(2481(a,1),2517(a,1,2,1)),rewrite([2392(3),2392(3),2392(5)])].
+2533 x v c(c(x) v y) = x.  [para(2486(a,1),2529(a,1,1)),rewrite([2486(8)])].
+2552 c((c(x) v y) v c(z)) v c(c(x) v c(c(y v c(x v y)) v y)) = x.  [para(2481(a,1),2453(a,1,1,1,1,1)),rewrite([2392(4)])].
+2553 c(x v c(y)) v c(c(y) v c(c(z v c(y v z)) v z)) = y.  [para(2481(a,1),2453(a,1,1,1)),rewrite([2392(4)])].
+2560 c(c(x) v c(c(y v c(x v y)) v y)) = x.  [para(2453(a,1),2507(a,1,1)),rewrite([2533(10)]),flip(a)].
+2574 c(x v c(y)) v y = y.  [back_rewrite(2553),rewrite([2560(12)])].
+2575 c((c(x) v y) v c(z)) v x = x.  [back_rewrite(2552),rewrite([2560(14)])].
+2583 c(x v y) v c(y) = c(y).  [para(2392(a,1),2574(a,1,1,1,2))].
+2585 x v c(y v c(x)) = x.  [para(2574(a,1),2529(a,1,1)),rewrite([2574(8)])].
+2590 c(x) v c(y v x) = c(x).  [para(2392(a,1),2585(a,1,2,1,2))].
+2591 x v (y v x) = y v x.  [para(2583(a,1),2481(a,1,1,1)),rewrite([2392(2),2392(3),2392(5)])].
+2599 c((c(x) v y) v z) v x = x.  [para(2392(a,1),2575(a,1,1,1,2))].
+2612 c(c(x) v y) v (x v z) = x v z.  [para(2481(a,1),2599(a,1,1,1,1))].
+2614 x v c((c(x) v y) v z) = x.  [para(2599(a,1),2529(a,1,1)),rewrite([2599(10)])].
+2617 c(c(x) v y) v (z v x) = z v x.  [para(2583(a,1),2599(a,1,1,1,1))].
+2618 c((x v c(y)) v z) v y = y.  [para(2591(a,1),2599(a,1,1,1,1))].
+2619 c(x v (c(y) v z)) v y = y.  [para(2591(a,1),2599(a,1,1,1))].
+2650 x v c(y v (c(x) v z)) = x.  [para(2591(a,1),2614(a,1,2,1))].
+2656 c(x v (y v c(z))) v z = z.  [para(2591(a,1),2618(a,1,1,1))].
+2660 c(x v (y v z)) v c(y) = c(y).  [para(2392(a,1),2619(a,1,1,1,2,1))].
+2677 c(x v y) v c(c(c(z) v c(x v y)) v x) = c(c(c(z) v c(x v y)) v x).  [para(2481(a,1),2492(a,1,2,1,2,1)),rewrite([2392(9),2481(19),2392(17)])].
+2697 c(x) v c(y v (x v z)) = c(x).  [para(2392(a,1),2650(a,1,2,1,2,1))].
+2706 c(x v (y v z)) v c(z) = c(z).  [para(2392(a,1),2656(a,1,1,1,2,2))].
+2737 x v (y v (x v z)) = y v (x v z).  [para(2660(a,1),2481(a,1,1,1)),rewrite([2392(2),2392(4),2392(7)])].
+2764 x v (y v (z v x)) = y v (z v x).  [para(2706(a,1),2481(a,1,1,1)),rewrite([2392(2),2392(4),2392(7)])].
+5628 c(x v y) v c(y v x) = c(y v x).  [para(2585(a,1),2677(a,1,2,1,1,1)),rewrite([2392(2),2392(4),2392(8),2590(9),2392(7)])].
+5636 c(x v (y v z)) v c(y v x) = c(y v x).  [para(2650(a,1),2677(a,1,2,1,1,1)),rewrite([2392(2),2392(5),2392(9),2697(11),2392(8)])].
+5749 (x v y) v (y v x) = y v x.  [para(5628(a,1),2481(a,1,1,1)),rewrite([2392(3),2392(4),2392(6)])].
+5751 x v y = y v x.  [para(5628(a,1),2533(a,1,2,1)),rewrite([2392(4),5749(3)])].
+5754 (x v y) v c(c(y v x) v z) = x v y.  [para(5628(a,1),2599(a,1,1,1,1)),rewrite([5751(6)])].
+12548 (x v (y v z)) v (y v x) = x v (y v z).  [para(5636(a,1),2533(a,1,2,1)),rewrite([2392(5)])].
+12684 (x v y) v ((x v z) v y) = (x v z) v y.  [para(5636(a,1),5754(a,1,2,1)),rewrite([2392(5),5751(4)])].
+12718 c(c(x v y) v z) v (y v (x v u)) = y v (x v u).  [para(12548(a,1),2617(a,1,2)),rewrite([12548(11)])].
+12728 (x v y) v (x v (y v z)) = x v (y v z).  [para(2737(a,1),12548(a,1,1)),rewrite([5751(4),2737(7)])].
+12730 (x v y) v (x v (z v y)) = x v (z v y).  [para(2764(a,1),12548(a,1,1)),rewrite([5751(4),2764(7)])].
+13101 (x v y) v (x v z) = (x v y) v z.  [para(12684(a,1),12548(a,1,1)),rewrite([12730(6),12684(7)])].
+14172 (x v y) v (y v z) = x v (y v z).  [back_rewrite(12728),rewrite([13101(4)])].
+14240 (x v y) v z = x v (y v z).  [para(2591(a,1),13101(a,1,1)),rewrite([14172(3),2591(4)]),flip(a)].
+14251 x v (y v z) = y v (x v z).  [para(13101(a,1),2612(a,2)),rewrite([14240(7),2737(7),12718(7),14240(4)])].
+14252 $F # answer(AJ).  [resolve(14251,a,25,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% Proof 13 at 8.04 (+ 0.14) seconds: assoc_meet.
+% Length of proof is 107.
+% Level of proof is 28.
+% Maximum clause weight is 37.000.
+% Given clauses 444.
+
+14 (x ^ y) ^ z = x ^ (y ^ z) # answer(assoc_meet) # label(non_clause) # label(goal).  [goal].
+15 f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(f(y,y),z)),z))) = y # label(OML_Sh).  [assumption].
+16 x v y = f(f(x,x),f(y,y)) # label(Def_join).  [assumption].
+17 f(f(x,x),f(y,y)) = x v y.  [copy(16),flip(a)].
+18 x ^ y = f(f(x,y),f(x,y)) # label(Def_meet).  [assumption].
+19 f(f(x,y),f(x,y)) = x ^ y.  [copy(18),flip(a)].
+20 c(x) = f(x,x) # label(Def_complement).  [assumption].
+21 f(x,x) = c(x).  [copy(20),flip(a)].
+39 (c26 ^ c27) ^ c28 != c26 ^ (c27 ^ c28) # answer(assoc_meet).  [deny(14)].
+40 c(f(x,y)) = x ^ y.  [back_rewrite(19),rewrite([21(3)])].
+41 f(c(x),c(y)) = x v y.  [back_rewrite(17),rewrite([21(1),21(2)])].
+42 f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(c(y),z)),z))) = y.  [back_rewrite(15),rewrite([21(5)])].
+43 x ^ x = c(c(x)).  [para(21(a,1),40(a,1,1)),flip(a)].
+45 c(c(x)) = x v x.  [para(41(a,1),21(a,1)),flip(a)].
+46 c(x) ^ c(y) = c(x v y).  [para(41(a,1),40(a,1,1)),flip(a)].
+50 x ^ x = x v x.  [back_rewrite(43),rewrite([45(3)])].
+52 f(f(f(c(x),f(x,y)),z),f(x,f(f(y,f(c(x),y)),y))) = x.  [para(21(a,1),42(a,1,1,1,1))].
+53 f(f(f(f(x,y),c(y)),z),f(y,f(f(y,f(c(y),y)),y))) = y.  [para(21(a,1),42(a,1,1,1,2))].
+54 f(f(x v x,y),f(x,f(f(x,f(c(x),x)),x))) = x.  [para(21(a,1),42(a,1,1,1)),rewrite([21(1),45(2)])].
+55 f(f(x,y) ^ f(y,z),f(y,f(f(z,f(c(y),z)),z))) = y.  [para(21(a,1),42(a,1,1)),rewrite([40(4)])].
+59 f(f(f(x v y,f(c(y),z)),u),f(c(y),f(f(z,f(y v y,z)),z))) = c(y).  [para(41(a,1),42(a,1,1,1,1)),rewrite([45(8)])].
+61 f(f(f(f(x,y),f(y,c(z))),u),f(y,f(f(c(z),y v z),c(z)))) = y.  [para(41(a,1),42(a,1,2,2,1,2))].
+62 f(f(x,y),f(x,f(f(f(f(z,f(c(x),z)),z),f(c(x),f(f(z,f(c(x),z)),z))),f(f(z,f(c(x),z)),z)))) = x.  [para(42(a,1),42(a,1,1,1))].
+65 f(x v x,c(y)) = c(x) v y.  [para(45(a,1),41(a,1,1))].
+66 f(c(x),y v y) = x v c(y).  [para(45(a,1),41(a,1,2))].
+68 c(x v x) = c(x) v c(x).  [para(45(a,1),45(a,1,1))].
+72 (x v x) ^ c(y) = c(c(x) v y).  [para(45(a,1),46(a,1,1))].
+77 f(x v x,y v y) = c(x) v c(y).  [para(45(a,1),65(a,1,2))].
+95 (x v x) ^ (y v y) = c(c(x) v c(y)).  [para(45(a,1),72(a,1,2))].
+158 f(x,f(c(x),f(f(y,f(x v x,y)),y))) = c(x).  [para(53(a,1),42(a,1,1)),rewrite([45(3)])].
+203 f(c(x) v y,f(x,f(f(x,f(c(x),x)),x))) = x.  [para(65(a,1),54(a,1,1))].
+304 f(f(x,y v y) ^ (c(y) v z),f(y v y,f(f(c(z),(y v y) v z),c(z)))) = y v y.  [para(65(a,1),55(a,1,1,2)),rewrite([68(9),65(12),45(9)])].
+776 f((x v x) v y,f(c(x),f(f(c(x),c(x) v x),c(x)))) = c(x).  [para(41(a,1),203(a,1,2,2,1,2)),rewrite([45(2)])].
+785 f(c(x),f(x v x,f(f(f(x,f(f(x,f(c(x),x)),x)),x),f(x,f(f(x,f(c(x),x)),x))))) = x v x.  [para(203(a,1),158(a,1,2,2,1,2)),rewrite([45(3),45(18)])].
+1263 f(f(f(x v c(y),c(y) v z),u),f(y v y,f(f(c(z),(y v y) v z),c(z)))) = y v y.  [para(66(a,1),61(a,1,1,1,1)),rewrite([65(5)])].
+1623 f(f(x,y),f(y,f(f(z,f(c(y),z)),z))) = y.  [para(62(a,1),42(a,1,1))].
+1625 f(c(x),f(x,f(f(y,f(c(x),y)),y))) = x.  [para(62(a,1),52(a,1,1))].
+1628 f(x v y,f(c(y),f(f(z,f(y v y,z)),z))) = c(y).  [para(62(a,1),59(a,1,1))].
+1630 f(c(x),f(x v x,x)) = x v x.  [back_rewrite(785),rewrite([1623(14)])].
+1647 f((x v x) ^ f(f(x v x,x),y),f(f(x v x,x),f(f(y,f((x v x) ^ x,y)),y))) = f(x v x,x).  [para(1630(a,1),55(a,1,1,1)),rewrite([40(10)])].
+1648 f(f(x,c(y)) ^ (y v y),f(c(y),f(f(f(y v y,y),f(y v y,f(y v y,y))),f(y v y,y)))) = c(y).  [para(1630(a,1),55(a,1,1,2)),rewrite([45(9)])].
+1693 f(c(x),f(x,f(f(c(y),x v y),c(y)))) = x.  [para(41(a,1),1625(a,1,2,2,1,2))].
+1739 x v x = x.  [para(1625(a,1),1625(a,1,2,2,1,2)),rewrite([1623(13),21(2),21(3),45(2)])].
+1786 f(f(x,c(y)) ^ y,f(c(y),f(f(c(y),f(y,c(y))),c(y)))) = c(y).  [back_rewrite(1648),rewrite([1739(3),1739(5),21(5),1739(6),1739(6),21(6),1739(9),21(9)])].
+1787 f(x ^ f(c(x),y),f(c(x),f(f(y,f(x,y)),y))) = c(x).  [back_rewrite(1647),rewrite([1739(1),1739(1),21(1),1739(4),21(4),1739(5),50(5),1739(5),1739(10),21(10)])].
+1798 f(x v y,f(c(y),f(f(z,f(y,z)),z))) = c(y).  [back_rewrite(1628),rewrite([1739(3)])].
+1958 f(f(f(x v c(y),c(y) v z),u),f(y,f(f(c(z),y v z),c(z)))) = y.  [back_rewrite(1263),rewrite([1739(7),1739(8),1739(14)])].
+2130 f(x v y,f(c(x),f(f(c(x),c(x) v x),c(x)))) = c(x).  [back_rewrite(776),rewrite([1739(1)])].
+2302 f(f(x,y) ^ (c(y) v z),f(y,f(f(c(z),y v z),c(z)))) = y.  [back_rewrite(304),rewrite([1739(1),1739(5),1739(6),1739(12)])].
+2374 x ^ y = c(c(x) v c(y)).  [back_rewrite(95),rewrite([1739(1),1739(1)])].
+2384 f(x,y) = c(x) v c(y).  [back_rewrite(77),rewrite([1739(1),1739(1)])].
+2392 c(c(x)) = x.  [back_rewrite(45),rewrite([1739(3)])].
+2400 (c(c(x) v c(y)) v c(c(y) v z)) v c(c(y) v c(c(z v c(y v z)) v z)) = y.  [back_rewrite(2302),rewrite([2384(1),2374(6),2384(12),2392(11),2384(14),2392(15),2384(15),2384(18),2392(10)])].
+2410 (c(x) v c(x v c(y))) v c(x v c(c(c(y) v c(c(x) v c(y))) v c(y))) = c(x).  [back_rewrite(1787),rewrite([2384(2),2392(2),2374(3),2384(8),2384(11),2384(14),2384(17),2392(8),2384(18),2392(7)])].
+2411 (c(c(x) v y) v c(y)) v c(y v c(c(y v c(c(y) v y)) v y)) = c(y).  [back_rewrite(1786),rewrite([2384(2),2392(3),2374(3),2384(10),2392(11),2384(11),2392(9),2384(13),2392(14),2384(14),2392(8),2384(15),2392(7)])].
+2437 c((c(c26) v c(c27)) v c(c28)) != c(c(c26) v (c(c27) v c(c28))) # answer(assoc_meet).  [back_rewrite(39),rewrite([2374(3),2374(8),2392(7),2374(13),2374(17),2392(18)])].
+2450 c(x v y) v c(x v c(c(x v c(c(x) v x)) v x)) = c(x).  [back_rewrite(2130),rewrite([2384(6),2392(4),2384(8),2392(9),2384(9),2392(3),2384(10)])].
+2453 c(c(c(x v c(y)) v c(c(y) v z)) v c(u)) v c(c(y) v c(c(z v c(y v z)) v z)) = y.  [back_rewrite(1958),rewrite([2384(5),2384(8),2384(13),2392(12),2384(15),2392(16),2384(16),2384(19)])].
+2454 c(x v y) v c(y v c(c(c(z) v c(c(y) v c(z))) v c(z))) = c(y).  [back_rewrite(1798),rewrite([2384(3),2384(6),2384(9),2384(12),2392(3),2384(13)])].
+2465 x v c(c(x) v c(c(y v c(x v y)) v y)) = x.  [back_rewrite(1693),rewrite([2384(4),2392(3),2384(6),2392(7),2384(7),2384(10),2392(2)])].
+2479 c(x v c(c(x v c(c(x) v x)) v x)) = c(x).  [para(2450(a,1),1739(a,1)),flip(a)].
+2481 c(x v y) v c(x) = c(x).  [para(2450(a,1),2384(a,2)),rewrite([2384(10),2479(11)])].
+2485 (c(c(x) v y) v c(y)) v c(y) = c(y).  [back_rewrite(2411),rewrite([2479(14)])].
+2486 c(c(x) v y) v x = x.  [para(2392(a,1),2481(a,1,2)),rewrite([2392(6)])].
+2487 x v (x v y) = x v y.  [para(2481(a,1),2481(a,1,1,1)),rewrite([2392(2),2392(3),2392(5)])].
+2492 c(x) v c(c(c(y) v c(x)) v c(c(x) v z)) = c(c(c(y) v c(x)) v c(c(x) v z)).  [para(2400(a,1),2481(a,1,1,1))].
+2500 (c(c(x) v c(y)) v y) v y = y.  [para(2392(a,1),2485(a,1,1,2)),rewrite([2392(7),2392(8)])].
+2507 (c(x v c(y)) v y) v y = y.  [para(2392(a,1),2500(a,1,1,1,1,1))].
+2511 (c(x) v c(x v y)) v c(x v c(c(y v c(c(x) v y)) v y)) = c(x).  [para(2392(a,1),2410(a,1,1,2,1,2)),rewrite([2392(6),2392(7),2392(11)])].
+2513 (c(x) v c(x v c(y))) v c(x) = c(x) v c(x v c(y)).  [para(2410(a,1),2465(a,1,2,1,2,1,1,1,2,1)),rewrite([2392(25),2454(38),2392(13),2486(12)])].
+2517 c(x) v c(x v c(y)) = c(x).  [para(2410(a,1),2487(a,1,2)),rewrite([2513(7),2511(23)])].
+2529 (x v y) v x = x v y.  [para(2481(a,1),2517(a,1,2,1)),rewrite([2392(3),2392(3),2392(5)])].
+2533 x v c(c(x) v y) = x.  [para(2486(a,1),2529(a,1,1)),rewrite([2486(8)])].
+2552 c((c(x) v y) v c(z)) v c(c(x) v c(c(y v c(x v y)) v y)) = x.  [para(2481(a,1),2453(a,1,1,1,1,1)),rewrite([2392(4)])].
+2553 c(x v c(y)) v c(c(y) v c(c(z v c(y v z)) v z)) = y.  [para(2481(a,1),2453(a,1,1,1)),rewrite([2392(4)])].
+2560 c(c(x) v c(c(y v c(x v y)) v y)) = x.  [para(2453(a,1),2507(a,1,1)),rewrite([2533(10)]),flip(a)].
+2574 c(x v c(y)) v y = y.  [back_rewrite(2553),rewrite([2560(12)])].
+2575 c((c(x) v y) v c(z)) v x = x.  [back_rewrite(2552),rewrite([2560(14)])].
+2583 c(x v y) v c(y) = c(y).  [para(2392(a,1),2574(a,1,1,1,2))].
+2585 x v c(y v c(x)) = x.  [para(2574(a,1),2529(a,1,1)),rewrite([2574(8)])].
+2590 c(x) v c(y v x) = c(x).  [para(2392(a,1),2585(a,1,2,1,2))].
+2591 x v (y v x) = y v x.  [para(2583(a,1),2481(a,1,1,1)),rewrite([2392(2),2392(3),2392(5)])].
+2599 c((c(x) v y) v z) v x = x.  [para(2392(a,1),2575(a,1,1,1,2))].
+2614 x v c((c(x) v y) v z) = x.  [para(2599(a,1),2529(a,1,1)),rewrite([2599(10)])].
+2618 c((x v c(y)) v z) v y = y.  [para(2591(a,1),2599(a,1,1,1,1))].
+2619 c(x v (c(y) v z)) v y = y.  [para(2591(a,1),2599(a,1,1,1))].
+2650 x v c(y v (c(x) v z)) = x.  [para(2591(a,1),2614(a,1,2,1))].
+2656 c(x v (y v c(z))) v z = z.  [para(2591(a,1),2618(a,1,1,1))].
+2660 c(x v (y v z)) v c(y) = c(y).  [para(2392(a,1),2619(a,1,1,1,2,1))].
+2677 c(x v y) v c(c(c(z) v c(x v y)) v x) = c(c(c(z) v c(x v y)) v x).  [para(2481(a,1),2492(a,1,2,1,2,1)),rewrite([2392(9),2481(19),2392(17)])].
+2697 c(x) v c(y v (x v z)) = c(x).  [para(2392(a,1),2650(a,1,2,1,2,1))].
+2706 c(x v (y v z)) v c(z) = c(z).  [para(2392(a,1),2656(a,1,1,1,2,2))].
+2737 x v (y v (x v z)) = y v (x v z).  [para(2660(a,1),2481(a,1,1,1)),rewrite([2392(2),2392(4),2392(7)])].
+2764 x v (y v (z v x)) = y v (z v x).  [para(2706(a,1),2481(a,1,1,1)),rewrite([2392(2),2392(4),2392(7)])].
+5628 c(x v y) v c(y v x) = c(y v x).  [para(2585(a,1),2677(a,1,2,1,1,1)),rewrite([2392(2),2392(4),2392(8),2590(9),2392(7)])].
+5636 c(x v (y v z)) v c(y v x) = c(y v x).  [para(2650(a,1),2677(a,1,2,1,1,1)),rewrite([2392(2),2392(5),2392(9),2697(11),2392(8)])].
+5749 (x v y) v (y v x) = y v x.  [para(5628(a,1),2481(a,1,1,1)),rewrite([2392(3),2392(4),2392(6)])].
+5751 x v y = y v x.  [para(5628(a,1),2533(a,1,2,1)),rewrite([2392(4),5749(3)])].
+5754 (x v y) v c(c(y v x) v z) = x v y.  [para(5628(a,1),2599(a,1,1,1,1)),rewrite([5751(6)])].
+12548 (x v (y v z)) v (y v x) = x v (y v z).  [para(5636(a,1),2533(a,1,2,1)),rewrite([2392(5)])].
+12684 (x v y) v ((x v z) v y) = (x v z) v y.  [para(5636(a,1),5754(a,1,2,1)),rewrite([2392(5),5751(4)])].
+12728 (x v y) v (x v (y v z)) = x v (y v z).  [para(2737(a,1),12548(a,1,1)),rewrite([5751(4),2737(7)])].
+12730 (x v y) v (x v (z v y)) = x v (z v y).  [para(2764(a,1),12548(a,1,1)),rewrite([5751(4),2764(7)])].
+13101 (x v y) v (x v z) = (x v y) v z.  [para(12684(a,1),12548(a,1,1)),rewrite([12730(6),12684(7)])].
+14172 (x v y) v (y v z) = x v (y v z).  [back_rewrite(12728),rewrite([13101(4)])].
+14240 (x v y) v z = x v (y v z).  [para(2591(a,1),13101(a,1,1)),rewrite([14172(3),2591(4)]),flip(a)].
+15060 $F # answer(assoc_meet).  [back_rewrite(2437),rewrite([14240(8)]),xx(a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% Proof 14 at 8.05 (+ 0.14) seconds: assoc_join.
+% Length of proof is 111.
+% Level of proof is 29.
+% Maximum clause weight is 37.000.
+% Given clauses 444.
+
+13 (x v y) v z = x v (y v z) # answer(assoc_join) # label(non_clause) # label(goal).  [goal].
+15 f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(f(y,y),z)),z))) = y # label(OML_Sh).  [assumption].
+16 x v y = f(f(x,x),f(y,y)) # label(Def_join).  [assumption].
+17 f(f(x,x),f(y,y)) = x v y.  [copy(16),flip(a)].
+18 x ^ y = f(f(x,y),f(x,y)) # label(Def_meet).  [assumption].
+19 f(f(x,y),f(x,y)) = x ^ y.  [copy(18),flip(a)].
+20 c(x) = f(x,x) # label(Def_complement).  [assumption].
+21 f(x,x) = c(x).  [copy(20),flip(a)].
+38 (c23 v c24) v c25 != c23 v (c24 v c25) # answer(assoc_join).  [deny(13)].
+40 c(f(x,y)) = x ^ y.  [back_rewrite(19),rewrite([21(3)])].
+41 f(c(x),c(y)) = x v y.  [back_rewrite(17),rewrite([21(1),21(2)])].
+42 f(f(f(f(x,y),f(y,z)),u),f(y,f(f(z,f(c(y),z)),z))) = y.  [back_rewrite(15),rewrite([21(5)])].
+43 x ^ x = c(c(x)).  [para(21(a,1),40(a,1,1)),flip(a)].
+45 c(c(x)) = x v x.  [para(41(a,1),21(a,1)),flip(a)].
+46 c(x) ^ c(y) = c(x v y).  [para(41(a,1),40(a,1,1)),flip(a)].
+50 x ^ x = x v x.  [back_rewrite(43),rewrite([45(3)])].
+52 f(f(f(c(x),f(x,y)),z),f(x,f(f(y,f(c(x),y)),y))) = x.  [para(21(a,1),42(a,1,1,1,1))].
+53 f(f(f(f(x,y),c(y)),z),f(y,f(f(y,f(c(y),y)),y))) = y.  [para(21(a,1),42(a,1,1,1,2))].
+54 f(f(x v x,y),f(x,f(f(x,f(c(x),x)),x))) = x.  [para(21(a,1),42(a,1,1,1)),rewrite([21(1),45(2)])].
+55 f(f(x,y) ^ f(y,z),f(y,f(f(z,f(c(y),z)),z))) = y.  [para(21(a,1),42(a,1,1)),rewrite([40(4)])].
+59 f(f(f(x v y,f(c(y),z)),u),f(c(y),f(f(z,f(y v y,z)),z))) = c(y).  [para(41(a,1),42(a,1,1,1,1)),rewrite([45(8)])].
+61 f(f(f(f(x,y),f(y,c(z))),u),f(y,f(f(c(z),y v z),c(z)))) = y.  [para(41(a,1),42(a,1,2,2,1,2))].
+62 f(f(x,y),f(x,f(f(f(f(z,f(c(x),z)),z),f(c(x),f(f(z,f(c(x),z)),z))),f(f(z,f(c(x),z)),z)))) = x.  [para(42(a,1),42(a,1,1,1))].
+65 f(x v x,c(y)) = c(x) v y.  [para(45(a,1),41(a,1,1))].
+66 f(c(x),y v y) = x v c(y).  [para(45(a,1),41(a,1,2))].
+68 c(x v x) = c(x) v c(x).  [para(45(a,1),45(a,1,1))].
+72 (x v x) ^ c(y) = c(c(x) v y).  [para(45(a,1),46(a,1,1))].
+77 f(x v x,y v y) = c(x) v c(y).  [para(45(a,1),65(a,1,2))].
+95 (x v x) ^ (y v y) = c(c(x) v c(y)).  [para(45(a,1),72(a,1,2))].
+158 f(x,f(c(x),f(f(y,f(x v x,y)),y))) = c(x).  [para(53(a,1),42(a,1,1)),rewrite([45(3)])].
+203 f(c(x) v y,f(x,f(f(x,f(c(x),x)),x))) = x.  [para(65(a,1),54(a,1,1))].
+304 f(f(x,y v y) ^ (c(y) v z),f(y v y,f(f(c(z),(y v y) v z),c(z)))) = y v y.  [para(65(a,1),55(a,1,1,2)),rewrite([68(9),65(12),45(9)])].
+776 f((x v x) v y,f(c(x),f(f(c(x),c(x) v x),c(x)))) = c(x).  [para(41(a,1),203(a,1,2,2,1,2)),rewrite([45(2)])].
+785 f(c(x),f(x v x,f(f(f(x,f(f(x,f(c(x),x)),x)),x),f(x,f(f(x,f(c(x),x)),x))))) = x v x.  [para(203(a,1),158(a,1,2,2,1,2)),rewrite([45(3),45(18)])].
+1263 f(f(f(x v c(y),c(y) v z),u),f(y v y,f(f(c(z),(y v y) v z),c(z)))) = y v y.  [para(66(a,1),61(a,1,1,1,1)),rewrite([65(5)])].
+1623 f(f(x,y),f(y,f(f(z,f(c(y),z)),z))) = y.  [para(62(a,1),42(a,1,1))].
+1625 f(c(x),f(x,f(f(y,f(c(x),y)),y))) = x.  [para(62(a,1),52(a,1,1))].
+1628 f(x v y,f(c(y),f(f(z,f(y v y,z)),z))) = c(y).  [para(62(a,1),59(a,1,1))].
+1630 f(c(x),f(x v x,x)) = x v x.  [back_rewrite(785),rewrite([1623(14)])].
+1647 f((x v x) ^ f(f(x v x,x),y),f(f(x v x,x),f(f(y,f((x v x) ^ x,y)),y))) = f(x v x,x).  [para(1630(a,1),55(a,1,1,1)),rewrite([40(10)])].
+1648 f(f(x,c(y)) ^ (y v y),f(c(y),f(f(f(y v y,y),f(y v y,f(y v y,y))),f(y v y,y)))) = c(y).  [para(1630(a,1),55(a,1,1,2)),rewrite([45(9)])].
+1693 f(c(x),f(x,f(f(c(y),x v y),c(y)))) = x.  [para(41(a,1),1625(a,1,2,2,1,2))].
+1739 x v x = x.  [para(1625(a,1),1625(a,1,2,2,1,2)),rewrite([1623(13),21(2),21(3),45(2)])].
+1786 f(f(x,c(y)) ^ y,f(c(y),f(f(c(y),f(y,c(y))),c(y)))) = c(y).  [back_rewrite(1648),rewrite([1739(3),1739(5),21(5),1739(6),1739(6),21(6),1739(9),21(9)])].
+1787 f(x ^ f(c(x),y),f(c(x),f(f(y,f(x,y)),y))) = c(x).  [back_rewrite(1647),rewrite([1739(1),1739(1),21(1),1739(4),21(4),1739(5),50(5),1739(5),1739(10),21(10)])].
+1798 f(x v y,f(c(y),f(f(z,f(y,z)),z))) = c(y).  [back_rewrite(1628),rewrite([1739(3)])].
+1958 f(f(f(x v c(y),c(y) v z),u),f(y,f(f(c(z),y v z),c(z)))) = y.  [back_rewrite(1263),rewrite([1739(7),1739(8),1739(14)])].
+2130 f(x v y,f(c(x),f(f(c(x),c(x) v x),c(x)))) = c(x).  [back_rewrite(776),rewrite([1739(1)])].
+2302 f(f(x,y) ^ (c(y) v z),f(y,f(f(c(z),y v z),c(z)))) = y.  [back_rewrite(304),rewrite([1739(1),1739(5),1739(6),1739(12)])].
+2374 x ^ y = c(c(x) v c(y)).  [back_rewrite(95),rewrite([1739(1),1739(1)])].
+2384 f(x,y) = c(x) v c(y).  [back_rewrite(77),rewrite([1739(1),1739(1)])].
+2392 c(c(x)) = x.  [back_rewrite(45),rewrite([1739(3)])].
+2400 (c(c(x) v c(y)) v c(c(y) v z)) v c(c(y) v c(c(z v c(y v z)) v z)) = y.  [back_rewrite(2302),rewrite([2384(1),2374(6),2384(12),2392(11),2384(14),2392(15),2384(15),2384(18),2392(10)])].
+2410 (c(x) v c(x v c(y))) v c(x v c(c(c(y) v c(c(x) v c(y))) v c(y))) = c(x).  [back_rewrite(1787),rewrite([2384(2),2392(2),2374(3),2384(8),2384(11),2384(14),2384(17),2392(8),2384(18),2392(7)])].
+2411 (c(c(x) v y) v c(y)) v c(y v c(c(y v c(c(y) v y)) v y)) = c(y).  [back_rewrite(1786),rewrite([2384(2),2392(3),2374(3),2384(10),2392(11),2384(11),2392(9),2384(13),2392(14),2384(14),2392(8),2384(15),2392(7)])].
+2450 c(x v y) v c(x v c(c(x v c(c(x) v x)) v x)) = c(x).  [back_rewrite(2130),rewrite([2384(6),2392(4),2384(8),2392(9),2384(9),2392(3),2384(10)])].
+2453 c(c(c(x v c(y)) v c(c(y) v z)) v c(u)) v c(c(y) v c(c(z v c(y v z)) v z)) = y.  [back_rewrite(1958),rewrite([2384(5),2384(8),2384(13),2392(12),2384(15),2392(16),2384(16),2384(19)])].
+2454 c(x v y) v c(y v c(c(c(z) v c(c(y) v c(z))) v c(z))) = c(y).  [back_rewrite(1798),rewrite([2384(3),2384(6),2384(9),2384(12),2392(3),2384(13)])].
+2465 x v c(c(x) v c(c(y v c(x v y)) v y)) = x.  [back_rewrite(1693),rewrite([2384(4),2392(3),2384(6),2392(7),2384(7),2384(10),2392(2)])].
+2479 c(x v c(c(x v c(c(x) v x)) v x)) = c(x).  [para(2450(a,1),1739(a,1)),flip(a)].
+2481 c(x v y) v c(x) = c(x).  [para(2450(a,1),2384(a,2)),rewrite([2384(10),2479(11)])].
+2485 (c(c(x) v y) v c(y)) v c(y) = c(y).  [back_rewrite(2411),rewrite([2479(14)])].
+2486 c(c(x) v y) v x = x.  [para(2392(a,1),2481(a,1,2)),rewrite([2392(6)])].
+2487 x v (x v y) = x v y.  [para(2481(a,1),2481(a,1,1,1)),rewrite([2392(2),2392(3),2392(5)])].
+2492 c(x) v c(c(c(y) v c(x)) v c(c(x) v z)) = c(c(c(y) v c(x)) v c(c(x) v z)).  [para(2400(a,1),2481(a,1,1,1))].
+2500 (c(c(x) v c(y)) v y) v y = y.  [para(2392(a,1),2485(a,1,1,2)),rewrite([2392(7),2392(8)])].
+2507 (c(x v c(y)) v y) v y = y.  [para(2392(a,1),2500(a,1,1,1,1,1))].
+2511 (c(x) v c(x v y)) v c(x v c(c(y v c(c(x) v y)) v y)) = c(x).  [para(2392(a,1),2410(a,1,1,2,1,2)),rewrite([2392(6),2392(7),2392(11)])].
+2513 (c(x) v c(x v c(y))) v c(x) = c(x) v c(x v c(y)).  [para(2410(a,1),2465(a,1,2,1,2,1,1,1,2,1)),rewrite([2392(25),2454(38),2392(13),2486(12)])].
+2517 c(x) v c(x v c(y)) = c(x).  [para(2410(a,1),2487(a,1,2)),rewrite([2513(7),2511(23)])].
+2529 (x v y) v x = x v y.  [para(2481(a,1),2517(a,1,2,1)),rewrite([2392(3),2392(3),2392(5)])].
+2533 x v c(c(x) v y) = x.  [para(2486(a,1),2529(a,1,1)),rewrite([2486(8)])].
+2552 c((c(x) v y) v c(z)) v c(c(x) v c(c(y v c(x v y)) v y)) = x.  [para(2481(a,1),2453(a,1,1,1,1,1)),rewrite([2392(4)])].
+2553 c(x v c(y)) v c(c(y) v c(c(z v c(y v z)) v z)) = y.  [para(2481(a,1),2453(a,1,1,1)),rewrite([2392(4)])].
+2560 c(c(x) v c(c(y v c(x v y)) v y)) = x.  [para(2453(a,1),2507(a,1,1)),rewrite([2533(10)]),flip(a)].
+2574 c(x v c(y)) v y = y.  [back_rewrite(2553),rewrite([2560(12)])].
+2575 c((c(x) v y) v c(z)) v x = x.  [back_rewrite(2552),rewrite([2560(14)])].
+2583 c(x v y) v c(y) = c(y).  [para(2392(a,1),2574(a,1,1,1,2))].
+2585 x v c(y v c(x)) = x.  [para(2574(a,1),2529(a,1,1)),rewrite([2574(8)])].
+2590 c(x) v c(y v x) = c(x).  [para(2392(a,1),2585(a,1,2,1,2))].
+2591 x v (y v x) = y v x.  [para(2583(a,1),2481(a,1,1,1)),rewrite([2392(2),2392(3),2392(5)])].
+2599 c((c(x) v y) v z) v x = x.  [para(2392(a,1),2575(a,1,1,1,2))].
+2612 c(c(x) v y) v (x v z) = x v z.  [para(2481(a,1),2599(a,1,1,1,1))].
+2614 x v c((c(x) v y) v z) = x.  [para(2599(a,1),2529(a,1,1)),rewrite([2599(10)])].
+2617 c(c(x) v y) v (z v x) = z v x.  [para(2583(a,1),2599(a,1,1,1,1))].
+2618 c((x v c(y)) v z) v y = y.  [para(2591(a,1),2599(a,1,1,1,1))].
+2619 c(x v (c(y) v z)) v y = y.  [para(2591(a,1),2599(a,1,1,1))].
+2650 x v c(y v (c(x) v z)) = x.  [para(2591(a,1),2614(a,1,2,1))].
+2656 c(x v (y v c(z))) v z = z.  [para(2591(a,1),2618(a,1,1,1))].
+2660 c(x v (y v z)) v c(y) = c(y).  [para(2392(a,1),2619(a,1,1,1,2,1))].
+2677 c(x v y) v c(c(c(z) v c(x v y)) v x) = c(c(c(z) v c(x v y)) v x).  [para(2481(a,1),2492(a,1,2,1,2,1)),rewrite([2392(9),2481(19),2392(17)])].
+2697 c(x) v c(y v (x v z)) = c(x).  [para(2392(a,1),2650(a,1,2,1,2,1))].
+2706 c(x v (y v z)) v c(z) = c(z).  [para(2392(a,1),2656(a,1,1,1,2,2))].
+2737 x v (y v (x v z)) = y v (x v z).  [para(2660(a,1),2481(a,1,1,1)),rewrite([2392(2),2392(4),2392(7)])].
+2764 x v (y v (z v x)) = y v (z v x).  [para(2706(a,1),2481(a,1,1,1)),rewrite([2392(2),2392(4),2392(7)])].
+5628 c(x v y) v c(y v x) = c(y v x).  [para(2585(a,1),2677(a,1,2,1,1,1)),rewrite([2392(2),2392(4),2392(8),2590(9),2392(7)])].
+5636 c(x v (y v z)) v c(y v x) = c(y v x).  [para(2650(a,1),2677(a,1,2,1,1,1)),rewrite([2392(2),2392(5),2392(9),2697(11),2392(8)])].
+5749 (x v y) v (y v x) = y v x.  [para(5628(a,1),2481(a,1,1,1)),rewrite([2392(3),2392(4),2392(6)])].
+5751 x v y = y v x.  [para(5628(a,1),2533(a,1,2,1)),rewrite([2392(4),5749(3)])].
+5754 (x v y) v c(c(y v x) v z) = x v y.  [para(5628(a,1),2599(a,1,1,1,1)),rewrite([5751(6)])].
+6160 c25 v (c23 v c24) != c23 v (c24 v c25) # answer(assoc_join).  [back_rewrite(38),rewrite([5751(5)])].
+12548 (x v (y v z)) v (y v x) = x v (y v z).  [para(5636(a,1),2533(a,1,2,1)),rewrite([2392(5)])].
+12684 (x v y) v ((x v z) v y) = (x v z) v y.  [para(5636(a,1),5754(a,1,2,1)),rewrite([2392(5),5751(4)])].
+12718 c(c(x v y) v z) v (y v (x v u)) = y v (x v u).  [para(12548(a,1),2617(a,1,2)),rewrite([12548(11)])].
+12728 (x v y) v (x v (y v z)) = x v (y v z).  [para(2737(a,1),12548(a,1,1)),rewrite([5751(4),2737(7)])].
+12730 (x v y) v (x v (z v y)) = x v (z v y).  [para(2764(a,1),12548(a,1,1)),rewrite([5751(4),2764(7)])].
+13101 (x v y) v (x v z) = (x v y) v z.  [para(12684(a,1),12548(a,1,1)),rewrite([12730(6),12684(7)])].
+14172 (x v y) v (y v z) = x v (y v z).  [back_rewrite(12728),rewrite([13101(4)])].
+14240 (x v y) v z = x v (y v z).  [para(2591(a,1),13101(a,1,1)),rewrite([14172(3),2591(4)]),flip(a)].
+14251 x v (y v z) = y v (x v z).  [para(13101(a,1),2612(a,2)),rewrite([14240(7),2737(7),12718(7),14240(4)])].
+15086 $F # answer(assoc_join).  [back_rewrite(6160),rewrite([14251(5),5751(4)]),xx(a)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=444. Generated=236940. Kept=15042. proofs=14.
+Usable=84. Sos=728. Demods=1632. Limbo=833, Disabled=13415. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=750.
+Forward_subsumed=221137. Back_subsumed=894.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=10409 (3 lex), Back_demodulated=12500. Back_unit_deleted=0.
+Demod_attempts=3923745. Demod_rewrites=585412.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=14.17.
+User_CPU=8.05, System_CPU=0.14, Wall_clock=8.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 14 proofs.
+
+Process 4332 exit (max_proofs) Tue Nov  3 09:38:57 2009

@@ -1,0 +1,58 @@
+# insert new stuff
+
+/-- Site navigation menu --/i\
+<!-- Site navigation menu -->\
+\
+<ul class="navbar">\
+  <li><a href="index.html">Introduction</a>\
+  <li><a href="install.html">Installation</a>\
+  <li><a href="running.html">Running Prover9</a>\
+  <li><a href="input.html">Input Files</a>\
+  <li><a href="syntax.html">Clauses & Formulas</a>\
+  <li>Search Prep\
+  <ul class="navbar2">\
+    <li><a href="auto.html">Auto Modes</a>\
+    <li><a href="term-order.html">Term Ordering</a>\
+    <li><a href="more-prep.html">More Prep</a>\
+    <li><a href="limits.html">Search Limits</a>\
+  </ul>\
+  <li>Inference\
+  <ul class="navbar2">\
+    <li><a href="loop.html">The Loop</a>\
+    <li><a href="select.html">Select Given</a>\
+    <li><a href="inf-rules.html">Inference Rules</a>\
+    <li><a href="process-inf.html">Process Inferred</a>\
+  </ul>\
+  <li><a href="output.html">Output Files</a>\
+  <li>More Features\
+  <ul class="navbar2">\
+    <li><a href="weight.html">Weighting</a>\
+    <li><a href="attributes.html">Attributes</a>\
+    <li><a href="actions.html">Actions</a>\
+    <li><a href="fof-reduction.html">FOF Reduction</a>\
+    <li><a href="goals.html">Goals</a>\
+    <li><a href="hints.html">Hints</a>\
+    <li><a href="semantics.html">Semantics</a>\
+  </ul>\
+  <li>Related Programs\
+  <ul class="navbar2">\
+    <li><a href="prooftrans.html">Prooftrans</a>\
+    <li><a href="mace4.html">Mace4</a>\
+  </ul>\
+  <li>Ending\
+  <ul class="navbar2">\
+    <li><a href="options.html">All Options</a>\
+    <li><a href="glossary.html">Glossary</a>\
+    <li><a href="manual-index.html">Index</a>\
+    <li><a href="references.html">References</a>\
+  </ul>\
+</ul>\
+\
+<div class="header">Prover9 Manual Version June-2006</div>\
+\
+<!-- Main content -->
+
+# get rid of old stuff
+
+/-- Site navigation menu --/,/-- Main content --/d
+

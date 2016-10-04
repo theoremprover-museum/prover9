@@ -1,0 +1,448 @@
+============================== Prover9 ===============================
+Prover9 (32) version 2009-11A, November 2009.
+Process 5143 was started by mccune on cleo,
+Tue Nov  3 09:46:11 2009
+The command was "/home/mccune/LADR/bin/prover9 -f wang-eq.in wang2-eq.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file wang-eq.in
+
+
+formulas(sos).
+y = m | p(y,m) | v1 = m | v1 = y | -p(y,v1) | -p(v1,y).
+y = b | -p(y,b) | v = b | v = y | -p(y,v) | -p(v,y).
+y = k | y = m | y = b | -p(y,k).
+y = m | -p(y,m) | f(y) != m.
+y = m | -p(y,m) | f(y) != y.
+y = m | -p(y,m) | p(y,f(y)).
+y = m | -p(y,m) | p(f(y),y).
+y = b | p(y,b) | g(y) != b.
+y = b | p(y,b) | g(y) != y.
+y = b | p(y,b) | p(y,g(y)).
+y = b | p(y,b) | p(g(y),y).
+y = k | y != m | p(y,k).
+y = k | y != b | p(y,k).
+end_of_list.
+
+% Reading from file wang2-eq.in
+
+assign(max_seconds,60).
+
+formulas(sos).
+m != b.
+b = k | k = m.
+y = j | -p(y,j) | y = k.
+y = j | p(y,j) | y != k.
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+x = m | p(x,m) | y = m | y = x | -p(x,y) | -p(y,x).  [assumption].
+x = b | -p(x,b) | y = b | y = x | -p(x,y) | -p(y,x).  [assumption].
+x = k | x = m | x = b | -p(x,k).  [assumption].
+x = m | -p(x,m) | f(x) != m.  [assumption].
+x = m | -p(x,m) | f(x) != x.  [assumption].
+x = m | -p(x,m) | p(x,f(x)).  [assumption].
+x = m | -p(x,m) | p(f(x),x).  [assumption].
+x = b | p(x,b) | g(x) != b.  [assumption].
+x = b | p(x,b) | g(x) != x.  [assumption].
+x = b | p(x,b) | p(x,g(x)).  [assumption].
+x = b | p(x,b) | p(g(x),x).  [assumption].
+x = k | x != m | p(x,k).  [assumption].
+x = k | x != b | p(x,k).  [assumption].
+m != b.  [assumption].
+b = k | k = m.  [assumption].
+x = j | -p(x,j) | x = k.  [assumption].
+x = j | p(x,j) | x != k.  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Auto_denials:  (non-Horn, no changes).
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ =, p ]).
+Function symbol precedence:  function_order([ b, m, k, j, f, g ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(paramodulation).  % (positive equality literals)
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+           1 x = m | p(x,m) | y = m | y = x | -p(x,y) | -p(y,x).  [assumption].
+kept:      2 m = x | p(x,m) | m = y | y = x | -p(x,y) | -p(y,x).  [copy(1),flip(a),flip(c)].
+           3 x = b | -p(x,b) | y = b | y = x | -p(x,y) | -p(y,x).  [assumption].
+kept:      4 b = x | -p(x,b) | b = y | y = x | -p(x,y) | -p(y,x).  [copy(3),flip(a),flip(c)].
+           5 x = k | x = m | x = b | -p(x,k).  [assumption].
+kept:      6 k = x | m = x | b = x | -p(x,k).  [copy(5),flip(a),flip(b),flip(c)].
+           7 x = m | -p(x,m) | f(x) != m.  [assumption].
+kept:      8 m = x | -p(x,m) | f(x) != m.  [copy(7),flip(a)].
+           9 x = m | -p(x,m) | f(x) != x.  [assumption].
+kept:      10 m = x | -p(x,m) | f(x) != x.  [copy(9),flip(a)].
+           11 x = m | -p(x,m) | p(x,f(x)).  [assumption].
+kept:      12 m = x | -p(x,m) | p(x,f(x)).  [copy(11),flip(a)].
+           13 x = m | -p(x,m) | p(f(x),x).  [assumption].
+kept:      14 m = x | -p(x,m) | p(f(x),x).  [copy(13),flip(a)].
+           15 x = b | p(x,b) | g(x) != b.  [assumption].
+kept:      16 b = x | p(x,b) | g(x) != b.  [copy(15),flip(a)].
+           17 x = b | p(x,b) | g(x) != x.  [assumption].
+kept:      18 b = x | p(x,b) | g(x) != x.  [copy(17),flip(a)].
+           19 x = b | p(x,b) | p(x,g(x)).  [assumption].
+kept:      20 b = x | p(x,b) | p(x,g(x)).  [copy(19),flip(a)].
+           21 x = b | p(x,b) | p(g(x),x).  [assumption].
+kept:      22 b = x | p(x,b) | p(g(x),x).  [copy(21),flip(a)].
+           23 x = k | x != m | p(x,k).  [assumption].
+kept:      24 k = x | m != x | p(x,k).  [copy(23),flip(a),flip(b)].
+           25 x = k | x != b | p(x,k).  [assumption].
+kept:      26 k = x | b != x | p(x,k).  [copy(25),flip(a),flip(b)].
+kept:      27 m != b.  [assumption].
+           28 b = k | k = m.  [assumption].
+kept:      29 k = b | k = m.  [copy(28),flip(a)].
+           30 x = j | -p(x,j) | x = k.  [assumption].
+kept:      31 j = x | -p(x,j) | k = x.  [copy(30),flip(a),flip(c)].
+           32 x = j | p(x,j) | x != k.  [assumption].
+kept:      33 j = x | p(x,j) | k != x.  [copy(32),flip(a),flip(c)].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+2 m = x | p(x,m) | m = y | y = x | -p(x,y) | -p(y,x).  [copy(1),flip(a),flip(c)].
+4 b = x | -p(x,b) | b = y | y = x | -p(x,y) | -p(y,x).  [copy(3),flip(a),flip(c)].
+6 k = x | m = x | b = x | -p(x,k).  [copy(5),flip(a),flip(b),flip(c)].
+8 m = x | -p(x,m) | f(x) != m.  [copy(7),flip(a)].
+10 m = x | -p(x,m) | f(x) != x.  [copy(9),flip(a)].
+12 m = x | -p(x,m) | p(x,f(x)).  [copy(11),flip(a)].
+14 m = x | -p(x,m) | p(f(x),x).  [copy(13),flip(a)].
+16 b = x | p(x,b) | g(x) != b.  [copy(15),flip(a)].
+18 b = x | p(x,b) | g(x) != x.  [copy(17),flip(a)].
+20 b = x | p(x,b) | p(x,g(x)).  [copy(19),flip(a)].
+22 b = x | p(x,b) | p(g(x),x).  [copy(21),flip(a)].
+24 k = x | m != x | p(x,k).  [copy(23),flip(a),flip(b)].
+26 k = x | b != x | p(x,k).  [copy(25),flip(a),flip(b)].
+27 m != b.  [assumption].
+29 k = b | k = m.  [copy(28),flip(a)].
+31 j = x | -p(x,j) | k = x.  [copy(30),flip(a),flip(c)].
+33 j = x | p(x,j) | k != x.  [copy(32),flip(a),flip(c)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.01 seconds.
+
+given #1 (I,wt=18): 2 m = x | p(x,m) | m = y | y = x | -p(x,y) | -p(y,x).  [copy(1),flip(a),flip(c)].
+
+given #2 (I,wt=18): 4 b = x | -p(x,b) | b = y | y = x | -p(x,y) | -p(y,x).  [copy(3),flip(a),flip(c)].
+
+given #3 (I,wt=12): 6 k = x | m = x | b = x | -p(x,k).  [copy(5),flip(a),flip(b),flip(c)].
+
+given #4 (I,wt=10): 8 m = x | -p(x,m) | f(x) != m.  [copy(7),flip(a)].
+
+given #5 (I,wt=10): 10 m = x | -p(x,m) | f(x) != x.  [copy(9),flip(a)].
+
+given #6 (I,wt=10): 12 m = x | -p(x,m) | p(x,f(x)).  [copy(11),flip(a)].
+
+given #7 (I,wt=10): 14 m = x | -p(x,m) | p(f(x),x).  [copy(13),flip(a)].
+
+given #8 (I,wt=10): 16 b = x | p(x,b) | g(x) != b.  [copy(15),flip(a)].
+
+given #9 (I,wt=10): 18 b = x | p(x,b) | g(x) != x.  [copy(17),flip(a)].
+
+given #10 (I,wt=10): 20 b = x | p(x,b) | p(x,g(x)).  [copy(19),flip(a)].
+
+given #11 (I,wt=10): 22 b = x | p(x,b) | p(g(x),x).  [copy(21),flip(a)].
+
+given #12 (I,wt=9): 24 k = x | m != x | p(x,k).  [copy(23),flip(a),flip(b)].
+
+given #13 (I,wt=9): 26 k = x | b != x | p(x,k).  [copy(25),flip(a),flip(b)].
+
+given #14 (I,wt=3): 27 m != b.  [assumption].
+
+given #15 (I,wt=6): 29 k = b | k = m.  [copy(28),flip(a)].
+
+given #16 (I,wt=9): 31 j = x | -p(x,j) | k = x.  [copy(30),flip(a),flip(c)].
+
+given #17 (I,wt=9): 33 j = x | p(x,j) | k != x.  [copy(32),flip(a),flip(c)].
+
+given #18 (A,wt=22): 34 b = x | p(x,b) | g(x) = b | -p(g(x),b) | g(x) = x | -p(g(x),x).  [resolve(20,c,4,f),flip(c),flip(f),merge(e)].
+
+given #19 (T,wt=6): 45 k = m | p(m,k).  [xx_res(24,b)].
+
+given #20 (T,wt=6): 46 k = b | p(b,k).  [xx_res(26,b)].
+
+given #21 (T,wt=6): 50 j = k | p(k,j).  [xx_res(33,c)].
+
+given #22 (T,wt=6): 53 k = b | p(b,m).  [para(29(b,1),46(b,2)),merge(b)].
+
+given #23 (A,wt=25): 35 b = x | p(x,b) | g(x) = m | p(g(x),m) | m = x | g(x) = x | -p(g(x),x).  [resolve(20,c,2,f),flip(c),flip(f)].
+
+given #24 (T,wt=7): 59 k = b | p(f(b),b).  [resolve(53,b,14,b),unit_del(b,27)].
+
+given #25 (T,wt=7): 60 k = b | p(b,f(b)).  [resolve(53,b,12,b),unit_del(b,27)].
+
+given #26 (T,wt=7): 61 k = b | f(b) != b.  [resolve(53,b,10,b),unit_del(b,27)].
+
+given #27 (T,wt=7): 62 k = b | f(b) != m.  [resolve(53,b,8,b),unit_del(b,27)].
+
+given #28 (A,wt=24): 36 b = x | p(x,b) | m = x | p(x,m) | g(x) = m | g(x) = x | -p(g(x),x).  [resolve(20,c,2,e),flip(e)].
+
+given #29 (T,wt=9): 49 j = m | p(m,j) | k = b.  [resolve(33,c,29,b)].
+
+given #30 (T,wt=9): 58 k = b | j = k | p(m,j).  [para(29(b,1),50(b,1))].
+
+given #31 (T,wt=12): 40 p(m,b) | g(m) = m | f(g(m)) != m.  [resolve(22,c,8,b),flip(a),flip(c),unit_del(a,27)].
+
+given #32 (T,wt=12): 51 k = b | j = x | p(x,j) | m != x.  [para(29(b,1),33(c,1))].
+
+given #33 (A,wt=13): 37 p(m,b) | g(m) = m | p(f(g(m)),g(m)).  [resolve(22,c,14,b),flip(a),flip(c),unit_del(a,27)].
+
+given #34 (T,wt=13): 38 p(m,b) | g(m) = m | p(g(m),f(g(m))).  [resolve(22,c,12,b),flip(a),flip(c),unit_del(a,27)].
+
+given #35 (T,wt=13): 39 p(m,b) | g(m) = m | f(g(m)) != g(m).  [resolve(22,c,10,b),flip(a),flip(c),unit_del(a,27)].
+
+given #36 (T,wt=14): 48 g(j) = j | g(j) = k | j = b | p(j,b).  [resolve(31,b,22,c),flip(a),flip(b),flip(c)].
+
+given #37 (T,wt=15): 47 k = b | k = x | m = x | b = x | -p(x,m).  [para(29(b,1),6(d,2))].
+
+given #38 (A,wt=18): 41 k = b | p(k,b) | g(k) = k | g(k) = m | g(k) = b.  [resolve(22,c,6,d),flip(a),flip(c),flip(d),flip(e)].
+
+given #39 (T,wt=15): 54 j = k | j = b | -p(j,b) | k = b | -p(j,k).  [resolve(50,b,4,f),flip(b),flip(d),flip(e),merge(e)].
+
+given #40 (T,wt=15): 55 j = k | k = b | -p(k,b) | j = b | -p(j,k).  [resolve(50,b,4,e),flip(b),flip(d),merge(e)].
+
+given #41 (T,wt=15): 56 j = k | j = m | p(j,m) | k = m | -p(j,k).  [resolve(50,b,2,f),flip(b),flip(d),flip(e),merge(e)].
+
+given #42 (T,wt=15): 57 j = k | k = m | p(k,m) | j = m | -p(j,k).  [resolve(50,b,2,e),flip(b),flip(d),merge(e)].
+
+given #43 (A,wt=18): 52 b = x | p(x,b) | g(x) = b | -p(g(x),b) | g(x) = x.  [resolve(34,f,22,c),merge(f),merge(g)].
+
+given #44 (T,wt=15): 68 j = m | k = b | j = b | -p(j,b) | -p(j,m).  [resolve(49,b,4,f),flip(c),flip(e),flip(f),merge(f),unit_del(e,27)].
+
+given #45 (T,wt=15): 69 j = m | k = b | -p(m,b) | j = b | -p(j,m).  [resolve(49,b,4,e),flip(c),flip(e),merge(f),unit_del(c,27)].
+
+given #46 (T,wt=15): 84 k = b | j = k | j = b | -p(j,b) | -p(j,m).  [para(29(b,1),54(e,2)),merge(e)].
+
+given #47 (T,wt=15): 85 k = b | j = k | -p(k,b) | j = b | -p(j,m).  [para(29(b,1),55(e,2)),merge(c)].
+
+given #48 (A,wt=21): 63 b = x | p(x,b) | g(x) = m | p(g(x),m) | m = x | g(x) = x.  [resolve(35,g,22,c),merge(g),merge(h)].
+
+given #49 (T,wt=18): 81 k = b | g(m) = k | g(m) = m | g(m) = b | p(m,b).  [resolve(47,e,22,c),flip(b),flip(c),flip(d),flip(e),unit_del(e,27)].
+
+given #50 (T,wt=18): 83 k = b | p(m,b) | g(k) = k | g(k) = m | g(k) = b.  [para(29(b,1),41(b,1)),merge(b)].
+
+given #51 (T,wt=19): 65 k = b | f(b) = m | p(f(b),m) | f(b) = b | -p(b,f(b)).  [resolve(59,b,2,e),flip(b),flip(e),unit_del(d,27)].
+
+given #52 (T,wt=15): 94 k = b | f(b) = m | p(f(b),m) | f(b) = b.  [resolve(65,e,60,b),merge(e)].
+
+given #53 (A,wt=22): 64 k = b | f(b) = b | b = x | f(b) = x | -p(f(b),x) | -p(x,f(b)).  [resolve(59,b,4,b),flip(b),flip(d)].
+
+given #54 (T,wt=15): 95 k = b | f(b) = m | f(b) = b | f(b) = k.  [resolve(94,c,47,e),flip(e),flip(f),flip(g),merge(d),merge(f),merge(g)].
+
+given #55 (T,wt=11): 104 k = b | f(b) = m | f(b) = b.  [para(29(b,1),95(d,2)),merge(b),merge(e)].
+
+given #56 (T,wt=7): 105 k = b | f(b) = b.  [resolve(104,b,62,b),merge(c)].
+
+given #57 (T,wt=3): 106 k = b.  [resolve(105,b,61,b),merge(b)].
+
+given #58 (A,wt=20): 67 b = x | p(x,b) | m = x | p(x,m) | g(x) = m | g(x) = x.  [resolve(36,g,22,c),merge(g),merge(h)].
+
+given #59 (T,wt=3): 114 p(m,b).  [back_rewrite(45),rewrite([106(1),106(5)]),flip(a),unit_del(a,27)].
+
+given #60 (T,wt=6): 112 j = b | p(b,j).  [back_rewrite(50),rewrite([106(2),106(4)])].
+
+given #61 (T,wt=9): 115 j = x | p(x,j) | b != x.  [back_rewrite(33),rewrite([106(5)])].
+
+given #62 (T,wt=9): 116 j = x | -p(x,j) | b = x.  [back_rewrite(31),rewrite([106(5)])].
+
+given #63 (A,wt=23): 87 b = x | p(x,b) | g(x) = m | m = x | g(x) = x | p(f(g(x)),g(x)).  [resolve(63,d,14,b),flip(f),merge(f)].
+
+given #64 (T,wt=9): 117 b = x | m != x | p(x,b).  [back_rewrite(24),rewrite([106(1),106(5)])].
+
+given #65 (T,wt=9): 118 b = x | m = x | -p(x,b).  [back_rewrite(6),rewrite([106(1),106(7)]),merge(c)].
+
+given #66 (T,wt=12): 110 j = b | p(b,m) | j = m | -p(j,b).  [back_rewrite(57),rewrite([106(2),106(4),106(7),106(14)]),flip(b),unit_del(b,27)].
+
+given #67 (T,wt=12): 111 j = b | j = m | p(j,m) | -p(j,b).  [back_rewrite(56),rewrite([106(2),106(10),106(14)]),flip(d),unit_del(d,27)].
+
+given #68 (A,wt=23): 88 b = x | p(x,b) | g(x) = m | m = x | g(x) = x | p(g(x),f(g(x))).  [resolve(63,d,12,b),flip(f),merge(f)].
+
+given #69 (T,wt=12): 125 b = x | m = x | -p(m,x) | -p(x,m).  [resolve(114,a,4,b),flip(a),flip(c),unit_del(a,27)].
+
+given #70 (T,wt=14): 113 g(j) = j | g(j) = b | j = b | p(j,b).  [back_rewrite(48),rewrite([106(7)])].
+
+given #71 (T,wt=14): 130 g(j) = j | g(j) = b | j = b | j = m.  [resolve(113,d,118,c),flip(d),flip(e),merge(d)].
+
+given #72 (T,wt=13): 131 g(j) = b | j = b | j = m | p(j,b).  [resolve(130,a,18,c),flip(d),merge(d)].
+
+given #73 (A,wt=23): 89 b = x | p(x,b) | g(x) = m | m = x | g(x) = x | f(g(x)) != g(x).  [resolve(63,d,10,b),flip(f),merge(f)].
+
+given #74 (T,wt=10): 132 g(j) = b | j = b | j = m.  [resolve(131,d,118,c),flip(d),flip(e),merge(d),merge(e)].
+
+given #75 (T,wt=9): 133 j = b | j = m | p(j,b).  [resolve(132,a,16,c),flip(c),merge(c)].
+
+given #76 (T,wt=6): 135 j = b | j = m.  [resolve(133,c,118,c),flip(c),flip(d),merge(c),merge(d)].
+
+given #77 (T,wt=6): 136 j = b | p(j,b).  [resolve(135,b,117,b(flip)),flip(b),merge(b)].
+
+given #78 (A,wt=22): 90 b = x | p(x,b) | g(x) = m | m = x | g(x) = x | f(g(x)) != m.  [resolve(63,d,8,b),flip(f),merge(f)].
+
+given #79 (T,wt=6): 137 j = b | p(b,m).  [para(135(b,1),112(b,2)),merge(b)].
+
+given #80 (T,wt=7): 139 j = b | p(f(b),b).  [resolve(137,b,14,b),unit_del(b,27)].
+
+given #81 (T,wt=7): 140 j = b | p(b,f(b)).  [resolve(137,b,12,b),unit_del(b,27)].
+
+given #82 (T,wt=7): 141 j = b | f(b) != b.  [resolve(137,b,10,b),unit_del(b,27)].
+
+given #83 (A,wt=25): 119 b = x | p(x,b) | g(x) = m | m = x | g(x) = x | g(x) = b | -p(m,g(x)).  [back_unit_del(91),unit_del(f,114)].
+
+given #84 (T,wt=7): 142 j = b | f(b) != m.  [resolve(137,b,8,b),unit_del(b,27)].
+
+given #85 (T,wt=11): 143 j = b | f(b) = b | f(b) = m.  [resolve(139,b,118,c),flip(b),flip(c)].
+
+given #86 (T,wt=7): 145 j = b | f(b) = b.  [resolve(143,c,142,b),merge(c)].
+
+given #87 (T,wt=3): 146 j = b.  [resolve(145,b,141,b),merge(b)].
+
+given #88 (A,wt=21): 120 b = x | p(x,b) | m = x | g(x) = m | g(x) = x | p(f(x),x).  [resolve(67,d,14,b),merge(f)].
+
+given #89 (T,wt=6): 147 b = x | -p(x,b).  [back_rewrite(116),rewrite([146(1),146(3)]),merge(c)].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.02 (+ 0.00) seconds.
+% Length of proof is 64.
+% Level of proof is 23.
+% Maximum clause weight is 19.000.
+% Given clauses 89.
+
+1 x = m | p(x,m) | y = m | y = x | -p(x,y) | -p(y,x).  [assumption].
+2 m = x | p(x,m) | m = y | y = x | -p(x,y) | -p(y,x).  [copy(1),flip(a),flip(c)].
+5 x = k | x = m | x = b | -p(x,k).  [assumption].
+6 k = x | m = x | b = x | -p(x,k).  [copy(5),flip(a),flip(b),flip(c)].
+7 x = m | -p(x,m) | f(x) != m.  [assumption].
+8 m = x | -p(x,m) | f(x) != m.  [copy(7),flip(a)].
+9 x = m | -p(x,m) | f(x) != x.  [assumption].
+10 m = x | -p(x,m) | f(x) != x.  [copy(9),flip(a)].
+11 x = m | -p(x,m) | p(x,f(x)).  [assumption].
+12 m = x | -p(x,m) | p(x,f(x)).  [copy(11),flip(a)].
+13 x = m | -p(x,m) | p(f(x),x).  [assumption].
+14 m = x | -p(x,m) | p(f(x),x).  [copy(13),flip(a)].
+15 x = b | p(x,b) | g(x) != b.  [assumption].
+16 b = x | p(x,b) | g(x) != b.  [copy(15),flip(a)].
+17 x = b | p(x,b) | g(x) != x.  [assumption].
+18 b = x | p(x,b) | g(x) != x.  [copy(17),flip(a)].
+21 x = b | p(x,b) | p(g(x),x).  [assumption].
+22 b = x | p(x,b) | p(g(x),x).  [copy(21),flip(a)].
+23 x = k | x != m | p(x,k).  [assumption].
+24 k = x | m != x | p(x,k).  [copy(23),flip(a),flip(b)].
+25 x = k | x != b | p(x,k).  [assumption].
+26 k = x | b != x | p(x,k).  [copy(25),flip(a),flip(b)].
+27 m != b.  [assumption].
+28 b = k | k = m.  [assumption].
+29 k = b | k = m.  [copy(28),flip(a)].
+30 x = j | -p(x,j) | x = k.  [assumption].
+31 j = x | -p(x,j) | k = x.  [copy(30),flip(a),flip(c)].
+32 x = j | p(x,j) | x != k.  [assumption].
+33 j = x | p(x,j) | k != x.  [copy(32),flip(a),flip(c)].
+45 k = m | p(m,k).  [xx_res(24,b)].
+46 k = b | p(b,k).  [xx_res(26,b)].
+47 k = b | k = x | m = x | b = x | -p(x,m).  [para(29(b,1),6(d,2))].
+48 g(j) = j | g(j) = k | j = b | p(j,b).  [resolve(31,b,22,c),flip(a),flip(b),flip(c)].
+50 j = k | p(k,j).  [xx_res(33,c)].
+53 k = b | p(b,m).  [para(29(b,1),46(b,2)),merge(b)].
+59 k = b | p(f(b),b).  [resolve(53,b,14,b),unit_del(b,27)].
+60 k = b | p(b,f(b)).  [resolve(53,b,12,b),unit_del(b,27)].
+61 k = b | f(b) != b.  [resolve(53,b,10,b),unit_del(b,27)].
+62 k = b | f(b) != m.  [resolve(53,b,8,b),unit_del(b,27)].
+65 k = b | f(b) = m | p(f(b),m) | f(b) = b | -p(b,f(b)).  [resolve(59,b,2,e),flip(b),flip(e),unit_del(d,27)].
+94 k = b | f(b) = m | p(f(b),m) | f(b) = b.  [resolve(65,e,60,b),merge(e)].
+95 k = b | f(b) = m | f(b) = b | f(b) = k.  [resolve(94,c,47,e),flip(e),flip(f),flip(g),merge(d),merge(f),merge(g)].
+104 k = b | f(b) = m | f(b) = b.  [para(29(b,1),95(d,2)),merge(b),merge(e)].
+105 k = b | f(b) = b.  [resolve(104,b,62,b),merge(c)].
+106 k = b.  [resolve(105,b,61,b),merge(b)].
+112 j = b | p(b,j).  [back_rewrite(50),rewrite([106(2),106(4)])].
+113 g(j) = j | g(j) = b | j = b | p(j,b).  [back_rewrite(48),rewrite([106(7)])].
+114 p(m,b).  [back_rewrite(45),rewrite([106(1),106(5)]),flip(a),unit_del(a,27)].
+116 j = x | -p(x,j) | b = x.  [back_rewrite(31),rewrite([106(5)])].
+118 b = x | m = x | -p(x,b).  [back_rewrite(6),rewrite([106(1),106(7)]),merge(c)].
+130 g(j) = j | g(j) = b | j = b | j = m.  [resolve(113,d,118,c),flip(d),flip(e),merge(d)].
+131 g(j) = b | j = b | j = m | p(j,b).  [resolve(130,a,18,c),flip(d),merge(d)].
+132 g(j) = b | j = b | j = m.  [resolve(131,d,118,c),flip(d),flip(e),merge(d),merge(e)].
+133 j = b | j = m | p(j,b).  [resolve(132,a,16,c),flip(c),merge(c)].
+135 j = b | j = m.  [resolve(133,c,118,c),flip(c),flip(d),merge(c),merge(d)].
+137 j = b | p(b,m).  [para(135(b,1),112(b,2)),merge(b)].
+139 j = b | p(f(b),b).  [resolve(137,b,14,b),unit_del(b,27)].
+141 j = b | f(b) != b.  [resolve(137,b,10,b),unit_del(b,27)].
+142 j = b | f(b) != m.  [resolve(137,b,8,b),unit_del(b,27)].
+143 j = b | f(b) = b | f(b) = m.  [resolve(139,b,118,c),flip(b),flip(c)].
+145 j = b | f(b) = b.  [resolve(143,c,142,b),merge(c)].
+146 j = b.  [resolve(145,b,141,b),merge(b)].
+147 b = x | -p(x,b).  [back_rewrite(116),rewrite([146(1),146(3)]),merge(c)].
+149 $F.  [resolve(147,b,114,a),flip(a),unit_del(a,27)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=89. Generated=399. Kept=132. proofs=1.
+Usable=25. Sos=9. Demods=2. Limbo=0, Disabled=115. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=266. Back_subsumed=82.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=2 (0 lex), Back_demodulated=15. Back_unit_deleted=1.
+Demod_attempts=3491. Demod_rewrites=55.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=423. Nonunit_bsub_feature_tests=301.
+Megabytes=0.13.
+User_CPU=0.02, System_CPU=0.01, Wall_clock=1.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 1 proof.
+
+Process 5143 exit (max_proofs) Tue Nov  3 09:46:12 2009

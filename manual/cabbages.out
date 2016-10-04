@@ -1,0 +1,222 @@
+============================== Prover9 ===============================
+Prover9 (32) version 2009-11A, November 2009.
+Process 25639 was started by mccune on cleo,
+Tue Nov  3 17:08:22 2009
+The command was "/home/mccune/LADR/bin/prover9 -f cabbages.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file cabbages.in
+
+set(production).
+    % set(production) -> set(raw).
+    % set(raw) -> clear(auto).
+    % clear(auto) -> clear(auto_inference).
+    % clear(auto) -> clear(auto_setup).
+    % clear(auto_setup) -> clear(predicate_elim).
+    % clear(auto_setup) -> assign(eq_defs, pass).
+    % clear(auto) -> clear(auto_limits).
+    % clear(auto_limits) -> assign(max_weight, "1000000000000.000").
+    % clear(auto_limits) -> assign(sos_limit, -1).
+    % clear(auto) -> clear(auto_denials).
+    % clear(auto) -> clear(auto_process).
+    % set(raw) -> clear(ordered_res).
+    % set(raw) -> clear(ordered_para).
+    % set(raw) -> set(para_into_vars).
+    % set(raw) -> set(para_from_small).
+    % set(raw) -> clear(ordered_para).
+    % set(raw) -> clear(back_demod).
+    % set(raw) -> clear(cac_redundancy).
+    % set(raw) -> assign(backsub_check, 2147483647).
+    % set(raw) -> set(lightest_first).
+    % set(lightest_first) -> assign(weight_part, 1).
+    % set(lightest_first) -> assign(age_part, 0).
+    % set(lightest_first) -> assign(false_part, 0).
+    % set(lightest_first) -> assign(true_part, 0).
+    % set(lightest_first) -> assign(random_part, 0).
+    % set(raw) -> assign(literal_selection, none).
+    % set(production) -> set(eval_rewrite).
+    % set(production) -> set(hyper_resolution).
+    % set(hyper_resolution) -> set(pos_hyper_resolution).
+    % set(production) -> clear(back_subsume).
+set(prolog_style_variables).
+
+formulas(usable).
+state(Side,W,G,C) & ok(W,G,C) -> state(otherside(Side),flip(W),flip(G),flip(C)) # answer(none).
+state(Side,1,G,C) & ok(0,G,C) -> state(otherside(Side),1,flip(G),flip(C)) # answer(wolf).
+state(Side,W,1,C) & ok(W,0,C) -> state(otherside(Side),flip(W),1,flip(C)) # answer(goat).
+state(Side,W,G,1) & ok(W,G,0) -> state(otherside(Side),flip(W),flip(G),1) # answer(cabbage).
+end_of_list.
+
+formulas(assumptions).
+state(west,1,1,1).
+end_of_list.
+
+formulas(goals).
+state(east,1,1,1).
+end_of_list.
+
+formulas(demodulators).
+flip(0) = 1.
+flip(1) = 0.
+otherside(east) = west.
+otherside(west) = east.
+ok(W,G,C) <-> if(W == 1 & G == 1 | G == 1 & C == 1,$F,$T).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 state(Side,W,G,C) & ok(W,G,C) -> state(otherside(Side),flip(W),flip(G),flip(C)) # answer(none) # label(non_clause).  [assumption].
+2 state(Side,1,G,C) & ok(0,G,C) -> state(otherside(Side),1,flip(G),flip(C)) # answer(wolf) # label(non_clause).  [assumption].
+3 state(Side,W,1,C) & ok(W,0,C) -> state(otherside(Side),flip(W),1,flip(C)) # answer(goat) # label(non_clause).  [assumption].
+4 state(Side,W,G,1) & ok(W,G,0) -> state(otherside(Side),flip(W),flip(G),1) # answer(cabbage) # label(non_clause).  [assumption].
+5 state(east,1,1,1) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+-state(A,B,C,D) | -ok(B,C,D) | state(otherside(A),flip(B),flip(C),flip(D)) # answer(none).  [clausify(1)].
+-state(A,1,B,C) | -ok(0,B,C) | state(otherside(A),1,flip(B),flip(C)) # answer(wolf).  [clausify(2)].
+-state(A,B,1,C) | -ok(B,0,C) | state(otherside(A),flip(B),1,flip(C)) # answer(goat).  [clausify(3)].
+-state(A,B,C,1) | -ok(B,C,0) | state(otherside(A),flip(B),flip(C),1) # answer(cabbage).  [clausify(4)].
+end_of_list.
+
+formulas(sos).
+state(west,1,1,1).  [assumption].
+-state(east,1,1,1).  [deny(5)].
+end_of_list.
+
+formulas(demodulators).
+flip(0) = 1.  [assumption].
+flip(1) = 0.  [assumption].
+otherside(east) = west.  [assumption].
+otherside(west) = east.  [assumption].
+ok(W,G,C) <-> if(W == 1 & G == 1 | G == 1 & C == 1,$F,$T).  [assumption].
+end_of_list.
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ =, ==, ok, state ]).
+Function symbol precedence:  function_order([ 1, 0, west, east, flip, otherside ]).
+After inverse_order:  (no changes).
+
+kept:      15 state(west,1,1,1).  [assumption].
+kept:      16 -state(east,1,1,1).  [deny(5)].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+6 -state(A,B,C,D) | -ok(B,C,D) | state(otherside(A),flip(B),flip(C),flip(D)) # answer(none).  [clausify(1)].
+7 -state(A,1,B,C) | -ok(0,B,C) | state(otherside(A),1,flip(B),flip(C)) # answer(wolf).  [clausify(2)].
+8 -state(A,B,1,C) | -ok(B,0,C) | state(otherside(A),flip(B),1,flip(C)) # answer(goat).  [clausify(3)].
+9 -state(A,B,C,1) | -ok(B,C,0) | state(otherside(A),flip(B),flip(C),1) # answer(cabbage).  [clausify(4)].
+end_of_list.
+
+formulas(sos).
+15 state(west,1,1,1).  [assumption].
+16 -state(east,1,1,1).  [deny(5)].
+end_of_list.
+
+formulas(demodulators).
+10 flip(0) = 1.  [assumption].
+11 flip(1) = 0.  [assumption].
+12 otherside(east) = west.  [assumption].
+13 otherside(west) = east.  [assumption].
+14 ok(A,B,C) <-> if(A == 1 & B == 1 | B == 1 & C == 1,$F,$T).  [assumption].
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.01 seconds.
+
+given #1 (I,wt=5): 15 state(west,1,1,1).  [assumption].
+
+given #2 (I,wt=5): 16 -state(east,1,1,1).  [deny(5)].
+
+given #3 (W,wt=5): 17 state(east,0,1,0) # answer(goat).  [hyper(8,a,15,a),rewrite([14,13,11]),eval(3)].
+
+given #4 (W,wt=5): 18 state(west,1,0,1) # answer(none) # answer(goat).  [hyper(6,a,17,a),rewrite([14,12,10,11]),eval(3)].
+
+given #5 (W,wt=5): 19 state(east,0,1,1) # answer(cabbage) # answer(none) # answer(goat).  [hyper(9,a,18,a),rewrite([14,13,11,10]),eval(3)].
+
+given #6 (W,wt=5): 20 state(east,1,1,0) # answer(wolf) # answer(none) # answer(goat).  [hyper(7,a,18,a),rewrite([14,13,10,11]),eval(2)].
+
+given #7 (W,wt=5): 21 state(west,1,1,0) # answer(goat) # answer(cabbage) # answer(none) # answer(goat).  [hyper(8,a,19,a),rewrite([14,12,10,11]),eval(2)].
+
+given #8 (W,wt=5): 22 state(west,0,1,1) # answer(goat) # answer(wolf) # answer(none) # answer(goat).  [hyper(8,a,20,a),rewrite([14,12,11,10]),eval(3)].
+
+given #9 (W,wt=5): 23 state(east,1,0,1) # answer(wolf) # answer(goat) # answer(cabbage) # answer(none) # answer(goat).  [hyper(7,a,21,a),rewrite([14,13,11,10]),eval(3)].
+
+given #10 (W,wt=5): 24 state(west,0,1,0) # answer(none) # answer(wolf) # answer(goat) # answer(cabbage) # answer(none) # answer(goat).  [hyper(6,a,23,a),rewrite([14,12,11,10]),eval(3)].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.01 (+ 0.00) seconds: goat # none # wolf # goat # cabbage # none # goat.
+% Length of proof is 24.
+% Level of proof is 9.
+% Maximum clause weight is 5.000.
+% Given clauses 10.
+
+1 state(Side,W,G,C) & ok(W,G,C) -> state(otherside(Side),flip(W),flip(G),flip(C)) # answer(none) # label(non_clause).  [assumption].
+2 state(Side,1,G,C) & ok(0,G,C) -> state(otherside(Side),1,flip(G),flip(C)) # answer(wolf) # label(non_clause).  [assumption].
+3 state(Side,W,1,C) & ok(W,0,C) -> state(otherside(Side),flip(W),1,flip(C)) # answer(goat) # label(non_clause).  [assumption].
+4 state(Side,W,G,1) & ok(W,G,0) -> state(otherside(Side),flip(W),flip(G),1) # answer(cabbage) # label(non_clause).  [assumption].
+5 state(east,1,1,1) # label(non_clause) # label(goal).  [goal].
+6 -state(A,B,C,D) | -ok(B,C,D) | state(otherside(A),flip(B),flip(C),flip(D)) # answer(none).  [clausify(1)].
+7 -state(A,1,B,C) | -ok(0,B,C) | state(otherside(A),1,flip(B),flip(C)) # answer(wolf).  [clausify(2)].
+8 -state(A,B,1,C) | -ok(B,0,C) | state(otherside(A),flip(B),1,flip(C)) # answer(goat).  [clausify(3)].
+9 -state(A,B,C,1) | -ok(B,C,0) | state(otherside(A),flip(B),flip(C),1) # answer(cabbage).  [clausify(4)].
+10 flip(0) = 1.  [assumption].
+11 flip(1) = 0.  [assumption].
+12 otherside(east) = west.  [assumption].
+13 otherside(west) = east.  [assumption].
+14 ok(A,B,C) <-> if(A == 1 & B == 1 | B == 1 & C == 1,$F,$T).  [assumption].
+15 state(west,1,1,1).  [assumption].
+16 -state(east,1,1,1).  [deny(5)].
+17 state(east,0,1,0) # answer(goat).  [hyper(8,a,15,a),rewrite([14,13,11]),eval(3)].
+18 state(west,1,0,1) # answer(none) # answer(goat).  [hyper(6,a,17,a),rewrite([14,12,10,11]),eval(3)].
+19 state(east,0,1,1) # answer(cabbage) # answer(none) # answer(goat).  [hyper(9,a,18,a),rewrite([14,13,11,10]),eval(3)].
+21 state(west,1,1,0) # answer(goat) # answer(cabbage) # answer(none) # answer(goat).  [hyper(8,a,19,a),rewrite([14,12,10,11]),eval(2)].
+23 state(east,1,0,1) # answer(wolf) # answer(goat) # answer(cabbage) # answer(none) # answer(goat).  [hyper(7,a,21,a),rewrite([14,13,11,10]),eval(3)].
+24 state(west,0,1,0) # answer(none) # answer(wolf) # answer(goat) # answer(cabbage) # answer(none) # answer(goat).  [hyper(6,a,23,a),rewrite([14,12,11,10]),eval(3)].
+25 state(east,1,1,1) # answer(goat) # answer(none) # answer(wolf) # answer(goat) # answer(cabbage) # answer(none) # answer(goat).  [hyper(8,a,24,a),rewrite([14,13,10]),eval(2)].
+26 $F # answer(goat) # answer(none) # answer(wolf) # answer(goat) # answer(cabbage) # answer(none) # answer(goat).  [resolve(25,a,16,a)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=10. Generated=27. Kept=11. proofs=1.
+Usable=14. Sos=0. Demods=5. Limbo=0, Disabled=2. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=16. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.04.
+User_CPU=0.01, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 1 proof.
+
+Process 25639 exit (max_proofs) Tue Nov  3 17:08:22 2009

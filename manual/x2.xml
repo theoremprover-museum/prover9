@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE interps SYSTEM "interp3.dtd">
+
+<?xml-stylesheet type="text/xsl" href="interp3.xsl"?>
+
+<interps>
+
+<source>x2.mace4.out</source>
+
+<heading><![CDATA[
+Mace4 (32) version 2009-11A, November 2009.
+Process 25587 was started by mccune on cleo,
+Tue Nov  3 17:08:08 2009
+The command was "/home/mccune/LADR/bin/mace4 -c -f x2.in".
+]]></heading>
+
+<input><![CDATA[
+formulas(sos).
+(x * y) * z = x * (y * z).
+x * e = x.
+x * x' = e.
+end_of_list.
+
+formulas(goals).
+x * y = y * x.
+end_of_list.
+]]></input>
+
+  <interp size="6" number="1" seconds="0">
+
+    <op0 type="function">
+      <sym><![CDATA[e]]></sym>
+      <v>0</v>
+    </op0>
+
+    <op0 type="function">
+      <sym><![CDATA[c1]]></sym>
+      <v>1</v>
+    </op0>
+
+    <op0 type="function">
+      <sym><![CDATA[c2]]></sym>
+      <v>2</v>
+    </op0>
+
+    <op1 type="function">
+        <sym><![CDATA[']]></sym>
+        <head><i>0</i><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i></head>
+        <row> <v>0</v><v>1</v><v>2</v><v>4</v><v>3</v><v>5</v></row>
+    </op1>
+
+    <op2 type="function">
+        <sym><![CDATA[*]]></sym>
+        <head>        <i>0</i><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i></head>
+        <row><i>0</i> <v>0</v><v>1</v><v>2</v><v>3</v><v>4</v><v>5</v></row>
+        <row><i>1</i> <v>1</v><v>0</v><v>3</v><v>2</v><v>5</v><v>4</v></row>
+        <row><i>2</i> <v>2</v><v>4</v><v>0</v><v>5</v><v>1</v><v>3</v></row>
+        <row><i>3</i> <v>3</v><v>5</v><v>1</v><v>4</v><v>0</v><v>2</v></row>
+        <row><i>4</i> <v>4</v><v>2</v><v>5</v><v>0</v><v>3</v><v>1</v></row>
+        <row><i>5</i> <v>5</v><v>3</v><v>4</v><v>1</v><v>2</v><v>0</v></row>
+    </op2>
+  </interp>
+
+</interps>

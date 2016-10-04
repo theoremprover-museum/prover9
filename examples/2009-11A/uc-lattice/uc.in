@@ -1,0 +1,11 @@
+
+formulas(sos).
+
+% unique complementation in lattice theory
+
+x v x' = 1.
+x ^ x' = 0.
+x v y != 1 | x ^ y != 0 | x' = y.
+
+end_of_list.
+

@@ -1,0 +1,2483 @@
+============================== Prover9 ===============================
+Prover9 (32) version 2009-02A, February 2009.
+Process 31634 was started by mccune on cleo,
+Tue Oct 27 10:53:52 2009
+The command was "prover9".
+============================== end of head ===========================
+
+============================== INPUT =================================
+assign(max_seconds,30).
+op(450,infix,@).
+op(400,infix_right,*).
+assign(new_constants,1).
+assign(max_weight,25).
+
+formulas(sos).
+x * y != x * z | y = z.
+y * x != z * x | y = z.
+(x * y) * z = x * y * z.
+y * x * (x @ y) = x * y.
+end_of_list.
+
+formulas(sos).
+x * y * z * y * x = y * x * z * x * y.
+end_of_list.
+
+formulas(sos).
+(A @ B) @ C != D @ (F @ G) # answer(A).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+x * y != x * z | y = z.  [assumption].
+x * y != z * y | x = z.  [assumption].
+(x * y) * z = x * y * z.  [assumption].
+x * y * (y @ x) = y * x.  [assumption].
+x * y * z * y * x = y * x * z * x * y.  [assumption].
+(A @ B) @ C != D @ (F @ G) # answer(A).  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Auto_denials:  (no changes).
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ = ]).
+Function symbol precedence:  function_order([ A, B, C, D, F, G, *, @ ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(paramodulation).  % (positive equality literals)
+  % set(hyper_resolution).  % (nonunit Horn with equality)
+    % set(hyper_resolution) -> set(pos_hyper_resolution).
+  % set(neg_ur_resolution).  % (nonunit Horn with equality)
+  % assign(para_lit_limit, 2).  % (nonunit Horn with equality)
+
+Auto_process settings:  (no changes).
+
+kept:      1 x * y != x * z | y = z.  [assumption].
+kept:      2 x * y != z * y | x = z.  [assumption].
+kept:      3 (x * y) * z = x * y * z.  [assumption].
+kept:      4 x * y * (y @ x) = y * x.  [assumption].
+kept:      5 x * y * z * y * x = y * x * z * x * y.  [assumption].
+kept:      6 (A @ B) @ C != D @ (F @ G) # answer(A).  [assumption].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+1 x * y != x * z | y = z.  [assumption].
+2 x * y != z * y | x = z.  [assumption].
+3 (x * y) * z = x * y * z.  [assumption].
+4 x * y * (y @ x) = y * x.  [assumption].
+5 x * y * z * y * x = y * x * z * x * y.  [assumption].
+6 (A @ B) @ C != D @ (F @ G) # answer(A).  [assumption].
+end_of_list.
+
+formulas(demodulators).
+3 (x * y) * z = x * y * z.  [assumption].
+4 x * y * (y @ x) = y * x.  [assumption].
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.01 seconds.
+
+given #1 (I,wt=10): 1 x * y != x * z | y = z.  [assumption].
+
+given #2 (I,wt=10): 2 x * y != z * y | x = z.  [assumption].
+
+given #3 (I,wt=11): 3 (x * y) * z = x * y * z.  [assumption].
+
+given #4 (I,wt=11): 4 x * y * (y @ x) = y * x.  [assumption].
+
+given #5 (I,wt=19): 5 x * y * z * y * x = y * x * z * x * y.  [assumption].
+
+given #6 (I,wt=11): 6 (A @ B) @ C != D @ (F @ G) # answer(A).  [assumption].
+
+given #7 (A,wt=14): 7 x * y * z != x * y * u | z = u.  [para(3(a,1),1(a,1)),rewrite([3(4)])].
+
+given #8 (F,wt=15): 23 ((A @ B) @ C) * x != (D @ (F @ G)) * x # answer(A).  [ur(2,b,6,a)].
+
+given #9 (F,wt=15): 24 x * ((A @ B) @ C) != x * (D @ (F @ G)) # answer(A).  [ur(1,b,6,a)].
+
+given #10 (F,wt=19): 25 x * y * ((A @ B) @ C) != x * y * (D @ (F @ G)) # answer(A).  [ur(7,b,6,a)].
+
+given #11 (F,wt=17): 35 C * (A @ B) * (D @ (F @ G)) != (A @ B) * C # answer(A).  [para(4(a,1),25(a,1)),flip(a)].
+
+given #12 (T,wt=7): 9 x * (x @ x) = x.  [hyper(1,a,4,a)].
+
+given #13 (T,wt=10): 40 x * y != x | x @ x = y.  [para(9(a,1),1(a,1)),flip(a)].
+
+given #14 (T,wt=10): 41 x * (y @ y) != y | y = x.  [para(9(a,1),2(a,1)),flip(a)].
+
+given #15 (T,wt=10): 42 x * (y @ y) != y | x = y.  [para(9(a,1),2(a,2))].
+
+given #16 (A,wt=14): 8 x * y * z != u * z | x * y = u.  [para(3(a,1),2(a,1))].
+
+given #17 (F,wt=17): 36 (F @ G) * D * ((A @ B) @ C) != D * (F @ G) # answer(A).  [para(4(a,1),25(a,2))].
+
+given #18 (F,wt=19): 31 x * ((A @ B) @ C) * y != x * (D @ (F @ G)) * y # answer(A).  [ur(1,b,23,a)].
+
+given #19 (F,wt=21): 38 C * (A @ B) * (D @ (F @ G)) * x != (A @ B) * C * x # answer(A).  [ur(2,b,35,a),rewrite([3(12),3(11),3(18)])].
+
+given #20 (F,wt=21): 39 x * C * (A @ B) * (D @ (F @ G)) != x * (A @ B) * C # answer(A).  [ur(1,b,35,a)].
+
+given #21 (T,wt=11): 43 x * (x @ x) * y = x * y.  [para(9(a,1),3(a,1,1)),flip(a)].
+
+given #22 (T,wt=7): 69 (x @ x) * y = y.  [hyper(7,a,43,a)].
+
+given #23 (T,wt=9): 78 x * ((y @ y) @ x) = x.  [para(69(a,1),4(a,1,2)),rewrite([69(5)])].
+
+given #24 (T,wt=9): 84 (x @ x) @ y = y @ y.  [hyper(40,a,78,a),flip(a)].
+
+given #25 (A,wt=14): 10 x * y != z * x | z * (z @ x) = y.  [para(4(a,1),1(a,1)),flip(a)].
+
+given #26 (F,wt=21): 60 (F @ G) * D * ((A @ B) @ C) * x != D * (F @ G) * x # answer(A).  [ur(8,b,36,a),rewrite([3(11),3(18)])].
+
+given #27 (F,wt=21): 62 x * (F @ G) * D * ((A @ B) @ C) != x * D * (F @ G) # answer(A).  [ur(1,b,36,a)].
+
+given #28 (F,wt=21): 68 C * (A @ B) * (D @ (F @ G)) * (C @ C) != (A @ B) * C # answer(A).  [para(9(a,1),38(a,2,2))].
+
+given #29 (F,wt=21): 92 (D @ (F @ G)) * ((x @ x) @ ((A @ B) @ C)) != (A @ B) @ C # answer(A).  [para(78(a,1),23(a,1)),flip(a)].
+
+given #30 (T,wt=6): 110 x != y | y = x.  [para(9(a,1),10(a,2)),rewrite([69(2),79(4),9(3)])].
+
+given #31 (T,wt=9): 100 ((x @ x) @ y) * z = z.  [para(84(a,2),69(a,1,1))].
+
+given #32 (T,wt=9): 104 x * (x @ x * x) = x.  [hyper(10,a,3,a)].
+
+given #33 (T,wt=9): 130 x @ x * x = x @ x.  [hyper(40,a,104,a),flip(a)].
+
+given #34 (A,wt=14): 11 x * y * (y @ z) != y * z | z = x.  [para(4(a,1),2(a,1)),flip(a)].
+
+given #35 (F,wt=21): 93 ((A @ B) @ C) * ((x @ x) @ (D @ (F @ G))) != D @ (F @ G) # answer(A).  [para(78(a,1),23(a,2))].
+
+given #36 (F,wt=23): 30 x * y * ((A @ B) @ C) * z != x * y * (D @ (F @ G)) * z # answer(A).  [ur(7,b,23,a)].
+
+given #37 (F,wt=23): 32 (D @ (F @ G)) * x * (x @ ((A @ B) @ C)) != x * ((A @ B) @ C) # answer(A).  [para(4(a,1),23(a,1)),flip(a)].
+
+given #38 (F,wt=23): 33 ((A @ B) @ C) * x * (x @ (D @ (F @ G))) != x * (D @ (F @ G)) # answer(A).  [para(4(a,1),23(a,2))].
+
+given #39 (T,wt=10): 77 x * y != y | z @ z = x.  [para(69(a,1),2(a,1)),flip(a)].
+
+NOTE: New constant: x @ x = c_0.  [new_symbol(142)].
+NOTE: New Function symbol precedence:  function_order([ A, B, C, D, F, G, c_0, *, @ ]).
+
+given #40 (T,wt=5): 145 x @ x = c_0.  [new_symbol(142)].
+
+given #41 (T,wt=5): 148 c_0 @ x = c_0.  [back_rewrite(141),rewrite([145(1),145(3)])].
+
+given #42 (T,wt=5): 155 c_0 * x = x.  [back_rewrite(128),rewrite([145(1),148(2),148(2)])].
+
+given #43 (A,wt=14): 12 x * y * (y @ z) != y * z | x = z.  [para(4(a,1),2(a,2))].
+
+given #44 (F,wt=23): 34 x * y * z * ((A @ B) @ C) != x * y * z * (D @ (F @ G)) # answer(A).  [ur(7,b,24,a)].
+
+given #45 (F,wt=23): 63 x * (D @ (F @ G)) * (((A @ B) @ C) @ x) != ((A @ B) @ C) * x # answer(A).  [para(4(a,1),31(a,1)),flip(a)].
+
+given #46 (F,wt=19): 170 (D @ (F @ G)) * (((A @ B) @ C) @ c_0) != (A @ B) @ C # answer(A).  [para(155(a,1),63(a,1)),rewrite([165(20)])].
+
+given #47 (F,wt=23): 64 x * ((A @ B) @ C) * ((D @ (F @ G)) @ x) != (D @ (F @ G)) * x # answer(A).  [para(4(a,1),31(a,2))].
+
+given #48 (T,wt=5): 165 x * c_0 = x.  [back_rewrite(101),rewrite([145(1),148(2),148(2)])].
+
+given #49 (T,wt=7): 153 x @ x * x = c_0.  [back_rewrite(130),rewrite([145(3)])].
+
+given #50 (T,wt=7): 168 x * (x @ c_0) = x.  [back_rewrite(160),rewrite([165(5)])].
+
+given #51 (T,wt=8): 154 x * y != x | c_0 = y.  [back_rewrite(129),rewrite([145(3),148(4),148(4)])].
+
+given #52 (A,wt=15): 13 x * y * (y @ x) * z = y * x * z.  [para(4(a,1),3(a,1,1)),rewrite([3(2),3(5)]),flip(a)].
+
+given #53 (F,wt=23): 67 C * (A @ B) * (D @ (F @ G)) * (C @ (A @ B)) != C * (A @ B) # answer(A).  [para(4(a,1),38(a,2))].
+
+given #54 (F,wt=23): 115 (F @ G) * D * ((A @ B) @ C) * ((F @ G) @ D) != (F @ G) * D # answer(A).  [para(4(a,1),60(a,2))].
+
+given #55 (F,wt=25): 37 x * y * C * (A @ B) * (D @ (F @ G)) != x * y * (A @ B) * C # answer(A).  [ur(7,b,35,a)].
+
+given #56 (F,wt=21): 210 B * A * C * (A @ B) * (D @ (F @ G)) != A * B * C # answer(A).  [para(13(a,1),37(a,2))].
+
+given #57 (T,wt=5): 191 x @ c_0 = c_0.  [hyper(154,a,168,a),flip(a)].
+
+given #58 (T,wt=8): 159 x * y != y | c_0 = x.  [back_rewrite(122),rewrite([145(3),148(4)])].
+
+given #59 (T,wt=10): 135 x * y != y * y | y = x.  [para(9(a,1),11(a,1,2))].
+
+given #60 (T,wt=12): 150 x * (x @ y) != x * y | c_0 = y.  [back_rewrite(138),rewrite([145(5),148(6)])].
+
+given #61 (A,wt=17): 14 x * y * z * (z @ x * y) = z * x * y.  [para(4(a,1),3(a,1)),flip(a)].
+
+given #62 (F,wt=25): 61 x * y * (F @ G) * D * ((A @ B) @ C) != x * y * D * (F @ G) # answer(A).  [ur(7,b,36,a)].
+
+given #63 (F,wt=21): 230 F * G * D * ((A @ B) @ C) != G * F * D * (F @ G) # answer(A).  [para(13(a,1),61(a,1))].
+
+given #64 (F,wt=25): 65 x * C * (A @ B) * (D @ (F @ G)) * y != x * (A @ B) * C * y # answer(A).  [ur(1,b,38,a)].
+
+given #65 (F,wt=25): 66 C * (A @ B) * (D @ (F @ G)) * x * (x @ C) != (A @ B) * x * C # answer(A).  [para(4(a,1),38(a,2,2))].
+
+given #66 (T,wt=12): 156 x * y * z != z | x * y = c_0.  [back_rewrite(126),rewrite([145(4),148(5)]),flip(b)].
+
+given #67 (T,wt=12): 164 x * y != y | x * (x @ y) = c_0.  [back_rewrite(111),rewrite([145(3),148(4)]),flip(b)].
+
+given #68 (T,wt=12): 166 x * y * z != x * y | c_0 = z.  [back_rewrite(91),rewrite([145(5),148(6)])].
+
+given #69 (T,wt=12): 235 x @ y != x * y | y * x = c_0.  [para(4(a,1),156(a,1)),flip(a)].
+
+given #70 (A,wt=17): 15 x * y * z * (y * z @ x) = y * z * x.  [para(3(a,1),4(a,1,2)),rewrite([3(7)])].
+
+given #71 (F,wt=25): 113 x * (F @ G) * D * ((A @ B) @ C) * y != x * D * (F @ G) * y # answer(A).  [ur(1,b,60,a)].
+
+given #72 (F,wt=25): 114 D * (F @ G) * (((A @ B) @ C) @ D) != (F @ G) * ((A @ B) @ C) * D # answer(A).  [para(4(a,1),60(a,1,2)),flip(a)].
+
+given #73 (F,wt=25): 140 (F @ G) * ((A @ B) @ C) * D * (D @ (D @ (F @ G))) != D * (F @ G) # answer(A).  [ur(10,b,33,a(flip))].
+
+given #74 (F,wt=25): 211 B * A * C * (A @ B) * (D @ (F @ G)) * x != A * B * C * x # answer(A).  [ur(8,b,210,a),rewrite([3(15),3(14),3(13),3(22),3(21)])].
+
+given #75 (T,wt=9): 255 x * (x * x @ x) = x.  [hyper(7,a,15,a)].
+
+given #76 (T,wt=7): 270 x * x @ x = c_0.  [hyper(154,a,255,a),flip(a)].
+
+given #77 (T,wt=12): 246 x * y != y * x | x @ y = c_0.  [para(4(a,1),166(a,1)),flip(b)].
+
+given #78 (T,wt=13): 105 x * y * (x * y @ x) = y * x.  [hyper(10,a,3,a(flip)),rewrite([3(4)])].
+
+given #79 (A,wt=22): 16 x * y * z * y * x != y * u | x * z * x * y = u.  [para(5(a,1),1(a,1))].
+
+given #80 (F,wt=25): 212 x * B * A * C * (A @ B) * (D @ (F @ G)) != x * A * B * C # answer(A).  [ur(1,b,210,a)].
+
+given #81 (F,wt=25): 231 F * G * D * ((A @ B) @ C) * x != G * F * D * (F @ G) * x # answer(A).  [ur(8,b,230,a),rewrite([3(11),3(10),3(22),3(21),3(20)])].
+
+given #82 (F,wt=23): 298 F * G * D * ((A @ B) @ C) * ((F @ G) @ D) != F * G * D # answer(A).  [para(4(a,1),231(a,2,2,2)),rewrite([13(26)])].
+
+given #83 (F,wt=25): 232 x * F * G * D * ((A @ B) @ C) != x * G * F * D * (F @ G) # answer(A).  [ur(1,b,230,a)].
+
+given #84 (T,wt=13): 152 x * y @ x * y * x * y = c_0.  [back_rewrite(132),rewrite([145(8)])].
+
+given #85 (T,wt=13): 216 x * y * (y @ y * x) = y * x.  [hyper(1,a,14,a)].
+
+given #86 (T,wt=13): 272 x * y * x * y @ x * y = c_0.  [para(3(a,1),270(a,1,1))].
+
+given #87 (T,wt=13): 278 x * (y * x @ y) = x * (x @ y).  [hyper(10,a,105,a),flip(a)].
+
+given #88 (A,wt=22): 17 x * y * z * y * u != y * u * z * u * y | u = x.  [para(5(a,1),2(a,1)),flip(a)].
+
+given #89 (F,wt=25): 269 B * A * C * (A @ B) * (D @ (F @ G)) * (C @ B) != A * C * B # answer(A).  [para(4(a,1),211(a,2,2))].
+
+given #90 (F,wt=25): 306 C * (A @ B) * (D @ (F @ G)) * (C @ C * (A @ B)) != C * (A @ B) # answer(A).  [para(216(a,1),38(a,2))].
+
+given #91 (T,wt=9): 315 x * y @ x = y @ x.  [hyper(1,a,278,a)].
+
+given #92 (T,wt=12): 322 x * (x @ y) != x | x @ y = c_0.  [para(278(a,1),154(a,1)),rewrite([315(6)]),flip(b)].
+
+given #93 (T,wt=13): 301 x * (x @ x * y) = x * (x @ y).  [hyper(10,a,216,a),flip(a)].
+
+given #94 (T,wt=9): 341 x @ x * y = x @ y.  [hyper(1,a,301,a)].
+
+given #95 (A,wt=22): 18 x * y * z * y * u != y * u * z * u * y | x = u.  [para(5(a,1),2(a,2))].
+
+given #96 (T,wt=13): 332 x * (x @ y) @ y = x * y @ y.  [para(4(a,1),315(a,1,1)),flip(a)].
+
+given #97 (T,wt=13): 353 x @ y * (y @ x) = x @ y * x.  [para(4(a,1),341(a,1,2)),flip(a)].
+
+given #98 (T,wt=14): 28 x * y * z != y * x | y @ x = z.  [para(4(a,1),7(a,1)),flip(a)].
+
+given #99 (T,wt=12): 380 x * y != y * x | y @ x = c_0.  [para(165(a,1),28(a,1,2))].
+
+given #100 (A,wt=23): 19 x * y * z * y * x * u = y * x * z * x * y * u.  [para(5(a,1),3(a,1,1)),rewrite([3(5),3(4),3(3),3(2),3(9),3(8),3(7)])].
+
+given #101 (T,wt=14): 56 x * (y @ z) != y * z | z * y = x.  [para(4(a,1),8(a,1)),flip(a)].
+
+given #102 (T,wt=14): 316 x * (y @ z) != y * (y @ z) | y = x.  [para(278(a,1),2(a,1)),rewrite([315(4)]),flip(a)].
+
+given #103 (T,wt=14): 327 x * y * z != z * y * z | z = x.  [para(155(a,1),17(a,1,2,2,2)),rewrite([155(3),165(5),155(6)])].
+
+given #104 (T,wt=15): 73 x * y * y * x = y * x * x * y.  [para(43(a,1),5(a,1,2)),rewrite([69(6)])].
+
+given #105 (A,wt=23): 20 x * y * z * u * z * y = x * z * y * u * y * z.  [para(5(a,1),3(a,2,2)),rewrite([3(5)])].
+
+given #106 (T,wt=15): 294 x * (y @ x) * x * y = x * y * x.  [hyper(16,a,13,a)].
+
+given #107 (T,wt=11): 440 (x @ y) * y * x = x * y.  [hyper(1,a,294,a)].
+
+given #108 (T,wt=9): 507 (x @ y) @ y * x = c_0.  [para(440(a,1),246(a,1)),rewrite([3(4),4(4)]),xx(a)].
+
+given #109 (T,wt=9): 508 x * y @ (y @ x) = c_0.  [para(440(a,1),246(a,2)),rewrite([3(3),4(3)]),xx(a)].
+
+given #110 (A,wt=23): 21 x * y * z * u * y * x = y * x * z * u * x * y.  [para(3(a,1),5(a,1,2,2)),rewrite([3(8)])].
+
+given #111 (F,wt=17): 473 (D @ (F @ G)) * C * (A @ B) != (A @ B) * C # answer(A).  [para(440(a,1),23(a,1)),flip(a)].
+
+given #112 (F,wt=17): 474 ((A @ B) @ C) * (F @ G) * D != D * (F @ G) # answer(A).  [para(440(a,1),23(a,2))].
+
+given #113 (F,wt=21): 480 x * (D @ (F @ G)) * C * (A @ B) != x * (A @ B) * C # answer(A).  [para(440(a,1),31(a,1,2)),flip(a)].
+
+given #114 (F,wt=21): 482 x * ((A @ B) @ C) * (F @ G) * D != x * D * (F @ G) # answer(A).  [para(440(a,1),31(a,2,2))].
+
+given #115 (T,wt=9): 510 x * y @ (x @ y) = c_0.  [para(440(a,1),315(a,1,1)),rewrite([508(6)])].
+
+given #116 (T,wt=9): 512 (x @ y) @ x * y = c_0.  [para(440(a,1),341(a,1,2)),rewrite([507(6)])].
+
+given #117 (T,wt=9): 514 x * y @ y * x = c_0.  [para(440(a,1),332(a,2,1)),rewrite([507(4),165(3),507(3)]),flip(a)].
+
+given #118 (T,wt=11): 520 (x * y @ y) @ x * y = c_0.  [para(4(a,1),507(a,1,2)),rewrite([332(3)])].
+
+given #119 (A,wt=23): 22 x * (x @ y) * y * (x @ y) * x = (x @ y) * x * x * y.  [para(4(a,1),5(a,1,2,2)),flip(a)].
+
+given #120 (F,wt=21): 489 (F @ G) * D * ((A @ B) @ C) * G * F != D * F * G # answer(A).  [para(440(a,1),60(a,2,2))].
+
+given #121 (F,wt=21): 555 (D @ (F @ G)) * C * (A @ B) * x != (A @ B) * C * x # answer(A).  [ur(8,b,473,a),rewrite([3(11),3(18)])].
+
+given #122 (F,wt=21): 557 ((A @ B) @ C) * (F @ G) * D * x != D * (F @ G) * x # answer(A).  [ur(8,b,474,a),rewrite([3(11),3(18)])].
+
+given #123 (F,wt=21): 642 (D @ (F @ G)) * C * A * B != (A @ B) * C * B * A # answer(A).  [para(440(a,1),555(a,1,2,2))].
+
+given #124 (T,wt=11): 524 (x @ y) @ y * y * x = c_0.  [para(315(a,1),507(a,1,1))].
+
+given #125 (T,wt=11): 525 (x @ y) @ x * y * x = c_0.  [para(341(a,1),507(a,1,1)),rewrite([3(3)])].
+
+given #126 (T,wt=11): 531 x * y @ (x * y @ y) = c_0.  [para(4(a,1),508(a,1,1)),rewrite([332(4)])].
+
+given #127 (T,wt=11): 535 x * x * y @ (y @ x) = c_0.  [para(315(a,1),508(a,1,2))].
+
+given #128 (A,wt=18): 26 x * y * z * u != x * y * z * w | u = w.  [para(3(a,1),7(a,1,2)),rewrite([3(5)])].
+
+given #129 (F,wt=21): 644 ((A @ B) @ C) * (F @ G) * D * G * F != D * F * G # answer(A).  [para(440(a,1),557(a,2,2))].
+
+given #130 (F,wt=21): 675 (D @ (F @ G)) * C * C * (A @ B) != C * (A @ B) * C # answer(A).  [para(535(a,1),32(a,1,2,2)),rewrite([165(14),3(26),3(25),4(25)])].
+
+given #131 (F,wt=23): 475 (((A @ B) @ C) @ x) * x * (D @ (F @ G)) != ((A @ B) @ C) * x # answer(A).  [para(440(a,1),25(a,1)),flip(a)].
+
+given #132 (F,wt=23): 476 ((D @ (F @ G)) @ x) * x * ((A @ B) @ C) != (D @ (F @ G)) * x # answer(A).  [para(440(a,1),25(a,2))].
+
+given #133 (T,wt=11): 536 x * y * x @ (x @ y) = c_0.  [para(341(a,1),508(a,1,2)),rewrite([3(2)])].
+
+given #134 (T,wt=11): 565 x * y @ (y @ x * y) = c_0.  [para(4(a,1),510(a,1,1)),rewrite([353(4)])].
+
+given #135 (T,wt=11): 575 x * y * x @ (y @ x) = c_0.  [para(315(a,1),510(a,1,2)),rewrite([3(2)])].
+
+given #136 (T,wt=11): 576 x * x * y @ (x @ y) = c_0.  [para(341(a,1),510(a,1,2))].
+
+given #137 (A,wt=18): 27 x * y * z != x * u * y | u * (u @ y) = z.  [para(4(a,1),7(a,1,2)),flip(a)].
+
+given #138 (F,wt=21): 708 ((A @ B) @ C) * D * (F @ G) * D != D * D * (F @ G) # answer(A).  [para(536(a,1),33(a,1,2,2)),rewrite([165(14),3(26),3(25),4(25)])].
+
+given #139 (F,wt=23): 481 (x @ ((A @ B) @ C)) * (D @ (F @ G)) * x != x * ((A @ B) @ C) # answer(A).  [para(440(a,1),31(a,1)),flip(a)].
+
+given #140 (F,wt=23): 483 (x @ (D @ (F @ G))) * ((A @ B) @ C) * x != x * (D @ (F @ G)) # answer(A).  [para(440(a,1),31(a,2))].
+
+given #141 (F,wt=23): 484 (A @ B) * C * (F @ G) * D != C * (A @ B) * D * (F @ G) # answer(A).  [para(440(a,1),38(a,1,2,2)),flip(a)].
+
+given #142 (T,wt=10): 770 x * y != x * z | z = y.  [para(155(a,1),27(a,1,2)),rewrite([165(3),191(5),165(5)])].
+
+given #143 (T,wt=11): 588 (x @ y * x) @ y * x = c_0.  [para(4(a,1),512(a,1,2)),rewrite([353(3)])].
+
+given #144 (T,wt=11): 593 (x @ y) @ y * x * y = c_0.  [para(315(a,1),512(a,1,1)),rewrite([3(3)])].
+
+given #145 (T,wt=11): 594 (x @ y) @ x * x * y = c_0.  [para(341(a,1),512(a,1,1))].
+
+given #146 (A,wt=22): 29 x * y * z * y * x != y * x * u | z * x * y = u.  [para(5(a,1),7(a,1))].
+
+given #147 (F,wt=21): 793 C * (A @ B) * C * (D @ (F @ G)) != (A @ B) * C * C # answer(A).  [para(593(a,1),63(a,1,2,2)),rewrite([165(14),3(13),3(12),466(26)])].
+
+given #148 (F,wt=23): 488 (F @ G) * D * (A @ B) * C != D * (F @ G) * C * (A @ B) # answer(A).  [para(440(a,1),60(a,1,2,2))].
+
+given #149 (F,wt=23): 556 (D @ (F @ G)) * C * (A @ B) * (C @ (A @ B)) != C * (A @ B) # answer(A).  [ur(56,b,473,a(flip)),rewrite([3(17),3(16)])].
+
+given #150 (F,wt=23): 558 ((A @ B) @ C) * (F @ G) * D * ((F @ G) @ D) != (F @ G) * D # answer(A).  [ur(56,b,474,a(flip)),rewrite([3(17),3(16)])].
+
+given #151 (T,wt=11): 737 x * y * y @ (x @ y) = c_0.  [para(575(a,1),315(a,2)),rewrite([466(4)])].
+
+given #152 (T,wt=11): 740 (x @ y) @ x * y * y = c_0.  [para(575(a,1),353(a,1,2,2)),rewrite([165(5),593(4),3(6),3(5),729(6)]),flip(a)].
+
+given #153 (T,wt=12): 449 x * y * x != x | y * x = c_0.  [para(294(a,1),154(a,1)),rewrite([440(7)]),flip(b)].
+
+given #154 (T,wt=12): 499 x * y != x | (x @ y) * y = c_0.  [para(440(a,1),156(a,1))].
+
+given #155 (A,wt=18): 53 x * y * z * u != w * u | x * y * z = w.  [para(3(a,1),8(a,1,2))].
+
+given #156 (F,wt=23): 560 (C @ (A @ B)) * (D @ (F @ G)) * C * (A @ B) != C * (A @ B) # answer(A).  [para(440(a,1),480(a,2))].
+
+given #157 (F,wt=23): 562 ((F @ G) @ D) * ((A @ B) @ C) * (F @ G) * D != (F @ G) * D # answer(A).  [para(440(a,1),482(a,2))].
+
+given #158 (F,wt=23): 568 (A @ B) * C * ((A @ B) @ C) != (D @ (F @ G)) * (A @ B) * C # answer(A).  [para(510(a,1),32(a,1,2,2)),rewrite([165(12),3(22)]),flip(a)].
+
+given #159 (F,wt=23): 569 ((A @ B) @ C) * D * (F @ G) != D * (F @ G) * (D @ (F @ G)) # answer(A).  [para(510(a,1),33(a,1,2,2)),rewrite([165(12),3(22)])].
+
+given #160 (T,wt=12): 502 (x @ y) * y != x * y | c_0 = x.  [para(440(a,1),166(a,1)),flip(a)].
+
+given #161 (T,wt=13): 519 (x @ y * z) @ y * z * x = c_0.  [para(3(a,1),507(a,1,2))].
+
+given #162 (T,wt=13): 530 x * y * z @ (z @ x * y) = c_0.  [para(3(a,1),508(a,1,1))].
+
+given #163 (T,wt=13): 563 x * y * z @ (x * y @ z) = c_0.  [para(3(a,1),510(a,1,1))].
+
+given #164 (A,wt=18): 54 x * y * z != u * w * z | x * y = u * w.  [para(3(a,1),8(a,2))].
+
+given #165 (F,wt=23): 584 (F @ G) * D * ((F @ G) @ D) * ((A @ B) @ C) != (F @ G) * D # answer(A).  [back_rewrite(490),rewrite([570(17)])].
+
+given #166 (F,wt=23): 585 C * (A @ B) * (C @ (A @ B)) * (D @ (F @ G)) != C * (A @ B) # answer(A).  [back_rewrite(485),rewrite([570(17)])].
+
+given #167 (F,wt=23): 860 (C @ (A @ B)) * (D @ (F @ G)) * (A @ B) * C != (A @ B) * C # answer(A).  [ur(56,b,560,a(flip)),rewrite([3(23),3(22),3(21),4(21)])].
+
+given #168 (F,wt=23): 861 ((F @ G) @ D) * ((A @ B) @ C) * D * (F @ G) != D * (F @ G) # answer(A).  [ur(56,b,562,a(flip)),rewrite([3(23),3(22),3(21),4(21)])].
+
+given #169 (T,wt=11): 943 (x @ y * x) @ x * y = c_0.  [back_rewrite(724),rewrite([930(6)])].
+
+given #170 (T,wt=11): 944 x * y @ (x @ y * x) = c_0.  [back_rewrite(723),rewrite([930(4)])].
+
+given #171 (T,wt=13): 574 x * y * (x @ y) @ (x @ y) = c_0.  [para(510(a,1),315(a,2)),rewrite([564(3)])].
+
+given #172 (T,wt=13): 578 (x @ y) @ x * y * (x @ y) = c_0.  [para(510(a,1),353(a,1,2,2)),rewrite([165(4),512(3),3(5)]),flip(a)].
+
+given #173 (A,wt=18): 55 x * y * (y @ z) != u * y * z | u * z = x.  [para(4(a,1),8(a,1,2)),flip(a)].
+
+given #174 (F,wt=25): 493 x * y * (D @ (F @ G)) * C * (A @ B) != x * y * (A @ B) * C # answer(A).  [para(440(a,1),30(a,1,2,2)),flip(a)].
+
+given #175 (F,wt=21): 1004 B * A * (D @ (F @ G)) * C * (A @ B) != A * B * C # answer(A).  [para(13(a,1),493(a,2))].
+
+given #176 (F,wt=25): 494 x * y * ((A @ B) @ C) * (F @ G) * D != x * y * D * (F @ G) # answer(A).  [para(440(a,1),30(a,2,2,2))].
+
+given #177 (F,wt=25): 506 x * (F @ G) * D * ((A @ B) @ C) * G * F != x * D * F * G # answer(A).  [para(440(a,1),113(a,2,2,2))].
+
+given #178 (T,wt=10): 986 x * y != z * y | z = x.  [para(165(a,1),55(a,2,2)),rewrite([191(2),165(2),165(5)])].
+
+given #179 (T,wt=13): 587 (x * y @ z) @ x * y * z = c_0.  [para(3(a,1),512(a,1,2))].
+
+given #180 (T,wt=13): 600 x * y * z @ z * x * y = c_0.  [para(3(a,1),514(a,1,1))].
+
+given #181 (T,wt=13): 601 x * y * z @ y * z * x = c_0.  [para(3(a,1),514(a,1,2))].
+
+given #182 (A,wt=18): 57 x * y * z * (z @ u) != z * u | x * y = u.  [para(4(a,1),8(a,2))].
+
+given #183 (F,wt=25): 509 F * G * D * ((A @ B) @ C) * G * F != G * F * D * F * G # answer(A).  [para(440(a,1),231(a,2,2,2,2))].
+
+given #184 (F,wt=25): 547 G * F * D * ((A @ B) @ C) * F * G != G * F * D * F * G # answer(A).  [para(21(a,1),231(a,1)),rewrite([440(25)])].
+
+given #185 (F,wt=25): 548 F * G * D * ((A @ B) @ C) * F * G != F * G * D * F * G # answer(A).  [para(21(a,1),231(a,2)),rewrite([440(25)])].
+
+given #186 (F,wt=25): 559 x * (D @ (F @ G)) * C * (A @ B) * y != x * (A @ B) * C * y # answer(A).  [ur(8,b,480,a),rewrite([3(12),3(11),3(20),3(19)])].
+
+given #187 (T,wt=13): 602 x * y @ x * (x @ y) * y = c_0.  [para(4(a,1),514(a,1,1)),rewrite([3(4)])].
+
+given #188 (T,wt=13): 603 x * (x @ y) * y @ x * y = c_0.  [para(4(a,1),514(a,1,2)),rewrite([3(3)])].
+
+given #189 (T,wt=13): 611 x * y * y * x @ y * x = c_0.  [para(514(a,1),332(a,1,1,2)),rewrite([165(3),514(3),3(4)]),flip(a)].
+
+given #190 (T,wt=13): 612 x * y @ y * x * x * y = c_0.  [para(514(a,1),353(a,1,2,2)),rewrite([165(4),514(3),3(5)]),flip(a)].
+
+given #191 (A,wt=22): 58 x * y * z * y * x != u * z * x * y | y * x = u.  [para(5(a,1),8(a,1))].
+
+given #192 (F,wt=25): 561 x * ((A @ B) @ C) * (F @ G) * D * y != x * D * (F @ G) * y # answer(A).  [ur(8,b,482,a),rewrite([3(12),3(11),3(20),3(19)])].
+
+given #193 (F,wt=25): 640 (F @ G) * D * ((A @ B) @ C) * G * F * x != D * F * G * x # answer(A).  [ur(8,b,489,a),rewrite([3(15),3(14),3(13),3(22),3(21)])].
+
+given #194 (F,wt=25): 641 (D @ (F @ G)) * C * (A @ B) * x * (x @ C) != (A @ B) * x * C # answer(A).  [para(4(a,1),555(a,2,2))].
+
+given #195 (F,wt=25): 643 ((A @ B) @ C) * (F @ G) * x * D != D * (F @ G) * x * (x @ D) # answer(A).  [para(4(a,1),557(a,1,2,2))].
+
+given #196 (T,wt=13): 651 (x @ y) @ y * y * y * x = c_0.  [para(315(a,1),524(a,1,1))].
+
+given #197 (T,wt=13): 663 (x @ y) @ x * x * y * x = c_0.  [para(341(a,1),525(a,1,1)),rewrite([3(3)])].
+
+given #198 (T,wt=13): 679 x * x * x * y @ (y @ x) = c_0.  [para(315(a,1),535(a,1,2))].
+
+given #199 (T,wt=13): 714 x * x * y * x @ (x @ y) = c_0.  [para(341(a,1),536(a,1,2)),rewrite([3(2)])].
+
+given #200 (A,wt=20): 106 x * y * z != u * x * y | u * (u @ x * y) = z.  [para(3(a,1),10(a,1))].
+
+given #201 (F,wt=25): 645 (D @ (F @ G)) * C * A * B * x != (A @ B) * C * B * A * x # answer(A).  [ur(8,b,642,a),rewrite([3(11),3(10),3(22),3(21),3(20)])].
+
+given #202 (F,wt=23): 1182 (D @ (F @ G)) * C * A * B * (B * A @ C) != A * B * C # answer(A).  [para(15(a,1),645(a,2,2)),rewrite([466(26)])].
+
+given #203 (F,wt=25): 646 x * (D @ (F @ G)) * C * A * B != x * (A @ B) * C * B * A # answer(A).  [ur(1,b,642,a)].
+
+given #204 (F,wt=25): 676 ((A @ B) @ C) * (F @ G) * (F @ G) * D != (F @ G) * D * (F @ G) # answer(A).  [para(535(a,1),33(a,1,2,2)),rewrite([165(16),3(30),3(29),4(29)])].
+
+given #205 (T,wt=11): 1168 x * (y @ x) * y = y * x.  [back_rewrite(930),rewrite([1161(3)])].
+
+given #206 (T,wt=11): 1184 (x @ y) * x = x * (x @ y).  [hyper(10,a,1168,a),flip(a)].
+
+given #207 (T,wt=7): 1238 x @ (x @ y) = c_0.  [hyper(380,a,1184,a)].
+
+given #208 (T,wt=7): 1239 (x @ y) @ x = c_0.  [hyper(246,a,1184,a)].
+
+given #209 (A,wt=20): 107 x * y * z != z * u | x * y * (x * y @ z) = u.  [para(3(a,1),10(a,2)),rewrite([3(8)]),flip(a)].
+
+given #210 (F,wt=15): 1249 ((A @ B) @ C) * D != D * (D @ (F @ G)) # answer(A).  [para(1184(a,1),23(a,2))].
+
+given #211 (F,wt=17): 1191 C * (D @ (F @ G)) * (A @ B) != (A @ B) * C # answer(A).  [para(1168(a,1),31(a,1)),flip(a)].
+
+given #212 (F,wt=17): 1192 (F @ G) * ((A @ B) @ C) * D != D * (F @ G) # answer(A).  [para(1168(a,1),31(a,2))].
+
+given #213 (F,wt=19): 1248 (A @ B) * ((A @ B) @ C) != (D @ (F @ G)) * (A @ B) # answer(A).  [para(1184(a,1),23(a,1))].
+
+given #214 (T,wt=11): 1269 x * (x @ y) @ (x @ y) = c_0.  [para(1184(a,1),315(a,1,1)),rewrite([1238(6)])].
+
+given #215 (T,wt=11): 1270 (x @ y) @ x * (x @ y) = c_0.  [para(1184(a,1),341(a,1,2)),rewrite([1239(6)])].
+
+given #216 (T,wt=12): 1198 x * y != x | y * (x @ y) = c_0.  [para(1168(a,1),156(a,1))].
+
+given #217 (T,wt=12): 1200 x * (y @ x) != y * x | c_0 = y.  [para(1168(a,1),166(a,1)),flip(a)].
+
+given #218 (A,wt=18): 108 x * y != z * y | z * (z @ y) = x * (x @ y).  [para(4(a,1),10(a,1))].
+
+given #219 (F,wt=19): 1254 x * ((A @ B) @ C) * D != x * D * (D @ (F @ G)) # answer(A).  [para(1184(a,1),31(a,2,2))].
+
+given #220 (F,wt=19): 1351 ((A @ B) @ C) * D * x != D * (D @ (F @ G)) * x # answer(A).  [ur(986,b,1249,a),rewrite([3(8),3(16)]),flip(a)].
+
+given #221 (F,wt=19): 1386 ((A @ B) @ C) * D * D != D * D * (D @ (F @ G)) # answer(A).  [para(1184(a,1),1351(a,2,2))].
+
+given #222 (F,wt=21): 1195 x * C * (D @ (F @ G)) * (A @ B) != x * (A @ B) * C # answer(A).  [para(1168(a,1),30(a,1,2)),flip(a)].
+
+given #223 (T,wt=13): 738 x * x * y * x @ (y @ x) = c_0.  [para(315(a,1),575(a,1,2)),rewrite([3(2)])].
+
+given #224 (T,wt=13): 752 x * x * x * y @ (x @ y) = c_0.  [para(341(a,1),576(a,1,2))].
+
+given #225 (T,wt=13): 799 (x @ y) @ y * y * x * y = c_0.  [para(315(a,1),593(a,1,1)),rewrite([3(3)])].
+
+given #226 (T,wt=13): 808 (x @ y) @ x * x * x * y = c_0.  [para(341(a,1),594(a,1,1))].
+
+given #227 (A,wt=20): 133 x * y * z * (y * z @ u) != y * z * u | u = x.  [para(3(a,1),11(a,1,2)),rewrite([3(7)])].
+
+given #228 (F,wt=21): 1196 x * (F @ G) * ((A @ B) @ C) * D != x * D * (F @ G) # answer(A).  [para(1168(a,1),30(a,2,2))].
+
+given #229 (F,wt=21): 1255 C * (A @ B) * D * (D @ (F @ G)) != (A @ B) * C * D # answer(A).  [para(1184(a,1),38(a,1,2,2))].
+
+given #230 (F,wt=21): 1258 (F @ G) * D * ((A @ B) @ C) * F != D * F * (F @ G) # answer(A).  [para(1184(a,1),60(a,2,2))].
+
+given #231 (F,wt=21): 1274 (D @ (F @ G)) * C * A * (A @ B) != (A @ B) * C * A # answer(A).  [para(1184(a,1),555(a,1,2,2))].
+
+given #232 (T,wt=13): 823 x * y * x * x @ (y @ x) = c_0.  [para(315(a,1),737(a,1,2)),rewrite([3(3)])].
+
+given #233 (T,wt=13): 828 x * x * y @ (y @ x * y) = c_0.  [para(353(a,1),737(a,1,2)),rewrite([3(5),13(6),4(3)])].
+
+given #234 (T,wt=13): 833 (x @ y) @ y * x * y * y = c_0.  [para(315(a,1),740(a,1,1)),rewrite([3(4)])].
+
+given #235 (T,wt=13): 836 (x @ y * x) @ y * y * x = c_0.  [para(353(a,1),740(a,1,1)),rewrite([3(7),13(8),4(5)])].
+
+given #236 (A,wt=20): 147 x * y * z * y * x != x * z * x * y | c_0 = y.  [back_rewrite(143),rewrite([145(9)])].
+
+given #237 (F,wt=21): 1275 ((A @ B) @ C) * (F @ G) * D * F != D * F * (F @ G) # answer(A).  [para(1184(a,1),557(a,2,2))].
+
+given #238 (F,wt=21): 1354 C * (D @ (F @ G)) * (A @ B) * x != (A @ B) * C * x # answer(A).  [ur(986,b,1191,a),rewrite([3(6),3(18),3(17)]),flip(a)].
+
+given #239 (F,wt=21): 1358 (F @ G) * ((A @ B) @ C) * D * x != D * (F @ G) * x # answer(A).  [ur(986,b,1192,a),rewrite([3(6),3(18),3(17)]),flip(a)].
+
+given #240 (F,wt=21): 1479 C * (D @ (F @ G)) * A * B != (A @ B) * C * B * A # answer(A).  [para(440(a,1),1354(a,1,2,2))].
+
+given #241 (T,wt=13): 844 (x * y @ y) * y * x = x * y.  [hyper(53,a,440,a)].
+
+given #242 (T,wt=11): 1518 x * y @ (y * x @ x) = c_0.  [para(844(a,1),315(a,1,1)),rewrite([1238(4)]),flip(a)].
+
+given #243 (T,wt=11): 1519 (x * y @ y) @ y * x = c_0.  [para(844(a,1),341(a,1,2)),rewrite([1239(4)]),flip(a)].
+
+given #244 (T,wt=13): 886 (x @ (x @ y) * y) @ x * y = c_0.  [para(440(a,1),519(a,1,2))].
+
+given #245 (A,wt=20): 167 x * y * z * y * x != y | x * z * x * y = c_0.  [back_rewrite(51),rewrite([145(6)]),flip(b)].
+
+given #246 (F,wt=21): 1480 C * (D @ (F @ G)) * A * (A @ B) != (A @ B) * C * A # answer(A).  [para(1184(a,1),1354(a,1,2,2))].
+
+given #247 (F,wt=21): 1483 (F @ G) * ((A @ B) @ C) * D * G * F != D * F * G # answer(A).  [para(440(a,1),1358(a,2,2))].
+
+given #248 (F,wt=21): 1484 (F @ G) * ((A @ B) @ C) * D * F != D * F * (F @ G) # answer(A).  [para(1184(a,1),1358(a,2,2))].
+
+given #249 (F,wt=23): 1188 x * (((A @ B) @ C) @ x) * (D @ (F @ G)) != ((A @ B) @ C) * x # answer(A).  [para(1168(a,1),25(a,1)),flip(a)].
+
+given #250 (T,wt=13): 903 x * y @ (x @ (x @ y) * y) = c_0.  [para(440(a,1),530(a,1,1))].
+
+given #251 (T,wt=13): 924 x * y @ ((x @ y) * y @ x) = c_0.  [para(440(a,1),563(a,1,1))].
+
+given #252 (T,wt=13): 946 (x @ y * x) * y * x = x * y.  [back_rewrite(716),rewrite([930(8)])].
+
+given #253 (T,wt=13): 951 (x @ y * x * x) @ y * x = c_0.  [para(4(a,1),943(a,1,2)),rewrite([3(3),355(4)])].
+
+given #254 (A,wt=20): 169 x * y * z * (y * z @ u) != y * z * u | x = u.  [para(3(a,1),12(a,1,2)),rewrite([3(7)])].
+
+given #255 (F,wt=23): 1189 x * ((D @ (F @ G)) @ x) * ((A @ B) @ C) != (D @ (F @ G)) * x # answer(A).  [para(1168(a,1),25(a,2))].
+
+given #256 (F,wt=23): 1253 x * (A @ B) * ((A @ B) @ C) != x * (D @ (F @ G)) * (A @ B) # answer(A).  [para(1184(a,1),31(a,1,2))].
+
+given #257 (F,wt=23): 1259 x * y * ((A @ B) @ C) * D != x * y * D * (D @ (F @ G)) # answer(A).  [para(1184(a,1),30(a,2,2,2))].
+
+given #258 (F,wt=23): 1279 D * (D @ ((A @ B) @ C)) * (D @ (F @ G)) != D * ((A @ B) @ C) # answer(A).  [para(1184(a,1),481(a,1,2)),rewrite([1243(15)])].
+
+given #259 (T,wt=13): 964 x * y @ (y @ x * y * y) = c_0.  [para(4(a,1),944(a,1,1)),rewrite([3(4),355(5)])].
+
+given #260 (T,wt=13): 1022 ((x @ y) * y @ x) @ x * y = c_0.  [para(440(a,1),587(a,1,2))].
+
+given #261 (T,wt=13): 1085 x * y @ x * x * y * y = c_0.  [para(602(a,1),341(a,2)),rewrite([3(6),13(5)])].
+
+given #262 (T,wt=13): 1091 x * x * y * y @ x * y = c_0.  [para(603(a,1),315(a,2)),rewrite([3(5),13(4)])].
+
+given #263 (A,wt=18): 192 x * y * z != y * u | x * (x @ y) * z = u.  [para(13(a,1),1(a,1))].
+
+given #264 (F,wt=21): 1746 F * G * ((A @ B) @ C) * D != G * F * D * (F @ G) # answer(A).  [ur(192,b,1196,a)].
+
+given #265 (F,wt=21): 1747 B * A * C * (D @ (F @ G)) * (A @ B) != A * B * C # answer(A).  [ur(192,b,1195,a(flip)),flip(a)].
+
+given #266 (F,wt=23): 1352 D * (D @ (F @ G)) * (D @ ((A @ B) @ C)) != D * ((A @ B) @ C) # answer(A).  [ur(56,b,1249,a),rewrite([3(15)])].
+
+given #267 (F,wt=23): 1353 ((A @ B) @ C) * x * D != D * (D @ (F @ G)) * x * (x @ D) # answer(A).  [ur(55,b,1249,a),rewrite([3(11)]),flip(a)].
+
+given #268 (T,wt=11): 1743 x * (x @ y) * (y @ x) = x.  [hyper(192,a,4,a)].
+
+given #269 (T,wt=9): 1766 (x @ y) * (y @ x) = c_0.  [hyper(154,a,1743,a),flip(a)].
+
+given #270 (T,wt=9): 1846 (x @ y) @ (y @ x) = c_0.  [para(1766(a,1),246(a,1)),rewrite([1766(4)]),xx(a)].
+
+given #271 (T,wt=10): 1837 x @ y != c_0 | y @ x = c_0.  [para(1766(a,1),154(a,1)),flip(a),flip(b)].
+
+given #272 (A,wt=18): 193 x * y * (y @ z) * u != y * z * u | z = x.  [para(13(a,1),2(a,1)),flip(a)].
+
+given #273 (F,wt=13): 1813 (D @ (F @ G)) * (C @ (A @ B)) != c_0 # answer(A).  [para(1766(a,1),23(a,1)),flip(a)].
+
+given #274 (F,wt=13): 1814 ((A @ B) @ C) * ((F @ G) @ D) != c_0 # answer(A).  [para(1766(a,1),23(a,2))].
+
+given #275 (F,wt=13): 1815 (C @ (A @ B)) * (D @ (F @ G)) != c_0 # answer(A).  [para(1766(a,1),24(a,1)),flip(a)].
+
+given #276 (F,wt=13): 1816 ((F @ G) @ D) * ((A @ B) @ C) != c_0 # answer(A).  [para(1766(a,1),24(a,2))].
+
+given #277 (T,wt=11): 1811 (x @ y) * (y @ x) * z = z.  [para(1766(a,1),3(a,1,1)),rewrite([155(2)]),flip(a)].
+
+given #278 (T,wt=9): 1985 x @ ((y @ z) @ x) = c_0.  [para(1811(a,1),510(a,1,1)),rewrite([1971(4)])].
+
+given #279 (T,wt=9): 1986 ((x @ y) @ z) @ z = c_0.  [para(1811(a,1),512(a,1,2)),rewrite([1971(4)])].
+
+given #280 (T,wt=11): 1885 (x @ y) * y * (y @ x) = y.  [back_rewrite(1767),rewrite([1811(4)]),flip(a)].
+
+given #281 (A,wt=18): 194 x * y * (y @ z) * u != y * z * u | x = z.  [para(13(a,1),2(a,2))].
+
+given #282 (F,wt=15): 1805 ((A @ B) @ C) * D * ((F @ G) @ D) != D # answer(A).  [para(1743(a,1),1351(a,2))].
+
+given #283 (F,wt=15): 1817 x * (C @ (A @ B)) * (D @ (F @ G)) != x # answer(A).  [para(1766(a,1),25(a,1,2)),rewrite([165(2)]),flip(a)].
+
+given #284 (F,wt=15): 1818 x * ((F @ G) @ D) * ((A @ B) @ C) != x # answer(A).  [para(1766(a,1),25(a,2,2)),rewrite([165(14)])].
+
+given #285 (F,wt=15): 1821 x * (D @ (F @ G)) * (C @ (A @ B)) != x # answer(A).  [para(1766(a,1),31(a,1,2)),rewrite([165(2)]),flip(a)].
+
+given #286 (T,wt=7): 2131 x @ (y @ x) = c_0.  [para(1885(a,1),315(a,1,1)),rewrite([2125(6)])].
+
+given #287 (T,wt=7): 2132 (x @ y) @ y = c_0.  [para(1885(a,1),341(a,1,2)),rewrite([2124(6)])].
+
+given #288 (T,wt=10): 2113 x * y != x | y @ x = y.  [para(1885(a,1),11(a,1)),flip(a),flip(b)].
+
+given #289 (T,wt=11): 2124 (x @ y) @ y * (y @ x) = c_0.  [para(1885(a,1),246(a,1)),rewrite([3(4),1766(3),165(2)]),xx(a)].
+
+given #290 (A,wt=21): 195 x * y * z * (z @ x * y) * u = z * x * y * u.  [para(13(a,1),3(a,1)),rewrite([3(2)]),flip(a)].
+
+given #291 (F,wt=11): 2191 (F @ G) @ D != C @ (A @ B) # answer(A).  [para(1811(a,1),1821(a,1)),flip(a)].
+
+given #292 (F,wt=15): 1822 x * ((A @ B) @ C) * ((F @ G) @ D) != x # answer(A).  [para(1766(a,1),31(a,2,2)),rewrite([165(14)])].
+
+given #293 (F,wt=15): 1916 (D @ (F @ G)) * (C @ (A @ B)) * x != x # answer(A).  [ur(986,b,1813,a),rewrite([155(2),3(12)]),flip(a)].
+
+given #294 (F,wt=15): 1919 ((A @ B) @ C) * ((F @ G) @ D) * x != x # answer(A).  [ur(986,b,1814,a),rewrite([155(2),3(12)]),flip(a)].
+
+given #295 (T,wt=11): 2125 x * (x @ y) @ (y @ x) = c_0.  [para(1885(a,1),246(a,2)),rewrite([3(4),1766(3),165(2)]),xx(a)].
+
+given #296 (T,wt=11): 2192 (x @ y) * y = y * (x @ y).  [para(2131(a,1),4(a,1,2,2)),rewrite([165(3)])].
+
+given #297 (T,wt=11): 2197 x * (y @ x) @ (y @ x) = c_0.  [para(2131(a,1),315(a,2)),rewrite([2192(2)])].
+
+given #298 (T,wt=11): 2198 (x @ y) @ y * (x @ y) = c_0.  [para(2131(a,1),353(a,1,2,2)),rewrite([165(3),2132(2)]),flip(a)].
+
+given #299 (A,wt=21): 196 x * y * z * (y * z @ x) * u = y * z * x * u.  [para(3(a,1),13(a,1,2)),rewrite([3(9)])].
+
+given #300 (F,wt=15): 1922 (C @ (A @ B)) * (D @ (F @ G)) * x != x # answer(A).  [ur(986,b,1815,a),rewrite([155(2),3(12)]),flip(a)].
+
+given #301 (F,wt=15): 1925 ((F @ G) @ D) * ((A @ B) @ C) * x != x # answer(A).  [ur(986,b,1816,a),rewrite([155(2),3(12)]),flip(a)].
+
+given #302 (F,wt=15): 2033 (D @ (F @ G)) * C * ((B @ A) @ C) != C # answer(A).  [para(1811(a,1),641(a,1,2,2)),rewrite([1811(22)])].
+
+given #303 (F,wt=15): 2034 D * ((G @ F) @ D) != ((A @ B) @ C) * D # answer(A).  [para(1811(a,1),643(a,1,2)),rewrite([1811(21)]),flip(a)].
+
+given #304 (T,wt=12): 1809 (x @ y) * z != c_0 | y @ x = z.  [para(1766(a,1),1(a,1)),flip(a)].
+
+given #305 (T,wt=12): 1810 x * (y @ z) != c_0 | z @ y = x.  [para(1766(a,1),2(a,1)),flip(a)].
+
+given #306 (T,wt=12): 1840 x @ y != z | z * (y @ x) = c_0.  [para(1766(a,1),156(a,1,2)),rewrite([165(2)]),flip(a)].
+
+given #307 (T,wt=12): 1842 x * (y @ z) != x | z @ y = c_0.  [para(1766(a,1),166(a,1,2)),rewrite([165(2)]),flip(a),flip(b)].
+
+given #308 (A,wt=21): 197 x * y * z * (z @ (x @ y)) = y * x * z * (x @ y).  [para(4(a,1),13(a,1,2,2)),flip(a)].
+
+given #309 (F,wt=15): 2041 (C @ (A @ B)) * D * (D @ (F @ G)) != D # answer(A).  [para(1811(a,1),1254(a,1)),flip(a)].
+
+given #310 (F,wt=15): 2083 C * ((A @ B) @ C) != (D @ (F @ G)) * C # answer(A).  [para(1985(a,1),32(a,1,2,2)),rewrite([165(8)]),flip(a)].
+
+given #311 (F,wt=15): 2100 (D @ (F @ G)) * C * (C @ (A @ B)) != C # answer(A).  [para(1885(a,1),23(a,1)),flip(a)].
+
+given #312 (F,wt=15): 2322 ((F @ G) @ D) * x != (C @ (A @ B)) * x # answer(A).  [ur(986,b,2191,a),flip(a)].
+
+given #313 (T,wt=12): 1852 x * y != c_0 | y @ x = y * x.  [para(1766(a,1),56(a,1)),flip(a),flip(b)].
+
+given #314 (T,wt=12): 1876 (x @ y) * z != z | y @ x = c_0.  [para(1766(a,1),147(a,1,2,2,2)),rewrite([165(4),1811(4),1766(4),165(3)]),flip(a),flip(b)].
+
+given #315 (T,wt=12): 1879 x @ y != z | (y @ x) * z = c_0.  [para(1766(a,1),167(a,1,2,2,2)),rewrite([165(4),1811(4),1766(6),165(5)]),flip(a)].
+
+given #316 (T,wt=12): 2196 x * (y @ x) != x | y @ x = c_0.  [para(2131(a,1),150(a,1,2)),rewrite([165(2)]),flip(a),flip(b)].
+
+given #317 (A,wt=22): 200 x * y * z * u != x * z * w | y * (y @ z) * u = w.  [para(13(a,1),7(a,1,2))].
+
+given #318 (F,wt=15): 2323 x * ((F @ G) @ D) != x * (C @ (A @ B)) # answer(A).  [ur(770,b,2191,a),flip(a)].
+
+given #319 (F,wt=15): 2431 ((F @ G) @ D) * C * ((A @ B) @ C) != C # answer(A).  [para(2192(a,1),1925(a,1,2))].
+
+given #320 (F,wt=15): 2493 ((F @ G) @ D) * C != C * (C @ (A @ B)) # answer(A).  [para(1184(a,1),2322(a,2))].
+
+given #321 (F,wt=15): 2494 D * ((F @ G) @ D) != (C @ (A @ B)) * D # answer(A).  [para(2192(a,1),2322(a,1))].
+
+given #322 (T,wt=12): 2446 c_0 != x | (y @ z) * x = y @ z.  [para(1811(a,1),1809(a,1)),flip(a),flip(b)].
+
+given #323 (T,wt=12): 2505 (x @ y) * z != z | x @ y = c_0.  [para(1811(a,1),1876(a,1)),flip(a)].
+
+given #324 (T,wt=13): 1183 x * (y * x @ x) * y = y * x.  [hyper(53,a,1168,a)].
+
+given #325 (T,wt=13): 1222 (x @ y * (x @ y)) @ x * y = c_0.  [para(1168(a,1),519(a,1,2))].
+
+given #326 (A,wt=18): 201 x * y * z != y * x * u | (x @ y) * z = u.  [para(13(a,1),7(a,1))].
+
+given #327 (F,wt=17): 1823 (A @ B) * C * ((F @ G) @ D) != C * (A @ B) # answer(A).  [para(1766(a,1),38(a,1,2,2)),rewrite([165(6)]),flip(a)].
+
+given #328 (F,wt=17): 1826 D * (F @ G) * (C @ (A @ B)) != (F @ G) * D # answer(A).  [para(1766(a,1),60(a,1,2,2)),rewrite([165(6)]),flip(a)].
+
+given #329 (F,wt=17): 1827 (F @ G) * D * ((A @ B) @ C) * (G @ F) != D # answer(A).  [para(1766(a,1),60(a,2,2)),rewrite([165(18)])].
+
+given #330 (F,wt=17): 1853 (D @ (F @ G)) * C != (A @ B) * C * (B @ A) # answer(A).  [para(1766(a,1),555(a,1,2,2)),rewrite([165(8)])].
+
+given #331 (T,wt=13): 1223 x * y @ (x @ y * (x @ y)) = c_0.  [para(1168(a,1),530(a,1,1))].
+
+given #332 (T,wt=13): 1224 x * y @ (y * (x @ y) @ x) = c_0.  [para(1168(a,1),563(a,1,1))].
+
+given #333 (T,wt=13): 1228 (x * (y @ x) @ y) @ y * x = c_0.  [para(1168(a,1),587(a,1,2))].
+
+given #334 (T,wt=13): 1234 x * (x @ y * x) = x * (x @ y).  [back_rewrite(1161),rewrite([1184(5)])].
+
+given #335 (A,wt=18): 202 x * y * z != y * x * u | (y @ x) * u = z.  [para(13(a,1),7(a,2)),flip(b)].
+
+given #336 (F,wt=17): 1854 ((A @ B) @ C) * (F @ G) * D * (G @ F) != D # answer(A).  [para(1766(a,1),557(a,2,2)),rewrite([165(18)])].
+
+given #337 (F,wt=17): 1877 C * (D @ (F @ G)) != (A @ B) * C * (B @ A) # answer(A).  [para(1766(a,1),1354(a,1,2,2)),rewrite([165(8)])].
+
+given #338 (F,wt=17): 1878 (F @ G) * ((A @ B) @ C) * D * (G @ F) != D # answer(A).  [para(1766(a,1),1358(a,2,2)),rewrite([165(18)])].
+
+given #339 (F,wt=17): 1938 (B @ A) * C * (A @ B) * (D @ (F @ G)) != C # answer(A).  [para(1811(a,1),39(a,2))].
+
+given #340 (T,wt=9): 2623 x @ y * x = x @ y.  [hyper(770,a,1234,a),flip(a)].
+
+given #341 (T,wt=9): 2692 x * y @ y = x @ y.  [para(4(a,1),2623(a,1,2)),rewrite([2671(4),332(4)]),flip(a)].
+
+given #342 (T,wt=11): 2668 x @ y * (y @ x) = x @ y.  [back_rewrite(353),rewrite([2623(5)])].
+
+given #343 (T,wt=11): 2700 x * y * y @ (y @ x) = c_0.  [para(2623(a,1),508(a,1,2)),rewrite([3(2)])].
+
+given #344 (A,wt=22): 203 x * y * (y @ z) * u != w * y * z * u | w * z = x.  [para(13(a,1),8(a,1,2)),flip(a)].
+
+given #345 (F,wt=11): 2821 D @ (G @ F) != C @ (A @ B) # answer(A).  [back_rewrite(2191),rewrite([2716(5)])].
+
+given #346 (F,wt=11): 2988 D @ (F @ G) != C @ (B @ A) # answer(A).  [back_rewrite(6),rewrite([2716(5)]),flip(a)].
+
+given #347 (F,wt=13): 2889 (D @ (G @ F)) * (C @ (B @ A)) != c_0 # answer(A).  [back_rewrite(1816),rewrite([2716(5),2716(10)])].
+
+given #348 (F,wt=13): 2890 (C @ (B @ A)) * (D @ (G @ F)) != c_0 # answer(A).  [back_rewrite(1814),rewrite([2716(5),2716(10)])].
+
+given #349 (T,wt=11): 2716 (x @ y) @ z = z @ (y @ x).  [para(1811(a,1),2623(a,1,2)),rewrite([2692(3),1970(6)])].
+
+given #350 (T,wt=11): 2745 x * (x @ y) @ y = x @ y.  [back_rewrite(332),rewrite([2692(5)])].
+
+given #351 (T,wt=11): 3069 (x @ y) @ (z @ (y @ x)) = c_0.  [para(2716(a,1),1238(a,1,2))].
+
+given #352 (T,wt=11): 3087 (x @ y) @ ((y @ x) @ z) = c_0.  [para(2716(a,2),2131(a,1,2))].
+
+given #353 (A,wt=18): 204 x * (y @ z) * u != y * z * u | z * y = x.  [para(13(a,1),8(a,1)),flip(a)].
+
+given #354 (F,wt=15): 2788 (D @ (G @ F)) * C != C * (C @ (A @ B)) # answer(A).  [back_rewrite(2493),rewrite([2716(5)])].
+
+given #355 (F,wt=15): 2817 x * (D @ (G @ F)) != x * (C @ (A @ B)) # answer(A).  [back_rewrite(2323),rewrite([2716(5)])].
+
+given #356 (F,wt=15): 2818 (D @ (G @ F)) * x != (C @ (A @ B)) * x # answer(A).  [back_rewrite(2322),rewrite([2716(5)])].
+
+given #357 (F,wt=15): 2869 (D @ (G @ F)) * (C @ (B @ A)) * x != x # answer(A).  [back_rewrite(1925),rewrite([2716(5),2716(10)])].
+
+given #358 (T,wt=13): 1437 x * y * y * y @ (x @ y) = c_0.  [para(823(a,1),315(a,2)),rewrite([466(5)])].
+
+given #359 (T,wt=13): 1864 x @ ((y @ z) @ x * (z @ y)) = c_0.  [para(1766(a,1),530(a,1,1,2)),rewrite([165(2)])].
+
+given #360 (T,wt=13): 1868 x @ (y @ z) * x * (z @ y) = c_0.  [para(1766(a,1),600(a,1,1,2)),rewrite([165(2)])].
+
+given #361 (T,wt=13): 1869 (x @ y) * z * (y @ x) @ z = c_0.  [para(1766(a,1),601(a,1,2,2)),rewrite([165(6)])].
+
+given #362 (A,wt=22): 205 x * y * z * (z @ u) * w != z * u * w | x * y = u.  [para(13(a,1),8(a,2))].
+
+given #363 (F,wt=15): 2872 (C @ (B @ A)) * (D @ (G @ F)) * x != x # answer(A).  [back_rewrite(1919),rewrite([2716(5),2716(10)])].
+
+given #364 (F,wt=15): 2887 x * (C @ (B @ A)) * (D @ (G @ F)) != x # answer(A).  [back_rewrite(1822),rewrite([2716(5),2716(10)])].
+
+given #365 (F,wt=15): 2888 x * (D @ (G @ F)) * (C @ (B @ A)) != x # answer(A).  [back_rewrite(1818),rewrite([2716(5),2716(10)])].
+
+given #366 (F,wt=15): 2932 D * (D @ (F @ G)) != (C @ (B @ A)) * D # answer(A).  [back_rewrite(1249),rewrite([2716(5)]),flip(a)].
+
+given #367 (T,wt=13): 2654 (x @ y) @ y * x * (y @ x) = c_0.  [back_rewrite(1576),rewrite([2623(4),315(2)])].
+
+given #368 (T,wt=13): 2667 x * y @ x * (x @ y) = y @ x.  [back_rewrite(373),rewrite([2623(8),315(6)])].
+
+given #369 (T,wt=12): 3216 x * x * y != x | x * y = c_0.  [para(2667(a,1),1200(a,1,2)),rewrite([3(4),1766(3),165(2),3(4),4(3)]),flip(a),flip(b)].
+
+given #370 (T,wt=13): 2671 x * (x @ y) @ x * y = x @ y.  [back_rewrite(370),rewrite([2663(8)])].
+
+given #371 (A,wt=22): 206 x * y * z != u * y | u * (u @ y) = x * (x @ y) * z.  [para(13(a,1),10(a,1))].
+
+given #372 (F,wt=15): 2986 x * (D @ (F @ G)) != x * (C @ (B @ A)) # answer(A).  [back_rewrite(24),rewrite([2716(5)]),flip(a)].
+
+given #373 (F,wt=15): 2987 (D @ (F @ G)) * x != (C @ (B @ A)) * x # answer(A).  [back_rewrite(23),rewrite([2716(5)]),flip(a)].
+
+given #374 (F,wt=15): 3156 D * (D @ (G @ F)) != (C @ (A @ B)) * D # answer(A).  [para(1184(a,1),2818(a,1))].
+
+given #375 (F,wt=15): 3159 (D @ (G @ F)) * C * (C @ (B @ A)) != C # answer(A).  [para(1184(a,1),2869(a,1,2))].
+
+given #376 (T,wt=13): 2691 x @ y * z * x = x @ y * z.  [para(3(a,1),2623(a,1,2))].
+
+given #377 (T,wt=13): 2704 x * y * x * x @ (x @ y) = c_0.  [para(2623(a,1),536(a,1,2)),rewrite([3(2)])].
+
+given #378 (T,wt=13): 2731 x * y @ y * (y @ x) = x @ y.  [back_rewrite(2628),rewrite([2692(6)])].
+
+given #379 (T,wt=13): 2732 x * (x @ y) @ y * x = x @ y.  [back_rewrite(2627),rewrite([2692(8),2623(6)])].
+
+given #380 (A,wt=16): 207 x * y * z != y | x * (x @ y) * z = c_0.  [para(13(a,1),154(a,1)),flip(b)].
+
+given #381 (F,wt=15): 3196 (C @ (B @ A)) * D * (D @ (G @ F)) != D # answer(A).  [para(1184(a,1),2872(a,1,2))].
+
+given #382 (F,wt=15): 3252 (D @ (F @ G)) * C != C * (C @ (B @ A)) # answer(A).  [para(1184(a,1),2987(a,2))].
+
+given #383 (F,wt=17): 1983 (B @ A) * (D @ (F @ G)) * C * (A @ B) != C # answer(A).  [para(1811(a,1),480(a,2))].
+
+given #384 (F,wt=17): 1984 (F @ G) * D != (C @ (A @ B)) * D * (F @ G) # answer(A).  [para(1811(a,1),482(a,1))].
+
+given #385 (T,wt=12): 3357 x * y * z != x | y * z = c_0.  [para(13(a,1),207(a,1)),rewrite([1811(7)])].
+
+given #386 (T,wt=13): 2737 (x @ y) * z @ (z @ (y @ x)) = c_0.  [back_rewrite(2049),rewrite([2692(3),2716(5)])].
+
+given #387 (T,wt=13): 2738 (x @ y) * z @ ((y @ x) @ z) = c_0.  [back_rewrite(2048),rewrite([2692(5)])].
+
+given #388 (T,wt=13): 2912 x * y * y * y @ (y @ x) = c_0.  [back_rewrite(1440),rewrite([2716(5)])].
+
+given #389 (A,wt=25): 208 x * y * z * (z @ (x @ y)) * u = y * x * z * (x @ y) * u.  [para(13(a,1),13(a,1,2,2)),flip(a)].
+
+given #390 (F,wt=17): 2043 (B @ A) * C * (D @ (F @ G)) * (A @ B) != C # answer(A).  [para(1811(a,1),1195(a,2))].
+
+given #391 (F,wt=17): 2593 (F @ G) * D * (G @ F) != (C @ (A @ B)) * D # answer(A).  [back_rewrite(2494),rewrite([2584(7)])].
+
+given #392 (F,wt=17): 2602 (D @ (F @ G)) * (B @ A) * C * (A @ B) != C # answer(A).  [back_rewrite(2033),rewrite([2584(12)])].
+
+given #393 (F,wt=17): 2768 (D @ (G @ F)) * (A @ B) * C * (B @ A) != C # answer(A).  [back_rewrite(2598),rewrite([2716(5)])].
+
+given #394 (T,wt=13): 2989 x * y * z @ z = x * y @ z.  [para(3(a,1),2692(a,1,1))].
+
+given #395 (T,wt=13): 3034 (x @ (y @ z)) * (x @ (z @ y)) = c_0.  [hyper(1879,a,2716,a)].
+
+given #396 (T,wt=13): 3035 ((x @ y) @ z) * ((y @ x) @ z) = c_0.  [hyper(1879,a,2716,a(flip))].
+
+given #397 (T,wt=13): 3048 x * (y @ z) @ (x @ (z @ y)) = c_0.  [para(2716(a,1),508(a,1,2))].
+
+given #398 (A,wt=16): 213 x * (x @ y) * z != x * y * z | c_0 = y.  [para(13(a,1),159(a,1)),flip(a)].
+
+given #399 (F,wt=17): 2778 (A @ B) * (D @ (G @ F)) * C != C * (A @ B) # answer(A).  [back_rewrite(2524),rewrite([2716(8)])].
+
+given #400 (F,wt=17): 2842 (G @ F) * D * (F @ G) != (C @ (B @ A)) * D # answer(A).  [back_rewrite(2047),rewrite([2716(5)]),flip(a)].
+
+given #401 (F,wt=17): 2852 (D @ (G @ F)) * (A @ B) * C != C * (A @ B) # answer(A).  [back_rewrite(1982),rewrite([2716(5)])].
+
+given #402 (F,wt=17): 2863 (G @ F) * D * (F @ G) != D * (C @ (B @ A)) # answer(A).  [back_rewrite(1943),rewrite([2716(6)]),flip(a)].
+
+given #403 (T,wt=13): 3049 x * (y @ z) @ ((z @ y) @ x) = c_0.  [para(2716(a,2),510(a,1,2))].
+
+given #404 (T,wt=13): 3078 (x @ (y @ z)) @ (x @ (z @ y)) = c_0.  [para(2716(a,1),1846(a,1,1))].
+
+given #405 (T,wt=13): 3079 ((x @ y) @ z) @ ((y @ x) @ z) = c_0.  [para(2716(a,2),1846(a,1,1))].
+
+given #406 (T,wt=13): 3226 x * x * y @ y * x = x @ y.  [para(2667(a,1),2667(a,1,2,2)),rewrite([3(4),4(3),3(5),4(5),2671(8)])].
+
+given #407 (A,wt=18): 214 x * y * (x * y @ z) != x * y * z | c_0 = z.  [para(3(a,1),150(a,1)),rewrite([3(6)])].
+
+given #408 (F,wt=17): 2873 (F @ G) * (C @ (B @ A)) * D * (G @ F) != D # answer(A).  [back_rewrite(1878),rewrite([2716(8)])].
+
+given #409 (F,wt=17): 2878 (C @ (B @ A)) * (F @ G) * D * (G @ F) != D # answer(A).  [back_rewrite(1854),rewrite([2716(5)])].
+
+given #410 (F,wt=17): 2885 (F @ G) * D * (C @ (B @ A)) * (G @ F) != D # answer(A).  [back_rewrite(1827),rewrite([2716(9)])].
+
+given #411 (F,wt=17): 2886 (A @ B) * C * (D @ (G @ F)) != C * (A @ B) # answer(A).  [back_rewrite(1823),rewrite([2716(9)])].
+
+given #412 (T,wt=13): 3246 x * y @ y * y * x = x @ y.  [para(2667(a,1),2671(a,1,1,2)),rewrite([3(3),4(3),3(5),4(4),2667(8)])].
+
+given #413 (T,wt=13): 3381 (x @ (y @ z)) @ (z @ y) * x = c_0.  [hyper(1879,a,2737,a),rewrite([165(7)])].
+
+given #414 (T,wt=13): 3494 (x @ (y @ z)) @ ((z @ y) @ x) = c_0.  [para(3034(a,1),1868(a,1,2,2)),rewrite([165(6)])].
+
+given #415 (T,wt=13): 3495 ((x @ y) @ z) @ (z @ (y @ x)) = c_0.  [para(3034(a,1),1869(a,1,1,2)),rewrite([165(4)])].
+
+given #416 (A,wt=23): 220 x * y * z * u * (u @ x * y * z) = u * x * y * z.  [para(14(a,1),3(a,1)),rewrite([3(2),3(5)]),flip(a)].
+
+given #417 (F,wt=17): 2935 (F @ G) * (C @ (B @ A)) * D != D * (F @ G) # answer(A).  [back_rewrite(1192),rewrite([2716(8)])].
+
+given #418 (F,wt=17): 2968 (C @ (B @ A)) * (F @ G) * D != D * (F @ G) # answer(A).  [back_rewrite(474),rewrite([2716(5)])].
+
+given #419 (F,wt=17): 2979 (F @ G) * D * (C @ (B @ A)) != D * (F @ G) # answer(A).  [back_rewrite(36),rewrite([2716(9)])].
+
+given #420 (F,wt=17): 3030 (G @ F) * D * (C @ (A @ B)) != D * (G @ F) # answer(A).  [ur(28,b,2821,a)].
+
+given #421 (T,wt=13): 3522 (x @ (y @ z)) @ x * (z @ y) = c_0.  [hyper(1879,a,3048,a),rewrite([165(7)])].
+
+given #422 (T,wt=14): 464 (x @ y) * z != x * y | y * x = z.  [para(440(a,1),1(a,1)),flip(a)].
+
+given #423 (T,wt=14): 465 x * y * z != z * y | z @ y = x.  [para(440(a,1),2(a,1)),flip(a)].
+
+given #424 (T,wt=14): 782 x * y * z != x * y * u | u = z.  [para(3(a,1),770(a,1)),rewrite([3(4)])].
+
+given #425 (A,wt=23): 221 x * y * z * u * (z * u @ x * y) = z * u * x * y.  [para(3(a,1),14(a,1,2,2)),rewrite([3(10)])].
+
+given #426 (F,wt=17): 3031 (B @ A) * C * (D @ (F @ G)) != C * (B @ A) # answer(A).  [ur(28,b,2988,a(flip))].
+
+given #427 (F,wt=17): 3032 D * (G @ F) * (C @ (B @ A)) != (G @ F) * D # answer(A).  [ur(202,b,2889,a),rewrite([165(6)]),flip(a)].
+
+given #428 (F,wt=17): 3033 C * (B @ A) * (D @ (G @ F)) != (B @ A) * C # answer(A).  [ur(202,b,2890,a),rewrite([165(6)]),flip(a)].
+
+given #429 (F,wt=17): 3256 (G @ F) * (C @ (A @ B)) * D != D * (G @ F) # answer(A).  [ur(10,b,3156,a)].
+
+given #430 (T,wt=14): 983 x * y * z != y * z | x * z = z.  [para(4(a,1),55(a,1)),flip(a)].
+
+given #431 (T,wt=12): 3820 c_0 != x | x * (y @ z) = y @ z.  [para(1766(a,1),983(a,1,2)),rewrite([165(2),1766(3)]),flip(a)].
+
+given #432 (T,wt=14): 1186 x * (y @ x) * z != y * x | y = z.  [para(1168(a,1),7(a,1)),flip(a)].
+
+given #433 (T,wt=10): 3850 x * y != y | y @ x = x.  [para(1766(a,1),1186(a,1,2)),rewrite([165(2)]),flip(a),flip(b)].
+
+given #434 (A,wt=23): 227 x * y * z * (z @ x * (x @ y)) = y * z * x * (x @ y).  [para(14(a,1),13(a,1,2)),flip(a)].
+
+given #435 (F,wt=17): 3370 (B @ A) * (D @ (F @ G)) * C != C * (B @ A) # answer(A).  [ur(10,b,3252,a(flip))].
+
+given #436 (F,wt=17): 3767 (C @ (A @ B)) * (G @ F) * D != D * (G @ F) # answer(A).  [ur(465,b,2821,a)].
+
+given #437 (F,wt=17): 3768 (D @ (F @ G)) * (B @ A) * C != C * (B @ A) # answer(A).  [ur(465,b,2988,a(flip))].
+
+given #438 (F,wt=19): 1829 x * y * (D @ (F @ G)) * (C @ (A @ B)) != x * y # answer(A).  [para(1766(a,1),30(a,1,2,2)),rewrite([165(2)]),flip(a)].
+
+given #439 (T,wt=14): 1187 x * (y @ x) * z != y * x | z = y.  [para(1168(a,1),7(a,2))].
+
+given #440 (T,wt=14): 1190 x * y != z * x | y * (x @ y) = z.  [para(1168(a,1),8(a,1))].
+
+given #441 (T,wt=14): 1240 (x @ y) * z != x * (x @ y) | x = z.  [para(1184(a,1),1(a,1)),flip(a)].
+
+given #442 (T,wt=14): 1241 (x @ y) * z != x * (x @ y) | z = x.  [para(1184(a,1),1(a,2))].
+
+given #443 (A,wt=16): 233 x * y * z * u != u | x * y * z = c_0.  [para(3(a,1),156(a,1,2))].
+
+given #444 (F,wt=19): 1833 x * y * (C @ (A @ B)) * (D @ (F @ G)) != x * y # answer(A).  [para(1766(a,1),34(a,1,2,2)),rewrite([165(2)]),flip(a)].
+
+given #445 (F,wt=19): 1935 x * (D @ (F @ G)) * (C @ (A @ B)) * y != x * y # answer(A).  [para(1811(a,1),31(a,1,2)),flip(a)].
+
+given #446 (F,wt=19): 1947 x * (C @ (A @ B)) * (D @ (F @ G)) * y != x * y # answer(A).  [para(1811(a,1),30(a,1,2)),flip(a)].
+
+given #447 (F,wt=19): 2070 x * (C @ (A @ B)) * D * (D @ (F @ G)) != x * D # answer(A).  [para(1811(a,1),1259(a,1,2)),flip(a)].
+
+given #448 (T,wt=14): 1242 x * (x @ y) != z * x | x @ y = z.  [para(1184(a,1),2(a,1))].
+
+given #449 (T,wt=14): 1808 (x @ y) * z != x | x * (y @ x) = z.  [para(1743(a,1),192(a,1)),rewrite([1238(5),155(6)]),flip(a)].
+
+given #450 (T,wt=14): 1812 x * (y @ z) * u != x | z @ y = u.  [para(1766(a,1),7(a,1,2)),rewrite([165(2)]),flip(a)].
+
+given #451 (T,wt=14): 1819 x * (y @ z) != u | u * (z @ y) = x.  [para(1766(a,1),8(a,1,2)),rewrite([165(2)]),flip(a)].
+
+given #452 (A,wt=16): 234 x * (x @ y) != z * x * y | z * y = c_0.  [para(4(a,1),156(a,1,2)),flip(a)].
+
+given #453 (F,wt=17): 4004 (A @ B) * C * (B @ A) * (D @ (G @ F)) != C # answer(A).  [ur(1819,b,1877,a),rewrite([2716(14),3(15),3(14)])].
+
+given #454 (F,wt=17): 4005 (C @ (A @ B)) * (G @ F) * D * (F @ G) != D # answer(A).  [ur(1819,b,3767,a(flip)),rewrite([3(15),3(14)])].
+
+given #455 (F,wt=17): 4006 (G @ F) * (C @ (A @ B)) * D * (F @ G) != D # answer(A).  [ur(1819,b,3256,a(flip)),rewrite([3(15),3(14)])].
+
+given #456 (F,wt=17): 4007 (G @ F) * D * (C @ (A @ B)) * (F @ G) != D # answer(A).  [ur(1819,b,3030,a(flip)),rewrite([3(15),3(14)])].
+
+given #457 (T,wt=14): 1847 (x @ y) * z != u | (y @ x) * u = z.  [para(1766(a,1),16(a,1,2,2,2)),rewrite([165(4),1811(4),1766(7),165(6)]),flip(a)].
+
+given #458 (T,wt=14): 1850 x * (y @ z) * u != u | z @ y = x.  [para(1766(a,1),17(a,1,2,2,2)),rewrite([165(3),1766(8),165(7),1811(7)])].
+
+given #459 (T,wt=14): 1884 x * y * (y @ z) != y | z @ y = x.  [back_rewrite(1781),rewrite([1811(4)]),flip(a)].
+
+given #460 (T,wt=14): 2095 (x @ y) * z != y | y * (y @ x) = z.  [para(1885(a,1),1(a,1)),flip(a)].
+
+given #461 (A,wt=24): 236 x * y * z * u * z * y != y * u * y * z | x * z = c_0.  [para(5(a,1),156(a,1,2))].
+
+given #462 (F,wt=17): 4008 (A @ B) * C * (D @ (G @ F)) * (B @ A) != C # answer(A).  [ur(1819,b,2886,a(flip)),rewrite([3(15),3(14)])].
+
+given #463 (F,wt=17): 4009 (G @ F) * D * (F @ G) * (C @ (A @ B)) != D # answer(A).  [ur(1819,b,2863,a(flip)),rewrite([2716(14),3(15),3(14)])].
+
+given #464 (F,wt=17): 4010 (A @ B) * (D @ (G @ F)) * C * (B @ A) != C # answer(A).  [ur(1819,b,2778,a(flip)),rewrite([3(15),3(14)])].
+
+given #465 (F,wt=17): 4078 (F @ G) * D != D * (C @ (A @ B)) * (F @ G) # answer(A).  [ur(1847,b,4007,a)].
+
+given #466 (T,wt=14): 2152 x * y * z != y | z @ y = x * z.  [para(1885(a,1),55(a,1)),flip(a),flip(b)].
+
+given #467 (T,wt=14): 2156 x * y != z * x | z * (y @ x) = y.  [para(1885(a,1),57(a,1,2)),flip(a)].
+
+given #468 (T,wt=14): 2193 x * (y @ x) != z * x | y @ x = z.  [para(2131(a,1),11(a,1,2,2)),rewrite([165(2)]),flip(a)].
+
+given #469 (T,wt=14): 2334 (x @ y) * z != y * (x @ y) | y = z.  [para(2192(a,1),1(a,1)),flip(a)].
+
+given #470 (A,wt=20): 237 x * y * z * y * x != z * x * y | y * x = c_0.  [para(5(a,1),156(a,1))].
+
+given #471 (F,wt=17): 4079 (D @ (G @ F)) * C * (B @ A) != (B @ A) * C # answer(A).  [ur(1847,b,3768,a),rewrite([2716(5)])].
+
+given #472 (F,wt=17): 4080 (G @ F) * D != (C @ (B @ A)) * D * (G @ F) # answer(A).  [ur(1847,b,3767,a),rewrite([2716(5)]),flip(a)].
+
+given #473 (F,wt=17): 4081 (F @ G) * D * (G @ F) != D * (C @ (A @ B)) # answer(A).  [ur(1847,b,3030,a)].
+
+given #474 (F,wt=17): 4082 C * (D @ (G @ F)) != (B @ A) * C * (A @ B) # answer(A).  [ur(1847,b,2886,a),flip(a)].
+
+given #475 (T,wt=14): 2335 (x @ y) * z != y * (x @ y) | z = y.  [para(2192(a,1),1(a,2))].
+
+given #476 (T,wt=14): 2734 x * y != y | x * (x @ y) = x @ y.  [back_rewrite(2273),rewrite([2692(4)]),flip(b)].
+
+given #477 (T,wt=14): 3080 x @ (y @ z) != c_0 | x @ (z @ y) = c_0.  [para(2716(a,1),1837(a,1))].
+
+given #478 (T,wt=14): 3081 (x @ y) @ z != c_0 | (y @ x) @ z = c_0.  [para(2716(a,2),1837(a,1))].
+
+given #479 (A,wt=20): 238 x * (x @ y) * z != u * x * y * z | u * y = c_0.  [para(13(a,1),156(a,1,2)),flip(a)].
+
+given #480 (F,wt=17): 4083 (G @ F) * D != D * (C @ (B @ A)) * (G @ F) # answer(A).  [ur(1847,b,2885,a)].
+
+given #481 (F,wt=17): 4084 (D @ (G @ F)) * C != (B @ A) * C * (A @ B) # answer(A).  [ur(1847,b,2778,a),flip(a)].
+
+given #482 (F,wt=17): 4093 (F @ G) * D * (G @ F) * (C @ (B @ A)) != D # answer(A).  [ur(1847,b,3032,a(flip))].
+
+given #483 (F,wt=17): 4130 C * (D @ (G @ F)) * (B @ A) != (B @ A) * C # answer(A).  [ur(1847,b,4008,a),flip(a)].
+
+given #484 (T,wt=14): 3146 x * y * z != z | y @ x = y * x.  [para(1811(a,1),204(a,1)),flip(a),flip(b)].
+
+given #485 (T,wt=14): 3757 x * y != z | (y @ x) * z = y * x.  [para(1811(a,1),464(a,1)),flip(a),flip(b)].
+
+given #486 (T,wt=14): 3851 x * y != z * x | (x @ z) * y = z.  [para(1811(a,1),1186(a,1,2)),flip(b)].
+
+given #487 (T,wt=14): 3852 x * x * (y @ x) != y * x | y = x.  [para(2192(a,1),1186(a,1,2))].
+
+given #488 (A,wt=16): 239 (x @ y) * z != x * y * z | y * x = c_0.  [para(13(a,1),156(a,1)),flip(a)].
+
+given #489 (F,wt=19): 2106 x * (D @ (F @ G)) * C * (C @ (A @ B)) != x * C # answer(A).  [para(1885(a,1),31(a,1,2)),flip(a)].
+
+given #490 (F,wt=19): 2390 (D @ (F @ G)) * (A @ B) * (C @ (A @ B)) != A @ B # answer(A).  [para(2192(a,1),1916(a,1,2))].
+
+given #491 (F,wt=19): 2430 (C @ (A @ B)) * (F @ G) * (D @ (F @ G)) != F @ G # answer(A).  [para(2192(a,1),1922(a,1,2))].
+
+given #492 (F,wt=19): 2480 (C @ (A @ B)) * D * (D @ (F @ G)) * x != D * x # answer(A).  [ur(986,b,2041,a),rewrite([3(16),3(15)]),flip(a)].
+
+given #493 (T,wt=14): 3907 x * x * (y @ x) != y * x | x = y.  [para(2192(a,1),1187(a,1,2))].
+
+given #494 (T,wt=14): 3932 x * (x @ y) != z | (y @ x) * z = x.  [para(1811(a,1),1240(a,1)),flip(a),flip(b)].
+
+given #495 (T,wt=14): 3991 x != y | (z @ y) * x = y * (z @ y).  [para(1811(a,1),1808(a,1)),flip(b)].
+
+given #496 (T,wt=14): 4000 x * y * (y @ z) != x | z @ y = y.  [para(1184(a,1),1812(a,1,2))].
+
+given #497 (A,wt=18): 241 x * (x @ y * z) != x * y * z | y * z = c_0.  [para(14(a,1),156(a,1)),flip(a)].
+
+given #498 (F,wt=19): 2486 (D @ (F @ G)) * C * (C @ (A @ B)) * x != C * x # answer(A).  [ur(986,b,2100,a),rewrite([3(16),3(15)]),flip(a)].
+
+given #499 (F,wt=19): 2777 D * (D @ (G @ F)) * x != (C @ (A @ B)) * D * x # answer(A).  [back_rewrite(2525),rewrite([2716(6)])].
+
+NOTE: Back_subsumption disabled, ratio of kept to back_subsumed is 21 (0.00 of 1.60 sec).
+
+given #500 (F,wt=19): 2783 x * (D @ (G @ F)) * C != x * C * (C @ (A @ B)) # answer(A).  [back_rewrite(2519),rewrite([2716(5)])].
+
+given #501 (F,wt=19): 2784 (D @ (G @ F)) * C * x != C * (C @ (A @ B)) * x # answer(A).  [back_rewrite(2518),rewrite([2716(5)])].
+
+given #502 (T,wt=12): 4400 x * (y @ z) != x | y @ z = c_0.  [para(1846(a,1),4000(a,1,2,2)),rewrite([165(3),1846(6)]),flip(b)].
+
+given #503 (T,wt=14): 4001 x * y != x | (z @ u) * y = z @ u.  [para(1811(a,1),1812(a,1,2)),flip(b)].
+
+given #504 (T,wt=14): 4002 x * y * (z @ y) != x | y @ z = y.  [para(2192(a,1),1812(a,1,2))].
+
+given #505 (T,wt=14): 4102 x != y | (z @ u) * y = (z @ u) * x.  [para(1811(a,1),1847(a,1))].
+
+given #506 (A,wt=18): 242 x * y * z != z | x * y * (x * y @ z) = c_0.  [para(3(a,1),164(a,1)),rewrite([3(7)])].
+
+given #507 (F,wt=19): 2786 (D @ (G @ F)) * C * (C @ (B @ A)) * x != C * x # answer(A).  [back_rewrite(2514),rewrite([2716(5),2716(11)])].
+
+given #508 (F,wt=19): 2787 (D @ (G @ F)) * (A @ B) != (A @ B) * (C @ (A @ B)) # answer(A).  [back_rewrite(2495),rewrite([2716(5)])].
+
+given #509 (F,wt=19): 2789 (F @ G) * (D @ (G @ F)) != (C @ (A @ B)) * (F @ G) # answer(A).  [back_rewrite(2492),rewrite([2716(8)])].
+
+given #510 (F,wt=19): 2793 x * (D @ (G @ F)) * y != x * (C @ (A @ B)) * y # answer(A).  [back_rewrite(2488),rewrite([2716(5)])].
+
+given #511 (T,wt=14): 4103 x * (y @ x) != z | (x @ y) * z = x.  [para(2192(a,1),1847(a,1))].
+
+given #512 (T,wt=14): 4109 x * y * (z @ y) != y | y @ z = x.  [para(2192(a,1),1850(a,1,2))].
+
+given #513 (T,wt=14): 4110 x @ (y @ z) != u | (z @ y) @ x = u.  [para(3034(a,1),1850(a,1,2)),rewrite([165(2)]),flip(a)].
+
+given #514 (T,wt=14): 4111 (x @ y) @ z != u | z @ (y @ x) = u.  [para(3035(a,1),1850(a,1,2)),rewrite([165(2)]),flip(a)].
+
+given #515 (A,wt=16): 244 x * y * z * u != x * y * z | c_0 = u.  [para(3(a,1),166(a,1,2))].
+
+given #516 (F,wt=19): 2796 (D @ (F @ G)) * C * x != C * (C @ (B @ A)) * x # answer(A).  [back_rewrite(2483),rewrite([2716(6)]),flip(a)].
+
+given #517 (F,wt=19): 2801 D * (D @ (F @ G)) * x != (C @ (B @ A)) * D * x # answer(A).  [back_rewrite(2436),rewrite([2716(6),2716(13)])].
+
+given #518 (F,wt=19): 2813 x * y * (D @ (G @ F)) != x * y * (C @ (A @ B)) # answer(A).  [back_rewrite(2327),rewrite([2716(5)])].
+
+given #519 (F,wt=19): 2820 (F @ G) * (D @ (F @ G)) != (C @ (B @ A)) * (F @ G) # answer(A).  [back_rewrite(2194),rewrite([2716(5)]),flip(a)].
+
+given #520 (T,wt=14): 4122 x != y | (y @ z) * x = y * (y @ z).  [para(1811(a,1),2095(a,1)),flip(b)].
+
+given #521 (T,wt=14): 4399 x * y * z != x | z @ y = z * y.  [para(315(a,1),4000(a,1,2,2)),rewrite([3(3),4(3),341(5)])].
+
+given #522 (T,wt=14): 4442 x * y != x | y * (y @ z) = y @ z.  [para(2668(a,1),4002(a,1,2,2)),rewrite([3(4),1766(3),165(2),2745(5)]),flip(b)].
+
+given #523 (T,wt=14): 4472 x != y | (x @ z) * y = x * (x @ z).  [para(2668(a,1),4103(a,1,2)),rewrite([3(4),1766(3),165(2),2745(4)])].
+
+given #524 (A,wt=16): 245 x * y * z != x * z | y * (y @ z) = c_0.  [para(4(a,1),166(a,1,2)),flip(b)].
+
+given #525 (F,wt=19): 2834 (C @ (B @ A)) * (F @ G) * (D @ (G @ F)) != F @ G # answer(A).  [back_rewrite(2101),rewrite([2716(5),2716(13)])].
+
+given #526 (F,wt=19): 2836 (D @ (G @ F)) * (A @ B) * (C @ (B @ A)) != A @ B # answer(A).  [back_rewrite(2069),rewrite([2716(5),2716(13)])].
+
+given #527 (F,wt=19): 2837 (B @ A) * (D @ (F @ G)) * (A @ B) != C @ (B @ A) # answer(A).  [back_rewrite(2068),rewrite([2716(5)]),flip(a)].
+
+given #528 (F,wt=19): 2843 (C @ (B @ A)) * D * (D @ (G @ F)) * x != D * x # answer(A).  [back_rewrite(2042),rewrite([2716(5),2716(11)])].
+
+given #529 (T,wt=15): 331 x * y * z @ x * y = z @ x * y.  [para(3(a,1),315(a,1,1))].
+
+given #530 (T,wt=15): 352 x * y @ x * y * z = x * y @ z.  [para(3(a,1),341(a,1,2))].
+
+given #531 (T,wt=15): 680 x * y * x * y * x @ (x @ y) = c_0.  [para(341(a,1),535(a,1,2)),rewrite([3(3),3(4)])].
+
+given #532 (T,wt=15): 703 x * y * z * x @ (x @ y * z) = c_0.  [para(3(a,1),536(a,1,1,2))].
+
+given #533 (A,wt=24): 247 x * y * z * u * z * y != x * z | y * u * y * z = c_0.  [para(5(a,1),166(a,1,2)),flip(b)].
+
+given #534 (F,wt=19): 2861 x * (D @ (G @ F)) * (C @ (B @ A)) * y != x * y # answer(A).  [back_rewrite(1949),rewrite([2716(5),2716(10)])].
+
+given #535 (F,wt=19): 2866 x * (C @ (B @ A)) * (D @ (G @ F)) * y != x * y # answer(A).  [back_rewrite(1936),rewrite([2716(5),2716(10)])].
+
+given #536 (F,wt=19): 2883 x * y * (D @ (G @ F)) * (C @ (B @ A)) != x * y # answer(A).  [back_rewrite(1834),rewrite([2716(5),2716(10)])].
+
+given #537 (F,wt=19): 2884 x * y * (C @ (B @ A)) * (D @ (G @ F)) != x * y # answer(A).  [back_rewrite(1830),rewrite([2716(5),2716(10)])].
+
+given #538 (T,wt=15): 713 x * y * x * x * y @ (y @ x) = c_0.  [para(315(a,1),536(a,1,2)),rewrite([3(4)])].
+
+given #539 (T,wt=15): 727 x * y * z * x @ (y * z @ x) = c_0.  [para(3(a,1),575(a,1,1,2))].
+
+given #540 (T,wt=15): 729 x * y * x * (y @ x) = y * x * x.  [para(575(a,1),4(a,1,2,2)),rewrite([165(5),466(4),3(6),3(5)]),flip(a)].
+
+given #541 (T,wt=15): 739 x * y * x * x * y @ (x @ y) = c_0.  [para(341(a,1),575(a,1,2)),rewrite([3(4)])].
+
+given #542 (A,wt=20): 248 x * y * z * y * x != y * x | z * x * y = c_0.  [para(5(a,1),166(a,1)),flip(b)].
+
+given #543 (F,wt=19): 2917 D * D * (D @ (F @ G)) != (C @ (B @ A)) * D * D # answer(A).  [back_rewrite(1386),rewrite([2716(5)]),flip(a)].
+
+given #544 (F,wt=19): 2930 x * D * (D @ (F @ G)) != x * (C @ (B @ A)) * D # answer(A).  [back_rewrite(1254),rewrite([2716(5)]),flip(a)].
+
+given #545 (F,wt=19): 2933 (D @ (F @ G)) * (A @ B) != (A @ B) * (C @ (B @ A)) # answer(A).  [back_rewrite(1248),rewrite([2716(8)]),flip(a)].
+
+given #546 (F,wt=19): 2983 x * (D @ (F @ G)) * y != x * (C @ (B @ A)) * y # answer(A).  [back_rewrite(31),rewrite([2716(5)]),flip(a)].
+
+given #547 (T,wt=15): 750 x * y * x * y * x @ (y @ x) = c_0.  [para(315(a,1),576(a,1,2)),rewrite([3(3),3(4)])].
+
+given #548 (T,wt=15): 811 (x @ y) * z * y * x = z * x * y.  [hyper(29,a,13,a(flip)),flip(a)].
+
+given #549 (T,wt=11): 4929 (x @ y) @ z * y * x = c_0.  [para(811(a,1),246(a,1)),rewrite([3(6),3(5),4(5)]),xx(a)].
+
+given #550 (T,wt=11): 4930 x * y * z @ (z @ y) = c_0.  [para(811(a,1),246(a,2)),rewrite([3(4),3(3),4(3)]),xx(a)].
+
+given #551 (A,wt=24): 249 x * y * z * y * x * u != y * x * z * x * y | c_0 = u.  [para(5(a,1),166(a,2)),rewrite([3(4),3(3),3(2)])].
+
+given #552 (F,wt=17): 4951 (D @ (F @ G)) * C * A * B != C * A * B # answer(A).  [para(811(a,1),555(a,2)),rewrite([2195(13),1184(12),4(13)])].
+
+given #553 (F,wt=17): 5010 (D @ (F @ G)) * A * B * C != A * B * C # answer(A).  [para(811(a,1),646(a,1)),rewrite([3(10),4874(26)])].
+
+given #554 (F,wt=17): 5028 C * (D @ (F @ G)) * A * B != C * A * B # answer(A).  [para(811(a,1),1354(a,2)),rewrite([2195(13),1184(12),4(13)])].
+
+given #555 (F,wt=17): 5279 (D @ (F @ G)) * C * B * A != C * B * A # answer(A).  [back_rewrite(1180),rewrite([4885(24)])].
+
+given #556 (T,wt=11): 4935 x * y * z @ (y @ z) = c_0.  [para(811(a,1),315(a,1,1)),rewrite([4930(8)])].
+
+given #557 (T,wt=11): 4937 (x @ y) @ z * x * y = c_0.  [para(811(a,1),341(a,1,2)),rewrite([4929(8)])].
+
+given #558 (T,wt=11): 5299 ((x @ y) @ z) @ u * z = c_0.  [para(1811(a,1),4929(a,1,2,2)),rewrite([2716(4,R),341(4)])].
+
+given #559 (T,wt=11): 5349 x * y @ ((z @ u) @ y) = c_0.  [para(1811(a,1),4930(a,1,1,2)),rewrite([2716(5,R),341(5)])].
+
+given #560 (A,wt=20): 250 x * y * z * u != x * z | y * (y @ z) * u = c_0.  [para(13(a,1),166(a,1,2)),flip(b)].
+
+given #561 (F,wt=17): 5281 (D @ (G @ F)) * A * B * C != A * B * C # answer(A).  [back_rewrite(4086),rewrite([5275(11)]),flip(a)].
+
+given #562 (F,wt=17): 5383 (D @ (G @ F)) * C * A * B != C * A * B # answer(A).  [ur(1847,b,4951,a),rewrite([2716(5)])].
+
+given #563 (F,wt=17): 5405 (D @ (F @ G)) * B * C * A != B * C * A # answer(A).  [ur(56,b,5010,a(flip)),rewrite([3(17),3(16),3(15),15(16),3(16)])].
+
+given #564 (F,wt=17): 5419 (D @ (G @ F)) * C * B * A != C * B * A # answer(A).  [ur(1847,b,5279,a),rewrite([2716(5)])].
+
+given #565 (T,wt=11): 5487 x * y @ (y @ (z @ u)) = c_0.  [hyper(4111,a,5299,a)].
+
+given #566 (T,wt=11): 5488 (x @ (y @ z)) @ u * x = c_0.  [hyper(3081,a,5299,a)].
+
+given #567 (T,wt=13): 5070 x * y * z @ x * z * y = c_0.  [para(811(a,1),2623(a,1,2)),rewrite([4930(9)])].
+
+given #568 (T,wt=13): 5283 (x @ y) @ z * u * y * x = c_0.  [para(3(a,1),4929(a,1,2))].
+
+given #569 (A,wt=16): 251 x * y * z != y * x | (x @ y) * z = c_0.  [para(13(a,1),166(a,1)),flip(b)].
+
+given #570 (F,wt=17): 5430 (D @ (F @ G)) * B * A * C != B * A * C # answer(A).  [ur(56,b,5279,a(flip)),rewrite([3(17),3(16),3(15),15(16),3(16)])].
+
+given #571 (F,wt=17): 5559 (D @ (G @ F)) * B * C * A != B * C * A # answer(A).  [ur(56,b,5281,a(flip)),rewrite([3(17),3(16),3(15),15(16),3(16)])].
+
+given #572 (F,wt=17): 5601 (D @ (G @ F)) * B * A * C != B * A * C # answer(A).  [ur(56,b,5419,a(flip)),rewrite([3(17),3(16),3(15),15(16),3(16)])].
+
+given #573 (F,wt=17): 5753 (D @ (F @ G)) * A * C * B != A * C * B # answer(A).  [ur(56,b,5430,a(flip)),rewrite([3(17),3(16),3(15),15(16),3(16)])].
+
+given #574 (T,wt=13): 5304 (x @ y) @ z * y * x * x = c_0.  [para(2623(a,1),4929(a,1,1)),rewrite([3(3)])].
+
+given #575 (T,wt=13): 5327 (x @ y) @ z * x * y * y = c_0.  [para(729(a,1),4929(a,1,2,2)),rewrite([3457(4),2745(3)])].
+
+given #576 (T,wt=13): 5329 x * y * z @ (x @ z * y) = c_0.  [para(811(a,1),4929(a,1,2)),rewrite([2716(5)])].
+
+given #577 (T,wt=13): 5332 x * y * z * u @ (u @ z) = c_0.  [para(3(a,1),4930(a,1,1))].
+
+given #578 (A,wt=18): 253 x * y @ z != x * y * z | z * x * y = c_0.  [para(3(a,1),235(a,2))].
+
+given #579 (F,wt=17): 5781 (D @ (G @ F)) * A * C * B != A * C * B # answer(A).  [ur(56,b,5601,a(flip)),rewrite([3(17),3(16),3(15),15(16),3(16)])].
+
+given #580 (F,wt=19): 2985 x * y * (D @ (F @ G)) != x * y * (C @ (B @ A)) # answer(A).  [back_rewrite(25),rewrite([2716(5)]),flip(a)].
+
+given #581 (F,wt=19): 3157 (G @ F) * (D @ (G @ F)) != (C @ (A @ B)) * (G @ F) # answer(A).  [para(2192(a,1),2818(a,1))].
+
+given #582 (F,wt=19): 3160 (D @ (G @ F)) * (B @ A) * (C @ (B @ A)) != B @ A # answer(A).  [para(2192(a,1),2869(a,1,2))].
+
+given #583 (T,wt=13): 5354 x * y * z * z @ (z @ y) = c_0.  [para(2623(a,1),4930(a,1,2)),rewrite([3(2)])].
+
+given #584 (T,wt=13): 5375 x * y * z * z @ (y @ z) = c_0.  [para(729(a,1),4930(a,1,1,2)),rewrite([3457(7),2745(6)])].
+
+given #585 (T,wt=13): 5377 x * y * z @ (z * y @ x) = c_0.  [para(811(a,1),4930(a,1,1))].
+
+given #586 (T,wt=13): 5436 x * y * z * u @ (z @ u) = c_0.  [para(3(a,1),4935(a,1,1))].
+
+given #587 (A,wt=23): 256 x * y * z * u * (y * z * u @ x) = y * z * u * x.  [para(3(a,1),15(a,1,2,2,2,1)),rewrite([3(6),3(10)])].
+
+given #588 (F,wt=19): 3197 (C @ (B @ A)) * (G @ F) * (D @ (G @ F)) != G @ F # answer(A).  [para(2192(a,1),2872(a,1,2))].
+
+given #589 (F,wt=19): 3253 (D @ (F @ G)) * (B @ A) != (B @ A) * (C @ (B @ A)) # answer(A).  [para(2192(a,1),2987(a,2))].
+
+given #590 (F,wt=19): 3254 x * D * (D @ (G @ F)) != x * (C @ (A @ B)) * D # answer(A).  [ur(770,b,3156,a),flip(a)].
+
+given #591 (F,wt=19): 3259 x * (D @ (G @ F)) * C * (C @ (B @ A)) != x * C # answer(A).  [ur(770,b,3159,a),flip(a)].
+
+given #592 (T,wt=13): 5463 (x @ y) @ z * u * x * y = c_0.  [para(3(a,1),4937(a,1,2))].
+
+given #593 (T,wt=13): 5489 ((x @ y) @ z) @ u * w * z = c_0.  [para(3(a,1),5299(a,1,2))].
+
+given #594 (T,wt=11): 6187 ((x @ y) @ (z @ u)) @ w = c_0.  [para(1766(a,1),5489(a,1,2,2)),rewrite([165(5)])].
+
+given #595 (T,wt=11): 6204 x @ ((y @ z) @ (u @ w)) = c_0.  [hyper(4111,a,6187,a)].
+
+given #596 (A,wt=24): 257 x * y * z * u != x * u * w | y * z * (y * z @ u) = w.  [para(15(a,1),7(a,1,2))].
+
+given #597 (F,wt=19): 3363 x * (C @ (B @ A)) * D * (D @ (G @ F)) != x * D # answer(A).  [ur(770,b,3196,a),flip(a)].
+
+given #598 (F,wt=19): 3366 x * (D @ (F @ G)) * C != x * C * (C @ (B @ A)) # answer(A).  [ur(770,b,3252,a),flip(a)].
+
+given #599 (F,wt=19): 3979 (D @ (G @ F)) * (F @ G) * (C @ (B @ A)) != F @ G # answer(A).  [ur(1808,b,2986,a),rewrite([2716(5)])].
+
+given #600 (F,wt=19): 3980 (D @ (F @ G)) * (G @ F) * (C @ (A @ B)) != G @ F # answer(A).  [ur(1808,b,2817,a),rewrite([2716(5)])].
+
+given #601 (T,wt=13): 5500 ((x @ y) @ z) @ z * (z @ u) = c_0.  [para(1184(a,1),5299(a,1,2))].
+
+given #602 (T,wt=13): 5501 x @ ((y @ z) * x @ (u @ w)) = c_0.  [para(1811(a,1),5299(a,1,2)),rewrite([2716(5)])].
+
+given #603 (T,wt=13): 5502 ((x @ y) @ z) @ z * (u @ z) = c_0.  [para(2192(a,1),5299(a,1,2))].
+
+given #604 (T,wt=13): 5516 x * y * z @ ((u @ w) @ z) = c_0.  [para(3(a,1),5349(a,1,1))].
+
+given #605 (A,wt=20): 258 x * y * z != z * x * u | y * (x * y @ z) = u.  [para(15(a,1),7(a,1))].
+
+given #606 (F,wt=19): 3981 (C @ (A @ B)) * (B @ A) * (D @ (F @ G)) != B @ A # answer(A).  [ur(1808,b,2986,a(flip)),rewrite([2716(5)])].
+
+given #607 (F,wt=19): 3984 (C @ (B @ A)) * (A @ B) * (D @ (G @ F)) != A @ B # answer(A).  [ur(1808,b,2817,a(flip)),rewrite([2716(5)])].
+
+given #608 (F,wt=19): 4112 (C @ (A @ B)) * (G @ F) * (D @ (F @ G)) != G @ F # answer(A).  [ur(1884,b,2821,a),rewrite([2716(13)])].
+
+given #609 (F,wt=19): 4113 (D @ (F @ G)) * (B @ A) * (C @ (A @ B)) != B @ A # answer(A).  [ur(1884,b,2988,a(flip)),rewrite([2716(13)])].
+
+given #610 (T,wt=13): 5527 x * (x @ y) @ ((z @ u) @ x) = c_0.  [para(1184(a,1),5349(a,1,1))].
+
+given #611 (T,wt=13): 5529 x @ ((y @ z) @ (u @ w) * x) = c_0.  [para(1811(a,1),5349(a,1,1))].
+
+given #612 (T,wt=13): 5530 x * (y @ x) @ ((z @ u) @ x) = c_0.  [para(2192(a,1),5349(a,1,1))].
+
+given #613 (T,wt=13): 5607 x * y * z @ (z @ (u @ w)) = c_0.  [para(3(a,1),5487(a,1,1))].
+
+given #614 (A,wt=24): 259 x * y * z * (y * z @ u) != w * y * z * u | w * u = x.  [para(15(a,1),8(a,1,2)),flip(a)].
+
+given #615 (F,wt=19): 4384 (C @ (A @ B)) * D * D * (D @ (F @ G)) != D * D # answer(A).  [para(1184(a,1),2480(a,1,2,2))].
+
+given #616 (F,wt=19): 4389 (D @ (G @ F)) * (B @ A) != (B @ A) * (C @ (A @ B)) # answer(A).  [ur(3932,b,2872,a),rewrite([2716(8)]),flip(a)].
+
+given #617 (F,wt=19): 4390 (G @ F) * (D @ (F @ G)) != (C @ (B @ A)) * (G @ F) # answer(A).  [ur(3932,b,2869,a),rewrite([2716(8)])].
+
+given #618 (F,wt=19): 4414 (D @ (F @ G)) * C * C * (C @ (A @ B)) != C * C # answer(A).  [para(1184(a,1),2486(a,1,2,2))].
+
+given #619 (T,wt=13): 5613 x * (x @ y) @ (x @ (z @ u)) = c_0.  [para(1184(a,1),5487(a,1,1))].
+
+given #620 (T,wt=13): 5614 x * (y @ x) @ (x @ (z @ u)) = c_0.  [para(2192(a,1),5487(a,1,1))].
+
+given #621 (T,wt=13): 5623 (x @ (y @ z)) @ u * w * x = c_0.  [para(3(a,1),5488(a,1,2))].
+
+given #622 (T,wt=13): 5627 (x @ (y @ z)) @ x * (x @ u) = c_0.  [para(1184(a,1),5488(a,1,2))].
+
+given #623 (A,wt=20): 260 x * y * (z * y @ u) != z * y * u | u * z = x.  [para(15(a,1),8(a,1)),flip(a)].
+
+given #624 (F,wt=19): 4418 D * D * (D @ (G @ F)) != (C @ (A @ B)) * D * D # answer(A).  [para(1184(a,1),2777(a,1,2))].
+
+given #625 (F,wt=19): 4424 (D @ (G @ F)) * C * C != C * C * (C @ (A @ B)) # answer(A).  [para(1184(a,1),2784(a,2,2))].
+
+given #626 (F,wt=19): 4459 (D @ (G @ F)) * C * C * (C @ (B @ A)) != C * C # answer(A).  [para(1184(a,1),2786(a,1,2,2))].
+
+given #627 (F,wt=19): 4463 (B @ A) * (D @ (G @ F)) * (A @ B) != C @ (A @ B) # answer(A).  [ur(1847,b,2787,a(flip))].
+
+given #628 (T,wt=13): 5628 (x @ (y @ z)) @ x * (u @ x) = c_0.  [para(2192(a,1),5488(a,1,2))].
+
+given #629 (T,wt=13): 6026 x * y * z @ (y * x @ z) = c_0.  [para(5377(a,1),315(a,2)),rewrite([2195(5),5013(4),5275(5)])].
+
+given #630 (T,wt=13): 6253 x * y @ (y * x @ (z @ u)) = c_0.  [para(315(a,1),5500(a,1,2,2)),rewrite([3(6),4(6),2716(5)])].
+
+given #631 (T,wt=13): 6271 x @ (x * (x @ y) @ (z @ u)) = c_0.  [para(1184(a,1),5501(a,1,2,1))].
+
+given #632 (A,wt=24): 261 x * y * z * u * (z * u @ w) != z * u * w | x * y = w.  [para(15(a,1),8(a,2))].
+
+given #633 (F,wt=19): 4465 D @ (G @ F) != (G @ F) * (C @ (A @ B)) * (F @ G) # answer(A).  [ur(1847,b,2789,a),flip(a)].
+
+given #634 (F,wt=19): 4533 (D @ (F @ G)) * C * C != C * C * (C @ (B @ A)) # answer(A).  [para(1184(a,1),2796(a,2,2))].
+
+given #635 (F,wt=19): 4536 (G @ F) * (C @ (B @ A)) * (F @ G) != D @ (F @ G) # answer(A).  [ur(1847,b,2820,a)].
+
+given #636 (F,wt=19): 4598 (C @ (B @ A)) * D * D * (D @ (G @ F)) != D * D # answer(A).  [para(1184(a,1),2843(a,1,2,2))].
+
+given #637 (T,wt=13): 6272 x @ (x * (y @ x) @ (z @ u)) = c_0.  [para(2192(a,1),5501(a,1,2,1))].
+
+given #638 (T,wt=13): 6355 x * y @ ((z @ u) @ y * x) = c_0.  [para(315(a,1),5527(a,1,1,2)),rewrite([3(3),4(3)])].
+
+given #639 (T,wt=13): 6370 x @ ((y @ z) @ x * (x @ u)) = c_0.  [para(1184(a,1),5529(a,1,2,2))].
+
+given #640 (T,wt=13): 6371 x @ ((y @ z) @ x * (u @ x)) = c_0.  [para(2192(a,1),5529(a,1,2,2))].
+
+given #641 (A,wt=24): 262 x * y * z != u * z | u * (u @ z) = x * y * (x * y @ z).  [para(15(a,1),10(a,1))].
+
+given #642 (F,wt=19): 5959 D @ (G @ F) != (F @ G) * (C @ (A @ B)) * (G @ F) # answer(A).  [ur(1847,b,3157,a),flip(a)].
+
+given #643 (F,wt=19): 6136 (A @ B) * (D @ (F @ G)) * (B @ A) != C @ (B @ A) # answer(A).  [ur(1847,b,3253,a(flip))].
+
+given #644 (F,wt=19): 6417 (A @ B) * (D @ (G @ F)) * (B @ A) != C @ (A @ B) # answer(A).  [ur(1847,b,4389,a(flip))].
+
+given #645 (F,wt=19): 6419 (F @ G) * (C @ (B @ A)) * (G @ F) != D @ (F @ G) # answer(A).  [ur(1847,b,4390,a)].
+
+given #646 (T,wt=13): 6515 x * y * z @ (z @ y * x) = c_0.  [hyper(3080,a,6026,a)].
+
+given #647 (T,wt=15): 817 x * y * z * z @ (x * y @ z) = c_0.  [para(3(a,1),737(a,1,1))].
+
+given #648 (T,wt=15): 1243 (x @ y) * x * z = x * (x @ y) * z.  [para(1184(a,1),3(a,1,1)),rewrite([3(3)]),flip(a)].
+
+given #649 (T,wt=13): 6831 (x @ y) @ y * (y @ z) * x = c_0.  [para(1243(a,1),4929(a,1,2))].
+
+given #650 (A,wt=23): 263 x * y * z * ((x @ y) * z @ x) = y * (x @ y) * z * x.  [para(15(a,1),13(a,1,2)),flip(a)].
+
+given #651 (F,wt=21): 1843 x * D * (F @ G) * (C @ (A @ B)) != x * (F @ G) * D # answer(A).  [para(1766(a,1),113(a,1,2,2,2)),rewrite([165(6)]),flip(a)].
+
+given #652 (F,wt=21): 1848 G * F * D * (F @ G) * (C @ (A @ B)) != F * G * D # answer(A).  [para(1766(a,1),231(a,1,2,2,2)),rewrite([165(5)]),flip(a)].
+
+given #653 (F,wt=21): 1870 x * (D @ (F @ G)) * C != x * (A @ B) * C * (B @ A) # answer(A).  [para(1766(a,1),559(a,1,2,2,2)),rewrite([165(8)])].
+
+given #654 (F,wt=19): 6953 (C @ (B @ A)) * x * C != x * (D @ (F @ G)) * C # answer(A).  [para(811(a,2),1870(a,2)),rewrite([3284(17),2716(13),3(22),1766(21),165(16)]),flip(a)].
+
+given #655 (T,wt=13): 6833 x * (x @ y) * z @ (z @ x) = c_0.  [para(1243(a,1),4930(a,1,1))].
+
+given #656 (T,wt=13): 6835 x * (x @ y) * z @ (x @ z) = c_0.  [para(1243(a,1),4935(a,1,1))].
+
+given #657 (T,wt=13): 6837 (x @ y) @ x * (x @ z) * y = c_0.  [para(1243(a,1),4937(a,1,2))].
+
+given #658 (T,wt=13): 6889 x * y @ (x @ (z @ x) * y) = c_0.  [para(1811(a,1),6831(a,1,2,2)),rewrite([2716(5)])].
+
+given #659 (A,wt=22): 265 x * y * (x * y @ z) != u * x * y * z | u * z = c_0.  [para(15(a,1),156(a,1,2)),flip(a)].
+
+given #660 (F,wt=19): 6954 (C @ (A @ B)) * x * (D @ (F @ G)) * C != x * C # answer(A).  [ur(1847,b,6953,a),rewrite([2716(5)])].
+
+given #661 (F,wt=21): 1941 D * (F @ G) * (C @ (A @ B)) * x != (F @ G) * D * x # answer(A).  [para(1811(a,1),60(a,1,2,2)),flip(a)].
+
+given #662 (F,wt=21): 1950 x * (B @ A) * C * (A @ B) * (D @ (F @ G)) != x * C # answer(A).  [para(1811(a,1),37(a,2,2))].
+
+given #663 (F,wt=21): 1954 (B @ A) * C * (A @ B) * (D @ (F @ G)) * x != C * x # answer(A).  [para(1811(a,1),65(a,2))].
+
+given #664 (T,wt=13): 6976 x * y @ ((z @ x) * y @ x) = c_0.  [para(1811(a,1),6833(a,1,1,2))].
+
+given #665 (T,wt=14): 6793 x * y * z != x * y | x * z = x.  [para(1243(a,1),1186(a,1,2)),rewrite([13(4)]),flip(b)].
+
+given #666 (T,wt=15): 1260 x * y * y * (y @ x) = y * x * y.  [para(1184(a,1),13(a,1,2,2))].
+
+given #667 (T,wt=15): 1611 x * x * y @ (x @ y * (x @ y)) = c_0.  [para(341(a,1),903(a,1,2,2,1)),rewrite([1243(5),1305(5),341(6)])].
+
+given #668 (A,wt=18): 266 x * (y * x @ z) != y * x * z | z * y = c_0.  [para(15(a,1),156(a,1)),flip(a)].
+
+given #669 (F,wt=21): 1987 (D @ (F @ G)) * C * x != (A @ B) * C * (B @ A) * x # answer(A).  [para(1811(a,1),555(a,1,2,2))].
+
+given #670 (F,wt=21): 2018 x * (B @ A) * (D @ (F @ G)) * C * (A @ B) != x * C # answer(A).  [para(1811(a,1),493(a,2,2))].
+
+given #671 (F,wt=21): 2019 x * (F @ G) * D != x * (C @ (A @ B)) * D * (F @ G) # answer(A).  [para(1811(a,1),494(a,1,2))].
+
+given #672 (F,wt=21): 2028 (B @ A) * (D @ (F @ G)) * C * (A @ B) * x != C * x # answer(A).  [para(1811(a,1),559(a,2))].
+
+given #673 (T,wt=15): 1621 x * x * y @ (y * (x @ y) @ x) = c_0.  [para(341(a,1),924(a,1,2,1,1)),rewrite([1243(5),1305(5),315(6)])].
+
+given #674 (T,wt=15): 1691 x * y * y * x @ (x * x @ y) = c_0.  [back_rewrite(1624),rewrite([1630(9),315(6)])].
+
+given #675 (T,wt=15): 1692 x * y * y * x @ (y @ x * x) = c_0.  [back_rewrite(1613),rewrite([1630(9),341(6)])].
+
+given #676 (T,wt=15): 1971 (x @ y) @ (y @ x) * z = (x @ y) @ z.  [para(1811(a,1),341(a,1,2)),flip(a)].
+
+given #677 (A,wt=22): 267 x * y * z * u != x * u | y * z * (y * z @ u) = c_0.  [para(15(a,1),166(a,1,2)),flip(b)].
+
+given #678 (F,wt=21): 2031 (F @ G) * D * x != (C @ (A @ B)) * D * (F @ G) * x # answer(A).  [para(1811(a,1),561(a,1))].
+
+given #679 (F,wt=17): 7372 (C @ (A @ B)) * D * F * G != D * F * G # answer(A).  [para(811(a,1),2031(a,1)),rewrite([2195(18),1184(17),4(18)]),flip(a)].
+
+given #680 (F,wt=17): 7378 (C @ (B @ A)) * D * F * G != D * F * G # answer(A).  [ur(1847,b,7372,a),rewrite([2716(5)])].
+
+given #681 (F,wt=17): 7391 (C @ (A @ B)) * F * G * D != F * G * D # answer(A).  [ur(56,b,7372,a(flip)),rewrite([3(17),3(16),3(15),15(16),3(16)])].
+
+given #682 (T,wt=15): 2195 (x @ y) * y * z = y * (x @ y) * z.  [para(2131(a,1),13(a,1,2,2,1)),rewrite([155(3)])].
+
+given #683 (T,wt=13): 7534 (x @ y) @ y * (z @ y) * x = c_0.  [para(2195(a,1),4929(a,1,2))].
+
+given #684 (T,wt=13): 7536 x * (y @ x) * z @ (z @ x) = c_0.  [para(2195(a,1),4930(a,1,1))].
+
+given #685 (T,wt=13): 7538 x * (y @ x) * z @ (x @ z) = c_0.  [para(2195(a,1),4935(a,1,1))].
+
+given #686 (A,wt=18): 268 x * y * z != z * x | y * (x * y @ z) = c_0.  [para(15(a,1),166(a,1)),flip(b)].
+
+given #687 (F,wt=17): 7409 (C @ (B @ A)) * F * G * D != F * G * D # answer(A).  [ur(56,b,7378,a(flip)),rewrite([3(17),3(16),3(15),15(16),3(16)])].
+
+given #688 (F,wt=17): 7425 (C @ (A @ B)) * G * D * F != G * D * F # answer(A).  [ur(56,b,7391,a(flip)),rewrite([3(17),3(16),3(15),15(16),3(16)])].
+
+given #689 (F,wt=17): 7698 (C @ (B @ A)) * G * D * F != G * D * F # answer(A).  [ur(56,b,7409,a(flip)),rewrite([3(17),3(16),3(15),15(16),3(16)])].
+
+given #690 (F,wt=21): 2038 (B @ A) * (D @ (F @ G)) * C * A * B != C * B * A # answer(A).  [para(1811(a,1),646(a,2))].
+
+given #691 (T,wt=13): 7540 (x @ y) @ x * (z @ x) * y = c_0.  [para(2195(a,1),4937(a,1,2))].
+
+given #692 (T,wt=13): 7602 x * y @ (x @ (x @ z) * y) = c_0.  [para(1811(a,1),7534(a,1,2,2)),rewrite([2716(5)])].
+
+given #693 (T,wt=13): 7606 x * y @ (x * (x @ z) @ y) = c_0.  [para(2668(a,1),7534(a,1,2,2,1)),rewrite([3(8),1811(7),2716(5)])].
+
+given #694 (T,wt=13): 7619 x * y * z @ (y @ x * z) = c_0.  [para(1243(a,1),7534(a,1,2,2)),rewrite([13(6),2716(5)])].
+
+given #695 (A,wt=18): 274 x * y * z != z * x * y | x * y @ z = c_0.  [para(3(a,1),246(a,1))].
+
+given #696 (F,wt=21): 2052 C * (D @ (F @ G)) * x != (A @ B) * C * (B @ A) * x # answer(A).  [para(1811(a,1),1354(a,1,2,2))].
+
+given #697 (F,wt=21): 2111 D * (F @ G) * C * (C @ (A @ B)) != (F @ G) * D * C # answer(A).  [para(1885(a,1),60(a,1,2,2)),flip(a)].
+
+given #698 (F,wt=21): 2138 (D @ (F @ G)) * C * B != (A @ B) * C * B * (B @ A) # answer(A).  [para(1885(a,1),555(a,1,2,2))].
+
+given #699 (F,wt=21): 2161 C * (D @ (F @ G)) * B != (A @ B) * C * B * (B @ A) # answer(A).  [para(1885(a,1),1354(a,1,2,2))].
+
+given #700 (T,wt=13): 7635 x * y @ ((x @ z) * y @ x) = c_0.  [para(1811(a,1),7536(a,1,1,2))].
+
+given #701 (T,wt=13): 7638 x * y @ (y @ x * (x @ z)) = c_0.  [para(2668(a,1),7536(a,1,1,2,1)),rewrite([3(5),1811(4)])].
+
+given #702 (T,wt=13): 7655 x * y * z @ (x * z @ y) = c_0.  [para(1243(a,1),7536(a,1,1,2)),rewrite([13(4)])].
+
+given #703 (T,wt=15): 2238 x * (y @ x) * (x * (y @ x) @ y) = x.  [back_rewrite(1347),rewrite([2192(3),2195(6)])].
+
+given #704 (A,wt=18): 275 x * y * z != z * x * y | z @ x * y = c_0.  [para(3(a,1),246(a,2)),flip(a)].
+
+given #705 (F,wt=21): 2359 (D @ (F @ G)) * C * B * (A @ B) != (A @ B) * C * B # answer(A).  [para(2192(a,1),555(a,1,2,2))].
+
+given #706 (F,wt=21): 2381 C * (D @ (F @ G)) * B * (A @ B) != (A @ B) * C * B # answer(A).  [para(2192(a,1),1354(a,1,2,2))].
+
+given #707 (F,wt=21): 2442 (x @ y) * (C @ (A @ B)) * (D @ (F @ G)) * (y @ x) != c_0 # answer(A).  [ur(1809,b,1922,a(flip))].
+
+given #708 (F,wt=21): 2444 (x @ y) * (D @ (F @ G)) * (C @ (A @ B)) * (y @ x) != c_0 # answer(A).  [ur(1809,b,1916,a(flip))].
+
+given #709 (T,wt=11): 7981 x * (y @ x) @ y = x @ y.  [hyper(1812,a,2238,a),flip(a)].
+
+given #710 (T,wt=11): 8033 x @ y * (x @ y) = x @ y.  [para(7981(a,1),2668(a,1,2,2)),rewrite([3(4),1766(3),165(2)]),flip(a)].
+
+given #711 (T,wt=13): 8019 x * y * y @ y * x = y @ x.  [para(315(a,1),7981(a,1,1,2)),rewrite([4817(4),341(6)])].
+
+given #712 (T,wt=13): 8020 x * (y @ x) @ y * x = x @ y.  [para(7981(a,1),341(a,2)),rewrite([3(5),1184(4),4(5)])].
+
+given #713 (A,wt=19): 296 x * (x @ y) * z * y * x = x * z * x * y.  [hyper(16,a,13,a(flip)),flip(a)].
+
+given #714 (F,wt=21): 2590 x * (F @ G) * D * (G @ F) != x * (C @ (A @ B)) * D # answer(A).  [back_rewrite(2526),rewrite([2584(7)])].
+
+given #715 (F,wt=19): 8311 (D @ (G @ F)) * x * D != x * (C @ (A @ B)) * D # answer(A).  [para(811(a,2),2590(a,1)),rewrite([3284(9),2716(5),3(14),1766(13),165(8)])].
+
+given #716 (F,wt=19): 8312 (D @ (F @ G)) * x * (C @ (A @ B)) * D != x * D # answer(A).  [ur(1847,b,8311,a),rewrite([2716(5)])].
+
+given #717 (F,wt=21): 2597 x * (D @ (F @ G)) * (B @ A) * C * (A @ B) != x * C # answer(A).  [back_rewrite(2433),rewrite([2584(12)])].
+
+given #718 (T,wt=13): 8048 x * y @ (x * (z @ x) @ y) = c_0.  [para(7981(a,1),6831(a,1,2,2,1)),rewrite([3(8),1811(7),2716(5)])].
+
+given #719 (T,wt=13): 8049 x * y @ (y @ x * (z @ x)) = c_0.  [para(7981(a,1),6833(a,1,1,2,1)),rewrite([3(5),1811(4)])].
+
+given #720 (T,wt=13): 8063 x * (y @ x) @ x * y = x @ y.  [back_rewrite(4817),rewrite([8019(8)])].
+
+given #721 (T,wt=13): 8068 x * y @ y * (x @ y) = x @ y.  [para(8033(a,1),315(a,2)),rewrite([3(3),1184(2),4(3)])].
+
+given #722 (A,wt=18): 297 x * y * y * x != y * z | x * x * y = z.  [para(155(a,1),16(a,1,2,2)),rewrite([155(8)])].
+
+given #723 (F,wt=21): 2613 B * A * (D @ (F @ G)) * C != A * B * C * (B @ A) # answer(A).  [ur(201,b,1853,a(flip)),flip(a)].
+
+given #724 (F,wt=21): 2675 x * C * (D @ (F @ G)) != x * (A @ B) * C * (B @ A) # answer(A).  [ur(770,b,1877,a),flip(a)].
+
+given #725 (F,wt=19): 8435 (C @ (B @ A)) * x * C != x * C * (D @ (F @ G)) # answer(A).  [para(811(a,2),2675(a,2)),rewrite([3284(17),2716(13),3(22),1766(21),165(16)]),flip(a)].
+
+given #726 (F,wt=19): 8438 (C @ (A @ B)) * x * C * (D @ (F @ G)) != x * C # answer(A).  [ur(1847,b,8435,a),rewrite([2716(5)])].
+
+given #727 (T,wt=13): 8069 x * y @ y * x * x = y @ x.  [para(315(a,1),8033(a,1,2,2)),rewrite([4819(4),315(6)])].
+
+given #728 (T,wt=13): 8086 x * y @ x * (y @ x) = y @ x.  [back_rewrite(4819),rewrite([8069(8)])].
+
+given #729 (T,wt=14): 7994 x * y * y != y | y @ x = x * y.  [back_rewrite(4813),rewrite([7981(6)])].
+
+given #730 (T,wt=14): 7996 x * y * y != x * y | y @ x = y.  [back_rewrite(4792),rewrite([7981(7)])].
+
+given #731 (A,wt=18): 321 x * (x @ y) != z * x | x @ y = z * (z @ x).  [para(278(a,1),10(a,1)),rewrite([315(8)]),flip(b)].
+
+given #732 (F,wt=21): 2678 B * A * C * (D @ (F @ G)) != A * B * C * (B @ A) # answer(A).  [ur(202,b,1877,a(flip))].
+
+given #733 (F,wt=21): 2681 (B @ A) * C * C * (D @ (F @ G)) != C * (B @ A) * C # answer(A).  [ur(29,b,1877,a(flip)),rewrite([1811(13)]),flip(a)].
+
+given #734 (F,wt=21): 2755 D * ((C @ (B @ A)) * D @ (F @ G)) != (C @ (B @ A)) * D # answer(A).  [back_rewrite(2685),rewrite([2716(6),2716(16,R),2691(16),2716(12),2716(18)])].
+
+given #735 (F,wt=21): 2757 F * G * (C @ (B @ A)) * D * (G @ F) != G * F * D # answer(A).  [back_rewrite(2683),rewrite([2716(7)])].
+
+given #736 (T,wt=14): 8040 x != y | (z @ x) * y = x * (z @ x).  [para(7981(a,1),3932(a,1,2)),rewrite([3(4),1766(3),165(2),8033(4)])].
+
+given #737 (T,wt=14): 8041 x * y != x | y * (z @ y) = z @ y.  [para(7981(a,1),4000(a,1,2,2)),rewrite([3(4),1766(3),165(2),8033(5)]),flip(b)].
+
+given #738 (T,wt=15): 2664 x * (x @ y) @ y * (y @ x) = x @ y.  [back_rewrite(1205),rewrite([2623(9),315(7)])].
+
+given #739 (T,wt=15): 2726 x @ y * x * x * y = x @ y * y.  [back_rewrite(431),rewrite([2691(3)]),flip(a)].
+
+given #740 (A,wt=16): 324 x * y * (y @ z) != x * y | y @ z = c_0.  [para(278(a,1),166(a,1,2)),rewrite([315(8)]),flip(b)].
+
+given #741 (F,wt=21): 2758 x * (F @ G) * (C @ (B @ A)) * D * (G @ F) != x * D # answer(A).  [back_rewrite(2682),rewrite([2716(8)])].
+
+given #742 (F,wt=21): 2763 D * (D * (C @ (B @ A)) @ (F @ G)) != D * (C @ (B @ A)) # answer(A).  [back_rewrite(2609),rewrite([2716(7),2716(16,R),2691(16),2716(12),2716(19)])].
+
+given #743 (F,wt=21): 2769 x * (G @ F) * D * (F @ G) != x * (C @ (B @ A)) * D # answer(A).  [back_rewrite(2595),rewrite([2716(5)]),flip(a)].
+
+given #744 (F,wt=19): 8634 (D @ (F @ G)) * x * D != x * (C @ (B @ A)) * D # answer(A).  [para(811(a,2),2769(a,1)),rewrite([2716(9),2692(9),3(14),1766(13),165(8)])].
+
+given #745 (T,wt=15): 2943 x * y * z * z @ (z @ x * y) = c_0.  [back_rewrite(830),rewrite([2716(6)])].
+
+given #746 (T,wt=15): 3010 x * y * y * x @ y = x * x @ y.  [back_rewrite(430),rewrite([2989(7)])].
+
+given #747 (T,wt=15): 3084 (x @ (y @ z)) * (x @ (z @ y)) * u = u.  [para(2716(a,1),1811(a,1,1))].
+
+given #748 (T,wt=15): 3085 ((x @ y) @ z) * ((y @ x) @ z) * u = u.  [para(2716(a,2),1811(a,1,1))].
+
+given #749 (A,wt=18): 328 x * y * y * z != y * z * z * y | z = x.  [para(155(a,1),17(a,1,2,2)),rewrite([155(6)])].
+
+given #750 (F,wt=19): 8635 (D @ (G @ F)) * x * (C @ (B @ A)) * D != x * D # answer(A).  [ur(1847,b,8634,a),rewrite([2716(5)])].
+
+given #751 (F,wt=21): 2771 x * (D @ (G @ F)) * (A @ B) * C * (B @ A) != x * C # answer(A).  [back_rewrite(2592),rewrite([2716(5)])].
+
+given #752 (F,wt=21): 2779 x * (A @ B) * (D @ (G @ F)) * C != x * C * (A @ B) # answer(A).  [back_rewrite(2523),rewrite([2716(8)])].
+
+given #753 (F,wt=21): 2797 (x @ y) * (C @ (B @ A)) * (D @ (G @ F)) * (y @ x) != c_0 # answer(A).  [back_rewrite(2443),rewrite([2716(6),2716(11)])].
+
+given #754 (T,wt=15): 3117 (x @ (y @ z)) @ u = u @ (x @ (z @ y)).  [para(2716(a,1),2716(a,1,1))].
+
+given #755 (T,wt=15): 3118 (x @ y) @ (z @ u) = (y @ x) @ (u @ z).  [para(2716(a,1),2716(a,2))].
+
+given #756 (T,wt=15): 3119 ((x @ y) @ z) @ u = u @ ((y @ x) @ z).  [para(2716(a,2),2716(a,1,1))].
+
+given #757 (T,wt=15): 3131 (x @ (y @ z)) @ (u @ (x @ (z @ y))) = c_0.  [para(2716(a,1),3069(a,1,1))].
+
+given #758 (A,wt=17): 334 x * (x @ y) * z @ y = x * y * z @ y.  [para(13(a,1),315(a,1,1)),flip(a)].
+
+given #759 (F,wt=21): 2798 (x @ y) * (D @ (G @ F)) * (C @ (B @ A)) * (y @ x) != c_0 # answer(A).  [back_rewrite(2441),rewrite([2716(6),2716(11)])].
+
+given #760 (F,wt=21): 2803 (F @ G) * (C @ (B @ A)) * D * G != D * G * (F @ G) # answer(A).  [back_rewrite(2382),rewrite([2716(8)])].
+
+given #761 (F,wt=21): 2806 (C @ (B @ A)) * (F @ G) * D * G != D * G * (F @ G) # answer(A).  [back_rewrite(2360),rewrite([2716(5)])].
+
+given #762 (F,wt=21): 2809 (F @ G) * D * (C @ (B @ A)) * G != D * G * (F @ G) # answer(A).  [back_rewrite(2346),rewrite([2716(9)])].
+
+given #763 (T,wt=15): 3132 ((x @ y) @ z) @ (u @ ((y @ x) @ z)) = c_0.  [para(2716(a,2),3069(a,1,1))].
+
+given #764 (T,wt=15): 3137 (x @ (y @ z)) @ ((x @ (z @ y)) @ u) = c_0.  [para(2716(a,1),3087(a,1,1))].
+
+given #765 (T,wt=15): 3138 ((x @ y) @ z) @ (((y @ x) @ z) @ u) = c_0.  [para(2716(a,2),3087(a,1,1))].
+
+given #766 (T,wt=15): 3168 x * y * y * y * y @ (x @ y) = c_0.  [para(2692(a,1),1437(a,1,2)),rewrite([3(4)])].
+
+given #767 (A,wt=20): 340 x * y * (x * y @ z) != x * y | x * y @ z = c_0.  [para(3(a,1),322(a,1))].
+
+given #768 (F,wt=21): 2826 (F @ G) * (C @ (B @ A)) * D * G * (G @ F) != D * G # answer(A).  [back_rewrite(2162),rewrite([2716(8)])].
+
+given #769 (F,wt=21): 2828 (C @ (B @ A)) * (F @ G) * D * G * (G @ F) != D * G # answer(A).  [back_rewrite(2139),rewrite([2716(5)])].
+
+given #770 (F,wt=21): 2831 (F @ G) * D * (C @ (B @ A)) * G * (G @ F) != D * G # answer(A).  [back_rewrite(2112),rewrite([2716(9)])].
+
+given #771 (F,wt=21): 2841 (F @ G) * (C @ (B @ A)) * D * (G @ F) * x != D * x # answer(A).  [back_rewrite(2053),rewrite([2716(8)])].
+
+given #772 (T,wt=15): 3205 (x @ y) @ y * x * x * (y @ x) = c_0.  [para(2623(a,1),2654(a,1,1)),rewrite([2692(4),3(5)])].
+
+given #773 (T,wt=15): 3220 x * y * x @ x * (x @ y) = y @ x.  [para(2623(a,1),2667(a,1,2,2)),rewrite([2692(7)])].
+
+given #774 (T,wt=15): 3240 x * (x @ y) @ x * y * x = x @ y.  [para(2623(a,1),2671(a,1,1,2)),rewrite([2623(7)])].
+
+given #775 (T,wt=15): 3284 (x @ y) @ z * (y @ x) = (x @ y) @ z.  [para(1766(a,1),2691(a,1,2,2)),rewrite([165(3)]),flip(a)].
+
+given #776 (A,wt=17): 355 x @ y * (y @ x) * z = x @ y * x * z.  [para(13(a,1),341(a,1,2)),flip(a)].
+
+given #777 (F,wt=21): 2844 (D @ (G @ F)) * (A @ B) * C * B * A != C * A * B # answer(A).  [back_rewrite(2037),rewrite([2716(5)])].
+
+given #778 (F,wt=21): 2846 (D @ (G @ F)) * (A @ B) * C * x != C * (A @ B) * x # answer(A).  [back_rewrite(2027),rewrite([2716(5)])].
+
+given #779 (F,wt=21): 2847 (G @ F) * D * F * G != D * (C @ (B @ A)) * G * F # answer(A).  [back_rewrite(2020),rewrite([2716(6)]),flip(a)].
+
+given #780 (F,wt=17): 9601 D * (C @ (B @ A)) * G * F != D * G * F # answer(A).  [ur(464,b,2847,a),rewrite([4930(9),155(13),3(20),3(19),4(19)])].
+
+given #781 (T,wt=15): 3321 x * y * y @ y * (y @ x) = x @ y.  [para(2623(a,1),2731(a,1,2,2)),rewrite([3(2),2692(7)])].
+
+given #782 (T,wt=15): 3344 x * (x @ y) @ y * x * x = x @ y.  [para(2623(a,1),2732(a,1,1,2)),rewrite([3(4),2623(7)])].
+
+given #783 (T,wt=15): 3404 x * y * y * y * y @ (y @ x) = c_0.  [para(2623(a,1),2912(a,1,2)),rewrite([3(4)])].
+
+given #784 (T,wt=15): 5282 (x @ y * z) @ u * y * z * x = c_0.  [para(3(a,1),4929(a,1,2,2))].
+
+given #785 (A,wt=18): 361 x * y * y * z != y * z * z * y | x = z.  [para(155(a,1),18(a,1,2,2)),rewrite([155(6)])].
+
+given #786 (F,wt=21): 2848 x * (D @ (G @ F)) * (A @ B) * C != x * C * (A @ B) # answer(A).  [back_rewrite(2017),rewrite([2716(5)])].
+
+given #787 (F,wt=21): 2851 (C @ (B @ A)) * (F @ G) * D * (G @ F) * x != D * x # answer(A).  [back_rewrite(1988),rewrite([2716(5)])].
+
+given #788 (F,wt=21): 2856 (G @ F) * D * (F @ G) * x != D * (C @ (B @ A)) * x # answer(A).  [back_rewrite(1963),rewrite([2716(6)]),flip(a)].
+
+given #789 (F,wt=21): 2860 x * (G @ F) * D * (F @ G) != x * D * (C @ (B @ A)) # answer(A).  [back_rewrite(1952),rewrite([2716(6)]),flip(a)].
+
+given #790 (T,wt=13): 9744 x * y @ ((z @ u) * x @ y) = c_0.  [para(1811(a,1),5282(a,1,2)),rewrite([2716(5)])].
+
+given #791 (T,wt=13): 9813 x * y @ (y @ (z @ u) * x) = c_0.  [hyper(3080,a,9744,a)].
+
+given #792 (T,wt=15): 5288 x * y * z @ (x @ (x @ y) * z) = c_0.  [para(13(a,1),4929(a,1,2)),rewrite([2716(6)])].
+
+given #793 (T,wt=15): 5290 (x * y @ z) @ u * x * y * z = c_0.  [para(15(a,1),4929(a,1,2,2)),rewrite([3012(5)])].
+
+given #794 (A,wt=20): 375 x * y * z * u != y * z * x | y * z @ x = u.  [para(3(a,1),28(a,1,2)),rewrite([3(5)])].
+
+given #795 (F,wt=19): 9810 (D @ (F @ G)) * x * D != x * D * (C @ (B @ A)) # answer(A).  [para(811(a,2),2860(a,1)),rewrite([2716(9),2692(9),3(14),1766(13),165(8)])].
+
+given #796 (F,wt=19): 10091 (D @ (G @ F)) * x * D * (C @ (B @ A)) != x * D # answer(A).  [ur(1847,b,9810,a),rewrite([2716(5)])].
+
+given #797 (F,wt=21): 2864 (F @ G) * D * (C @ (B @ A)) * (G @ F) * x != D * x # answer(A).  [back_rewrite(1942),rewrite([2716(9)])].
+
+given #798 (F,wt=21): 2865 (A @ B) * C * (D @ (G @ F)) * x != C * (A @ B) * x # answer(A).  [back_rewrite(1937),rewrite([2716(9)])].
+
+given #799 (T,wt=15): 5298 (x @ y) @ y * x * (y * x @ z) = c_0.  [para(1184(a,1),4929(a,1,2)),rewrite([3(5)])].
+
+given #800 (T,wt=13): 10137 x * y * z @ (y @ z * x) = c_0.  [para(331(a,1),5298(a,1,2,2,2)),rewrite([3(6),1744(6),13(6),2716(5)])].
+
+given #801 (T,wt=13): 10150 x * y * z @ (z * x @ y) = c_0.  [hyper(3080,a,10137,a)].
+
+given #802 (T,wt=15): 5300 (x @ y) @ y * x * (z @ y * x) = c_0.  [para(2192(a,1),4929(a,1,2)),rewrite([3(5)])].
+
+given #803 (A,wt=20): 376 x * y * z * u != z * x * y | z @ x * y = u.  [para(3(a,1),28(a,1))].
+
+given #804 (F,wt=21): 2874 x * (C @ (B @ A)) * (F @ G) * D * (G @ F) != x * D # answer(A).  [back_rewrite(1871),rewrite([2716(5)])].
+
+given #805 (F,wt=21): 2879 F * G * D * (C @ (B @ A)) * (G @ F) != G * F * D # answer(A).  [back_rewrite(1849),rewrite([2716(8)])].
+
+given #806 (F,wt=21): 2880 A * B * C * (D @ (G @ F)) != B * A * C * (A @ B) # answer(A).  [back_rewrite(1845),rewrite([2716(8)])].
+
+given #807 (F,wt=21): 2881 x * (F @ G) * D * (C @ (B @ A)) * (G @ F) != x * D # answer(A).  [back_rewrite(1844),rewrite([2716(9)])].
+
+given #808 (T,wt=15): 5306 (x @ y) @ z * y * x * (y @ x) = c_0.  [para(2668(a,1),4929(a,1,1)),rewrite([3(4),2192(3)])].
+
+given #809 (T,wt=15): 5307 (x @ (y @ z)) @ u * x * (z @ y) = c_0.  [para(2716(a,1),4929(a,1,1))].
+
+Low Water (keep): wt=25.000, iters=6671
+
+given #810 (T,wt=15): 5331 x * y * z * u @ (u @ y * z) = c_0.  [para(3(a,1),4930(a,1,1,2))].
+
+given #811 (T,wt=15): 5336 x * y * z @ ((x @ y) * z @ x) = c_0.  [para(13(a,1),4930(a,1,1))].
+
+given #812 (A,wt=18): 377 x * y * z != z * x | z @ x = y * (y @ z).  [para(4(a,1),28(a,1,2))].
+
+given #813 (F,wt=21): 2882 x * (A @ B) * C * (D @ (G @ F)) != x * C * (A @ B) # answer(A).  [back_rewrite(1839),rewrite([2716(9)])].
+
+given #814 (F,wt=21): 2893 G * F * D * (F @ G) != F * G * (C @ (B @ A)) * D # answer(A).  [back_rewrite(1746),rewrite([2716(7)]),flip(a)].
+
+given #815 (F,wt=21): 2903 (F @ G) * (C @ (B @ A)) * D * F != D * F * (F @ G) # answer(A).  [back_rewrite(1484),rewrite([2716(8)])].
+
+given #816 (F,wt=21): 2904 (F @ G) * (C @ (B @ A)) * D * G * F != D * F * G # answer(A).  [back_rewrite(1483),rewrite([2716(8)])].
+
+given #817 (T,wt=15): 5338 x * y * z * u @ (y * z @ u) = c_0.  [para(15(a,1),4930(a,1,1,2)),rewrite([3012(8)])].
+
+given #818 (T,wt=15): 5347 (x @ y) @ x * y * (x * y @ z) = c_0.  [para(1184(a,1),4930(a,1,1)),rewrite([3(4),2716(6,R)])].
+
+given #819 (T,wt=15): 5350 x * y * (z @ x * y) @ (y @ x) = c_0.  [para(2192(a,1),4930(a,1,1)),rewrite([3(4)])].
+
+given #820 (T,wt=15): 5356 x * y * (z @ u) @ (y @ (u @ z)) = c_0.  [para(2716(a,1),4930(a,1,2))].
+
+given #821 (A,wt=22): 379 x * y * z * y * x != x * y | x @ y = z * x * y.  [para(5(a,1),28(a,1))].
+
+given #822 (F,wt=21): 2921 (F @ G) * (C @ (B @ A)) * D * x != D * (F @ G) * x # answer(A).  [back_rewrite(1358),rewrite([2716(8)])].
+
+given #823 (F,wt=21): 2924 (C @ (B @ A)) * (F @ G) * D * F != D * F * (F @ G) # answer(A).  [back_rewrite(1275),rewrite([2716(5)])].
+
+given #824 (F,wt=21): 2928 (F @ G) * D * (C @ (B @ A)) * F != D * F * (F @ G) # answer(A).  [back_rewrite(1258),rewrite([2716(9)])].
+
+given #825 (F,wt=21): 2934 x * (F @ G) * (C @ (B @ A)) * D != x * D * (F @ G) # answer(A).  [back_rewrite(1196),rewrite([2716(8)])].
+
+given #826 (T,wt=15): 5446 x * y * (z @ x * y) @ (x @ y) = c_0.  [para(2192(a,1),4935(a,1,1)),rewrite([3(4)])].
+
+given #827 (T,wt=15): 5449 x * y * (z @ u) @ ((u @ z) @ y) = c_0.  [para(2716(a,2),4935(a,1,2))].
+
+given #828 (T,wt=15): 5471 (x @ y) @ x * y * (z @ x * y) = c_0.  [para(2192(a,1),4937(a,1,2)),rewrite([3(5)])].
+
+given #829 (T,wt=15): 5474 ((x @ y) @ z) @ u * z * (y @ x) = c_0.  [para(2716(a,2),4937(a,1,1))].
+
+given #830 (A,wt=22): 381 x * y * z * u != z * x | z @ x = y * (y @ z) * u.  [para(13(a,1),28(a,1,2))].
+
+given #831 (F,wt=21): 2949 (C @ (B @ A)) * D * (F @ G) * D != D * D * (F @ G) # answer(A).  [back_rewrite(708),rewrite([2716(5)])].
+
+given #832 (F,wt=21): 2953 (C @ (B @ A)) * (F @ G) * D * G * F != D * F * G # answer(A).  [back_rewrite(644),rewrite([2716(5)])].
+
+given #833 (F,wt=21): 2958 (C @ (B @ A)) * (F @ G) * D * x != D * (F @ G) * x # answer(A).  [back_rewrite(557),rewrite([2716(5)])].
+
+given #834 (F,wt=21): 2964 (F @ G) * D * (C @ (B @ A)) * G * F != D * F * G # answer(A).  [back_rewrite(489),rewrite([2716(9)])].
+
+given #835 (T,wt=15): 5490 x * y @ (x * (x @ y) @ (z @ u)) = c_0.  [para(4(a,1),5299(a,1,2)),rewrite([2716(6)])].
+
+given #836 (T,wt=15): 5517 x * y @ ((z @ u) @ x * (x @ y)) = c_0.  [para(4(a,1),5349(a,1,1))].
+
+given #837 (T,wt=15): 5675 (x @ y) @ z * u * w * y * x = c_0.  [para(3(a,1),5283(a,1,2,2))].
+
+given #838 (T,wt=13): 10806 (x @ y) @ z * y * x * u = c_0.  [para(811(a,1),5675(a,1,2)),rewrite([3(3)])].
+
+given #839 (A,wt=18): 382 x * y * z != x * y | (x @ y) * z = x @ y.  [para(13(a,1),28(a,1)),flip(b)].
+
+given #840 (F,wt=17): 10619 D * (C @ (B @ A)) * F * G != D * F * G # answer(A).  [ur(464,b,2964,a),rewrite([5332(15),155(7),3(20),3(19),3(18),4(18)]),flip(a)].
+
+given #841 (F,wt=21): 2966 x * (C @ (B @ A)) * (F @ G) * D != x * D * (F @ G) # answer(A).  [back_rewrite(482),rewrite([2716(5)])].
+
+given #842 (F,wt=21): 2971 G * F * D * (F @ G) != F * G * D * (C @ (B @ A)) # answer(A).  [back_rewrite(230),rewrite([2716(8)]),flip(a)].
+
+given #843 (F,wt=21): 2976 x * (F @ G) * D * (C @ (B @ A)) != x * D * (F @ G) # answer(A).  [back_rewrite(62),rewrite([2716(9)])].
+
+given #844 (T,wt=11): 10848 (x @ y) @ y * x * z = c_0.  [para(155(a,1),10806(a,1,2))].
+
+given #845 (T,wt=11): 10856 (x @ (y @ z)) @ x * u = c_0.  [para(1811(a,1),10806(a,1,2))].
+
+given #846 (T,wt=11): 10867 (x @ y) @ y * z * x = c_0.  [para(811(a,1),10806(a,1,2))].
+
+given #847 (T,wt=11): 10889 (x @ y) @ x * y * z = c_0.  [back_rewrite(9555),rewrite([10848(4)]),flip(a)].
+
+given #848 (A,wt=20): 384 x * y * z != z * y | z @ y = x * (x @ y * z).  [para(14(a,1),28(a,1))].
+
+given #849 (F,wt=21): 2978 (F @ G) * D * (C @ (B @ A)) * x != D * (F @ G) * x # answer(A).  [back_rewrite(60),rewrite([2716(9)])].
+
+given #850 (F,wt=21): 3153 (G @ F) * D * C * (C @ (A @ B)) != D * (G @ F) * C # answer(A).  [ur(202,b,2788,a)].
+
+given #851 (F,wt=21): 3154 x * (G @ F) * D * (C @ (A @ B)) != x * D * (G @ F) # answer(A).  [ur(27,b,2817,a)].
+
+given #852 (F,wt=21): 3155 (G @ F) * D * (C @ (A @ B)) * x != D * (G @ F) * x # answer(A).  [ur(202,b,2818,a)].
+
+given #853 (T,wt=11): 10911 x * y * z @ (x @ y) = c_0.  [hyper(4111,a,10848,a)].
+
+given #854 (T,wt=11): 10912 x * y * z @ (y @ x) = c_0.  [hyper(1879,a,10848,a),rewrite([165(6)])].
+
+given #855 (T,wt=11): 10923 (x @ y) @ x * z * y = c_0.  [para(15(a,1),10848(a,1,2))].
+
+given #856 (T,wt=11): 10930 ((x @ y) @ z) @ z * u = c_0.  [para(1811(a,1),10848(a,1,2,2))].
+
+given #857 (A,wt=24): 385 x * y * z * u != u * x | u @ x = y * z * (y * z @ u).  [para(15(a,1),28(a,1,2))].
+
+given #858 (F,wt=21): 3158 D * (G @ F) * (C @ (B @ A)) * x != (G @ F) * D * x # answer(A).  [ur(202,b,2869,a),flip(a)].
+
+given #859 (F,wt=21): 3195 C * (B @ A) * (D @ (G @ F)) * x != (B @ A) * C * x # answer(A).  [ur(202,b,2872,a),flip(a)].
+
+given #860 (F,wt=21): 3198 x * C * (B @ A) * (D @ (G @ F)) != x * (B @ A) * C # answer(A).  [ur(200,b,2887,a)].
+
+given #861 (F,wt=21): 3199 x * D * (G @ F) * (C @ (B @ A)) != x * (G @ F) * D # answer(A).  [ur(200,b,2888,a)].
+
+given #862 (T,wt=11): 10958 x * y @ ((z @ u) @ x) = c_0.  [hyper(4111,a,10856,a)].
+
+given #863 (T,wt=11): 10959 x * y @ (x @ (z @ u)) = c_0.  [hyper(1879,a,10856,a),rewrite([165(6)])].
+
+given #864 (T,wt=11): 10978 x * y * z @ (x @ z) = c_0.  [hyper(4111,a,10867,a)].
+
+given #865 (T,wt=11): 10979 x * y * z @ (z @ x) = c_0.  [hyper(1879,a,10867,a),rewrite([165(6)])].
+
+given #866 (A,wt=20): 386 x * y * z != x * z | y * (x * y @ z) = x @ z.  [para(15(a,1),28(a,1)),flip(b)].
+
+given #867 (F,wt=21): 3200 (B @ A) * C * D * (D @ (F @ G)) != C * (B @ A) * D # answer(A).  [ur(202,b,2932,a(flip))].
+
+given #868 (F,wt=21): 3250 x * (B @ A) * C * (D @ (F @ G)) != x * C * (B @ A) # answer(A).  [ur(27,b,2986,a(flip))].
+
+given #869 (F,wt=21): 3251 (B @ A) * C * (D @ (F @ G)) * x != C * (B @ A) * x # answer(A).  [ur(202,b,2987,a(flip))].
+
+given #870 (F,wt=21): 3255 x * (G @ F) * (C @ (A @ B)) * D != x * D * (G @ F) # answer(A).  [ur(27,b,3156,a)].
+
+given #871 (T,wt=13): 10838 (x @ y) @ z * x * y * u = c_0.  [back_rewrite(9574),rewrite([10806(5)]),flip(a)].
+
+given #872 (T,wt=13): 10839 x * y * z * u @ (y @ z) = c_0.  [hyper(4111,a,10806,a)].
+
+given #873 (T,wt=13): 10840 x * y * z * u @ (z @ y) = c_0.  [hyper(1879,a,10806,a),rewrite([165(7)])].
+
+given #874 (T,wt=13): 10845 (x @ y) @ z * y * u * x = c_0.  [para(4(a,1),10806(a,1,2,2,2))].
+
+given #875 (A,wt=24): 387 x * (x @ y) * z * y != x * y * z | x * y * z @ y = c_0.  [para(13(a,1),380(a,1)),rewrite([3(6),3(5),334(11)]),flip(a)].
+
+given #876 (F,wt=21): 3258 (A @ B) * C * D * (D @ (G @ F)) != C * (A @ B) * D # answer(A).  [ur(202,b,3156,a(flip))].
+
+given #877 (F,wt=21): 3260 D * (G @ F) * C * (C @ (B @ A)) != (G @ F) * D * C # answer(A).  [ur(202,b,3159,a),flip(a)].
+
+given #878 (F,wt=21): 3364 C * (B @ A) * D * (D @ (G @ F)) != (B @ A) * C * D # answer(A).  [ur(202,b,3196,a),flip(a)].
+
+given #879 (F,wt=21): 3367 (F @ G) * D * C * (C @ (B @ A)) != D * (F @ G) * C # answer(A).  [ur(202,b,3252,a)].
+
+given #880 (T,wt=13): 10851 (x @ y) @ z * x * u * y = c_0.  [para(15(a,1),10806(a,1,2,2))].
+
+given #881 (T,wt=13): 10855 ((x @ y) @ z) @ u * z * w = c_0.  [para(1811(a,1),10806(a,1,2,2,2))].
+
+given #882 (T,wt=13): 10863 (x @ y) @ x * z * u * y = c_0.  [para(221(a,1),10806(a,1,2))].
+
+given #883 (T,wt=13): 10919 (x @ y) @ y * z * x * u = c_0.  [para(13(a,1),10848(a,1,2,2))].
+
+given #884 (A,wt=24): 388 x * (x @ y) * z * y != x * y * z | y @ x * y * z = c_0.  [para(13(a,1),380(a,2)),rewrite([3(4),3(3),355(11)])].
+
+given #885 (F,wt=21): 3369 x * (B @ A) * (D @ (F @ G)) * C != x * C * (B @ A) # answer(A).  [ur(27,b,3252,a(flip))].
+
+given #886 (F,wt=21): 3373 C * ((A @ B) @ (D @ (F @ G)) * C) != (D @ (F @ G)) * C # answer(A).  [ur(56,b,1983,a),rewrite([2716(16,R),2691(16),3(28),3(27),1766(26),165(21)])].
+
+given #887 (F,wt=21): 3375 G * F * (C @ (A @ B)) * D * (F @ G) != F * G * D # answer(A).  [ur(202,b,1984,a)].
+
+given #888 (F,wt=21): 3415 (B @ A) * C * (D @ (F @ G)) * (A @ B) * x != C * x # answer(A).  [ur(986,b,2043,a),rewrite([3(18),3(17),3(16)]),flip(a)].
+
+given #889 (T,wt=13): 10922 (x @ y) @ y * z * u * x = c_0.  [para(15(a,1),10848(a,1,2,2))].
+
+given #890 (T,wt=13): 10934 (x @ y) @ x * z * y * u = c_0.  [para(196(a,1),10848(a,1,2))].
+
+given #891 (T,wt=13): 10935 x * y * z @ y * x * z = c_0.  [para(10848(a,1),2692(a,2)),rewrite([2195(4),1243(3),13(4)])].
+
+given #892 (T,wt=13): 10965 (x @ (y @ z)) @ u * x * w = c_0.  [para(13(a,1),10856(a,1,2))].
+
+given #893 (A,wt=23): 389 x * y * z * y * x * (y @ x) = y * x * z * y * x.  [para(4(a,1),19(a,1,2,2,2)),flip(a)].
+
+given #894 (F,wt=21): 3416 x * (B @ A) * C * (D @ (F @ G)) * (A @ B) != x * C # answer(A).  [ur(770,b,2043,a),flip(a)].
+
+given #895 (F,wt=21): 3419 C * ((A @ B) @ C * (D @ (F @ G))) != C * (D @ (F @ G)) # answer(A).  [ur(56,b,2043,a),rewrite([2716(16,R),2691(16),3(28),3(27),1766(26),165(21)])].
+
+given #896 (F,wt=21): 3421 (F @ G) * D * (G @ F) * x != (C @ (A @ B)) * D * x # answer(A).  [ur(986,b,2593,a),rewrite([3(8),3(18),3(17)]),flip(a)].
+
+given #897 (F,wt=21): 3422 F * G * D * (G @ F) != G * F * (C @ (A @ B)) * D # answer(A).  [ur(202,b,2593,a),flip(a)].
+
+given #898 (T,wt=13): 10996 x * y @ (x @ (z @ u) * y) = c_0.  [para(1811(a,1),10867(a,1,2,2)),rewrite([2716(5)])].
+
+given #899 (T,wt=13): 11075 x * y * z * u @ (x @ z) = c_0.  [para(13(a,1),10911(a,1,1,2))].
+
+given #900 (T,wt=13): 11078 x * y * z * u @ (x @ u) = c_0.  [para(15(a,1),10911(a,1,1,2))].
+
+given #901 (T,wt=13): 11081 x * y * z * u @ (z @ x) = c_0.  [para(196(a,1),10911(a,1,1))].
+
+given #902 (A,wt=23): 390 x * y * y * y * x * x = y * y * x * x * x * y.  [para(5(a,1),19(a,1,2)),flip(a)].
+
+given #903 (F,wt=21): 3426 (D @ (F @ G)) * (B @ A) * C * (A @ B) * x != C * x # answer(A).  [ur(986,b,2602,a),rewrite([3(18),3(17),3(16)]),flip(a)].
+
+given #904 (F,wt=21): 3428 (D @ (G @ F)) * (A @ B) * C * (B @ A) * x != C * x # answer(A).  [ur(986,b,2768,a),rewrite([3(18),3(17),3(16)]),flip(a)].
+
+given #905 (F,wt=21): 3575 (A @ B) * (D @ (G @ F)) * C * x != C * (A @ B) * x # answer(A).  [ur(986,b,2778,a),rewrite([3(6),3(18),3(17)]),flip(a)].
+
+given #906 (F,wt=21): 3576 A * B * (D @ (G @ F)) * C != B * A * C * (A @ B) # answer(A).  [ur(202,b,2778,a),flip(a)].
+
+given #907 (T,wt=13): 11092 x * y * z * u @ (u @ x) = c_0.  [para(256(a,1),10911(a,1,1))].
+
+given #908 (T,wt=13): 11154 x * y @ ((z @ u) * y @ x) = c_0.  [para(1811(a,1),10923(a,1,2,2)),rewrite([2716(5)])].
+
+given #909 (T,wt=13): 11216 x * y * z @ ((u @ w) @ y) = c_0.  [para(13(a,1),10958(a,1,1))].
+
+given #910 (T,wt=13): 11235 x * y * z @ (y @ (u @ w)) = c_0.  [para(13(a,1),10959(a,1,1))].
+
+given #911 (A,wt=19): 391 x * y * y * x * z = y * x * x * y * z.  [para(155(a,1),19(a,1,2,2)),rewrite([155(8)])].
+
+given #912 (F,wt=21): 3578 (G @ F) * D * (F @ G) * x != (C @ (B @ A)) * D * x # answer(A).  [ur(986,b,2842,a),rewrite([3(8),3(18),3(17)]),flip(a)].
+
+given #913 (F,wt=21): 3587 (F @ G) * D * D * (C @ (B @ A)) != D * (F @ G) * D # answer(A).  [ur(29,b,2863,a),rewrite([1811(13)]),flip(a)].
+
+given #914 (F,wt=21): 3719 F * G * D * (G @ F) != G * F * D * (C @ (A @ B)) # answer(A).  [ur(202,b,3030,a)].
+
+given #915 (F,wt=21): 3731 (D * (C @ (B @ A)) @ (F @ G)) * D != D * (C @ (B @ A)) # answer(A).  [ur(464,b,2885,a),rewrite([2716(15,R),2691(15),2716(11),3(28),3(27),1766(26),165(21)])].
+
+given #916 (T,wt=13): 11336 x * y * z * u @ (y @ u) = c_0.  [para(4(a,1),10839(a,1,1,2,2))].
+
+given #917 (T,wt=13): 11341 x * y * z * u @ (u @ y) = c_0.  [para(15(a,1),10839(a,1,1,2))].
+
+given #918 (T,wt=13): 11790 x * y @ (x @ y * (y @ z)) = c_0.  [para(1184(a,1),10996(a,1,2,2))].
+
+given #919 (T,wt=13): 11792 x * y @ (x @ y * (z @ y)) = c_0.  [para(2192(a,1),10996(a,1,2,2))].
+
+given #920 (A,wt=24): 392 x * y * z * y * x * u != y | x * z * x * y * u = c_0.  [para(19(a,1),154(a,1)),flip(b)].
+
+given #921 (F,wt=21): 3735 ((A @ B) @ C * (D @ (F @ G))) * C != C * (D @ (F @ G)) # answer(A).  [ur(464,b,2043,a),rewrite([2716(15,R),2691(15),3(28),3(27),1766(26),165(21)])].
+
+given #922 (F,wt=21): 3806 F * G * D * (G @ F) * (C @ (B @ A)) != G * F * D # answer(A).  [ur(202,b,3032,a(flip))].
+
+given #923 (F,wt=21): 3809 A * B * C * (B @ A) * (D @ (G @ F)) != B * A * C # answer(A).  [ur(202,b,3033,a(flip))].
+
+given #924 (F,wt=21): 3811 (G @ F) * (C @ (A @ B)) * D * x != D * (G @ F) * x # answer(A).  [ur(986,b,3256,a),rewrite([3(6),3(18),3(17)]),flip(a)].
+
+given #925 (T,wt=13): 11892 x * y @ y * y * x * x = c_0.  [para(390(a,1),274(a,1)),rewrite([3(10),3(9),3(8)]),xx(a)].
+
+given #926 (T,wt=13): 11893 x * x * y * y @ y * x = c_0.  [para(390(a,1),275(a,1)),rewrite([3(10),3(9),3(8)]),xx(a)].
+
+given #927 (T,wt=13): 11958 x * y @ (y * (y @ z) @ x) = c_0.  [para(1184(a,1),11154(a,1,2,1))].
+
+given #928 (T,wt=13): 11960 x * y @ (y * (z @ y) @ x) = c_0.  [para(2192(a,1),11154(a,1,2,1))].
+
+given #929 (A,wt=24): 394 x * y * z * y * x * u != x * z * x * y * u | c_0 = y.  [para(19(a,1),159(a,1))].
+
+given #930 (F,wt=21): 3893 (B @ A) * (D @ (F @ G)) * C * x != C * (B @ A) * x # answer(A).  [ur(986,b,3370,a),rewrite([3(6),3(18),3(17)]),flip(a)].
+
+given #931 (F,wt=21): 3896 (C @ (A @ B)) * (G @ F) * D * x != D * (G @ F) * x # answer(A).  [ur(986,b,3767,a),rewrite([3(6),3(18),3(17)]),flip(a)].
+
+given #932 (F,wt=17): 12267 (C @ (A @ B)) * D * G * F != D * G * F # answer(A).  [para(811(a,1),3896(a,1,2)),rewrite([2195(19),1184(18),4(19)])].
+
+given #933 (F,wt=17): 12272 (C @ (B @ A)) * D * G * F != D * G * F # answer(A).  [ur(1847,b,12267,a),rewrite([2716(5)])].
+
+given #934 (T,wt=15): 5722 (x * y @ z) @ u * z * y * x = c_0.  [para(811(a,1),5283(a,1,2,2))].
+
+given #935 (T,wt=15): 5872 x * y * x * z @ (x @ z * y) = c_0.  [para(2691(a,1),5329(a,1,2)),rewrite([3(2)])].
+
+given #936 (T,wt=15): 5883 x * y * z * u * w @ (w @ u) = c_0.  [para(3(a,1),5332(a,1,1,2))].
+
+given #937 (T,wt=15): 5933 x * y * z * u @ (u * z @ y) = c_0.  [para(811(a,1),5332(a,1,1,2))].
+
+given #938 (A,wt=25): 395 x * y * z * y * x * (y @ z * x) = y * x * y * z * x.  [para(14(a,1),19(a,1,2,2)),flip(a)].
+
+given #939 (F,wt=17): 12285 (C @ (A @ B)) * G * F * D != G * F * D # answer(A).  [ur(56,b,12267,a(flip)),rewrite([3(17),3(16),3(15),15(16),3(16)])].
+
+given #940 (F,wt=17): 12303 (C @ (B @ A)) * G * F * D != G * F * D # answer(A).  [ur(56,b,12272,a(flip)),rewrite([3(17),3(16),3(15),15(16),3(16)])].
+
+given #941 (F,wt=17): 12549 (C @ (A @ B)) * F * D * G != F * D * G # answer(A).  [ur(56,b,12285,a(flip)),rewrite([3(17),3(16),3(15),15(16),3(16)])].
+
+given #942 (F,wt=17): 12566 (C @ (B @ A)) * F * D * G != F * D * G # answer(A).  [ur(56,b,12303,a(flip)),rewrite([3(17),3(16),3(15),15(16),3(16)])].
+
+given #943 (T,wt=15): 6043 x * y * x * z @ (z * y @ x) = c_0.  [para(2989(a,1),5377(a,1,2)),rewrite([3(2)])].
+
+given #944 (T,wt=15): 6055 x * y * z * u * w @ (u @ w) = c_0.  [para(3(a,1),5436(a,1,1,2))].
+
+given #945 (T,wt=15): 6084 x * y * z * u @ (y @ u * z) = c_0.  [para(811(a,1),5436(a,1,1,2))].
+
+given #946 (T,wt=15): 6140 (x @ y) @ z * u * w * x * y = c_0.  [para(3(a,1),5463(a,1,2,2))].
+
+given #947 (A,wt=24): 396 x * y * z * y * x * u != z * x * y * u | y * x = c_0.  [para(19(a,1),156(a,1))].
+
+given #948 (F,wt=21): 3898 x * (C @ (A @ B)) * (G @ F) * D != x * D * (G @ F) # answer(A).  [ur(770,b,3767,a),flip(a)].
+
+given #949 (F,wt=21): 3901 (D @ (F @ G)) * (B @ A) * C * x != C * (B @ A) * x # answer(A).  [ur(986,b,3768,a),rewrite([3(6),3(18),3(17)]),flip(a)].
+
+given #950 (F,wt=21): 3903 x * (D @ (F @ G)) * (B @ A) * C != x * C * (B @ A) # answer(A).  [ur(770,b,3768,a),flip(a)].
+
+given #951 (F,wt=21): 4048 (A @ B) * C * (B @ A) * (D @ (G @ F)) * x != C * x # answer(A).  [ur(986,b,4004,a),rewrite([3(18),3(17),3(16)]),flip(a)].
+
+given #952 (T,wt=15): 6165 (x @ y * z) @ u * x * z * y = c_0.  [para(811(a,1),5463(a,1,2,2))].
+
+given #953 (T,wt=15): 6170 ((x @ y) @ z) @ u * w * v5 * z = c_0.  [para(3(a,1),5489(a,1,2,2))].
+
+given #954 (T,wt=15): 6188 ((x @ y) @ (z @ u) * w) @ v5 * w = c_0.  [para(1811(a,1),5489(a,1,2,2))].
+
+given #955 (T,wt=15): 6200 ((x @ y) @ z * u) @ w * u * z = c_0.  [para(811(a,1),5489(a,1,2))].
+
+given #956 (A,wt=24): 397 x * y * z * y * x * u != y * x | z * x * y * u = c_0.  [para(19(a,1),166(a,1)),flip(b)].
+
+given #957 (F,wt=21): 4050 x * (A @ B) * C * (B @ A) * (D @ (G @ F)) != x * C # answer(A).  [ur(770,b,4004,a),flip(a)].
+
+given #958 (F,wt=21): 4054 (C @ (A @ B)) * (G @ F) * D * (F @ G) * x != D * x # answer(A).  [ur(986,b,4005,a),rewrite([3(18),3(17),3(16)]),flip(a)].
+
+given #959 (F,wt=21): 4056 x * (C @ (A @ B)) * (G @ F) * D * (F @ G) != x * D # answer(A).  [ur(770,b,4005,a),flip(a)].
+
+given #960 (F,wt=21): 4061 (G @ F) * (C @ (A @ B)) * D * (F @ G) * x != D * x # answer(A).  [ur(986,b,4006,a),rewrite([3(18),3(17),3(16)]),flip(a)].
+
+given #961 (T,wt=13): 12863 x @ (x * (y @ z) @ (u @ w)) = c_0.  [para(1811(a,1),6200(a,1,2)),rewrite([2716(5)])].
+
+given #962 (T,wt=13): 12906 x @ ((y @ z) @ x * (u @ w)) = c_0.  [hyper(3080,a,12863,a)].
+
+given #963 (T,wt=15): 6281 x * y * z * u @ ((w @ v5) @ u) = c_0.  [para(3(a,1),5516(a,1,1,2))].
+
+given #964 (T,wt=15): 6296 x * y @ ((z @ u) @ (w @ v5) * y) = c_0.  [para(1811(a,1),5516(a,1,1,2))].
+
+given #965 (A,wt=25): 399 x * y * z * y * x * u @ y = x * z * x * y * u @ y.  [para(19(a,1),315(a,1,1))].
+
+given #966 (F,wt=21): 4063 x * (G @ F) * (C @ (A @ B)) * D * (F @ G) != x * D # answer(A).  [ur(770,b,4006,a),flip(a)].
+
+given #967 (F,wt=21): 4067 D * ((C @ (A @ B)) * D @ (G @ F)) != (C @ (A @ B)) * D # answer(A).  [ur(56,b,4006,a),rewrite([2716(16,R),2691(16),2716(12),3(28),3(27),1766(26),165(21)])].
+
+given #968 (F,wt=21): 4070 (G @ F) * D * (C @ (A @ B)) * (F @ G) * x != D * x # answer(A).  [ur(986,b,4007,a),rewrite([3(18),3(17),3(16)]),flip(a)].
+
+given #969 (F,wt=21): 4072 x * (G @ F) * D * (C @ (A @ B)) * (F @ G) != x * D # answer(A).  [ur(770,b,4007,a),flip(a)].
+
+given #970 (T,wt=15): 6304 x * y * z @ ((u @ w) @ z * y) = c_0.  [para(811(a,1),5516(a,1,1))].
+
+given #971 (T,wt=15): 6377 x * y * z * u @ (u @ (w @ v5)) = c_0.  [para(3(a,1),5607(a,1,1,2))].
+
+given #972 (T,wt=15): 6387 x * y @ ((z @ u) * y @ (w @ v5)) = c_0.  [para(1811(a,1),5607(a,1,1,2))].
+
+given #973 (T,wt=15): 6392 x * y * z @ (z * y @ (u @ w)) = c_0.  [para(811(a,1),5607(a,1,1))].
+
+given #974 (A,wt=25): 400 x @ y * z * y * x * u = x @ y * x * z * x * y * u.  [para(19(a,1),341(a,1,2)),flip(a)].
+
+given #975 (F,wt=21): 4075 G * F * D * (C @ (A @ B)) * (F @ G) != F * G * D # answer(A).  [ur(202,b,4007,a),flip(a)].
+
+given #976 (F,wt=21): 4077 D * (D * (C @ (A @ B)) @ (G @ F)) != D * (C @ (A @ B)) # answer(A).  [ur(56,b,4007,a),rewrite([2716(16,R),2691(16),2716(12),3(28),3(27),1766(26),165(21)])].
+
+given #977 (F,wt=21): 4085 (D @ (G @ F)) * (A @ B) * C * A != C * A * (A @ B) # answer(A).  [ur(1847,b,1274,a),rewrite([2716(5)])].
+
+given #978 (F,wt=21): 4087 (D @ (G @ F)) * C * (A @ B) * C != C * C * (A @ B) # answer(A).  [ur(1847,b,675,a),rewrite([2716(5)])].
+
+given #979 (T,wt=15): 6442 (x @ (y @ z)) @ u * w * v5 * x = c_0.  [para(3(a,1),5623(a,1,2,2))].
+
+given #980 (T,wt=15): 6450 ((x @ y) * z @ (u @ w)) @ v5 * z = c_0.  [para(1811(a,1),5623(a,1,2,2))].
+
+given #981 (T,wt=15): 6455 (x * y @ (z @ u)) @ w * y * x = c_0.  [para(811(a,1),5623(a,1,2))].
+
+given #982 (T,wt=15): 6543 x * y * z * y @ (z * x @ y) = c_0.  [para(2989(a,1),6026(a,1,2)),rewrite([3(3)])].
+
+given #983 (A,wt=18): 401 x * y * (z @ u) != z * u | u * z = x * y.  [para(3(a,1),56(a,1))].
+
+Low Water (keep): wt=24.000, iters=6693
+
+given #984 (F,wt=21): 4096 (B @ A) * C * (D @ (F @ G)) * A * (A @ B) != C * A # answer(A).  [ur(1847,b,1480,a(flip))].
+
+given #985 (F,wt=21): 4097 (B @ A) * C * (D @ (F @ G)) * A * B != C * B * A # answer(A).  [ur(1847,b,1479,a(flip))].
+
+given #986 (F,wt=17): 13169 C * (D @ (F @ G)) * B * A != C * B * A # answer(A).  [ur(464,b,4097,a),rewrite([2716(15,R),5463(15),155(7),3(20),3(19),3(18),4(18)]),flip(a)].
+
+given #987 (F,wt=21): 4098 (B @ A) * (D @ (F @ G)) * C * A * (A @ B) != C * A # answer(A).  [ur(1847,b,1274,a(flip))].
+
+given #988 (T,wt=14): 13160 x * y != z | z * (y @ x) = y * x.  [para(1766(a,1),401(a,1,2)),rewrite([165(2)]),flip(a),flip(b)].
+
+given #989 (T,wt=15): 6701 x * y * z * y @ (y @ z * x) = c_0.  [para(2691(a,1),6515(a,1,2)),rewrite([3(3)])].
+
+given #990 (T,wt=15): 6909 x * y * x * z @ (x @ y * z) = c_0.  [para(811(a,1),6831(a,1,2,2)),rewrite([2989(3),2716(6)])].
+
+given #991 (T,wt=15): 6996 x * y * x * z @ (y * z @ x) = c_0.  [para(811(a,1),6833(a,1,1,2)),rewrite([2989(6)])].
+
+given #992 (A,wt=20): 402 x * (y * z @ u) != y * z * u | u * y * z = x.  [para(3(a,1),56(a,2))].
+
+given #993 (F,wt=21): 4099 (B @ A) * C * (A @ B) * D * (D @ (F @ G)) != C * D # answer(A).  [ur(1847,b,1255,a(flip))].
+
+given #994 (F,wt=21): 4100 (B @ A) * C * (A @ B) * C * (D @ (F @ G)) != C * C # answer(A).  [ur(1847,b,793,a(flip))].
+
+given #995 (F,wt=21): 4133 (A @ B) * C * (D @ (G @ F)) * (B @ A) * x != C * x # answer(A).  [ur(986,b,4008,a),rewrite([3(18),3(17),3(16)]),flip(a)].
+
+given #996 (F,wt=21): 4135 x * (A @ B) * C * (D @ (G @ F)) * (B @ A) != x * C # answer(A).  [ur(770,b,4008,a),flip(a)].
+
+given #997 (T,wt=15): 7036 x * y * z @ (x @ y * x * z) = c_0.  [para(1243(a,1),6889(a,1,2,2)),rewrite([355(6)])].
+
+given #998 (T,wt=15): 7091 x * y * z @ (y * x * z @ x) = c_0.  [para(1243(a,1),6976(a,1,2,1)),rewrite([334(6)])].
+
+given #999 (T,wt=15): 7327 (x @ y) @ (z @ u) = (u @ z) @ (x @ y).  [hyper(4110,a,1971,a(flip)),rewrite([1971(8)]),flip(a)].
+
+given #1000 (T,wt=15): 7331 ((x @ y) @ z) @ u = (z @ (y @ x)) @ u.  [para(2716(a,1),1971(a,2,1)),rewrite([1971(6)])].
+
+given #1001 (A,wt=23): 409 x * y * z * z * x * y = z * x * y * x * y * z.  [para(73(a,1),3(a,1)),rewrite([3(3),3(4)]),flip(a)].
+
+given #1002 (F,wt=21): 4138 A * B * C * (D @ (G @ F)) * (B @ A) != B * A * C # answer(A).  [ur(202,b,4008,a),flip(a)].
+
+given #1003 (F,wt=21): 4140 C * ((B @ A) @ C * (D @ (G @ F))) != C * (D @ (G @ F)) # answer(A).  [ur(56,b,4008,a),rewrite([2716(16,R),2691(16),3(28),3(27),1766(26),165(21)])].
+
+given #1004 (F,wt=21): 4143 (G @ F) * D * (F @ G) * (C @ (A @ B)) * x != D * x # answer(A).  [ur(986,b,4009,a),rewrite([3(18),3(17),3(16)]),flip(a)].
+
+given #1005 (F,wt=21): 4145 x * (G @ F) * D * (F @ G) * (C @ (A @ B)) != x * D # answer(A).  [ur(770,b,4009,a),flip(a)].
+
+given #1006 (T,wt=15): 7823 x * y * z * y @ (y @ x * z) = c_0.  [para(2691(a,1),7619(a,1,2))].
+
+given #1007 (T,wt=15): 7960 x * y * z * y @ (x * z @ y) = c_0.  [para(2989(a,1),7655(a,1,2))].
+
+given #1008 (T,wt=15): 8034 x * (y @ x) @ y * (y @ x) = x @ y.  [para(7981(a,1),2668(a,2)),rewrite([8033(5)])].
+
+given #1009 (T,wt=15): 8060 x * (y @ x) @ y * (x @ y) = x @ y.  [para(7981(a,1),7981(a,1,1,2)),rewrite([8033(8)])].
+
+given #1010 (A,wt=19): 410 x * y * z * z * y = x * z * y * y * z.  [para(73(a,1),3(a,2,2)),rewrite([3(4)])].
+
+given #1011 (F,wt=21): 4149 (A @ B) * (D @ (G @ F)) * C * (B @ A) * x != C * x # answer(A).  [ur(986,b,4010,a),rewrite([3(18),3(17),3(16)]),flip(a)].
+
+given #1012 (F,wt=21): 4151 x * (A @ B) * (D @ (G @ F)) * C * (B @ A) != x * C # answer(A).  [ur(770,b,4010,a),flip(a)].
+
+given #1013 (F,wt=21): 4154 A * B * (D @ (G @ F)) * C * (B @ A) != B * A * C # answer(A).  [ur(202,b,4010,a),flip(a)].
+
+given #1014 (F,wt=21): 4156 C * ((B @ A) @ (D @ (G @ F)) * C) != (D @ (G @ F)) * C # answer(A).  [ur(56,b,4010,a),rewrite([2716(16,R),2691(16),3(28),3(27),1766(26),165(21)])].
+
+given #1015 (T,wt=15): 8061 x * (y @ x) * (y @ x) @ y = x @ y.  [para(7981(a,1),7981(a,2)),rewrite([8033(5),3(4)])].
+
+given #1016 (T,wt=15): 8072 x * (x @ y) @ y * (x @ y) = x @ y.  [para(8033(a,1),2745(a,1,1,2)),rewrite([8033(8)])].
+
+given #1017 (T,wt=15): 8084 x @ y * (x @ y) * (x @ y) = x @ y.  [para(8033(a,1),8033(a,1,2,2)),rewrite([3(4),8033(8)])].
+
+given #1018 (T,wt=15): 8144 x * (y @ x) @ x * y * x = x @ y.  [para(315(a,1),8020(a,1,1,2)),rewrite([3(4),341(7)])].
+
+given #1019 (A,wt=22): 412 x * y * z * z * y != x * z * u | y * y * z = u.  [para(73(a,1),7(a,1,2))].
+
+given #1020 (F,wt=21): 4157 (F @ G) * D * x != D * (C @ (A @ B)) * (F @ G) * x # answer(A).  [ur(986,b,4078,a),rewrite([3(12),3(11),3(18)]),flip(a)].
+
+given #1021 (F,wt=17): 13774 D * (C @ (A @ B)) * F * G != D * F * G # answer(A).  [para(811(a,1),4157(a,1)),rewrite([2195(18),1184(17),4(18)]),flip(a)].
+
+given #1022 (F,wt=21): 4159 x * (F @ G) * D != x * D * (C @ (A @ B)) * (F @ G) # answer(A).  [ur(770,b,4078,a),flip(a)].
+
+given #1023 (F,wt=21): 4211 (D @ (G @ F)) * C * (B @ A) * x != (B @ A) * C * x # answer(A).  [ur(986,b,4079,a),rewrite([3(6),3(18),3(17)]),flip(a)].
+
+given #1024 (T,wt=15): 8153 x * y * y * (x @ y) @ y = x @ y.  [para(8020(a,1),2731(a,1,2,2)),rewrite([3(4),3(8),1766(7),165(6),8068(9)])].
+
+given #1025 (T,wt=15): 8154 x @ y * x * x * (y @ x) = x @ y.  [para(8020(a,1),2732(a,1,1,2)),rewrite([3(4),1766(3),165(2),3(4),8020(9)])].
+
+given #1026 (T,wt=15): 8378 x * (y @ x) @ x * x * y = x @ y.  [para(315(a,1),8063(a,1,1,2)),rewrite([341(7)])].
+
+given #1027 (T,wt=15): 8407 x * y * x @ x * (y @ x) = y @ x.  [para(315(a,1),8068(a,1,2,2)),rewrite([3(2),315(7)])].
+
+given #1028 (A,wt=18): 413 x * y * y * x != y * x * z | x * y = z.  [para(73(a,1),7(a,1))].
+
+given #1029 (F,wt=21): 4213 x * (D @ (G @ F)) * C * (B @ A) != x * (B @ A) * C # answer(A).  [ur(770,b,4079,a),flip(a)].
+
+given #1030 (F,wt=21): 4217 (G @ F) * D * x != (C @ (B @ A)) * D * (G @ F) * x # answer(A).  [ur(986,b,4080,a),rewrite([3(12),3(11),3(18)]),flip(a)].
+
+given #1031 (F,wt=21): 4219 x * (G @ F) * D != x * (C @ (B @ A)) * D * (G @ F) # answer(A).  [ur(770,b,4080,a),flip(a)].
+
+given #1032 (F,wt=21): 4223 (F @ G) * D * (G @ F) * x != D * (C @ (A @ B)) * x # answer(A).  [ur(986,b,4081,a),rewrite([3(8),3(18),3(17)]),flip(a)].
+
+given #1033 (T,wt=15): 8506 x * x * y @ x * (y @ x) = y @ x.  [para(315(a,1),8086(a,1,2,2)),rewrite([315(7)])].
+
+given #1034 (T,wt=15): 8707 ((x @ y) @ z) * u = (z @ (y @ x)) * u.  [hyper(1847,a,3084,a)].
+
+given #1035 (T,wt=15): 8859 x @ ((y @ z) @ u) = x @ (u @ (z @ y)).  [hyper(4111,a,3117,a)].
+
+Low Water (keep): wt=23.000, iters=6684
+
+given #1036 (T,wt=15): 8864 x * ((y @ z) @ u) = x * (u @ (z @ y)).  [para(3117(a,2),4(a,1,2,2)),rewrite([2584(6),3084(9)])].
+
+given #1037 (A,wt=22): 414 x * y * z * z * y != u * y * y * z | x * z = u.  [para(73(a,1),8(a,1,2))].
+
+given #1038 (F,wt=21): 4225 x * (F @ G) * D * (G @ F) != x * D * (C @ (A @ B)) # answer(A).  [ur(770,b,4081,a),flip(a)].
+
+given #1039 (F,wt=19): 14349 (D @ (G @ F)) * x * D != x * D * (C @ (A @ B)) # answer(A).  [para(811(a,2),4225(a,1)),rewrite([3284(9),2716(5),3(14),1766(13),165(8)])].
+
+given #1040 (F,wt=19): 14352 (D @ (F @ G)) * x * D * (C @ (A @ B)) != x * D # answer(A).  [ur(1847,b,14349,a),rewrite([2716(5)])].
+
+given #1041 (F,wt=21): 4227 (G @ F) * D * D * (C @ (A @ B)) != D * (G @ F) * D # answer(A).  [ur(29,b,4081,a),rewrite([1811(13)]),flip(a)].
+
+given #1042 (T,wt=15): 8877 (x @ (y @ (z @ u))) @ (y @ (u @ z)) = c_0.  [para(3117(a,1),2131(a,1))].
+
+given #1043 (T,wt=15): 8902 (x @ ((y @ z) @ u)) @ (u @ (z @ y)) = c_0.  [para(3117(a,1),3069(a,1))].
+
+given #1044 (T,wt=15): 8904 ((x @ y) @ z) @ ((z @ (y @ x)) @ u) = c_0.  [para(3117(a,2),3069(a,1,2))].
+
+given #1045 (T,wt=15): 8906 ((x @ y) @ z) @ (u @ (z @ (y @ x))) = c_0.  [para(3117(a,1),3087(a,1,2))].
+
+given #1046 (A,wt=18): 415 x * y * y * x != z * x * y | y * x = z.  [para(73(a,1),8(a,1))].
+
+given #1047 (F,wt=21): 4230 C * (D @ (G @ F)) * x != (B @ A) * C * (A @ B) * x # answer(A).  [ur(986,b,4082,a),rewrite([3(10),3(9),3(18)]),flip(a)].
+
+given #1048 (F,wt=21): 4232 x * C * (D @ (G @ F)) != x * (B @ A) * C * (A @ B) # answer(A).  [ur(770,b,4082,a),flip(a)].
+
+given #1049 (F,wt=19): 14417 (C @ (A @ B)) * x * C != x * C * (D @ (G @ F)) # answer(A).  [para(811(a,2),4232(a,2)),rewrite([2716(17),2692(17),3(22),1766(21),165(16)]),flip(a)].
+
+given #1050 (F,wt=19): 14420 (C @ (B @ A)) * x * C * (D @ (G @ F)) != x * C # answer(A).  [ur(1847,b,14417,a),rewrite([2716(5)])].
+
+given #1051 (T,wt=15): 9098 (x @ (y @ z)) @ (((z @ y) @ x) @ u) = c_0.  [para(3119(a,1),1238(a,1)),rewrite([2716(6,R)])].
+
+given #1052 (T,wt=15): 9101 (x @ ((y @ z) @ u)) @ ((z @ y) @ u) = c_0.  [para(3119(a,1),2131(a,1))].
+
+given #1053 (T,wt=15): 9124 (x @ (y @ (z @ u))) @ ((u @ z) @ y) = c_0.  [para(3119(a,1),3069(a,1))].
+
+given #1054 (T,wt=15): 9127 (x @ (y @ z)) @ (u @ ((z @ y) @ x)) = c_0.  [para(3119(a,1),3087(a,1,2))].
+
+given #1055 (A,wt=22): 416 x * y * z * z * u != z * u * u * z | x * y = u.  [para(73(a,1),8(a,2))].
+
+given #1056 (F,wt=21): 4236 (A @ B) * C * C * (D @ (G @ F)) != C * (A @ B) * C # answer(A).  [ur(29,b,4082,a(flip)),rewrite([1811(13)]),flip(a)].
+
+given #1057 (F,wt=21): 4266 (G @ F) * D * x != D * (C @ (B @ A)) * (G @ F) * x # answer(A).  [ur(986,b,4083,a),rewrite([3(12),3(11),3(18)]),flip(a)].
+
+given #1058 (F,wt=21): 4268 x * (G @ F) * D != x * D * (C @ (B @ A)) * (G @ F) # answer(A).  [ur(770,b,4083,a),flip(a)].
+
+given #1059 (F,wt=21): 4271 (D @ (G @ F)) * C * x != (B @ A) * C * (A @ B) * x # answer(A).  [ur(986,b,4084,a),rewrite([3(10),3(9),3(18)]),flip(a)].
+
+given #1060 (T,wt=15): 9732 x * y * z @ (x * (x @ y) @ z) = c_0.  [para(13(a,1),5282(a,1,2)),rewrite([2716(6)])].
+
+given #1061 (T,wt=15): 9769 x * y * x @ (x * x @ (x @ y)) = c_0.  [para(1260(a,1),5282(a,1,2)),rewrite([2716(3),2716(6),2716(5)])].
+
+given #1062 (T,wt=15): 9830 x * y * y @ ((z @ u) * x @ y) = c_0.  [para(2989(a,1),9744(a,1,2)),rewrite([3(2)])].
+
+given #1063 (T,wt=15): 9865 x * y @ y * (y @ (z @ u)) * x = c_0.  [para(9813(a,1),341(a,2)),rewrite([3(6),1744(6)])].
+
+given #1064 (A,wt=22): 417 x * y * y * x != z * y | z * (z @ y) = x * x * y.  [para(73(a,1),10(a,1))].
+
+given #1065 (F,wt=21): 4273 x * (D @ (G @ F)) * C != x * (B @ A) * C * (A @ B) # answer(A).  [ur(770,b,4084,a),flip(a)].
+
+given #1066 (F,wt=19): 14536 (C @ (A @ B)) * x * C != x * (D @ (G @ F)) * C # answer(A).  [para(811(a,2),4273(a,2)),rewrite([2716(17),2692(17),3(22),1766(21),165(16)]),flip(a)].
+
+given #1067 (F,wt=19): 14537 (C @ (B @ A)) * x * (D @ (G @ F)) * C != x * C # answer(A).  [ur(1847,b,14536,a),rewrite([2716(5)])].
+
+given #1068 (F,wt=21): 4282 (F @ G) * D * (G @ F) * (C @ (B @ A)) * x != D * x # answer(A).  [ur(986,b,4093,a),rewrite([3(18),3(17),3(16)]),flip(a)].
+
+given #1069 (T,wt=14): 14532 x * y != y * y | x * (x @ y) = y.  [para(4(a,1),417(a,1,2)),rewrite([145(1),155(3),145(6),145(7),155(8),155(7)]),flip(a)].
+
+given #1070 (T,wt=15): 9873 x * (x @ (y @ z)) * u @ u * x = c_0.  [para(9813(a,1),2667(a,1,2,2)),rewrite([3(5),1744(5),165(7),2716(11),9744(11)])].
+
+given #1071 (T,wt=15): 9874 x * y * y @ (y @ (z @ u) * x) = c_0.  [para(2691(a,1),9813(a,1,2)),rewrite([3(2)])].
+
+given #1072 (T,wt=15): 10030 x * y * z @ (z @ x * (x @ y)) = c_0.  [para(13(a,1),5290(a,1,2)),rewrite([2716(6)])].
+
+given #1073 (A,wt=16): 418 x * y * y * x != y | x * x * y = c_0.  [para(73(a,1),154(a,1)),flip(b)].
+
+given #1074 (F,wt=21): 4284 x * (F @ G) * D * (G @ F) * (C @ (B @ A)) != x * D # answer(A).  [ur(770,b,4093,a),flip(a)].
+
+given #1075 (F,wt=21): 4286 C * (D @ (G @ F)) * (B @ A) * x != (B @ A) * C * x # answer(A).  [ur(986,b,4130,a),rewrite([3(6),3(18),3(17)]),flip(a)].
+
+given #1076 (F,wt=17): 14631 C * (D @ (G @ F)) * B * A != C * B * A # answer(A).  [para(811(a,1),4286(a,2)),rewrite([2195(13),1184(12),4(13)])].
+
+given #1077 (F,wt=21): 4288 x * C * (D @ (G @ F)) * (B @ A) != x * (B @ A) * C # answer(A).  [ur(770,b,4130,a),flip(a)].
+
+given #1078 (T,wt=15): 10063 x * y * x @ (x * x @ (y @ x)) = c_0.  [para(1260(a,1),5290(a,1,2)),rewrite([2716(6),2716(5)])].
+
+given #1079 (T,wt=15): 10155 x * y * z @ (z @ y * z * x) = c_0.  [para(4(a,1),10137(a,1,1,2)),rewrite([3(5),355(6)])].
+
+given #1080 (T,wt=15): 10179 x * y * y * z @ (y @ z * x) = c_0.  [para(2691(a,1),10137(a,1,2)),rewrite([3(3)])].
+
+given #1081 (T,wt=15): 10216 x * y * z @ (y * z * x @ z) = c_0.  [para(4(a,1),10150(a,1,1,2)),rewrite([3(5),334(6)])].
+
+given #1082 (A,wt=16): 420 x * y * y * x != x * x * y | c_0 = y.  [para(73(a,1),159(a,1))].
+
+given #1083 (F,wt=21): 4368 (B @ A) * (D @ (F @ G)) * (A @ B) * (C @ (A @ B)) != c_0 # answer(A).  [ur(1809,b,2390,a(flip))].
+
+given #1084 (F,wt=21): 4377 (G @ F) * (C @ (A @ B)) * (F @ G) * (D @ (F @ G)) != c_0 # answer(A).  [ur(1809,b,2430,a(flip))].
+
+given #1085 (F,wt=21): 4567 (G @ F) * (C @ (B @ A)) * (F @ G) * (D @ (G @ F)) != c_0 # answer(A).  [ur(1809,b,2834,a(flip))].
+
+given #1086 (F,wt=21): 4578 (B @ A) * (D @ (G @ F)) * (A @ B) * (C @ (B @ A)) != c_0 # answer(A).  [ur(1809,b,2836,a(flip))].
+
+given #1087 (T,wt=15): 10240 x * y * y * z @ (z * x @ y) = c_0.  [para(2989(a,1),10150(a,1,2)),rewrite([3(3)])].
+
+given #1088 (T,wt=15): 10843 (x @ y) @ z * u * y * x * w = c_0.  [para(3(a,1),10806(a,1,2))].
+
+given #1089 (T,wt=15): 10849 (x @ y) @ z * y * u * x * w = c_0.  [para(13(a,1),10806(a,1,2,2,2))].
+
+given #1090 (T,wt=15): 10850 (x @ y) @ z * y * u * w * x = c_0.  [para(15(a,1),10806(a,1,2,2,2))].
+
+given #1091 (A,wt=20): 422 x * y * z * z * y != y * y * z | x * z = c_0.  [para(73(a,1),156(a,1,2))].
+
+given #1092 (F,wt=21): 4584 ((A @ B) @ (D @ (F @ G))) * (C @ (B @ A)) != D @ (F @ G) # answer(A).  [ur(464,b,2837,a),rewrite([2716(13,R),2623(13),3(28),1766(27),165(22)])].
+
+given #1093 (F,wt=21): 4586 (C @ (B @ A)) * ((A @ B) @ (D @ (F @ G))) != D @ (F @ G) # answer(A).  [ur(56,b,2837,a),rewrite([2716(18,R),2623(18),3(28),1766(27),165(22)])].
+
+given #1094 (F,wt=21): 4589 (C @ (A @ B)) * (B @ A) * (D @ (F @ G)) * (A @ B) != c_0 # answer(A).  [ur(1809,b,2837,a(flip)),rewrite([2716(5)])].
+
+given #1095 (F,wt=21): 4899 C * (A @ B) * (D @ (F @ G)) * B * A != C * A * B # answer(A).  [para(811(a,1),38(a,2))].
+
+given #1096 (T,wt=15): 10858 (x @ y) @ z * x * u * y * w = c_0.  [para(196(a,1),10806(a,1,2,2))].
+
+given #1097 (T,wt=15): 10871 (x @ y) @ z * x * u * w * y = c_0.  [para(256(a,1),10806(a,1,2,2))].
+
+given #1098 (T,wt=15): 10913 (x * y @ z) @ z * x * y * u = c_0.  [para(3(a,1),10848(a,1,2,2))].
+
+given #1099 (T,wt=13): 14800 x * y @ (x @ y * (z @ u)) = c_0.  [para(1766(a,1),10913(a,1,2,2,2)),rewrite([165(5),2716(5)])].
+
+given #1100 (A,wt=20): 425 x * y * z * z * y != x * z | y * y * z = c_0.  [para(73(a,1),166(a,1,2)),flip(b)].
+
+given #1101 (F,wt=21): 5005 x * (D @ (F @ G)) * C * A * B != x * C * A * B # answer(A).  [para(811(a,1),559(a,2,2)),rewrite([2195(13),1184(12),4(13)])].
+
+given #1102 (F,wt=21): 5048 (D @ (F @ G)) * x * C * (A @ B) != x * (A @ B) * C # answer(A).  [para(811(a,1),1916(a,1,2))].
+
+given #1103 (F,wt=21): 5054 (C @ (A @ B)) * x * D * (F @ G) != x * (F @ G) * D # answer(A).  [para(811(a,1),1922(a,1,2))].
+
+given #1104 (F,wt=21): 5082 (C @ (A @ B)) * x * (G @ F) * D != x * D * (G @ F) # answer(A).  [para(811(a,1),2818(a,1)),flip(a)].
+
+given #1105 (T,wt=13): 14819 x * y @ (y * (z @ u) @ x) = c_0.  [hyper(3080,a,14800,a)].
+
+given #1106 (T,wt=15): 10914 (x @ y * z) @ y * z * x * u = c_0.  [para(3(a,1),10848(a,1,2))].
+
+given #1107 (T,wt=15): 10915 x * y * z * (y @ x) = y * x * z.  [para(10848(a,1),4(a,1,2,2)),rewrite([165(5),3(4),3(3),2195(8),1243(7),13(8)])].
+
+============================== PROOF =================================
+
+% Proof 1 at 8.85 (+ 0.10) seconds: A.
+% Length of proof is 109.
+% Level of proof is 32.
+% Maximum clause weight is 23.000.
+% Given clauses 1107.
+
+1 x * y != x * z | y = z.  [assumption].
+2 x * y != z * y | x = z.  [assumption].
+3 (x * y) * z = x * y * z.  [assumption].
+4 x * y * (y @ x) = y * x.  [assumption].
+5 x * y * z * y * x = y * x * z * x * y.  [assumption].
+6 (A @ B) @ C != D @ (F @ G) # answer(A).  [assumption].
+7 x * y * z != x * y * u | z = u.  [para(3(a,1),1(a,1)),rewrite([3(4)])].
+8 x * y * z != u * z | x * y = u.  [para(3(a,1),2(a,1))].
+9 x * (x @ x) = x.  [hyper(1,a,4,a)].
+10 x * y != z * x | z * (z @ x) = y.  [para(4(a,1),1(a,1)),flip(a)].
+13 x * y * (y @ x) * z = y * x * z.  [para(4(a,1),3(a,1,1)),rewrite([3(2),3(5)]),flip(a)].
+14 x * y * z * (z @ x * y) = z * x * y.  [para(4(a,1),3(a,1)),flip(a)].
+15 x * y * z * (y * z @ x) = y * z * x.  [para(3(a,1),4(a,1,2)),rewrite([3(7)])].
+16 x * y * z * y * x != y * u | x * z * x * y = u.  [para(5(a,1),1(a,1))].
+23 ((A @ B) @ C) * x != (D @ (F @ G)) * x # answer(A).  [ur(2,b,6,a)].
+27 x * y * z != x * u * y | u * (u @ y) = z.  [para(4(a,1),7(a,1,2)),flip(a)].
+29 x * y * z * y * x != y * x * u | z * x * y = u.  [para(5(a,1),7(a,1))].
+31 x * ((A @ B) @ C) * y != x * (D @ (F @ G)) * y # answer(A).  [ur(1,b,23,a)].
+40 x * y != x | x @ x = y.  [para(9(a,1),1(a,1)),flip(a)].
+43 x * (x @ x) * y = x * y.  [para(9(a,1),3(a,1,1)),flip(a)].
+54 x * y * z != u * w * z | x * y = u * w.  [para(3(a,1),8(a,2))].
+55 x * y * (y @ z) != u * y * z | u * z = x.  [para(4(a,1),8(a,1,2)),flip(a)].
+56 x * (y @ z) != y * z | z * y = x.  [para(4(a,1),8(a,1)),flip(a)].
+69 (x @ x) * y = y.  [hyper(7,a,43,a)].
+77 x * y != y | z @ z = x.  [para(69(a,1),2(a,1)),flip(a)].
+78 x * ((y @ y) @ x) = x.  [para(69(a,1),4(a,1,2)),rewrite([69(5)])].
+84 (x @ x) @ y = y @ y.  [hyper(40,a,78,a),flip(a)].
+91 x * y * z != x * y | (u @ u) @ y = z.  [para(78(a,1),7(a,1,2)),flip(a)].
+100 ((x @ x) @ y) * z = z.  [para(84(a,2),69(a,1,1))].
+101 x * (((y @ y) @ z) @ x) = x.  [para(84(a,2),78(a,1,2,1))].
+105 x * y * (x * y @ x) = y * x.  [hyper(10,a,3,a(flip)),rewrite([3(4)])].
+106 x * y * z != u * x * y | u * (u @ x * y) = z.  [para(3(a,1),10(a,1))].
+121 x * (x @ ((y @ y) @ z)) = x * ((y @ y) @ z).  [hyper(10,a,100,a)].
+128 (((x @ x) @ y) @ z) * u = u.  [para(84(a,2),100(a,1,1,1))].
+129 x * y != x | ((z @ z) @ u) @ x = y.  [para(100(a,1),10(a,2)),rewrite([100(8)])].
+141 (x @ x) @ y = z @ z.  [hyper(77,a,100,a),flip(a)].
+142 x @ x = y @ y.  [hyper(77,a,69,a)].
+145 x @ x = c_0.  [new_symbol(142)].
+148 c_0 @ x = c_0.  [back_rewrite(141),rewrite([145(1),145(3)])].
+154 x * y != x | c_0 = y.  [back_rewrite(129),rewrite([145(3),148(4),148(4)])].
+155 c_0 * x = x.  [back_rewrite(128),rewrite([145(1),148(2),148(2)])].
+160 x * (x @ c_0) = x * c_0.  [back_rewrite(121),rewrite([145(1),148(2),145(4),148(5)])].
+165 x * c_0 = x.  [back_rewrite(101),rewrite([145(1),148(2),148(2)])].
+166 x * y * z != x * y | c_0 = z.  [back_rewrite(91),rewrite([145(5),148(6)])].
+168 x * (x @ c_0) = x.  [back_rewrite(160),rewrite([165(5)])].
+191 x @ c_0 = c_0.  [hyper(154,a,168,a),flip(a)].
+192 x * y * z != y * u | x * (x @ y) * z = u.  [para(13(a,1),1(a,1))].
+202 x * y * z != y * x * u | (y @ x) * u = z.  [para(13(a,1),7(a,2)),flip(b)].
+216 x * y * (y @ y * x) = y * x.  [hyper(1,a,14,a)].
+246 x * y != y * x | x @ y = c_0.  [para(4(a,1),166(a,1)),flip(b)].
+278 x * (y * x @ y) = x * (x @ y).  [hyper(10,a,105,a),flip(a)].
+294 x * (y @ x) * x * y = x * y * x.  [hyper(16,a,13,a)].
+301 x * (x @ x * y) = x * (x @ y).  [hyper(10,a,216,a),flip(a)].
+315 x * y @ x = y @ x.  [hyper(1,a,278,a)].
+332 x * (x @ y) @ y = x * y @ y.  [para(4(a,1),315(a,1,1)),flip(a)].
+341 x @ x * y = x @ y.  [hyper(1,a,301,a)].
+353 x @ y * (y @ x) = x @ y * x.  [para(4(a,1),341(a,1,2)),flip(a)].
+370 x * (x @ y) @ x * y = x * x * y @ x * y.  [para(341(a,1),332(a,1,1,2))].
+373 x * y @ x * (x @ y) = x * y @ x * x * y.  [para(341(a,1),353(a,1,2,2))].
+440 (x @ y) * y * x = x * y.  [hyper(1,a,294,a)].
+465 x * y * z != z * y | z @ y = x.  [para(440(a,1),2(a,1)),flip(a)].
+508 x * y @ (y @ x) = c_0.  [para(440(a,1),246(a,2)),rewrite([3(3),4(3)]),xx(a)].
+510 x * y @ (x @ y) = c_0.  [para(440(a,1),315(a,1,1)),rewrite([508(6)])].
+565 x * y @ (y @ x * y) = c_0.  [para(4(a,1),510(a,1,1)),rewrite([353(4)])].
+716 (x @ y * x) * y * x = y * x * (x @ y * x).  [para(565(a,1),4(a,1,2,2)),rewrite([165(5),3(8)])].
+770 x * y != x * z | z = y.  [para(155(a,1),27(a,1,2)),rewrite([165(3),191(5),165(5)])].
+811 (x @ y) * z * y * x = z * x * y.  [hyper(29,a,13,a(flip)),flip(a)].
+930 x * y * (y @ x * y) = y * x.  [hyper(54,a,440,a),rewrite([716(4)])].
+986 x * y != z * y | z = x.  [para(165(a,1),55(a,2,2)),rewrite([191(2),165(2),165(5)])].
+1161 x * (x @ y * x) = (x @ y) * x.  [hyper(106,a,13,a)].
+1168 x * (y @ x) * y = y * x.  [back_rewrite(930),rewrite([1161(3)])].
+1184 (x @ y) * x = x * (x @ y).  [hyper(10,a,1168,a),flip(a)].
+1205 x * (x @ y) @ y * (y @ x) = y * x @ y * y * x.  [para(1168(a,1),332(a,2,1)),rewrite([1184(2),353(3),1161(3),1184(2),1184(4),1184(8),373(9)])].
+1207 x * x * y @ x * y = y * x @ y * y * x.  [para(1168(a,1),353(a,2,2)),rewrite([1184(2),1184(4),353(5),1161(5),1184(4),1205(5),1184(6),370(8)]),flip(a)].
+1234 x * (x @ y * x) = x * (x @ y).  [back_rewrite(1161),rewrite([1184(5)])].
+1243 (x @ y) * x * z = x * (x @ y) * z.  [para(1184(a,1),3(a,1,1)),rewrite([3(3)]),flip(a)].
+1743 x * (x @ y) * (y @ x) = x.  [hyper(192,a,4,a)].
+1766 (x @ y) * (y @ x) = c_0.  [hyper(154,a,1743,a),flip(a)].
+1767 (x @ y) * (y @ x) * x = (y @ x) * x * (x @ y).  [para(1743(a,1),5(a,1,2,2)),rewrite([1184(3),1766(9),165(8)]),flip(a)].
+1811 (x @ y) * (y @ x) * z = z.  [para(1766(a,1),3(a,1,1)),rewrite([155(2)]),flip(a)].
+1821 x * (D @ (F @ G)) * (C @ (A @ B)) != x # answer(A).  [para(1766(a,1),31(a,1,2)),rewrite([165(2)]),flip(a)].
+1847 (x @ y) * z != u | (y @ x) * u = z.  [para(1766(a,1),16(a,1,2,2,2)),rewrite([165(4),1811(4),1766(7),165(6)]),flip(a)].
+1885 (x @ y) * y * (y @ x) = y.  [back_rewrite(1767),rewrite([1811(4)]),flip(a)].
+1970 (x @ y) * z @ (y @ x) = z @ (y @ x).  [para(1811(a,1),315(a,1,1)),flip(a)].
+2125 x * (x @ y) @ (y @ x) = c_0.  [para(1885(a,1),246(a,2)),rewrite([3(4),1766(3),165(2)]),xx(a)].
+2131 x @ (y @ x) = c_0.  [para(1885(a,1),315(a,1,1)),rewrite([2125(6)])].
+2191 (F @ G) @ D != C @ (A @ B) # answer(A).  [para(1811(a,1),1821(a,1)),flip(a)].
+2195 (x @ y) * y * z = y * (x @ y) * z.  [para(2131(a,1),13(a,1,2,2,1)),rewrite([155(3)])].
+2623 x @ y * x = x @ y.  [hyper(770,a,1234,a),flip(a)].
+2663 x * x * y @ x * y = x @ y.  [back_rewrite(1207),rewrite([2623(8),315(6)])].
+2671 x * (x @ y) @ x * y = x @ y.  [back_rewrite(370),rewrite([2663(8)])].
+2692 x * y @ y = x @ y.  [para(4(a,1),2623(a,1,2)),rewrite([2671(4),332(4)]),flip(a)].
+2716 (x @ y) @ z = z @ (y @ x).  [para(1811(a,1),2623(a,1,2)),rewrite([2692(3),1970(6)])].
+2821 D @ (G @ F) != C @ (A @ B) # answer(A).  [back_rewrite(2191),rewrite([2716(5)])].
+3767 (C @ (A @ B)) * (G @ F) * D != D * (G @ F) # answer(A).  [ur(465,b,2821,a)].
+3896 (C @ (A @ B)) * (G @ F) * D * x != D * (G @ F) * x # answer(A).  [ur(986,b,3767,a),rewrite([3(6),3(18),3(17)]),flip(a)].
+4929 (x @ y) @ z * y * x = c_0.  [para(811(a,1),246(a,1)),rewrite([3(6),3(5),4(5)]),xx(a)].
+5283 (x @ y) @ z * u * y * x = c_0.  [para(3(a,1),4929(a,1,2))].
+5675 (x @ y) @ z * u * w * y * x = c_0.  [para(3(a,1),5283(a,1,2,2))].
+10806 (x @ y) @ z * y * x * u = c_0.  [para(811(a,1),5675(a,1,2)),rewrite([3(3)])].
+10848 (x @ y) @ y * x * z = c_0.  [para(155(a,1),10806(a,1,2))].
+10915 x * y * z * (y @ x) = y * x * z.  [para(10848(a,1),4(a,1,2,2)),rewrite([165(5),3(4),3(3),2195(8),1243(7),13(8)])].
+12267 (C @ (A @ B)) * D * G * F != D * G * F # answer(A).  [para(811(a,1),3896(a,1,2)),rewrite([2195(19),1184(18),4(19)])].
+12272 (C @ (B @ A)) * D * G * F != D * G * F # answer(A).  [ur(1847,b,12267,a),rewrite([2716(5)])].
+12303 (C @ (B @ A)) * G * F * D != G * F * D # answer(A).  [ur(56,b,12272,a(flip)),rewrite([3(17),3(16),3(15),15(16),3(16)])].
+12566 (C @ (B @ A)) * F * D * G != F * D * G # answer(A).  [ur(56,b,12303,a(flip)),rewrite([3(17),3(16),3(15),15(16),3(16)])].
+12592 (B @ A) * C * F * D * G != C * (B @ A) * F * D * G # answer(A).  [ur(202,b,12566,a)].
+14908 (x @ y) * z = z * (x @ y).  [hyper(202,a,10915,a)].
+15730 $F # answer(A).  [back_rewrite(12592),rewrite([14908(11),3(11),3(10),3(9),14908(21),3(21),3(20)]),xx(a)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=1107. Generated=290591. Kept=15729. proofs=1.
+Usable=822. Sos=9740. Demods=5391. Limbo=822, Disabled=4351. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=87688.
+Forward_subsumed=184342. Back_subsumed=209.
+Sos_limit_deleted=2831. Sos_displaced=0. Sos_removed=0.
+New_demodulators=8565 (2 lex), Back_demodulated=4136. Back_unit_deleted=0.
+Demod_attempts=6037230. Demod_rewrites=849397.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=758258. Nonunit_bsub_feature_tests=44911.
+Megabytes=14.03.
+User_CPU=8.85, System_CPU=0.10, Wall_clock=9.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 1 proof.
+
+Process 31634 exit (max_proofs) Tue Oct 27 10:54:01 2009

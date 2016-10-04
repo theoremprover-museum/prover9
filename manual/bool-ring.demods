@@ -1,0 +1,25 @@
+% Assume right association for both operations.
+% + has higher precedence, e.g., a+b*c is a+(b*c).
+
+op(400, infix_right, +).
+op(390, infix_right, *).
+
+% Both operations are associative and commutative (AC).
+% These commands tell rewriter to assume AC.
+
+assoc_comm(+).
+assoc_comm(*).
+
+formulas(demodulators).
+
+  % These rules can be used to canonicalize Boolean ring
+  % expressions.  Both operations are assumed to be AC.
+
+  x + 0 = x.
+  x + x = 0.
+  x * 0 = 0.
+  x * 1 = x.
+  x * x = x.
+  x * (y + z) = (x * y) + (x * z).
+
+end_of_list.

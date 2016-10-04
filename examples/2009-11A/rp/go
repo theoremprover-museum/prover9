@@ -1,0 +1,46 @@
+#!/bin/csh
+
+
+if ($#argv != 2) then
+	echo "need 2 args: bin-directory ouput-extension"
+	exit(1)
+endif
+
+set d=$1
+set out=$2
+
+# job ring
+
+$d/mace4 -f ring.in > ring.$out
+
+# job cancel1
+
+$d/prover9 -f cancel1.in > cancel1.$out
+
+# job cancel2
+
+$d/prover9 -f cancel2.in > cancel2.$out
+
+# job idempotent
+
+$d/prover9 -f idempotent.in > idempotent.$out
+
+# job identity
+
+$d/prover9 -f identity.in > identity.$out
+
+# job identity2
+
+$d/prover9 -f identity2.in > identity2.$out
+
+# job qg1
+
+$d/prover9 -f qg1.in > qg1.$out
+
+# job qg2
+
+$d/prover9 -t 10 -f qg2.in > qg2.$out
+
+# job cg1
+
+$d/prover9 -f cg1.in > cg1.$out

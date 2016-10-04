@@ -1,0 +1,5 @@
+f(f(x,x),f(f(f(y,y),f(z,z)),f(f(y,y),f(z,z)))) = f(f(y,y),f(f(f(x,x),f(z,z)),f(f(x,x),f(z,z)))).
+f(f(x,y),f(x,y)) = f(f(f(f(x,x),f(x,x)),f(f(y,y),f(y,y))),f(f(f(x,x),f(x,x)),f(f(y,y),f(y,y)))).
+f(f(x,x),f(f(x,x),f(x,x))) = f(f(y,y),f(f(y,y),f(y,y))).
+f(f(f(f(x,x),f(f(y,y),f(y,y))),f(f(x,x),f(y,y))),f(f(f(x,x),f(f(y,y),f(y,y))),f(f(x,x),f(y,y)))) = x.
+% rewriter BA-Sheffer.demods: rewrote 4 terms with 17 rewrite steps in 0.01 seconds.

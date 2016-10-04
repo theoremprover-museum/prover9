@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+  <title>Prover9 Manual: Interpformat</title>
+ <link rel="stylesheet" href="manual.css">
+</head>
+
+<body>
+
+<hr>
+<table width="100%">
+<tr>
+<colgroup>
+<col width="33%">
+<col width="34%">
+<col width="33%">
+</colgroup>
+<td align="left"><i>Prover9 Manual</i>
+<td align="center"><img src="prover9-5a-256t.gif">
+<td align="right"><i>Version 2009-11A</i>
+</table>
+<hr>
+
+<!-- Main content -->
+
+<h1>Interpformat</a></h1>
+
+<p>
+The models (structures) in Mace4 output files can be transformed in various
+ways with the program Interpformat.
+
+<p>
+The transformations are listed here.
+
+<ul>
+<li><tt>standard</tt>: This transformation simply extracts the structure
+from the file and reprints it in the same (standard) format, with one line for each
+operation.    The result should be acceptable to any of the LADR
+programs that take standard structures.
+<li><tt>standard2</tt>: This is similar to <tt>standard</tt>, except that
+the binary operations are split across multiple lines to make them more
+human-readable.  The result should be acceptable to any of the LADR
+programs that take standard structures.
+<li><tt>portable</tt>: This form is list of ... of lists of
+strings and natural numbers.  It can be parsed by seveal
+scripting systems such as GAP, Python, and Javascript.
+See the section <a href="#portable">Portable Format</a>.
+<li><tt>tabular</tt>: This form is designed to be easily readable
+by humans.  It is not meant for input to other programs.
+<li><tt>raw</tt>: This form is a sequence of natural numbers.
+<li><tt>cooked</tt>: This form is a sequence of ground terms.
+<li><tt>xml</tt>: This is an XML form.  Here is a
+<a href="interp3.dtd">DTD</a> for LADR interpretations, and here is an
+<a href="interp3.xsl">XML stylesheet</a> for transforming the XML to HTML.
+<li><tt>tex</tt>: This generates LaTeX source for the interpretation.
+</ul>
+
+<h2>Examples</h2>
+
+<p>
+The following Mace4 job creates an output file containing one model
+in "standard" (the default) format.
+
+<pre class="my_job">
+mace4 -c -f <a href="x2.in">x2.in</a> &gt; <a href="x2.mace4.out">x2.mace4.out</a>
+</pre>
+
+The following Interpformat jobs take the Mace4 output file, extract the
+model, and transform it as described above.
+
+<pre class="my_job">
+interpformat standard  -f <a href="x2.mace4.out">x2.mace4.out</a> &gt; <a href="x2.standard">x2.standard</a>
+interpformat standard2 -f <a href="x2.mace4.out">x2.mace4.out</a> &gt; <a href="x2.standard2">x2.standard2</a>
+interpformat portable  -f <a href="x2.mace4.out">x2.mace4.out</a> &gt; <a href="x2.portable">x2.portable</a>
+interpformat tabular   -f <a href="x2.mace4.out">x2.mace4.out</a> &gt; <a href="x2.tabular">x2.tabular</a>
+interpformat raw       -f <a href="x2.mace4.out">x2.mace4.out</a> &gt; <a href="x2.raw">x2.raw</a>
+interpformat cooked    -f <a href="x2.mace4.out">x2.mace4.out</a> &gt; <a href="x2.cooked">x2.cooked</a>
+interpformat xml       -f <a href="x2.mace4.out">x2.mace4.out</a> &gt; <a href="x2.xml">x2.xml</a>
+interpformat tex       -f <a href="x2.mace4.out">x2.mace4.out</a> &gt; <a href="x2.tex">x2.tex</a>
+</pre>
+
+<h2><a name="portable">Portable Format</h2>
+
+The portable format for interpretations can be parsed by several
+scriping languages including
+<a href="http://www.python.org">Python</a>
+and
+<a href="http://www.gap-system.org">GAP</a>.
+Here is a
+counterexample on ternary relations in lattice theory.
+The result contains one interpretation of size 4 containing
+two binary functions (meet and join), one binary relation
+(less-or-equal), two ternary relations, and three constants.
+
+<pre class="my_job">
+mace4 -c -f <a href="LT-port.in">LT-port.in</a> | interpformat portable &gt; <a href="LT-port.out">LT-port.out</a>
+</pre>
+
+The result is a list of interpretations:
+<ul>
+<li> each interpretation is a triple: [size-of-interpretation (say n), comments, list-of-operations];
+<li> each operation is a 4-tuple: ["function" | "relation", name-of-operation, arity, values];
+<li> values of operations (domain elememts are [0 ... n-1]):
+<ul>
+<li> constant (nullary function): domain element;
+<li> unary function: list of domain elements;
+<li> binary funcion: 2-dimensional list (list of lists) of domain elements;
+<li> ternary funcion: 3-dimensional list of domain elements;
+<li> etc. 
+<li> relations are similar but with values of 0 (FALSE) or 1 (TRUE).
+</ul>
+</ul>
+
+<p>
+Here is a simple Python script that reads a list of portable
+interpretations and prints them in a different form.
+
+<pre class="my_job">
+<a href="port.py">port.py</a> &lt; <a href="LT-port.out">LT-port.out</a> &gt; <a href="LT-port.out2">LT-port.out2</a>
+</pre>
+
+<p>
+Here is a simple GAP session that reads and prints
+a list of portable interpretations.
+<pre class="my_screen">
+% gap -b
+GAP4, Version: 4.4.7 of 17-Mar-2006, i486-pc-linux-gnu-i486-linux-gnu-gcc
+gap> interpretations := EvalString(StringFile("LT-port.out"));;
+gap> interpretations;
+[ [ 4, [ "=(number,1)", "=(seconds,0)" ], 
+      [ [ "relation", "<=", 2, [ [ 1, 1, 1, 1 ], [ 0, 1, 0, 0 ], 
+                  [ 0, 1, 1, 0 ], [ 0, 1, 0, 1 ] ] ], 
+          [ "function", "^", 2, [ [ 0, 0, 0, 0 ], [ 0, 1, 2, 3 ], 
+                  [ 0, 2, 2, 0 ], [ 0, 3, 0, 3 ] ] ], 
+          [ "function", "v", 2, [ [ 0, 1, 2, 3 ], [ 1, 1, 1, 1 ], 
+                  [ 2, 1, 2, 1 ], [ 3, 1, 1, 3 ] ] ], 
+          [ "function", "c1", 0, 2 ], [ "function", "c2", 0, 0 ], 
+          [ "function", "c3", 0, 3 ], 
+          [ "relation", "A", 3, [ [ [ 1, 1, 1, 1 ], [ 0, 1, 0, 0 ], 
+                      [ 0, 1, 1, 0 ], [ 0, 1, 0, 1 ] ], 
+                  [ [ 1, 0, 0, 0 ], [ 1, 1, 1, 1 ], [ 1, 0, 1, 0 ], 
+                      [ 1, 0, 0, 1 ] ], 
+                  [ [ 1, 0, 0, 0 ], [ 0, 1, 0, 0 ], [ 1, 1, 1, 0 ], 
+                      [ 0, 0, 0, 0 ] ], 
+                  [ [ 1, 0, 0, 0 ], [ 0, 1, 0, 0 ], [ 0, 0, 0, 0 ], 
+                      [ 1, 1, 0, 1 ] ] ] ], 
+          [ "relation", "B", 3, [ [ [ 1, 1, 1, 1 ], [ 0, 1, 0, 0 ], 
+                      [ 0, 1, 1, 0 ], [ 0, 1, 0, 1 ] ], 
+                  [ [ 1, 0, 0, 0 ], [ 1, 1, 1, 1 ], [ 1, 0, 1, 0 ], 
+                      [ 1, 0, 0, 1 ] ], 
+                  [ [ 1, 0, 0, 1 ], [ 0, 1, 0, 1 ], [ 1, 1, 1, 1 ], 
+                      [ 0, 0, 0, 1 ] ], 
+                  [ [ 1, 0, 1, 0 ], [ 0, 1, 1, 0 ], [ 0, 0, 1, 0 ], 
+                      [ 1, 1, 1, 1 ] ] ] ] ] ] ]
+gap>
+</pre>
+
+<hr>
+Next Section:
+<a href="m4-isofilter.html">Isofilter</a>
+
+</body>
+</html>

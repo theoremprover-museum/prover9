@@ -1,0 +1,102 @@
+assign(max_seconds, 30).
+
+%------------------------------------------------------------------------------
+% File     : SET598+3 : TPTP v3.0.1. Released v2.2.0.
+% Domain   : Set Theory (Boolean properties)
+% Problem  : X = Y ^ Z iff X (= Y, X (= Z, !V: V (= Y & V (= Z, V (= X
+% Version  : [Try89] axioms : Reduced > Incomplete.
+% English  : X is the intersection of Y and Z if and only if the following 
+%            conditions are satisfied: 1. X is a subset of Y, 2. X is a 
+%            subset of Z, and 3. for every V such that V is a subset of Y 
+%            and V is a subset of Z : V is a subset of X.
+
+% Refs     : [ILF] The ILF Group (1998), The ILF System: A Tool for the Int
+%          : [Try89] Trybulec (1989), Tarski Grothendieck Set Theory
+%          : [TS89]  Trybulec & Swieczkowska (1989), Boolean Properties of
+% Source   : [ILF]
+% Names    : BOOLE (57) [TS89] 
+
+% Status   : Theorem
+% Rating   : 0.22 v2.7.0, 0.17 v2.6.0, 0.14 v2.5.0, 0.12 v2.4.0, 0.00 v2.2.1
+% Syntax   : Number of formulae    :    9 (   3 unit)
+%            Number of atoms       :   24 (   4 equality)
+%            Maximal formula depth :   10 (   5 average)
+%            Number of connectives :   15 (   0 ~  ;   0  |;   6  &)
+%                                         (   6 <=>;   3 =>;   0 <=)
+%                                         (   0 <~>;   0 ~|;   0 ~&)
+%            Number of predicates  :    3 (   0 propositional; 2-2 arity)
+%            Number of functors    :    1 (   0 constant; 2-2 arity)
+%            Number of variables   :   23 (   0 singleton;  23 !;   0 ?)
+%            Maximal term depth    :    2 (   1 average)
+
+% Comments : 
+%          : tptp2X -f mace4 SET598+3.p 
+%------------------------------------------------------------------------------
+%----NOTE WELL: conjecture has been negated
+set(prolog_style_variables).
+formulas(assumptions).
+
+% intersection_is_subset, axiom.
+    ( all B 
+    ( all C subset(intersection(B,C),B) ) ).
+
+% intersection_of_subsets, axiom.
+    ( all B 
+    ( all C 
+    ( all D 
+      ( ( subset(B,C)
+         & subset(B,D) )
+      -> subset(B,intersection(C,D)) ) ) ) ).
+
+% intersection_defn, axiom.
+    ( all B 
+    ( all C 
+    ( all D 
+      ( member(D,intersection(B,C))
+     <-> ( member(D,B)
+         & member(D,C) ) ) ) ) ).
+
+% subset_defn, axiom.
+    ( all B 
+    ( all C 
+      ( subset(B,C)
+     <-> ( all D 
+          ( member(D,B)
+          -> member(D,C) ) ) ) ) ).
+
+% equal_defn, axiom.
+    ( all B 
+    ( all C 
+      ( B = C
+     <-> ( subset(B,C)
+         & subset(C,B) ) ) ) ).
+
+% commutativity_of_intersection, axiom.
+    ( all B 
+    ( all C intersection(B,C) = intersection(C,B) ) ).
+
+% reflexivity_of_subset, axiom.
+    ( all B subset(B,B) ).
+
+% equal_member_defn, axiom.
+    ( all B 
+    ( all C 
+      ( B = C
+     <-> ( all D 
+          ( member(D,B)
+         <-> member(D,C) ) ) ) ) ).
+
+% prove_th57, negated_conjecture.
+    -(( ( all B 
+        ( all C 
+        ( all D 
+          ( B = intersection(C,D)
+         <-> ( subset(B,C)
+             & subset(B,D)
+             & ( all E 
+                ( ( subset(E,C)
+                   & subset(E,D) )
+                -> subset(E,B) ) ) ) ) ) ) ) )).
+end_of_list.
+
+%------------------------------------------------------------------------------

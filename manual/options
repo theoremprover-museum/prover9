@@ -1,0 +1,224 @@
+Prover_options init_prover_options(void)
+{
+  Prover_options p = calloc(1, sizeof(struct prover_options));
+  // FLAGS:
+  //   internal name                    external name            default
+
+  // The following are now in ../ladr/std_options.c.
+  // ?? = init_flag("prolog_style_variables", FALSE);
+  // ?? = init_flag("clocks",                 FALSE);
+
+
+  p->binary_resolution      = init_flag("binary_resolution",      FALSE);
+  p->neg_binary_resolution  = init_flag("neg_binary_resolution",  FALSE);
+  p->hyper_resolution       = init_flag("hyper_resolution",       FALSE);
+  p->neg_hyper_resolution   = init_flag("neg_hyper_resolution",   FALSE);
+  p->ur_resolution          = init_flag("ur_resolution",          FALSE);
+  p->pos_ur_resolution      = init_flag("pos_ur_resolution",      FALSE);
+  p->neg_ur_resolution      = init_flag("neg_ur_resolution",      FALSE);
+  p->factor                 = init_flag("factor",                 FALSE);
+  p->paramodulation         = init_flag("paramodulation",         FALSE);
+
+  p->ordered_inference      = init_flag("ordered_inference",      TRUE);
+  p->ordered_instance       = init_flag("ordered_instance",       FALSE);
+  p->para_units_only        = init_flag("para_units_only",        FALSE);
+  p->basic_paramodulation   = init_flag("basic_paramodulation",   FALSE);
+  p->initial_nuclei         = init_flag("initial_nuclei",         FALSE);
+
+  p->process_initial_sos    = init_flag("process_initial_sos",    TRUE);
+  p->back_demod             = init_flag("back_demod",             FALSE);
+  p->lex_dep_demod          = init_flag("lex_dep_demod",          TRUE);
+  p->lex_dep_demod_sane     = init_flag("lex_dep_demod_sane",     TRUE);
+  p->safe_unit_conflict     = init_flag("safe_unit_conflict",     FALSE);
+  p->back_subsume           = init_flag("back_subsume",           TRUE);
+  p->degrade_hints          = init_flag("degrade_hints",          TRUE);
+  p->collect_hint_labels    = init_flag("collect_hint_labels",    FALSE);
+  p->reuse_denials          = init_flag("reuse_denials",          FALSE);
+  p->cac_redundancy         = init_flag("cac_redundancy",         TRUE);
+  p->unit_deletion          = init_flag("unit_deletion",          FALSE);
+  p->back_unit_deletion     = init_flag("back_unit_deletion",     FALSE);
+  p->dont_flip_input        = init_flag("dont_flip_input",        FALSE);
+
+  p->echo_input             = init_flag("echo_input",             TRUE);
+  p->quiet                  = init_flag("quiet",                  FALSE);
+  p->print_subproblems      = init_flag("print_subproblems",      TRUE);
+  p->print_initial_clauses  = init_flag("print_initial_clauses",  TRUE);
+  p->print_given            = init_flag("print_given",            TRUE);
+  p->print_gen              = init_flag("print_gen",              FALSE);
+  p->print_kept             = init_flag("print_kept",             FALSE);
+  p->print_labeled          = init_flag("print_labeled",          FALSE);
+  p->print_proofs           = init_flag("print_proofs",           TRUE);
+  p->default_output         = init_flag("default_output",         TRUE);
+
+  p->fof_reduction          = init_flag("fof_reduction",          FALSE);
+  p->predicate_elimination  = init_flag("predicate_elimination",  FALSE);
+  p->inverse_order          = init_flag("inverse_order",          TRUE);
+  p->unfold_eq              = init_flag("unfold_eq",              FALSE);
+  p->fold_eq                = init_flag("fold_eq",                FALSE);
+  p->sort_initial_sos       = init_flag("sort_initial_sos",       FALSE);
+  p->restrict_denials       = init_flag("restrict_denials",       FALSE);
+
+  p->breadth_first          = init_flag("breadth_first",          FALSE);
+  p->input_sos_first        = init_flag("input_sos_first",        TRUE);
+
+  p->automatic              = init_flag("auto",                   FALSE);
+  p->auto_inference         = init_flag("auto_inference",         FALSE);
+  p->hands_off_options      = init_flag("hands_off_options",      FALSE);
+  p->auto2                  = init_flag("auto2",                  FALSE);
+
+  p->lex_order_vars         = init_flag("lex_order_vars",         FALSE);
+
+  // PARMS:
+  //  internal name               external name      default    min      max
+
+  p->max_given =        init_parm("max_given",            -1,     -1,INT_MAX);
+  p->max_kept =         init_parm("max_kept",             -1,     -1,INT_MAX);
+  p->max_proofs =       init_parm("max_proofs",            1,     -1,INT_MAX);
+  p->max_megs =         init_parm("max_megs",            200,     -1,INT_MAX);
+  p->max_seconds =      init_parm("max_seconds",          -1,     -1,INT_MAX);
+
+  p->new_constants =    init_parm("new_constants",         0,     -1,INT_MAX);
+  p->para_lit_limit =   init_parm("para_lit_limit",       -1,     -1,INT_MAX);
+  p->nucleus_limit =    init_parm("nucleus_limit",        -1,     -1,INT_MAX);
+
+  p->unfold_eq_limit =  init_parm("unfold_eq_limit",      -1,     -1,INT_MAX);
+  p->fold_denial_max =  init_parm("fold_denial_max",       0,     -1,INT_MAX);
+
+  p->pick_given_ratio  = init_parm("pick_given_ratio",     0,      0,INT_MAX);
+  p->age_part          = init_parm("age_part",             1,      0,INT_MAX);
+  p->true_part         = init_parm("true_part",            2,      0,INT_MAX);
+  p->false_part        = init_parm("false_part",           2,      0,INT_MAX);
+
+  p->eval_limit        = init_parm("eval_limit",        1000,     -1,INT_MAX);
+
+  p->max_weight =       init_parm("max_weight",      INT_MAX,INT_MIN,INT_MAX);
+  p->lex_dep_demod_lim =init_parm("lex_dep_demod_lim",    11,     -1,INT_MAX);
+  p->max_literals =     init_parm("max_literals",         -1,     -1,INT_MAX);
+  p->max_vars =         init_parm("max_vars",             -1,     -1,INT_MAX);
+  p->demod_step_limit = init_parm("demod_step_limit",   1000,     -1,INT_MAX);
+  p->demod_size_limit = init_parm("demod_size_limit",   1000,     -1,INT_MAX);
+
+  p->variable_weight =  init_parm("variable_weight",       1,INT_MIN,INT_MAX);
+  p->constant_weight =  init_parm("constant_weight",       1,INT_MIN,INT_MAX);
+  p->not_weight =       init_parm("not_weight",            0,INT_MIN,INT_MAX);
+  p->or_weight =        init_parm("or_weight",             0,INT_MIN,INT_MAX);
+  p->sk_constant_weight=init_parm("sk_constant_weight",    1,INT_MIN,INT_MAX);
+  p->prop_atom_weight = init_parm("prop_atom_weight",      1,INT_MIN,INT_MAX);
+  p->skolem_penalty =   init_parm("skolem_penalty",        1,      0,INT_MAX);
+  p->nest_penalty =     init_parm("nest_penalty",          0,      0,INT_MAX);
+  p->bsub_hint_add_wt = init_parm("bsub_hint_add_wt",  -1000,INT_MIN,INT_MAX);
+  p->bsub_hint_wt =     init_parm("bsub_hint_wt",    INT_MAX,INT_MIN,INT_MAX);
+  p->default_weight =   init_parm("default_weight",  INT_MAX,INT_MIN,INT_MAX);
+
+  p->sos_limit =        init_parm("sos_limit",            -1,     -1,INT_MAX);
+
+  p->min_sos_limit =    init_parm("min_sos_limit",         0,      0,INT_MAX);
+  p->lrs_interval =     init_parm("lrs_interval",         50,      1,INT_MAX);
+  p->lrs_ticks =        init_parm("lrs_ticks",            -1,     -1,INT_MAX);
+
+  p->report =           init_parm("report",               -1,     -1,INT_MAX);
+
+  // STRINGPARMS:
+  // (internal-name, external-name, number-of-strings, str1, str2, ... )
+  // str1 is always the default
+
+  p->order = init_stringparm("order", 3,
+			     "lpo",
+			     "rpo",
+			     "kbo");
+
+  p->literal_selection = init_stringparm("literal_selection", 4,
+					 "maximal",
+					 "all",
+					 "first_maximal",
+					 "first");
+
+  p->stats = init_stringparm("stats", 4,
+			     "lots",
+			     "all",
+			     "some",
+			     "none");
+
+  // Flag and parm Dependencies.  These cause other flags and parms
+  // to be changed.  The changes happen immediately and can be undone
+  // by later settings in the input.
+  // DEPENDENCIES ARE NOT APPLIED TO DEFAULT SETTINGS!
+
+  flag_flag_dependency(p->paramodulation,     TRUE, p->back_demod,       TRUE);
+  flag_parm_dependency(p->para_units_only,    TRUE, p->para_lit_limit,      1);
+  flag_flag_dependency(p->back_unit_deletion, TRUE, p->unit_deletion,    TRUE);
+
+  flag_flag_dependency(p->ur_resolution, TRUE,  p->pos_ur_resolution, TRUE);
+  flag_flag_dependency(p->ur_resolution, TRUE,  p->neg_ur_resolution, TRUE);
+
+  flag_parm_dependency(p->lex_dep_demod, FALSE, p->lex_dep_demod_lim, 0);
+  flag_parm_dependency(p->lex_dep_demod,  TRUE, p->lex_dep_demod_lim, -1);
+
+  flag_parm_dependency(p->unfold_eq,    TRUE,  p->unfold_eq_limit, INT_MAX);
+  flag_parm_dependency(p->unfold_eq,   FALSE,  p->unfold_eq_limit,      -1);
+  flag_flag_dependency(p->unfold_eq,    TRUE,  p->fold_eq,           FALSE);
+  flag_flag_dependency(p->fold_eq,      TRUE,  p->unfold_eq,         FALSE);
+
+  flag_parm_dependency(p->breadth_first,    TRUE,  p->age_part,        1);
+  flag_parm_dependency(p->breadth_first,    TRUE,  p->true_part,       0);
+  flag_parm_dependency(p->breadth_first,    TRUE,  p->false_part,      0);
+
+  parm_parm_dependency(p->pick_given_ratio, p->age_part,          1);
+  parm_parm_dependency(p->pick_given_ratio, p->true_part,   INT_MIN); // copy
+  parm_parm_dependency(p->pick_given_ratio, p->false_part,        0);
+
+  flag_flag_dependency(p->default_output, TRUE, p->quiet,               FALSE);
+  flag_flag_dependency(p->default_output, TRUE, p->echo_input,           TRUE);
+  flag_flag_dependency(p->default_output, TRUE, p->print_initial_clauses,TRUE);
+  flag_flag_dependency(p->default_output, TRUE, p->print_given,          TRUE);
+  flag_flag_dependency(p->default_output, TRUE, p->print_subproblems,    TRUE);
+  flag_flag_dependency(p->default_output, TRUE, p->print_proofs,         TRUE);
+  flag_stringparm_dependency(p->default_output, TRUE, p->stats,        "lots");
+
+  flag_flag_dependency(p->default_output, TRUE, p->print_kept,          FALSE);
+  flag_flag_dependency(p->default_output, TRUE, p->print_gen,           FALSE);
+
+  // automatic
+
+  flag_flag_dependency(p->automatic, TRUE, p->auto_inference,        TRUE);
+  flag_flag_dependency(p->automatic, TRUE, p->predicate_elimination, TRUE);
+  flag_flag_dependency(p->automatic, TRUE, p->unfold_eq,             TRUE);
+  flag_parm_dependency(p->automatic, TRUE, p->max_weight,             100);
+  flag_parm_dependency(p->automatic, TRUE, p->sos_limit,            10000);
+
+  flag_flag_dependency(p->automatic, FALSE, p->auto_inference,        FALSE);
+  flag_flag_dependency(p->automatic, FALSE, p->predicate_elimination, FALSE);
+  flag_flag_dependency(p->automatic, FALSE, p->unfold_eq,             FALSE);
+  flag_parm_dependency(p->automatic, FALSE, p->max_weight,          INT_MAX);
+  flag_parm_dependency(p->automatic, FALSE, p->sos_limit,                -1);
+
+  // auto2  (also triggered by -x on the command line)
+
+  flag_flag_dependency(p->auto2, TRUE, p->automatic,                 TRUE);
+
+  flag_flag_dependency(p->auto2, TRUE, p->fof_reduction,         TRUE);
+  flag_parm_dependency(p->auto2, TRUE, p->new_constants,            1);
+  flag_parm_dependency(p->auto2, TRUE, p->fold_denial_max,          3);
+
+  flag_parm_dependency(p->auto2, TRUE, p->max_weight,             200);
+  flag_parm_dependency(p->auto2, TRUE, p->nest_penalty,             1);
+  flag_parm_dependency(p->auto2, TRUE, p->skolem_penalty,           3);
+  flag_parm_dependency(p->auto2, TRUE, p->sk_constant_weight,       0);
+  flag_parm_dependency(p->auto2, TRUE, p->prop_atom_weight,         5);
+
+  flag_flag_dependency(p->auto2, TRUE, p->sort_initial_sos,       TRUE);
+  flag_parm_dependency(p->auto2, TRUE, p->sos_limit,                -1);
+  flag_parm_dependency(p->auto2, TRUE, p->lrs_ticks,              3000);
+
+  flag_parm_dependency(p->auto2, TRUE, p->max_megs,                400);
+
+  flag_stringparm_dependency(p->auto2, TRUE, p->stats,          "some");
+  flag_flag_dependency(p->auto2, TRUE, p->echo_input,            FALSE);
+  flag_flag_dependency(p->auto2, TRUE, p->quiet,                  TRUE);
+  flag_flag_dependency(p->auto2, TRUE, p->print_subproblems,     FALSE);
+  flag_flag_dependency(p->auto2, TRUE, p->print_initial_clauses, FALSE);
+  flag_flag_dependency(p->auto2, TRUE, p->print_given,           FALSE);
+
+  return p;
+  
+}  // init_prover_options

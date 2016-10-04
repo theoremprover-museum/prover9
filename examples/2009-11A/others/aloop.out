@@ -1,0 +1,1052 @@
+============================== Prover9 ===============================
+Prover9 (32) version Nov-2007-test1, Nov 2007.
+Process 8118 was started by mccune on cleo,
+Tue Dec  4 08:40:01 2007
+The command was "prover9 -f aloop.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file aloop.in
+
+assign(order,kbo).
+assign(max_weight,30).
+assign(false_part,6).
+assign(true_part,1).
+
+formulas(assumptions).
+1 * x = x.
+x * 1 = x.
+x' * (x * y) = y.
+(x * y) * y' = x.
+(x * y)' = y' * x'.
+(x' * (y * x)) * (x' * (z * x)) = x' * ((y * z) * x).
+((x * y) * x') * ((x * z) * x') = (x * (y * z)) * x'.
+((x * y)' * (x * (y * u))) * ((x * y)' * (x * (y * v))) = (x * y)' * (x * (y * (u * v))).
+(((u * y) * x) * (y * x)') * (((v * y) * x) * (y * x)') = (((u * v) * y) * x) * (y * x)'.
+end_of_list.
+
+formulas(goals).
+x * ((y * z) * x) = (x * y) * (z * x).
+end_of_list.
+
+list(interpretations).
+interpretation(7,[number = 1,seconds = 0],[function(_ * _,[2,0,1,5,6,4,3,0,1,2,3,4,5,6,1,2,0,6,5,3,4,6,3,5,4,1,0,2,5,4,6,1,3,2,0,3,5,4,2,0,6,1,4,6,3,0,2,1,5]),function(_',[2,1,0,4,3,6,5])]).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 x * ((y * z) * x) = (x * y) * (z * x) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+1 * x = x.  [assumption].
+x * 1 = x.  [assumption].
+x' * (x * y) = y.  [assumption].
+(x * y) * y' = x.  [assumption].
+(x * y)' = y' * x'.  [assumption].
+(x' * (y * x)) * (x' * (z * x)) = x' * ((y * z) * x).  [assumption].
+((x * y) * x') * ((x * z) * x') = (x * (y * z)) * x'.  [assumption].
+((x * y)' * (x * (y * z))) * ((x * y)' * (x * (y * u))) = (x * y)' * (x * (y * (z * u))).  [assumption].
+(((x * y) * z) * (y * z)') * (((u * y) * z) * (y * z)') = (((x * u) * y) * z) * (y * z)'.  [assumption].
+(c1 * c2) * (c3 * c1) != c1 * ((c2 * c3) * c1).  [deny(1)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Auto_denials:  (no changes).
+
+Term ordering decisions:
+
+% Assigning unary symbol ' kb_weight 0 and highest precedence (7).
+Function symbol KB weights:  1=1. c1=1. c2=1. c3=1. *=1. '=0.
+Predicate symbol precedence:  predicate_order([ = ]).
+Function symbol precedence:  function_order([ 1, c1, c2, c3, *, ' ]).
+Skipping inverse_order, because term ordering is KBO.
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(paramodulation).  % (positive equality literals)
+
+Auto_process settings:  (no changes).
+not interpretable: c1
+
+% Clause contains symbol not in interpretation:
+% (c1 * c2) * (c3 * c1) != c1 * ((c2 * c3) * c1).  [deny(1)].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+2 1 * x = x.  [assumption].
+3 x * 1 = x.  [assumption].
+4 x' * (x * y) = y.  [assumption].
+5 (x * y) * y' = x.  [assumption].
+6 (x * y)' = y' * x'.  [assumption].
+7 (x' * (y * x)) * (x' * (z * x)) = x' * ((y * z) * x).  [assumption].
+8 ((x * y) * x') * ((x * z) * x') = (x * (y * z)) * x'.  [assumption].
+10 ((x' * y') * (y * (x * z))) * ((x' * y') * (y * (x * u))) = (x' * y') * (y * (x * (z * u))).  [copy(9),rewrite([6(2),6(8),6(15)])].
+12 (((x * y) * z) * (z' * y')) * (((u * y) * z) * (z' * y')) = (((x * u) * y) * z) * (z' * y').  [copy(11),rewrite([6(4),6(10),6(18)])].
+13 (c1 * c2) * (c3 * c1) != c1 * ((c2 * c3) * c1).  [deny(1)].
+end_of_list.
+
+formulas(demodulators).
+2 1 * x = x.  [assumption].
+3 x * 1 = x.  [assumption].
+4 x' * (x * y) = y.  [assumption].
+5 (x * y) * y' = x.  [assumption].
+6 (x * y)' = y' * x'.  [assumption].
+7 (x' * (y * x)) * (x' * (z * x)) = x' * ((y * z) * x).  [assumption].
+8 ((x * y) * x') * ((x * z) * x') = (x * (y * z)) * x'.  [assumption].
+10 ((x' * y') * (y * (x * z))) * ((x' * y') * (y * (x * u))) = (x' * y') * (y * (x * (z * u))).  [copy(9),rewrite([6(2),6(8),6(15)])].
+12 (((x * y) * z) * (z' * y')) * (((u * y) * z) * (z' * y')) = (((x * u) * y) * z) * (z' * y').  [copy(11),rewrite([6(4),6(10),6(18)])].
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.00 seconds.
+
+given #1 (I,wt=5): 2 1 * x = x.  [assumption].
+
+given #2 (I,wt=5): 3 x * 1 = x.  [assumption].
+
+given #3 (I,wt=8): 4 x' * (x * y) = y.  [assumption].
+
+given #4 (I,wt=8): 5 (x * y) * y' = x.  [assumption].
+
+given #5 (I,wt=10): 6 (x * y)' = y' * x'.  [assumption].
+
+given #6 (I,wt=22): 7 (x' * (y * x)) * (x' * (z * x)) = x' * ((y * z) * x).  [assumption].
+
+given #7 (I,wt=22): 8 ((x * y) * x') * ((x * z) * x') = (x * (y * z)) * x'.  [assumption].
+
+given #8 (I,wt=37): 10 ((x' * y') * (y * (x * z))) * ((x' * y') * (y * (x * u))) = (x' * y') * (y * (x * (z * u))).  [copy(9),rewrite([6(2),6(8),6(15)])].
+
+given #9 (I,wt=37): 12 (((x * y) * z) * (z' * y')) * (((u * y) * z) * (z' * y')) = (((x * u) * y) * z) * (z' * y').  [copy(11),rewrite([6(4),6(10),6(18)])].
+
+given #10 (I,wt=15): 13 (c1 * c2) * (c3 * c1) != c1 * ((c2 * c3) * c1).  [deny(1)].
+
+given #11 (A,wt=6): 14 1' * x = x.  [para(2(a,1),4(a,1,2))].
+
+given #12 (F,wt=27): 41 ((x * y') * y) * ((x * y') * (y * (x' * z))) = (x * y') * (y * z) # label(false).  [para(4(a,1),10(a,2,2,2)),rewrite([16(4),15(4),3(4),16(7),16(14)])].
+
+given #13 (F,wt=21): 48 x * ((x * y) * (y' * (x' * (y * z)))) = (x * y) * z # label(false).  [para(4(a,1),41(a,2,2)),rewrite([21(3),5(3),21(3),21(11)])].
+
+given #14 (F,wt=21): 50 (x * y) * (x * (y * ((y' * x') * z))) = x * (y * z) # label(false).  [para(5(a,1),41(a,1,1,1)),rewrite([5(4),6(3),5(11)])].
+
+given #15 (F,wt=22): 53 (x * y) * (y' * (x' * (y * z))) = x' * ((x * y) * z) # label(false).  [para(48(a,1),4(a,1,2)),flip(a)].
+
+given #16 (F,wt=21): 83 x * ((x' * y') * (y * ((y * x) * z))) = y * (x * z) # label(false).  [para(4(a,1),53(a,1,1)),rewrite([6(2),16(8),4(13),16(12)])].
+
+given #17 (F,wt=13): 98 x * ((x' * y') * (y * y)) = y # label(false).  [para(5(a,1),83(a,1,2,2,2)),rewrite([17(8),3(8)])].
+
+given #18 (T,wt=4): 43 1' = 1.  [para(14(a,1),3(a,1)),flip(a)].
+
+given #19 (A,wt=6): 15 x' * x = 1.  [para(3(a,1),4(a,1,2))].
+
+given #20 (F,wt=14): 107 (x' * y') * (y * y) = x' * y # label(false).  [para(98(a,1),4(a,1,2)),flip(a)].
+
+given #21 (F,wt=12): 136 (x * y) * (y' * x) = x * x # label(false).  [para(107(a,1),4(a,1,2)),rewrite([6(4),126(2),126(2)])].
+
+given #22 (F,wt=12): 152 x' * ((x * x) * y) = x * y # label(false).  [para(136(a,1),5(a,1,1)),rewrite([6(4),126(4),84(4)])].
+
+given #23 (F,wt=11): 168 (x * x) * y = x * (x * y) # label(false).  [para(152(a,1),4(a,1,2)),rewrite([126(2)]),flip(a)].
+
+given #24 (F,wt=12): 187 (x * (x * y)) * y' = x * x # label(false).  [para(168(a,1),5(a,1,1))].
+
+given #25 (F,wt=15): 153 (x * y) * (x * y) = x * (y * (x * y)) # label(false).  [para(5(a,1),136(a,1,1)),rewrite([126(2)]),flip(a)].
+
+given #26 (T,wt=5): 126 x'' = x.  [para(15(a,1),4(a,1,2)),rewrite([3(4)])].
+
+given #27 (A,wt=6): 17 x * x' = 1.  [para(2(a,1),5(a,1,1))].
+
+given #28 (F,wt=12): 220 x' * ((x * y) * y) = y * y # label(false).  [para(4(a,1),153(a,1,1)),rewrite([4(3),4(6)]),flip(a)].
+
+given #29 (F,wt=11): 255 (x * y) * y = x * (y * y) # label(false).  [para(220(a,1),4(a,1,2)),rewrite([126(2)]),flip(a)].
+
+given #30 (F,wt=12): 230 (x * y') * (y * y) = x * y # label(false).  [para(126(a,1),107(a,1,1,1)),rewrite([126(6)])].
+
+given #31 (F,wt=12): 231 (x * y') * (y * x) = x * x # label(false).  [para(126(a,1),136(a,1,2,1))].
+
+given #32 (F,wt=12): 232 (x * (x * y')) * y = x * x # label(false).  [para(126(a,1),187(a,1,2))].
+
+given #33 (F,wt=12): 267 (x * (y * y)) * y' = x * y # label(false).  [para(255(a,1),5(a,1,1))].
+
+given #34 (T,wt=8): 57 x * (x' * y) = y.  [para(4(a,1),48(a,1,2,2)),rewrite([17(2),2(4),17(5),2(5)])].
+
+given #35 (A,wt=13): 22 (x' * y') * ((y * x) * z) = z.  [para(6(a,1),4(a,1,1))].
+
+given #36 (F,wt=14): 268 (x * y) * (y' * y') = x * y' # label(false).  [para(5(a,1),255(a,1,1)),flip(a)].
+
+given #37 (F,wt=14): 329 (x * (y' * y')) * y = x * y' # label(false).  [para(126(a,1),267(a,1,2))].
+
+given #38 (F,wt=15): 166 (x * (y * x)) * y = x * (y * (x * y)) # label(false).  [back_rewrite(151),rewrite([153(6)])].
+
+given #39 (F,wt=15): 274 (x * (x * y)) * y = x * (x * (y * y)) # label(false).  [para(168(a,1),255(a,1,1)),rewrite([168(6)])].
+
+given #40 (F,wt=16): 233 (x * (y * (x * x))) * x' = x * (y * x) # label(false).  [back_rewrite(207),rewrite([230(10),72(7)])].
+
+given #41 (F,wt=16): 285 (x * (x * y')) * (y * y) = x * (x * y) # label(false).  [para(168(a,1),230(a,1,1)),rewrite([168(7)])].
+
+given #42 (T,wt=8): 131 (x * y') * y = x.  [para(15(a,1),50(a,2,2)),rewrite([126(5),72(6),4(7),57(5),3(5)])].
+
+given #43 (A,wt=13): 23 (x * (y * z)) * (z' * y') = x.  [para(6(a,1),5(a,1,2))].
+
+given #44 (F,wt=16): 327 (x * (x * (y * y))) * y' = x * (x * y) # label(false).  [para(168(a,1),267(a,1,1)),rewrite([168(7)])].
+
+given #45 (F,wt=17): 154 (x * (y * z)) * ((z' * y') * x) = x * x # label(false).  [para(6(a,1),136(a,1,2,1))].
+
+given #46 (F,wt=17): 183 (x' * y) * (y * x) = x' * (y * (y * x)) # label(false).  [back_rewrite(144),rewrite([168(7)])].
+
+given #47 (F,wt=17): 206 (x * (x * (y * z))) * (z' * y') = x * x # label(false).  [para(6(a,1),187(a,1,2))].
+
+given #48 (F,wt=17): 281 (x * y) * (y * x') = x * (y * (y * x')) # label(false).  [para(230(a,1),8(a,2,1)),rewrite([131(3),6(3),126(2),131(6),6(6),126(5),153(7),134(6),17(4),3(4),6(8),126(7)]),flip(a)].
+
+given #49 (F,wt=17): 296 (x * (y' * z')) * ((z * y) * x) = x * x # label(false).  [para(6(a,1),231(a,1,1,2))].
+
+given #50 (T,wt=11): 72 (x * y) * x = x * (y * x).  [para(5(a,1),50(a,1,2,2,2)),rewrite([17(3),3(3),21(5)])].
+
+given #51 (A,wt=27): 27 ((x' * y') * (y * (y * x))) * ((x' * y') * (x * (y * x))) = y * x.  [para(4(a,1),7(a,2)),rewrite([6(2),6(8)])].
+
+given #52 (F,wt=17): 303 (x * (y' * y')) * (y * (y * x)) = x * x # label(false).  [para(168(a,1),231(a,1,2)),rewrite([6(2)])].
+
+given #53 (F,wt=17): 310 (x * (x * (y' * z'))) * (z * y) = x * x # label(false).  [para(6(a,1),232(a,1,1,2,2))].
+
+given #54 (F,wt=17): 481 (x * (y * y)) * (y' * (y' * x)) = x * x # label(false).  [para(136(a,1),154(a,1,1,2)),rewrite([6(5),126(5),6(6),136(8),168(6)])].
+
+given #55 (F,wt=17): 486 (x * (y * z')) * ((z * y') * x) = x * x # label(false).  [para(126(a,1),154(a,1,2,1,1))].
+
+given #56 (F,wt=17): 487 (x * (y' * z)) * ((z' * y) * x) = x * x # label(false).  [para(126(a,1),154(a,1,2,1,2))].
+
+given #57 (F,wt=17): 491 (x' * y) * (y' * (x * (x * y))) = x * y # label(false).  [para(183(a,1),4(a,1,2)),rewrite([6(3),126(3)])].
+
+given #58 (T,wt=11): 88 (x * y) * (y' * x') = 1.  [para(5(a,1),53(a,2,2)),rewrite([17(5),3(5),15(7)])].
+
+given #59 (A,wt=21): 29 (x * y) * (x * (z * x')) = x * (((y * x) * z) * x').  [para(5(a,1),7(a,1,1,2)),rewrite([16(3),16(6),16(12)])].
+
+given #60 (F,wt=16): 685 (x * (x * y)) * (y' * (x' * x')) = 1 # label(false).  [para(168(a,1),88(a,1,1)),rewrite([6(5)])].
+
+given #61 (F,wt=16): 687 (x * (y * y)) * (y' * (y' * x')) = 1 # label(false).  [para(255(a,1),88(a,1,1)),rewrite([6(5)])].
+
+given #62 (F,wt=16): 727 (x * (x * y')) * (y * (x' * x')) = 1 # label(false).  [para(126(a,1),685(a,1,2,1))].
+
+given #63 (F,wt=16): 728 (x' * (x' * y)) * (y' * (x * x)) = 1 # label(false).  [para(126(a,1),685(a,1,2,2,1)),rewrite([126(7)])].
+
+given #64 (F,wt=16): 747 (x * (y' * y')) * (y * (y * x')) = 1 # label(false).  [para(126(a,1),687(a,1,2,1)),rewrite([126(6)])].
+
+given #65 (F,wt=16): 748 (x' * (y * y)) * (y' * (y' * x)) = 1 # label(false).  [para(126(a,1),687(a,1,2,2,2))].
+
+given #66 (T,wt=11): 127 (x' * y') * (y * x) = 1.  [para(6(a,1),15(a,1,1))].
+
+given #67 (A,wt=21): 30 (x * (y * x')) * (x * z) = x * ((y * (z * x)) * x').  [para(5(a,1),7(a,1,2,2)),rewrite([16(5),16(6),16(12)])].
+
+given #68 (F,wt=16): 756 (x' * (x' * y')) * (y * (x * x)) = 1 # label(false).  [para(126(a,1),727(a,1,2,2,1)),rewrite([126(7)])].
+
+given #69 (F,wt=16): 773 (x' * (y' * y')) * (y * (y * x)) = 1 # label(false).  [para(126(a,1),747(a,1,2,2,2))].
+
+given #70 (F,wt=17): 518 (x * (x * (y * z'))) * (z * y') = x * x # label(false).  [para(126(a,1),206(a,1,2,1))].
+
+given #71 (F,wt=17): 519 (x * (x * (y' * z))) * (z' * y) = x * x # label(false).  [para(126(a,1),206(a,1,2,2))].
+
+given #72 (F,wt=18): 276 (x * (x * y)) * (y' * y') = x * (x * y') # label(false).  [para(187(a,1),255(a,1,1)),rewrite([168(3)]),flip(a)].
+
+given #73 (F,wt=18): 331 (x * (x * (y' * y'))) * y = x * (x * y') # label(false).  [para(232(a,1),267(a,1,1)),rewrite([168(3),6(5)]),flip(a)].
+
+given #74 (T,wt=11): 641 (x * y') * (y * x') = 1.  [para(2(a,1),486(a,1,1)),rewrite([3(6),3(8)])].
+
+given #75 (A,wt=23): 46 (x * y') * (y * (x' * z)) = x' * ((x * y') * (y * z)) # label(false).  [para(41(a,1),4(a,1,2)),rewrite([6(4),6(4),16(5),4(4)]),flip(a)].
+
+given #76 (F,wt=18): 332 (x * (y' * x)) * (x' * (y * (x' * y))) = y # label(false).  [para(57(a,1),230(a,2)),rewrite([6(3),126(3),153(8)])].
+
+given #77 (F,wt=18): 340 (x' * (y' * y')) * ((y * (y * x)) * z) = z # label(false).  [para(168(a,1),22(a,1,2,1)),rewrite([6(3)])].
+
+given #78 (F,wt=18): 343 (x' * (x' * y')) * ((y * (x * x)) * z) = z # label(false).  [para(255(a,1),22(a,1,2,1)),rewrite([6(3)])].
+
+given #79 (F,wt=18): 379 (x' * (y' * y')) * (y * (y * (x * x))) = x # label(false).  [para(274(a,1),4(a,1,2)),rewrite([6(3),6(2),255(5)])].
+
+given #80 (F,wt=18): 454 (x * (y * (y * z))) * (z' * (y' * y')) = x # label(false).  [para(168(a,1),23(a,1,1,2)),rewrite([6(6)])].
+
+given #81 (F,wt=13): 977 (x' * y) * (y' * (x * x)) = x # label(false).  [para(57(a,1),454(a,1,1)),rewrite([126(5),126(5)])].
+
+given #82 (T,wt=11): 653 (x' * y) * (y' * x) = 1.  [para(2(a,1),487(a,1,1)),rewrite([3(6),3(8)])].
+
+given #83 (A,wt=18): 58 ((x * y) * z) * ((z' * (y' * x')) * x) = x.  [para(48(a,1),5(a,1,1)),rewrite([53(9),6(7),6(5),6(5),21(10)])].
+
+given #84 (F,wt=18): 458 (x * (y * (z * z))) * (z' * (z' * y')) = x # label(false).  [para(255(a,1),23(a,1,1,2)),rewrite([6(6)])].
+
+given #85 (F,wt=18): 662 (x * (x * y)) * (y' * (x' * (x' * y))) = y # label(false).  [para(4(a,1),491(a,1,2,2,2)),rewrite([126(2),6(4),183(8),4(12)])].
+
+given #86 (F,wt=18): 676 (x' * (x' * y)) * (y' * (x * (x * y))) = y # label(false).  [para(57(a,1),491(a,1,2,2,2)),rewrite([6(7),126(7),183(8),57(12)])].
+
+given #87 (F,wt=18): 852 (x * (y' * y')) * ((y * (y * x')) * z) = z # label(false).  [para(276(a,1),22(a,1,2,1)),rewrite([6(4),126(2),126(2),6(4),6(3),255(6),168(7),57(6)])].
+
+given #88 (F,wt=18): 854 (x * (y * (y * z'))) * (z * (y' * y')) = x # label(false).  [para(276(a,1),23(a,1,1,2)),rewrite([6(8),126(6),126(6),6(8),6(7),255(10),168(11),57(10)])].
+
+given #89 (F,wt=18): 871 x' * ((x * (y' * x)) * (x' * (y * y))) = y # label(false).  [para(153(a,1),46(a,1,2)),rewrite([6(3),126(3),332(9),6(4),126(4),255(7)]),flip(a)].
+
+given #90 (T,wt=13): 77 (x' * y) * x = x' * (y * x).  [para(7(a,1),50(a,1,2)),rewrite([72(5),5(4),6(9),6(7),21(11),16(10),36(8),57(6),4(5),15(8),3(8)])].
+
+given #91 (A,wt=30): 61 x * ((x * (y * z)) * ((z' * y') * (x' * ((y * z) * u)))) = (x * (y * z)) * u.  [para(6(a,1),48(a,1,2,2,1))].
+
+given #92 (F,wt=17): 1101 (x * (y' * x)) * (x' * (y * y)) = x * y # label(false).  [para(871(a,1),4(a,1,2)),rewrite([126(2)]),flip(a)].
+
+given #93 (F,wt=16): 1196 (x * (y * y)) * (y' * x) = x * (y * x) # label(false).  [para(4(a,1),1101(a,1,1,2)),rewrite([255(2),6(4),230(7),72(7)])].
+
+given #94 (F,wt=16): 1219 (x * (y * x)) * (x' * y) = x * (y * y) # label(false).  [para(1196(a,1),5(a,1,1)),rewrite([6(5),126(5)])].
+
+given #95 (F,wt=18): 879 x * ((y * ((y' * (x' * y)) * x)) * x') = y # label(false).  [para(72(a,1),46(a,2,2)),rewrite([420(3),6(5),77(7),30(9),6(11),4(16),255(14),67(15),77(13),57(14),57(12)])].
+
+given #96 (F,wt=17): 1290 (x * ((x' * (y * x)) * y')) * y = y * x # label(false).  [para(879(a,1),57(a,1,2)),rewrite([126(4),126(9)]),flip(a)].
+
+given #97 (F,wt=17): 1296 (x * y) * ((y' * (x' * y)) * x) = y * x # label(false).  [para(879(a,1),29(a,2)),rewrite([6(3),450(8),77(6),77(9),255(8),72(11),267(10),57(9)])].
+
+given #98 (T,wt=13): 149 (x * y) * ((y' * x') * z) = z.  [back_rewrite(108),rewrite([140(8)])].
+
+given #99 (A,wt=30): 62 (x * y) * (((x * y) * z) * (z' * ((y' * x') * (z * u)))) = ((x * y) * z) * u.  [para(6(a,1),48(a,1,2,2,2,1))].
+
+given #100 (F,wt=18): 910 (x' * (y * y)) * ((y' * (y' * x)) * z) = z # label(false).  [para(126(a,1),340(a,1,1,2,1)),rewrite([126(3)])].
+
+given #101 (F,wt=18): 926 (x' * (y' * y')) * (y * (y * (x * y))) = y # label(false).  [para(72(a,1),340(a,1,2)),rewrite([72(7)])].
+
+given #102 (F,wt=18): 929 (x * (x * y')) * ((y * (x' * x')) * z) = z # label(false).  [para(747(a,1),340(a,1,2,1,2)),rewrite([6(4),6(3),126(2),255(4),6(9),6(8),126(6),126(6),168(7),6(12),6(11),126(9),126(9),168(10),153(11),213(11),774(12),3(9)])].
+
+given #103 (F,wt=18): 930 (x' * (x' * y)) * ((y' * (x * x)) * z) = z # label(false).  [para(748(a,1),340(a,1,2,1,2)),rewrite([6(5),6(3),126(3),126(4),255(3),6(7),6(5),126(8),168(7),6(11),6(9),126(12),168(11),153(12),213(12),783(13),3(9)])].
+
+given #104 (F,wt=18): 931 (x * (y * y)) * ((y' * (y' * x')) * z) = z # label(false).  [para(756(a,1),340(a,1,2,1,2)),rewrite([6(3),6(2),168(5),6(11),6(9),126(7),126(7),126(8),255(7),6(13),6(11),126(9),126(9),126(10),255(9),153(10),168(9),813(11),3(9)])].
+
+given #105 (F,wt=18): 932 (x * (x * y)) * ((y' * (x' * x')) * z) = z # label(false).  [para(773(a,1),340(a,1,2,1,2)),rewrite([6(3),6(2),255(5),6(11),6(9),126(7),126(7),126(8),168(7),6(13),6(11),126(9),126(9),126(10),168(9),153(10),213(10),819(11),3(9)])].
+
+given #106 (T,wt=13): 341 (x * y') * ((y * x') * z) = z.  [para(126(a,1),22(a,1,1,1))].
+
+given #107 (A,wt=22): 65 (((x * y') * z) * (z' * y)) * y = (x * z) * (z' * y) # label(false).  [back_rewrite(42),rewrite([57(9)])].
+
+given #108 (F,wt=18): 944 (x * (y' * (y' * z'))) * (z * (y * y)) = x # label(false).  [para(343(a,1),30(a,1,1)),rewrite([6(6),6(4),126(2),126(2),126(3),255(2),931(9),6(20),6(18),126(16),126(16),126(17),255(16),72(17),343(18)]),flip(a)].
+
+given #109 (F,wt=18): 953 (x' * (y * y)) * (y' * (y' * (x * x))) = x # label(false).  [para(126(a,1),379(a,1,1,2,1)),rewrite([126(3)])].
+
+given #110 (F,wt=18): 970 (x * (y' * (y' * z))) * (z' * (y * y)) = x # label(false).  [para(126(a,1),454(a,1,2,2,1)),rewrite([126(8)])].
+
+given #111 (F,wt=18): 990 (x * (y * (z' * z'))) * (z * (z * y')) = x # label(false).  [para(747(a,1),454(a,1,1,2,2)),rewrite([3(6),6(9),6(8),126(7),255(9),6(14),6(13),126(11),126(11),168(12),6(17),6(16),126(14),126(14),168(15),153(16),213(16),774(17)])].
+
+given #112 (F,wt=18): 991 (x * (y' * (z * z))) * (z' * (z' * y)) = x # label(false).  [para(748(a,1),454(a,1,1,2,2)),rewrite([3(5),6(9),6(7),126(7),126(8),255(7),6(11),6(9),126(12),168(11),6(15),6(13),126(16),168(15),153(16),213(16),783(17)])].
+
+given #113 (F,wt=18): 994 (x * (y' * (z' * z'))) * (z * (z * y)) = x # label(false).  [para(773(a,1),454(a,1,1,2,2)),rewrite([3(7),6(9),6(8),255(11),6(17),6(15),126(13),126(13),126(14),168(13),6(19),6(17),126(15),126(15),126(16),168(15),153(16),213(16),819(17)])].
+
+given #114 (T,wt=13): 342 (x' * y) * ((y' * x) * z) = z.  [para(126(a,1),22(a,1,1,2))].
+
+given #115 (A,wt=23): 67 (x' * y') * (y * (x * z)) = y * (x * ((x' * y') * z)) # label(false).  [para(50(a,1),4(a,1,2)),rewrite([6(2)])].
+
+given #116 (F,wt=18): 998 (x' * (y * z)) * ((z' * y') * (x * x)) = x # label(false).  [para(6(a,1),977(a,1,2,1))].
+
+given #117 (F,wt=18): 1086 (x * (y' * y')) * (y * (y * (x' * y))) = y # label(false).  [para(72(a,1),852(a,1,2)),rewrite([72(7)])].
+
+given #118 (F,wt=18): 1118 (x' * (y * y)) * (y' * x) = x' * (y * x) # label(false).  [para(57(a,1),77(a,2,2)),rewrite([6(3),126(3),255(3),6(9),126(9),77(9)])].
+
+given #119 (F,wt=18): 1148 (x' * (y * y)) * (y' * (y' * (x * y))) = y # label(false).  [para(77(a,1),340(a,1,2)),rewrite([126(3),126(3),77(7)])].
+
+given #120 (F,wt=18): 1156 (x * (y * y)) * (y' * (y' * (x' * y))) = y # label(false).  [para(77(a,1),852(a,1,2)),rewrite([126(2),126(2),77(7)])].
+
+given #121 (F,wt=18): 1195 (x' * (y * x')) * (x * y) = x' * (y * y) # label(false).  [para(1101(a,1),4(a,1,2)),rewrite([6(4),6(3),126(3),72(4)])].
+
+given #122 (T,wt=13): 420 (x * y) * x' = x * (y * x').  [para(329(a,1),233(a,2,2)),rewrite([289(6)])].
+
+given #123 (A,wt=22): 68 x * (y' * ((y * x) * (x' * z))) = y' * ((y * x) * z) # label(false).  [para(4(a,1),50(a,1,1)),rewrite([6(4),21(8),19(6)])].
+
+given #124 (F,wt=18): 1227 (x * (y' * y')) * (y * x) = x * (y' * x) # label(false).  [para(126(a,1),1196(a,1,2,1))].
+
+given #125 (F,wt=18): 1292 x * (y * ((y' * (x' * (y * x))) * x')) = y # label(false).  [para(879(a,1),23(a,1,1)),rewrite([126(2),6(7),6(6),6(6),6(4),126(4),126(5),77(4)])].
+
+given #126 (F,wt=17): 1897 x * ((x' * (y * (x * y'))) * y) = y * x # label(false).  [para(1292(a,1),57(a,1,2)),rewrite([126(4),126(8)]),flip(a)].
+
+given #127 (F,wt=18): 1299 ((x * (y' * (x' * y))) * y') * (x * y) = x # label(false).  [para(1290(a,1),4(a,1,2)),rewrite([6(7),6(6),126(2),6(4),6(2),126(5),77(4)])].
+
+given #128 (F,wt=17): 1970 (((x * y) * (x' * y')) * y) * x = x * y # label(false).  [para(5(a,1),1299(a,1,2)),rewrite([126(3),6(3),72(6),57(7),126(7)])].
+
+given #129 (F,wt=17): 2017 (x * (y * (x' * y'))) * (y * x) = x * y # label(false).  [para(1970(a,1),30(a,2,2)),rewrite([126(5),6(5),57(7),700(8),57(11)])].
+
+given #130 (T,wt=13): 449 (x * (y' * z')) * (z * y) = x.  [para(6(a,1),131(a,1,1,2))].
+
+given #131 (A,wt=21): 80 (x' * (y * x)) * (z * x) = x' * ((y * (x * z)) * x).  [back_rewrite(35),rewrite([77(5),77(8)]),flip(a)].
+
+given #132 (F,wt=17): 2027 ((x * (y * x')) * y') * (y * x) = x * y # label(false).  [para(2017(a,1),4(a,1,2)),rewrite([6(6),6(5),6(4),126(2),126(2),420(3)])].
+
+given #133 (F,wt=18): 1300 x * ((x' * (y * x)) * y') = y * (x * y') # label(false).  [para(1290(a,1),5(a,1,1)),rewrite([420(3)]),flip(a)].
+
+given #134 (F,wt=18): 1355 x * ((x' * y) * (x * y')) = y * (x * y') # label(false).  [para(131(a,1),1296(a,1,1)),rewrite([6(4),126(3),72(4),4(5)])].
+
+given #135 (F,wt=18): 1422 (x' * (y' * x')) * (x * (y * (x * x))) = x # label(false).  [para(926(a,1),27(a,1,1,2,2)),rewrite([6(4),6(3),6(2),72(5),72(7),255(6),6(13),6(11),126(9),126(9),126(10),168(9),994(10),329(7),6(9),6(8),6(7),72(10),72(12),255(11),6(18),6(16),126(14),126(14),126(15),168(14),994(15),926(18),72(10),72(9),255(8),4(11),926(18)])].
+
+given #136 (F,wt=18): 1423 (x' * (x' * y')) * ((y * x) * (x * x)) = x # label(false).  [para(926(a,1),29(a,2,2,1)),rewrite([168(5),6(15),126(13),126(13),119(13),119(12),168(14),4(13),4(11),6(16),126(14),126(14),168(15),4(14),4(12)])].
+
+given #137 (F,wt=18): 1706 (x' * (y * z')) * ((z * y') * (x * x)) = x # label(false).  [para(126(a,1),998(a,1,2,1,1))].
+
+given #138 (T,wt=13): 456 (x * (y * z')) * (z * y') = x.  [para(126(a,1),23(a,1,2,1))].
+
+given #139 (A,wt=21): 81 (x * y) * (y' * (z * y)) = y' * (((y * x) * z) * y).  [back_rewrite(34),rewrite([77(5),77(9)]),flip(a)].
+
+given #140 (F,wt=18): 1707 (x' * (y' * z)) * ((z' * y) * (x * x)) = x # label(false).  [para(126(a,1),998(a,1,2,1,2))].
+
+given #141 (F,wt=18): 1726 (x' * (y * x')) * (x * (y' * (x * x))) = x # label(false).  [para(30(a,1),1086(a,1,1)),rewrite([126(7),329(6),126(7),6(8),6(6),126(9),77(8),77(9),255(8),57(10)])].
+
+given #142 (F,wt=18): 1735 (x * (y * y)) * (y' * x') = x * (y * x') # label(false).  [para(126(a,1),1118(a,1,1,1)),rewrite([126(8)])].
+
+given #143 (F,wt=18): 1914 (x' * (y * (x * y'))) * y = x' * (y * x) # label(false).  [para(1897(a,1),4(a,1,2)),flip(a)].
+
+given #144 (F,wt=18): 1932 (x * (y * (x' * y'))) * y = x * (y * x') # label(false).  [para(1897(a,1),57(a,1,2)),rewrite([126(5)]),flip(a)].
+
+given #145 (F,wt=18): 2186 ((x * y') * (x' * y)) * (y' * (x * y)) = x # label(false).  [para(57(a,1),2027(a,2)),rewrite([72(4),57(5),6(5),126(5),77(8)])].
+
+given #146 (T,wt=13): 457 (x * (y' * z)) * (z' * y) = x.  [para(126(a,1),23(a,1,2,2))].
+
+given #147 (A,wt=24): 82 (x' * y') * (y' * ((y * x) * z)) = x' * (y' * (x * z)) # label(false).  [para(53(a,1),4(a,1,2)),rewrite([6(2)])].
+
+given #148 (F,wt=18): 2310 (x' * (y' * z')) * ((z * y) * (x * x)) = x # label(false).  [para(126(a,1),1706(a,1,2,1,2))].
+
+given #149 (F,wt=19): 226 (x * (y * (x * y))) * z = (x * y) * ((x * y) * z) # label(false).  [para(153(a,1),168(a,1,1))].
+
+given #150 (F,wt=19): 234 (x * y) * (x * (y * z)) = x * (y * ((x * y) * z)) # label(false).  [back_rewrite(118),rewrite([230(5)]),flip(a)].
+
+given #151 (F,wt=15): 2819 (x * (x * x)) * y = x * (x * (x * y)) # label(false).  [back_rewrite(2167),rewrite([2750(4),72(5),4(6)])].
+
+given #152 (F,wt=16): 2845 (x * (x * (x * y))) * y' = x * (x * x) # label(false).  [para(2819(a,1),5(a,1,1))].
+
+given #153 (F,wt=16): 2860 (x * (x * (x * y'))) * y = x * (x * x) # label(false).  [para(2819(a,1),131(a,1,1))].
+
+given #154 (T,wt=15): 119 (x * y) * (x * x) = x * (y * (x * x)).  [para(98(a,1),50(a,1,2,2))].
+
+given #155 (A,wt=22): 85 (x' * ((x * y) * z)) * (((z' * y') * x) * y) = x * y # label(false).  [para(53(a,1),5(a,1,1)),rewrite([6(10),6(8),6(6),21(10),21(11)])].
+
+given #156 (F,wt=16): 2930 (x * (x * y)) * (y' * x) = x * (x * x) # label(false).  [para(57(a,1),2845(a,1,1,2,2)),rewrite([6(5),126(5)])].
+
+given #157 (F,wt=16): 3046 (x * (x * y')) * (y * x) = x * (x * x) # label(false).  [para(126(a,1),2930(a,1,2,1))].
+
+given #158 (F,wt=19): 492 (x' * (y * (y * x))) * (x' * y') = x' * y # label(false).  [para(183(a,1),5(a,1,1)),rewrite([6(6)])].
+
+given #159 (F,wt=19): 1206 (x * (y * x)) * (x' * (y' * y')) = x * y' # label(false).  [para(126(a,1),1101(a,1,1,2,1))].
+
+given #160 (F,wt=19): 1207 (x' * (y' * x')) * (x * (y * y)) = x' * y # label(false).  [para(126(a,1),1101(a,1,2,1))].
+
+given #161 (F,wt=19): 1255 (x * (x * (y * x))) * y = x * (x * (y * (x * y))) # label(false).  [para(4(a,1),1219(a,1,2)),rewrite([72(2),153(7)])].
+
+given #162 (T,wt=15): 594 (x * y) * (y * x) = x * (y * (y * x)).  [back_rewrite(395),rewrite([565(4),377(6),5(4)])].
+
+given #163 (A,wt=24): 86 x * (y * ((y' * x') * (y' * z))) = (y' * x') * (x * z) # label(false).  [para(5(a,1),53(a,1,1)),rewrite([6(4),16(9),6(10),5(14)])].
+
+given #164 (F,wt=19): 2028 (x * y) * (x' * y') = x * (y * (x' * y')) # label(false).  [para(2017(a,1),5(a,1,1)),rewrite([6(3)])].
+
+given #165 (F,wt=19): 2037 (x' * (y * (x * y'))) * (y * x') = x' * y # label(false).  [para(126(a,1),2017(a,1,1,2,2,1))].
+
+given #166 (F,wt=19): 2038 (x * (y' * (x' * y))) * (y' * x) = x * y' # label(false).  [para(126(a,1),2017(a,1,1,2,2,2))].
+
+given #167 (F,wt=19): 2098 (x' * y') * (x * y) = x' * (y' * (x * y)) # label(false).  [para(2017(a,1),449(a,1,1)),rewrite([126(9),126(9)])].
+
+given #168 (F,wt=19): 2104 (x' * (y' * x)) * y = x' * (y' * (x * y)) # label(false).  [back_rewrite(1332),rewrite([2098(10)])].
+
+given #169 (F,wt=19): 2171 (x * (y * x')) * y' = x * (y * (x' * y')) # label(false).  [para(2027(a,1),5(a,1,1)),rewrite([6(3),2028(5)]),flip(a)].
+
+given #170 (T,wt=15): 2750 (x * y) * (y * y) = x * (y * (y * y)).  [para(1156(a,1),234(a,2,2,2)),rewrite([168(10),57(9),57(7),57(5),278(3),168(5)])].
+
+given #171 (A,wt=28): 87 (x * (y * z)) * ((z' * y') * (x' * y)) = x' * ((x * (y * z)) * z') # label(false).  [para(5(a,1),53(a,1,2,2,2)),rewrite([6(4)])].
+
+given #172 (F,wt=18): 3530 (x' * (x' * y')) * (y * (x * (x * x))) = x # label(false).  [para(2750(a,1),67(a,1,2)),rewrite([6(3),6(13),77(16),77(15),57(17),81(15),5(13),4(12)])].
+
+given #173 (F,wt=18): 3543 (x' * (x' * y)) * (y' * (x * (x * x))) = x # label(false).  [para(2750(a,1),1707(a,1,2))].
+
+given #174 (F,wt=19): 2208 (x' * (y * x)) * y' = x' * (y * (x * y')) # label(false).  [para(1300(a,1),4(a,1,2)),flip(a)].
+
+given #175 (F,wt=19): 2252 (x' * y) * (x * y') = x' * (y * (x * y')) # label(false).  [para(1355(a,1),4(a,1,2)),flip(a)].
+
+given #176 (F,wt=19): 2400 (x * (y * y)) * (x * y) = x * (y * (y * (x * y))) # label(false).  [back_rewrite(565),rewrite([2355(8)])].
+
+given #177 (F,wt=19): 2516 (x * (y' * x')) * y = x * (y' * (x' * y)) # label(false).  [para(1932(a,1),131(a,1,1)),rewrite([126(9)])].
+
+given #178 (T,wt=15): 2843 (x * (y * y)) * y = x * (y * (y * y)).  [back_rewrite(278),rewrite([2750(6)])].
+
+given #179 (A,wt=26): 89 (((x' * y') * z) * y) * (y' * z') = (x' * (y' * z')) * z # label(false).  [para(53(a,1),6(a,1,1)),rewrite([6(5),6(3),6(3),21(8),6(12),6(10),6(8),21(12),21(13),6(13)]),flip(a)].
+
+given #180 (F,wt=19): 2536 (x * y') * (x' * y) = x * (y' * (x' * y)) # label(false).  [para(2186(a,1),5(a,1,1)),rewrite([6(4),6(2),126(5),77(4)]),flip(a)].
+
+given #181 (F,wt=19): 2605 (x * (x * y)) * (y * y) = x * (x * (y * (y * y))) # label(false).  [para(379(a,1),82(a,1,2,2)),rewrite([6(4),126(2),126(2),126(3),168(2),126(4),6(8),126(6),126(6),126(7),168(12),4(11),4(9),168(8)])].
+
+given #182 (F,wt=19): 2645 (x * (x * (y * y))) * y = x * (x * (y * (y * y))) # label(false).  [back_rewrite(389),rewrite([2605(8)])].
+
+given #183 (F,wt=19): 2755 (x * ((y * x) * z)) * y = (x * y) * ((x * z) * y) # label(false).  [para(234(a,1),80(a,2,2,1)),rewrite([72(3),4(4),72(10),4(11)]),flip(a)].
+
+given #184 (F,wt=19): 2756 (x * y) * (x * (z * y)) = x * (((y * x) * z) * y) # label(false).  [para(81(a,1),234(a,2,2,2)),rewrite([57(5),57(10)])].
+
+given #185 (F,wt=19): 2777 (x * (y * (x * x))) * y = x * (y * (x * (x * y))) # label(false).  [back_rewrite(1218),rewrite([2729(8)])].
+
+given #186 (T,wt=16): 464 (x * (y * (x * y'))) * y = x * (y * x).  [para(5(a,1),327(a,2,2)),rewrite([268(6),161(4),126(6),72(7)])].
+
+given #187 (A,wt=22): 94 (x' * y') * (y * ((y * x) * z)) = x' * (y * (x * z)) # label(false).  [para(83(a,1),4(a,1,2)),flip(a)].
+
+given #188 (F,wt=19): 2851 (x * (x * (x * y))) * y = x * (x * (x * (y * y))) # label(false).  [para(2819(a,1),255(a,1,1)),rewrite([2819(8)])].
+
+given #189 (F,wt=19): 3911 (((x * y) * z) * x) * y = (x * y) * ((z * x) * y) # label(false).  [para(81(a,1),2755(a,1,1,2)),rewrite([57(6),57(9)])].
+
+given #190 (F,wt=20): 214 (x * (y * (x * x))) * (x' * y) = x * (y * (x * y)) # label(false).  [para(136(a,1),187(a,1,1,2)),rewrite([119(3),6(6),126(6),153(9)])].
+
+given #191 (F,wt=20): 216 (x * (x * (x * (x * y)))) * y' = x * (x * (x * x)) # label(false).  [para(168(a,1),187(a,1,1,2)),rewrite([168(4),168(9)])].
+
+given #192 (F,wt=20): 275 (x * (y * (x * (y * y)))) * y' = x * (y * (x * y)) # label(false).  [para(255(a,1),187(a,1,1,2)),rewrite([234(4),255(2),153(9)])].
+
+given #193 (F,wt=20): 287 (x * y') * (y * (y * (x * y))) = x * (y * (x * y)) # label(false).  [para(230(a,1),153(a,1,1)),rewrite([230(5),153(3),230(10),168(8)]),flip(a)].
+
+given #194 (T,wt=16): 683 (x * (y * z)) * ((z' * y') * x') = 1.  [para(6(a,1),88(a,1,2,1))].
+
+given #195 (A,wt=22): 97 x' * (y' * ((y * x) * (y * z))) = (y * x) * (x' * z) # label(false).  [para(5(a,1),83(a,1,2,2,2,1)),rewrite([6(5),4(7)])].
+
+given #196 (F,wt=20): 308 (x * (x * (x * y'))) * (y * x) = x * (x * (x * x)) # label(false).  [para(230(a,1),231(a,1,2)),rewrite([6(4),126(3),168(4),168(9)])].
+
+given #197 (F,wt=20): 309 (x * (y * (x * y'))) * (y * y) = x * (y * (x * y)) # label(false).  [para(231(a,1),231(a,1,2)),rewrite([6(4),126(3),161(4),153(9)])].
+
+given #198 (F,wt=20): 317 (x * (x * (x * (x * y')))) * y = x * (x * (x * x)) # label(false).  [para(168(a,1),232(a,1,1,2)),rewrite([168(5),168(9)])].
+
+given #199 (F,wt=20): 489 (x * (x * (x * y))) * (y' * x) = x * (x * (x * x)) # label(false).  [para(230(a,1),154(a,1,2)),rewrite([168(3),168(9)])].
+
+given #200 (F,wt=20): 952 (x * (y' * y')) * (y * (y * (x' * x'))) = x' # label(false).  [para(126(a,1),379(a,1,1,1))].
+
+given #201 (F,wt=20): 1059 (x * (x * y')) * (y * (x' * (x' * y'))) = y' # label(false).  [para(126(a,1),662(a,1,2,1))].
+
+given #202 (T,wt=16): 684 ((x * y) * z) * (z' * (y' * x')) = 1.  [para(6(a,1),88(a,1,2,2))].
+
+given #203 (A,wt=30): 100 (x * y) * (((y' * x') * z') * (z * ((z * (x * y)) * u))) = z * ((x * y) * u).  [para(6(a,1),83(a,1,2,1,1))].
+
+given #204 (F,wt=20): 1072 (x' * (x' * y')) * (y * (x * (x * y'))) = y' # label(false).  [para(126(a,1),676(a,1,2,1))].
+
+given #205 (F,wt=20): 1112 (x' * (y' * y')) * (y * x) = x' * (y' * x) # label(false).  [para(4(a,1),77(a,2,2)),rewrite([6(2),255(5),6(9),77(11)])].
+
+given #206 (F,wt=20): 1243 (x * (x * (y * (x * y)))) * y' = x * (x * (y * x)) # label(false).  [para(72(a,1),1196(a,2,2)),rewrite([153(3),6(6),131(8)])].
+
+given #207 (F,wt=20): 1405 (x' * (y * y)) * (y' * (y' * (x * y'))) = y' # label(false).  [para(72(a,1),910(a,1,2)),rewrite([72(8)])].
+
+given #208 (F,wt=20): 1455 (x * (y * y)) * (y' * (y' * (x' * x'))) = x' # label(false).  [para(274(a,1),931(a,1,2))].
+
+given #209 (F,wt=20): 1457 (x * (y * y)) * (y' * (y' * (x' * y'))) = y' # label(false).  [para(72(a,1),931(a,1,2)),rewrite([72(8)])].
+
+given #210 (T,wt=16): 692 (x * (y * x)) * (x' * (y' * x')) = 1.  [para(72(a,1),88(a,1,1)),rewrite([6(5)])].
+
+given #211 (A,wt=30): 101 x * ((x' * (y' * z')) * ((z * y) * (((z * y) * x) * u))) = (z * y) * (x * u).  [para(6(a,1),83(a,1,2,1,2))].
+
+given #212 (F,wt=20): 1705 (x * (y * z)) * ((z' * y') * (x' * x')) = x' # label(false).  [para(126(a,1),998(a,1,1,1))].
+
+given #213 (F,wt=20): 1754 (x' * (y' * y')) * (y * (y * (x * y'))) = y' # label(false).  [para(126(a,1),1148(a,1,2,1)),rewrite([126(7)])].
+
+given #214 (F,wt=20): 1767 (x * (y' * y')) * (y * (y * (x' * y'))) = y' # label(false).  [para(126(a,1),1156(a,1,2,1)),rewrite([126(6)])].
+
+given #215 (F,wt=20): 1969 (x * (y' * (x' * y))) * y' = x * (y' * x') # label(false).  [para(1299(a,1),5(a,1,1)),rewrite([6(2)]),flip(a)].
+
+given #216 (F,wt=20): 2268 (x * (y' * x)) * (x' * (y * (x' * x'))) = x' # label(false).  [para(126(a,1),1422(a,1,1,1)),rewrite([126(3)])].
+
+given #217 (F,wt=20): 2309 (x * (y * z')) * ((z * y') * (x' * x')) = x' # label(false).  [para(126(a,1),1706(a,1,1,1))].
+
+given #218 (T,wt=16): 734 ((x' * y') * z) * (z' * (y * x)) = 1.  [para(22(a,1),685(a,1,1,2)),rewrite([6(7),6(7),6(13),126(11),126(11),6(14),126(12),126(12),153(12),279(13)])].
+
+given #219 (A,wt=23): 103 (x * y) * (x * (x * (y * z))) = x * (y * (x * ((x * y) * z))) # label(false).  [para(83(a,1),50(a,1,2,2))].
+
+given #220 (F,wt=20): 2436 (x * (y' * z)) * ((z' * y) * (x' * x')) = x' # label(false).  [para(126(a,1),1707(a,1,1,1))].
+
+given #221 (F,wt=20): 2449 (x * (y * x)) * (x' * (y' * (x' * x'))) = x' # label(false).  [para(126(a,1),1726(a,1,1,1)),rewrite([126(2)])].
+
+given #222 (F,wt=20): 2463 (x * (y' * y')) * (y * x') = x * (y' * x') # label(false).  [para(126(a,1),1735(a,1,2,1))].
+
+given #223 (F,wt=20): 2473 (x' * (y' * (x * y))) * y' = x' * (y' * x) # label(false).  [para(4(a,1),1914(a,2,2)),rewrite([6(2),126(7),72(6),4(7),2098(5),6(9),77(11)])].
+
+given #224 (F,wt=20): 2586 x * (y * (x' * ((x * y) * z))) = (x * y) * (y * z) # label(false).  [para(22(a,1),82(a,1,2,2)),rewrite([126(2),126(2),126(3),126(5),126(5)]),flip(a)].
+
+given #225 (F,wt=19): 4977 (x * (y * y)) * (y * x) = x * (y * (y * (y * x))) # label(false).  [para(1196(a,1),2586(a,1,2,2,2)),rewrite([4(5),168(3),168(10),57(9)]),flip(a)].
+
+given #226 (T,wt=16): 737 (x * (y' * x)) * (x' * (y * x')) = 1.  [para(131(a,1),685(a,1,1,2)),rewrite([72(3),6(7),126(6),6(9),126(8),153(9),4(10)])].
+
+given #227 (A,wt=26): 105 x' * (y * ((y' * x') * (x * (x * ((x * y) * z))))) = x * (y * z) # label(false).  [para(83(a,1),50(a,2)),rewrite([57(4),6(8),21(9),16(7),5(7)])].
+
+given #228 (F,wt=19): 5005 (x * y) * (y * (x * x)) = x * (y * (y * (x * x))) # label(false).  [para(119(a,1),2586(a,1,2,2,2)),rewrite([4(5)]),flip(a)].
+
+given #229 (F,wt=20): 2655 (x * (y' * z')) * ((z * y) * (x' * x')) = x' # label(false).  [para(126(a,1),2310(a,1,1,1))].
+
+given #230 (F,wt=20): 2709 x * (y * ((x * y) * (y' * z))) = (x * y) * (x * z) # label(false).  [para(57(a,1),234(a,1,2,2)),flip(a)].
+
+given #231 (F,wt=20): 2725 (x * (y * y)) * (y' * (x * x)) = x * (y * (x * x)) # label(false).  [para(481(a,1),234(a,1,2)),rewrite([267(4),119(3),267(10),136(10)]),flip(a)].
+
+given #232 (F,wt=20): 2852 (x * (x * (x * y'))) * (y * y) = x * (x * (x * y)) # label(false).  [para(2819(a,1),230(a,1,1)),rewrite([2819(9)])].
+
+given #233 (F,wt=20): 2856 (x * (x * (x * (y * y)))) * y' = x * (x * (x * y)) # label(false).  [para(2819(a,1),267(a,1,1)),rewrite([2819(9)])].
+
+given #234 (T,wt=16): 765 (x' * (y * x')) * (x * (y' * x)) = 1.  [para(728(a,1),29(a,2,2,1)),rewrite([72(4),6(12),126(12),565(12),342(13),6(14),126(14),2(14),653(13)])].
+
+given #235 (A,wt=22): 106 x' * (y' * ((y * x) * (x * z))) = y' * ((y * x) * z) # label(false).  [para(53(a,1),83(a,2)),rewrite([6(5),4(7),5(6),57(7)])].
+
+given #236 (F,wt=20): 2973 (x * (y * (x * (x * y)))) * y' = x * (y * (x * x)) # label(false).  [para(119(a,1),1219(a,2)),rewrite([2756(4),255(2),72(3),168(2),6(6),131(8)])].
+
+given #237 (F,wt=20): 3519 (x * (x * y')) * (y * (x' * (x' * x'))) = x' # label(false).  [para(2750(a,1),46(a,1,2)),rewrite([6(3),126(2),6(14),126(13),255(18),727(19),3(13)])].
+
+given #238 (F,wt=20): 3532 (x * (x * y)) * (y' * (x' * (x' * x'))) = x' # label(false).  [para(2750(a,1),998(a,1,2)),rewrite([126(2)])].
+
+given #239 (F,wt=20): 3788 (x * (x * (y * (y * y)))) * y' = x * (x * (y * y)) # label(false).  [para(2605(a,1),267(a,1,1)),rewrite([274(9)])].
+
+given #240 (F,wt=20): 3839 ((x * y) * ((x * z) * y)) * y' = x * ((y * x) * z) # label(false).  [para(2755(a,1),5(a,1,1))].
+
+given #241 (F,wt=20): 3852 (x * (y * (x * (x * y')))) * y = x * (y * (x * x)) # label(false).  [para(232(a,1),2755(a,2,2)),rewrite([281(4),119(9)])].
+
+given #242 (T,wt=16): 767 (x' * (y' * x')) * (x * (y * x)) = 1.  [para(5(a,1),747(a,1,2,2)),rewrite([6(2),6(5),153(7),57(8),72(7)])].
+
+given #243 (A,wt=22): 117 x * (y * ((y' * x) * (x' * z))) = y * ((y' * x) * z) # label(false).  [para(98(a,1),50(a,1,1)),rewrite([107(5),107(7),6(5),21(6),5(6),107(12)])].
+
+given #244 (F,wt=20): 3984 x * (((y * x) * (z * y')) * y) = (x * y) * (x * z) # label(false).  [para(131(a,1),2756(a,1,2,2)),flip(a)].
+
+given #245 (F,wt=20): 4111 (x * (y * (x * y'))) * (y * x) = x * (y * (x * x)) # label(false).  [para(255(a,1),464(a,2,2)),rewrite([6(3),57(5),420(3)])].
+
+given #246 (F,wt=20): 4255 ((x * y) * ((z * x) * y)) * y' = ((x * y) * z) * x # label(false).  [para(3911(a,1),5(a,1,1))].
+
+given #247 (F,wt=20): 5265 x * ((x' * y) * (x * (y * y))) = y * (x * (y * y)) # label(false).  [para(2709(a,1),2756(a,1)),rewrite([57(3),57(4),119(3),77(6),57(9),255(8),153(7),1274(11)]),flip(a)].
+
+given #248 (F,wt=20): 5661 (x * ((y * (x * z)) * z')) * z = (x * y) * (x * z) # label(false).  [para(5(a,1),4255(a,1,1,1)),rewrite([126(7),5(9)])].
+
+given #249 (F,wt=21): 134 (x * y') * (y * (x * z)) = x * ((x * y') * (y * z)) # label(false).  [back_rewrite(47),rewrite([131(3)]),flip(a)].
+
+given #250 (T,wt=16): 785 ((x' * y') * z') * (z * (y * x)) = 1.  [para(6(a,1),127(a,1,1,1))].
+
+given #251 (A,wt=23): 123 (x * y) * (y' * (x' * z)) = x' * ((x * y) * (y' * z)) # label(false).  [para(98(a,1),53(a,1,2,2,2)),rewrite([107(13)])].
+
+given #252 (F,wt=21): 279 (x * (y' * z')) * (z * (y * (z * y))) = x * (z * y) # label(false).  [para(6(a,1),230(a,1,1,2)),rewrite([153(7)])].
+
+given #253 (F,wt=21): 320 (x * (y * (z * (y * z)))) * (z' * y') = x * (y * z) # label(false).  [para(6(a,1),267(a,1,2)),rewrite([153(3)])].
+
+given #254 (F,wt=21): 688 (x * (x * (y * y))) * (y' * (y' * (x' * x'))) = 1 # label(false).  [para(274(a,1),88(a,1,1)),rewrite([6(7),6(6),255(9)])].
+
+given #255 (F,wt=21): 690 (x' * (y * (y * x))) * (x' * (y' * (y' * x))) = 1 # label(false).  [para(183(a,1),88(a,1,1)),rewrite([6(6),6(10),126(10),183(10)])].
+
+given #256 (F,wt=21): 721 (x * (x * (y * z))) * ((z' * y') * (x' * x')) = 1 # label(false).  [para(6(a,1),685(a,1,2,1))].
+
+given #257 (F,wt=21): 723 (x * (y * (x * x))) * (x' * (x' * (y' * x'))) = 1 # label(false).  [para(136(a,1),685(a,1,1,2)),rewrite([119(3),6(6),126(6),6(7),6(10),153(12),273(13)])].
+
+given #258 (T,wt=16): 786 (x' * (y' * z')) * ((z * y) * x) = 1.  [para(6(a,1),127(a,1,1,2))].
+
+given #259 (A,wt=17): 161 (x * y) * (x * y') = x * (y * (x * y')).  [para(136(a,1),50(a,1,2,2,2)),rewrite([57(5),126(6)])].
+
+given #260 (F,wt=21): 731 (x * (y' * (x * x))) * (x' * (x' * (y * x'))) = 1 # label(false).  [para(231(a,1),685(a,1,1,2)),rewrite([119(4),6(6),6(10),126(9),6(12),126(11),153(12),134(13),306(13)])].
+
+given #261 (F,wt=21): 744 ((x * y) * (z * z)) * (z' * (z' * (y' * x'))) = 1 # label(false).  [para(6(a,1),687(a,1,2,2,2))].
+
+given #262 (F,wt=21): 751 (x * (x * (y' * z'))) * ((z * y) * (x' * x')) = 1 # label(false).  [para(6(a,1),727(a,1,1,2,2))].
+
+given #263 (F,wt=21): 755 (x * (x * (y' * y'))) * (y * (y * (x' * x'))) = 1 # label(false).  [para(168(a,1),727(a,1,2)),rewrite([6(2)])].
+
+given #264 (F,wt=21): 761 (x' * (x' * (y * z))) * ((z' * y') * (x * x)) = 1 # label(false).  [para(6(a,1),728(a,1,2,1))].
+
+given #265 (F,wt=21): 769 ((x * y) * (z' * z')) * (z * (z * (y' * x'))) = 1 # label(false).  [para(6(a,1),747(a,1,2,2,2))].
+
+given #266 (T,wt=16): 823 (x' * (y * z)) * ((z' * y') * x) = 1.  [para(22(a,1),773(a,1,2,2)),rewrite([6(3),6(3),6(9),126(7),126(7),6(10),126(8),126(8),153(8),279(9)])].
+
+given #267 (A,wt=27): 171 (x' * (y' * x)) * ((x' * (y * (y * x))) * z) = (x' * (y * x)) * z # label(false).  [para(7(a,1),152(a,1,2,1)),rewrite([6(4),6(2),126(5),77(4),168(7)])].
+
+given #268 (F,wt=21): 779 ((x' * y') * (z * z)) * (z' * (z' * (y * x))) = 1 # label(false).  [para(6(a,1),748(a,1,1,1))].
+
+given #269 (F,wt=21): 789 (x' * (x' * (y' * y'))) * (y * (y * (x * x))) = 1 # label(false).  [para(274(a,1),127(a,1,2)),rewrite([6(4),6(3),255(6)])].
+
+given #270 (F,wt=21): 790 (x' * (y' * (y' * x))) * (x' * (y * (y * x))) = 1 # label(false).  [para(183(a,1),127(a,1,2)),rewrite([6(2),6(6),126(6),183(6)])].
+
+given #271 (F,wt=21): 811 (x' * (x' * (y' * z'))) * ((z * y) * (x * x)) = 1 # label(false).  [para(6(a,1),756(a,1,1,2,2))].
+
+given #272 (F,wt=21): 815 ((x' * y') * (z' * z')) * (z * (z * (y * x))) = 1 # label(false).  [para(6(a,1),773(a,1,1,1))].
+
+given #273 (F,wt=21): 817 (x' * (x' * (y' * x'))) * (x * (y * (x * x))) = 1 # label(false).  [para(136(a,1),773(a,1,2,2)),rewrite([6(3),126(3),6(4),6(7),153(9),273(10),119(10)])].
+
+given #274 (T,wt=16): 860 (x * (y' * z')) * ((z * y) * x') = 1.  [para(6(a,1),641(a,1,1,2))].
+
+given #275 (A,wt=25): 172 (x * (y * x)) * (x' * (z * x)) = x' * (((x * (x * y)) * z) * x).  [para(152(a,1),8(a,1,1,1)),rewrite([126(3),72(2),126(6),77(5),168(9),126(13),77(12)])].
+
+given #276 (F,wt=21): 822 (x' * (x' * (y * x'))) * (x * (y' * (x * x))) = 1 # label(false).  [para(231(a,1),773(a,1,2,2)),rewrite([6(2),6(6),126(5),6(8),126(7),153(8),134(9),306(9),119(10)])].
+
+given #277 (F,wt=21): 1244 (x * (x * (y * (y * x')))) * (x * y') = x * (x * y) # label(false).  [para(1196(a,1),30(a,2,2,1)),rewrite([420(4),168(3),420(12),5(11)])].
+
+given #278 (F,wt=21): 1256 (x' * y) * (x * (y * x)) = x' * (y * (x * (y * x))) # label(false).  [para(5(a,1),1219(a,1,1,2)),rewrite([126(4),153(9)])].
+
+given #279 (F,wt=21): 1331 (x * (x * y)) * (y * x') = x * (x * (y * (y * x'))) # label(false).  [para(1290(a,1),1219(a,1,1,2)),rewrite([1300(9),4(7),1300(11),1300(14),153(12),134(11),17(9),3(9)])].
+
+given #280 (F,wt=21): 1506 (((x * (y' * z')) * z) * y) * (z * y) = (x * z) * y # label(false).  [para(4(a,1),65(a,1,1,2)),rewrite([6(2),4(12)])].
+
+given #281 (F,wt=19): 6355 ((x * (y * z)) * y) * z = ((x * y) * z) * (y * z) # label(false).  [para(131(a,1),1506(a,1,1,1,1)),rewrite([6(8),126(6),126(6)]),flip(a)].
+
+given #282 (T,wt=16): 861 ((x * y) * z') * (z * (y' * x')) = 1.  [para(6(a,1),641(a,1,2,2))].
+
+given #283 (A,wt=25): 173 (x' * (y * x)) * (x * (z * x)) = x' * ((y * (x * (x * z))) * x).  [para(152(a,1),8(a,1,2,1)),rewrite([126(4),77(3),126(6),72(5),168(9),126(13),77(12)])].
+
+given #284 (F,wt=19): 6437 (x * (y * (z * x))) * z = ((x * y) * z) * (x * z) # label(false).  [para(30(a,1),6355(a,1,1,1)),rewrite([72(6),131(5),72(8),131(7)])].
+
+given #285 (F,wt=19): 6526 (x * (y * z)) * (x * z) = x * ((y * (z * x)) * z) # label(false).  [back_rewrite(3956),rewrite([6502(6)]),flip(a)].
+
+given #286 (F,wt=19): 6669 (x * (y * z)) * (x * y) = x * (y * (z * (x * y))) # label(false).  [back_rewrite(2690),rewrite([6663(6)]),flip(a)].
+
+given #287 (F,wt=20): 6403 (((x * y) * z) * (y * z)) * z' = (x * (y * z)) * y # label(false).  [para(6355(a,1),5(a,1,1))].
+
+given #288 (F,wt=20): 6502 (((x * y) * z) * x') * (x * y) = (x * (y * z)) * y # label(false).  [back_rewrite(5660),rewrite([6403(12)])].
+
+given #289 (F,wt=20): 6581 (((x * y) * z) * (x * z)) * z' = x * (y * (z * x)) # label(false).  [para(6437(a,1),5(a,1,1))].
+
+given #290 (T,wt=16): 1597 (x * y') * (y * (y * x)) = x * (y * x).  [para(1101(a,1),990(a,1,1)),rewrite([126(4),126(7)])].
+
+given #291 (A,wt=26): 192 (x' * (y * x)) * ((x' * (y * x)) * z) = (x' * (y * (y * x))) * z # label(false).  [para(7(a,1),168(a,1,1)),rewrite([168(3)]),flip(a)].
+
+given #292 (F,wt=20): 6621 (x * (y * (y * x))) * (x' * y) = x * (y * (y * y)) # label(false).  [para(1219(a,1),6437(a,2,1)),rewrite([77(4),2689(5),15(3),3(3),57(11),2843(9)])].
+
+given #293 (F,wt=20): 6663 (x * y) * ((z * (x * y)) * y') = x * (y * (z * x)) # label(false).  [back_rewrite(5396),rewrite([6581(6)]),flip(a)].
+
+given #294 (F,wt=20): 6721 x * (((y * z') * (z * x)) * z) = (x * y) * (x * z) # label(false).  [para(131(a,1),6526(a,1,1,2)),flip(a)].
+
+given #295 (F,wt=20): 6755 (x * y) * (y' * ((y * z) * x)) = ((x * y) * z) * x # label(false).  [para(81(a,1),6526(a,2,2,1)),rewrite([5(4),5(5),72(11),5(10)]),flip(a)].
+
+given #296 (F,wt=19): 7460 (x * ((y * z) * x)) * y = (x * y) * (z * (x * y)) # label(false).  [para(6755(a,1),6502(a,1,1,1)),rewrite([5(5),72(4),57(9)]),flip(a)].
+
+given #297 (F,wt=19): 7558 (x * y) * (z * (x * y)) = x * (y * ((z * x) * y)) # label(false).  [para(29(a,1),7460(a,1,1,2)),rewrite([29(9),131(3),72(7),131(6),72(8),131(7),72(9),131(8)]),flip(a)].
+
+given #298 (T,wt=16): 2342 (x' * (y * z')) * ((z * y') * x) = 1.  [back_rewrite(1496),rewrite([2324(10)])].
+
+given #299 (A,wt=20): 200 (x * (x * y)) * (y' * (x * x)) = x * (x * (x * x)).  [para(168(a,1),136(a,1,1)),rewrite([168(9)])].
+
+given #300 (F,wt=19): 7630 (x * (y * x)) * (y * z) = x * ((y * (x * y)) * z) # label(false).  [back_rewrite(7532),rewrite([7558(7),7558(6),7619(6)]),flip(a)].
+
+given #301 (F,wt=19): 7635 (x * ((y * z) * x)) * y = x * (y * ((z * x) * y)) # label(false).  [back_rewrite(7460),rewrite([7558(8)])].
+
+given #302 (F,wt=19): 7991 (x * (y * (z * y))) * z = (x * y) * (z * (y * z)) # label(false).  [para(4(a,1),7635(a,2,2,2,1)),rewrite([7558(6),131(3)])].
+
+given #303 (F,wt=20): 6817 x * (y * ((y' * z) * (x * y))) = (x * z) * (x * y) # label(false).  [para(57(a,1),6669(a,1,1,2)),flip(a)].
+
+given #304 (F,wt=20): 6877 (x' * ((x * y) * z)) * (x * y) = ((y * z) * x) * y # label(false).  [para(4(a,1),6403(a,1,1,1,1)),rewrite([4255(6)]),flip(a)].
+
+given #305 (F,wt=20): 6879 (((x * (y * z)) * z') * y) * z = (x * y) * (y * z) # label(false).  [para(5(a,1),6403(a,1,1,2)),rewrite([126(7),5(9)])].
+
+given #306 (T,wt=16): 2343 ((x * y') * z) * (z' * (y * x')) = 1.  [back_rewrite(1495),rewrite([2324(13)])].
+
+given #307 (A,wt=23): 217 (x * (x * (y * (x * x)))) * y = x * (x * (y * (x * (x * y)))) # label(false).  [para(187(a,1),187(a,1,1,2)),rewrite([119(4),119(3),126(6),153(10),213(10)])].
+
+given #308 (F,wt=20): 7077 (x * y) * (y' * (z * (x * y))) = x * ((z * x) * y) # label(false).  [para(5(a,1),6581(a,1,1,1,1)),rewrite([3839(6)]),flip(a)].
+
+given #309 (F,wt=20): 7113 (x * (y * (y * y))) * (y' * x) = x * (y * (y * x)) # label(false).  [para(1219(a,1),6581(a,1,1,1)),rewrite([57(5),2843(3),6(6),126(6),77(10),2689(11),15(9),3(9)])].
+
+given #310 (F,wt=20): 7280 (x * (x * (y * y))) * (y' * x) = x * (x * (y * x)) # label(false).  [para(1196(a,1),6663(a,2,2)),rewrite([6(11),6(10),168(13),5781(14),267(8)])].
+
+given #311 (F,wt=20): 7619 x * (y * (((y' * z) * x) * y)) = (x * (z * x)) * y # label(false).  [back_rewrite(7545),rewrite([7558(6)])].
+
+given #312 (F,wt=20): 7631 (x * (y * ((z * x) * y))) * y' = x * ((y * z) * x) # label(false).  [back_rewrite(7531),rewrite([7558(4)])].
+
+given #313 (F,wt=20): 7843 x * ((y * (x * y)) * (y' * z)) = (x * (y * x)) * z # label(false).  [para(57(a,1),7630(a,1,2)),flip(a)].
+
+given #314 (T,wt=16): 2574 (x' * (y' * z)) * ((z' * y) * x) = 1.  [back_rewrite(1656),rewrite([2548(10)])].
+
+given #315 (A,wt=23): 219 (x * (x * (y * x))) * (x * y) = x * (x * (y * (x * (x * y)))) # label(false).  [back_rewrite(178),rewrite([213(10)])].
+
+given #316 (F,wt=20): 8025 ((x * y) * (z * (y * z))) * z' = x * (y * (z * y)) # label(false).  [para(7991(a,1),5(a,1,1))].
+
+given #317 (F,wt=20): 8508 (x * (x * (y * x))) * (x' * y) = x * (x * (y * y)) # label(false).  [para(7280(a,1),5(a,1,1)),rewrite([6(6),126(6)])].
+
+given #318 (F,wt=21): 1509 ((x * y) * (y' * z)) * z = ((x * z) * y) * (y' * z) # label(false).  [para(5(a,1),65(a,1,1,1,1))].
+
+given #319 (F,wt=20): 8910 (((x * y) * z) * y') * (y * z) = (x * (y * z)) * z # label(false).  [para(5(a,1),1509(a,1,1,1)),rewrite([126(2),126(9)]),flip(a)].
+
+given #320 (F,wt=21): 1541 ((x * y) * z) * (z' * x) = x * ((y * z) * (z' * x)) # label(false).  [para(77(a,1),65(a,1,1,1,1)),rewrite([126(2),430(7),72(8),1509(7),131(3),126(7)]),flip(a)].
+
+given #321 (F,wt=21): 1785 (x' * (y * x')) * (x * (y' * y')) = x' * y' # label(false).  [para(1195(a,1),854(a,1,1)),rewrite([153(6),4(7),420(14),4(15)])].
+
+given #322 (T,wt=16): 2575 ((x' * y) * z) * (z' * (y' * x)) = 1.  [back_rewrite(1655),rewrite([2548(13)])].
+
+given #323 (A,wt=25): 257 (x' * (y * x)) * (z * (z * x)) = x' * ((y * (x * (z * z))) * x) # label(false).  [para(220(a,1),8(a,1,2,1)),rewrite([126(4),77(3),126(6),168(5),255(9),126(13),77(12)])].
+
+given #324 (F,wt=21): 1817 x' * ((x * y) * (y * z)) = y * (x' * ((x * y) * z)) # label(false).  [para(4(a,1),68(a,1,2,2,2)),flip(a)].
+
+given #325 (F,wt=21): 2041 (x * (y * (x' * y'))) * (y * (x * y)) = x * (y * y) # label(false).  [para(255(a,1),2017(a,2)),rewrite([6(3),72(6),57(7),2028(5)])].
+
+given #326 (F,wt=21): 2101 (x * (y * x)) * (x' * (y' * (x * y))) = x * (x * y) # label(false).  [back_rewrite(1360),rewrite([2098(7)])].
+
+given #327 (F,wt=21): 2287 (x' * (x' * (y' * x))) * (x' * (y * (x * x))) = 1 # label(false).  [para(1423(a,1),685(a,1,1,2)),rewrite([77(6),77(5),6(10),6(8),6(11),168(13),6(19),6(17),126(15),126(15),126(16),255(15),6(21),6(19),126(17),126(17),126(18),255(17),153(18),168(17),1548(19)])].
+
+given #328 (F,wt=21): 2288 (x' * (y * (x * x))) * (x' * (x' * (y' * x))) = 1 # label(false).  [para(1423(a,1),773(a,1,2,2)),rewrite([6(4),6(2),6(5),168(7),6(13),6(11),126(9),126(9),126(10),255(9),6(15),6(13),126(11),126(11),126(12),255(11),153(12),168(11),1548(13),77(10),77(9)])].
+
+given #329 (F,wt=21): 2368 (x * (y * y)) * (y' * (y' * (x * y))) = x * (x * y) # label(false).  [para(1219(a,1),81(a,2,2,1)),rewrite([255(2),77(6),72(12),168(11),4(13)])].
+
+given #330 (T,wt=16): 3502 (x * y') * (y * (y * y)) = x * (y * y).  [para(131(a,1),2750(a,1,1)),flip(a)].
+
+given #331 (A,wt=23): 259 (x * (y * (y * x))) * (y * y) = x * (y * (y * (x * (y * y)))).  [para(220(a,1),136(a,1,2)),rewrite([255(2),72(3),168(2),255(7),255(9),153(10),168(9)])].
+
+given #332 (F,wt=21): 2689 (x * y) * (y' * (x * z)) = x * ((x * y) * (y' * z)) # label(false).  [para(5(a,1),234(a,1,1)),rewrite([5(10)]),flip(a)].
+
+given #333 (F,wt=21): 2708 x * ((x' * y) * (y * z)) = y * (x * ((x' * y) * z)) # label(false).  [para(57(a,1),234(a,1,1)),rewrite([57(10)]),flip(a)].
+
+given #334 (F,wt=21): 2862 (x * (x * (x * (y * z)))) * (z' * y') = x * (x * x) # label(false).  [para(2819(a,1),23(a,1,1))].
+
+given #335 (F,wt=21): 2871 (x * (x * (x * y))) * (y' * (x' * (x' * x'))) = 1 # label(false).  [para(2819(a,1),88(a,1,1)),rewrite([6(7),6(6),168(9)])].
+
+given #336 (F,wt=21): 2877 (x' * (y' * (y' * y'))) * (y * (y * (y * x))) = 1 # label(false).  [para(2819(a,1),127(a,1,2)),rewrite([6(4),6(3),168(6)])].
+
+given #337 (F,wt=21): 2882 (x * (x * (x * y'))) * (y * (x' * (x' * x'))) = 1 # label(false).  [para(2819(a,1),641(a,1,1)),rewrite([6(7),6(6),168(9)])].
+
+given #338 (T,wt=16): 4419 (x * (y * z')) * ((z * y') * x') = 1.  [para(126(a,1),683(a,1,2,1,1))].
+
+given #339 (A,wt=27): 263 ((x * (y * y)) * z) * (z' * y') = ((x * z) * (z' * y')) * (y * y) # label(false).  [back_rewrite(248),rewrite([255(7),255(9)]),flip(a)].
+
+given #340 (F,wt=21): 2883 (x * (y' * (y' * y'))) * (y * (y * (y * x'))) = 1 # label(false).  [para(2819(a,1),641(a,1,2)),rewrite([6(3),6(2),168(5)])].
+
+given #341 (F,wt=21): 2909 (x * (x * (x * (y' * z')))) * (z * y) = x * (x * x) # label(false).  [para(2819(a,1),449(a,1,1))].
+
+given #342 (F,wt=21): 2917 (x * (x * (x * (y * z')))) * (z * y') = x * (x * x) # label(false).  [para(2819(a,1),456(a,1,1))].
+
+given #343 (F,wt=21): 2923 (x * (x * (x * (y' * z)))) * (z' * y) = x * (x * x) # label(false).  [para(2819(a,1),457(a,1,1))].
+
+given #344 (F,wt=21): 2964 (x * (x * (y' * x))) * (x' * (y * (x' * x'))) = 1 # label(false).  [para(119(a,1),727(a,1,2)),rewrite([6(3),126(3)])].
+
+given #345 (F,wt=21): 2965 (x' * (y * (x' * x'))) * (x * (x * (y' * x))) = 1 # label(false).  [para(119(a,1),747(a,1,1)),rewrite([6(9),126(9)])].
+
+given #346 (T,wt=16): 4420 (x * (y' * z)) * ((z' * y) * x') = 1.  [para(126(a,1),683(a,1,2,1,2))].
+
+given #347 (A,wt=27): 280 (x * (y' * (z' * y))) * (y' * (z * (z * y))) = x * (y' * (z * y)) # label(false).  [para(7(a,1),230(a,1,2)),rewrite([6(4),6(2),126(5),77(4),168(8)])].
+
+given #348 (F,wt=21): 3013 ((x' * (y' * y')) * z) * (z' * (y * (y * x))) = 1 # label(false).  [para(685(a,1),85(a,1,1,2,1)),rewrite([6(3),6(2),255(5),2(7),6(13),6(11),126(9),126(9),126(10),168(9),255(13),153(12),2756(11),255(9),72(10),168(9),972(19),685(19)])].
+
+given #349 (F,wt=21): 3014 ((x' * (x' * y')) * z) * (z' * (y * (x * x))) = 1 # label(false).  [para(687(a,1),85(a,1,1,2,1)),rewrite([6(3),6(2),168(5),2(7),6(13),6(11),126(9),126(9),126(10),255(9),255(13),153(12),168(11),1041(19),687(19)])].
+
+given #350 (F,wt=21): 3019 ((x * (y' * y')) * z) * (z' * (y * (y * x'))) = 1 # label(false).  [para(854(a,1),85(a,1,2)),rewrite([6(4),6(3),126(2),255(4),727(12),2(6),6(11),6(10),126(8),126(8),168(9),727(19)])].
+
+given #351 (F,wt=21): 3022 ((x * (y * y)) * z) * (z' * (y' * (y' * x'))) = 1 # label(false).  [para(944(a,1),85(a,1,2)),rewrite([6(6),6(4),126(2),126(2),126(3),255(2),756(10),2(4),6(7),6(6),168(9),756(19)])].
+
+given #352 (F,wt=21): 3023 ((x' * (y * y)) * z) * (z' * (y' * (y' * x))) = 1 # label(false).  [para(970(a,1),85(a,1,2)),rewrite([6(5),6(3),126(3),126(4),255(3),728(11),2(5),6(9),6(7),126(10),168(9),728(19)])].
+
+given #353 (F,wt=21): 3024 ((x * (x * y')) * z) * (z' * (y * (x' * x'))) = 1 # label(false).  [para(990(a,1),85(a,1,2)),rewrite([6(5),6(4),126(2),126(2),168(3),747(11),2(5),6(9),6(8),126(7),255(9),747(19)])].
+
+given #354 (T,wt=16): 5888 ((x * y') * z') * (z * (y * x')) = 1.  [para(126(a,1),785(a,1,1,1,1))].
+
+given #355 (A,wt=24): 283 (x * y) * (y' * (y' * (x * y'))) = x * (y' * (x * y')) # label(false).  [para(230(a,1),136(a,1,1)),rewrite([6(3),168(7),153(13)])].
+
+given #356 (F,wt=21): 3025 ((x' * (x' * y)) * z) * (z' * (y' * (x * x))) = 1 # label(false).  [para(991(a,1),85(a,1,2)),rewrite([6(4),6(2),126(5),168(4),748(12),2(6),6(11),6(9),126(9),126(10),255(9),748(19)])].
+
+given #357 (F,wt=21): 3026 ((x * (x * y)) * z) * (z' * (y' * (x' * x'))) = 1 # label(false).  [para(994(a,1),85(a,1,2)),rewrite([6(6),6(4),126(2),126(2),126(3),168(2),773(10),2(4),6(7),6(6),255(9),773(19)])].
+
+given #358 (F,wt=21): 3041 (x * (x * (y * z))) * ((z' * y') * x) = x * (x * x) # label(false).  [para(6(a,1),2930(a,1,2,1))].
+
+given #359 (F,wt=21): 3060 (x * (y * y)) * (y * x') = x * (y * (y * (y * x'))) # label(false).  [para(2930(a,1),80(a,2,2,1)),rewrite([126(2),187(4),126(7),2819(9)])].
+
+given #360 (F,wt=21): 3062 (x * (x * (y' * z'))) * ((z * y) * x) = x * (x * x) # label(false).  [para(6(a,1),3046(a,1,1,2,2))].
+
+given #361 (F,wt=21): 3064 (x * (x * (y' * y'))) * (y * (y * x)) = x * (x * x) # label(false).  [para(168(a,1),3046(a,1,2)),rewrite([6(2)])].
+
+given #362 (T,wt=16): 5889 ((x' * y) * z') * (z * (y' * x)) = 1.  [para(126(a,1),785(a,1,1,1,2))].
+
+given #363 (A,wt=22): 300 (((x * y) * z') * (z * y)) * y' = (x * z') * (z * y) # label(false).  [para(231(a,1),12(a,1,2,1)),rewrite([6(6),126(9),131(8),6(9),126(12),131(11),168(9),17(8),3(8),131(7),6(11),126(14),131(13)]),flip(a)].
+
+given #364 (F,wt=20): 9908 x * ((x' * ((x * y) * z)) * z) = (x * (y * z)) * z # label(false).  [back_rewrite(7021),rewrite([9843(9),7368(7)])].
+
+given #365 (F,wt=20): 9923 x * ((y * (y * (z * x'))) * x) = (x * (y * y)) * z # label(false).  [para(232(a,1),9908(a,2,1,2)),rewrite([8061(6),7064(8),4279(7),168(5),4(8)])].
+
+given #366 (F,wt=19): 10113 (x * (y * y)) * (z * x) = x * ((y * (y * z)) * x) # label(false).  [para(5(a,1),9923(a,1,2,1,2,2)),flip(a)].
+
+given #367 (F,wt=19): 10219 ((x * (x * y)) * z) * y = x * (x * (y * (z * y))) # label(false).  [back_rewrite(8049),rewrite([10113(5),4(6)])].
+
+given #368 (F,wt=19): 10277 (x * (y * x)) * (z * z) = x * (y * (x * (z * z))) # label(false).  [para(23(a,1),10113(a,1,1)),rewrite([7558(14),168(13),8617(14),57(7)]),flip(a)].
+
+given #369 (F,wt=20): 9926 x' * ((x * y) * ((z * x) * y)) = ((y * z) * x) * y # label(false).  [para(22(a,1),9908(a,1,2,1,2)),rewrite([126(3),8981(15)])].
+
+given #370 (T,wt=17): 348 (x * y) * (x' * y) = x * (y * (x' * y)).  [para(136(a,1),268(a,1,1)),rewrite([6(4),126(4),6(6),126(6),153(6),168(7),57(6),6(8),126(8)]),flip(a)].
+
+given #371 (A,wt=24): 307 (x * (y' * y')) * (y * (x * y')) = x * (y' * (x * y')) # label(false).  [para(255(a,1),231(a,1,1)),rewrite([153(13)])].
+
+given #372 (F,wt=18): 10697 x' * ((x * y) * (x' * z)) = (y * x') * z # label(false).  [back_rewrite(4316),rewrite([10567(9),8219(8)])].
+
+============================== PROOF =================================
+
+% Proof 1 at 15.25 (+ 0.08) seconds.
+% Length of proof is 140.
+% Level of proof is 29.
+% Maximum clause weight is 37.
+% Given clauses 372.
+
+1 x * ((y * z) * x) = (x * y) * (z * x) # label(non_clause) # label(goal).  [goal].
+2 1 * x = x.  [assumption].
+3 x * 1 = x.  [assumption].
+4 x' * (x * y) = y.  [assumption].
+5 (x * y) * y' = x.  [assumption].
+6 (x * y)' = y' * x'.  [assumption].
+7 (x' * (y * x)) * (x' * (z * x)) = x' * ((y * z) * x).  [assumption].
+8 ((x * y) * x') * ((x * z) * x') = (x * (y * z)) * x'.  [assumption].
+9 ((x * y)' * (x * (y * z))) * ((x * y)' * (x * (y * u))) = (x * y)' * (x * (y * (z * u))).  [assumption].
+10 ((x' * y') * (y * (x * z))) * ((x' * y') * (y * (x * u))) = (x' * y') * (y * (x * (z * u))).  [copy(9),rewrite([6(2),6(8),6(15)])].
+11 (((x * y) * z) * (y * z)') * (((u * y) * z) * (y * z)') = (((x * u) * y) * z) * (y * z)'.  [assumption].
+12 (((x * y) * z) * (z' * y')) * (((u * y) * z) * (z' * y')) = (((x * u) * y) * z) * (z' * y').  [copy(11),rewrite([6(4),6(10),6(18)])].
+13 (c1 * c2) * (c3 * c1) != c1 * ((c2 * c3) * c1).  [deny(1)].
+15 x' * x = 1.  [para(3(a,1),4(a,1,2))].
+16 x'' * y = x * y.  [para(4(a,1),4(a,1,2))].
+17 x * x' = 1.  [para(2(a,1),5(a,1,1))].
+19 (x' * y') * y = x'.  [para(5(a,1),4(a,1,2)),rewrite([6(2)])].
+21 x * y'' = x * y.  [para(5(a,1),5(a,1,1))].
+22 (x' * y') * ((y * x) * z) = z.  [para(6(a,1),4(a,1,1))].
+29 (x * y) * (x * (z * x')) = x * (((y * x) * z) * x').  [para(5(a,1),7(a,1,1,2)),rewrite([16(3),16(6),16(12)])].
+30 (x * (y * x')) * (x * z) = x * ((y * (z * x)) * x').  [para(5(a,1),7(a,1,2,2)),rewrite([16(5),16(6),16(12)])].
+34 (x' * ((x * y) * z)) * x = (y * x) * ((x' * z) * x).  [para(4(a,1),8(a,1,1,1)),rewrite([21(3),21(6),21(12)]),flip(a)].
+35 (x' * (y * (x * z))) * x = ((x' * y) * x) * (z * x).  [para(4(a,1),8(a,1,2,1)),rewrite([21(5),21(6),21(12)]),flip(a)].
+36 x * ((x' * y) * x) = y * x.  [para(4(a,1),8(a,2,1)),rewrite([15(2),21(4),2(2),21(5),21(7)])].
+41 ((x * y') * y) * ((x * y') * (y * (x' * z))) = (x * y') * (y * z) # label(false).  [para(4(a,1),10(a,2,2,2)),rewrite([16(4),15(4),3(4),16(7),16(14)])].
+42 (((x * y') * z) * (z' * y)) * (z * (z' * y)) = (x * z) * (z' * y) # label(false).  [para(5(a,1),12(a,2,1,1)),rewrite([21(7),17(8),2(8),21(10),21(15)])].
+46 (x * y') * (y * (x' * z)) = x' * ((x * y') * (y * z)) # label(false).  [para(41(a,1),4(a,1,2)),rewrite([6(4),6(4),16(5),4(4)]),flip(a)].
+47 ((x * y') * y) * ((x * y') * (y * z)) = (x * y') * (y * (x * z)) # label(false).  [para(4(a,1),41(a,1,2,2,2))].
+48 x * ((x * y) * (y' * (x' * (y * z)))) = (x * y) * z # label(false).  [para(4(a,1),41(a,2,2)),rewrite([21(3),5(3),21(3),21(11)])].
+50 (x * y) * (x * (y * ((y' * x') * z))) = x * (y * z) # label(false).  [para(5(a,1),41(a,1,1,1)),rewrite([5(4),6(3),5(11)])].
+53 (x * y) * (y' * (x' * (y * z))) = x' * ((x * y) * z) # label(false).  [para(48(a,1),4(a,1,2)),flip(a)].
+57 x * (x' * y) = y.  [para(4(a,1),48(a,1,2,2)),rewrite([17(2),2(4),17(5),2(5)])].
+65 (((x * y') * z) * (z' * y)) * y = (x * z) * (z' * y) # label(false).  [back_rewrite(42),rewrite([57(9)])].
+67 (x' * y') * (y * (x * z)) = y * (x * ((x' * y') * z)) # label(false).  [para(50(a,1),4(a,1,2)),rewrite([6(2)])].
+68 x * (y' * ((y * x) * (x' * z))) = y' * ((y * x) * z) # label(false).  [para(4(a,1),50(a,1,1)),rewrite([6(4),21(8),19(6)])].
+72 (x * y) * x = x * (y * x).  [para(5(a,1),50(a,1,2,2,2)),rewrite([17(3),3(3),21(5)])].
+77 (x' * y) * x = x' * (y * x).  [para(7(a,1),50(a,1,2)),rewrite([72(5),5(4),6(9),6(7),21(11),16(10),36(8),57(6),4(5),15(8),3(8)])].
+80 (x' * (y * x)) * (z * x) = x' * ((y * (x * z)) * x).  [back_rewrite(35),rewrite([77(5),77(8)]),flip(a)].
+81 (x * y) * (y' * (z * y)) = y' * (((y * x) * z) * y).  [back_rewrite(34),rewrite([77(5),77(9)]),flip(a)].
+83 x * ((x' * y') * (y * ((y * x) * z))) = y * (x * z) # label(false).  [para(4(a,1),53(a,1,1)),rewrite([6(2),16(8),4(13),16(12)])].
+84 (x * x) * (x' * y) = x' * ((x * x) * y).  [para(4(a,1),53(a,1,2,2))].
+98 x * ((x' * y') * (y * y)) = y # label(false).  [para(5(a,1),83(a,1,2,2,2)),rewrite([17(8),3(8)])].
+107 (x' * y') * (y * y) = x' * y # label(false).  [para(98(a,1),4(a,1,2)),flip(a)].
+118 x * (y * (((x * y) * z') * (z * z))) = (x * y) * (x * (y * z)) # label(false).  [para(98(a,1),50(a,1,2,2,2)),rewrite([6(8),21(9),16(7)]),flip(a)].
+126 x'' = x.  [para(15(a,1),4(a,1,2)),rewrite([3(4)])].
+127 (x' * y') * (y * x) = 1.  [para(6(a,1),15(a,1,1))].
+131 (x * y') * y = x.  [para(15(a,1),50(a,2,2)),rewrite([126(5),72(6),4(7),57(5),3(5)])].
+134 (x * y') * (y * (x * z)) = x * ((x * y') * (y * z)) # label(false).  [back_rewrite(47),rewrite([131(3)]),flip(a)].
+136 (x * y) * (y' * x) = x * x # label(false).  [para(107(a,1),4(a,1,2)),rewrite([6(4),126(2),126(2)])].
+152 x' * ((x * x) * y) = x * y # label(false).  [para(136(a,1),5(a,1,1)),rewrite([6(4),126(4),84(4)])].
+153 (x * y) * (x * y) = x * (y * (x * y)) # label(false).  [para(5(a,1),136(a,1,1)),rewrite([126(2)]),flip(a)].
+168 (x * x) * y = x * (x * y) # label(false).  [para(152(a,1),4(a,1,2)),rewrite([126(2)]),flip(a)].
+187 (x * (x * y)) * y' = x * x # label(false).  [para(168(a,1),5(a,1,1))].
+207 (x * (y * (x * x))) * x' = ((x * y) * x') * (x * x).  [para(187(a,1),8(a,1,2)),flip(a)].
+220 x' * ((x * y) * y) = y * y # label(false).  [para(4(a,1),153(a,1,1)),rewrite([4(3),4(6)]),flip(a)].
+230 (x * y') * (y * y) = x * y # label(false).  [para(126(a,1),107(a,1,1,1)),rewrite([126(6)])].
+231 (x * y') * (y * x) = x * x # label(false).  [para(126(a,1),136(a,1,2,1))].
+232 (x * (x * y')) * y = x * x # label(false).  [para(126(a,1),187(a,1,2))].
+233 (x * (y * (x * x))) * x' = x * (y * x) # label(false).  [back_rewrite(207),rewrite([230(10),72(7)])].
+234 (x * y) * (x * (y * z)) = x * (y * ((x * y) * z)) # label(false).  [back_rewrite(118),rewrite([230(5)]),flip(a)].
+255 (x * y) * y = x * (y * y) # label(false).  [para(220(a,1),4(a,1,2)),rewrite([126(2)]),flip(a)].
+267 (x * (y * y)) * y' = x * y # label(false).  [para(255(a,1),5(a,1,1))].
+289 (x * (y' * y')) * (y * y) = x.  [para(255(a,1),230(a,1,1)),rewrite([131(9)])].
+300 (((x * y) * z') * (z * y)) * y' = (x * z') * (z * y) # label(false).  [para(231(a,1),12(a,1,2,1)),rewrite([6(6),126(9),131(8),6(9),126(12),131(11),168(9),17(8),3(8),131(7),6(11),126(14),131(13)]),flip(a)].
+329 (x * (y' * y')) * y = x * y' # label(false).  [para(126(a,1),267(a,1,2))].
+341 (x * y') * ((y * x') * z) = z.  [para(126(a,1),22(a,1,1,1))].
+342 (x' * y) * ((y' * x) * z) = z.  [para(126(a,1),22(a,1,1,2))].
+420 (x * y) * x' = x * (y * x').  [para(329(a,1),233(a,2,2)),rewrite([289(6)])].
+450 (x' * y) * (x' * (z * x)) = x' * (((y * x') * z) * x).  [para(131(a,1),7(a,1,1,2))].
+788 (((x * y') * z') * (z * y)) * y' = ((x * z') * (z * y)) * (y' * y') # label(false).  [para(127(a,1),12(a,1,2,1)),rewrite([6(6),126(9),131(8),6(9),126(12),131(11),2(9),255(8),6(16),126(19),131(18)]),flip(a)].
+885 x' * ((y' * ((y * x') * (x * z))) * x) = (x' * y) * ((y' * z) * x) # label(false).  [para(46(a,1),29(a,2,2,1)),rewrite([126(8),72(7),4(8),126(15)]),flip(a)].
+1506 (((x * (y' * z')) * z) * y) * (z * y) = (x * z) * y # label(false).  [para(4(a,1),65(a,1,1,2)),rewrite([6(2),4(12)])].
+1509 ((x * y) * (y' * z)) * z = ((x * z) * y) * (y' * z) # label(false).  [para(5(a,1),65(a,1,1,1,1))].
+1674 x * ((y * z') * (((z * y') * x') * z)) = ((z * y') * x') * (x * y) # label(false).  [para(131(a,1),67(a,1,2,2)),rewrite([6(3),126(2),6(11),126(10)]),flip(a)].
+1853 (x' * ((x * y') * z)) * y = (y' * x) * ((x' * z) * y) # label(false).  [para(68(a,1),77(a,1,1)),rewrite([126(12),885(15)])].
+1864 x' * ((x' * y) * ((y' * (x * z)) * x)) = (x' * y) * ((y' * z) * x) # label(false).  [back_rewrite(885),rewrite([1853(8)])].
+2690 x * ((y * z) * ((x * (y * z)) * z')) = (x * (y * z)) * (x * y) # label(false).  [para(5(a,1),234(a,1,2,2)),flip(a)].
+2755 (x * ((y * x) * z)) * y = (x * y) * ((x * z) * y) # label(false).  [para(234(a,1),80(a,2,2,1)),rewrite([72(3),4(4),72(10),4(11)]),flip(a)].
+2756 (x * y) * (x * (z * y)) = x * (((y * x) * z) * y) # label(false).  [para(81(a,1),234(a,2,2,2)),rewrite([57(5),57(10)])].
+3839 ((x * y) * ((x * z) * y)) * y' = x * ((y * x) * z) # label(false).  [para(2755(a,1),5(a,1,1))].
+3911 (((x * y) * z) * x) * y = (x * y) * ((z * x) * y) # label(false).  [para(81(a,1),2755(a,1,1,2)),rewrite([57(6),57(9)])].
+3956 x * ((((y * z) * x) * y') * (y * z)) = (x * (y * z)) * (x * z) # label(false).  [para(4(a,1),2756(a,1,2,2)),flip(a)].
+4255 ((x * y) * ((z * x) * y)) * y' = ((x * y) * z) * x # label(false).  [para(3911(a,1),5(a,1,1))].
+4279 ((x * y) * (x * z')) * z = x * ((y * (x * z')) * z) # label(false).  [para(131(a,1),3911(a,1,1,1,1)),rewrite([131(8)])].
+4316 (x' * y) * ((((y' * x) * z) * x') * y) = (z * x') * y # label(false).  [para(342(a,1),3911(a,1,1,1)),flip(a)].
+5396 (((x * y) * z) * (x * z)) * z' = (x * y) * ((z * (x * y)) * y') # label(false).  [para(5(a,1),3839(a,1,1,2,1))].
+5660 (((x * y) * z) * x') * (x * y) = (((x * y) * z) * (y * z)) * z' # label(false).  [para(4(a,1),4255(a,1,1,2,1)),flip(a)].
+6355 ((x * (y * z)) * y) * z = ((x * y) * z) * (y * z) # label(false).  [para(131(a,1),1506(a,1,1,1,1)),rewrite([6(8),126(6),126(6)]),flip(a)].
+6403 (((x * y) * z) * (y * z)) * z' = (x * (y * z)) * y # label(false).  [para(6355(a,1),5(a,1,1))].
+6437 (x * (y * (z * x))) * z = ((x * y) * z) * (x * z) # label(false).  [para(30(a,1),6355(a,1,1,1)),rewrite([72(6),131(5),72(8),131(7)])].
+6502 (((x * y) * z) * x') * (x * y) = (x * (y * z)) * y # label(false).  [back_rewrite(5660),rewrite([6403(12)])].
+6526 (x * (y * z)) * (x * z) = x * ((y * (z * x)) * z) # label(false).  [back_rewrite(3956),rewrite([6502(6)]),flip(a)].
+6581 (((x * y) * z) * (x * z)) * z' = x * (y * (z * x)) # label(false).  [para(6437(a,1),5(a,1,1))].
+6663 (x * y) * ((z * (x * y)) * y') = x * (y * (z * x)) # label(false).  [back_rewrite(5396),rewrite([6581(6)]),flip(a)].
+6669 (x * (y * z)) * (x * y) = x * (y * (z * (x * y))) # label(false).  [back_rewrite(2690),rewrite([6663(6)]),flip(a)].
+6755 (x * y) * (y' * ((y * z) * x)) = ((x * y) * z) * x # label(false).  [para(81(a,1),6526(a,2,2,1)),rewrite([5(4),5(5),72(11),5(10)]),flip(a)].
+6839 (x * (y * ((y' * x') * z))) * y' = x * (y * ((y' * x') * (z * y'))) # label(false).  [para(67(a,1),6669(a,1,1)),rewrite([131(10),131(16),420(14),67(16)])].
+6877 (x' * ((x * y) * z)) * (x * y) = ((y * z) * x) * y # label(false).  [para(4(a,1),6403(a,1,1,1,1)),rewrite([4255(6)]),flip(a)].
+7014 (x' * y) * ((y' * (x * z)) * x) = (z * (x * y')) * y # label(false).  [para(46(a,1),6502(a,2,1)),rewrite([131(3),57(3),6(3),126(2),131(6),1853(11)]),flip(a)].
+7021 ((x' * (((x * y) * z) * x)) * y') * (y * x) = (y * (z * x)) * x # label(false).  [para(81(a,1),6502(a,1,1,1)),rewrite([57(13)])].
+7056 (x' * y) * ((y' * z) * x) = x' * ((z * (x * y')) * y) # label(false).  [back_rewrite(1864),rewrite([7014(8)]),flip(a)].
+7064 (x' * ((x * y') * z)) * y = y' * ((z * (y * x')) * x) # label(false).  [back_rewrite(1853),rewrite([7056(12)])].
+7368 (x' * y') * (((y * x) * z) * y) = x' * ((x * z) * y) # label(false).  [para(6755(a,1),4(a,1,2)),rewrite([6(2)])].
+7407 (x * y') * (((y * x') * z) * y) = x * ((x' * z) * y) # label(false).  [para(6755(a,1),341(a,1,2)),rewrite([126(9)])].
+7460 (x * ((y * z) * x)) * y = (x * y) * (z * (x * y)) # label(false).  [para(6755(a,1),6502(a,1,1,1)),rewrite([5(5),72(4),57(9)]),flip(a)].
+7468 ((x * y') * z') * (z * y) = z * (y * ((y' * z') * x)) # label(false).  [back_rewrite(1674),rewrite([7407(8)]),flip(a)].
+7528 ((x * y') * (y * z)) * (z' * z') = y * (z * ((z' * y') * (x * z'))) # label(false).  [back_rewrite(788),rewrite([7468(6),6839(8)]),flip(a)].
+7532 (x * (y * z)) * (z' * (x * (y * z))) = (x * (y * x)) * (y * z) # label(false).  [para(5(a,1),7460(a,1,1,2,1)),flip(a)].
+7545 (x * y) * ((y' * z) * (x * y)) = (x * (z * x)) * y # label(false).  [para(57(a,1),7460(a,1,1,2,1)),flip(a)].
+7558 (x * y) * (z * (x * y)) = x * (y * ((z * x) * y)) # label(false).  [para(29(a,1),7460(a,1,1,2)),rewrite([29(9),131(3),72(7),131(6),72(8),131(7),72(9),131(8)]),flip(a)].
+7619 x * (y * (((y' * z) * x) * y)) = (x * (z * x)) * y # label(false).  [back_rewrite(7545),rewrite([7558(6)])].
+7630 (x * (y * x)) * (y * z) = x * ((y * (x * y)) * z) # label(false).  [back_rewrite(7532),rewrite([7558(7),7558(6),7619(6)]),flip(a)].
+7635 (x * ((y * z) * x)) * y = x * (y * ((z * x) * y)) # label(false).  [back_rewrite(7460),rewrite([7558(8)])].
+7815 (x * y') * ((y * x) * z) = y' * ((y * (x * x)) * z) # label(false).  [para(4(a,1),7630(a,2,2,1,2)),rewrite([420(4),4(5),255(8)])].
+7847 (x * (x * y')) * (y * z) = y' * ((y * (x * x)) * z) # label(false).  [para(131(a,1),7630(a,2,2,1,2)),rewrite([7558(6),420(4),4(5),7815(10)])].
+7991 (x * (y * (z * y))) * z = (x * y) * (z * (y * z)) # label(false).  [para(4(a,1),7635(a,2,2,2,1)),rewrite([7558(6),131(3)])].
+8024 (x * (y * z')) * (z * y) = (x * z') * (z * (y * y)) # label(false).  [para(4(a,1),7991(a,2,2,2)),rewrite([420(4),4(5),255(9)])].
+8025 ((x * y) * (z * (y * z))) * z' = x * (y * (z * y)) # label(false).  [para(7991(a,1),5(a,1,1))].
+8061 (x * (y * (y * z'))) * z = (x * z') * (z * (y * y)) # label(false).  [para(131(a,1),7991(a,2,2,2)),rewrite([7558(6),420(4),4(5),8024(10)])].
+8219 ((x * ((x' * y) * z)) * y') * x = (y * z) * (y' * x) # label(false).  [para(342(a,1),6877(a,1,1,2)),rewrite([126(2)]),flip(a)].
+8623 x * ((x * y') * (y * (((x' * z) * y) * x))) = (x * y') * ((y * (z * y)) * x) # label(false).  [para(7619(a,1),134(a,1,2)),flip(a)].
+8799 (x * (x * (y * ((z * x) * y)))) * y' = x * ((x * z') * (z * ((y * z) * x))) # label(false).  [para(231(a,1),8025(a,1,1,1)),rewrite([168(5),7558(13),134(14)])].
+8802 x' * ((x * (y * y)) * (z * x)) = (y * (y * (z * (x * z)))) * z' # label(false).  [para(232(a,1),8025(a,1,1,1)),rewrite([168(4),7847(12)]),flip(a)].
+8910 (((x * y) * z) * y') * (y * z) = (x * (y * z)) * z # label(false).  [para(5(a,1),1509(a,1,1,1)),rewrite([126(2),126(9)]),flip(a)].
+8981 (x' * (y' * ((y * x) * z))) * ((y * x) * z) = ((z * y) * x) * z # label(false).  [para(22(a,1),8910(a,1,1,1)),rewrite([126(2),6755(6)]),flip(a)].
+9826 ((x * y') * (y * z)) * z' = y * (z * ((z' * y') * x)) # label(false).  [para(300(a,1),255(a,1,1)),rewrite([7528(15),5(12)])].
+9843 ((x' * y) * z') * (z * x) = z * (((z' * x') * y) * x) # label(false).  [para(77(a,1),300(a,1,1,1,1)),rewrite([9826(9),450(7),57(8)]),flip(a)].
+9908 x * ((x' * ((x * y) * z)) * z) = (x * (y * z)) * z # label(false).  [back_rewrite(7021),rewrite([9843(9),7368(7)])].
+9923 x * ((y * (y * (z * x'))) * x) = (x * (y * y)) * z # label(false).  [para(232(a,1),9908(a,2,1,2)),rewrite([8061(6),7064(8),4279(7),168(5),4(8)])].
+9926 x' * ((x * y) * ((z * x) * y)) = ((y * z) * x) * y # label(false).  [para(22(a,1),9908(a,1,2,1,2)),rewrite([126(3),8981(15)])].
+10113 (x * (y * y)) * (z * x) = x * ((y * (y * z)) * x) # label(false).  [para(5(a,1),9923(a,1,2,1,2,2)),flip(a)].
+10218 (x * (x * (y * (z * y)))) * y' = (x * (x * y)) * z # label(false).  [back_rewrite(8802),rewrite([10113(5),4(6)]),flip(a)].
+10244 x * ((x * y') * (y * ((z * y) * x))) = (x * (x * z)) * (y * x) # label(false).  [back_rewrite(8799),rewrite([10218(7)]),flip(a)].
+10252 (x * y') * ((y * (z * y)) * x) = (x * z) * (y * x) # label(false).  [back_rewrite(8623),rewrite([10244(9),57(3)]),flip(a)].
+10567 (x * y) * ((z * x) * y) = x * (((y * z) * x) * y) # label(false).  [para(9926(a,1),4(a,1,2)),rewrite([126(2)]),flip(a)].
+10697 x' * ((x * y) * (x' * z)) = (y * x') * z # label(false).  [back_rewrite(4316),rewrite([10567(9),8219(8)])].
+10838 (x * (y * x)) * z = x * (y * (x * z)) # label(false).  [para(4(a,1),10697(a,1,2,1)),rewrite([126(2),126(2),126(6),72(5)]),flip(a)].
+10839 (x * y') * (y * z) = y' * ((y * x) * z) # label(false).  [para(4(a,1),10697(a,1,2,2)),flip(a)].
+11051 (x * y) * (z * x) = x * ((y * z) * x) # label(false).  [back_rewrite(10252),rewrite([10838(5),10839(6),7558(5),4(6)]),flip(a)].
+11052 $F.  [resolve(11051,a,13,a)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=372. Generated=223110. Kept=11048. proofs=1.
+Usable=258. Sos=6323. Demods=6625. Limbo=213, Disabled=4263. Hints=0.
+Weight_deleted=106464. Literals_deleted=0.
+Forward_subsumed=105598. Back_subsumed=406.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=10828 (0 lex), Back_demodulated=3847. Back_unit_deleted=0.
+Demod_attempts=9856029. Demod_rewrites=2025161.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=11.62.
+User_CPU=15.26, System_CPU=0.08, Wall_clock=15.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 1 proof.
+
+Process 8118 exit (max_proofs) Tue Dec  4 08:40:16 2007

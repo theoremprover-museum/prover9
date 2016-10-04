@@ -1,0 +1,90 @@
+<HTML>
+<HEAD>
+<TITLE>Prover9 Examples: Distributivity in Median Algebras
+</TITLE>
+</HEAD>
+
+<BODY BGCOLOR=white>
+<H1>Prover9 Examples: Distributivity in Median Algebras
+</H1>
+
+<HR>
+For more detail on this, see <A HREF="http://www.cs.unm.edu/~veroff/MEDIAN_ALGEBRA/">
+Bob Veroff's median algebra page</A>.
+<HR>
+
+<H2>Median Algebras</H2>
+
+A <I>median algebra</I> has a ternary operation satisfying the following axioms.
+<PRE>
+   f(x,x,y) = x                       # label(majority).
+   f(x,y,z) = f(z,x,y)                # label(2a).
+   f(x,y,z) = f(x,z,y)                # label(2b).
+   f(f(x,w,y),w,z) = f(x,w,f(y,w,z))  # label(associativity).
+</PRE>
+
+Notes about the axioms.
+<UL>
+<LI>(2a) and (2b) allow the arguments of <TT>f</TT>
+     to be permuted in any way (trivial).
+<LI>(2b) is dependent on the remaining three axioms, so it can be removed.<BR>
+     Proof:
+
+<!-- job dep-2b -->
+<blockquote><tt>prover9 -f <a href="dep-2b.in">dep-2b.in</a> &gt; <a href="dep-2b.out">dep-2b.out</a> ; ### ( <a href="dep-2b.out.xml">dep-2b.out.xml</a> )</tt></blockquote>
+
+     The remaining three are independent.
+
+<LI>If we permute the arguments in the associativity axiom in the right ways,
+     we can do without the permutativity axioms.  For example, an equivalent
+     2-basis is
+<PRE>
+     f(x,x,y) = x                        # label(majority).
+     f(f(x,w,y),z,w) = f(w,x,f(w,z,y))   # label(associativity2).
+</PRE>
+     We can prove this by deriving (2a) and (2b):
+
+<!-- job 2basis -->
+<blockquote><tt>prover9 -f <a href="2basis.in">2basis.in</a> &gt; <a href="2basis.out">2basis.out</a> ; ### ( <a href="2basis.out.xml">2basis.out.xml</a> )</tt></blockquote>
+
+
+
+</UL>
+
+<H2>Ternary Distributivity Properties</H2>
+
+The following two distributrivity properties hold for median algebras.
+
+<PRE>
+   f(f(x,y,z),u,w) = f(x,       f(y,u,w),f(z,u,w))    # label(dist_short).
+   f(f(x,y,z),u,w) = f(f(x,u,w),f(y,u,w),f(z,u,w))    # label(dist_long).
+</PRE>
+
+A higher-order proof was given by M. Kolibiar and T. Marcisova in 1974.
+<P>
+The first equational proof we know of was
+<A HREF="http://www.cs.unm.edu/~veroff/MEDIAN_ALGEBRA/">found by Bob Veroff and Otter</A>.
+<P>
+A proof by Prover9:
+
+<!-- job dist-both -->
+<blockquote><tt>prover9 -f <a href="dist-both.in">dist-both.in</a> &gt; <a href="dist-both.out">dist-both.out</a> ; ### ( <a href="dist-both.out.xml">dist-both.out.xml</a> )</tt></blockquote>
+
+
+Given one of the distributivity properties, prove the other.
+<p />
+
+Short implies long.
+
+<!-- job dist-short-long -->
+<blockquote><tt>prover9 -f <a href="dist-short-long.in">dist-short-long.in</a> &gt; <a href="dist-short-long.out">dist-short-long.out</a> ; ### ( <a href="dist-short-long.out.xml">dist-short-long.out.xml</a> )</tt></blockquote>
+
+
+Long implies short.
+
+<!-- job dist-long-short -->
+<blockquote><tt>prover9 -f <a href="dist-long-short.in">dist-long-short.in</a> &gt; <a href="dist-long-short.out">dist-long-short.out</a> ; ### ( <a href="dist-long-short.out.xml">dist-long-short.out.xml</a> )</tt></blockquote>
+
+
+</BODY>
+</HTML>

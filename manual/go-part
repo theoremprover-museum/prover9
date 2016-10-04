@@ -1,0 +1,15 @@
+#!/bin/csh
+
+if ($#argv != 1) then
+	echo "need 1 arg: bin-directory"
+	exit(1)
+endif
+
+set d=$1
+
+$d/tptp_to_ladr < PUZ031-1.tptp > PUZ031-1.in
+$d/prover9 -f PUZ031-1.in > PUZ031-1.out
+$d/tptp_to_ladr < PUZ031-1.tptp | $d/prover9 > PUZ031-1.out2
+$d/ladr_to_tptp < RBA-2.in > RBA-2.tptp
+$d/ladr_to_tptp -q < RBA-2.in > RBA-2q.tptp
+

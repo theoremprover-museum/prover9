@@ -1,0 +1,44 @@
+% Prove an ortholattice (OL) 3-basis from an ortholattice single axiom.
+
+assign(new_constants, 1).  % Introduce a new constant when possible.
+
+lex([ ', ^, v, f ]).       % We will get warning about skolem constants not being here.
+
+assign(pick_given_ratio, 5).  % 5 parts "lightest first" : 1 part "age first"
+
+set(restrict_denials).     % Try for direct proofs.
+
+assign(max_weight, 40).    % Weight limit.
+
+formulas(assumptions).
+
+% A single axiom for ortholattices (OL) in terms of the Sheffer stroke.
+
+f(f(f(f(y,x),f(x,z)),u),f(x,f(f(x,f(f(y,y),y)),z))) = x # label(OL_Sh).
+
+% Even though the hypothesis and the conclusions are in terms of the
+% Sheffer stroke, we define meet, join, and complementation.
+% The lex command above orders the symbols so that these defined
+% operations are introduced when possible.  Prover9 proves these
+% theorems more easily when it searches in terms of the defined
+% operations.
+
+x v y = f(f(x,x),f(y,y))  # label(definition_join).
+x ^ y = f(f(x,y),f(x,y))  # label(definition_meet).
+x' = f(x,x)               # label(definition_complementation).
+
+end_of_list.
+
+formulas(goals).
+
+% We ask for 4 proofs: three parts and a combination of the three parts.
+% The three parts are a basis for OL in terms of the Sheffer stroke.
+
+f(x,f(f(y,z),f(y,z))) = f(y,f(f(x,z),f(x,z)))  # answer(assoc).
+f(f(x,x),f(x,y)) = x                           # answer(absorb).
+f(x,f(x,x)) = f(y,f(y,y))                      # answer(one).
+
+f(x,f(f(y,z),f(y,z))) = f(y,f(f(x,z),f(x,z))) & f(f(x,x),f(x,y)) = x & f(x,f(x,x)) = f(y,f(y,y)) # answer(combined).
+
+end_of_list.
+

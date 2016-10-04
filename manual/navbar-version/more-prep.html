@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+  <title>Prover9 Manual: More Search Prep</title>
+ <link rel="stylesheet" href="manual.css">
+</head>
+
+<body>
+
+<!-- Site navigation menu -->
+
+<ul class="navbar">
+  <li><a href="index.html">Introduction</a>
+  <li><a href="install.html">Installation</a>
+  <li><a href="running.html">Running Prover9</a>
+  <li><a href="input.html">Input Files</a>
+  <li><a href="syntax.html">Clauses & Formulas</a>
+  <li>Search Prep
+  <ul class="navbar2">
+    <li><a href="auto.html">Auto Modes</a>
+    <li><a href="term-order.html">Term Ordering</a>
+    <li><a href="more-prep.html">More Prep</a>
+    <li><a href="limits.html">Search Limits</a>
+  </ul>
+  <li>Inference
+  <ul class="navbar2">
+    <li><a href="loop.html">The Loop</a>
+    <li><a href="select.html">Select Given</a>
+    <li><a href="inf-rules.html">Inference Rules</a>
+    <li><a href="process-inf.html">Process Inferred</a>
+  </ul>
+  <li><a href="output.html">Output Files</a>
+  <li>More Features
+  <ul class="navbar2">
+    <li><a href="weight.html">Weighting</a>
+    <li><a href="attributes.html">Attributes</a>
+    <li><a href="actions.html">Actions</a>
+    <li><a href="fof-reduction.html">FOF Reduction</a>
+    <li><a href="goals.html">Goals</a>
+    <li><a href="hints.html">Hints</a>
+    <li><a href="semantics.html">Semantics</a>
+  </ul>
+  <li>Related Programs
+  <ul class="navbar2">
+    <li><a href="prooftrans.html">Prooftrans</a>
+    <li><a href="mace4.html">Mace4</a>
+  </ul>
+  <li>Ending
+  <ul class="navbar2">
+    <li><a href="options.html">All Options</a>
+    <li><a href="glossary.html">Glossary</a>
+    <li><a href="manual-index.html">Index</a>
+    <li><a href="references.html">References</a>
+  </ul>
+</ul>
+
+<div class="header">Prover9 Manual Version June-2006</div>
+
+<!-- Main content -->
+
+<h1>More Search Prep</h1>
+
+<!-- start option predicate_elim -->
+<a name="predicate_elim">
+<pre class="my_option">
+set(predicate_elim).    % default set
+clear(predicate_elim).
+</pre>
+
+<blockquote>
+If this flag is set, Prover9 applies a procedure that attempts to
+eliminate predicate symbols from the problem before the start of the
+search.  The eliminations occur by resolution, and those steps show up
+as ordinary resolution inferences in any proofs that are found.  The
+procedure works by selecting an eliminable predicate symbol,
+say <tt>P</tt>,
+then doing some set of resolution inferences on <tt>P</tt>, then removing all
+clauses that contain <tt>P</tt>.  The procedure is intended to preserve
+unsatisfiability.
+</blockquote>
+<!-- end option -->
+
+<!-- start option fold_denial_max -->
+<a name="fold_denial_max">
+<pre class="my_option">
+assign(fold_denial_max, <i>n</i>).  % default <i>n</i>=0, range [-1 .. INT_MAX]
+</pre>
+
+<blockquote>
+This parameter applies to negated ground input equalities in which neither
+side is a constant, say <tt>f(a,b) != f(b,a)</tt>.
+If the left-hand side has fewer than <i>n</i> symbols, a new constant is
+introduced and set equal to the left-hand side.  This operation is applied
+to at most one clause in the input <tt>sos</tt> list.
+</blockquote>
+<!-- end option -->
+
+<!-- start option sort_initial_sos -->
+<a name="sort_initial_sos">
+<pre class="my_option">
+set(sort_initial_sos).
+clear(sort_initial_sos).    % default clear
+</pre>
+
+<blockquote>
+If this flag is set, the <tt>sos</tt> list is sorted just before the start of the search.
+The order (somewhat arbitrary) is
+<ul>
+<li>positive clauses &lt; negative clauses &lt; mixed clauses;
+<li>fewer symbols &lt; more symbols;
+<li>fewer literals &lt; more literals;
+<li>shallower &lt; deeper.
+</ul>
+</blockquote>
+<!-- end option -->
+
+<!-- start option hands_off_options -->
+<a name="hands_off_options">
+<pre class="my_option">
+set(hands_off_options).
+clear(hands_off_options).    % default clear
+</pre>
+
+<blockquote>
+If this flag is clear, a few other options may be automatically changed, based
+on the structure of the clauses.  For example,
+<g>factoring</g>,
+<g>back unit deletion</g>,
+will be enabled if any non-Horn clauses are present.
+<p>
+A message will be sent to the output file if any changes are mode.
+This flag is independent of any of the "auto" flags.
+</blockquote>
+<!-- end option -->
+
+<!-- start option process_initial_sos -->
+<a name="process_initial_sos">
+<pre class="my_option">
+set(process_initial_sos).    % default set
+clear(process_initial_sos).
+</pre>
+
+<blockquote>
+If this flag is set, clauses in the initial <tt>sos</tt> list will be
+handled (with a few exceptions) as if they were inferred.
+For example, demodulation, subsumption, and the check for unit conflict
+will be applied.  The exceptions are that
+<a href="process-inf.html#max_weight"><tt><b>max_weight</b></tt></a>,
+<a href="process-inf.html#max_vars"><tt><b>max_vars</b></tt></a>, and
+<a href="process-inf.html#max_literals"><tt><b>max_literals</b></tt></a>
+will not be applied.
+<p>
+This flag should be cleared only in very rare circumstances.
+</blockquote>
+<!-- end option -->
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+
+formulas(hints).
+
+% 72 hints from 3 proof(s) in file easy.out, Tue Nov  3 17:08:07 2009
+
+f(f(x,x),f(x,x)) = x # label(Sheffer_1) # label(non_clause) # label(goal).
+f(f(x,y),f(x,f(y,z))) = x.
+f(x,f(y,f(x',z))) = f(x,y').
+x' = f(x,x).
+f(x,x) = x'.
+f(f(c1,c1),f(c1,c1)) != c1 # label(Sheffer_1) # answer(Sheffer_1).
+c1'' != c1 # answer(Sheffer_1).
+f(f(x,y),f(x,y')) = x.
+f(x',f(x,x')) = x.
+f(x,f(y,x)) = f(x,y').
+x'' = x.
+$F # answer(Sheffer_1).
+f(x,f(y,f(y,y))) = f(x,x) # label(Sheffer_2) # label(non_clause) # label(goal).
+f(x,y) = f(y,x).
+f(c2,f(c3,f(c3,c3))) != f(c2,c2) # label(Sheffer_2) # answer(Sheffer_2).
+f(c2,f(c3,c3')) != c2' # answer(Sheffer_2).
+f(f(x,y),f(y,f(x,z))) = y.
+f(f(x,y),f(x,f(z,y))) = x.
+f(x',f(x,y)) = x.
+f(x',f(y,x)) = x.
+f(x,f(x,y)') = f(x,y).
+f(x,f(y,x)') = f(y,x).
+f(x,f(x,y)) = f(x,y').
+f(f(x,y),f(x,y)') = f(x',f(x,y)').
+f(x',f(y,x)') = f(y',f(y,x)').
+f(x',f(x,y)') = f(x,x').
+f(x',f(y,x)') = f(x,x').
+f(x,x') = f(y,y').
+f(x,f(y,y')) = x'.
+f(f(f(x,x),y),f(f(z,z),y)) = f(f(y,f(x,z)),f(y,f(x,z))) # label(Sheffer_3) # label(non_clause) # label(goal).
+f(f(f(c4,c4),c5),f(f(c6,c6),c5)) != f(f(c5,f(c4,c6)),f(c5,f(c4,c6))) # label(Sheffer_3) # answer(Sheffer_3).
+f(f(c5,c4'),f(c5,c6')) != f(c5,f(c4,c6))' # answer(Sheffer_3).
+f(f(x,y),f(f(y,z),x)) = x.
+f(x,f(f(x,y),f(f(x,f(y,z)),u))) = f(x,y).
+f(x,f(y,f(z,x'))) = f(x,y').
+f(x,f(f(x',y),z)) = f(x,z').
+f(x,f(x',y)') = f(x,x').
+f(f(x,y),f(f(x,z),y)) = y.
+f(f(x,y),f(y,x')) = y.
+f(f(f(x,y),z),f(z,y)) = z.
+f(x',f(y,f(x,z))) = f(x',y').
+f(f(x,y),f(f(z,y),x)) = x.
+f(x,f(f(x,y),f(y,z))) = f(x,y).
+f(x,f(f(x,f(y,z)),f(f(x,z),u))) = f(x,f(y,z)).
+f(f(x,f(y,z)),f(z,x)) = x.
+f(f(x,y),f(f(y,x'),f(y,z))) = f(y,x').
+f(f(x,y'),f(x,f(f(x,y),z))) = x.
+f(f(x,y'),f(x,f(z,f(x,y)))) = x.
+f(x',f(f(x,y),z)) = f(x',z').
+f(f(x,y)',f(f(x,z),y)) = f(y,f(x,z)').
+f(x,f(f(y,x'),z)') = f(x,z).
+f(f(f(x,y),z),f(z,y)') = f(z,f(x,y)').
+f(f(x,f(y,z')),f(f(y,z),x)) = x.
+f(x,f(f(x',y)',z)) = x'.
+f(x',f(f(x,y)',z)) = x.
+f(x',f(f(y,x)',z)) = x.
+f(x',f(y,f(z,x)')) = x.
+f(x,f(y,f(z,x)')') = f(y,f(z,x)').
+f(f(x,y),f(y,z)') = f(x',f(y,z)').
+f(f(x,y)',f(z,y)') = f(z,f(x,y)').
+f(f(x,y)',f(z,y)) = f(f(x,y)',z').
+f(f(x,y)',f(x,z)') = f(f(x,y)',z).
+f(f(x,y)',z) = f(y,f(x,z)').
+f(x,f(y,z)') = f(y,f(x,z)').
+f(x',f(f(y,x),z)') = f(x',z).
+f(f(x,y),f(z,f(x,y'))') = f(z,x').
+f(x,f(y,f(x,z)')) = f(x,f(y,z)).
+f(x,f(f(x,y),z)) = f(x,f(y',z)).
+f(x,f(y,f(z,f(f(x,y),u))')) = f(x,f(z,y)).
+f(x,f(y,f(x,z))) = f(x,f(y,z')).
+f(f(x,y'),f(x,f(y,z))) = f(x,f(y,z))'.
+f(f(x,y'),f(x,z)) = f(x,f(y,z'))'.
+end_of_list.

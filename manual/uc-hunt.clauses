@@ -1,0 +1,15 @@
+x ^ (y v (z ^ (x v u))) = x ^ (y v (z ^ (x v (z ^ u))))       # label(H1).
+x ^ (y v (x ^ z)) = x ^ (y v (z ^ ((x ^ (y v z)) v (y ^ z)))) # label(H2).
+x ^ (y v (x ^ z)) = x ^ (y v (z ^ (y v (x ^ (z v (x ^ y)))))) # label(H3).
+(x ^ y) v (x ^ z) = x ^ ((x ^ y) v ((x ^ z) v (y ^ (x v z)))) # label(H18).
+x ^ (y v (z ^ (x v u))) = x ^ (y v (z ^ (x v (z ^ (y v u))))) # label(H50).
+x ^ (y v (z ^ (x v u))) = x ^ (y v ((x ^ z) v (z ^ u)))       # label(H51).
+x v (y ^ (x v z)) = x v (y ^ (z v (x ^ (z v y))))             # label(H55).
+x ^ (y v z) = x ^ (y v ((x v y) ^ (z v (x ^ y))))             # label(H58).
+x ^ (y v z) = x ^ (y v (x ^ (z v (x ^ (y v (x ^ z))))))       # label(H64).
+x ^ (y v z) = x ^ (y v (x ^ (z v (x ^ y))))                   # label(H68).
+x ^ (z v y) = (x ^ (y v (x ^ z))) v (x ^ (z v (x ^ y)))       # label(H69).
+x ^ (y v (z ^ (y v u))) = x ^ (y v (z ^ (u v (x ^ y))))       # label(H76).
+x ^ (y v (z ^ (x v u))) = x ^ ((x ^ (y v (x ^ z))) v (z ^ u)) # label(H79).
+(x ^ y) v (x ^ z) = x ^ ((x ^ y) v (z ^ (x v (y ^ (x v z))))) # label(H80).
+(x ^ y) v (x ^ z) = x ^ ((y ^ (x v z)) v (z ^ (x v y)))       # label(H82).

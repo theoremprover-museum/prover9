@@ -1,0 +1,351 @@
+============================== FOF-Prover9 ===========================
+FOF-Prover9 (32) version 2009-11A, November 2009.
+Process 23990 was started by mccune on cleo,
+Tue Nov  3 16:59:26 2009
+The command was "/home/mccune/LADR/bin/fof-prover9 -f SYN551+2.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file SYN551+2.in
+
+assign(max_seconds,30).
+set(prolog_style_variables).
+
+formulas(assumptions).
+-((exists X all Y (Y = f(g(Y)) <-> X = Y)) <-> (exists X all Y (Y = g(f(Y)) <-> X = Y))).
+end_of_list.
+
+============================== end of input ==========================
+
+% clear(auto_denials), because it is incompatiable with FOF reduction.
+
+Attempting problem reduction; original problem has <nnf_size,cnf_max> = <50,64>.
+
+Problem reduction (0.01 sec) gives 2 independent subproblems: ( <25,6> <25,6> ).
+
+Max nnf_size of subproblems is 25; max cnf_max is 6.
+
+============================== FOF REDUCTION MULTISEARCH =============
+
+Subproblem 1 of 2 (negated):
+((exists X ((all Y (=(f(g(Y)),Y) | - =(Y,X))) & (all Y (=(Y,X) | - =(f(g(Y)),Y))))) & (all X ((exists Y (=(g(f(Y)),Y) & - =(Y,X))) | (exists Y (- =(g(f(Y)),Y) & =(Y,X)))))).
+
+Max_seconds is 30 for this subproblem.
+
+Child search process 23991 started.
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+f(g(A)) = A | A != c1.  [assumption].
+A = c1 | f(g(A)) != A.  [assumption].
+g(f(f1(A))) = f1(A) | g(f(f2(A))) != f2(A).  [assumption].
+g(f(f1(A))) = f1(A) | f2(A) = A.  [assumption].
+f1(A) != A | g(f(f2(A))) != f2(A).  [assumption].
+f1(A) != A | f2(A) = A.  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ = ]).
+Function symbol precedence:  function_order([ c1, f, g, f1, f2 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(paramodulation).  % (positive equality literals)
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+           1 f(g(A)) = A | A != c1.  [assumption].
+kept:      2 f(g(A)) = A | c1 != A.  [copy(1),flip(b)].
+           3 A = c1 | f(g(A)) != A.  [assumption].
+kept:      4 c1 = A | f(g(A)) != A.  [copy(3),flip(a)].
+kept:      5 g(f(f1(A))) = f1(A) | g(f(f2(A))) != f2(A).  [assumption].
+kept:      6 g(f(f1(A))) = f1(A) | f2(A) = A.  [assumption].
+kept:      7 f1(A) != A | g(f(f2(A))) != f2(A).  [assumption].
+kept:      8 f1(A) != A | f2(A) = A.  [assumption].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+2 f(g(A)) = A | c1 != A.  [copy(1),flip(b)].
+4 c1 = A | f(g(A)) != A.  [copy(3),flip(a)].
+5 g(f(f1(A))) = f1(A) | g(f(f2(A))) != f2(A).  [assumption].
+6 g(f(f1(A))) = f1(A) | f2(A) = A.  [assumption].
+7 f1(A) != A | g(f(f2(A))) != f2(A).  [assumption].
+8 f1(A) != A | f2(A) = A.  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.00 seconds.
+
+given #1 (I,wt=8): 2 f(g(A)) = A | c1 != A.  [copy(1),flip(b)].
+
+given #2 (I,wt=8): 4 c1 = A | f(g(A)) != A.  [copy(3),flip(a)].
+
+given #3 (I,wt=14): 5 g(f(f1(A))) = f1(A) | g(f(f2(A))) != f2(A).  [assumption].
+
+given #4 (I,wt=11): 6 g(f(f1(A))) = f1(A) | f2(A) = A.  [assumption].
+
+given #5 (I,wt=11): 7 f1(A) != A | g(f(f2(A))) != f2(A).  [assumption].
+
+given #6 (I,wt=8): 8 f1(A) != A | f2(A) = A.  [assumption].
+
+given #7 (A,wt=5): 9 f(g(c1)) = c1.  [xx_res(2,b)].
+
+given #8 (T,wt=13): 11 g(f(f1(A))) = f1(A) | f2(A) != g(f(A)).  [para(6(b,1),5(b,1,1,1)),flip(c),merge(b)].
+
+given #9 (T,wt=12): 13 g(f(f1(A))) = f1(A) | g(f(A)) != A.  [para(6(b,1),11(b,1)),flip(c),merge(b)].
+
+given #10 (T,wt=9): 15 g(f(f1(g(c1)))) = f1(g(c1)).  [para(9(a,1),13(b,1,1)),xx(b)].
+
+given #11 (T,wt=6): 18 f1(g(c1)) = g(c1).  [back_rewrite(15),rewrite([17(4)]),flip(a)].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 16.
+% Level of proof is 7.
+% Maximum clause weight is 14.000.
+% Given clauses 11.
+
+1 f(g(A)) = A | A != c1.  [assumption].
+2 f(g(A)) = A | c1 != A.  [copy(1),flip(b)].
+3 A = c1 | f(g(A)) != A.  [assumption].
+4 c1 = A | f(g(A)) != A.  [copy(3),flip(a)].
+5 g(f(f1(A))) = f1(A) | g(f(f2(A))) != f2(A).  [assumption].
+6 g(f(f1(A))) = f1(A) | f2(A) = A.  [assumption].
+7 f1(A) != A | g(f(f2(A))) != f2(A).  [assumption].
+8 f1(A) != A | f2(A) = A.  [assumption].
+9 f(g(c1)) = c1.  [xx_res(2,b)].
+11 g(f(f1(A))) = f1(A) | f2(A) != g(f(A)).  [para(6(b,1),5(b,1,1,1)),flip(c),merge(b)].
+13 g(f(f1(A))) = f1(A) | g(f(A)) != A.  [para(6(b,1),11(b,1)),flip(c),merge(b)].
+15 g(f(f1(g(c1)))) = f1(g(c1)).  [para(9(a,1),13(b,1,1)),xx(b)].
+17 f(f1(g(c1))) = c1.  [para(15(a,1),4(b,1,1)),flip(a),xx(b)].
+18 f1(g(c1)) = g(c1).  [back_rewrite(15),rewrite([17(4)]),flip(a)].
+19 f2(g(c1)) = g(c1).  [resolve(18,a,8,a)].
+20 $F.  [ur(7,a,18,a),rewrite([19(3),9(3),19(5)]),xx(a)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=11. Generated=30. Kept=17. proofs=1.
+Usable=10. Sos=2. Demods=3. Limbo=1, Disabled=10. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=12. Back_subsumed=1.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=6 (0 lex), Back_demodulated=3. Back_unit_deleted=0.
+Demod_attempts=278. Demod_rewrites=16.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=6. Nonunit_bsub_feature_tests=19.
+Megabytes=0.04.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+Exiting with 1 proof.
+
+Process 23991 exit (max_proofs) Tue Nov  3 16:59:26 2009
+
+============================== continuing FOF reduction multisearch ==
+
+Subproblem 2 of 2 (negated):
+((all X ((exists Y (=(f(g(Y)),Y) & - =(Y,X))) | (exists Y (- =(f(g(Y)),Y) & =(Y,X))))) & (exists X ((all Y (=(g(f(Y)),Y) | - =(Y,X))) & (all Y (=(Y,X) | - =(g(f(Y)),Y)))))).
+
+Max_seconds is 30 for this subproblem.
+
+Child search process 23992 started.
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+f(g(f1(A))) = f1(A) | f(g(f2(A))) != f2(A).  [assumption].
+f(g(f1(A))) = f1(A) | f2(A) = A.  [assumption].
+f1(A) != A | f(g(f2(A))) != f2(A).  [assumption].
+f1(A) != A | f2(A) = A.  [assumption].
+g(f(A)) = A | A != c1.  [assumption].
+A = c1 | g(f(A)) != A.  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ = ]).
+Function symbol precedence:  function_order([ c1, f, g, f1, f2 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(paramodulation).  % (positive equality literals)
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+kept:      1 f(g(f1(A))) = f1(A) | f(g(f2(A))) != f2(A).  [assumption].
+kept:      2 f(g(f1(A))) = f1(A) | f2(A) = A.  [assumption].
+kept:      3 f1(A) != A | f(g(f2(A))) != f2(A).  [assumption].
+kept:      4 f1(A) != A | f2(A) = A.  [assumption].
+           5 g(f(A)) = A | A != c1.  [assumption].
+kept:      6 g(f(A)) = A | c1 != A.  [copy(5),flip(b)].
+           7 A = c1 | g(f(A)) != A.  [assumption].
+kept:      8 c1 = A | g(f(A)) != A.  [copy(7),flip(a)].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+1 f(g(f1(A))) = f1(A) | f(g(f2(A))) != f2(A).  [assumption].
+2 f(g(f1(A))) = f1(A) | f2(A) = A.  [assumption].
+3 f1(A) != A | f(g(f2(A))) != f2(A).  [assumption].
+4 f1(A) != A | f2(A) = A.  [assumption].
+6 g(f(A)) = A | c1 != A.  [copy(5),flip(b)].
+8 c1 = A | g(f(A)) != A.  [copy(7),flip(a)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.00 seconds.
+
+given #1 (I,wt=14): 1 f(g(f1(A))) = f1(A) | f(g(f2(A))) != f2(A).  [assumption].
+
+given #2 (I,wt=11): 2 f(g(f1(A))) = f1(A) | f2(A) = A.  [assumption].
+
+given #3 (I,wt=11): 3 f1(A) != A | f(g(f2(A))) != f2(A).  [assumption].
+
+given #4 (I,wt=8): 4 f1(A) != A | f2(A) = A.  [assumption].
+
+given #5 (I,wt=8): 6 g(f(A)) = A | c1 != A.  [copy(5),flip(b)].
+
+given #6 (I,wt=8): 8 c1 = A | g(f(A)) != A.  [copy(7),flip(a)].
+
+given #7 (A,wt=13): 9 f(g(f1(A))) = f1(A) | f2(A) != f(g(A)).  [para(2(b,1),1(b,1,1,1)),flip(c),merge(b)].
+
+given #8 (T,wt=5): 12 g(f(c1)) = c1.  [xx_res(6,b)].
+
+given #9 (T,wt=12): 13 f(g(f1(A))) = f1(A) | f(g(A)) != A.  [para(2(b,1),9(b,1)),flip(c),merge(b)].
+
+given #10 (T,wt=9): 15 f(g(f1(f(c1)))) = f1(f(c1)).  [para(12(a,1),13(b,1,1)),xx(b)].
+
+given #11 (T,wt=6): 18 f1(f(c1)) = f(c1).  [back_rewrite(15),rewrite([17(4)]),flip(a)].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 16.
+% Level of proof is 7.
+% Maximum clause weight is 14.000.
+% Given clauses 11.
+
+1 f(g(f1(A))) = f1(A) | f(g(f2(A))) != f2(A).  [assumption].
+2 f(g(f1(A))) = f1(A) | f2(A) = A.  [assumption].
+3 f1(A) != A | f(g(f2(A))) != f2(A).  [assumption].
+4 f1(A) != A | f2(A) = A.  [assumption].
+5 g(f(A)) = A | A != c1.  [assumption].
+6 g(f(A)) = A | c1 != A.  [copy(5),flip(b)].
+7 A = c1 | g(f(A)) != A.  [assumption].
+8 c1 = A | g(f(A)) != A.  [copy(7),flip(a)].
+9 f(g(f1(A))) = f1(A) | f2(A) != f(g(A)).  [para(2(b,1),1(b,1,1,1)),flip(c),merge(b)].
+12 g(f(c1)) = c1.  [xx_res(6,b)].
+13 f(g(f1(A))) = f1(A) | f(g(A)) != A.  [para(2(b,1),9(b,1)),flip(c),merge(b)].
+15 f(g(f1(f(c1)))) = f1(f(c1)).  [para(12(a,1),13(b,1,1)),xx(b)].
+17 g(f1(f(c1))) = c1.  [para(15(a,1),8(b,1,1)),flip(a),xx(b)].
+18 f1(f(c1)) = f(c1).  [back_rewrite(15),rewrite([17(4)]),flip(a)].
+19 f2(f(c1)) = f(c1).  [resolve(18,a,4,a)].
+20 $F.  [ur(3,a,18,a),rewrite([19(3),12(3),19(5)]),xx(a)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=11. Generated=30. Kept=17. proofs=1.
+Usable=10. Sos=2. Demods=3. Limbo=1, Disabled=10. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=12. Back_subsumed=1.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=6 (0 lex), Back_demodulated=3. Back_unit_deleted=0.
+Demod_attempts=203. Demod_rewrites=16.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=6. Nonunit_bsub_feature_tests=20.
+Megabytes=0.04.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+Exiting with 1 proof.
+
+Process 23992 exit (max_proofs) Tue Nov  3 16:59:26 2009
+
+============================== end of multisearch ====================
+
+All 2 subproblems have been proved, so we are done.
+
+Total user_CPU=0.02, system_CPU=0.00, wall_clock=0.
+
+THEOREM PROVED
+
+Exiting.
+
+Process 23990 exit (max_proofs) Tue Nov  3 16:59:26 2009

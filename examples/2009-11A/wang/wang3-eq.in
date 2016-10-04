@@ -1,0 +1,21 @@
+assign(max_seconds, 120).
+
+formulas(sos).
+
+% wang1:
+% (m != b).
+% (b != k).
+% (k != m).
+
+% wang2:
+%  (m != b).
+%  (b = k) | (k = m).
+%  (y = j) | -p(y,j) | (y = k).
+%  (y = j) | p(y,j) | (y != k).
+
+% wang3:
+ (m != b).
+ (y = j) | -p(y,j) | (y = k).
+ (y = j) | p(y,j) | (y != k).
+
+end_of_list.

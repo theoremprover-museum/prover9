@@ -1,0 +1,35 @@
+============================== prooftrans ============================
+Prover9 (32) version 2009-11A, November 2009.
+Process 25572 was started by mccune on cleo,
+Tue Nov  3 17:07:39 2009
+The command was "/home/mccune/LADR/bin/prover9 -f subset_trans.in".
+============================== end of head ===========================
+
+============================== end of input ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.01 (+ 0.00) seconds.
+% Length of proof is 14.
+% Level of proof is 4.
+% Maximum clause weight is 6.000.
+% Given clauses 6.
+
+
+1 (all x all y (subset(x,y) <-> (all z (member(z,x) -> member(z,y))))) # label(non_clause).  [].
+2 (all x all y all z (subset(x,y) & subset(y,z) -> subset(x,z))) # label(non_clause) # label(goal).  [].
+3 subset(x,y) | member(f1(x,y),x).  [1].
+4 -subset(x,y) | -member(z,x) | member(z,y).  [1].
+5 subset(x,y) | -member(f1(x,y),y).  [1].
+6 subset(c1,c2).  [2].
+7 subset(c2,c3).  [2].
+8 -subset(c1,c3).  [2].
+11 -member(x,c1) | member(x,c2).  [6,4].
+12 -member(x,c2) | member(x,c3).  [7,4].
+13 member(f1(c1,c3),c1).  [8,3].
+14 -member(f1(c1,c3),c3).  [8,5].
+15 member(f1(c1,c3),c2).  [13,11].
+18 $F.  [12,14,15].
+
+============================== end of proof ==========================

@@ -1,0 +1,228 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+  <title>Prover9 Manual: Goals</title>
+ <link rel="stylesheet" href="manual.css">
+</head>
+
+<body>
+
+<!-- Site navigation menu -->
+
+<ul class="navbar">
+  <li><a href="index.html">Introduction</a>
+  <li><a href="install.html">Installation</a>
+  <li><a href="running.html">Running Prover9</a>
+  <li><a href="input.html">Input Files</a>
+  <li><a href="syntax.html">Clauses & Formulas</a>
+  <li>Search Prep
+  <ul class="navbar2">
+    <li><a href="auto.html">Auto Modes</a>
+    <li><a href="term-order.html">Term Ordering</a>
+    <li><a href="more-prep.html">More Prep</a>
+    <li><a href="limits.html">Search Limits</a>
+  </ul>
+  <li>Inference
+  <ul class="navbar2">
+    <li><a href="loop.html">The Loop</a>
+    <li><a href="select.html">Select Given</a>
+    <li><a href="inf-rules.html">Inference Rules</a>
+    <li><a href="process-inf.html">Process Inferred</a>
+  </ul>
+  <li><a href="output.html">Output Files</a>
+  <li>More Features
+  <ul class="navbar2">
+    <li><a href="weight.html">Weighting</a>
+    <li><a href="attributes.html">Attributes</a>
+    <li><a href="actions.html">Actions</a>
+    <li><a href="fof-reduction.html">FOF Reduction</a>
+    <li><a href="goals.html">Goals</a>
+    <li><a href="hints.html">Hints</a>
+    <li><a href="semantics.html">Semantics</a>
+  </ul>
+  <li>Related Programs
+  <ul class="navbar2">
+    <li><a href="prooftrans.html">Prooftrans</a>
+    <li><a href="mace4.html">Mace4</a>
+  </ul>
+  <li>Ending
+  <ul class="navbar2">
+    <li><a href="options.html">All Options</a>
+    <li><a href="glossary.html">Glossary</a>
+    <li><a href="manual-index.html">Index</a>
+    <li><a href="references.html">References</a>
+  </ul>
+</ul>
+
+<div class="header">Prover9 Manual Version June-2006</div>
+
+<!-- Main content -->
+
+<h1>Goals</h1>
+
+This section shows how the conclusion(s) of a conjecture
+can be stated in positive form, how one can search for
+direct proofs as opposed to bidirectional proofs, and
+how multiple conclusions are stated and handled.
+
+<h2>Stating Conclusions in Positive Form</h2>
+
+<blockquote class="otter_diff">
+In Otter, the conclusions are always stated in negated form.
+</blockquote>
+
+Prover9 allows the user to state conclusions in positive
+form by using the lists <tt>clauses(goals)</tt> and
+<tt>formulas(goals)</tt>.
+However, Prover9 always works by refutation, so 
+the clauses or formulas in the <tt>goals</tt> lists
+are negated as described below, and the
+results are appended to the <tt>sos</tt> clause list
+before the search starts.
+
+<p>
+If there is just one clause in <tt>clauses(goals)</tt>,
+the meaning is clear, and the clause is processed by
+taking first taking universal closure, then negating.
+The formula is then handled exactly as if it had
+been input in <tt>formulas(sos)</tt>, that is, by
+Skolemizing and transforming to clauses.
+
+<p>
+If there is just one formula in <tt>formulas(goals)</tt>,
+the meaning is clear, and
+it is simply negated and then Skolemized as usual.
+
+<p>
+If there is more than one clause in <tt>clauses(goals)</tt>
+or more than one formula in <tt>formulas(goals)</tt>, the
+meaning is not clear.  For example, if there are two
+clauses in <tt>clauses(goals)</tt>, is the conclusion
+the disjunction or the conjunction of those clauses?
+What does a list of goal clauses mean if some of them are
+non-units or non-positive?
+
+<p>
+To simplify the meanings of multiple goals, the following
+restrictions are in place.
+
+<ul>
+<li>All clauses in <tt>clauses(goals)</tt> must be positive units.
+<li>At most one formula is accepted in <tt>formulas(goals)</tt>.
+<li>One cannot input both <tt>clauses(goals)</tt> and <tt>formulas(goals)</tt>.
+</ul>
+
+To avoid any of these restrictions, one can always
+write the conclusions clearly as a single formula for
+<tt>formulas(goals)</tt>.
+
+<p>
+When there are multiple goals in <tt>clauses(goals)</tt>,
+should the proofs of the goals be presented together as one proof
+or as separate proofs?  We have chosen the latter for the simple
+reason that if any goal is proved, we wish to have a proof.
+
+<h2>Forward or Direct Proofs</h2>
+
+This subsection refers to the negative clauses that exist at the start
+of the search.  These include ones that are input, ones that are
+derived from ordinary Skolemization, and those that are derived from
+<tt>clauses(goals)</tt> and <tt>formulas(goals)</tt>.
+
+<p>
+The following flag restricts the use of negative clauses,
+with the aim of finding proofs that are more direct.  That
+is, proofs that go forward from the hypotheses to the conclusion
+rather than proofs that reason backward from the conclusion.
+The secondary effect of this flag is that when there are
+multiple conclusions, Prover9 will not give more than one
+proof of the same conclusion.
+
+<!-- start option restrict_denials -->
+<a name="restrict_denials">
+<pre class="my_option">
+set(restrict_denials).
+clear(restrict_denials).    % default clear
+</pre>
+
+<blockquote>
+<p>
+If this flag is set, negative clauses (clauses in which all
+literals are negative) are given special treatment.  At the start
+of the search, they are moved to a list <tt>denials</tt>, and during
+the search, only a subset of the ordinary operations are applied
+to them.
+<p>
+The clauses will <i>not</i> be selected as
+<g>given clause</g>s,
+so the ordinary inference rules of the search will not be applied to them.
+The following operations <i>will</i> be applied to the clauses:
+back demodulation, back unit deletion, unit conflict.
+<p>
+The effect of setting restrict_denials is that proofs
+will usually be more forward or direct.
+This option can speed up proofs, it can delay proofs, and it can
+block all proofs.
+<p>
+In addition, when a clause in list <tt>denials</tt> is used in a proof,
+it is disabled (unless the flag <a href="process-inf.html#reuse_denials"><tt><b>reuse_denials</b></tt></a> is set).
+When multiple proofs are sought (see <a href="limits.html#max_proofs"><tt><b>max_proofs</b></tt></a>), this prevents
+more than one proof of the same theorem.
+</blockquote>
+<!-- end option -->
+
+<h2>Handling Multiple Conclusions</h2>
+
+<!-- start option max_proofs -->
+<a name="max_proofs">
+<pre class="my_option">
+assign(max_proofs, <i>n</i>).  % default <i>n</i>=1, range [-1 .. INT_MAX]
+</pre>
+
+<blockquote>
+This parameter tells Prover9 to stop searching when the
+<i>n</i>-th proof has been found.
+If the user asks for more than one proof by changing this parameter,
+the flag <a href="goals.html#restrict_denials"><tt><b>restrict_denials</b></tt></a> will be automatically set.
+This option dependency prevents multiple proofs of the same theorem.
+
+<p>
+Note that the flag <a href="goals.html#restrict_denials"><tt><b>restrict_denials</b></tt></a> can substantially
+alter the search, so one must be aware of situations like the
+following.  One runs a job that finds a quick proof of a single goal;
+then a second job is run, containing a second goal and also
+<tt>assign(max_proofs,2)</tt>; the first goal may no longer be proved,
+because the first proof has bidirectional reasoning which
+is not allowed by <a href="goals.html#restrict_denials"><tt><b>restrict_denials</b></tt></a>.
+
+<p>
+Of course, the option dependency can be undone with
+<tt>clear(restrict_denials)</tt>.
+</blockquote>
+<!-- end option -->
+
+<h2>Multiple Proofs of the Same Conclusion</h2>
+
+If the flag <a href="goals.html#restrict_denials"><tt><b>restrict_denials</b></tt></a> is set, and
+if there are multiple denials, then by default, when
+a denial is refuted, it is disabled so that it is not
+refuted again later in the search.  The following flag
+allows for multiple refutations using the same denial.
+
+<!-- start option reuse_denials -->
+<a name="reuse_denials">
+<pre class="my_option">
+set(reuse_denials).
+clear(reuse_denials).    % default clear
+</pre>
+
+<blockquote>
+If this flag is set, when a clause in list <tt>denials</tt>
+(which gets there by flag <a href="goals.html#restrict_denials"><tt><b>restrict_denials</b></tt></a>),
+occurs in a proof, it is <i>not</i> disabled, allowing
+it to occur in subsequent proofs.
+</blockquote>
+<!-- end option -->
+
+</body>
+</html>

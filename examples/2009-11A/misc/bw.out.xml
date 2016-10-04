@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE proofs SYSTEM "proof3.dtd">
+
+<?xml-stylesheet type="text/xsl" href="proof3.xsl"?>
+
+<proofs number_of_proofs="1">
+
+<source>bw.out</source>
+
+<heading><![CDATA[
+Prover9 (32) version 2009-11A, November 2009.
+Process 4334 was started by mccune on cleo,
+Tue Nov  3 09:38:57 2009
+The command was "/home/mccune/LADR/bin/prover9 -f bw.in".
+]]></heading>
+
+<proof number="1" length="13" max_count="60">
+
+<comments><![CDATA[
+% Proof 1 at 6.00 (+ 0.05) seconds: fixed_point_combinator.
+% Length of proof is 13.
+% Level of proof is 6.
+% Maximum clause weight is 60.000.
+% Given clauses 117.
+
+]]></comments>
+
+  <clause id="1" type="goal">
+    <literal><![CDATA[
+      (exists Q all x a(Q,x) = a(x,a(Q,x)))
+    ]]></literal>
+    <attribute><![CDATA[
+      label(fixed_point_combinator)
+    ]]></attribute>
+    <attribute><![CDATA[
+      label(non_clause)
+    ]]></attribute>
+    <attribute><![CDATA[
+      label(goal)
+    ]]></attribute>
+    <justification jstring="[goal].">
+      <j1 rule="goal"/>
+    </justification>
+  </clause>
+
+  <clause id="2" type="assumption">
+    <literal><![CDATA[
+      a(a(a(B,x),y),z) = a(x,a(y,z))
+    ]]></literal>
+    <attribute><![CDATA[
+      label(B)
+    ]]></attribute>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="3" type="assumption">
+    <literal><![CDATA[
+      a(a(W,x),y) = a(a(x,y),y)
+    ]]></literal>
+    <attribute><![CDATA[
+      label(W)
+    ]]></attribute>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="4" type="deny">
+    <literal><![CDATA[
+      a(x,f1(x)) != a(f1(x),a(x,f1(x)))
+    ]]></literal>
+    <attribute><![CDATA[
+      label(fixed_point_combinator)
+    ]]></attribute>
+    <attribute><![CDATA[
+      answer(fixed_point_combinator)
+    ]]></attribute>
+    <justification jstring="[deny(1)].">
+      <j1 rule="deny" parents="1"/>
+    </justification>
+  </clause>
+
+  <clause id="5">
+    <literal><![CDATA[
+      a(f1(x),a(x,f1(x))) != a(x,f1(x))
+    ]]></literal>
+    <attribute><![CDATA[
+      answer(fixed_point_combinator)
+    ]]></attribute>
+    <justification jstring="[copy(4),flip(a)].">
+      <j1 rule="copy" parents="4"/>
+      <j2 rule="flip"/>
+    </justification>
+  </clause>
+
+  <clause id="8">
+    <literal><![CDATA[
+      a(a(W,a(B,x)),y) = a(x,a(y,y))
+    ]]></literal>
+    <justification jstring="[para(3(a,2),2(a,1))].">
+      <j1 rule="para" parents="3 2"/>
+    </justification>
+  </clause>
+
+  <clause id="11">
+    <literal><![CDATA[
+      a(a(W,W),x) = a(a(x,x),x)
+    ]]></literal>
+    <justification jstring="[para(3(a,1),3(a,2))].">
+      <j1 rule="para" parents="3 3"/>
+    </justification>
+  </clause>
+
+  <clause id="13">
+    <literal><![CDATA[
+      a(f1(a(a(B,x),y)),a(x,a(y,f1(a(a(B,x),y))))) != a(x,a(y,f1(a(a(B,x),y))))
+    ]]></literal>
+    <attribute><![CDATA[
+      answer(fixed_point_combinator)
+    ]]></attribute>
+    <justification jstring="[para(2(a,1),5(a,1,2)),rewrite([2(19)])].">
+      <j1 rule="para" parents="2 5"/>
+      <j2 rule="rewrite" parents="2"/>
+    </justification>
+  </clause>
+
+  <clause id="27">
+    <literal><![CDATA[
+      a(f1(a(a(B,x),a(a(B,y),z))),a(x,a(y,a(z,f1(a(a(B,x),a(a(B,y),z))))))) != a(x,a(y,a(z,f1(a(a(B,x),a(a(B,y),z))))))
+    ]]></literal>
+    <attribute><![CDATA[
+      answer(fixed_point_combinator)
+    ]]></attribute>
+    <justification jstring="[para(2(a,1),13(a,1,2,2)),rewrite([2(29)])].">
+      <j1 rule="para" parents="2 13"/>
+      <j2 rule="rewrite" parents="2"/>
+    </justification>
+  </clause>
+
+  <clause id="119">
+    <literal><![CDATA[
+      a(a(a(W,a(B,a(B,x))),y),z) = a(x,a(a(y,y),z))
+    ]]></literal>
+    <justification jstring="[para(8(a,2),2(a,1,1))].">
+      <j1 rule="para" parents="8 2"/>
+    </justification>
+  </clause>
+
+  <clause id="6487">
+    <literal><![CDATA[
+      a(f1(a(a(B,a(a(B,x),y)),a(a(B,z),u))),a(x,a(y,a(z,a(u,f1(a(a(B,a(a(B,x),y)),a(a(B,z),u)))))))) != a(x,a(y,a(z,a(u,f1(a(a(B,a(a(B,x),y)),a(a(B,z),u)))))))
+    ]]></literal>
+    <attribute><![CDATA[
+      answer(fixed_point_combinator)
+    ]]></attribute>
+    <justification jstring="[para(2(a,1),27(a,1,2)),rewrite([2(41)])].">
+      <j1 rule="para" parents="2 27"/>
+      <j2 rule="rewrite" parents="2"/>
+    </justification>
+  </clause>
+
+  <clause id="7180">
+    <literal><![CDATA[
+      a(x,a(a(W,W),a(W,a(B,a(B,x))))) = a(a(W,W),a(W,a(B,a(B,x))))
+    ]]></literal>
+    <justification jstring="[para(119(a,1),11(a,2)),rewrite([11(30,R)]),flip(a)].">
+      <j1 rule="para" parents="119 11"/>
+      <j2 rule="rewrite" parents="11"/>
+      <j2 rule="flip"/>
+    </justification>
+  </clause>
+
+  <clause id="7181">
+    <literal><![CDATA[
+      $F
+    ]]></literal>
+    <attribute><![CDATA[
+      answer(fixed_point_combinator)
+    ]]></attribute>
+    <justification jstring="[resolve(7180,a,6487,a)].">
+      <j1 rule="resolve" parents="7180 6487"/>
+    </justification>
+  </clause>
+
+</proof>
+
+</proofs>

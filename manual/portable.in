@@ -1,0 +1,24 @@
+
+
+
+
+formulas(assumptions).
+
+p0.
+p1(f0).
+p2(f1(f0),f2(f0,f0)).
+p3(f0,f0,f3(f0,f0,f0)).
+
+f2(x,f1(x)) = f0.
+f2(x,f0) = x.
+f2(f2(x,y),z) = f2(x,f2(y,z)).
+
+f3(x,y,z) = f2(z,x).
+
+p2(x,x).
+p2(x,y) & p2(y,z) -> p2(x,z).
+p2(0,1). p2(1,2).
+
+p2(x,y) -> p3(x,y,x).
+
+end_of_list.

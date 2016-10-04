@@ -1,0 +1,17 @@
+formulas(demodulators).
+
+  % This is the complete set of reductions for free groups.
+  % It can be used to canonicalize group terms.
+
+  (x * y) * z = x * (y * z).
+  e * x = x.
+  x * e = x.
+  x' * x = e.
+  x * x' = e.
+  x' ' = x.
+  e' = e.
+  x * (x' * y) = y.
+  x' * (x * y) = y.
+  (x * y)' = y' * x'.
+
+end_of_list.

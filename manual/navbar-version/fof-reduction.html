@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+  <title>Prover9 Manual: FOF Reduction</title>
+ <link rel="stylesheet" href="manual.css">
+</head>
+
+<body>
+
+<!-- Site navigation menu -->
+
+<ul class="navbar">
+  <li><a href="index.html">Introduction</a>
+  <li><a href="install.html">Installation</a>
+  <li><a href="running.html">Running Prover9</a>
+  <li><a href="input.html">Input Files</a>
+  <li><a href="syntax.html">Clauses & Formulas</a>
+  <li>Search Prep
+  <ul class="navbar2">
+    <li><a href="auto.html">Auto Modes</a>
+    <li><a href="term-order.html">Term Ordering</a>
+    <li><a href="more-prep.html">More Prep</a>
+    <li><a href="limits.html">Search Limits</a>
+  </ul>
+  <li>Inference
+  <ul class="navbar2">
+    <li><a href="loop.html">The Loop</a>
+    <li><a href="select.html">Select Given</a>
+    <li><a href="inf-rules.html">Inference Rules</a>
+    <li><a href="process-inf.html">Process Inferred</a>
+  </ul>
+  <li><a href="output.html">Output Files</a>
+  <li>More Features
+  <ul class="navbar2">
+    <li><a href="weight.html">Weighting</a>
+    <li><a href="attributes.html">Attributes</a>
+    <li><a href="actions.html">Actions</a>
+    <li><a href="fof-reduction.html">FOF Reduction</a>
+    <li><a href="goals.html">Goals</a>
+    <li><a href="hints.html">Hints</a>
+    <li><a href="semantics.html">Semantics</a>
+  </ul>
+  <li>Related Programs
+  <ul class="navbar2">
+    <li><a href="prooftrans.html">Prooftrans</a>
+    <li><a href="mace4.html">Mace4</a>
+  </ul>
+  <li>Ending
+  <ul class="navbar2">
+    <li><a href="options.html">All Options</a>
+    <li><a href="glossary.html">Glossary</a>
+    <li><a href="manual-index.html">Index</a>
+    <li><a href="references.html">References</a>
+  </ul>
+</ul>
+
+<div class="header">Prover9 Manual Version June-2006</div>
+
+<!-- Main content -->
+
+<h1>FOF Reduction</h1>
+
+FOF (First-Order Formula) reduction is a method of attempting to
+simplify a problem by reducing it to an equivalent set of
+independent subproblems.  A trivial example is to reduce the
+conjecture <tt>A <-> B</tt> to the pair of problems
+<tt>A -> B</tt> and <tt>B -> A</tt>.
+
+<h2>Flags for FOF Reduction</h2>
+
+<!-- start option fof_reduction -->
+<a name="fof_reduction">
+<pre class="my_option">
+set(fof_reduction).
+clear(fof_reduction).    % default clear
+</pre>
+
+<blockquote>
+If this flag is set, and if the logical
+specification is all formulas (rather than clauses), Prover9 will attempt
+to transform the problem into a set of independent subproblems.  The
+problem reduction uses a miniscope method
+[<a href="references.html#Champeaux-miniscope">Champeaux-miniscope</a>],
+and it can easily blow up on complex formulas.
+Therefore, if the reduction procedure fails to
+terminate within a few seconds, or if the subproblems it produces are
+more complex than the original problem, the reduction attempt is aborted,
+and Prover9 reverts to standard clausification. If the reduction succeeds,
+each subproblem is given to the ordinary Prover9 search procedure.
+</blockquote>
+<!-- end option -->
+
+<!-- start option print_subproblems -->
+<a name="print_subproblems">
+<pre class="my_option">
+set(print_subproblems).    % default set
+clear(print_subproblems).
+</pre>
+
+<blockquote>
+This flag is consulted when the FOF reduction procedure is in use.
+If the flag is set, each subproblem is printed just before
+search starts on that subproblem.
+</blockquote>
+<!-- end option -->
+
+<h2>An Example of FOF Reduction</h2>
+
+This example was given by Peter Andrews as a challenge problem for resolution
+systems in the 1970s.  Prover9's miniscope procedure reduces it to 32
+trivial subproblems.  (More powerful miniscope methods can solve the problem
+by reducing it to 0 subproblems.)
+
+<pre class="my_job">
+prover9 -f <a href="andrews.in">andrews.in</a> &gt; <a href="andrews.out">andrews.out</a>
+</pre>
+
+Here is the same problem without FOF reduction.
+
+<pre class="my_job">
+prover9 -f <a href="andrews2.in">andrews2.in</a> &gt; <a href="andrews2.out">andrews2.out</a>
+</pre>
+
+The preceding example is artificial and seems tailor-made for FOF reduction.
+Other, more realistic examples can be found in the
+<a href="http://www.mcs.anl.gov/~mccune/prover9/examples">
+standard set of Prover9 examples</a>.
+
+
+</body>
+</html>

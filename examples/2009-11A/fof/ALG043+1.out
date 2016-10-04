@@ -1,0 +1,1042 @@
+============================== FOF-Prover9 ===========================
+FOF-Prover9 (32) version 2009-11A, November 2009.
+Process 23888 was started by mccune on cleo,
+Tue Nov  3 16:59:14 2009
+The command was "/home/mccune/LADR/bin/fof-prover9 -f ALG043+1.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file ALG043+1.in
+
+assign(max_seconds,30).
+set(prolog_style_variables).
+
+formulas(assumptions).
+e0 != e1 & e0 != e2 & e0 != e3 & e1 != e2 & e1 != e3 & e2 != e3.
+op(e0,e0) = e0 & op(e0,e1) = e1 & op(e0,e2) = e2 & op(e0,e3) = e3 & op(e1,e0) = e1 & op(e1,e1) = e0 & op(e1,e2) = e3 & op(e1,e3) = e2 & op(e2,e0) = e2 & op(e2,e1) = e3 & op(e2,e2) = e0 & op(e2,e3) = e1 & op(e3,e0) = e3 & op(e3,e1) = e2 & op(e3,e2) = e1 & op(e3,e3) = e0.
+unit = e0.
+-((op(e0,e0) = e0 & op(e1,e1) = e0 & op(e2,e2) = e0 & op(e3,e3) = e0 | op(e0,e0) = e1 & op(e1,e1) = e1 & op(e2,e2) = e1 & op(e3,e3) = e1 | op(e0,e0) = e2 & op(e1,e1) = e2 & op(e2,e2) = e2 & op(e3,e3) = e2 | op(e0,e0) = e3 & op(e1,e1) = e3 & op(e2,e2) = e3 & op(e3,e3) = e3) & (op(e0,e0) = e0 | op(e0,e0) = e1 | op(e0,e0) = e2 | op(e0,e0) = e3) & (op(e0,e1) = e0 | op(e0,e1) = e1 | op(e0,e1) = e2 | op(e0,e1) = e3) & (op(e0,e2) = e0 | op(e0,e2) = e1 | op(e0,e2) = e2 | op(e0,e2) = e3) & (op(e0,e3) = e0 | op(e0,e3) = e1 | op(e0,e3) = e2 | op(e0,e3) = e3) & (op(e1,e0) = e0 | op(e1,e0) = e1 | op(e1,e0) = e2 | op(e1,e0) = e3) & (op(e1,e1) = e0 | op(e1,e1) = e1 | op(e1,e1) = e2 | op(e1,e1) = e3) & (op(e1,e2) = e0 | op(e1,e2) = e1 | op(e1,e2) = e2 | op(e1,e2) = e3) & (op(e1,e3) = e0 | op(e1,e3) = e1 | op(e1,e3) = e2 | op(e1,e3) = e3) & (op(e2,e0) = e0 | op(e2,e0) = e1 | op(e2,e0) = e2 | op(e2,e0) = e3) & (op(e2,e1) = e0 | op(e2,e1) = e1 | op(e2,e1) = e2 | op(e2,e1) = e3) & (op(e2,e2) = e0 | op(e2,e2) = e1 | op(e2,e2) = e2 | op(e2,e2) = e3) & (op(e2,e3) = e0 | op(e2,e3) = e1 | op(e2,e3) = e2 | op(e2,e3) = e3) & (op(e3,e0) = e0 | op(e3,e0) = e1 | op(e3,e0) = e2 | op(e3,e0) = e3) & (op(e3,e1) = e0 | op(e3,e1) = e1 | op(e3,e1) = e2 | op(e3,e1) = e3) & (op(e3,e2) = e0 | op(e3,e2) = e1 | op(e3,e2) = e2 | op(e3,e2) = e3) & (op(e3,e3) = e0 | op(e3,e3) = e1 | op(e3,e3) = e2 | op(e3,e3) = e3) & op(unit,e0) = e0 & op(e0,unit) = e0 & op(unit,e1) = e1 & op(e1,unit) = e1 & op(unit,e2) = e2 & op(e2,unit) = e2 & op(unit,e3) = e3 & op(e3,unit) = e3 & (unit = e0 | unit = e1 | unit = e2 | unit = e3) & (op(e0,e0) = e0 | op(e0,e1) = e0 | op(e0,e2) = e0 | op(e0,e3) = e0) & (op(e0,e0) = e0 | op(e1,e0) = e0 | op(e2,e0) = e0 | op(e3,e0) = e0) & (op(e0,e0) = e1 | op(e0,e1) = e1 | op(e0,e2) = e1 | op(e0,e3) = e1) & (op(e0,e0) = e1 | op(e1,e0) = e1 | op(e2,e0) = e1 | op(e3,e0) = e1) & (op(e0,e0) = e2 | op(e0,e1) = e2 | op(e0,e2) = e2 | op(e0,e3) = e2) & (op(e0,e0) = e2 | op(e1,e0) = e2 | op(e2,e0) = e2 | op(e3,e0) = e2) & (op(e0,e0) = e3 | op(e0,e1) = e3 | op(e0,e2) = e3 | op(e0,e3) = e3) & (op(e0,e0) = e3 | op(e1,e0) = e3 | op(e2,e0) = e3 | op(e3,e0) = e3) & (op(e1,e0) = e0 | op(e1,e1) = e0 | op(e1,e2) = e0 | op(e1,e3) = e0) & (op(e0,e1) = e0 | op(e1,e1) = e0 | op(e2,e1) = e0 | op(e3,e1) = e0) & (op(e1,e0) = e1 | op(e1,e1) = e1 | op(e1,e2) = e1 | op(e1,e3) = e1) & (op(e0,e1) = e1 | op(e1,e1) = e1 | op(e2,e1) = e1 | op(e3,e1) = e1) & (op(e1,e0) = e2 | op(e1,e1) = e2 | op(e1,e2) = e2 | op(e1,e3) = e2) & (op(e0,e1) = e2 | op(e1,e1) = e2 | op(e2,e1) = e2 | op(e3,e1) = e2) & (op(e1,e0) = e3 | op(e1,e1) = e3 | op(e1,e2) = e3 | op(e1,e3) = e3) & (op(e0,e1) = e3 | op(e1,e1) = e3 | op(e2,e1) = e3 | op(e3,e1) = e3) & (op(e2,e0) = e0 | op(e2,e1) = e0 | op(e2,e2) = e0 | op(e2,e3) = e0) & (op(e0,e2) = e0 | op(e1,e2) = e0 | op(e2,e2) = e0 | op(e3,e2) = e0) & (op(e2,e0) = e1 | op(e2,e1) = e1 | op(e2,e2) = e1 | op(e2,e3) = e1) & (op(e0,e2) = e1 | op(e1,e2) = e1 | op(e2,e2) = e1 | op(e3,e2) = e1) & (op(e2,e0) = e2 | op(e2,e1) = e2 | op(e2,e2) = e2 | op(e2,e3) = e2) & (op(e0,e2) = e2 | op(e1,e2) = e2 | op(e2,e2) = e2 | op(e3,e2) = e2) & (op(e2,e0) = e3 | op(e2,e1) = e3 | op(e2,e2) = e3 | op(e2,e3) = e3) & (op(e0,e2) = e3 | op(e1,e2) = e3 | op(e2,e2) = e3 | op(e3,e2) = e3) & (op(e3,e0) = e0 | op(e3,e1) = e0 | op(e3,e2) = e0 | op(e3,e3) = e0) & (op(e0,e3) = e0 | op(e1,e3) = e0 | op(e2,e3) = e0 | op(e3,e3) = e0) & (op(e3,e0) = e1 | op(e3,e1) = e1 | op(e3,e2) = e1 | op(e3,e3) = e1) & (op(e0,e3) = e1 | op(e1,e3) = e1 | op(e2,e3) = e1 | op(e3,e3) = e1) & (op(e3,e0) = e2 | op(e3,e1) = e2 | op(e3,e2) = e2 | op(e3,e3) = e2) & (op(e0,e3) = e2 | op(e1,e3) = e2 | op(e2,e3) = e2 | op(e3,e3) = e2) & (op(e3,e0) = e3 | op(e3,e1) = e3 | op(e3,e2) = e3 | op(e3,e3) = e3) & (op(e0,e3) = e3 | op(e1,e3) = e3 | op(e2,e3) = e3 | op(e3,e3) = e3)).
+end_of_list.
+
+============================== end of input ==========================
+
+% clear(auto_denials), because it is incompatiable with FOF reduction.
+
+Attempting problem reduction; original problem has <nnf_size,cnf_max> = <529,23>.
+
+Problem reduction (0.08 sec) gives 8 independent subproblems: ( <32,24> <32,24> <32,24> <32,24> <32,24> <32,24> <32,24> <32,24> ).
+
+Max nnf_size of subproblems is 32; max cnf_max is 24.
+
+============================== FOF REDUCTION MULTISEARCH =============
+
+Subproblem 1 of 8 (negated):
+(- =(e1,e0) & - =(e2,e0) & - =(e3,e0) & - =(e2,e1) & - =(e3,e1) & - =(e3,e2) & =(op(e0,e0),e0) & =(op(e0,e1),e1) & =(op(e0,e2),e2) & =(op(e0,e3),e3) & =(op(e1,e0),e1) & =(op(e1,e1),e0) & =(op(e1,e2),e3) & =(op(e1,e3),e2) & =(op(e2,e0),e2) & =(op(e2,e1),e3) & =(op(e2,e2),e0) & =(op(e2,e3),e1) & =(op(e3,e0),e3) & =(op(e3,e1),e2) & =(op(e3,e2),e1) & =(op(e3,e3),e0) & =(unit,e0) & - =(op(unit,e0),e0)).
+
+Max_seconds is 30 for this subproblem.
+
+Child search process 23889 started.
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+e1 != e0.  [assumption].
+e2 != e0.  [assumption].
+e3 != e0.  [assumption].
+e2 != e1.  [assumption].
+e3 != e1.  [assumption].
+e3 != e2.  [assumption].
+op(e0,e0) = e0.  [assumption].
+op(e0,e1) = e1.  [assumption].
+op(e0,e2) = e2.  [assumption].
+op(e0,e3) = e3.  [assumption].
+op(e1,e0) = e1.  [assumption].
+op(e1,e1) = e0.  [assumption].
+op(e1,e2) = e3.  [assumption].
+op(e1,e3) = e2.  [assumption].
+op(e2,e0) = e2.  [assumption].
+op(e2,e1) = e3.  [assumption].
+op(e2,e2) = e0.  [assumption].
+op(e2,e3) = e1.  [assumption].
+op(e3,e0) = e3.  [assumption].
+op(e3,e1) = e2.  [assumption].
+op(e3,e2) = e1.  [assumption].
+op(e3,e3) = e0.  [assumption].
+unit = e0.  [assumption].
+op(unit,e0) != e0.  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ = ]).
+Function symbol precedence:  function_order([ e0, e1, e2, e3, unit, op ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(paramodulation).  % (positive equality literals)
+
+Auto_process settings:  (no changes).
+
+kept:      1 e1 != e0.  [assumption].
+kept:      2 e2 != e0.  [assumption].
+kept:      3 e3 != e0.  [assumption].
+kept:      4 e2 != e1.  [assumption].
+kept:      5 e3 != e1.  [assumption].
+kept:      6 e3 != e2.  [assumption].
+kept:      7 op(e0,e0) = e0.  [assumption].
+kept:      8 op(e0,e1) = e1.  [assumption].
+kept:      9 op(e0,e2) = e2.  [assumption].
+kept:      10 op(e0,e3) = e3.  [assumption].
+kept:      11 op(e1,e0) = e1.  [assumption].
+kept:      12 op(e1,e1) = e0.  [assumption].
+kept:      13 op(e1,e2) = e3.  [assumption].
+kept:      14 op(e1,e3) = e2.  [assumption].
+kept:      15 op(e2,e0) = e2.  [assumption].
+kept:      16 op(e2,e1) = e3.  [assumption].
+kept:      17 op(e2,e2) = e0.  [assumption].
+kept:      18 op(e2,e3) = e1.  [assumption].
+kept:      19 op(e3,e0) = e3.  [assumption].
+kept:      20 op(e3,e1) = e2.  [assumption].
+kept:      21 op(e3,e2) = e1.  [assumption].
+kept:      22 op(e3,e3) = e0.  [assumption].
+kept:      23 unit = e0.  [assumption].
+           24 op(unit,e0) != e0.  [assumption].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 4.
+% Level of proof is 1.
+% Maximum clause weight is 5.000.
+% Given clauses 0.
+
+7 op(e0,e0) = e0.  [assumption].
+23 unit = e0.  [assumption].
+24 op(unit,e0) != e0.  [assumption].
+25 $F.  [copy(24),rewrite([23(1),7(3)]),xx(a)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=0. Generated=24. Kept=23. proofs=1.
+Usable=0. Sos=0. Demods=17. Limbo=23, Disabled=24. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=0. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=17 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=163. Demod_rewrites=2.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.33.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+Exiting with 1 proof.
+
+Process 23889 exit (max_proofs) Tue Nov  3 16:59:14 2009
+
+============================== continuing FOF reduction multisearch ==
+
+Subproblem 2 of 8 (negated):
+(- =(e1,e0) & - =(e2,e0) & - =(e3,e0) & - =(e2,e1) & - =(e3,e1) & - =(e3,e2) & =(op(e0,e0),e0) & =(op(e0,e1),e1) & =(op(e0,e2),e2) & =(op(e0,e3),e3) & =(op(e1,e0),e1) & =(op(e1,e1),e0) & =(op(e1,e2),e3) & =(op(e1,e3),e2) & =(op(e2,e0),e2) & =(op(e2,e1),e3) & =(op(e2,e2),e0) & =(op(e2,e3),e1) & =(op(e3,e0),e3) & =(op(e3,e1),e2) & =(op(e3,e2),e1) & =(op(e3,e3),e0) & =(unit,e0) & - =(op(e0,unit),e0)).
+
+Max_seconds is 30 for this subproblem.
+
+Child search process 23890 started.
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+e1 != e0.  [assumption].
+e2 != e0.  [assumption].
+e3 != e0.  [assumption].
+e2 != e1.  [assumption].
+e3 != e1.  [assumption].
+e3 != e2.  [assumption].
+op(e0,e0) = e0.  [assumption].
+op(e0,e1) = e1.  [assumption].
+op(e0,e2) = e2.  [assumption].
+op(e0,e3) = e3.  [assumption].
+op(e1,e0) = e1.  [assumption].
+op(e1,e1) = e0.  [assumption].
+op(e1,e2) = e3.  [assumption].
+op(e1,e3) = e2.  [assumption].
+op(e2,e0) = e2.  [assumption].
+op(e2,e1) = e3.  [assumption].
+op(e2,e2) = e0.  [assumption].
+op(e2,e3) = e1.  [assumption].
+op(e3,e0) = e3.  [assumption].
+op(e3,e1) = e2.  [assumption].
+op(e3,e2) = e1.  [assumption].
+op(e3,e3) = e0.  [assumption].
+unit = e0.  [assumption].
+op(e0,unit) != e0.  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ = ]).
+Function symbol precedence:  function_order([ e0, e1, e2, e3, unit, op ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(paramodulation).  % (positive equality literals)
+
+Auto_process settings:  (no changes).
+
+kept:      1 e1 != e0.  [assumption].
+kept:      2 e2 != e0.  [assumption].
+kept:      3 e3 != e0.  [assumption].
+kept:      4 e2 != e1.  [assumption].
+kept:      5 e3 != e1.  [assumption].
+kept:      6 e3 != e2.  [assumption].
+kept:      7 op(e0,e0) = e0.  [assumption].
+kept:      8 op(e0,e1) = e1.  [assumption].
+kept:      9 op(e0,e2) = e2.  [assumption].
+kept:      10 op(e0,e3) = e3.  [assumption].
+kept:      11 op(e1,e0) = e1.  [assumption].
+kept:      12 op(e1,e1) = e0.  [assumption].
+kept:      13 op(e1,e2) = e3.  [assumption].
+kept:      14 op(e1,e3) = e2.  [assumption].
+kept:      15 op(e2,e0) = e2.  [assumption].
+kept:      16 op(e2,e1) = e3.  [assumption].
+kept:      17 op(e2,e2) = e0.  [assumption].
+kept:      18 op(e2,e3) = e1.  [assumption].
+kept:      19 op(e3,e0) = e3.  [assumption].
+kept:      20 op(e3,e1) = e2.  [assumption].
+kept:      21 op(e3,e2) = e1.  [assumption].
+kept:      22 op(e3,e3) = e0.  [assumption].
+kept:      23 unit = e0.  [assumption].
+           24 op(e0,unit) != e0.  [assumption].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 4.
+% Level of proof is 1.
+% Maximum clause weight is 5.000.
+% Given clauses 0.
+
+7 op(e0,e0) = e0.  [assumption].
+23 unit = e0.  [assumption].
+24 op(e0,unit) != e0.  [assumption].
+25 $F.  [copy(24),rewrite([23(2),7(3)]),xx(a)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=0. Generated=24. Kept=23. proofs=1.
+Usable=0. Sos=0. Demods=17. Limbo=23, Disabled=24. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=0. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=17 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=163. Demod_rewrites=2.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.33.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+Exiting with 1 proof.
+
+Process 23890 exit (max_proofs) Tue Nov  3 16:59:14 2009
+
+============================== continuing FOF reduction multisearch ==
+
+Subproblem 3 of 8 (negated):
+(- =(e1,e0) & - =(e2,e0) & - =(e3,e0) & - =(e2,e1) & - =(e3,e1) & - =(e3,e2) & =(op(e0,e0),e0) & =(op(e0,e1),e1) & =(op(e0,e2),e2) & =(op(e0,e3),e3) & =(op(e1,e0),e1) & =(op(e1,e1),e0) & =(op(e1,e2),e3) & =(op(e1,e3),e2) & =(op(e2,e0),e2) & =(op(e2,e1),e3) & =(op(e2,e2),e0) & =(op(e2,e3),e1) & =(op(e3,e0),e3) & =(op(e3,e1),e2) & =(op(e3,e2),e1) & =(op(e3,e3),e0) & =(unit,e0) & - =(op(unit,e1),e1)).
+
+Max_seconds is 30 for this subproblem.
+
+Child search process 23891 started.
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+e1 != e0.  [assumption].
+e2 != e0.  [assumption].
+e3 != e0.  [assumption].
+e2 != e1.  [assumption].
+e3 != e1.  [assumption].
+e3 != e2.  [assumption].
+op(e0,e0) = e0.  [assumption].
+op(e0,e1) = e1.  [assumption].
+op(e0,e2) = e2.  [assumption].
+op(e0,e3) = e3.  [assumption].
+op(e1,e0) = e1.  [assumption].
+op(e1,e1) = e0.  [assumption].
+op(e1,e2) = e3.  [assumption].
+op(e1,e3) = e2.  [assumption].
+op(e2,e0) = e2.  [assumption].
+op(e2,e1) = e3.  [assumption].
+op(e2,e2) = e0.  [assumption].
+op(e2,e3) = e1.  [assumption].
+op(e3,e0) = e3.  [assumption].
+op(e3,e1) = e2.  [assumption].
+op(e3,e2) = e1.  [assumption].
+op(e3,e3) = e0.  [assumption].
+unit = e0.  [assumption].
+op(unit,e1) != e1.  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ = ]).
+Function symbol precedence:  function_order([ e0, e1, e2, e3, unit, op ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(paramodulation).  % (positive equality literals)
+
+Auto_process settings:  (no changes).
+
+kept:      1 e1 != e0.  [assumption].
+kept:      2 e2 != e0.  [assumption].
+kept:      3 e3 != e0.  [assumption].
+kept:      4 e2 != e1.  [assumption].
+kept:      5 e3 != e1.  [assumption].
+kept:      6 e3 != e2.  [assumption].
+kept:      7 op(e0,e0) = e0.  [assumption].
+kept:      8 op(e0,e1) = e1.  [assumption].
+kept:      9 op(e0,e2) = e2.  [assumption].
+kept:      10 op(e0,e3) = e3.  [assumption].
+kept:      11 op(e1,e0) = e1.  [assumption].
+kept:      12 op(e1,e1) = e0.  [assumption].
+kept:      13 op(e1,e2) = e3.  [assumption].
+kept:      14 op(e1,e3) = e2.  [assumption].
+kept:      15 op(e2,e0) = e2.  [assumption].
+kept:      16 op(e2,e1) = e3.  [assumption].
+kept:      17 op(e2,e2) = e0.  [assumption].
+kept:      18 op(e2,e3) = e1.  [assumption].
+kept:      19 op(e3,e0) = e3.  [assumption].
+kept:      20 op(e3,e1) = e2.  [assumption].
+kept:      21 op(e3,e2) = e1.  [assumption].
+kept:      22 op(e3,e3) = e0.  [assumption].
+kept:      23 unit = e0.  [assumption].
+           24 op(unit,e1) != e1.  [assumption].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 4.
+% Level of proof is 1.
+% Maximum clause weight is 5.000.
+% Given clauses 0.
+
+8 op(e0,e1) = e1.  [assumption].
+23 unit = e0.  [assumption].
+24 op(unit,e1) != e1.  [assumption].
+25 $F.  [copy(24),rewrite([23(1),8(3)]),xx(a)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=0. Generated=24. Kept=23. proofs=1.
+Usable=0. Sos=0. Demods=17. Limbo=23, Disabled=24. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=0. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=17 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=163. Demod_rewrites=2.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.33.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+Exiting with 1 proof.
+
+Process 23891 exit (max_proofs) Tue Nov  3 16:59:14 2009
+
+============================== continuing FOF reduction multisearch ==
+
+Subproblem 4 of 8 (negated):
+(- =(e1,e0) & - =(e2,e0) & - =(e3,e0) & - =(e2,e1) & - =(e3,e1) & - =(e3,e2) & =(op(e0,e0),e0) & =(op(e0,e1),e1) & =(op(e0,e2),e2) & =(op(e0,e3),e3) & =(op(e1,e0),e1) & =(op(e1,e1),e0) & =(op(e1,e2),e3) & =(op(e1,e3),e2) & =(op(e2,e0),e2) & =(op(e2,e1),e3) & =(op(e2,e2),e0) & =(op(e2,e3),e1) & =(op(e3,e0),e3) & =(op(e3,e1),e2) & =(op(e3,e2),e1) & =(op(e3,e3),e0) & =(unit,e0) & - =(op(e1,unit),e1)).
+
+Max_seconds is 30 for this subproblem.
+
+Child search process 23892 started.
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+e1 != e0.  [assumption].
+e2 != e0.  [assumption].
+e3 != e0.  [assumption].
+e2 != e1.  [assumption].
+e3 != e1.  [assumption].
+e3 != e2.  [assumption].
+op(e0,e0) = e0.  [assumption].
+op(e0,e1) = e1.  [assumption].
+op(e0,e2) = e2.  [assumption].
+op(e0,e3) = e3.  [assumption].
+op(e1,e0) = e1.  [assumption].
+op(e1,e1) = e0.  [assumption].
+op(e1,e2) = e3.  [assumption].
+op(e1,e3) = e2.  [assumption].
+op(e2,e0) = e2.  [assumption].
+op(e2,e1) = e3.  [assumption].
+op(e2,e2) = e0.  [assumption].
+op(e2,e3) = e1.  [assumption].
+op(e3,e0) = e3.  [assumption].
+op(e3,e1) = e2.  [assumption].
+op(e3,e2) = e1.  [assumption].
+op(e3,e3) = e0.  [assumption].
+unit = e0.  [assumption].
+op(e1,unit) != e1.  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ = ]).
+Function symbol precedence:  function_order([ e0, e1, e2, e3, unit, op ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(paramodulation).  % (positive equality literals)
+
+Auto_process settings:  (no changes).
+
+kept:      1 e1 != e0.  [assumption].
+kept:      2 e2 != e0.  [assumption].
+kept:      3 e3 != e0.  [assumption].
+kept:      4 e2 != e1.  [assumption].
+kept:      5 e3 != e1.  [assumption].
+kept:      6 e3 != e2.  [assumption].
+kept:      7 op(e0,e0) = e0.  [assumption].
+kept:      8 op(e0,e1) = e1.  [assumption].
+kept:      9 op(e0,e2) = e2.  [assumption].
+kept:      10 op(e0,e3) = e3.  [assumption].
+kept:      11 op(e1,e0) = e1.  [assumption].
+kept:      12 op(e1,e1) = e0.  [assumption].
+kept:      13 op(e1,e2) = e3.  [assumption].
+kept:      14 op(e1,e3) = e2.  [assumption].
+kept:      15 op(e2,e0) = e2.  [assumption].
+kept:      16 op(e2,e1) = e3.  [assumption].
+kept:      17 op(e2,e2) = e0.  [assumption].
+kept:      18 op(e2,e3) = e1.  [assumption].
+kept:      19 op(e3,e0) = e3.  [assumption].
+kept:      20 op(e3,e1) = e2.  [assumption].
+kept:      21 op(e3,e2) = e1.  [assumption].
+kept:      22 op(e3,e3) = e0.  [assumption].
+kept:      23 unit = e0.  [assumption].
+           24 op(e1,unit) != e1.  [assumption].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 4.
+% Level of proof is 1.
+% Maximum clause weight is 5.000.
+% Given clauses 0.
+
+11 op(e1,e0) = e1.  [assumption].
+23 unit = e0.  [assumption].
+24 op(e1,unit) != e1.  [assumption].
+25 $F.  [copy(24),rewrite([23(2),11(3)]),xx(a)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=0. Generated=24. Kept=23. proofs=1.
+Usable=0. Sos=0. Demods=17. Limbo=23, Disabled=24. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=0. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=17 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=163. Demod_rewrites=2.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.33.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+Exiting with 1 proof.
+
+Process 23892 exit (max_proofs) Tue Nov  3 16:59:14 2009
+
+============================== continuing FOF reduction multisearch ==
+
+Subproblem 5 of 8 (negated):
+(- =(e1,e0) & - =(e2,e0) & - =(e3,e0) & - =(e2,e1) & - =(e3,e1) & - =(e3,e2) & =(op(e0,e0),e0) & =(op(e0,e1),e1) & =(op(e0,e2),e2) & =(op(e0,e3),e3) & =(op(e1,e0),e1) & =(op(e1,e1),e0) & =(op(e1,e2),e3) & =(op(e1,e3),e2) & =(op(e2,e0),e2) & =(op(e2,e1),e3) & =(op(e2,e2),e0) & =(op(e2,e3),e1) & =(op(e3,e0),e3) & =(op(e3,e1),e2) & =(op(e3,e2),e1) & =(op(e3,e3),e0) & =(unit,e0) & - =(op(unit,e2),e2)).
+
+Max_seconds is 30 for this subproblem.
+
+Child search process 23893 started.
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+e1 != e0.  [assumption].
+e2 != e0.  [assumption].
+e3 != e0.  [assumption].
+e2 != e1.  [assumption].
+e3 != e1.  [assumption].
+e3 != e2.  [assumption].
+op(e0,e0) = e0.  [assumption].
+op(e0,e1) = e1.  [assumption].
+op(e0,e2) = e2.  [assumption].
+op(e0,e3) = e3.  [assumption].
+op(e1,e0) = e1.  [assumption].
+op(e1,e1) = e0.  [assumption].
+op(e1,e2) = e3.  [assumption].
+op(e1,e3) = e2.  [assumption].
+op(e2,e0) = e2.  [assumption].
+op(e2,e1) = e3.  [assumption].
+op(e2,e2) = e0.  [assumption].
+op(e2,e3) = e1.  [assumption].
+op(e3,e0) = e3.  [assumption].
+op(e3,e1) = e2.  [assumption].
+op(e3,e2) = e1.  [assumption].
+op(e3,e3) = e0.  [assumption].
+unit = e0.  [assumption].
+op(unit,e2) != e2.  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ = ]).
+Function symbol precedence:  function_order([ e0, e1, e2, e3, unit, op ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(paramodulation).  % (positive equality literals)
+
+Auto_process settings:  (no changes).
+
+kept:      1 e1 != e0.  [assumption].
+kept:      2 e2 != e0.  [assumption].
+kept:      3 e3 != e0.  [assumption].
+kept:      4 e2 != e1.  [assumption].
+kept:      5 e3 != e1.  [assumption].
+kept:      6 e3 != e2.  [assumption].
+kept:      7 op(e0,e0) = e0.  [assumption].
+kept:      8 op(e0,e1) = e1.  [assumption].
+kept:      9 op(e0,e2) = e2.  [assumption].
+kept:      10 op(e0,e3) = e3.  [assumption].
+kept:      11 op(e1,e0) = e1.  [assumption].
+kept:      12 op(e1,e1) = e0.  [assumption].
+kept:      13 op(e1,e2) = e3.  [assumption].
+kept:      14 op(e1,e3) = e2.  [assumption].
+kept:      15 op(e2,e0) = e2.  [assumption].
+kept:      16 op(e2,e1) = e3.  [assumption].
+kept:      17 op(e2,e2) = e0.  [assumption].
+kept:      18 op(e2,e3) = e1.  [assumption].
+kept:      19 op(e3,e0) = e3.  [assumption].
+kept:      20 op(e3,e1) = e2.  [assumption].
+kept:      21 op(e3,e2) = e1.  [assumption].
+kept:      22 op(e3,e3) = e0.  [assumption].
+kept:      23 unit = e0.  [assumption].
+           24 op(unit,e2) != e2.  [assumption].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 4.
+% Level of proof is 1.
+% Maximum clause weight is 5.000.
+% Given clauses 0.
+
+9 op(e0,e2) = e2.  [assumption].
+23 unit = e0.  [assumption].
+24 op(unit,e2) != e2.  [assumption].
+25 $F.  [copy(24),rewrite([23(1),9(3)]),xx(a)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=0. Generated=24. Kept=23. proofs=1.
+Usable=0. Sos=0. Demods=17. Limbo=23, Disabled=24. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=0. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=17 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=163. Demod_rewrites=2.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.33.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+Exiting with 1 proof.
+
+Process 23893 exit (max_proofs) Tue Nov  3 16:59:14 2009
+
+============================== continuing FOF reduction multisearch ==
+
+Subproblem 6 of 8 (negated):
+(- =(e1,e0) & - =(e2,e0) & - =(e3,e0) & - =(e2,e1) & - =(e3,e1) & - =(e3,e2) & =(op(e0,e0),e0) & =(op(e0,e1),e1) & =(op(e0,e2),e2) & =(op(e0,e3),e3) & =(op(e1,e0),e1) & =(op(e1,e1),e0) & =(op(e1,e2),e3) & =(op(e1,e3),e2) & =(op(e2,e0),e2) & =(op(e2,e1),e3) & =(op(e2,e2),e0) & =(op(e2,e3),e1) & =(op(e3,e0),e3) & =(op(e3,e1),e2) & =(op(e3,e2),e1) & =(op(e3,e3),e0) & =(unit,e0) & - =(op(e2,unit),e2)).
+
+Max_seconds is 30 for this subproblem.
+
+Child search process 23894 started.
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+e1 != e0.  [assumption].
+e2 != e0.  [assumption].
+e3 != e0.  [assumption].
+e2 != e1.  [assumption].
+e3 != e1.  [assumption].
+e3 != e2.  [assumption].
+op(e0,e0) = e0.  [assumption].
+op(e0,e1) = e1.  [assumption].
+op(e0,e2) = e2.  [assumption].
+op(e0,e3) = e3.  [assumption].
+op(e1,e0) = e1.  [assumption].
+op(e1,e1) = e0.  [assumption].
+op(e1,e2) = e3.  [assumption].
+op(e1,e3) = e2.  [assumption].
+op(e2,e0) = e2.  [assumption].
+op(e2,e1) = e3.  [assumption].
+op(e2,e2) = e0.  [assumption].
+op(e2,e3) = e1.  [assumption].
+op(e3,e0) = e3.  [assumption].
+op(e3,e1) = e2.  [assumption].
+op(e3,e2) = e1.  [assumption].
+op(e3,e3) = e0.  [assumption].
+unit = e0.  [assumption].
+op(e2,unit) != e2.  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ = ]).
+Function symbol precedence:  function_order([ e0, e1, e2, e3, unit, op ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(paramodulation).  % (positive equality literals)
+
+Auto_process settings:  (no changes).
+
+kept:      1 e1 != e0.  [assumption].
+kept:      2 e2 != e0.  [assumption].
+kept:      3 e3 != e0.  [assumption].
+kept:      4 e2 != e1.  [assumption].
+kept:      5 e3 != e1.  [assumption].
+kept:      6 e3 != e2.  [assumption].
+kept:      7 op(e0,e0) = e0.  [assumption].
+kept:      8 op(e0,e1) = e1.  [assumption].
+kept:      9 op(e0,e2) = e2.  [assumption].
+kept:      10 op(e0,e3) = e3.  [assumption].
+kept:      11 op(e1,e0) = e1.  [assumption].
+kept:      12 op(e1,e1) = e0.  [assumption].
+kept:      13 op(e1,e2) = e3.  [assumption].
+kept:      14 op(e1,e3) = e2.  [assumption].
+kept:      15 op(e2,e0) = e2.  [assumption].
+kept:      16 op(e2,e1) = e3.  [assumption].
+kept:      17 op(e2,e2) = e0.  [assumption].
+kept:      18 op(e2,e3) = e1.  [assumption].
+kept:      19 op(e3,e0) = e3.  [assumption].
+kept:      20 op(e3,e1) = e2.  [assumption].
+kept:      21 op(e3,e2) = e1.  [assumption].
+kept:      22 op(e3,e3) = e0.  [assumption].
+kept:      23 unit = e0.  [assumption].
+           24 op(e2,unit) != e2.  [assumption].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 4.
+% Level of proof is 1.
+% Maximum clause weight is 5.000.
+% Given clauses 0.
+
+15 op(e2,e0) = e2.  [assumption].
+23 unit = e0.  [assumption].
+24 op(e2,unit) != e2.  [assumption].
+25 $F.  [copy(24),rewrite([23(2),15(3)]),xx(a)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=0. Generated=24. Kept=23. proofs=1.
+Usable=0. Sos=0. Demods=17. Limbo=23, Disabled=24. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=0. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=17 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=163. Demod_rewrites=2.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.33.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+Exiting with 1 proof.
+
+Process 23894 exit (max_proofs) Tue Nov  3 16:59:14 2009
+
+============================== continuing FOF reduction multisearch ==
+
+Subproblem 7 of 8 (negated):
+(- =(e1,e0) & - =(e2,e0) & - =(e3,e0) & - =(e2,e1) & - =(e3,e1) & - =(e3,e2) & =(op(e0,e0),e0) & =(op(e0,e1),e1) & =(op(e0,e2),e2) & =(op(e0,e3),e3) & =(op(e1,e0),e1) & =(op(e1,e1),e0) & =(op(e1,e2),e3) & =(op(e1,e3),e2) & =(op(e2,e0),e2) & =(op(e2,e1),e3) & =(op(e2,e2),e0) & =(op(e2,e3),e1) & =(op(e3,e0),e3) & =(op(e3,e1),e2) & =(op(e3,e2),e1) & =(op(e3,e3),e0) & =(unit,e0) & - =(op(unit,e3),e3)).
+
+Max_seconds is 30 for this subproblem.
+
+Child search process 23895 started.
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+e1 != e0.  [assumption].
+e2 != e0.  [assumption].
+e3 != e0.  [assumption].
+e2 != e1.  [assumption].
+e3 != e1.  [assumption].
+e3 != e2.  [assumption].
+op(e0,e0) = e0.  [assumption].
+op(e0,e1) = e1.  [assumption].
+op(e0,e2) = e2.  [assumption].
+op(e0,e3) = e3.  [assumption].
+op(e1,e0) = e1.  [assumption].
+op(e1,e1) = e0.  [assumption].
+op(e1,e2) = e3.  [assumption].
+op(e1,e3) = e2.  [assumption].
+op(e2,e0) = e2.  [assumption].
+op(e2,e1) = e3.  [assumption].
+op(e2,e2) = e0.  [assumption].
+op(e2,e3) = e1.  [assumption].
+op(e3,e0) = e3.  [assumption].
+op(e3,e1) = e2.  [assumption].
+op(e3,e2) = e1.  [assumption].
+op(e3,e3) = e0.  [assumption].
+unit = e0.  [assumption].
+op(unit,e3) != e3.  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ = ]).
+Function symbol precedence:  function_order([ e0, e1, e2, e3, unit, op ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(paramodulation).  % (positive equality literals)
+
+Auto_process settings:  (no changes).
+
+kept:      1 e1 != e0.  [assumption].
+kept:      2 e2 != e0.  [assumption].
+kept:      3 e3 != e0.  [assumption].
+kept:      4 e2 != e1.  [assumption].
+kept:      5 e3 != e1.  [assumption].
+kept:      6 e3 != e2.  [assumption].
+kept:      7 op(e0,e0) = e0.  [assumption].
+kept:      8 op(e0,e1) = e1.  [assumption].
+kept:      9 op(e0,e2) = e2.  [assumption].
+kept:      10 op(e0,e3) = e3.  [assumption].
+kept:      11 op(e1,e0) = e1.  [assumption].
+kept:      12 op(e1,e1) = e0.  [assumption].
+kept:      13 op(e1,e2) = e3.  [assumption].
+kept:      14 op(e1,e3) = e2.  [assumption].
+kept:      15 op(e2,e0) = e2.  [assumption].
+kept:      16 op(e2,e1) = e3.  [assumption].
+kept:      17 op(e2,e2) = e0.  [assumption].
+kept:      18 op(e2,e3) = e1.  [assumption].
+kept:      19 op(e3,e0) = e3.  [assumption].
+kept:      20 op(e3,e1) = e2.  [assumption].
+kept:      21 op(e3,e2) = e1.  [assumption].
+kept:      22 op(e3,e3) = e0.  [assumption].
+kept:      23 unit = e0.  [assumption].
+           24 op(unit,e3) != e3.  [assumption].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 4.
+% Level of proof is 1.
+% Maximum clause weight is 5.000.
+% Given clauses 0.
+
+10 op(e0,e3) = e3.  [assumption].
+23 unit = e0.  [assumption].
+24 op(unit,e3) != e3.  [assumption].
+25 $F.  [copy(24),rewrite([23(1),10(3)]),xx(a)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=0. Generated=24. Kept=23. proofs=1.
+Usable=0. Sos=0. Demods=17. Limbo=23, Disabled=24. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=0. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=17 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=163. Demod_rewrites=2.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.33.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+Exiting with 1 proof.
+
+Process 23895 exit (max_proofs) Tue Nov  3 16:59:14 2009
+
+============================== continuing FOF reduction multisearch ==
+
+Subproblem 8 of 8 (negated):
+(- =(e1,e0) & - =(e2,e0) & - =(e3,e0) & - =(e2,e1) & - =(e3,e1) & - =(e3,e2) & =(op(e0,e0),e0) & =(op(e0,e1),e1) & =(op(e0,e2),e2) & =(op(e0,e3),e3) & =(op(e1,e0),e1) & =(op(e1,e1),e0) & =(op(e1,e2),e3) & =(op(e1,e3),e2) & =(op(e2,e0),e2) & =(op(e2,e1),e3) & =(op(e2,e2),e0) & =(op(e2,e3),e1) & =(op(e3,e0),e3) & =(op(e3,e1),e2) & =(op(e3,e2),e1) & =(op(e3,e3),e0) & =(unit,e0) & - =(op(e3,unit),e3)).
+
+Max_seconds is 30 for this subproblem.
+
+Child search process 23896 started.
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+e1 != e0.  [assumption].
+e2 != e0.  [assumption].
+e3 != e0.  [assumption].
+e2 != e1.  [assumption].
+e3 != e1.  [assumption].
+e3 != e2.  [assumption].
+op(e0,e0) = e0.  [assumption].
+op(e0,e1) = e1.  [assumption].
+op(e0,e2) = e2.  [assumption].
+op(e0,e3) = e3.  [assumption].
+op(e1,e0) = e1.  [assumption].
+op(e1,e1) = e0.  [assumption].
+op(e1,e2) = e3.  [assumption].
+op(e1,e3) = e2.  [assumption].
+op(e2,e0) = e2.  [assumption].
+op(e2,e1) = e3.  [assumption].
+op(e2,e2) = e0.  [assumption].
+op(e2,e3) = e1.  [assumption].
+op(e3,e0) = e3.  [assumption].
+op(e3,e1) = e2.  [assumption].
+op(e3,e2) = e1.  [assumption].
+op(e3,e3) = e0.  [assumption].
+unit = e0.  [assumption].
+op(e3,unit) != e3.  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ = ]).
+Function symbol precedence:  function_order([ e0, e1, e2, e3, unit, op ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(paramodulation).  % (positive equality literals)
+
+Auto_process settings:  (no changes).
+
+kept:      1 e1 != e0.  [assumption].
+kept:      2 e2 != e0.  [assumption].
+kept:      3 e3 != e0.  [assumption].
+kept:      4 e2 != e1.  [assumption].
+kept:      5 e3 != e1.  [assumption].
+kept:      6 e3 != e2.  [assumption].
+kept:      7 op(e0,e0) = e0.  [assumption].
+kept:      8 op(e0,e1) = e1.  [assumption].
+kept:      9 op(e0,e2) = e2.  [assumption].
+kept:      10 op(e0,e3) = e3.  [assumption].
+kept:      11 op(e1,e0) = e1.  [assumption].
+kept:      12 op(e1,e1) = e0.  [assumption].
+kept:      13 op(e1,e2) = e3.  [assumption].
+kept:      14 op(e1,e3) = e2.  [assumption].
+kept:      15 op(e2,e0) = e2.  [assumption].
+kept:      16 op(e2,e1) = e3.  [assumption].
+kept:      17 op(e2,e2) = e0.  [assumption].
+kept:      18 op(e2,e3) = e1.  [assumption].
+kept:      19 op(e3,e0) = e3.  [assumption].
+kept:      20 op(e3,e1) = e2.  [assumption].
+kept:      21 op(e3,e2) = e1.  [assumption].
+kept:      22 op(e3,e3) = e0.  [assumption].
+kept:      23 unit = e0.  [assumption].
+           24 op(e3,unit) != e3.  [assumption].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 4.
+% Level of proof is 1.
+% Maximum clause weight is 5.000.
+% Given clauses 0.
+
+19 op(e3,e0) = e3.  [assumption].
+23 unit = e0.  [assumption].
+24 op(e3,unit) != e3.  [assumption].
+25 $F.  [copy(24),rewrite([23(2),19(3)]),xx(a)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=0. Generated=24. Kept=23. proofs=1.
+Usable=0. Sos=0. Demods=17. Limbo=23, Disabled=24. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=0. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=17 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=163. Demod_rewrites=2.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.33.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+Exiting with 1 proof.
+
+Process 23896 exit (max_proofs) Tue Nov  3 16:59:14 2009
+
+============================== end of multisearch ====================
+
+All 8 subproblems have been proved, so we are done.
+
+Total user_CPU=0.10, system_CPU=0.00, wall_clock=0.
+
+THEOREM PROVED
+
+Exiting.
+
+Process 23888 exit (max_proofs) Tue Nov  3 16:59:14 2009

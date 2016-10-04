@@ -1,0 +1,2 @@
+x * y = y * x              # label(commutativity).
+(x * y) * z = x * (y * z)  # label(associativity).

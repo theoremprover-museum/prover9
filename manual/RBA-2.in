@@ -1,0 +1,18 @@
+% This lemma says that if there exists an idempotent
+% elememt, then a Robbins algebra is Boolean.
+
+formulas(assumptions).
+
+  x + y = y + x.
+  (x + y) + z = x + (y + z).
+  ((x + y)' + (x + y')')' = x  # label(Robbins).
+
+  exists c (c + c = c).
+
+end_of_list.
+
+formulas(goals).
+
+  (x + y')' + (x' + y')' = y # answer(Huntington).
+
+end_of_list.

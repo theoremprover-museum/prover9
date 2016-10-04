@@ -1,0 +1,293 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+  <title>Prover9 Manual: Glossary</title>
+ <link rel="stylesheet" href="manual.css">
+</head>
+
+<body>
+
+<!-- Site navigation menu -->
+
+<ul class="navbar">
+  <li><a href="index.html">Introduction</a>
+  <li><a href="install.html">Installation</a>
+  <li><a href="running.html">Running Prover9</a>
+  <li><a href="input.html">Input Files</a>
+  <li><a href="syntax.html">Clauses & Formulas</a>
+  <li>Search Prep
+  <ul class="navbar2">
+    <li><a href="auto.html">Auto Modes</a>
+    <li><a href="term-order.html">Term Ordering</a>
+    <li><a href="more-prep.html">More Prep</a>
+    <li><a href="limits.html">Search Limits</a>
+  </ul>
+  <li>Inference
+  <ul class="navbar2">
+    <li><a href="loop.html">The Loop</a>
+    <li><a href="select.html">Select Given</a>
+    <li><a href="inf-rules.html">Inference Rules</a>
+    <li><a href="process-inf.html">Process Inferred</a>
+  </ul>
+  <li><a href="output.html">Output Files</a>
+  <li>More Features
+  <ul class="navbar2">
+    <li><a href="weight.html">Weighting</a>
+    <li><a href="attributes.html">Attributes</a>
+    <li><a href="actions.html">Actions</a>
+    <li><a href="fof-reduction.html">FOF Reduction</a>
+    <li><a href="goals.html">Goals</a>
+    <li><a href="hints.html">Hints</a>
+    <li><a href="semantics.html">Semantics</a>
+  </ul>
+  <li>Related Programs
+  <ul class="navbar2">
+    <li><a href="prooftrans.html">Prooftrans</a>
+    <li><a href="mace4.html">Mace4</a>
+  </ul>
+  <li>Ending
+  <ul class="navbar2">
+    <li><a href="options.html">All Options</a>
+    <li><a href="glossary.html">Glossary</a>
+    <li><a href="manual-index.html">Index</a>
+    <li><a href="references.html">References</a>
+  </ul>
+</ul>
+
+<div class="header">Prover9 Manual Version June-2006</div>
+
+<!-- Main content -->
+
+<h1>Glossary</h1>
+
+<i>Not done yet.</i>
+
+<hr>
+<hr>
+<h2>Terms, Clauses, Formulas, Interpretations</h2>
+
+These definitions apply to first-order unsorted logic.
+See any book on first-order logic for more formal definitions
+of these concepts.
+
+<hr>
+<!-- start def term -->
+<a name="term">
+
+<i>Term</i>
+<blockquote>
+A recursive definition of first-order unsorted terms.
+<ul>
+<li>A variable is a term,
+<li>a constant is a term, and
+<li>an <i>n</i>-ary function symbol applied to <i>n</i> terms is a term.
+</ul>
+</blockquote>
+
+<hr>
+<!-- start def atomic formula -->
+<a name="atomic formula">
+
+<i>Atomic Formula</i>
+<blockquote>
+An <i>n</i>-ary predicate symbol applied to <i>n</i> terms
+is an atomic formula.
+</blockquote>
+
+<hr>
+<!-- start def literal -->
+<a name="literal">
+
+<i>Literal</i>
+<blockquote>
+A literal is an <g>atomic formula</g> or the negation of an atomic formula.
+</blockquote>
+
+<hr>
+<!-- start def clause -->
+<a name="clause">
+
+<i>Clause</i>
+<blockquote>
+A clause is a disjunction of literals.  All variables in a clause are
+assumed to be universally quantified.
+</blockquote>
+
+<hr>
+<!-- start def formula -->
+<a name="formula">
+
+<i>Formula</i>
+<blockquote>
+This is a standard definition of formula.
+Prover9 has a more restricted notion of formula that excludes formulas
+with free variables.
+<ul>
+<li>An atomic formula is a formula,
+<li>if <tt>F</tt> and <tt>G</tt> are formulas, then the following are formulas.
+<ul>
+<li><tt>(-F)</tt>
+<li><tt>(F | G)</tt>
+<li><tt>(F & G)</tt>
+<li><tt>(F -> G)</tt>
+<li><tt>(F <-> G)</tt>
+</ul>
+<li>if <tt>F</tt> is a formula and <tt>x</tt> is a variable, then the
+following are formulas.
+<ul>
+<li><tt>(all x F)</tt>
+<li><tt>(exists x F)</tt>
+</ul>
+</ul>
+</blockquote>
+
+<hr>
+<!-- start def interpretation -->
+<a name="interpretation">
+
+<i>Interpretation</i>
+<blockquote>
+An interpretation of a first-order language consists of
+<ul>
+<li> of a set of objects called the <i>domain</i>,
+<li> an n-ary function over the domain into the domain for
+     each n-ary function symbol in the language,
+<li> an n-ary relation over the domain for
+     each n-ary predicate symbol in the language.
+</ul>
+</blockquote>
+Given an interpretation, each term in the language
+evaluates to a member of the domain, and
+each formula in the language evaluates to TRUE or to FALSE.
+
+<hr>
+<hr>
+<h2>Logic Transformations</h2>
+
+<!-- start def negation normal form -->
+<!-- start def NNF -->
+<a name="NNF">
+
+<hr>
+<i>Negation Normal Form (NNF)</i>
+<blockquote>
+A formula is in negation normal form if the only logic connectives are
+negation, conjunction, disjunction, quantification (universal or existential),
+and if all negation operations are applied directly to atomic formulas.
+</blockquote>
+
+<!-- start def Skolemization -->
+<!-- start def skolemization -->
+<!-- start def Skolem constant -->
+<!-- start def Skolem function -->
+<a name="skolemization">
+
+<hr>
+<!-- start def conjunctive normal form -->
+<!-- start def CNF-->
+<a name="CNF">
+
+<i>Conjunctive Normal Form (CNF)</i>
+<blockquote>
+This definition applies to quantifier-free formulas.
+<p>
+A formula is in conjunctive normal form if (1) the only logic connectives
+are negation, conjunction, and disjunction,
+(2) no negation is applied to a conjunction or a disjunction,
+and (3) no disjunction is applied to a conjunction.
+<p>
+Alternate definition: A formula is in CNF if it is a clause or a
+conjunction of clauses.
+</blockquote>
+
+<hr>
+<i>Skolemization</i>
+<blockquote>
+Skolemization is the process of replacing existentially quantified variables
+in a formula with new constants (called <i>Skolem constants</i>) or
+functions (called <i>Skolem functions</i>).  If an existential
+quantifier is in the scope of some universal quantifiers, the
+new symbol is a function of the corresponding universally quantified
+variables.
+The result of Skolemization is not, strictly speaking, equivalent to
+the original formula, because new symbols may have been introduced,
+but the result is inconsistent iff the the original formula is
+inconsistent.
+</blockquote>
+
+<hr>
+<!-- start def clause normal form -->
+<!-- start def clausification -->
+<a name="clausification">
+
+<i>Clausification</i>
+<blockquote>
+Clausification is the process of translating a formula
+into a conjunction of clauses.  A standard way is
+NNF conversion, Skolemization, moving universal quantifiers
+to the top (renaming bound variables if necessary),
+CNF conversion, and finally removing universal quantifiers.
+The variables in each resulting clause are implicitly
+universally quantified.
+<p>
+Each step produces an equivalent formula, except for
+Skolemization, which produces an eqconsistent formula,
+so the result of Clausification is inconsistent iff
+the original formula is inconsistent.
+</blockquote>
+
+<hr>
+<hr>
+<h2>Term Ordering Terminology</h2>
+
+<hr>
+<!-- start def maximal -->
+<!-- start def maximal literal -->
+<a name="maximal">
+
+<i>Maximal Literal</i>
+<blockquote>
+A literal is maximal in a clause, with respect to some term ordering,
+if no literal in the clause is greater.  The terms orderings used
+by Prover9 (LPO, KBO, RPO) are, in general, only partial, so clauses
+do not necessarily have maximum literals.
+</blockquote>
+
+<hr>
+<hr>
+<h2>Inference and Simplification Rules</h2>
+
+<hr>
+<!-- start def from parent -->
+<!-- start def from clause -->
+<!-- start def from literal -->
+<!-- start def into term -->
+<!-- start def into parent -->
+<!-- start def into clause -->
+<!-- start def into literal -->
+<!-- start def into term -->
+<a name="from-into">
+
+<i>"From" and "Into" Clauses and Literals</i>
+<blockquote>
+A <g>paramodulation</g> inference consists of
+two parents and a child.
+The parent containing the equality used for the
+replacement is the <i>from</i> parent or the <i>from clause</i>,
+the equality is the <i>from</i> literal,
+and the side of the equality that unifies with
+the term being replaced is the <i>from</i> term.
+<p>
+The replaced term is the <i>into</i> term,
+the literal containing the replaced term
+is the <i>into</i> literal, and
+the parent containing the replaced term is the
+<i>into</i> parent or <i>into</i> clause.
+</blockquote>
+
+<hr>
+<hr>
+<h2>Prover9 Terminology</h2>
+
+</body>
+</html>

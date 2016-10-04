@@ -1,0 +1,3532 @@
+============================== Prover9 ===============================
+Prover9 (32) version 2009-11A, November 2009.
+Process 25637 was started by mccune on cleo,
+Tue Nov  3 17:08:22 2009
+The command was "/home/mccune/LADR/bin/prover9 -f queens3.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file queens3.in
+
+set(production).
+    % set(production) -> set(raw).
+    % set(raw) -> clear(auto).
+    % clear(auto) -> clear(auto_inference).
+    % clear(auto) -> clear(auto_setup).
+    % clear(auto_setup) -> clear(predicate_elim).
+    % clear(auto_setup) -> assign(eq_defs, pass).
+    % clear(auto) -> clear(auto_limits).
+    % clear(auto_limits) -> assign(max_weight, "1000000000000.000").
+    % clear(auto_limits) -> assign(sos_limit, -1).
+    % clear(auto) -> clear(auto_denials).
+    % clear(auto) -> clear(auto_process).
+    % set(raw) -> clear(ordered_res).
+    % set(raw) -> clear(ordered_para).
+    % set(raw) -> set(para_into_vars).
+    % set(raw) -> set(para_from_small).
+    % set(raw) -> clear(ordered_para).
+    % set(raw) -> clear(back_demod).
+    % set(raw) -> clear(cac_redundancy).
+    % set(raw) -> assign(backsub_check, 2147483647).
+    % set(raw) -> set(lightest_first).
+    % set(lightest_first) -> assign(weight_part, 1).
+    % set(lightest_first) -> assign(age_part, 0).
+    % set(lightest_first) -> assign(false_part, 0).
+    % set(lightest_first) -> assign(true_part, 0).
+    % set(lightest_first) -> assign(random_part, 0).
+    % set(raw) -> assign(literal_selection, none).
+    % set(production) -> set(eval_rewrite).
+    % set(production) -> set(hyper_resolution).
+    % set(hyper_resolution) -> set(pos_hyper_resolution).
+    % set(production) -> clear(back_subsume).
+set(prolog_style_variables).
+
+formulas(usable).
+board(B) & pick(New_col) & ok(B,1,New_col) -> board([New_col:B]).
+pick(1).
+pick(2).
+pick(3).
+pick(4).
+pick(5).
+pick(6).
+pick(7).
+pick(8).
+end_of_list.
+
+formulas(assumptions).
+board([]).
+end_of_list.
+
+formulas(usable).
+-board([X1,X2,X3,X4,X5,X6,X7,X8]) # answer([X1,X2,X3,X4,X5,X6,X7,X8]).
+end_of_list.
+
+formulas(demodulators).
+ok([],X,Y) <-> $T.
+ok([H:T],Rows_back,New_col) <-> -(H == New_col) & -(H + -Rows_back == New_col) & -(H + Rows_back == New_col) & ok(T,Rows_back + 1,New_col).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 board(B) & pick(New_col) & ok(B,1,New_col) -> board([New_col:B]) # label(non_clause).  [assumption].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+-board(A) | -pick(B) | -ok(A,1,B) | board([B:A]).  [clausify(1)].
+pick(1).  [assumption].
+pick(2).  [assumption].
+pick(3).  [assumption].
+pick(4).  [assumption].
+pick(5).  [assumption].
+pick(6).  [assumption].
+pick(7).  [assumption].
+pick(8).  [assumption].
+-board([A,B,C,D,E,F,V6,V7]) # answer([A,B,C,D,E,F,V6,V7]).  [assumption].
+end_of_list.
+
+formulas(sos).
+board([]).  [assumption].
+end_of_list.
+
+formulas(demodulators).
+ok([],X,Y) <-> $T.  [assumption].
+ok([H:T],Rows_back,New_col) <-> -(H == New_col) & -(H + -Rows_back == New_col) & -(H + Rows_back == New_col) & ok(T,Rows_back + 1,New_col).  [assumption].
+end_of_list.
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ pick, board, ==, ok ]).
+Function symbol precedence:  function_order([ 1, $nil, 2, 3, 4, 5, 6, 7, 8, $cons, +, - ]).
+After inverse_order:  (no changes).
+
+kept:      14 board([]).  [assumption].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+2 -board(A) | -pick(B) | -ok(A,1,B) | board([B:A]).  [clausify(1)].
+3 pick(1).  [assumption].
+4 pick(2).  [assumption].
+5 pick(3).  [assumption].
+6 pick(4).  [assumption].
+7 pick(5).  [assumption].
+8 pick(6).  [assumption].
+9 pick(7).  [assumption].
+10 pick(8).  [assumption].
+11 -board([A,B,C,D,E,F,V6,V7]) # answer([A,B,C,D,E,F,V6,V7]).  [assumption].
+end_of_list.
+
+formulas(sos).
+14 board([]).  [assumption].
+end_of_list.
+
+formulas(demodulators).
+12 ok([],A,B) <-> $T.  [assumption].
+13 ok([A:B],C,D) <-> -(A == D) & -(A + -C == D) & -(A + C == D) & ok(B,C + 1,D).  [assumption].
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.01 seconds.
+
+given #1 (I,wt=2): 14 board([]).  [assumption].
+
+given #2 (W,wt=4): 15 board([8]).  [hyper(2,a,14,a,b,10,a),rewrite([12])].
+
+given #3 (W,wt=4): 16 board([7]).  [hyper(2,a,14,a,b,9,a),rewrite([12])].
+
+given #4 (W,wt=4): 17 board([6]).  [hyper(2,a,14,a,b,8,a),rewrite([12])].
+
+given #5 (W,wt=4): 18 board([5]).  [hyper(2,a,14,a,b,7,a),rewrite([12])].
+
+given #6 (W,wt=4): 19 board([4]).  [hyper(2,a,14,a,b,6,a),rewrite([12])].
+
+given #7 (W,wt=4): 20 board([3]).  [hyper(2,a,14,a,b,5,a),rewrite([12])].
+
+given #8 (W,wt=4): 21 board([2]).  [hyper(2,a,14,a,b,4,a),rewrite([12])].
+
+given #9 (W,wt=4): 22 board([1]).  [hyper(2,a,14,a,b,3,a),rewrite([12])].
+
+given #10 (W,wt=6): 23 board([6,8]).  [hyper(2,a,15,a,b,8,a),rewrite([13,12]),eval(10)].
+
+given #11 (W,wt=6): 24 board([5,8]).  [hyper(2,a,15,a,b,7,a),rewrite([13,12]),eval(10)].
+
+given #12 (W,wt=6): 25 board([4,8]).  [hyper(2,a,15,a,b,6,a),rewrite([13,12]),eval(10)].
+
+given #13 (W,wt=6): 26 board([3,8]).  [hyper(2,a,15,a,b,5,a),rewrite([13,12]),eval(10)].
+
+given #14 (W,wt=6): 27 board([2,8]).  [hyper(2,a,15,a,b,4,a),rewrite([13,12]),eval(10)].
+
+given #15 (W,wt=6): 28 board([1,8]).  [hyper(2,a,15,a,b,3,a),rewrite([13,12]),eval(10)].
+
+given #16 (W,wt=6): 29 board([5,7]).  [hyper(2,a,16,a,b,7,a),rewrite([13,12]),eval(10)].
+
+given #17 (W,wt=6): 30 board([4,7]).  [hyper(2,a,16,a,b,6,a),rewrite([13,12]),eval(10)].
+
+given #18 (W,wt=6): 31 board([3,7]).  [hyper(2,a,16,a,b,5,a),rewrite([13,12]),eval(10)].
+
+given #19 (W,wt=6): 32 board([2,7]).  [hyper(2,a,16,a,b,4,a),rewrite([13,12]),eval(10)].
+
+given #20 (W,wt=6): 33 board([1,7]).  [hyper(2,a,16,a,b,3,a),rewrite([13,12]),eval(10)].
+
+given #21 (W,wt=6): 34 board([8,6]).  [hyper(2,a,17,a,b,10,a),rewrite([13,12]),eval(10)].
+
+given #22 (W,wt=6): 35 board([4,6]).  [hyper(2,a,17,a,b,6,a),rewrite([13,12]),eval(10)].
+
+given #23 (W,wt=6): 36 board([3,6]).  [hyper(2,a,17,a,b,5,a),rewrite([13,12]),eval(10)].
+
+given #24 (W,wt=6): 37 board([2,6]).  [hyper(2,a,17,a,b,4,a),rewrite([13,12]),eval(10)].
+
+given #25 (W,wt=6): 38 board([1,6]).  [hyper(2,a,17,a,b,3,a),rewrite([13,12]),eval(10)].
+
+given #26 (W,wt=6): 39 board([8,5]).  [hyper(2,a,18,a,b,10,a),rewrite([13,12]),eval(10)].
+
+given #27 (W,wt=6): 40 board([7,5]).  [hyper(2,a,18,a,b,9,a),rewrite([13,12]),eval(10)].
+
+given #28 (W,wt=6): 41 board([3,5]).  [hyper(2,a,18,a,b,5,a),rewrite([13,12]),eval(10)].
+
+given #29 (W,wt=6): 42 board([2,5]).  [hyper(2,a,18,a,b,4,a),rewrite([13,12]),eval(10)].
+
+given #30 (W,wt=6): 43 board([1,5]).  [hyper(2,a,18,a,b,3,a),rewrite([13,12]),eval(10)].
+
+given #31 (W,wt=6): 44 board([8,4]).  [hyper(2,a,19,a,b,10,a),rewrite([13,12]),eval(10)].
+
+given #32 (W,wt=6): 45 board([7,4]).  [hyper(2,a,19,a,b,9,a),rewrite([13,12]),eval(10)].
+
+given #33 (W,wt=6): 46 board([6,4]).  [hyper(2,a,19,a,b,8,a),rewrite([13,12]),eval(10)].
+
+given #34 (W,wt=6): 47 board([2,4]).  [hyper(2,a,19,a,b,4,a),rewrite([13,12]),eval(10)].
+
+given #35 (W,wt=6): 48 board([1,4]).  [hyper(2,a,19,a,b,3,a),rewrite([13,12]),eval(10)].
+
+given #36 (W,wt=6): 49 board([8,3]).  [hyper(2,a,20,a,b,10,a),rewrite([13,12]),eval(10)].
+
+given #37 (W,wt=6): 50 board([7,3]).  [hyper(2,a,20,a,b,9,a),rewrite([13,12]),eval(10)].
+
+given #38 (W,wt=6): 51 board([6,3]).  [hyper(2,a,20,a,b,8,a),rewrite([13,12]),eval(10)].
+
+given #39 (W,wt=6): 52 board([5,3]).  [hyper(2,a,20,a,b,7,a),rewrite([13,12]),eval(10)].
+
+given #40 (W,wt=6): 53 board([1,3]).  [hyper(2,a,20,a,b,3,a),rewrite([13,12]),eval(10)].
+
+given #41 (W,wt=6): 54 board([8,2]).  [hyper(2,a,21,a,b,10,a),rewrite([13,12]),eval(10)].
+
+given #42 (W,wt=6): 55 board([7,2]).  [hyper(2,a,21,a,b,9,a),rewrite([13,12]),eval(10)].
+
+given #43 (W,wt=6): 56 board([6,2]).  [hyper(2,a,21,a,b,8,a),rewrite([13,12]),eval(10)].
+
+given #44 (W,wt=6): 57 board([5,2]).  [hyper(2,a,21,a,b,7,a),rewrite([13,12]),eval(10)].
+
+given #45 (W,wt=6): 58 board([4,2]).  [hyper(2,a,21,a,b,6,a),rewrite([13,12]),eval(10)].
+
+given #46 (W,wt=6): 59 board([8,1]).  [hyper(2,a,22,a,b,10,a),rewrite([13,12]),eval(10)].
+
+given #47 (W,wt=6): 60 board([7,1]).  [hyper(2,a,22,a,b,9,a),rewrite([13,12]),eval(10)].
+
+given #48 (W,wt=6): 61 board([6,1]).  [hyper(2,a,22,a,b,8,a),rewrite([13,12]),eval(10)].
+
+given #49 (W,wt=6): 62 board([5,1]).  [hyper(2,a,22,a,b,7,a),rewrite([13,12]),eval(10)].
+
+given #50 (W,wt=6): 63 board([4,1]).  [hyper(2,a,22,a,b,6,a),rewrite([13,12]),eval(10)].
+
+given #51 (W,wt=6): 64 board([3,1]).  [hyper(2,a,22,a,b,5,a),rewrite([13,12]),eval(10)].
+
+given #52 (W,wt=8): 65 board([4,6,8]).  [hyper(2,a,23,a,b,6,a),rewrite([13,12]),eval(20)].
+
+given #53 (W,wt=8): 66 board([3,6,8]).  [hyper(2,a,23,a,b,5,a),rewrite([13,12]),eval(20)].
+
+given #54 (W,wt=8): 67 board([2,6,8]).  [hyper(2,a,23,a,b,4,a),rewrite([13,12]),eval(20)].
+
+given #55 (W,wt=8): 68 board([1,6,8]).  [hyper(2,a,23,a,b,3,a),rewrite([13,12]),eval(20)].
+
+given #56 (W,wt=8): 69 board([7,5,8]).  [hyper(2,a,24,a,b,9,a),rewrite([13,12]),eval(20)].
+
+given #57 (W,wt=8): 70 board([3,5,8]).  [hyper(2,a,24,a,b,5,a),rewrite([13,12]),eval(20)].
+
+given #58 (W,wt=8): 71 board([2,5,8]).  [hyper(2,a,24,a,b,4,a),rewrite([13,12]),eval(20)].
+
+given #59 (W,wt=8): 72 board([1,5,8]).  [hyper(2,a,24,a,b,3,a),rewrite([13,12]),eval(20)].
+
+given #60 (W,wt=8): 73 board([7,4,8]).  [hyper(2,a,25,a,b,9,a),rewrite([13,12]),eval(20)].
+
+given #61 (W,wt=8): 74 board([2,4,8]).  [hyper(2,a,25,a,b,4,a),rewrite([13,12]),eval(20)].
+
+given #62 (W,wt=8): 75 board([1,4,8]).  [hyper(2,a,25,a,b,3,a),rewrite([13,12]),eval(20)].
+
+given #63 (W,wt=8): 76 board([7,3,8]).  [hyper(2,a,26,a,b,9,a),rewrite([13,12]),eval(20)].
+
+given #64 (W,wt=8): 77 board([5,3,8]).  [hyper(2,a,26,a,b,7,a),rewrite([13,12]),eval(20)].
+
+given #65 (W,wt=8): 78 board([1,3,8]).  [hyper(2,a,26,a,b,3,a),rewrite([13,12]),eval(20)].
+
+given #66 (W,wt=8): 79 board([7,2,8]).  [hyper(2,a,27,a,b,9,a),rewrite([13,12]),eval(20)].
+
+given #67 (W,wt=8): 80 board([5,2,8]).  [hyper(2,a,27,a,b,7,a),rewrite([13,12]),eval(20)].
+
+given #68 (W,wt=8): 81 board([4,2,8]).  [hyper(2,a,27,a,b,6,a),rewrite([13,12]),eval(20)].
+
+given #69 (W,wt=8): 82 board([7,1,8]).  [hyper(2,a,28,a,b,9,a),rewrite([13,12]),eval(20)].
+
+given #70 (W,wt=8): 83 board([5,1,8]).  [hyper(2,a,28,a,b,7,a),rewrite([13,12]),eval(20)].
+
+given #71 (W,wt=8): 84 board([4,1,8]).  [hyper(2,a,28,a,b,6,a),rewrite([13,12]),eval(20)].
+
+given #72 (W,wt=8): 85 board([3,1,8]).  [hyper(2,a,28,a,b,5,a),rewrite([13,12]),eval(20)].
+
+given #73 (W,wt=8): 86 board([8,5,7]).  [hyper(2,a,29,a,b,10,a),rewrite([13,12]),eval(20)].
+
+given #74 (W,wt=8): 87 board([3,5,7]).  [hyper(2,a,29,a,b,5,a),rewrite([13,12]),eval(20)].
+
+given #75 (W,wt=8): 88 board([2,5,7]).  [hyper(2,a,29,a,b,4,a),rewrite([13,12]),eval(20)].
+
+given #76 (W,wt=8): 89 board([1,5,7]).  [hyper(2,a,29,a,b,3,a),rewrite([13,12]),eval(20)].
+
+given #77 (W,wt=8): 90 board([8,4,7]).  [hyper(2,a,30,a,b,10,a),rewrite([13,12]),eval(20)].
+
+given #78 (W,wt=8): 91 board([6,4,7]).  [hyper(2,a,30,a,b,8,a),rewrite([13,12]),eval(20)].
+
+given #79 (W,wt=8): 92 board([2,4,7]).  [hyper(2,a,30,a,b,4,a),rewrite([13,12]),eval(20)].
+
+given #80 (W,wt=8): 93 board([1,4,7]).  [hyper(2,a,30,a,b,3,a),rewrite([13,12]),eval(20)].
+
+given #81 (W,wt=8): 94 board([8,3,7]).  [hyper(2,a,31,a,b,10,a),rewrite([13,12]),eval(20)].
+
+given #82 (W,wt=8): 95 board([6,3,7]).  [hyper(2,a,31,a,b,8,a),rewrite([13,12]),eval(20)].
+
+given #83 (W,wt=8): 96 board([1,3,7]).  [hyper(2,a,31,a,b,3,a),rewrite([13,12]),eval(20)].
+
+given #84 (W,wt=8): 97 board([8,2,7]).  [hyper(2,a,32,a,b,10,a),rewrite([13,12]),eval(20)].
+
+given #85 (W,wt=8): 98 board([6,2,7]).  [hyper(2,a,32,a,b,8,a),rewrite([13,12]),eval(20)].
+
+given #86 (W,wt=8): 99 board([4,2,7]).  [hyper(2,a,32,a,b,6,a),rewrite([13,12]),eval(20)].
+
+given #87 (W,wt=8): 100 board([8,1,7]).  [hyper(2,a,33,a,b,10,a),rewrite([13,12]),eval(20)].
+
+given #88 (W,wt=8): 101 board([6,1,7]).  [hyper(2,a,33,a,b,8,a),rewrite([13,12]),eval(20)].
+
+given #89 (W,wt=8): 102 board([4,1,7]).  [hyper(2,a,33,a,b,6,a),rewrite([13,12]),eval(20)].
+
+given #90 (W,wt=8): 103 board([3,1,7]).  [hyper(2,a,33,a,b,5,a),rewrite([13,12]),eval(20)].
+
+given #91 (W,wt=8): 104 board([5,8,6]).  [hyper(2,a,34,a,b,7,a),rewrite([13,12]),eval(20)].
+
+given #92 (W,wt=8): 105 board([3,8,6]).  [hyper(2,a,34,a,b,5,a),rewrite([13,12]),eval(20)].
+
+given #93 (W,wt=8): 106 board([2,8,6]).  [hyper(2,a,34,a,b,4,a),rewrite([13,12]),eval(20)].
+
+given #94 (W,wt=8): 107 board([1,8,6]).  [hyper(2,a,34,a,b,3,a),rewrite([13,12]),eval(20)].
+
+given #95 (W,wt=8): 108 board([7,4,6]).  [hyper(2,a,35,a,b,9,a),rewrite([13,12]),eval(20)].
+
+given #96 (W,wt=8): 109 board([2,4,6]).  [hyper(2,a,35,a,b,4,a),rewrite([13,12]),eval(20)].
+
+given #97 (W,wt=8): 110 board([1,4,6]).  [hyper(2,a,35,a,b,3,a),rewrite([13,12]),eval(20)].
+
+given #98 (W,wt=8): 111 board([7,3,6]).  [hyper(2,a,36,a,b,9,a),rewrite([13,12]),eval(20)].
+
+given #99 (W,wt=8): 112 board([5,3,6]).  [hyper(2,a,36,a,b,7,a),rewrite([13,12]),eval(20)].
+
+given #100 (W,wt=8): 113 board([1,3,6]).  [hyper(2,a,36,a,b,3,a),rewrite([13,12]),eval(20)].
+
+given #101 (W,wt=8): 114 board([7,2,6]).  [hyper(2,a,37,a,b,9,a),rewrite([13,12]),eval(20)].
+
+given #102 (W,wt=8): 115 board([5,2,6]).  [hyper(2,a,37,a,b,7,a),rewrite([13,12]),eval(20)].
+
+given #103 (W,wt=8): 116 board([7,1,6]).  [hyper(2,a,38,a,b,9,a),rewrite([13,12]),eval(20)].
+
+given #104 (W,wt=8): 117 board([5,1,6]).  [hyper(2,a,38,a,b,7,a),rewrite([13,12]),eval(20)].
+
+given #105 (W,wt=8): 118 board([3,1,6]).  [hyper(2,a,38,a,b,5,a),rewrite([13,12]),eval(20)].
+
+given #106 (W,wt=8): 119 board([6,8,5]).  [hyper(2,a,39,a,b,8,a),rewrite([13,12]),eval(20)].
+
+given #107 (W,wt=8): 120 board([4,8,5]).  [hyper(2,a,39,a,b,6,a),rewrite([13,12]),eval(20)].
+
+given #108 (W,wt=8): 121 board([2,8,5]).  [hyper(2,a,39,a,b,4,a),rewrite([13,12]),eval(20)].
+
+given #109 (W,wt=8): 122 board([1,8,5]).  [hyper(2,a,39,a,b,3,a),rewrite([13,12]),eval(20)].
+
+given #110 (W,wt=8): 123 board([4,7,5]).  [hyper(2,a,40,a,b,6,a),rewrite([13,12]),eval(20)].
+
+given #111 (W,wt=8): 124 board([2,7,5]).  [hyper(2,a,40,a,b,4,a),rewrite([13,12]),eval(20)].
+
+given #112 (W,wt=8): 125 board([1,7,5]).  [hyper(2,a,40,a,b,3,a),rewrite([13,12]),eval(20)].
+
+given #113 (W,wt=8): 126 board([8,3,5]).  [hyper(2,a,41,a,b,10,a),rewrite([13,12]),eval(20)].
+
+given #114 (W,wt=8): 127 board([6,3,5]).  [hyper(2,a,41,a,b,8,a),rewrite([13,12]),eval(20)].
+
+given #115 (W,wt=8): 128 board([1,3,5]).  [hyper(2,a,41,a,b,3,a),rewrite([13,12]),eval(20)].
+
+given #116 (W,wt=8): 129 board([8,2,5]).  [hyper(2,a,42,a,b,10,a),rewrite([13,12]),eval(20)].
+
+given #117 (W,wt=8): 130 board([6,2,5]).  [hyper(2,a,42,a,b,8,a),rewrite([13,12]),eval(20)].
+
+given #118 (W,wt=8): 131 board([4,2,5]).  [hyper(2,a,42,a,b,6,a),rewrite([13,12]),eval(20)].
+
+given #119 (W,wt=8): 132 board([8,1,5]).  [hyper(2,a,43,a,b,10,a),rewrite([13,12]),eval(20)].
+
+given #120 (W,wt=8): 133 board([6,1,5]).  [hyper(2,a,43,a,b,8,a),rewrite([13,12]),eval(20)].
+
+given #121 (W,wt=8): 134 board([4,1,5]).  [hyper(2,a,43,a,b,6,a),rewrite([13,12]),eval(20)].
+
+given #122 (W,wt=8): 135 board([5,8,4]).  [hyper(2,a,44,a,b,7,a),rewrite([13,12]),eval(20)].
+
+given #123 (W,wt=8): 136 board([3,8,4]).  [hyper(2,a,44,a,b,5,a),rewrite([13,12]),eval(20)].
+
+given #124 (W,wt=8): 137 board([1,8,4]).  [hyper(2,a,44,a,b,3,a),rewrite([13,12]),eval(20)].
+
+given #125 (W,wt=8): 138 board([5,7,4]).  [hyper(2,a,45,a,b,7,a),rewrite([13,12]),eval(20)].
+
+given #126 (W,wt=8): 139 board([3,7,4]).  [hyper(2,a,45,a,b,5,a),rewrite([13,12]),eval(20)].
+
+given #127 (W,wt=8): 140 board([1,7,4]).  [hyper(2,a,45,a,b,3,a),rewrite([13,12]),eval(20)].
+
+given #128 (W,wt=8): 141 board([8,6,4]).  [hyper(2,a,46,a,b,10,a),rewrite([13,12]),eval(20)].
+
+given #129 (W,wt=8): 142 board([3,6,4]).  [hyper(2,a,46,a,b,5,a),rewrite([13,12]),eval(20)].
+
+given #130 (W,wt=8): 143 board([1,6,4]).  [hyper(2,a,46,a,b,3,a),rewrite([13,12]),eval(20)].
+
+given #131 (W,wt=8): 144 board([8,2,4]).  [hyper(2,a,47,a,b,10,a),rewrite([13,12]),eval(20)].
+
+given #132 (W,wt=8): 145 board([7,2,4]).  [hyper(2,a,47,a,b,9,a),rewrite([13,12]),eval(20)].
+
+given #133 (W,wt=8): 146 board([5,2,4]).  [hyper(2,a,47,a,b,7,a),rewrite([13,12]),eval(20)].
+
+given #134 (W,wt=8): 147 board([8,1,4]).  [hyper(2,a,48,a,b,10,a),rewrite([13,12]),eval(20)].
+
+given #135 (W,wt=8): 148 board([7,1,4]).  [hyper(2,a,48,a,b,9,a),rewrite([13,12]),eval(20)].
+
+given #136 (W,wt=8): 149 board([5,1,4]).  [hyper(2,a,48,a,b,7,a),rewrite([13,12]),eval(20)].
+
+given #137 (W,wt=8): 150 board([3,1,4]).  [hyper(2,a,48,a,b,5,a),rewrite([13,12]),eval(20)].
+
+given #138 (W,wt=8): 151 board([6,8,3]).  [hyper(2,a,49,a,b,8,a),rewrite([13,12]),eval(20)].
+
+given #139 (W,wt=8): 152 board([4,8,3]).  [hyper(2,a,49,a,b,6,a),rewrite([13,12]),eval(20)].
+
+given #140 (W,wt=8): 153 board([2,8,3]).  [hyper(2,a,49,a,b,4,a),rewrite([13,12]),eval(20)].
+
+given #141 (W,wt=8): 154 board([4,7,3]).  [hyper(2,a,50,a,b,6,a),rewrite([13,12]),eval(20)].
+
+given #142 (W,wt=8): 155 board([2,7,3]).  [hyper(2,a,50,a,b,4,a),rewrite([13,12]),eval(20)].
+
+given #143 (W,wt=8): 156 board([8,6,3]).  [hyper(2,a,51,a,b,10,a),rewrite([13,12]),eval(20)].
+
+given #144 (W,wt=8): 157 board([4,6,3]).  [hyper(2,a,51,a,b,6,a),rewrite([13,12]),eval(20)].
+
+given #145 (W,wt=8): 158 board([2,6,3]).  [hyper(2,a,51,a,b,4,a),rewrite([13,12]),eval(20)].
+
+given #146 (W,wt=8): 159 board([8,5,3]).  [hyper(2,a,52,a,b,10,a),rewrite([13,12]),eval(20)].
+
+given #147 (W,wt=8): 160 board([7,5,3]).  [hyper(2,a,52,a,b,9,a),rewrite([13,12]),eval(20)].
+
+given #148 (W,wt=8): 161 board([2,5,3]).  [hyper(2,a,52,a,b,4,a),rewrite([13,12]),eval(20)].
+
+given #149 (W,wt=8): 162 board([8,1,3]).  [hyper(2,a,53,a,b,10,a),rewrite([13,12]),eval(20)].
+
+given #150 (W,wt=8): 163 board([7,1,3]).  [hyper(2,a,53,a,b,9,a),rewrite([13,12]),eval(20)].
+
+given #151 (W,wt=8): 164 board([6,1,3]).  [hyper(2,a,53,a,b,8,a),rewrite([13,12]),eval(20)].
+
+given #152 (W,wt=8): 165 board([4,1,3]).  [hyper(2,a,53,a,b,6,a),rewrite([13,12]),eval(20)].
+
+given #153 (W,wt=8): 166 board([6,8,2]).  [hyper(2,a,54,a,b,8,a),rewrite([13,12]),eval(20)].
+
+given #154 (W,wt=8): 167 board([5,8,2]).  [hyper(2,a,54,a,b,7,a),rewrite([13,12]),eval(20)].
+
+given #155 (W,wt=8): 168 board([3,8,2]).  [hyper(2,a,54,a,b,5,a),rewrite([13,12]),eval(20)].
+
+given #156 (W,wt=8): 169 board([1,8,2]).  [hyper(2,a,54,a,b,3,a),rewrite([13,12]),eval(20)].
+
+given #157 (W,wt=8): 170 board([5,7,2]).  [hyper(2,a,55,a,b,7,a),rewrite([13,12]),eval(20)].
+
+given #158 (W,wt=8): 171 board([3,7,2]).  [hyper(2,a,55,a,b,5,a),rewrite([13,12]),eval(20)].
+
+given #159 (W,wt=8): 172 board([1,7,2]).  [hyper(2,a,55,a,b,3,a),rewrite([13,12]),eval(20)].
+
+given #160 (W,wt=8): 173 board([8,6,2]).  [hyper(2,a,56,a,b,10,a),rewrite([13,12]),eval(20)].
+
+given #161 (W,wt=8): 174 board([3,6,2]).  [hyper(2,a,56,a,b,5,a),rewrite([13,12]),eval(20)].
+
+given #162 (W,wt=8): 175 board([1,6,2]).  [hyper(2,a,56,a,b,3,a),rewrite([13,12]),eval(20)].
+
+given #163 (W,wt=8): 176 board([8,5,2]).  [hyper(2,a,57,a,b,10,a),rewrite([13,12]),eval(20)].
+
+given #164 (W,wt=8): 177 board([7,5,2]).  [hyper(2,a,57,a,b,9,a),rewrite([13,12]),eval(20)].
+
+given #165 (W,wt=8): 178 board([3,5,2]).  [hyper(2,a,57,a,b,5,a),rewrite([13,12]),eval(20)].
+
+given #166 (W,wt=8): 179 board([1,5,2]).  [hyper(2,a,57,a,b,3,a),rewrite([13,12]),eval(20)].
+
+given #167 (W,wt=8): 180 board([8,4,2]).  [hyper(2,a,58,a,b,10,a),rewrite([13,12]),eval(20)].
+
+given #168 (W,wt=8): 181 board([7,4,2]).  [hyper(2,a,58,a,b,9,a),rewrite([13,12]),eval(20)].
+
+given #169 (W,wt=8): 182 board([6,4,2]).  [hyper(2,a,58,a,b,8,a),rewrite([13,12]),eval(20)].
+
+given #170 (W,wt=8): 183 board([1,4,2]).  [hyper(2,a,58,a,b,3,a),rewrite([13,12]),eval(20)].
+
+given #171 (W,wt=8): 184 board([6,8,1]).  [hyper(2,a,59,a,b,8,a),rewrite([13,12]),eval(20)].
+
+given #172 (W,wt=8): 185 board([5,8,1]).  [hyper(2,a,59,a,b,7,a),rewrite([13,12]),eval(20)].
+
+given #173 (W,wt=8): 186 board([4,8,1]).  [hyper(2,a,59,a,b,6,a),rewrite([13,12]),eval(20)].
+
+given #174 (W,wt=8): 187 board([2,8,1]).  [hyper(2,a,59,a,b,4,a),rewrite([13,12]),eval(20)].
+
+given #175 (W,wt=8): 188 board([5,7,1]).  [hyper(2,a,60,a,b,7,a),rewrite([13,12]),eval(20)].
+
+given #176 (W,wt=8): 189 board([4,7,1]).  [hyper(2,a,60,a,b,6,a),rewrite([13,12]),eval(20)].
+
+given #177 (W,wt=8): 190 board([2,7,1]).  [hyper(2,a,60,a,b,4,a),rewrite([13,12]),eval(20)].
+
+given #178 (W,wt=8): 191 board([8,6,1]).  [hyper(2,a,61,a,b,10,a),rewrite([13,12]),eval(20)].
+
+given #179 (W,wt=8): 192 board([4,6,1]).  [hyper(2,a,61,a,b,6,a),rewrite([13,12]),eval(20)].
+
+given #180 (W,wt=8): 193 board([2,6,1]).  [hyper(2,a,61,a,b,4,a),rewrite([13,12]),eval(20)].
+
+given #181 (W,wt=8): 194 board([8,5,1]).  [hyper(2,a,62,a,b,10,a),rewrite([13,12]),eval(20)].
+
+given #182 (W,wt=8): 195 board([7,5,1]).  [hyper(2,a,62,a,b,9,a),rewrite([13,12]),eval(20)].
+
+given #183 (W,wt=8): 196 board([2,5,1]).  [hyper(2,a,62,a,b,4,a),rewrite([13,12]),eval(20)].
+
+given #184 (W,wt=8): 197 board([8,4,1]).  [hyper(2,a,63,a,b,10,a),rewrite([13,12]),eval(20)].
+
+given #185 (W,wt=8): 198 board([7,4,1]).  [hyper(2,a,63,a,b,9,a),rewrite([13,12]),eval(20)].
+
+given #186 (W,wt=8): 199 board([6,4,1]).  [hyper(2,a,63,a,b,8,a),rewrite([13,12]),eval(20)].
+
+given #187 (W,wt=8): 200 board([2,4,1]).  [hyper(2,a,63,a,b,4,a),rewrite([13,12]),eval(20)].
+
+given #188 (W,wt=8): 201 board([8,3,1]).  [hyper(2,a,64,a,b,10,a),rewrite([13,12]),eval(20)].
+
+given #189 (W,wt=8): 202 board([7,3,1]).  [hyper(2,a,64,a,b,9,a),rewrite([13,12]),eval(20)].
+
+given #190 (W,wt=8): 203 board([6,3,1]).  [hyper(2,a,64,a,b,8,a),rewrite([13,12]),eval(20)].
+
+given #191 (W,wt=8): 204 board([5,3,1]).  [hyper(2,a,64,a,b,7,a),rewrite([13,12]),eval(20)].
+
+given #192 (W,wt=10): 205 board([7,4,6,8]).  [hyper(2,a,65,a,b,9,a),rewrite([13,12]),eval(30)].
+
+given #193 (W,wt=10): 206 board([2,4,6,8]).  [hyper(2,a,65,a,b,4,a),rewrite([13,12]),eval(30)].
+
+given #194 (W,wt=10): 207 board([1,4,6,8]).  [hyper(2,a,65,a,b,3,a),rewrite([13,12]),eval(30)].
+
+given #195 (W,wt=10): 208 board([7,3,6,8]).  [hyper(2,a,66,a,b,9,a),rewrite([13,12]),eval(30)].
+
+given #196 (W,wt=10): 209 board([1,3,6,8]).  [hyper(2,a,66,a,b,3,a),rewrite([13,12]),eval(30)].
+
+given #197 (W,wt=10): 210 board([7,2,6,8]).  [hyper(2,a,67,a,b,9,a),rewrite([13,12]),eval(30)].
+
+given #198 (W,wt=10): 211 board([7,1,6,8]).  [hyper(2,a,68,a,b,9,a),rewrite([13,12]),eval(30)].
+
+given #199 (W,wt=10): 212 board([3,1,6,8]).  [hyper(2,a,68,a,b,5,a),rewrite([13,12]),eval(30)].
+
+given #200 (W,wt=10): 213 board([4,7,5,8]).  [hyper(2,a,69,a,b,6,a),rewrite([13,12]),eval(30)].
+
+given #201 (W,wt=10): 214 board([2,7,5,8]).  [hyper(2,a,69,a,b,4,a),rewrite([13,12]),eval(30)].
+
+given #202 (W,wt=10): 215 board([1,7,5,8]).  [hyper(2,a,69,a,b,3,a),rewrite([13,12]),eval(30)].
+
+given #203 (W,wt=10): 216 board([6,3,5,8]).  [hyper(2,a,70,a,b,8,a),rewrite([13,12]),eval(30)].
+
+given #204 (W,wt=10): 217 board([1,3,5,8]).  [hyper(2,a,70,a,b,3,a),rewrite([13,12]),eval(30)].
+
+given #205 (W,wt=10): 218 board([6,2,5,8]).  [hyper(2,a,71,a,b,8,a),rewrite([13,12]),eval(30)].
+
+given #206 (W,wt=10): 219 board([4,2,5,8]).  [hyper(2,a,71,a,b,6,a),rewrite([13,12]),eval(30)].
+
+given #207 (W,wt=10): 220 board([6,1,5,8]).  [hyper(2,a,72,a,b,8,a),rewrite([13,12]),eval(30)].
+
+given #208 (W,wt=10): 221 board([4,1,5,8]).  [hyper(2,a,72,a,b,6,a),rewrite([13,12]),eval(30)].
+
+given #209 (W,wt=10): 222 board([3,7,4,8]).  [hyper(2,a,73,a,b,5,a),rewrite([13,12]),eval(30)].
+
+given #210 (W,wt=10): 223 board([1,7,4,8]).  [hyper(2,a,73,a,b,3,a),rewrite([13,12]),eval(30)].
+
+given #211 (W,wt=10): 224 board([7,2,4,8]).  [hyper(2,a,74,a,b,9,a),rewrite([13,12]),eval(30)].
+
+given #212 (W,wt=10): 225 board([7,1,4,8]).  [hyper(2,a,75,a,b,9,a),rewrite([13,12]),eval(30)].
+
+given #213 (W,wt=10): 226 board([3,1,4,8]).  [hyper(2,a,75,a,b,5,a),rewrite([13,12]),eval(30)].
+
+given #214 (W,wt=10): 227 board([4,7,3,8]).  [hyper(2,a,76,a,b,6,a),rewrite([13,12]),eval(30)].
+
+given #215 (W,wt=10): 228 board([2,7,3,8]).  [hyper(2,a,76,a,b,4,a),rewrite([13,12]),eval(30)].
+
+given #216 (W,wt=10): 229 board([7,5,3,8]).  [hyper(2,a,77,a,b,9,a),rewrite([13,12]),eval(30)].
+
+given #217 (W,wt=10): 230 board([2,5,3,8]).  [hyper(2,a,77,a,b,4,a),rewrite([13,12]),eval(30)].
+
+given #218 (W,wt=10): 231 board([7,1,3,8]).  [hyper(2,a,78,a,b,9,a),rewrite([13,12]),eval(30)].
+
+given #219 (W,wt=10): 232 board([6,1,3,8]).  [hyper(2,a,78,a,b,8,a),rewrite([13,12]),eval(30)].
+
+given #220 (W,wt=10): 233 board([4,1,3,8]).  [hyper(2,a,78,a,b,6,a),rewrite([13,12]),eval(30)].
+
+given #221 (W,wt=10): 234 board([3,7,2,8]).  [hyper(2,a,79,a,b,5,a),rewrite([13,12]),eval(30)].
+
+given #222 (W,wt=10): 235 board([1,7,2,8]).  [hyper(2,a,79,a,b,3,a),rewrite([13,12]),eval(30)].
+
+given #223 (W,wt=10): 236 board([7,5,2,8]).  [hyper(2,a,80,a,b,9,a),rewrite([13,12]),eval(30)].
+
+given #224 (W,wt=10): 237 board([3,5,2,8]).  [hyper(2,a,80,a,b,5,a),rewrite([13,12]),eval(30)].
+
+given #225 (W,wt=10): 238 board([1,5,2,8]).  [hyper(2,a,80,a,b,3,a),rewrite([13,12]),eval(30)].
+
+given #226 (W,wt=10): 239 board([7,4,2,8]).  [hyper(2,a,81,a,b,9,a),rewrite([13,12]),eval(30)].
+
+given #227 (W,wt=10): 240 board([6,4,2,8]).  [hyper(2,a,81,a,b,8,a),rewrite([13,12]),eval(30)].
+
+given #228 (W,wt=10): 241 board([1,4,2,8]).  [hyper(2,a,81,a,b,3,a),rewrite([13,12]),eval(30)].
+
+given #229 (W,wt=10): 242 board([4,7,1,8]).  [hyper(2,a,82,a,b,6,a),rewrite([13,12]),eval(30)].
+
+given #230 (W,wt=10): 243 board([2,7,1,8]).  [hyper(2,a,82,a,b,4,a),rewrite([13,12]),eval(30)].
+
+given #231 (W,wt=10): 244 board([7,5,1,8]).  [hyper(2,a,83,a,b,9,a),rewrite([13,12]),eval(30)].
+
+given #232 (W,wt=10): 245 board([2,5,1,8]).  [hyper(2,a,83,a,b,4,a),rewrite([13,12]),eval(30)].
+
+given #233 (W,wt=10): 246 board([7,4,1,8]).  [hyper(2,a,84,a,b,9,a),rewrite([13,12]),eval(30)].
+
+given #234 (W,wt=10): 247 board([6,4,1,8]).  [hyper(2,a,84,a,b,8,a),rewrite([13,12]),eval(30)].
+
+given #235 (W,wt=10): 248 board([2,4,1,8]).  [hyper(2,a,84,a,b,4,a),rewrite([13,12]),eval(30)].
+
+given #236 (W,wt=10): 249 board([7,3,1,8]).  [hyper(2,a,85,a,b,9,a),rewrite([13,12]),eval(30)].
+
+given #237 (W,wt=10): 250 board([6,3,1,8]).  [hyper(2,a,85,a,b,8,a),rewrite([13,12]),eval(30)].
+
+given #238 (W,wt=10): 251 board([6,8,5,7]).  [hyper(2,a,86,a,b,8,a),rewrite([13,12]),eval(30)].
+
+given #239 (W,wt=10): 252 board([2,8,5,7]).  [hyper(2,a,86,a,b,4,a),rewrite([13,12]),eval(30)].
+
+given #240 (W,wt=10): 253 board([1,8,5,7]).  [hyper(2,a,86,a,b,3,a),rewrite([13,12]),eval(30)].
+
+given #241 (W,wt=10): 254 board([8,3,5,7]).  [hyper(2,a,87,a,b,10,a),rewrite([13,12]),eval(30)].
+
+given #242 (W,wt=10): 255 board([6,3,5,7]).  [hyper(2,a,87,a,b,8,a),rewrite([13,12]),eval(30)].
+
+given #243 (W,wt=10): 256 board([1,3,5,7]).  [hyper(2,a,87,a,b,3,a),rewrite([13,12]),eval(30)].
+
+given #244 (W,wt=10): 257 board([8,2,5,7]).  [hyper(2,a,88,a,b,10,a),rewrite([13,12]),eval(30)].
+
+given #245 (W,wt=10): 258 board([6,2,5,7]).  [hyper(2,a,88,a,b,8,a),rewrite([13,12]),eval(30)].
+
+given #246 (W,wt=10): 259 board([8,1,5,7]).  [hyper(2,a,89,a,b,10,a),rewrite([13,12]),eval(30)].
+
+given #247 (W,wt=10): 260 board([6,1,5,7]).  [hyper(2,a,89,a,b,8,a),rewrite([13,12]),eval(30)].
+
+given #248 (W,wt=10): 261 board([5,8,4,7]).  [hyper(2,a,90,a,b,7,a),rewrite([13,12]),eval(30)].
+
+given #249 (W,wt=10): 262 board([3,8,4,7]).  [hyper(2,a,90,a,b,5,a),rewrite([13,12]),eval(30)].
+
+given #250 (W,wt=10): 263 board([1,8,4,7]).  [hyper(2,a,90,a,b,3,a),rewrite([13,12]),eval(30)].
+
+given #251 (W,wt=10): 264 board([8,6,4,7]).  [hyper(2,a,91,a,b,10,a),rewrite([13,12]),eval(30)].
+
+given #252 (W,wt=10): 265 board([3,6,4,7]).  [hyper(2,a,91,a,b,5,a),rewrite([13,12]),eval(30)].
+
+given #253 (W,wt=10): 266 board([1,6,4,7]).  [hyper(2,a,91,a,b,3,a),rewrite([13,12]),eval(30)].
+
+given #254 (W,wt=10): 267 board([8,2,4,7]).  [hyper(2,a,92,a,b,10,a),rewrite([13,12]),eval(30)].
+
+given #255 (W,wt=10): 268 board([5,2,4,7]).  [hyper(2,a,92,a,b,7,a),rewrite([13,12]),eval(30)].
+
+given #256 (W,wt=10): 269 board([8,1,4,7]).  [hyper(2,a,93,a,b,10,a),rewrite([13,12]),eval(30)].
+
+given #257 (W,wt=10): 270 board([5,1,4,7]).  [hyper(2,a,93,a,b,7,a),rewrite([13,12]),eval(30)].
+
+given #258 (W,wt=10): 271 board([3,1,4,7]).  [hyper(2,a,93,a,b,5,a),rewrite([13,12]),eval(30)].
+
+given #259 (W,wt=10): 272 board([6,8,3,7]).  [hyper(2,a,94,a,b,8,a),rewrite([13,12]),eval(30)].
+
+given #260 (W,wt=10): 273 board([2,8,3,7]).  [hyper(2,a,94,a,b,4,a),rewrite([13,12]),eval(30)].
+
+given #261 (W,wt=10): 274 board([8,6,3,7]).  [hyper(2,a,95,a,b,10,a),rewrite([13,12]),eval(30)].
+
+given #262 (W,wt=10): 275 board([2,6,3,7]).  [hyper(2,a,95,a,b,4,a),rewrite([13,12]),eval(30)].
+
+given #263 (W,wt=10): 276 board([8,1,3,7]).  [hyper(2,a,96,a,b,10,a),rewrite([13,12]),eval(30)].
+
+given #264 (W,wt=10): 277 board([6,1,3,7]).  [hyper(2,a,96,a,b,8,a),rewrite([13,12]),eval(30)].
+
+given #265 (W,wt=10): 278 board([6,8,2,7]).  [hyper(2,a,97,a,b,8,a),rewrite([13,12]),eval(30)].
+
+given #266 (W,wt=10): 279 board([5,8,2,7]).  [hyper(2,a,97,a,b,7,a),rewrite([13,12]),eval(30)].
+
+given #267 (W,wt=10): 280 board([3,8,2,7]).  [hyper(2,a,97,a,b,5,a),rewrite([13,12]),eval(30)].
+
+given #268 (W,wt=10): 281 board([1,8,2,7]).  [hyper(2,a,97,a,b,3,a),rewrite([13,12]),eval(30)].
+
+given #269 (W,wt=10): 282 board([8,6,2,7]).  [hyper(2,a,98,a,b,10,a),rewrite([13,12]),eval(30)].
+
+given #270 (W,wt=10): 283 board([3,6,2,7]).  [hyper(2,a,98,a,b,5,a),rewrite([13,12]),eval(30)].
+
+given #271 (W,wt=10): 284 board([1,6,2,7]).  [hyper(2,a,98,a,b,3,a),rewrite([13,12]),eval(30)].
+
+given #272 (W,wt=10): 285 board([8,4,2,7]).  [hyper(2,a,99,a,b,10,a),rewrite([13,12]),eval(30)].
+
+given #273 (W,wt=10): 286 board([6,4,2,7]).  [hyper(2,a,99,a,b,8,a),rewrite([13,12]),eval(30)].
+
+given #274 (W,wt=10): 287 board([1,4,2,7]).  [hyper(2,a,99,a,b,3,a),rewrite([13,12]),eval(30)].
+
+given #275 (W,wt=10): 288 board([6,8,1,7]).  [hyper(2,a,100,a,b,8,a),rewrite([13,12]),eval(30)].
+
+given #276 (W,wt=10): 289 board([5,8,1,7]).  [hyper(2,a,100,a,b,7,a),rewrite([13,12]),eval(30)].
+
+given #277 (W,wt=10): 290 board([2,8,1,7]).  [hyper(2,a,100,a,b,4,a),rewrite([13,12]),eval(30)].
+
+given #278 (W,wt=10): 291 board([8,6,1,7]).  [hyper(2,a,101,a,b,10,a),rewrite([13,12]),eval(30)].
+
+given #279 (W,wt=10): 292 board([2,6,1,7]).  [hyper(2,a,101,a,b,4,a),rewrite([13,12]),eval(30)].
+
+given #280 (W,wt=10): 293 board([8,4,1,7]).  [hyper(2,a,102,a,b,10,a),rewrite([13,12]),eval(30)].
+
+given #281 (W,wt=10): 294 board([6,4,1,7]).  [hyper(2,a,102,a,b,8,a),rewrite([13,12]),eval(30)].
+
+given #282 (W,wt=10): 295 board([2,4,1,7]).  [hyper(2,a,102,a,b,4,a),rewrite([13,12]),eval(30)].
+
+given #283 (W,wt=10): 296 board([8,3,1,7]).  [hyper(2,a,103,a,b,10,a),rewrite([13,12]),eval(30)].
+
+given #284 (W,wt=10): 297 board([6,3,1,7]).  [hyper(2,a,103,a,b,8,a),rewrite([13,12]),eval(30)].
+
+given #285 (W,wt=10): 298 board([5,3,1,7]).  [hyper(2,a,103,a,b,7,a),rewrite([13,12]),eval(30)].
+
+given #286 (W,wt=10): 299 board([7,5,8,6]).  [hyper(2,a,104,a,b,9,a),rewrite([13,12]),eval(30)].
+
+given #287 (W,wt=10): 300 board([2,5,8,6]).  [hyper(2,a,104,a,b,4,a),rewrite([13,12]),eval(30)].
+
+given #288 (W,wt=10): 301 board([1,5,8,6]).  [hyper(2,a,104,a,b,3,a),rewrite([13,12]),eval(30)].
+
+given #289 (W,wt=10): 302 board([7,3,8,6]).  [hyper(2,a,105,a,b,9,a),rewrite([13,12]),eval(30)].
+
+given #290 (W,wt=10): 303 board([5,3,8,6]).  [hyper(2,a,105,a,b,7,a),rewrite([13,12]),eval(30)].
+
+given #291 (W,wt=10): 304 board([1,3,8,6]).  [hyper(2,a,105,a,b,3,a),rewrite([13,12]),eval(30)].
+
+given #292 (W,wt=10): 305 board([7,2,8,6]).  [hyper(2,a,106,a,b,9,a),rewrite([13,12]),eval(30)].
+
+given #293 (W,wt=10): 306 board([5,2,8,6]).  [hyper(2,a,106,a,b,7,a),rewrite([13,12]),eval(30)].
+
+given #294 (W,wt=10): 307 board([4,2,8,6]).  [hyper(2,a,106,a,b,6,a),rewrite([13,12]),eval(30)].
+
+given #295 (W,wt=10): 308 board([7,1,8,6]).  [hyper(2,a,107,a,b,9,a),rewrite([13,12]),eval(30)].
+
+given #296 (W,wt=10): 309 board([5,1,8,6]).  [hyper(2,a,107,a,b,7,a),rewrite([13,12]),eval(30)].
+
+given #297 (W,wt=10): 310 board([4,1,8,6]).  [hyper(2,a,107,a,b,6,a),rewrite([13,12]),eval(30)].
+
+given #298 (W,wt=10): 311 board([5,7,4,6]).  [hyper(2,a,108,a,b,7,a),rewrite([13,12]),eval(30)].
+
+given #299 (W,wt=10): 312 board([1,7,4,6]).  [hyper(2,a,108,a,b,3,a),rewrite([13,12]),eval(30)].
+
+given #300 (W,wt=10): 313 board([8,2,4,6]).  [hyper(2,a,109,a,b,10,a),rewrite([13,12]),eval(30)].
+
+given #301 (W,wt=10): 314 board([7,2,4,6]).  [hyper(2,a,109,a,b,9,a),rewrite([13,12]),eval(30)].
+
+given #302 (W,wt=10): 315 board([5,2,4,6]).  [hyper(2,a,109,a,b,7,a),rewrite([13,12]),eval(30)].
+
+given #303 (W,wt=10): 316 board([8,1,4,6]).  [hyper(2,a,110,a,b,10,a),rewrite([13,12]),eval(30)].
+
+given #304 (W,wt=10): 317 board([7,1,4,6]).  [hyper(2,a,110,a,b,9,a),rewrite([13,12]),eval(30)].
+
+given #305 (W,wt=10): 318 board([5,1,4,6]).  [hyper(2,a,110,a,b,7,a),rewrite([13,12]),eval(30)].
+
+given #306 (W,wt=10): 319 board([4,7,3,6]).  [hyper(2,a,111,a,b,6,a),rewrite([13,12]),eval(30)].
+
+given #307 (W,wt=10): 320 board([2,7,3,6]).  [hyper(2,a,111,a,b,4,a),rewrite([13,12]),eval(30)].
+
+given #308 (W,wt=10): 321 board([8,5,3,6]).  [hyper(2,a,112,a,b,10,a),rewrite([13,12]),eval(30)].
+
+given #309 (W,wt=10): 322 board([7,5,3,6]).  [hyper(2,a,112,a,b,9,a),rewrite([13,12]),eval(30)].
+
+given #310 (W,wt=10): 323 board([2,5,3,6]).  [hyper(2,a,112,a,b,4,a),rewrite([13,12]),eval(30)].
+
+given #311 (W,wt=10): 324 board([8,1,3,6]).  [hyper(2,a,113,a,b,10,a),rewrite([13,12]),eval(30)].
+
+given #312 (W,wt=10): 325 board([7,1,3,6]).  [hyper(2,a,113,a,b,9,a),rewrite([13,12]),eval(30)].
+
+given #313 (W,wt=10): 326 board([4,1,3,6]).  [hyper(2,a,113,a,b,6,a),rewrite([13,12]),eval(30)].
+
+given #314 (W,wt=10): 327 board([5,7,2,6]).  [hyper(2,a,114,a,b,7,a),rewrite([13,12]),eval(30)].
+
+given #315 (W,wt=10): 328 board([1,7,2,6]).  [hyper(2,a,114,a,b,3,a),rewrite([13,12]),eval(30)].
+
+given #316 (W,wt=10): 329 board([8,5,2,6]).  [hyper(2,a,115,a,b,10,a),rewrite([13,12]),eval(30)].
+
+given #317 (W,wt=10): 330 board([7,5,2,6]).  [hyper(2,a,115,a,b,9,a),rewrite([13,12]),eval(30)].
+
+given #318 (W,wt=10): 331 board([1,5,2,6]).  [hyper(2,a,115,a,b,3,a),rewrite([13,12]),eval(30)].
+
+given #319 (W,wt=10): 332 board([5,7,1,6]).  [hyper(2,a,116,a,b,7,a),rewrite([13,12]),eval(30)].
+
+given #320 (W,wt=10): 333 board([4,7,1,6]).  [hyper(2,a,116,a,b,6,a),rewrite([13,12]),eval(30)].
+
+given #321 (W,wt=10): 334 board([2,7,1,6]).  [hyper(2,a,116,a,b,4,a),rewrite([13,12]),eval(30)].
+
+given #322 (W,wt=10): 335 board([8,5,1,6]).  [hyper(2,a,117,a,b,10,a),rewrite([13,12]),eval(30)].
+
+given #323 (W,wt=10): 336 board([7,5,1,6]).  [hyper(2,a,117,a,b,9,a),rewrite([13,12]),eval(30)].
+
+given #324 (W,wt=10): 337 board([2,5,1,6]).  [hyper(2,a,117,a,b,4,a),rewrite([13,12]),eval(30)].
+
+given #325 (W,wt=10): 338 board([8,3,1,6]).  [hyper(2,a,118,a,b,10,a),rewrite([13,12]),eval(30)].
+
+given #326 (W,wt=10): 339 board([7,3,1,6]).  [hyper(2,a,118,a,b,9,a),rewrite([13,12]),eval(30)].
+
+given #327 (W,wt=10): 340 board([5,3,1,6]).  [hyper(2,a,118,a,b,7,a),rewrite([13,12]),eval(30)].
+
+given #328 (W,wt=10): 341 board([4,6,8,5]).  [hyper(2,a,119,a,b,6,a),rewrite([13,12]),eval(30)].
+
+given #329 (W,wt=10): 342 board([3,6,8,5]).  [hyper(2,a,119,a,b,5,a),rewrite([13,12]),eval(30)].
+
+given #330 (W,wt=10): 343 board([1,6,8,5]).  [hyper(2,a,119,a,b,3,a),rewrite([13,12]),eval(30)].
+
+given #331 (W,wt=10): 344 board([7,4,8,5]).  [hyper(2,a,120,a,b,9,a),rewrite([13,12]),eval(30)].
+
+given #332 (W,wt=10): 345 board([1,4,8,5]).  [hyper(2,a,120,a,b,3,a),rewrite([13,12]),eval(30)].
+
+given #333 (W,wt=10): 346 board([7,2,8,5]).  [hyper(2,a,121,a,b,9,a),rewrite([13,12]),eval(30)].
+
+given #334 (W,wt=10): 347 board([4,2,8,5]).  [hyper(2,a,121,a,b,6,a),rewrite([13,12]),eval(30)].
+
+given #335 (W,wt=10): 348 board([7,1,8,5]).  [hyper(2,a,122,a,b,9,a),rewrite([13,12]),eval(30)].
+
+given #336 (W,wt=10): 349 board([4,1,8,5]).  [hyper(2,a,122,a,b,6,a),rewrite([13,12]),eval(30)].
+
+given #337 (W,wt=10): 350 board([3,1,8,5]).  [hyper(2,a,122,a,b,5,a),rewrite([13,12]),eval(30)].
+
+given #338 (W,wt=10): 351 board([6,4,7,5]).  [hyper(2,a,123,a,b,8,a),rewrite([13,12]),eval(30)].
+
+given #339 (W,wt=10): 352 board([1,4,7,5]).  [hyper(2,a,123,a,b,3,a),rewrite([13,12]),eval(30)].
+
+given #340 (W,wt=10): 353 board([6,2,7,5]).  [hyper(2,a,124,a,b,8,a),rewrite([13,12]),eval(30)].
+
+given #341 (W,wt=10): 354 board([4,2,7,5]).  [hyper(2,a,124,a,b,6,a),rewrite([13,12]),eval(30)].
+
+given #342 (W,wt=10): 355 board([6,1,7,5]).  [hyper(2,a,125,a,b,8,a),rewrite([13,12]),eval(30)].
+
+given #343 (W,wt=10): 356 board([4,1,7,5]).  [hyper(2,a,125,a,b,6,a),rewrite([13,12]),eval(30)].
+
+given #344 (W,wt=10): 357 board([3,1,7,5]).  [hyper(2,a,125,a,b,5,a),rewrite([13,12]),eval(30)].
+
+given #345 (W,wt=10): 358 board([6,8,3,5]).  [hyper(2,a,126,a,b,8,a),rewrite([13,12]),eval(30)].
+
+given #346 (W,wt=10): 359 board([4,8,3,5]).  [hyper(2,a,126,a,b,6,a),rewrite([13,12]),eval(30)].
+
+given #347 (W,wt=10): 360 board([4,6,3,5]).  [hyper(2,a,127,a,b,6,a),rewrite([13,12]),eval(30)].
+
+given #348 (W,wt=10): 361 board([7,1,3,5]).  [hyper(2,a,128,a,b,9,a),rewrite([13,12]),eval(30)].
+
+given #349 (W,wt=10): 362 board([6,1,3,5]).  [hyper(2,a,128,a,b,8,a),rewrite([13,12]),eval(30)].
+
+given #350 (W,wt=10): 363 board([4,1,3,5]).  [hyper(2,a,128,a,b,6,a),rewrite([13,12]),eval(30)].
+
+given #351 (W,wt=10): 364 board([6,8,2,5]).  [hyper(2,a,129,a,b,8,a),rewrite([13,12]),eval(30)].
+
+given #352 (W,wt=10): 365 board([3,8,2,5]).  [hyper(2,a,129,a,b,5,a),rewrite([13,12]),eval(30)].
+
+given #353 (W,wt=10): 366 board([1,8,2,5]).  [hyper(2,a,129,a,b,3,a),rewrite([13,12]),eval(30)].
+
+given #354 (W,wt=10): 367 board([3,6,2,5]).  [hyper(2,a,130,a,b,5,a),rewrite([13,12]),eval(30)].
+
+given #355 (W,wt=10): 368 board([1,6,2,5]).  [hyper(2,a,130,a,b,3,a),rewrite([13,12]),eval(30)].
+
+given #356 (W,wt=10): 369 board([7,4,2,5]).  [hyper(2,a,131,a,b,9,a),rewrite([13,12]),eval(30)].
+
+given #357 (W,wt=10): 370 board([6,4,2,5]).  [hyper(2,a,131,a,b,8,a),rewrite([13,12]),eval(30)].
+
+given #358 (W,wt=10): 371 board([1,4,2,5]).  [hyper(2,a,131,a,b,3,a),rewrite([13,12]),eval(30)].
+
+given #359 (W,wt=10): 372 board([6,8,1,5]).  [hyper(2,a,132,a,b,8,a),rewrite([13,12]),eval(30)].
+
+given #360 (W,wt=10): 373 board([4,8,1,5]).  [hyper(2,a,132,a,b,6,a),rewrite([13,12]),eval(30)].
+
+given #361 (W,wt=10): 374 board([4,6,1,5]).  [hyper(2,a,133,a,b,6,a),rewrite([13,12]),eval(30)].
+
+given #362 (W,wt=10): 375 board([7,4,1,5]).  [hyper(2,a,134,a,b,9,a),rewrite([13,12]),eval(30)].
+
+given #363 (W,wt=10): 376 board([6,4,1,5]).  [hyper(2,a,134,a,b,8,a),rewrite([13,12]),eval(30)].
+
+given #364 (W,wt=10): 377 board([3,5,8,4]).  [hyper(2,a,135,a,b,5,a),rewrite([13,12]),eval(30)].
+
+given #365 (W,wt=10): 378 board([2,5,8,4]).  [hyper(2,a,135,a,b,4,a),rewrite([13,12]),eval(30)].
+
+given #366 (W,wt=10): 379 board([5,3,8,4]).  [hyper(2,a,136,a,b,7,a),rewrite([13,12]),eval(30)].
+
+given #367 (W,wt=10): 380 board([5,1,8,4]).  [hyper(2,a,137,a,b,7,a),rewrite([13,12]),eval(30)].
+
+given #368 (W,wt=10): 381 board([3,1,8,4]).  [hyper(2,a,137,a,b,5,a),rewrite([13,12]),eval(30)].
+
+given #369 (W,wt=10): 382 board([8,5,7,4]).  [hyper(2,a,138,a,b,10,a),rewrite([13,12]),eval(30)].
+
+given #370 (W,wt=10): 383 board([3,5,7,4]).  [hyper(2,a,138,a,b,5,a),rewrite([13,12]),eval(30)].
+
+given #371 (W,wt=10): 384 board([2,5,7,4]).  [hyper(2,a,138,a,b,4,a),rewrite([13,12]),eval(30)].
+
+given #372 (W,wt=10): 385 board([8,3,7,4]).  [hyper(2,a,139,a,b,10,a),rewrite([13,12]),eval(30)].
+
+given #373 (W,wt=10): 386 board([6,3,7,4]).  [hyper(2,a,139,a,b,8,a),rewrite([13,12]),eval(30)].
+
+given #374 (W,wt=10): 387 board([8,1,7,4]).  [hyper(2,a,140,a,b,10,a),rewrite([13,12]),eval(30)].
+
+given #375 (W,wt=10): 388 board([6,1,7,4]).  [hyper(2,a,140,a,b,8,a),rewrite([13,12]),eval(30)].
+
+given #376 (W,wt=10): 389 board([3,1,7,4]).  [hyper(2,a,140,a,b,5,a),rewrite([13,12]),eval(30)].
+
+given #377 (W,wt=10): 390 board([5,8,6,4]).  [hyper(2,a,141,a,b,7,a),rewrite([13,12]),eval(30)].
+
+given #378 (W,wt=10): 391 board([3,8,6,4]).  [hyper(2,a,141,a,b,5,a),rewrite([13,12]),eval(30)].
+
+given #379 (W,wt=10): 392 board([2,8,6,4]).  [hyper(2,a,141,a,b,4,a),rewrite([13,12]),eval(30)].
+
+given #380 (W,wt=10): 393 board([5,3,6,4]).  [hyper(2,a,142,a,b,7,a),rewrite([13,12]),eval(30)].
+
+given #381 (W,wt=10): 394 board([5,1,6,4]).  [hyper(2,a,143,a,b,7,a),rewrite([13,12]),eval(30)].
+
+given #382 (W,wt=10): 395 board([3,1,6,4]).  [hyper(2,a,143,a,b,5,a),rewrite([13,12]),eval(30)].
+
+given #383 (W,wt=10): 396 board([6,8,2,4]).  [hyper(2,a,144,a,b,8,a),rewrite([13,12]),eval(30)].
+
+given #384 (W,wt=10): 397 board([5,8,2,4]).  [hyper(2,a,144,a,b,7,a),rewrite([13,12]),eval(30)].
+
+given #385 (W,wt=10): 398 board([3,8,2,4]).  [hyper(2,a,144,a,b,5,a),rewrite([13,12]),eval(30)].
+
+given #386 (W,wt=10): 399 board([5,7,2,4]).  [hyper(2,a,145,a,b,7,a),rewrite([13,12]),eval(30)].
+
+given #387 (W,wt=10): 400 board([3,7,2,4]).  [hyper(2,a,145,a,b,5,a),rewrite([13,12]),eval(30)].
+
+given #388 (W,wt=10): 401 board([8,5,2,4]).  [hyper(2,a,146,a,b,10,a),rewrite([13,12]),eval(30)].
+
+given #389 (W,wt=10): 402 board([3,5,2,4]).  [hyper(2,a,146,a,b,5,a),rewrite([13,12]),eval(30)].
+
+given #390 (W,wt=10): 403 board([6,8,1,4]).  [hyper(2,a,147,a,b,8,a),rewrite([13,12]),eval(30)].
+
+given #391 (W,wt=10): 404 board([5,8,1,4]).  [hyper(2,a,147,a,b,7,a),rewrite([13,12]),eval(30)].
+
+given #392 (W,wt=10): 405 board([2,8,1,4]).  [hyper(2,a,147,a,b,4,a),rewrite([13,12]),eval(30)].
+
+given #393 (W,wt=10): 406 board([5,7,1,4]).  [hyper(2,a,148,a,b,7,a),rewrite([13,12]),eval(30)].
+
+given #394 (W,wt=10): 407 board([2,7,1,4]).  [hyper(2,a,148,a,b,4,a),rewrite([13,12]),eval(30)].
+
+given #395 (W,wt=10): 408 board([8,5,1,4]).  [hyper(2,a,149,a,b,10,a),rewrite([13,12]),eval(30)].
+
+given #396 (W,wt=10): 409 board([2,5,1,4]).  [hyper(2,a,149,a,b,4,a),rewrite([13,12]),eval(30)].
+
+given #397 (W,wt=10): 410 board([8,3,1,4]).  [hyper(2,a,150,a,b,10,a),rewrite([13,12]),eval(30)].
+
+given #398 (W,wt=10): 411 board([6,3,1,4]).  [hyper(2,a,150,a,b,8,a),rewrite([13,12]),eval(30)].
+
+given #399 (W,wt=10): 412 board([5,3,1,4]).  [hyper(2,a,150,a,b,7,a),rewrite([13,12]),eval(30)].
+
+given #400 (W,wt=10): 413 board([4,6,8,3]).  [hyper(2,a,151,a,b,6,a),rewrite([13,12]),eval(30)].
+
+given #401 (W,wt=10): 414 board([2,6,8,3]).  [hyper(2,a,151,a,b,4,a),rewrite([13,12]),eval(30)].
+
+given #402 (W,wt=10): 415 board([1,6,8,3]).  [hyper(2,a,151,a,b,3,a),rewrite([13,12]),eval(30)].
+
+given #403 (W,wt=10): 416 board([7,4,8,3]).  [hyper(2,a,152,a,b,9,a),rewrite([13,12]),eval(30)].
+
+given #404 (W,wt=10): 417 board([2,4,8,3]).  [hyper(2,a,152,a,b,4,a),rewrite([13,12]),eval(30)].
+
+given #405 (W,wt=10): 418 board([1,4,8,3]).  [hyper(2,a,152,a,b,3,a),rewrite([13,12]),eval(30)].
+
+given #406 (W,wt=10): 419 board([7,2,8,3]).  [hyper(2,a,153,a,b,9,a),rewrite([13,12]),eval(30)].
+
+given #407 (W,wt=10): 420 board([5,2,8,3]).  [hyper(2,a,153,a,b,7,a),rewrite([13,12]),eval(30)].
+
+given #408 (W,wt=10): 421 board([4,2,8,3]).  [hyper(2,a,153,a,b,6,a),rewrite([13,12]),eval(30)].
+
+given #409 (W,wt=10): 422 board([8,4,7,3]).  [hyper(2,a,154,a,b,10,a),rewrite([13,12]),eval(30)].
+
+given #410 (W,wt=10): 423 board([2,4,7,3]).  [hyper(2,a,154,a,b,4,a),rewrite([13,12]),eval(30)].
+
+given #411 (W,wt=10): 424 board([1,4,7,3]).  [hyper(2,a,154,a,b,3,a),rewrite([13,12]),eval(30)].
+
+given #412 (W,wt=10): 425 board([8,2,7,3]).  [hyper(2,a,155,a,b,10,a),rewrite([13,12]),eval(30)].
+
+given #413 (W,wt=10): 426 board([4,2,7,3]).  [hyper(2,a,155,a,b,6,a),rewrite([13,12]),eval(30)].
+
+given #414 (W,wt=10): 427 board([5,8,6,3]).  [hyper(2,a,156,a,b,7,a),rewrite([13,12]),eval(30)].
+
+given #415 (W,wt=10): 428 board([2,8,6,3]).  [hyper(2,a,156,a,b,4,a),rewrite([13,12]),eval(30)].
+
+given #416 (W,wt=10): 429 board([1,8,6,3]).  [hyper(2,a,156,a,b,3,a),rewrite([13,12]),eval(30)].
+
+given #417 (W,wt=10): 430 board([7,4,6,3]).  [hyper(2,a,157,a,b,9,a),rewrite([13,12]),eval(30)].
+
+given #418 (W,wt=10): 431 board([2,4,6,3]).  [hyper(2,a,157,a,b,4,a),rewrite([13,12]),eval(30)].
+
+given #419 (W,wt=10): 432 board([1,4,6,3]).  [hyper(2,a,157,a,b,3,a),rewrite([13,12]),eval(30)].
+
+given #420 (W,wt=10): 433 board([7,2,6,3]).  [hyper(2,a,158,a,b,9,a),rewrite([13,12]),eval(30)].
+
+given #421 (W,wt=10): 434 board([5,2,6,3]).  [hyper(2,a,158,a,b,7,a),rewrite([13,12]),eval(30)].
+
+given #422 (W,wt=10): 435 board([4,8,5,3]).  [hyper(2,a,159,a,b,6,a),rewrite([13,12]),eval(30)].
+
+given #423 (W,wt=10): 436 board([2,8,5,3]).  [hyper(2,a,159,a,b,4,a),rewrite([13,12]),eval(30)].
+
+given #424 (W,wt=10): 437 board([1,8,5,3]).  [hyper(2,a,159,a,b,3,a),rewrite([13,12]),eval(30)].
+
+given #425 (W,wt=10): 438 board([4,7,5,3]).  [hyper(2,a,160,a,b,6,a),rewrite([13,12]),eval(30)].
+
+given #426 (W,wt=10): 439 board([2,7,5,3]).  [hyper(2,a,160,a,b,4,a),rewrite([13,12]),eval(30)].
+
+given #427 (W,wt=10): 440 board([1,7,5,3]).  [hyper(2,a,160,a,b,3,a),rewrite([13,12]),eval(30)].
+
+given #428 (W,wt=10): 441 board([8,2,5,3]).  [hyper(2,a,161,a,b,10,a),rewrite([13,12]),eval(30)].
+
+given #429 (W,wt=10): 442 board([4,2,5,3]).  [hyper(2,a,161,a,b,6,a),rewrite([13,12]),eval(30)].
+
+given #430 (W,wt=10): 443 board([5,8,1,3]).  [hyper(2,a,162,a,b,7,a),rewrite([13,12]),eval(30)].
+
+given #431 (W,wt=10): 444 board([4,8,1,3]).  [hyper(2,a,162,a,b,6,a),rewrite([13,12]),eval(30)].
+
+given #432 (W,wt=10): 445 board([2,8,1,3]).  [hyper(2,a,162,a,b,4,a),rewrite([13,12]),eval(30)].
+
+given #433 (W,wt=10): 446 board([5,7,1,3]).  [hyper(2,a,163,a,b,7,a),rewrite([13,12]),eval(30)].
+
+given #434 (W,wt=10): 447 board([4,7,1,3]).  [hyper(2,a,163,a,b,6,a),rewrite([13,12]),eval(30)].
+
+given #435 (W,wt=10): 448 board([2,7,1,3]).  [hyper(2,a,163,a,b,4,a),rewrite([13,12]),eval(30)].
+
+given #436 (W,wt=10): 449 board([8,6,1,3]).  [hyper(2,a,164,a,b,10,a),rewrite([13,12]),eval(30)].
+
+given #437 (W,wt=10): 450 board([4,6,1,3]).  [hyper(2,a,164,a,b,6,a),rewrite([13,12]),eval(30)].
+
+given #438 (W,wt=10): 451 board([2,6,1,3]).  [hyper(2,a,164,a,b,4,a),rewrite([13,12]),eval(30)].
+
+given #439 (W,wt=10): 452 board([8,4,1,3]).  [hyper(2,a,165,a,b,10,a),rewrite([13,12]),eval(30)].
+
+given #440 (W,wt=10): 453 board([7,4,1,3]).  [hyper(2,a,165,a,b,9,a),rewrite([13,12]),eval(30)].
+
+given #441 (W,wt=10): 454 board([2,4,1,3]).  [hyper(2,a,165,a,b,4,a),rewrite([13,12]),eval(30)].
+
+given #442 (W,wt=10): 455 board([4,6,8,2]).  [hyper(2,a,166,a,b,6,a),rewrite([13,12]),eval(30)].
+
+given #443 (W,wt=10): 456 board([3,6,8,2]).  [hyper(2,a,166,a,b,5,a),rewrite([13,12]),eval(30)].
+
+given #444 (W,wt=10): 457 board([1,6,8,2]).  [hyper(2,a,166,a,b,3,a),rewrite([13,12]),eval(30)].
+
+given #445 (W,wt=10): 458 board([7,5,8,2]).  [hyper(2,a,167,a,b,9,a),rewrite([13,12]),eval(30)].
+
+given #446 (W,wt=10): 459 board([3,5,8,2]).  [hyper(2,a,167,a,b,5,a),rewrite([13,12]),eval(30)].
+
+given #447 (W,wt=10): 460 board([1,5,8,2]).  [hyper(2,a,167,a,b,3,a),rewrite([13,12]),eval(30)].
+
+given #448 (W,wt=10): 461 board([7,3,8,2]).  [hyper(2,a,168,a,b,9,a),rewrite([13,12]),eval(30)].
+
+given #449 (W,wt=10): 462 board([1,3,8,2]).  [hyper(2,a,168,a,b,3,a),rewrite([13,12]),eval(30)].
+
+given #450 (W,wt=10): 463 board([7,1,8,2]).  [hyper(2,a,169,a,b,9,a),rewrite([13,12]),eval(30)].
+
+given #451 (W,wt=10): 464 board([4,1,8,2]).  [hyper(2,a,169,a,b,6,a),rewrite([13,12]),eval(30)].
+
+given #452 (W,wt=10): 465 board([3,1,8,2]).  [hyper(2,a,169,a,b,5,a),rewrite([13,12]),eval(30)].
+
+given #453 (W,wt=10): 466 board([8,5,7,2]).  [hyper(2,a,170,a,b,10,a),rewrite([13,12]),eval(30)].
+
+given #454 (W,wt=10): 467 board([3,5,7,2]).  [hyper(2,a,170,a,b,5,a),rewrite([13,12]),eval(30)].
+
+given #455 (W,wt=10): 468 board([1,5,7,2]).  [hyper(2,a,170,a,b,3,a),rewrite([13,12]),eval(30)].
+
+given #456 (W,wt=10): 469 board([8,3,7,2]).  [hyper(2,a,171,a,b,10,a),rewrite([13,12]),eval(30)].
+
+given #457 (W,wt=10): 470 board([6,3,7,2]).  [hyper(2,a,171,a,b,8,a),rewrite([13,12]),eval(30)].
+
+given #458 (W,wt=10): 471 board([1,3,7,2]).  [hyper(2,a,171,a,b,3,a),rewrite([13,12]),eval(30)].
+
+given #459 (W,wt=10): 472 board([8,1,7,2]).  [hyper(2,a,172,a,b,10,a),rewrite([13,12]),eval(30)].
+
+given #460 (W,wt=10): 473 board([6,1,7,2]).  [hyper(2,a,172,a,b,8,a),rewrite([13,12]),eval(30)].
+
+given #461 (W,wt=10): 474 board([4,1,7,2]).  [hyper(2,a,172,a,b,6,a),rewrite([13,12]),eval(30)].
+
+given #462 (W,wt=10): 475 board([3,1,7,2]).  [hyper(2,a,172,a,b,5,a),rewrite([13,12]),eval(30)].
+
+given #463 (W,wt=10): 476 board([3,8,6,2]).  [hyper(2,a,173,a,b,5,a),rewrite([13,12]),eval(30)].
+
+given #464 (W,wt=10): 477 board([1,8,6,2]).  [hyper(2,a,173,a,b,3,a),rewrite([13,12]),eval(30)].
+
+given #465 (W,wt=10): 478 board([7,3,6,2]).  [hyper(2,a,174,a,b,9,a),rewrite([13,12]),eval(30)].
+
+given #466 (W,wt=10): 479 board([1,3,6,2]).  [hyper(2,a,174,a,b,3,a),rewrite([13,12]),eval(30)].
+
+given #467 (W,wt=10): 480 board([7,1,6,2]).  [hyper(2,a,175,a,b,9,a),rewrite([13,12]),eval(30)].
+
+given #468 (W,wt=10): 481 board([3,1,6,2]).  [hyper(2,a,175,a,b,5,a),rewrite([13,12]),eval(30)].
+
+given #469 (W,wt=10): 482 board([6,8,5,2]).  [hyper(2,a,176,a,b,8,a),rewrite([13,12]),eval(30)].
+
+given #470 (W,wt=10): 483 board([4,8,5,2]).  [hyper(2,a,176,a,b,6,a),rewrite([13,12]),eval(30)].
+
+given #471 (W,wt=10): 484 board([1,8,5,2]).  [hyper(2,a,176,a,b,3,a),rewrite([13,12]),eval(30)].
+
+given #472 (W,wt=10): 485 board([4,7,5,2]).  [hyper(2,a,177,a,b,6,a),rewrite([13,12]),eval(30)].
+
+given #473 (W,wt=10): 486 board([1,7,5,2]).  [hyper(2,a,177,a,b,3,a),rewrite([13,12]),eval(30)].
+
+given #474 (W,wt=10): 487 board([8,3,5,2]).  [hyper(2,a,178,a,b,10,a),rewrite([13,12]),eval(30)].
+
+given #475 (W,wt=10): 488 board([6,3,5,2]).  [hyper(2,a,178,a,b,8,a),rewrite([13,12]),eval(30)].
+
+given #476 (W,wt=10): 489 board([1,3,5,2]).  [hyper(2,a,178,a,b,3,a),rewrite([13,12]),eval(30)].
+
+given #477 (W,wt=10): 490 board([8,1,5,2]).  [hyper(2,a,179,a,b,10,a),rewrite([13,12]),eval(30)].
+
+given #478 (W,wt=10): 491 board([6,1,5,2]).  [hyper(2,a,179,a,b,8,a),rewrite([13,12]),eval(30)].
+
+given #479 (W,wt=10): 492 board([4,1,5,2]).  [hyper(2,a,179,a,b,6,a),rewrite([13,12]),eval(30)].
+
+given #480 (W,wt=10): 493 board([3,8,4,2]).  [hyper(2,a,180,a,b,5,a),rewrite([13,12]),eval(30)].
+
+given #481 (W,wt=10): 494 board([1,8,4,2]).  [hyper(2,a,180,a,b,3,a),rewrite([13,12]),eval(30)].
+
+given #482 (W,wt=10): 495 board([3,7,4,2]).  [hyper(2,a,181,a,b,5,a),rewrite([13,12]),eval(30)].
+
+given #483 (W,wt=10): 496 board([1,7,4,2]).  [hyper(2,a,181,a,b,3,a),rewrite([13,12]),eval(30)].
+
+given #484 (W,wt=10): 497 board([8,6,4,2]).  [hyper(2,a,182,a,b,10,a),rewrite([13,12]),eval(30)].
+
+given #485 (W,wt=10): 498 board([3,6,4,2]).  [hyper(2,a,182,a,b,5,a),rewrite([13,12]),eval(30)].
+
+given #486 (W,wt=10): 499 board([1,6,4,2]).  [hyper(2,a,182,a,b,3,a),rewrite([13,12]),eval(30)].
+
+given #487 (W,wt=10): 500 board([8,1,4,2]).  [hyper(2,a,183,a,b,10,a),rewrite([13,12]),eval(30)].
+
+given #488 (W,wt=10): 501 board([7,1,4,2]).  [hyper(2,a,183,a,b,9,a),rewrite([13,12]),eval(30)].
+
+given #489 (W,wt=10): 502 board([3,1,4,2]).  [hyper(2,a,183,a,b,5,a),rewrite([13,12]),eval(30)].
+
+given #490 (W,wt=10): 503 board([3,6,8,1]).  [hyper(2,a,184,a,b,5,a),rewrite([13,12]),eval(30)].
+
+given #491 (W,wt=10): 504 board([2,6,8,1]).  [hyper(2,a,184,a,b,4,a),rewrite([13,12]),eval(30)].
+
+given #492 (W,wt=10): 505 board([7,5,8,1]).  [hyper(2,a,185,a,b,9,a),rewrite([13,12]),eval(30)].
+
+given #493 (W,wt=10): 506 board([3,5,8,1]).  [hyper(2,a,185,a,b,5,a),rewrite([13,12]),eval(30)].
+
+given #494 (W,wt=10): 507 board([2,5,8,1]).  [hyper(2,a,185,a,b,4,a),rewrite([13,12]),eval(30)].
+
+given #495 (W,wt=10): 508 board([7,4,8,1]).  [hyper(2,a,186,a,b,9,a),rewrite([13,12]),eval(30)].
+
+given #496 (W,wt=10): 509 board([2,4,8,1]).  [hyper(2,a,186,a,b,4,a),rewrite([13,12]),eval(30)].
+
+given #497 (W,wt=10): 510 board([7,2,8,1]).  [hyper(2,a,187,a,b,9,a),rewrite([13,12]),eval(30)].
+
+given #498 (W,wt=10): 511 board([5,2,8,1]).  [hyper(2,a,187,a,b,7,a),rewrite([13,12]),eval(30)].
+
+given #499 (W,wt=10): 512 board([8,5,7,1]).  [hyper(2,a,188,a,b,10,a),rewrite([13,12]),eval(30)].
+
+given #500 (W,wt=10): 513 board([3,5,7,1]).  [hyper(2,a,188,a,b,5,a),rewrite([13,12]),eval(30)].
+
+given #501 (W,wt=10): 514 board([2,5,7,1]).  [hyper(2,a,188,a,b,4,a),rewrite([13,12]),eval(30)].
+
+given #502 (W,wt=10): 515 board([8,4,7,1]).  [hyper(2,a,189,a,b,10,a),rewrite([13,12]),eval(30)].
+
+given #503 (W,wt=10): 516 board([6,4,7,1]).  [hyper(2,a,189,a,b,8,a),rewrite([13,12]),eval(30)].
+
+given #504 (W,wt=10): 517 board([2,4,7,1]).  [hyper(2,a,189,a,b,4,a),rewrite([13,12]),eval(30)].
+
+given #505 (W,wt=10): 518 board([8,2,7,1]).  [hyper(2,a,190,a,b,10,a),rewrite([13,12]),eval(30)].
+
+given #506 (W,wt=10): 519 board([6,2,7,1]).  [hyper(2,a,190,a,b,8,a),rewrite([13,12]),eval(30)].
+
+given #507 (W,wt=10): 520 board([5,8,6,1]).  [hyper(2,a,191,a,b,7,a),rewrite([13,12]),eval(30)].
+
+given #508 (W,wt=10): 521 board([3,8,6,1]).  [hyper(2,a,191,a,b,5,a),rewrite([13,12]),eval(30)].
+
+given #509 (W,wt=10): 522 board([2,8,6,1]).  [hyper(2,a,191,a,b,4,a),rewrite([13,12]),eval(30)].
+
+given #510 (W,wt=10): 523 board([7,4,6,1]).  [hyper(2,a,192,a,b,9,a),rewrite([13,12]),eval(30)].
+
+given #511 (W,wt=10): 524 board([2,4,6,1]).  [hyper(2,a,192,a,b,4,a),rewrite([13,12]),eval(30)].
+
+given #512 (W,wt=10): 525 board([7,2,6,1]).  [hyper(2,a,193,a,b,9,a),rewrite([13,12]),eval(30)].
+
+given #513 (W,wt=10): 526 board([5,2,6,1]).  [hyper(2,a,193,a,b,7,a),rewrite([13,12]),eval(30)].
+
+given #514 (W,wt=10): 527 board([6,8,5,1]).  [hyper(2,a,194,a,b,8,a),rewrite([13,12]),eval(30)].
+
+given #515 (W,wt=10): 528 board([2,8,5,1]).  [hyper(2,a,194,a,b,4,a),rewrite([13,12]),eval(30)].
+
+given #516 (W,wt=10): 529 board([2,7,5,1]).  [hyper(2,a,195,a,b,4,a),rewrite([13,12]),eval(30)].
+
+given #517 (W,wt=10): 530 board([8,2,5,1]).  [hyper(2,a,196,a,b,10,a),rewrite([13,12]),eval(30)].
+
+given #518 (W,wt=10): 531 board([6,2,5,1]).  [hyper(2,a,196,a,b,8,a),rewrite([13,12]),eval(30)].
+
+given #519 (W,wt=10): 532 board([5,8,4,1]).  [hyper(2,a,197,a,b,7,a),rewrite([13,12]),eval(30)].
+
+given #520 (W,wt=10): 533 board([3,8,4,1]).  [hyper(2,a,197,a,b,5,a),rewrite([13,12]),eval(30)].
+
+given #521 (W,wt=10): 534 board([5,7,4,1]).  [hyper(2,a,198,a,b,7,a),rewrite([13,12]),eval(30)].
+
+given #522 (W,wt=10): 535 board([3,7,4,1]).  [hyper(2,a,198,a,b,5,a),rewrite([13,12]),eval(30)].
+
+given #523 (W,wt=10): 536 board([8,6,4,1]).  [hyper(2,a,199,a,b,10,a),rewrite([13,12]),eval(30)].
+
+given #524 (W,wt=10): 537 board([3,6,4,1]).  [hyper(2,a,199,a,b,5,a),rewrite([13,12]),eval(30)].
+
+given #525 (W,wt=10): 538 board([8,2,4,1]).  [hyper(2,a,200,a,b,10,a),rewrite([13,12]),eval(30)].
+
+given #526 (W,wt=10): 539 board([7,2,4,1]).  [hyper(2,a,200,a,b,9,a),rewrite([13,12]),eval(30)].
+
+given #527 (W,wt=10): 540 board([5,2,4,1]).  [hyper(2,a,200,a,b,7,a),rewrite([13,12]),eval(30)].
+
+given #528 (W,wt=10): 541 board([6,8,3,1]).  [hyper(2,a,201,a,b,8,a),rewrite([13,12]),eval(30)].
+
+given #529 (W,wt=10): 542 board([2,8,3,1]).  [hyper(2,a,201,a,b,4,a),rewrite([13,12]),eval(30)].
+
+given #530 (W,wt=10): 543 board([2,7,3,1]).  [hyper(2,a,202,a,b,4,a),rewrite([13,12]),eval(30)].
+
+given #531 (W,wt=10): 544 board([8,6,3,1]).  [hyper(2,a,203,a,b,10,a),rewrite([13,12]),eval(30)].
+
+given #532 (W,wt=10): 545 board([2,6,3,1]).  [hyper(2,a,203,a,b,4,a),rewrite([13,12]),eval(30)].
+
+given #533 (W,wt=10): 546 board([8,5,3,1]).  [hyper(2,a,204,a,b,10,a),rewrite([13,12]),eval(30)].
+
+given #534 (W,wt=10): 547 board([7,5,3,1]).  [hyper(2,a,204,a,b,9,a),rewrite([13,12]),eval(30)].
+
+given #535 (W,wt=10): 548 board([2,5,3,1]).  [hyper(2,a,204,a,b,4,a),rewrite([13,12]),eval(30)].
+
+given #536 (W,wt=12): 549 board([5,7,4,6,8]).  [hyper(2,a,205,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #537 (W,wt=12): 550 board([1,7,4,6,8]).  [hyper(2,a,205,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #538 (W,wt=12): 551 board([7,2,4,6,8]).  [hyper(2,a,206,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #539 (W,wt=12): 552 board([5,2,4,6,8]).  [hyper(2,a,206,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #540 (W,wt=12): 553 board([7,1,4,6,8]).  [hyper(2,a,207,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #541 (W,wt=12): 554 board([5,1,4,6,8]).  [hyper(2,a,207,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #542 (W,wt=12): 555 board([2,7,3,6,8]).  [hyper(2,a,208,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #543 (W,wt=12): 556 board([7,1,3,6,8]).  [hyper(2,a,209,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #544 (W,wt=12): 557 board([5,7,2,6,8]).  [hyper(2,a,210,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #545 (W,wt=12): 558 board([1,7,2,6,8]).  [hyper(2,a,210,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #546 (W,wt=12): 559 board([5,7,1,6,8]).  [hyper(2,a,211,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #547 (W,wt=12): 560 board([2,7,1,6,8]).  [hyper(2,a,211,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #548 (W,wt=12): 561 board([7,3,1,6,8]).  [hyper(2,a,212,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #549 (W,wt=12): 562 board([5,3,1,6,8]).  [hyper(2,a,212,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #550 (W,wt=12): 563 board([6,4,7,5,8]).  [hyper(2,a,213,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #551 (W,wt=12): 564 board([1,4,7,5,8]).  [hyper(2,a,213,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #552 (W,wt=12): 565 board([6,2,7,5,8]).  [hyper(2,a,214,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #553 (W,wt=12): 566 board([6,1,7,5,8]).  [hyper(2,a,215,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #554 (W,wt=12): 567 board([3,1,7,5,8]).  [hyper(2,a,215,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #555 (W,wt=12): 568 board([7,1,3,5,8]).  [hyper(2,a,217,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #556 (W,wt=12): 569 board([6,1,3,5,8]).  [hyper(2,a,217,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #557 (W,wt=12): 570 board([3,6,2,5,8]).  [hyper(2,a,218,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #558 (W,wt=12): 571 board([1,6,2,5,8]).  [hyper(2,a,218,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #559 (W,wt=12): 572 board([7,4,2,5,8]).  [hyper(2,a,219,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #560 (W,wt=12): 573 board([6,4,2,5,8]).  [hyper(2,a,219,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #561 (W,wt=12): 574 board([1,4,2,5,8]).  [hyper(2,a,219,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #562 (W,wt=12): 575 board([7,4,1,5,8]).  [hyper(2,a,221,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #563 (W,wt=12): 576 board([6,4,1,5,8]).  [hyper(2,a,221,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #564 (W,wt=12): 577 board([6,3,7,4,8]).  [hyper(2,a,222,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #565 (W,wt=12): 578 board([6,1,7,4,8]).  [hyper(2,a,223,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #566 (W,wt=12): 579 board([3,1,7,4,8]).  [hyper(2,a,223,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #567 (W,wt=12): 580 board([5,7,2,4,8]).  [hyper(2,a,224,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #568 (W,wt=12): 581 board([3,7,2,4,8]).  [hyper(2,a,224,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #569 (W,wt=12): 582 board([5,7,1,4,8]).  [hyper(2,a,225,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #570 (W,wt=12): 583 board([2,7,1,4,8]).  [hyper(2,a,225,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #571 (W,wt=12): 584 board([6,3,1,4,8]).  [hyper(2,a,226,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #572 (W,wt=12): 585 board([5,3,1,4,8]).  [hyper(2,a,226,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #573 (W,wt=12): 586 board([2,4,7,3,8]).  [hyper(2,a,227,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #574 (W,wt=12): 587 board([1,4,7,3,8]).  [hyper(2,a,227,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #575 (W,wt=12): 588 board([2,7,5,3,8]).  [hyper(2,a,229,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #576 (W,wt=12): 589 board([1,7,5,3,8]).  [hyper(2,a,229,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #577 (W,wt=12): 590 board([5,7,1,3,8]).  [hyper(2,a,231,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #578 (W,wt=12): 591 board([2,7,1,3,8]).  [hyper(2,a,231,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #579 (W,wt=12): 592 board([2,6,1,3,8]).  [hyper(2,a,232,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #580 (W,wt=12): 593 board([7,4,1,3,8]).  [hyper(2,a,233,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #581 (W,wt=12): 594 board([2,4,1,3,8]).  [hyper(2,a,233,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #582 (W,wt=12): 595 board([6,3,7,2,8]).  [hyper(2,a,234,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #583 (W,wt=12): 596 board([1,3,7,2,8]).  [hyper(2,a,234,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #584 (W,wt=12): 597 board([6,1,7,2,8]).  [hyper(2,a,235,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #585 (W,wt=12): 598 board([3,1,7,2,8]).  [hyper(2,a,235,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #586 (W,wt=12): 599 board([1,7,5,2,8]).  [hyper(2,a,236,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #587 (W,wt=12): 600 board([6,3,5,2,8]).  [hyper(2,a,237,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #588 (W,wt=12): 601 board([1,3,5,2,8]).  [hyper(2,a,237,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #589 (W,wt=12): 602 board([6,1,5,2,8]).  [hyper(2,a,238,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #590 (W,wt=12): 603 board([3,7,4,2,8]).  [hyper(2,a,239,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #591 (W,wt=12): 604 board([1,7,4,2,8]).  [hyper(2,a,239,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #592 (W,wt=12): 605 board([3,6,4,2,8]).  [hyper(2,a,240,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #593 (W,wt=12): 606 board([1,6,4,2,8]).  [hyper(2,a,240,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #594 (W,wt=12): 607 board([7,1,4,2,8]).  [hyper(2,a,241,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #595 (W,wt=12): 608 board([3,1,4,2,8]).  [hyper(2,a,241,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #596 (W,wt=12): 609 board([6,4,7,1,8]).  [hyper(2,a,242,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #597 (W,wt=12): 610 board([2,4,7,1,8]).  [hyper(2,a,242,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #598 (W,wt=12): 611 board([6,2,7,1,8]).  [hyper(2,a,243,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #599 (W,wt=12): 612 board([2,7,5,1,8]).  [hyper(2,a,244,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #600 (W,wt=12): 613 board([6,2,5,1,8]).  [hyper(2,a,245,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #601 (W,wt=12): 614 board([5,7,4,1,8]).  [hyper(2,a,246,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #602 (W,wt=12): 615 board([3,7,4,1,8]).  [hyper(2,a,246,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #603 (W,wt=12): 616 board([3,6,4,1,8]).  [hyper(2,a,247,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #604 (W,wt=12): 617 board([7,2,4,1,8]).  [hyper(2,a,248,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #605 (W,wt=12): 618 board([5,2,4,1,8]).  [hyper(2,a,248,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #606 (W,wt=12): 619 board([2,7,3,1,8]).  [hyper(2,a,249,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #607 (W,wt=12): 620 board([2,6,3,1,8]).  [hyper(2,a,250,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #608 (W,wt=12): 621 board([4,6,8,5,7]).  [hyper(2,a,251,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #609 (W,wt=12): 622 board([1,6,8,5,7]).  [hyper(2,a,251,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #610 (W,wt=12): 623 board([4,2,8,5,7]).  [hyper(2,a,252,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #611 (W,wt=12): 624 board([4,1,8,5,7]).  [hyper(2,a,253,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #612 (W,wt=12): 625 board([6,8,3,5,7]).  [hyper(2,a,254,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #613 (W,wt=12): 626 board([4,8,3,5,7]).  [hyper(2,a,254,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #614 (W,wt=12): 627 board([4,6,3,5,7]).  [hyper(2,a,255,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #615 (W,wt=12): 628 board([6,1,3,5,7]).  [hyper(2,a,256,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #616 (W,wt=12): 629 board([4,1,3,5,7]).  [hyper(2,a,256,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #617 (W,wt=12): 630 board([6,8,2,5,7]).  [hyper(2,a,257,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #618 (W,wt=12): 631 board([1,8,2,5,7]).  [hyper(2,a,257,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #619 (W,wt=12): 632 board([1,6,2,5,7]).  [hyper(2,a,258,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #620 (W,wt=12): 633 board([6,8,1,5,7]).  [hyper(2,a,259,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #621 (W,wt=12): 634 board([4,8,1,5,7]).  [hyper(2,a,259,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #622 (W,wt=12): 635 board([4,6,1,5,7]).  [hyper(2,a,260,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #623 (W,wt=12): 636 board([2,5,8,4,7]).  [hyper(2,a,261,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #624 (W,wt=12): 637 board([5,3,8,4,7]).  [hyper(2,a,262,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #625 (W,wt=12): 638 board([5,1,8,4,7]).  [hyper(2,a,263,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #626 (W,wt=12): 639 board([5,8,6,4,7]).  [hyper(2,a,264,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #627 (W,wt=12): 640 board([2,8,6,4,7]).  [hyper(2,a,264,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #628 (W,wt=12): 641 board([5,3,6,4,7]).  [hyper(2,a,265,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #629 (W,wt=12): 642 board([5,1,6,4,7]).  [hyper(2,a,266,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #630 (W,wt=12): 643 board([6,8,2,4,7]).  [hyper(2,a,267,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #631 (W,wt=12): 644 board([5,8,2,4,7]).  [hyper(2,a,267,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #632 (W,wt=12): 645 board([8,5,2,4,7]).  [hyper(2,a,268,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #633 (W,wt=12): 646 board([6,8,1,4,7]).  [hyper(2,a,269,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #634 (W,wt=12): 647 board([5,8,1,4,7]).  [hyper(2,a,269,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #635 (W,wt=12): 648 board([2,8,1,4,7]).  [hyper(2,a,269,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #636 (W,wt=12): 649 board([8,5,1,4,7]).  [hyper(2,a,270,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #637 (W,wt=12): 650 board([2,5,1,4,7]).  [hyper(2,a,270,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #638 (W,wt=12): 651 board([8,3,1,4,7]).  [hyper(2,a,271,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #639 (W,wt=12): 652 board([6,3,1,4,7]).  [hyper(2,a,271,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #640 (W,wt=12): 653 board([5,3,1,4,7]).  [hyper(2,a,271,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #641 (W,wt=12): 654 board([4,6,8,3,7]).  [hyper(2,a,272,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #642 (W,wt=12): 655 board([2,6,8,3,7]).  [hyper(2,a,272,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #643 (W,wt=12): 656 board([1,6,8,3,7]).  [hyper(2,a,272,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #644 (W,wt=12): 657 board([5,2,8,3,7]).  [hyper(2,a,273,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #645 (W,wt=12): 658 board([4,2,8,3,7]).  [hyper(2,a,273,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #646 (W,wt=12): 659 board([5,8,6,3,7]).  [hyper(2,a,274,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #647 (W,wt=12): 660 board([2,8,6,3,7]).  [hyper(2,a,274,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #648 (W,wt=12): 661 board([1,8,6,3,7]).  [hyper(2,a,274,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #649 (W,wt=12): 662 board([5,2,6,3,7]).  [hyper(2,a,275,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #650 (W,wt=12): 663 board([5,8,1,3,7]).  [hyper(2,a,276,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #651 (W,wt=12): 664 board([4,8,1,3,7]).  [hyper(2,a,276,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #652 (W,wt=12): 665 board([2,8,1,3,7]).  [hyper(2,a,276,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #653 (W,wt=12): 666 board([8,6,1,3,7]).  [hyper(2,a,277,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #654 (W,wt=12): 667 board([4,6,1,3,7]).  [hyper(2,a,277,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #655 (W,wt=12): 668 board([2,6,1,3,7]).  [hyper(2,a,277,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #656 (W,wt=12): 669 board([4,6,8,2,7]).  [hyper(2,a,278,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #657 (W,wt=12): 670 board([1,6,8,2,7]).  [hyper(2,a,278,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #658 (W,wt=12): 671 board([1,5,8,2,7]).  [hyper(2,a,279,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #659 (W,wt=12): 672 board([1,3,8,2,7]).  [hyper(2,a,280,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #660 (W,wt=12): 673 board([4,1,8,2,7]).  [hyper(2,a,281,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #661 (W,wt=12): 674 board([1,8,6,2,7]).  [hyper(2,a,282,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #662 (W,wt=12): 675 board([1,3,6,2,7]).  [hyper(2,a,283,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #663 (W,wt=12): 676 board([1,8,4,2,7]).  [hyper(2,a,285,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #664 (W,wt=12): 677 board([8,6,4,2,7]).  [hyper(2,a,286,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #665 (W,wt=12): 678 board([1,6,4,2,7]).  [hyper(2,a,286,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #666 (W,wt=12): 679 board([8,1,4,2,7]).  [hyper(2,a,287,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #667 (W,wt=12): 680 board([2,6,8,1,7]).  [hyper(2,a,288,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #668 (W,wt=12): 681 board([2,5,8,1,7]).  [hyper(2,a,289,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #669 (W,wt=12): 682 board([5,2,8,1,7]).  [hyper(2,a,290,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #670 (W,wt=12): 683 board([5,8,6,1,7]).  [hyper(2,a,291,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #671 (W,wt=12): 684 board([2,8,6,1,7]).  [hyper(2,a,291,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #672 (W,wt=12): 685 board([5,2,6,1,7]).  [hyper(2,a,292,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #673 (W,wt=12): 686 board([5,8,4,1,7]).  [hyper(2,a,293,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #674 (W,wt=12): 687 board([8,6,4,1,7]).  [hyper(2,a,294,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #675 (W,wt=12): 688 board([8,2,4,1,7]).  [hyper(2,a,295,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #676 (W,wt=12): 689 board([5,2,4,1,7]).  [hyper(2,a,295,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #677 (W,wt=12): 690 board([6,8,3,1,7]).  [hyper(2,a,296,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #678 (W,wt=12): 691 board([2,8,3,1,7]).  [hyper(2,a,296,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #679 (W,wt=12): 692 board([8,6,3,1,7]).  [hyper(2,a,297,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #680 (W,wt=12): 693 board([2,6,3,1,7]).  [hyper(2,a,297,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #681 (W,wt=12): 694 board([8,5,3,1,7]).  [hyper(2,a,298,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #682 (W,wt=12): 695 board([2,5,3,1,7]).  [hyper(2,a,298,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #683 (W,wt=12): 696 board([4,7,5,8,6]).  [hyper(2,a,299,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #684 (W,wt=12): 697 board([1,7,5,8,6]).  [hyper(2,a,299,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #685 (W,wt=12): 698 board([4,2,5,8,6]).  [hyper(2,a,300,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #686 (W,wt=12): 699 board([4,1,5,8,6]).  [hyper(2,a,301,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #687 (W,wt=12): 700 board([4,7,3,8,6]).  [hyper(2,a,302,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #688 (W,wt=12): 701 board([7,5,3,8,6]).  [hyper(2,a,303,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #689 (W,wt=12): 702 board([7,1,3,8,6]).  [hyper(2,a,304,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #690 (W,wt=12): 703 board([4,1,3,8,6]).  [hyper(2,a,304,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #691 (W,wt=12): 704 board([3,7,2,8,6]).  [hyper(2,a,305,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #692 (W,wt=12): 705 board([1,7,2,8,6]).  [hyper(2,a,305,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #693 (W,wt=12): 706 board([7,5,2,8,6]).  [hyper(2,a,306,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #694 (W,wt=12): 707 board([3,5,2,8,6]).  [hyper(2,a,306,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #695 (W,wt=12): 708 board([1,5,2,8,6]).  [hyper(2,a,306,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #696 (W,wt=12): 709 board([7,4,2,8,6]).  [hyper(2,a,307,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #697 (W,wt=12): 710 board([1,4,2,8,6]).  [hyper(2,a,307,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #698 (W,wt=12): 711 board([4,7,1,8,6]).  [hyper(2,a,308,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #699 (W,wt=12): 712 board([7,5,1,8,6]).  [hyper(2,a,309,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #700 (W,wt=12): 713 board([7,4,1,8,6]).  [hyper(2,a,310,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #701 (W,wt=12): 714 board([8,5,7,4,6]).  [hyper(2,a,311,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #702 (W,wt=12): 715 board([3,5,7,4,6]).  [hyper(2,a,311,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #703 (W,wt=12): 716 board([8,1,7,4,6]).  [hyper(2,a,312,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #704 (W,wt=12): 717 board([3,1,7,4,6]).  [hyper(2,a,312,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #705 (W,wt=12): 718 board([5,8,2,4,6]).  [hyper(2,a,313,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #706 (W,wt=12): 719 board([3,8,2,4,6]).  [hyper(2,a,313,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #707 (W,wt=12): 720 board([5,7,2,4,6]).  [hyper(2,a,314,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #708 (W,wt=12): 721 board([3,7,2,4,6]).  [hyper(2,a,314,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #709 (W,wt=12): 722 board([8,5,2,4,6]).  [hyper(2,a,315,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #710 (W,wt=12): 723 board([3,5,2,4,6]).  [hyper(2,a,315,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #711 (W,wt=12): 724 board([5,8,1,4,6]).  [hyper(2,a,316,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #712 (W,wt=12): 725 board([5,7,1,4,6]).  [hyper(2,a,317,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #713 (W,wt=12): 726 board([8,5,1,4,6]).  [hyper(2,a,318,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #714 (W,wt=12): 727 board([8,4,7,3,6]).  [hyper(2,a,319,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #715 (W,wt=12): 728 board([1,4,7,3,6]).  [hyper(2,a,319,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #716 (W,wt=12): 729 board([8,2,7,3,6]).  [hyper(2,a,320,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #717 (W,wt=12): 730 board([4,2,7,3,6]).  [hyper(2,a,320,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #718 (W,wt=12): 731 board([4,8,5,3,6]).  [hyper(2,a,321,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #719 (W,wt=12): 732 board([1,8,5,3,6]).  [hyper(2,a,321,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #720 (W,wt=12): 733 board([4,7,5,3,6]).  [hyper(2,a,322,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #721 (W,wt=12): 734 board([1,7,5,3,6]).  [hyper(2,a,322,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #722 (W,wt=12): 735 board([8,2,5,3,6]).  [hyper(2,a,323,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #723 (W,wt=12): 736 board([4,2,5,3,6]).  [hyper(2,a,323,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #724 (W,wt=12): 737 board([5,8,1,3,6]).  [hyper(2,a,324,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #725 (W,wt=12): 738 board([4,8,1,3,6]).  [hyper(2,a,324,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #726 (W,wt=12): 739 board([5,7,1,3,6]).  [hyper(2,a,325,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #727 (W,wt=12): 740 board([4,7,1,3,6]).  [hyper(2,a,325,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #728 (W,wt=12): 741 board([8,4,1,3,6]).  [hyper(2,a,326,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #729 (W,wt=12): 742 board([7,4,1,3,6]).  [hyper(2,a,326,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #730 (W,wt=12): 743 board([8,5,7,2,6]).  [hyper(2,a,327,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #731 (W,wt=12): 744 board([3,5,7,2,6]).  [hyper(2,a,327,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #732 (W,wt=12): 745 board([1,5,7,2,6]).  [hyper(2,a,327,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #733 (W,wt=12): 746 board([8,1,7,2,6]).  [hyper(2,a,328,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #734 (W,wt=12): 747 board([4,1,7,2,6]).  [hyper(2,a,328,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #735 (W,wt=12): 748 board([3,1,7,2,6]).  [hyper(2,a,328,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #736 (W,wt=12): 749 board([4,8,5,2,6]).  [hyper(2,a,329,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #737 (W,wt=12): 750 board([1,8,5,2,6]).  [hyper(2,a,329,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #738 (W,wt=12): 751 board([4,7,5,2,6]).  [hyper(2,a,330,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #739 (W,wt=12): 752 board([1,7,5,2,6]).  [hyper(2,a,330,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #740 (W,wt=12): 753 board([8,1,5,2,6]).  [hyper(2,a,331,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #741 (W,wt=12): 754 board([4,1,5,2,6]).  [hyper(2,a,331,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #742 (W,wt=12): 755 board([8,5,7,1,6]).  [hyper(2,a,332,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #743 (W,wt=12): 756 board([3,5,7,1,6]).  [hyper(2,a,332,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #744 (W,wt=12): 757 board([8,4,7,1,6]).  [hyper(2,a,333,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #745 (W,wt=12): 758 board([8,2,7,1,6]).  [hyper(2,a,334,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #746 (W,wt=12): 759 board([8,2,5,1,6]).  [hyper(2,a,337,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #747 (W,wt=12): 760 board([8,5,3,1,6]).  [hyper(2,a,340,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #748 (W,wt=12): 761 board([7,5,3,1,6]).  [hyper(2,a,340,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #749 (W,wt=12): 762 board([7,4,6,8,5]).  [hyper(2,a,341,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #750 (W,wt=12): 763 board([2,4,6,8,5]).  [hyper(2,a,341,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #751 (W,wt=12): 764 board([7,3,6,8,5]).  [hyper(2,a,342,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #752 (W,wt=12): 765 board([7,1,6,8,5]).  [hyper(2,a,343,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #753 (W,wt=12): 766 board([3,1,6,8,5]).  [hyper(2,a,343,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #754 (W,wt=12): 767 board([3,7,4,8,5]).  [hyper(2,a,344,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #755 (W,wt=12): 768 board([7,1,4,8,5]).  [hyper(2,a,345,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #756 (W,wt=12): 769 board([3,1,4,8,5]).  [hyper(2,a,345,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #757 (W,wt=12): 770 board([3,7,2,8,5]).  [hyper(2,a,346,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #758 (W,wt=12): 771 board([7,4,2,8,5]).  [hyper(2,a,347,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #759 (W,wt=12): 772 board([6,4,2,8,5]).  [hyper(2,a,347,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #760 (W,wt=12): 773 board([4,7,1,8,5]).  [hyper(2,a,348,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #761 (W,wt=12): 774 board([2,7,1,8,5]).  [hyper(2,a,348,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #762 (W,wt=12): 775 board([7,4,1,8,5]).  [hyper(2,a,349,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #763 (W,wt=12): 776 board([6,4,1,8,5]).  [hyper(2,a,349,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #764 (W,wt=12): 777 board([2,4,1,8,5]).  [hyper(2,a,349,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #765 (W,wt=12): 778 board([7,3,1,8,5]).  [hyper(2,a,350,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #766 (W,wt=12): 779 board([6,3,1,8,5]).  [hyper(2,a,350,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #767 (W,wt=12): 780 board([8,6,4,7,5]).  [hyper(2,a,351,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #768 (W,wt=12): 781 board([3,6,4,7,5]).  [hyper(2,a,351,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #769 (W,wt=12): 782 board([8,1,4,7,5]).  [hyper(2,a,352,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #770 (W,wt=12): 783 board([3,1,4,7,5]).  [hyper(2,a,352,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #771 (W,wt=12): 784 board([8,6,2,7,5]).  [hyper(2,a,353,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #772 (W,wt=12): 785 board([3,6,2,7,5]).  [hyper(2,a,353,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #773 (W,wt=12): 786 board([8,4,2,7,5]).  [hyper(2,a,354,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #774 (W,wt=12): 787 board([6,4,2,7,5]).  [hyper(2,a,354,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #775 (W,wt=12): 788 board([8,6,1,7,5]).  [hyper(2,a,355,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #776 (W,wt=12): 789 board([2,6,1,7,5]).  [hyper(2,a,355,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #777 (W,wt=12): 790 board([8,4,1,7,5]).  [hyper(2,a,356,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #778 (W,wt=12): 791 board([6,4,1,7,5]).  [hyper(2,a,356,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #779 (W,wt=12): 792 board([2,4,1,7,5]).  [hyper(2,a,356,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #780 (W,wt=12): 793 board([8,3,1,7,5]).  [hyper(2,a,357,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #781 (W,wt=12): 794 board([6,3,1,7,5]).  [hyper(2,a,357,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #782 (W,wt=12): 795 board([4,6,8,3,5]).  [hyper(2,a,358,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #783 (W,wt=12): 796 board([2,6,8,3,5]).  [hyper(2,a,358,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #784 (W,wt=12): 797 board([7,4,8,3,5]).  [hyper(2,a,359,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #785 (W,wt=12): 798 board([2,4,8,3,5]).  [hyper(2,a,359,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #786 (W,wt=12): 799 board([7,4,6,3,5]).  [hyper(2,a,360,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #787 (W,wt=12): 800 board([2,4,6,3,5]).  [hyper(2,a,360,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #788 (W,wt=12): 801 board([4,7,1,3,5]).  [hyper(2,a,361,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #789 (W,wt=12): 802 board([2,7,1,3,5]).  [hyper(2,a,361,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #790 (W,wt=12): 803 board([8,6,1,3,5]).  [hyper(2,a,362,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #791 (W,wt=12): 804 board([4,6,1,3,5]).  [hyper(2,a,362,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #792 (W,wt=12): 805 board([2,6,1,3,5]).  [hyper(2,a,362,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #793 (W,wt=12): 806 board([8,4,1,3,5]).  [hyper(2,a,363,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #794 (W,wt=12): 807 board([7,4,1,3,5]).  [hyper(2,a,363,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #795 (W,wt=12): 808 board([2,4,1,3,5]).  [hyper(2,a,363,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #796 (W,wt=12): 809 board([4,6,8,2,5]).  [hyper(2,a,364,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #797 (W,wt=12): 810 board([3,6,8,2,5]).  [hyper(2,a,364,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #798 (W,wt=12): 811 board([7,3,8,2,5]).  [hyper(2,a,365,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #799 (W,wt=12): 812 board([7,1,8,2,5]).  [hyper(2,a,366,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #800 (W,wt=12): 813 board([4,1,8,2,5]).  [hyper(2,a,366,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #801 (W,wt=12): 814 board([3,1,8,2,5]).  [hyper(2,a,366,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #802 (W,wt=12): 815 board([7,3,6,2,5]).  [hyper(2,a,367,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #803 (W,wt=12): 816 board([7,1,6,2,5]).  [hyper(2,a,368,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #804 (W,wt=12): 817 board([3,1,6,2,5]).  [hyper(2,a,368,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #805 (W,wt=12): 818 board([3,7,4,2,5]).  [hyper(2,a,369,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #806 (W,wt=12): 819 board([8,6,4,2,5]).  [hyper(2,a,370,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #807 (W,wt=12): 820 board([3,6,4,2,5]).  [hyper(2,a,370,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #808 (W,wt=12): 821 board([8,1,4,2,5]).  [hyper(2,a,371,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #809 (W,wt=12): 822 board([7,1,4,2,5]).  [hyper(2,a,371,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #810 (W,wt=12): 823 board([3,1,4,2,5]).  [hyper(2,a,371,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #811 (W,wt=12): 824 board([3,6,8,1,5]).  [hyper(2,a,372,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #812 (W,wt=12): 825 board([2,6,8,1,5]).  [hyper(2,a,372,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #813 (W,wt=12): 826 board([7,4,8,1,5]).  [hyper(2,a,373,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #814 (W,wt=12): 827 board([2,4,8,1,5]).  [hyper(2,a,373,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #815 (W,wt=12): 828 board([7,4,6,1,5]).  [hyper(2,a,374,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #816 (W,wt=12): 829 board([2,4,6,1,5]).  [hyper(2,a,374,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #817 (W,wt=12): 830 board([3,7,4,1,5]).  [hyper(2,a,375,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #818 (W,wt=12): 831 board([8,6,4,1,5]).  [hyper(2,a,376,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #819 (W,wt=12): 832 board([3,6,4,1,5]).  [hyper(2,a,376,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #820 (W,wt=12): 833 board([6,3,5,8,4]).  [hyper(2,a,377,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #821 (W,wt=12): 834 board([1,3,5,8,4]).  [hyper(2,a,377,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #822 (W,wt=12): 835 board([6,2,5,8,4]).  [hyper(2,a,378,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #823 (W,wt=12): 836 board([7,5,3,8,4]).  [hyper(2,a,379,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #824 (W,wt=12): 837 board([2,5,3,8,4]).  [hyper(2,a,379,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #825 (W,wt=12): 838 board([7,5,1,8,4]).  [hyper(2,a,380,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #826 (W,wt=12): 839 board([2,5,1,8,4]).  [hyper(2,a,380,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #827 (W,wt=12): 840 board([7,3,1,8,4]).  [hyper(2,a,381,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #828 (W,wt=12): 841 board([6,3,1,8,4]).  [hyper(2,a,381,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #829 (W,wt=12): 842 board([6,8,5,7,4]).  [hyper(2,a,382,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #830 (W,wt=12): 843 board([2,8,5,7,4]).  [hyper(2,a,382,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #831 (W,wt=12): 844 board([1,8,5,7,4]).  [hyper(2,a,382,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #832 (W,wt=12): 845 board([6,3,5,7,4]).  [hyper(2,a,383,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #833 (W,wt=12): 846 board([1,3,5,7,4]).  [hyper(2,a,383,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #834 (W,wt=12): 847 board([6,2,5,7,4]).  [hyper(2,a,384,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #835 (W,wt=12): 848 board([6,8,3,7,4]).  [hyper(2,a,385,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #836 (W,wt=12): 849 board([2,8,3,7,4]).  [hyper(2,a,385,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #837 (W,wt=12): 850 board([2,6,3,7,4]).  [hyper(2,a,386,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #838 (W,wt=12): 851 board([6,8,1,7,4]).  [hyper(2,a,387,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #839 (W,wt=12): 852 board([5,8,1,7,4]).  [hyper(2,a,387,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #840 (W,wt=12): 853 board([2,8,1,7,4]).  [hyper(2,a,387,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #841 (W,wt=12): 854 board([2,6,1,7,4]).  [hyper(2,a,388,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #842 (W,wt=12): 855 board([6,3,1,7,4]).  [hyper(2,a,389,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #843 (W,wt=12): 856 board([5,3,1,7,4]).  [hyper(2,a,389,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #844 (W,wt=12): 857 board([7,5,8,6,4]).  [hyper(2,a,390,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #845 (W,wt=12): 858 board([2,5,8,6,4]).  [hyper(2,a,390,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #846 (W,wt=12): 859 board([1,5,8,6,4]).  [hyper(2,a,390,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #847 (W,wt=12): 860 board([7,3,8,6,4]).  [hyper(2,a,391,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #848 (W,wt=12): 861 board([5,3,8,6,4]).  [hyper(2,a,391,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #849 (W,wt=12): 862 board([1,3,8,6,4]).  [hyper(2,a,391,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #850 (W,wt=12): 863 board([7,2,8,6,4]).  [hyper(2,a,392,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #851 (W,wt=12): 864 board([5,2,8,6,4]).  [hyper(2,a,392,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #852 (W,wt=12): 865 board([7,5,3,6,4]).  [hyper(2,a,393,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #853 (W,wt=12): 866 board([2,5,3,6,4]).  [hyper(2,a,393,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #854 (W,wt=12): 867 board([7,5,1,6,4]).  [hyper(2,a,394,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #855 (W,wt=12): 868 board([2,5,1,6,4]).  [hyper(2,a,394,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #856 (W,wt=12): 869 board([7,3,1,6,4]).  [hyper(2,a,395,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #857 (W,wt=12): 870 board([5,3,1,6,4]).  [hyper(2,a,395,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #858 (W,wt=12): 871 board([3,6,8,2,4]).  [hyper(2,a,396,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #859 (W,wt=12): 872 board([1,6,8,2,4]).  [hyper(2,a,396,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #860 (W,wt=12): 873 board([7,5,8,2,4]).  [hyper(2,a,397,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #861 (W,wt=12): 874 board([3,5,8,2,4]).  [hyper(2,a,397,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #862 (W,wt=12): 875 board([1,5,8,2,4]).  [hyper(2,a,397,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #863 (W,wt=12): 876 board([7,3,8,2,4]).  [hyper(2,a,398,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #864 (W,wt=12): 877 board([1,3,8,2,4]).  [hyper(2,a,398,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #865 (W,wt=12): 878 board([3,5,7,2,4]).  [hyper(2,a,399,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #866 (W,wt=12): 879 board([1,5,7,2,4]).  [hyper(2,a,399,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #867 (W,wt=12): 880 board([6,3,7,2,4]).  [hyper(2,a,400,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #868 (W,wt=12): 881 board([1,3,7,2,4]).  [hyper(2,a,400,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #869 (W,wt=12): 882 board([6,8,5,2,4]).  [hyper(2,a,401,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #870 (W,wt=12): 883 board([1,8,5,2,4]).  [hyper(2,a,401,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #871 (W,wt=12): 884 board([6,3,5,2,4]).  [hyper(2,a,402,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #872 (W,wt=12): 885 board([1,3,5,2,4]).  [hyper(2,a,402,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #873 (W,wt=12): 886 board([3,6,8,1,4]).  [hyper(2,a,403,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #874 (W,wt=12): 887 board([2,6,8,1,4]).  [hyper(2,a,403,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #875 (W,wt=12): 888 board([7,5,8,1,4]).  [hyper(2,a,404,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #876 (W,wt=12): 889 board([3,5,8,1,4]).  [hyper(2,a,404,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #877 (W,wt=12): 890 board([2,5,8,1,4]).  [hyper(2,a,404,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #878 (W,wt=12): 891 board([7,2,8,1,4]).  [hyper(2,a,405,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #879 (W,wt=12): 892 board([5,2,8,1,4]).  [hyper(2,a,405,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #880 (W,wt=12): 893 board([3,5,7,1,4]).  [hyper(2,a,406,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #881 (W,wt=12): 894 board([2,5,7,1,4]).  [hyper(2,a,406,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #882 (W,wt=12): 895 board([6,2,7,1,4]).  [hyper(2,a,407,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #883 (W,wt=12): 896 board([6,8,5,1,4]).  [hyper(2,a,408,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #884 (W,wt=12): 897 board([2,8,5,1,4]).  [hyper(2,a,408,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #885 (W,wt=12): 898 board([6,2,5,1,4]).  [hyper(2,a,409,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #886 (W,wt=12): 899 board([6,8,3,1,4]).  [hyper(2,a,410,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #887 (W,wt=12): 900 board([2,8,3,1,4]).  [hyper(2,a,410,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #888 (W,wt=12): 901 board([2,6,3,1,4]).  [hyper(2,a,411,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #889 (W,wt=12): 902 board([7,5,3,1,4]).  [hyper(2,a,412,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #890 (W,wt=12): 903 board([2,5,3,1,4]).  [hyper(2,a,412,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #891 (W,wt=12): 904 board([2,4,6,8,3]).  [hyper(2,a,413,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #892 (W,wt=12): 905 board([1,4,6,8,3]).  [hyper(2,a,413,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #893 (W,wt=12): 906 board([1,7,4,8,3]).  [hyper(2,a,416,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #894 (W,wt=12): 907 board([1,7,2,8,3]).  [hyper(2,a,419,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #895 (W,wt=12): 908 board([1,5,2,8,3]).  [hyper(2,a,420,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #896 (W,wt=12): 909 board([6,4,2,8,3]).  [hyper(2,a,421,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #897 (W,wt=12): 910 board([1,4,2,8,3]).  [hyper(2,a,421,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #898 (W,wt=12): 911 board([5,8,4,7,3]).  [hyper(2,a,422,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #899 (W,wt=12): 912 board([1,8,4,7,3]).  [hyper(2,a,422,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #900 (W,wt=12): 913 board([8,2,4,7,3]).  [hyper(2,a,423,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #901 (W,wt=12): 914 board([5,2,4,7,3]).  [hyper(2,a,423,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #902 (W,wt=12): 915 board([8,1,4,7,3]).  [hyper(2,a,424,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #903 (W,wt=12): 916 board([5,1,4,7,3]).  [hyper(2,a,424,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #904 (W,wt=12): 917 board([6,8,2,7,3]).  [hyper(2,a,425,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #905 (W,wt=12): 918 board([5,8,2,7,3]).  [hyper(2,a,425,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #906 (W,wt=12): 919 board([1,8,2,7,3]).  [hyper(2,a,425,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #907 (W,wt=12): 920 board([8,4,2,7,3]).  [hyper(2,a,426,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #908 (W,wt=12): 921 board([6,4,2,7,3]).  [hyper(2,a,426,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #909 (W,wt=12): 922 board([1,4,2,7,3]).  [hyper(2,a,426,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #910 (W,wt=12): 923 board([2,5,8,6,3]).  [hyper(2,a,427,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #911 (W,wt=12): 924 board([1,5,8,6,3]).  [hyper(2,a,427,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #912 (W,wt=12): 925 board([5,2,8,6,3]).  [hyper(2,a,428,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #913 (W,wt=12): 926 board([4,2,8,6,3]).  [hyper(2,a,428,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #914 (W,wt=12): 927 board([5,1,8,6,3]).  [hyper(2,a,429,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #915 (W,wt=12): 928 board([4,1,8,6,3]).  [hyper(2,a,429,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #916 (W,wt=12): 929 board([5,7,4,6,3]).  [hyper(2,a,430,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #917 (W,wt=12): 930 board([1,7,4,6,3]).  [hyper(2,a,430,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #918 (W,wt=12): 931 board([8,2,4,6,3]).  [hyper(2,a,431,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #919 (W,wt=12): 932 board([5,2,4,6,3]).  [hyper(2,a,431,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #920 (W,wt=12): 933 board([8,1,4,6,3]).  [hyper(2,a,432,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #921 (W,wt=12): 934 board([5,1,4,6,3]).  [hyper(2,a,432,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #922 (W,wt=12): 935 board([5,7,2,6,3]).  [hyper(2,a,433,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #923 (W,wt=12): 936 board([1,7,2,6,3]).  [hyper(2,a,433,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #924 (W,wt=12): 937 board([8,5,2,6,3]).  [hyper(2,a,434,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #925 (W,wt=12): 938 board([1,5,2,6,3]).  [hyper(2,a,434,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #926 (W,wt=12): 939 board([1,4,8,5,3]).  [hyper(2,a,435,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #927 (W,wt=12): 940 board([4,2,8,5,3]).  [hyper(2,a,436,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #928 (W,wt=12): 941 board([4,1,8,5,3]).  [hyper(2,a,437,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #929 (W,wt=12): 942 board([6,4,7,5,3]).  [hyper(2,a,438,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #930 (W,wt=12): 943 board([1,4,7,5,3]).  [hyper(2,a,438,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #931 (W,wt=12): 944 board([6,2,7,5,3]).  [hyper(2,a,439,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #932 (W,wt=12): 945 board([4,2,7,5,3]).  [hyper(2,a,439,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #933 (W,wt=12): 946 board([6,1,7,5,3]).  [hyper(2,a,440,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #934 (W,wt=12): 947 board([4,1,7,5,3]).  [hyper(2,a,440,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #935 (W,wt=12): 948 board([6,8,2,5,3]).  [hyper(2,a,441,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #936 (W,wt=12): 949 board([1,8,2,5,3]).  [hyper(2,a,441,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #937 (W,wt=12): 950 board([6,4,2,5,3]).  [hyper(2,a,442,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #938 (W,wt=12): 951 board([1,4,2,5,3]).  [hyper(2,a,442,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #939 (W,wt=12): 952 board([2,5,8,1,3]).  [hyper(2,a,443,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #940 (W,wt=12): 953 board([2,4,8,1,3]).  [hyper(2,a,444,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #941 (W,wt=12): 954 board([5,2,8,1,3]).  [hyper(2,a,445,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #942 (W,wt=12): 955 board([8,5,7,1,3]).  [hyper(2,a,446,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #943 (W,wt=12): 956 board([2,5,7,1,3]).  [hyper(2,a,446,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #944 (W,wt=12): 957 board([8,4,7,1,3]).  [hyper(2,a,447,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #945 (W,wt=12): 958 board([6,4,7,1,3]).  [hyper(2,a,447,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #946 (W,wt=12): 959 board([2,4,7,1,3]).  [hyper(2,a,447,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #947 (W,wt=12): 960 board([8,2,7,1,3]).  [hyper(2,a,448,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #948 (W,wt=12): 961 board([6,2,7,1,3]).  [hyper(2,a,448,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #949 (W,wt=12): 962 board([5,8,6,1,3]).  [hyper(2,a,449,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #950 (W,wt=12): 963 board([2,8,6,1,3]).  [hyper(2,a,449,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #951 (W,wt=12): 964 board([2,4,6,1,3]).  [hyper(2,a,450,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #952 (W,wt=12): 965 board([5,2,6,1,3]).  [hyper(2,a,451,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #953 (W,wt=12): 966 board([5,8,4,1,3]).  [hyper(2,a,452,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #954 (W,wt=12): 967 board([5,7,4,1,3]).  [hyper(2,a,453,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #955 (W,wt=12): 968 board([8,2,4,1,3]).  [hyper(2,a,454,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #956 (W,wt=12): 969 board([5,2,4,1,3]).  [hyper(2,a,454,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #957 (W,wt=12): 970 board([7,4,6,8,2]).  [hyper(2,a,455,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #958 (W,wt=12): 971 board([1,4,6,8,2]).  [hyper(2,a,455,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #959 (W,wt=12): 972 board([7,3,6,8,2]).  [hyper(2,a,456,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #960 (W,wt=12): 973 board([1,3,6,8,2]).  [hyper(2,a,456,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #961 (W,wt=12): 974 board([7,1,6,8,2]).  [hyper(2,a,457,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #962 (W,wt=12): 975 board([3,1,6,8,2]).  [hyper(2,a,457,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #963 (W,wt=12): 976 board([4,7,5,8,2]).  [hyper(2,a,458,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #964 (W,wt=12): 977 board([1,7,5,8,2]).  [hyper(2,a,458,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #965 (W,wt=12): 978 board([1,3,5,8,2]).  [hyper(2,a,459,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #966 (W,wt=12): 979 board([4,1,5,8,2]).  [hyper(2,a,460,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #967 (W,wt=12): 980 board([4,7,3,8,2]).  [hyper(2,a,461,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #968 (W,wt=12): 981 board([7,1,3,8,2]).  [hyper(2,a,462,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #969 (W,wt=12): 982 board([4,1,3,8,2]).  [hyper(2,a,462,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #970 (W,wt=12): 983 board([4,7,1,8,2]).  [hyper(2,a,463,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #971 (W,wt=12): 984 board([7,4,1,8,2]).  [hyper(2,a,464,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #972 (W,wt=12): 985 board([7,3,1,8,2]).  [hyper(2,a,465,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #973 (W,wt=12): 986 board([1,8,5,7,2]).  [hyper(2,a,466,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #974 (W,wt=12): 987 board([8,3,5,7,2]).  [hyper(2,a,467,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #975 (W,wt=12): 988 board([1,3,5,7,2]).  [hyper(2,a,467,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #976 (W,wt=12): 989 board([8,1,5,7,2]).  [hyper(2,a,468,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #977 (W,wt=12): 990 board([8,6,3,7,2]).  [hyper(2,a,470,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #978 (W,wt=12): 991 board([8,1,3,7,2]).  [hyper(2,a,471,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #979 (W,wt=12): 992 board([5,8,1,7,2]).  [hyper(2,a,472,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #980 (W,wt=12): 993 board([8,6,1,7,2]).  [hyper(2,a,473,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #981 (W,wt=12): 994 board([8,4,1,7,2]).  [hyper(2,a,474,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #982 (W,wt=12): 995 board([8,3,1,7,2]).  [hyper(2,a,475,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #983 (W,wt=12): 996 board([5,3,1,7,2]).  [hyper(2,a,475,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #984 (W,wt=12): 997 board([7,3,8,6,2]).  [hyper(2,a,476,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #985 (W,wt=12): 998 board([5,3,8,6,2]).  [hyper(2,a,476,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #986 (W,wt=12): 999 board([1,3,8,6,2]).  [hyper(2,a,476,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #987 (W,wt=12): 1000 board([7,1,8,6,2]).  [hyper(2,a,477,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #988 (W,wt=12): 1001 board([5,1,8,6,2]).  [hyper(2,a,477,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #989 (W,wt=12): 1002 board([4,1,8,6,2]).  [hyper(2,a,477,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #990 (W,wt=12): 1003 board([4,7,3,6,2]).  [hyper(2,a,478,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #991 (W,wt=12): 1004 board([8,1,3,6,2]).  [hyper(2,a,479,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #992 (W,wt=12): 1005 board([7,1,3,6,2]).  [hyper(2,a,479,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #993 (W,wt=12): 1006 board([4,1,3,6,2]).  [hyper(2,a,479,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #994 (W,wt=12): 1007 board([5,7,1,6,2]).  [hyper(2,a,480,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #995 (W,wt=12): 1008 board([4,7,1,6,2]).  [hyper(2,a,480,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #996 (W,wt=12): 1009 board([8,3,1,6,2]).  [hyper(2,a,481,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #997 (W,wt=12): 1010 board([7,3,1,6,2]).  [hyper(2,a,481,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #998 (W,wt=12): 1011 board([5,3,1,6,2]).  [hyper(2,a,481,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #999 (W,wt=12): 1012 board([4,6,8,5,2]).  [hyper(2,a,482,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #1000 (W,wt=12): 1013 board([3,6,8,5,2]).  [hyper(2,a,482,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #1001 (W,wt=12): 1014 board([1,6,8,5,2]).  [hyper(2,a,482,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #1002 (W,wt=12): 1015 board([7,4,8,5,2]).  [hyper(2,a,483,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #1003 (W,wt=12): 1016 board([1,4,8,5,2]).  [hyper(2,a,483,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #1004 (W,wt=12): 1017 board([7,1,8,5,2]).  [hyper(2,a,484,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #1005 (W,wt=12): 1018 board([4,1,8,5,2]).  [hyper(2,a,484,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #1006 (W,wt=12): 1019 board([3,1,8,5,2]).  [hyper(2,a,484,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #1007 (W,wt=12): 1020 board([1,4,7,5,2]).  [hyper(2,a,485,a,b,3,a),rewrite([13,12]),eval(40)].
+
+given #1008 (W,wt=12): 1021 board([4,1,7,5,2]).  [hyper(2,a,486,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #1009 (W,wt=12): 1022 board([3,1,7,5,2]).  [hyper(2,a,486,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #1010 (W,wt=12): 1023 board([4,8,3,5,2]).  [hyper(2,a,487,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #1011 (W,wt=12): 1024 board([4,6,3,5,2]).  [hyper(2,a,488,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #1012 (W,wt=12): 1025 board([7,1,3,5,2]).  [hyper(2,a,489,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #1013 (W,wt=12): 1026 board([4,1,3,5,2]).  [hyper(2,a,489,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #1014 (W,wt=12): 1027 board([4,8,1,5,2]).  [hyper(2,a,490,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #1015 (W,wt=12): 1028 board([4,6,1,5,2]).  [hyper(2,a,491,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #1016 (W,wt=12): 1029 board([7,4,1,5,2]).  [hyper(2,a,492,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #1017 (W,wt=12): 1030 board([5,3,8,4,2]).  [hyper(2,a,493,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #1018 (W,wt=12): 1031 board([5,1,8,4,2]).  [hyper(2,a,494,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #1019 (W,wt=12): 1032 board([3,1,8,4,2]).  [hyper(2,a,494,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #1020 (W,wt=12): 1033 board([8,3,7,4,2]).  [hyper(2,a,495,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #1021 (W,wt=12): 1034 board([8,1,7,4,2]).  [hyper(2,a,496,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #1022 (W,wt=12): 1035 board([3,1,7,4,2]).  [hyper(2,a,496,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #1023 (W,wt=12): 1036 board([5,8,6,4,2]).  [hyper(2,a,497,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #1024 (W,wt=12): 1037 board([3,8,6,4,2]).  [hyper(2,a,497,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #1025 (W,wt=12): 1038 board([5,3,6,4,2]).  [hyper(2,a,498,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #1026 (W,wt=12): 1039 board([5,1,6,4,2]).  [hyper(2,a,499,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #1027 (W,wt=12): 1040 board([3,1,6,4,2]).  [hyper(2,a,499,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #1028 (W,wt=12): 1041 board([5,8,1,4,2]).  [hyper(2,a,500,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #1029 (W,wt=12): 1042 board([5,7,1,4,2]).  [hyper(2,a,501,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #1030 (W,wt=12): 1043 board([8,3,1,4,2]).  [hyper(2,a,502,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #1031 (W,wt=12): 1044 board([5,3,1,4,2]).  [hyper(2,a,502,a,b,7,a),rewrite([13,12]),eval(40)].
+
+given #1032 (W,wt=12): 1045 board([7,3,6,8,1]).  [hyper(2,a,503,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #1033 (W,wt=12): 1046 board([7,2,6,8,1]).  [hyper(2,a,504,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #1034 (W,wt=12): 1047 board([4,7,5,8,1]).  [hyper(2,a,505,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #1035 (W,wt=12): 1048 board([2,7,5,8,1]).  [hyper(2,a,505,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #1036 (W,wt=12): 1049 board([6,3,5,8,1]).  [hyper(2,a,506,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #1037 (W,wt=12): 1050 board([6,2,5,8,1]).  [hyper(2,a,507,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #1038 (W,wt=12): 1051 board([4,2,5,8,1]).  [hyper(2,a,507,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #1039 (W,wt=12): 1052 board([3,7,4,8,1]).  [hyper(2,a,508,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #1040 (W,wt=12): 1053 board([7,2,4,8,1]).  [hyper(2,a,509,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #1041 (W,wt=12): 1054 board([3,7,2,8,1]).  [hyper(2,a,510,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #1042 (W,wt=12): 1055 board([7,5,2,8,1]).  [hyper(2,a,511,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #1043 (W,wt=12): 1056 board([3,5,2,8,1]).  [hyper(2,a,511,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #1044 (W,wt=12): 1057 board([6,8,5,7,1]).  [hyper(2,a,512,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #1045 (W,wt=12): 1058 board([2,8,5,7,1]).  [hyper(2,a,512,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #1046 (W,wt=12): 1059 board([8,3,5,7,1]).  [hyper(2,a,513,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #1047 (W,wt=12): 1060 board([6,3,5,7,1]).  [hyper(2,a,513,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #1048 (W,wt=12): 1061 board([8,2,5,7,1]).  [hyper(2,a,514,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #1049 (W,wt=12): 1062 board([6,2,5,7,1]).  [hyper(2,a,514,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #1050 (W,wt=12): 1063 board([3,8,4,7,1]).  [hyper(2,a,515,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #1051 (W,wt=12): 1064 board([8,6,4,7,1]).  [hyper(2,a,516,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #1052 (W,wt=12): 1065 board([3,6,4,7,1]).  [hyper(2,a,516,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #1053 (W,wt=12): 1066 board([8,2,4,7,1]).  [hyper(2,a,517,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #1054 (W,wt=12): 1067 board([6,8,2,7,1]).  [hyper(2,a,518,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #1055 (W,wt=12): 1068 board([3,8,2,7,1]).  [hyper(2,a,518,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #1056 (W,wt=12): 1069 board([8,6,2,7,1]).  [hyper(2,a,519,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #1057 (W,wt=12): 1070 board([3,6,2,7,1]).  [hyper(2,a,519,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #1058 (W,wt=12): 1071 board([7,5,8,6,1]).  [hyper(2,a,520,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #1059 (W,wt=12): 1072 board([2,5,8,6,1]).  [hyper(2,a,520,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #1060 (W,wt=12): 1073 board([7,3,8,6,1]).  [hyper(2,a,521,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #1061 (W,wt=12): 1074 board([7,2,8,6,1]).  [hyper(2,a,522,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #1062 (W,wt=12): 1075 board([4,2,8,6,1]).  [hyper(2,a,522,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #1063 (W,wt=12): 1076 board([8,2,4,6,1]).  [hyper(2,a,524,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #1064 (W,wt=12): 1077 board([7,2,4,6,1]).  [hyper(2,a,524,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #1065 (W,wt=12): 1078 board([8,5,2,6,1]).  [hyper(2,a,526,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #1066 (W,wt=12): 1079 board([7,5,2,6,1]).  [hyper(2,a,526,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #1067 (W,wt=12): 1080 board([4,6,8,5,1]).  [hyper(2,a,527,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #1068 (W,wt=12): 1081 board([3,6,8,5,1]).  [hyper(2,a,527,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #1069 (W,wt=12): 1082 board([7,2,8,5,1]).  [hyper(2,a,528,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #1070 (W,wt=12): 1083 board([4,2,8,5,1]).  [hyper(2,a,528,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #1071 (W,wt=12): 1084 board([6,2,7,5,1]).  [hyper(2,a,529,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #1072 (W,wt=12): 1085 board([4,2,7,5,1]).  [hyper(2,a,529,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #1073 (W,wt=12): 1086 board([6,8,2,5,1]).  [hyper(2,a,530,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #1074 (W,wt=12): 1087 board([3,8,2,5,1]).  [hyper(2,a,530,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #1075 (W,wt=12): 1088 board([3,6,2,5,1]).  [hyper(2,a,531,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #1076 (W,wt=12): 1089 board([3,5,8,4,1]).  [hyper(2,a,532,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #1077 (W,wt=12): 1090 board([2,5,8,4,1]).  [hyper(2,a,532,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #1078 (W,wt=12): 1091 board([8,5,7,4,1]).  [hyper(2,a,534,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #1079 (W,wt=12): 1092 board([3,5,7,4,1]).  [hyper(2,a,534,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #1080 (W,wt=12): 1093 board([2,5,7,4,1]).  [hyper(2,a,534,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #1081 (W,wt=12): 1094 board([8,3,7,4,1]).  [hyper(2,a,535,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #1082 (W,wt=12): 1095 board([6,3,7,4,1]).  [hyper(2,a,535,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #1083 (W,wt=12): 1096 board([3,8,6,4,1]).  [hyper(2,a,536,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #1084 (W,wt=12): 1097 board([2,8,6,4,1]).  [hyper(2,a,536,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #1085 (W,wt=12): 1098 board([6,8,2,4,1]).  [hyper(2,a,538,a,b,8,a),rewrite([13,12]),eval(40)].
+
+given #1086 (W,wt=12): 1099 board([3,8,2,4,1]).  [hyper(2,a,538,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #1087 (W,wt=12): 1100 board([3,7,2,4,1]).  [hyper(2,a,539,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #1088 (W,wt=12): 1101 board([8,5,2,4,1]).  [hyper(2,a,540,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #1089 (W,wt=12): 1102 board([3,5,2,4,1]).  [hyper(2,a,540,a,b,5,a),rewrite([13,12]),eval(40)].
+
+given #1090 (W,wt=12): 1103 board([4,6,8,3,1]).  [hyper(2,a,541,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #1091 (W,wt=12): 1104 board([2,6,8,3,1]).  [hyper(2,a,541,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #1092 (W,wt=12): 1105 board([7,2,8,3,1]).  [hyper(2,a,542,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #1093 (W,wt=12): 1106 board([4,2,8,3,1]).  [hyper(2,a,542,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #1094 (W,wt=12): 1107 board([8,2,7,3,1]).  [hyper(2,a,543,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #1095 (W,wt=12): 1108 board([4,2,7,3,1]).  [hyper(2,a,543,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #1096 (W,wt=12): 1109 board([2,8,6,3,1]).  [hyper(2,a,544,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #1097 (W,wt=12): 1110 board([7,2,6,3,1]).  [hyper(2,a,545,a,b,9,a),rewrite([13,12]),eval(40)].
+
+given #1098 (W,wt=12): 1111 board([4,8,5,3,1]).  [hyper(2,a,546,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #1099 (W,wt=12): 1112 board([2,8,5,3,1]).  [hyper(2,a,546,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #1100 (W,wt=12): 1113 board([4,7,5,3,1]).  [hyper(2,a,547,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #1101 (W,wt=12): 1114 board([2,7,5,3,1]).  [hyper(2,a,547,a,b,4,a),rewrite([13,12]),eval(40)].
+
+given #1102 (W,wt=12): 1115 board([8,2,5,3,1]).  [hyper(2,a,548,a,b,10,a),rewrite([13,12]),eval(40)].
+
+given #1103 (W,wt=12): 1116 board([4,2,5,3,1]).  [hyper(2,a,548,a,b,6,a),rewrite([13,12]),eval(40)].
+
+given #1104 (W,wt=14): 1117 board([5,7,2,4,6,8]).  [hyper(2,a,551,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1105 (W,wt=14): 1118 board([5,7,1,4,6,8]).  [hyper(2,a,553,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1106 (W,wt=14): 1119 board([4,2,7,3,6,8]).  [hyper(2,a,555,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1107 (W,wt=14): 1120 board([5,7,1,3,6,8]).  [hyper(2,a,556,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1108 (W,wt=14): 1121 board([4,7,1,3,6,8]).  [hyper(2,a,556,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1109 (W,wt=14): 1122 board([1,5,7,2,6,8]).  [hyper(2,a,557,a,b,3,a),rewrite([13,12]),eval(50)].
+
+given #1110 (W,wt=14): 1123 board([4,1,7,2,6,8]).  [hyper(2,a,558,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1111 (W,wt=14): 1124 board([7,5,3,1,6,8]).  [hyper(2,a,562,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1112 (W,wt=14): 1125 board([2,6,1,7,5,8]).  [hyper(2,a,566,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1113 (W,wt=14): 1126 board([6,3,1,7,5,8]).  [hyper(2,a,567,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1114 (W,wt=14): 1127 board([4,7,1,3,5,8]).  [hyper(2,a,568,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1115 (W,wt=14): 1128 board([2,7,1,3,5,8]).  [hyper(2,a,568,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1116 (W,wt=14): 1129 board([4,6,1,3,5,8]).  [hyper(2,a,569,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1117 (W,wt=14): 1130 board([2,6,1,3,5,8]).  [hyper(2,a,569,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1118 (W,wt=14): 1131 board([7,3,6,2,5,8]).  [hyper(2,a,570,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1119 (W,wt=14): 1132 board([7,1,6,2,5,8]).  [hyper(2,a,571,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1120 (W,wt=14): 1133 board([7,1,4,2,5,8]).  [hyper(2,a,574,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1121 (W,wt=14): 1134 board([2,6,3,7,4,8]).  [hyper(2,a,577,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1122 (W,wt=14): 1135 board([2,6,1,7,4,8]).  [hyper(2,a,578,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1123 (W,wt=14): 1136 board([6,3,1,7,4,8]).  [hyper(2,a,579,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1124 (W,wt=14): 1137 board([5,3,1,7,4,8]).  [hyper(2,a,579,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1125 (W,wt=14): 1138 board([1,5,7,2,4,8]).  [hyper(2,a,580,a,b,3,a),rewrite([13,12]),eval(50)].
+
+given #1126 (W,wt=14): 1139 board([6,3,7,2,4,8]).  [hyper(2,a,581,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1127 (W,wt=14): 1140 board([1,3,7,2,4,8]).  [hyper(2,a,581,a,b,3,a),rewrite([13,12]),eval(50)].
+
+given #1128 (W,wt=14): 1141 board([2,5,7,1,4,8]).  [hyper(2,a,582,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1129 (W,wt=14): 1142 board([6,2,7,1,4,8]).  [hyper(2,a,583,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1130 (W,wt=14): 1143 board([2,6,3,1,4,8]).  [hyper(2,a,584,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1131 (W,wt=14): 1144 board([7,5,3,1,4,8]).  [hyper(2,a,585,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1132 (W,wt=14): 1145 board([2,5,3,1,4,8]).  [hyper(2,a,585,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1133 (W,wt=14): 1146 board([5,2,4,7,3,8]).  [hyper(2,a,586,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1134 (W,wt=14): 1147 board([5,1,4,7,3,8]).  [hyper(2,a,587,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1135 (W,wt=14): 1148 board([6,2,7,5,3,8]).  [hyper(2,a,588,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1136 (W,wt=14): 1149 board([4,2,7,5,3,8]).  [hyper(2,a,588,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1137 (W,wt=14): 1150 board([6,1,7,5,3,8]).  [hyper(2,a,589,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1138 (W,wt=14): 1151 board([4,1,7,5,3,8]).  [hyper(2,a,589,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1139 (W,wt=14): 1152 board([2,5,7,1,3,8]).  [hyper(2,a,590,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1140 (W,wt=14): 1153 board([6,2,7,1,3,8]).  [hyper(2,a,591,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1141 (W,wt=14): 1154 board([5,2,6,1,3,8]).  [hyper(2,a,592,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1142 (W,wt=14): 1155 board([5,7,4,1,3,8]).  [hyper(2,a,593,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1143 (W,wt=14): 1156 board([5,2,4,1,3,8]).  [hyper(2,a,594,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1144 (W,wt=14): 1157 board([5,3,1,7,2,8]).  [hyper(2,a,598,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1145 (W,wt=14): 1158 board([4,1,7,5,2,8]).  [hyper(2,a,599,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1146 (W,wt=14): 1159 board([4,6,3,5,2,8]).  [hyper(2,a,600,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1147 (W,wt=14): 1160 board([7,1,3,5,2,8]).  [hyper(2,a,601,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1148 (W,wt=14): 1161 board([4,1,3,5,2,8]).  [hyper(2,a,601,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1149 (W,wt=14): 1162 board([4,6,1,5,2,8]).  [hyper(2,a,602,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1150 (W,wt=14): 1163 board([5,3,6,4,2,8]).  [hyper(2,a,605,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1151 (W,wt=14): 1164 board([5,1,6,4,2,8]).  [hyper(2,a,606,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1152 (W,wt=14): 1165 board([5,7,1,4,2,8]).  [hyper(2,a,607,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1153 (W,wt=14): 1166 board([5,3,1,4,2,8]).  [hyper(2,a,608,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1154 (W,wt=14): 1167 board([6,2,7,5,1,8]).  [hyper(2,a,612,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1155 (W,wt=14): 1168 board([4,2,7,5,1,8]).  [hyper(2,a,612,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1156 (W,wt=14): 1169 board([2,5,7,4,1,8]).  [hyper(2,a,614,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1157 (W,wt=14): 1170 board([6,3,7,4,1,8]).  [hyper(2,a,615,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1158 (W,wt=14): 1171 board([4,2,7,3,1,8]).  [hyper(2,a,619,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1159 (W,wt=14): 1172 board([7,2,6,3,1,8]).  [hyper(2,a,620,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1160 (W,wt=14): 1173 board([3,1,6,8,5,7]).  [hyper(2,a,622,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1161 (W,wt=14): 1174 board([6,4,2,8,5,7]).  [hyper(2,a,623,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1162 (W,wt=14): 1175 board([6,4,1,8,5,7]).  [hyper(2,a,624,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1163 (W,wt=14): 1176 board([4,6,8,3,5,7]).  [hyper(2,a,625,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1164 (W,wt=14): 1177 board([8,6,1,3,5,7]).  [hyper(2,a,628,a,b,10,a),rewrite([13,12]),eval(50)].
+
+given #1165 (W,wt=14): 1178 board([4,6,1,3,5,7]).  [hyper(2,a,628,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1166 (W,wt=14): 1179 board([8,4,1,3,5,7]).  [hyper(2,a,629,a,b,10,a),rewrite([13,12]),eval(50)].
+
+given #1167 (W,wt=14): 1180 board([4,6,8,2,5,7]).  [hyper(2,a,630,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1168 (W,wt=14): 1181 board([3,6,8,2,5,7]).  [hyper(2,a,630,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1169 (W,wt=14): 1182 board([4,1,8,2,5,7]).  [hyper(2,a,631,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1170 (W,wt=14): 1183 board([3,1,8,2,5,7]).  [hyper(2,a,631,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1171 (W,wt=14): 1184 board([3,1,6,2,5,7]).  [hyper(2,a,632,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1172 (W,wt=14): 1185 board([3,6,8,1,5,7]).  [hyper(2,a,633,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1173 (W,wt=14): 1186 board([6,2,5,8,4,7]).  [hyper(2,a,636,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1174 (W,wt=14): 1187 board([1,5,8,6,4,7]).  [hyper(2,a,639,a,b,3,a),rewrite([13,12]),eval(50)].
+
+given #1175 (W,wt=14): 1188 board([5,2,8,6,4,7]).  [hyper(2,a,640,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1176 (W,wt=14): 1189 board([3,6,8,2,4,7]).  [hyper(2,a,643,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1177 (W,wt=14): 1190 board([1,6,8,2,4,7]).  [hyper(2,a,643,a,b,3,a),rewrite([13,12]),eval(50)].
+
+given #1178 (W,wt=14): 1191 board([3,5,8,2,4,7]).  [hyper(2,a,644,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1179 (W,wt=14): 1192 board([1,5,8,2,4,7]).  [hyper(2,a,644,a,b,3,a),rewrite([13,12]),eval(50)].
+
+given #1180 (W,wt=14): 1193 board([6,8,5,2,4,7]).  [hyper(2,a,645,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1181 (W,wt=14): 1194 board([1,8,5,2,4,7]).  [hyper(2,a,645,a,b,3,a),rewrite([13,12]),eval(50)].
+
+given #1182 (W,wt=14): 1195 board([3,6,8,1,4,7]).  [hyper(2,a,646,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1183 (W,wt=14): 1196 board([3,5,8,1,4,7]).  [hyper(2,a,647,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1184 (W,wt=14): 1197 board([5,2,8,1,4,7]).  [hyper(2,a,648,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1185 (W,wt=14): 1198 board([6,8,5,1,4,7]).  [hyper(2,a,649,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1186 (W,wt=14): 1199 board([6,2,5,1,4,7]).  [hyper(2,a,650,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1187 (W,wt=14): 1200 board([6,8,3,1,4,7]).  [hyper(2,a,651,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1188 (W,wt=14): 1201 board([1,4,6,8,3,7]).  [hyper(2,a,654,a,b,3,a),rewrite([13,12]),eval(50)].
+
+given #1189 (W,wt=14): 1202 board([1,5,2,8,3,7]).  [hyper(2,a,657,a,b,3,a),rewrite([13,12]),eval(50)].
+
+given #1190 (W,wt=14): 1203 board([6,4,2,8,3,7]).  [hyper(2,a,658,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1191 (W,wt=14): 1204 board([1,4,2,8,3,7]).  [hyper(2,a,658,a,b,3,a),rewrite([13,12]),eval(50)].
+
+given #1192 (W,wt=14): 1205 board([1,5,8,6,3,7]).  [hyper(2,a,659,a,b,3,a),rewrite([13,12]),eval(50)].
+
+given #1193 (W,wt=14): 1206 board([5,2,8,6,3,7]).  [hyper(2,a,660,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1194 (W,wt=14): 1207 board([4,2,8,6,3,7]).  [hyper(2,a,660,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1195 (W,wt=14): 1208 board([5,1,8,6,3,7]).  [hyper(2,a,661,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1196 (W,wt=14): 1209 board([4,1,8,6,3,7]).  [hyper(2,a,661,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1197 (W,wt=14): 1210 board([8,5,2,6,3,7]).  [hyper(2,a,662,a,b,10,a),rewrite([13,12]),eval(50)].
+
+given #1198 (W,wt=14): 1211 board([1,5,2,6,3,7]).  [hyper(2,a,662,a,b,3,a),rewrite([13,12]),eval(50)].
+
+given #1199 (W,wt=14): 1212 board([5,2,8,1,3,7]).  [hyper(2,a,665,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1200 (W,wt=14): 1213 board([5,8,6,1,3,7]).  [hyper(2,a,666,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1201 (W,wt=14): 1214 board([5,2,6,1,3,7]).  [hyper(2,a,668,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1202 (W,wt=14): 1215 board([1,4,6,8,2,7]).  [hyper(2,a,669,a,b,3,a),rewrite([13,12]),eval(50)].
+
+given #1203 (W,wt=14): 1216 board([3,1,6,8,2,7]).  [hyper(2,a,670,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1204 (W,wt=14): 1217 board([4,1,5,8,2,7]).  [hyper(2,a,671,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1205 (W,wt=14): 1218 board([4,1,3,8,2,7]).  [hyper(2,a,672,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1206 (W,wt=14): 1219 board([5,1,8,6,2,7]).  [hyper(2,a,674,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1207 (W,wt=14): 1220 board([4,1,8,6,2,7]).  [hyper(2,a,674,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1208 (W,wt=14): 1221 board([8,1,3,6,2,7]).  [hyper(2,a,675,a,b,10,a),rewrite([13,12]),eval(50)].
+
+given #1209 (W,wt=14): 1222 board([4,1,3,6,2,7]).  [hyper(2,a,675,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1210 (W,wt=14): 1223 board([5,1,8,4,2,7]).  [hyper(2,a,676,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1211 (W,wt=14): 1224 board([3,1,8,4,2,7]).  [hyper(2,a,676,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1212 (W,wt=14): 1225 board([5,8,6,4,2,7]).  [hyper(2,a,677,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1213 (W,wt=14): 1226 board([3,8,6,4,2,7]).  [hyper(2,a,677,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1214 (W,wt=14): 1227 board([5,1,6,4,2,7]).  [hyper(2,a,678,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1215 (W,wt=14): 1228 board([3,1,6,4,2,7]).  [hyper(2,a,678,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1216 (W,wt=14): 1229 board([5,8,1,4,2,7]).  [hyper(2,a,679,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1217 (W,wt=14): 1230 board([6,2,5,8,1,7]).  [hyper(2,a,681,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1218 (W,wt=14): 1231 board([4,2,5,8,1,7]).  [hyper(2,a,681,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1219 (W,wt=14): 1232 board([3,5,2,8,1,7]).  [hyper(2,a,682,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1220 (W,wt=14): 1233 board([4,2,8,6,1,7]).  [hyper(2,a,684,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1221 (W,wt=14): 1234 board([8,5,2,6,1,7]).  [hyper(2,a,685,a,b,10,a),rewrite([13,12]),eval(50)].
+
+given #1222 (W,wt=14): 1235 board([3,5,8,4,1,7]).  [hyper(2,a,686,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1223 (W,wt=14): 1236 board([3,8,6,4,1,7]).  [hyper(2,a,687,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1224 (W,wt=14): 1237 board([6,8,2,4,1,7]).  [hyper(2,a,688,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1225 (W,wt=14): 1238 board([3,8,2,4,1,7]).  [hyper(2,a,688,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1226 (W,wt=14): 1239 board([8,5,2,4,1,7]).  [hyper(2,a,689,a,b,10,a),rewrite([13,12]),eval(50)].
+
+given #1227 (W,wt=14): 1240 board([3,5,2,4,1,7]).  [hyper(2,a,689,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1228 (W,wt=14): 1241 board([4,6,8,3,1,7]).  [hyper(2,a,690,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1229 (W,wt=14): 1242 board([4,2,8,3,1,7]).  [hyper(2,a,691,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1230 (W,wt=14): 1243 board([4,8,5,3,1,7]).  [hyper(2,a,694,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1231 (W,wt=14): 1244 board([8,2,5,3,1,7]).  [hyper(2,a,695,a,b,10,a),rewrite([13,12]),eval(50)].
+
+given #1232 (W,wt=14): 1245 board([4,2,5,3,1,7]).  [hyper(2,a,695,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1233 (W,wt=14): 1246 board([3,1,7,5,8,6]).  [hyper(2,a,697,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1234 (W,wt=14): 1247 board([7,4,2,5,8,6]).  [hyper(2,a,698,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1235 (W,wt=14): 1248 board([7,4,1,5,8,6]).  [hyper(2,a,699,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1236 (W,wt=14): 1249 board([2,4,7,3,8,6]).  [hyper(2,a,700,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1237 (W,wt=14): 1250 board([2,7,5,3,8,6]).  [hyper(2,a,701,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1238 (W,wt=14): 1251 board([5,7,1,3,8,6]).  [hyper(2,a,702,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1239 (W,wt=14): 1252 board([2,7,1,3,8,6]).  [hyper(2,a,702,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1240 (W,wt=14): 1253 board([7,4,1,3,8,6]).  [hyper(2,a,703,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1241 (W,wt=14): 1254 board([2,4,1,3,8,6]).  [hyper(2,a,703,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1242 (W,wt=14): 1255 board([3,1,7,2,8,6]).  [hyper(2,a,705,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1243 (W,wt=14): 1256 board([3,7,4,2,8,6]).  [hyper(2,a,709,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1244 (W,wt=14): 1257 board([7,1,4,2,8,6]).  [hyper(2,a,710,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1245 (W,wt=14): 1258 board([3,1,4,2,8,6]).  [hyper(2,a,710,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1246 (W,wt=14): 1259 board([2,4,7,1,8,6]).  [hyper(2,a,711,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1247 (W,wt=14): 1260 board([2,7,5,1,8,6]).  [hyper(2,a,712,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1248 (W,wt=14): 1261 board([5,7,4,1,8,6]).  [hyper(2,a,713,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1249 (W,wt=14): 1262 board([3,7,4,1,8,6]).  [hyper(2,a,713,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1250 (W,wt=14): 1263 board([2,8,5,7,4,6]).  [hyper(2,a,714,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1251 (W,wt=14): 1264 board([5,8,1,7,4,6]).  [hyper(2,a,716,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1252 (W,wt=14): 1265 board([2,8,1,7,4,6]).  [hyper(2,a,716,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1253 (W,wt=14): 1266 board([5,3,1,7,4,6]).  [hyper(2,a,717,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1254 (W,wt=14): 1267 board([7,5,8,2,4,6]).  [hyper(2,a,718,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1255 (W,wt=14): 1268 board([3,5,8,2,4,6]).  [hyper(2,a,718,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1256 (W,wt=14): 1269 board([7,3,8,2,4,6]).  [hyper(2,a,719,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1257 (W,wt=14): 1270 board([3,5,7,2,4,6]).  [hyper(2,a,720,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1258 (W,wt=14): 1271 board([7,5,8,1,4,6]).  [hyper(2,a,724,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1259 (W,wt=14): 1272 board([3,5,8,1,4,6]).  [hyper(2,a,724,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1260 (W,wt=14): 1273 board([2,5,8,1,4,6]).  [hyper(2,a,724,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1261 (W,wt=14): 1274 board([3,5,7,1,4,6]).  [hyper(2,a,725,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1262 (W,wt=14): 1275 board([2,5,7,1,4,6]).  [hyper(2,a,725,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1263 (W,wt=14): 1276 board([2,8,5,1,4,6]).  [hyper(2,a,726,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1264 (W,wt=14): 1277 board([5,8,4,7,3,6]).  [hyper(2,a,727,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1265 (W,wt=14): 1278 board([8,1,4,7,3,6]).  [hyper(2,a,728,a,b,10,a),rewrite([13,12]),eval(50)].
+
+given #1266 (W,wt=14): 1279 board([5,1,4,7,3,6]).  [hyper(2,a,728,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1267 (W,wt=14): 1280 board([5,8,2,7,3,6]).  [hyper(2,a,729,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1268 (W,wt=14): 1281 board([8,4,2,7,3,6]).  [hyper(2,a,730,a,b,10,a),rewrite([13,12]),eval(50)].
+
+given #1269 (W,wt=14): 1282 board([4,1,8,5,3,6]).  [hyper(2,a,732,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1270 (W,wt=14): 1283 board([4,1,7,5,3,6]).  [hyper(2,a,734,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1271 (W,wt=14): 1284 board([2,5,8,1,3,6]).  [hyper(2,a,737,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1272 (W,wt=14): 1285 board([2,4,8,1,3,6]).  [hyper(2,a,738,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1273 (W,wt=14): 1286 board([8,5,7,1,3,6]).  [hyper(2,a,739,a,b,10,a),rewrite([13,12]),eval(50)].
+
+given #1274 (W,wt=14): 1287 board([2,5,7,1,3,6]).  [hyper(2,a,739,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1275 (W,wt=14): 1288 board([8,4,7,1,3,6]).  [hyper(2,a,740,a,b,10,a),rewrite([13,12]),eval(50)].
+
+given #1276 (W,wt=14): 1289 board([2,4,7,1,3,6]).  [hyper(2,a,740,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1277 (W,wt=14): 1290 board([5,8,4,1,3,6]).  [hyper(2,a,741,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1278 (W,wt=14): 1291 board([5,7,4,1,3,6]).  [hyper(2,a,742,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1279 (W,wt=14): 1292 board([8,3,5,7,2,6]).  [hyper(2,a,744,a,b,10,a),rewrite([13,12]),eval(50)].
+
+given #1280 (W,wt=14): 1293 board([8,1,5,7,2,6]).  [hyper(2,a,745,a,b,10,a),rewrite([13,12]),eval(50)].
+
+given #1281 (W,wt=14): 1294 board([5,8,1,7,2,6]).  [hyper(2,a,746,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1282 (W,wt=14): 1295 board([8,4,1,7,2,6]).  [hyper(2,a,747,a,b,10,a),rewrite([13,12]),eval(50)].
+
+given #1283 (W,wt=14): 1296 board([8,3,1,7,2,6]).  [hyper(2,a,748,a,b,10,a),rewrite([13,12]),eval(50)].
+
+given #1284 (W,wt=14): 1297 board([5,3,1,7,2,6]).  [hyper(2,a,748,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1285 (W,wt=14): 1298 board([7,4,8,5,2,6]).  [hyper(2,a,749,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1286 (W,wt=14): 1299 board([7,1,8,5,2,6]).  [hyper(2,a,750,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1287 (W,wt=14): 1300 board([4,1,8,5,2,6]).  [hyper(2,a,750,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1288 (W,wt=14): 1301 board([3,1,8,5,2,6]).  [hyper(2,a,750,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1289 (W,wt=14): 1302 board([4,1,7,5,2,6]).  [hyper(2,a,752,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1290 (W,wt=14): 1303 board([3,1,7,5,2,6]).  [hyper(2,a,752,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1291 (W,wt=14): 1304 board([4,8,1,5,2,6]).  [hyper(2,a,753,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1292 (W,wt=14): 1305 board([7,4,1,5,2,6]).  [hyper(2,a,754,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1293 (W,wt=14): 1306 board([2,8,5,7,1,6]).  [hyper(2,a,755,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1294 (W,wt=14): 1307 board([8,3,5,7,1,6]).  [hyper(2,a,756,a,b,10,a),rewrite([13,12]),eval(50)].
+
+given #1295 (W,wt=14): 1308 board([3,8,4,7,1,6]).  [hyper(2,a,757,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1296 (W,wt=14): 1309 board([3,8,2,7,1,6]).  [hyper(2,a,758,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1297 (W,wt=14): 1310 board([3,8,2,5,1,6]).  [hyper(2,a,759,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1298 (W,wt=14): 1311 board([4,8,5,3,1,6]).  [hyper(2,a,760,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1299 (W,wt=14): 1312 board([2,8,5,3,1,6]).  [hyper(2,a,760,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1300 (W,wt=14): 1313 board([4,7,5,3,1,6]).  [hyper(2,a,761,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1301 (W,wt=14): 1314 board([2,7,5,3,1,6]).  [hyper(2,a,761,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1302 (W,wt=14): 1315 board([1,7,4,6,8,5]).  [hyper(2,a,762,a,b,3,a),rewrite([13,12]),eval(50)].
+
+given #1303 (W,wt=14): 1316 board([7,2,4,6,8,5]).  [hyper(2,a,763,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1304 (W,wt=14): 1317 board([2,7,3,6,8,5]).  [hyper(2,a,764,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1305 (W,wt=14): 1318 board([2,7,1,6,8,5]).  [hyper(2,a,765,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1306 (W,wt=14): 1319 board([7,3,1,6,8,5]).  [hyper(2,a,766,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1307 (W,wt=14): 1320 board([6,3,7,4,8,5]).  [hyper(2,a,767,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1308 (W,wt=14): 1321 board([2,7,1,4,8,5]).  [hyper(2,a,768,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1309 (W,wt=14): 1322 board([6,3,1,4,8,5]).  [hyper(2,a,769,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1310 (W,wt=14): 1323 board([6,3,7,2,8,5]).  [hyper(2,a,770,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1311 (W,wt=14): 1324 board([1,3,7,2,8,5]).  [hyper(2,a,770,a,b,3,a),rewrite([13,12]),eval(50)].
+
+given #1312 (W,wt=14): 1325 board([3,7,4,2,8,5]).  [hyper(2,a,771,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1313 (W,wt=14): 1326 board([1,7,4,2,8,5]).  [hyper(2,a,771,a,b,3,a),rewrite([13,12]),eval(50)].
+
+given #1314 (W,wt=14): 1327 board([3,6,4,2,8,5]).  [hyper(2,a,772,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1315 (W,wt=14): 1328 board([1,6,4,2,8,5]).  [hyper(2,a,772,a,b,3,a),rewrite([13,12]),eval(50)].
+
+given #1316 (W,wt=14): 1329 board([6,4,7,1,8,5]).  [hyper(2,a,773,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1317 (W,wt=14): 1330 board([2,4,7,1,8,5]).  [hyper(2,a,773,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1318 (W,wt=14): 1331 board([6,2,7,1,8,5]).  [hyper(2,a,774,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1319 (W,wt=14): 1332 board([3,7,4,1,8,5]).  [hyper(2,a,775,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1320 (W,wt=14): 1333 board([3,6,4,1,8,5]).  [hyper(2,a,776,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1321 (W,wt=14): 1334 board([7,2,4,1,8,5]).  [hyper(2,a,777,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1322 (W,wt=14): 1335 board([2,7,3,1,8,5]).  [hyper(2,a,778,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1323 (W,wt=14): 1336 board([2,6,3,1,8,5]).  [hyper(2,a,779,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1324 (W,wt=14): 1337 board([2,8,6,4,7,5]).  [hyper(2,a,780,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1325 (W,wt=14): 1338 board([6,8,1,4,7,5]).  [hyper(2,a,782,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1326 (W,wt=14): 1339 board([2,8,1,4,7,5]).  [hyper(2,a,782,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1327 (W,wt=14): 1340 board([8,3,1,4,7,5]).  [hyper(2,a,783,a,b,10,a),rewrite([13,12]),eval(50)].
+
+given #1328 (W,wt=14): 1341 board([6,3,1,4,7,5]).  [hyper(2,a,783,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1329 (W,wt=14): 1342 board([1,8,6,2,7,5]).  [hyper(2,a,784,a,b,3,a),rewrite([13,12]),eval(50)].
+
+given #1330 (W,wt=14): 1343 board([1,3,6,2,7,5]).  [hyper(2,a,785,a,b,3,a),rewrite([13,12]),eval(50)].
+
+given #1331 (W,wt=14): 1344 board([1,8,4,2,7,5]).  [hyper(2,a,786,a,b,3,a),rewrite([13,12]),eval(50)].
+
+given #1332 (W,wt=14): 1345 board([8,6,4,2,7,5]).  [hyper(2,a,787,a,b,10,a),rewrite([13,12]),eval(50)].
+
+given #1333 (W,wt=14): 1346 board([1,6,4,2,7,5]).  [hyper(2,a,787,a,b,3,a),rewrite([13,12]),eval(50)].
+
+given #1334 (W,wt=14): 1347 board([2,8,6,1,7,5]).  [hyper(2,a,788,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1335 (W,wt=14): 1348 board([8,6,4,1,7,5]).  [hyper(2,a,791,a,b,10,a),rewrite([13,12]),eval(50)].
+
+given #1336 (W,wt=14): 1349 board([8,2,4,1,7,5]).  [hyper(2,a,792,a,b,10,a),rewrite([13,12]),eval(50)].
+
+given #1337 (W,wt=14): 1350 board([6,8,3,1,7,5]).  [hyper(2,a,793,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1338 (W,wt=14): 1351 board([2,8,3,1,7,5]).  [hyper(2,a,793,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1339 (W,wt=14): 1352 board([8,6,3,1,7,5]).  [hyper(2,a,794,a,b,10,a),rewrite([13,12]),eval(50)].
+
+given #1340 (W,wt=14): 1353 board([2,6,3,1,7,5]).  [hyper(2,a,794,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1341 (W,wt=14): 1354 board([2,4,6,8,3,5]).  [hyper(2,a,795,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1342 (W,wt=14): 1355 board([1,4,6,8,3,5]).  [hyper(2,a,795,a,b,3,a),rewrite([13,12]),eval(50)].
+
+given #1343 (W,wt=14): 1356 board([1,7,4,8,3,5]).  [hyper(2,a,797,a,b,3,a),rewrite([13,12]),eval(50)].
+
+given #1344 (W,wt=14): 1357 board([1,7,4,6,3,5]).  [hyper(2,a,799,a,b,3,a),rewrite([13,12]),eval(50)].
+
+given #1345 (W,wt=14): 1358 board([8,2,4,6,3,5]).  [hyper(2,a,800,a,b,10,a),rewrite([13,12]),eval(50)].
+
+given #1346 (W,wt=14): 1359 board([8,4,7,1,3,5]).  [hyper(2,a,801,a,b,10,a),rewrite([13,12]),eval(50)].
+
+given #1347 (W,wt=14): 1360 board([6,4,7,1,3,5]).  [hyper(2,a,801,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1348 (W,wt=14): 1361 board([2,4,7,1,3,5]).  [hyper(2,a,801,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1349 (W,wt=14): 1362 board([8,2,7,1,3,5]).  [hyper(2,a,802,a,b,10,a),rewrite([13,12]),eval(50)].
+
+given #1350 (W,wt=14): 1363 board([6,2,7,1,3,5]).  [hyper(2,a,802,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1351 (W,wt=14): 1364 board([2,8,6,1,3,5]).  [hyper(2,a,803,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1352 (W,wt=14): 1365 board([2,4,6,1,3,5]).  [hyper(2,a,804,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1353 (W,wt=14): 1366 board([8,2,4,1,3,5]).  [hyper(2,a,808,a,b,10,a),rewrite([13,12]),eval(50)].
+
+given #1354 (W,wt=14): 1367 board([7,4,6,8,2,5]).  [hyper(2,a,809,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1355 (W,wt=14): 1368 board([1,4,6,8,2,5]).  [hyper(2,a,809,a,b,3,a),rewrite([13,12]),eval(50)].
+
+given #1356 (W,wt=14): 1369 board([7,3,6,8,2,5]).  [hyper(2,a,810,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1357 (W,wt=14): 1370 board([1,3,6,8,2,5]).  [hyper(2,a,810,a,b,3,a),rewrite([13,12]),eval(50)].
+
+given #1358 (W,wt=14): 1371 board([4,7,3,8,2,5]).  [hyper(2,a,811,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1359 (W,wt=14): 1372 board([4,7,1,8,2,5]).  [hyper(2,a,812,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1360 (W,wt=14): 1373 board([7,4,1,8,2,5]).  [hyper(2,a,813,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1361 (W,wt=14): 1374 board([7,3,1,8,2,5]).  [hyper(2,a,814,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1362 (W,wt=14): 1375 board([4,7,3,6,2,5]).  [hyper(2,a,815,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1363 (W,wt=14): 1376 board([4,7,1,6,2,5]).  [hyper(2,a,816,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1364 (W,wt=14): 1377 board([8,3,1,6,2,5]).  [hyper(2,a,817,a,b,10,a),rewrite([13,12]),eval(50)].
+
+given #1365 (W,wt=14): 1378 board([7,3,1,6,2,5]).  [hyper(2,a,817,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1366 (W,wt=14): 1379 board([8,3,7,4,2,5]).  [hyper(2,a,818,a,b,10,a),rewrite([13,12]),eval(50)].
+
+given #1367 (W,wt=14): 1380 board([3,8,6,4,2,5]).  [hyper(2,a,819,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1368 (W,wt=14): 1381 board([8,3,1,4,2,5]).  [hyper(2,a,823,a,b,10,a),rewrite([13,12]),eval(50)].
+
+given #1369 (W,wt=14): 1382 board([7,3,6,8,1,5]).  [hyper(2,a,824,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1370 (W,wt=14): 1383 board([7,2,6,8,1,5]).  [hyper(2,a,825,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1371 (W,wt=14): 1384 board([3,7,4,8,1,5]).  [hyper(2,a,826,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1372 (W,wt=14): 1385 board([7,2,4,8,1,5]).  [hyper(2,a,827,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1373 (W,wt=14): 1386 board([8,2,4,6,1,5]).  [hyper(2,a,829,a,b,10,a),rewrite([13,12]),eval(50)].
+
+given #1374 (W,wt=14): 1387 board([7,2,4,6,1,5]).  [hyper(2,a,829,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1375 (W,wt=14): 1388 board([8,3,7,4,1,5]).  [hyper(2,a,830,a,b,10,a),rewrite([13,12]),eval(50)].
+
+given #1376 (W,wt=14): 1389 board([6,3,7,4,1,5]).  [hyper(2,a,830,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1377 (W,wt=14): 1390 board([3,8,6,4,1,5]).  [hyper(2,a,831,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1378 (W,wt=14): 1391 board([2,8,6,4,1,5]).  [hyper(2,a,831,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1379 (W,wt=14): 1392 board([7,1,3,5,8,4]).  [hyper(2,a,834,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1380 (W,wt=14): 1393 board([6,1,3,5,8,4]).  [hyper(2,a,834,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1381 (W,wt=14): 1394 board([3,6,2,5,8,4]).  [hyper(2,a,835,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1382 (W,wt=14): 1395 board([1,6,2,5,8,4]).  [hyper(2,a,835,a,b,3,a),rewrite([13,12]),eval(50)].
+
+given #1383 (W,wt=14): 1396 board([2,7,5,3,8,4]).  [hyper(2,a,836,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1384 (W,wt=14): 1397 board([1,7,5,3,8,4]).  [hyper(2,a,836,a,b,3,a),rewrite([13,12]),eval(50)].
+
+given #1385 (W,wt=14): 1398 board([2,7,5,1,8,4]).  [hyper(2,a,838,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1386 (W,wt=14): 1399 board([6,2,5,1,8,4]).  [hyper(2,a,839,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1387 (W,wt=14): 1400 board([2,7,3,1,8,4]).  [hyper(2,a,840,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1388 (W,wt=14): 1401 board([2,6,3,1,8,4]).  [hyper(2,a,841,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1389 (W,wt=14): 1402 board([1,6,8,5,7,4]).  [hyper(2,a,842,a,b,3,a),rewrite([13,12]),eval(50)].
+
+given #1390 (W,wt=14): 1403 board([6,1,3,5,7,4]).  [hyper(2,a,846,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1391 (W,wt=14): 1404 board([1,6,2,5,7,4]).  [hyper(2,a,847,a,b,3,a),rewrite([13,12]),eval(50)].
+
+given #1392 (W,wt=14): 1405 board([2,6,8,3,7,4]).  [hyper(2,a,848,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1393 (W,wt=14): 1406 board([1,6,8,3,7,4]).  [hyper(2,a,848,a,b,3,a),rewrite([13,12]),eval(50)].
+
+given #1394 (W,wt=14): 1407 board([5,2,8,3,7,4]).  [hyper(2,a,849,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1395 (W,wt=14): 1408 board([5,2,6,3,7,4]).  [hyper(2,a,850,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1396 (W,wt=14): 1409 board([2,6,8,1,7,4]).  [hyper(2,a,851,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1397 (W,wt=14): 1410 board([2,5,8,1,7,4]).  [hyper(2,a,852,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1398 (W,wt=14): 1411 board([5,2,8,1,7,4]).  [hyper(2,a,853,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1399 (W,wt=14): 1412 board([5,2,6,1,7,4]).  [hyper(2,a,854,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1400 (W,wt=14): 1413 board([8,6,3,1,7,4]).  [hyper(2,a,855,a,b,10,a),rewrite([13,12]),eval(50)].
+
+given #1401 (W,wt=14): 1414 board([2,6,3,1,7,4]).  [hyper(2,a,855,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1402 (W,wt=14): 1415 board([8,5,3,1,7,4]).  [hyper(2,a,856,a,b,10,a),rewrite([13,12]),eval(50)].
+
+given #1403 (W,wt=14): 1416 board([2,5,3,1,7,4]).  [hyper(2,a,856,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1404 (W,wt=14): 1417 board([1,7,5,8,6,4]).  [hyper(2,a,857,a,b,3,a),rewrite([13,12]),eval(50)].
+
+given #1405 (W,wt=14): 1418 board([7,5,3,8,6,4]).  [hyper(2,a,861,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1406 (W,wt=14): 1419 board([7,1,3,8,6,4]).  [hyper(2,a,862,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1407 (W,wt=14): 1420 board([3,7,2,8,6,4]).  [hyper(2,a,863,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1408 (W,wt=14): 1421 board([1,7,2,8,6,4]).  [hyper(2,a,863,a,b,3,a),rewrite([13,12]),eval(50)].
+
+given #1409 (W,wt=14): 1422 board([7,5,2,8,6,4]).  [hyper(2,a,864,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1410 (W,wt=14): 1423 board([3,5,2,8,6,4]).  [hyper(2,a,864,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1411 (W,wt=14): 1424 board([1,5,2,8,6,4]).  [hyper(2,a,864,a,b,3,a),rewrite([13,12]),eval(50)].
+
+given #1412 (W,wt=14): 1425 board([1,7,5,3,6,4]).  [hyper(2,a,865,a,b,3,a),rewrite([13,12]),eval(50)].
+
+given #1413 (W,wt=14): 1426 board([8,2,5,3,6,4]).  [hyper(2,a,866,a,b,10,a),rewrite([13,12]),eval(50)].
+
+given #1414 (W,wt=14): 1427 board([8,2,5,1,6,4]).  [hyper(2,a,868,a,b,10,a),rewrite([13,12]),eval(50)].
+
+given #1415 (W,wt=14): 1428 board([8,5,3,1,6,4]).  [hyper(2,a,870,a,b,10,a),rewrite([13,12]),eval(50)].
+
+given #1416 (W,wt=14): 1429 board([7,5,3,1,6,4]).  [hyper(2,a,870,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1417 (W,wt=14): 1430 board([7,3,6,8,2,4]).  [hyper(2,a,871,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1418 (W,wt=14): 1431 board([1,3,6,8,2,4]).  [hyper(2,a,871,a,b,3,a),rewrite([13,12]),eval(50)].
+
+given #1419 (W,wt=14): 1432 board([7,1,6,8,2,4]).  [hyper(2,a,872,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1420 (W,wt=14): 1433 board([3,1,6,8,2,4]).  [hyper(2,a,872,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1421 (W,wt=14): 1434 board([1,7,5,8,2,4]).  [hyper(2,a,873,a,b,3,a),rewrite([13,12]),eval(50)].
+
+given #1422 (W,wt=14): 1435 board([1,3,5,8,2,4]).  [hyper(2,a,874,a,b,3,a),rewrite([13,12]),eval(50)].
+
+given #1423 (W,wt=14): 1436 board([7,1,3,8,2,4]).  [hyper(2,a,877,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1424 (W,wt=14): 1437 board([8,3,5,7,2,4]).  [hyper(2,a,878,a,b,10,a),rewrite([13,12]),eval(50)].
+
+given #1425 (W,wt=14): 1438 board([1,3,5,7,2,4]).  [hyper(2,a,878,a,b,3,a),rewrite([13,12]),eval(50)].
+
+given #1426 (W,wt=14): 1439 board([8,1,5,7,2,4]).  [hyper(2,a,879,a,b,10,a),rewrite([13,12]),eval(50)].
+
+given #1427 (W,wt=14): 1440 board([8,6,3,7,2,4]).  [hyper(2,a,880,a,b,10,a),rewrite([13,12]),eval(50)].
+
+given #1428 (W,wt=14): 1441 board([8,1,3,7,2,4]).  [hyper(2,a,881,a,b,10,a),rewrite([13,12]),eval(50)].
+
+given #1429 (W,wt=14): 1442 board([3,6,8,5,2,4]).  [hyper(2,a,882,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1430 (W,wt=14): 1443 board([1,6,8,5,2,4]).  [hyper(2,a,882,a,b,3,a),rewrite([13,12]),eval(50)].
+
+given #1431 (W,wt=14): 1444 board([7,1,8,5,2,4]).  [hyper(2,a,883,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1432 (W,wt=14): 1445 board([3,1,8,5,2,4]).  [hyper(2,a,883,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1433 (W,wt=14): 1446 board([7,1,3,5,2,4]).  [hyper(2,a,885,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1434 (W,wt=14): 1447 board([7,3,6,8,1,4]).  [hyper(2,a,886,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1435 (W,wt=14): 1448 board([7,2,6,8,1,4]).  [hyper(2,a,887,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1436 (W,wt=14): 1449 board([2,7,5,8,1,4]).  [hyper(2,a,888,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1437 (W,wt=14): 1450 board([6,3,5,8,1,4]).  [hyper(2,a,889,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1438 (W,wt=14): 1451 board([6,2,5,8,1,4]).  [hyper(2,a,890,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1439 (W,wt=14): 1452 board([3,7,2,8,1,4]).  [hyper(2,a,891,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1440 (W,wt=14): 1453 board([7,5,2,8,1,4]).  [hyper(2,a,892,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1441 (W,wt=14): 1454 board([3,5,2,8,1,4]).  [hyper(2,a,892,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1442 (W,wt=14): 1455 board([8,3,5,7,1,4]).  [hyper(2,a,893,a,b,10,a),rewrite([13,12]),eval(50)].
+
+given #1443 (W,wt=14): 1456 board([6,3,5,7,1,4]).  [hyper(2,a,893,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1444 (W,wt=14): 1457 board([8,2,5,7,1,4]).  [hyper(2,a,894,a,b,10,a),rewrite([13,12]),eval(50)].
+
+given #1445 (W,wt=14): 1458 board([6,2,5,7,1,4]).  [hyper(2,a,894,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1446 (W,wt=14): 1459 board([8,6,2,7,1,4]).  [hyper(2,a,895,a,b,10,a),rewrite([13,12]),eval(50)].
+
+given #1447 (W,wt=14): 1460 board([3,6,2,7,1,4]).  [hyper(2,a,895,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1448 (W,wt=14): 1461 board([3,6,8,5,1,4]).  [hyper(2,a,896,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1449 (W,wt=14): 1462 board([7,2,8,5,1,4]).  [hyper(2,a,897,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1450 (W,wt=14): 1463 board([3,6,2,5,1,4]).  [hyper(2,a,898,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1451 (W,wt=14): 1464 board([2,6,8,3,1,4]).  [hyper(2,a,899,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1452 (W,wt=14): 1465 board([7,2,8,3,1,4]).  [hyper(2,a,900,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1453 (W,wt=14): 1466 board([7,2,6,3,1,4]).  [hyper(2,a,901,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1454 (W,wt=14): 1467 board([2,7,5,3,1,4]).  [hyper(2,a,902,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1455 (W,wt=14): 1468 board([8,2,5,3,1,4]).  [hyper(2,a,903,a,b,10,a),rewrite([13,12]),eval(50)].
+
+given #1456 (W,wt=14): 1469 board([7,2,4,6,8,3]).  [hyper(2,a,904,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1457 (W,wt=14): 1470 board([5,2,4,6,8,3]).  [hyper(2,a,904,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1458 (W,wt=14): 1471 board([7,1,4,6,8,3]).  [hyper(2,a,905,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1459 (W,wt=14): 1472 board([5,1,4,6,8,3]).  [hyper(2,a,905,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1460 (W,wt=14): 1473 board([6,1,7,4,8,3]).  [hyper(2,a,906,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1461 (W,wt=14): 1474 board([6,1,7,2,8,3]).  [hyper(2,a,907,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1462 (W,wt=14): 1475 board([6,1,5,2,8,3]).  [hyper(2,a,908,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1463 (W,wt=14): 1476 board([1,6,4,2,8,3]).  [hyper(2,a,909,a,b,3,a),rewrite([13,12]),eval(50)].
+
+given #1464 (W,wt=14): 1477 board([7,1,4,2,8,3]).  [hyper(2,a,910,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1465 (W,wt=14): 1478 board([2,5,8,4,7,3]).  [hyper(2,a,911,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1466 (W,wt=14): 1479 board([5,1,8,4,7,3]).  [hyper(2,a,912,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1467 (W,wt=14): 1480 board([6,8,2,4,7,3]).  [hyper(2,a,913,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1468 (W,wt=14): 1481 board([5,8,2,4,7,3]).  [hyper(2,a,913,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1469 (W,wt=14): 1482 board([6,8,1,4,7,3]).  [hyper(2,a,915,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1470 (W,wt=14): 1483 board([5,8,1,4,7,3]).  [hyper(2,a,915,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1471 (W,wt=14): 1484 board([2,8,1,4,7,3]).  [hyper(2,a,915,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1472 (W,wt=14): 1485 board([2,5,1,4,7,3]).  [hyper(2,a,916,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1473 (W,wt=14): 1486 board([4,6,8,2,7,3]).  [hyper(2,a,917,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1474 (W,wt=14): 1487 board([1,6,8,2,7,3]).  [hyper(2,a,917,a,b,3,a),rewrite([13,12]),eval(50)].
+
+given #1475 (W,wt=14): 1488 board([1,5,8,2,7,3]).  [hyper(2,a,918,a,b,3,a),rewrite([13,12]),eval(50)].
+
+given #1476 (W,wt=14): 1489 board([4,1,8,2,7,3]).  [hyper(2,a,919,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1477 (W,wt=14): 1490 board([1,8,4,2,7,3]).  [hyper(2,a,920,a,b,3,a),rewrite([13,12]),eval(50)].
+
+given #1478 (W,wt=14): 1491 board([1,6,4,2,7,3]).  [hyper(2,a,921,a,b,3,a),rewrite([13,12]),eval(50)].
+
+given #1479 (W,wt=14): 1492 board([4,2,5,8,6,3]).  [hyper(2,a,923,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1480 (W,wt=14): 1493 board([4,1,5,8,6,3]).  [hyper(2,a,924,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1481 (W,wt=14): 1494 board([7,5,2,8,6,3]).  [hyper(2,a,925,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1482 (W,wt=14): 1495 board([1,5,2,8,6,3]).  [hyper(2,a,925,a,b,3,a),rewrite([13,12]),eval(50)].
+
+given #1483 (W,wt=14): 1496 board([7,4,2,8,6,3]).  [hyper(2,a,926,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1484 (W,wt=14): 1497 board([1,4,2,8,6,3]).  [hyper(2,a,926,a,b,3,a),rewrite([13,12]),eval(50)].
+
+given #1485 (W,wt=14): 1498 board([7,5,1,8,6,3]).  [hyper(2,a,927,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1486 (W,wt=14): 1499 board([7,4,1,8,6,3]).  [hyper(2,a,928,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1487 (W,wt=14): 1500 board([5,8,2,4,6,3]).  [hyper(2,a,931,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1488 (W,wt=14): 1501 board([5,8,1,4,6,3]).  [hyper(2,a,933,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1489 (W,wt=14): 1502 board([1,5,7,2,6,3]).  [hyper(2,a,935,a,b,3,a),rewrite([13,12]),eval(50)].
+
+given #1490 (W,wt=14): 1503 board([4,1,7,2,6,3]).  [hyper(2,a,936,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1491 (W,wt=14): 1504 board([4,8,5,2,6,3]).  [hyper(2,a,937,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1492 (W,wt=14): 1505 board([1,8,5,2,6,3]).  [hyper(2,a,937,a,b,3,a),rewrite([13,12]),eval(50)].
+
+given #1493 (W,wt=14): 1506 board([4,1,5,2,6,3]).  [hyper(2,a,938,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1494 (W,wt=14): 1507 board([7,1,4,8,5,3]).  [hyper(2,a,939,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1495 (W,wt=14): 1508 board([7,4,2,8,5,3]).  [hyper(2,a,940,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1496 (W,wt=14): 1509 board([6,4,2,8,5,3]).  [hyper(2,a,940,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1497 (W,wt=14): 1510 board([7,4,1,8,5,3]).  [hyper(2,a,941,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1498 (W,wt=14): 1511 board([6,4,1,8,5,3]).  [hyper(2,a,941,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1499 (W,wt=14): 1512 board([2,4,1,8,5,3]).  [hyper(2,a,941,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1500 (W,wt=14): 1513 board([6,4,2,7,5,3]).  [hyper(2,a,945,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1501 (W,wt=14): 1514 board([2,6,1,7,5,3]).  [hyper(2,a,946,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1502 (W,wt=14): 1515 board([6,4,1,7,5,3]).  [hyper(2,a,947,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1503 (W,wt=14): 1516 board([2,4,1,7,5,3]).  [hyper(2,a,947,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1504 (W,wt=14): 1517 board([4,6,8,2,5,3]).  [hyper(2,a,948,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1505 (W,wt=14): 1518 board([7,1,8,2,5,3]).  [hyper(2,a,949,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1506 (W,wt=14): 1519 board([4,1,8,2,5,3]).  [hyper(2,a,949,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1507 (W,wt=14): 1520 board([7,1,4,2,5,3]).  [hyper(2,a,951,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1508 (W,wt=14): 1521 board([6,2,5,8,1,3]).  [hyper(2,a,952,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1509 (W,wt=14): 1522 board([4,2,5,8,1,3]).  [hyper(2,a,952,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1510 (W,wt=14): 1523 board([7,2,4,8,1,3]).  [hyper(2,a,953,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1511 (W,wt=14): 1524 board([7,5,2,8,1,3]).  [hyper(2,a,954,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1512 (W,wt=14): 1525 board([6,8,5,7,1,3]).  [hyper(2,a,955,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1513 (W,wt=14): 1526 board([2,8,5,7,1,3]).  [hyper(2,a,955,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1514 (W,wt=14): 1527 board([6,2,5,7,1,3]).  [hyper(2,a,956,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1515 (W,wt=14): 1528 board([6,8,2,7,1,3]).  [hyper(2,a,960,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1516 (W,wt=14): 1529 board([7,5,8,6,1,3]).  [hyper(2,a,962,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1517 (W,wt=14): 1530 board([2,5,8,6,1,3]).  [hyper(2,a,962,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1518 (W,wt=14): 1531 board([7,2,8,6,1,3]).  [hyper(2,a,963,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1519 (W,wt=14): 1532 board([4,2,8,6,1,3]).  [hyper(2,a,963,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1520 (W,wt=14): 1533 board([7,2,4,6,1,3]).  [hyper(2,a,964,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1521 (W,wt=14): 1534 board([7,5,2,6,1,3]).  [hyper(2,a,965,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1522 (W,wt=14): 1535 board([2,5,8,4,1,3]).  [hyper(2,a,966,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1523 (W,wt=14): 1536 board([2,5,7,4,1,3]).  [hyper(2,a,967,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1524 (W,wt=14): 1537 board([6,8,2,4,1,3]).  [hyper(2,a,968,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1525 (W,wt=14): 1538 board([5,7,4,6,8,2]).  [hyper(2,a,970,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1526 (W,wt=14): 1539 board([1,7,4,6,8,2]).  [hyper(2,a,970,a,b,3,a),rewrite([13,12]),eval(50)].
+
+given #1527 (W,wt=14): 1540 board([5,1,4,6,8,2]).  [hyper(2,a,971,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1528 (W,wt=14): 1541 board([5,7,1,6,8,2]).  [hyper(2,a,974,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1529 (W,wt=14): 1542 board([5,3,1,6,8,2]).  [hyper(2,a,975,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1530 (W,wt=14): 1543 board([6,4,7,5,8,2]).  [hyper(2,a,976,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1531 (W,wt=14): 1544 board([1,4,7,5,8,2]).  [hyper(2,a,976,a,b,3,a),rewrite([13,12]),eval(50)].
+
+given #1532 (W,wt=14): 1545 board([6,1,7,5,8,2]).  [hyper(2,a,977,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1533 (W,wt=14): 1546 board([3,1,7,5,8,2]).  [hyper(2,a,977,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1534 (W,wt=14): 1547 board([6,1,3,5,8,2]).  [hyper(2,a,978,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1535 (W,wt=14): 1548 board([6,4,1,5,8,2]).  [hyper(2,a,979,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1536 (W,wt=14): 1549 board([1,4,7,3,8,2]).  [hyper(2,a,980,a,b,3,a),rewrite([13,12]),eval(50)].
+
+given #1537 (W,wt=14): 1550 board([5,7,1,3,8,2]).  [hyper(2,a,981,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1538 (W,wt=14): 1551 board([6,4,7,1,8,2]).  [hyper(2,a,983,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1539 (W,wt=14): 1552 board([5,7,4,1,8,2]).  [hyper(2,a,984,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1540 (W,wt=14): 1553 board([3,7,4,1,8,2]).  [hyper(2,a,984,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1541 (W,wt=14): 1554 board([4,1,8,5,7,2]).  [hyper(2,a,986,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1542 (W,wt=14): 1555 board([6,8,3,5,7,2]).  [hyper(2,a,987,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1543 (W,wt=14): 1556 board([4,8,3,5,7,2]).  [hyper(2,a,987,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1544 (W,wt=14): 1557 board([6,1,3,5,7,2]).  [hyper(2,a,988,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1545 (W,wt=14): 1558 board([4,1,3,5,7,2]).  [hyper(2,a,988,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1546 (W,wt=14): 1559 board([6,8,1,5,7,2]).  [hyper(2,a,989,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1547 (W,wt=14): 1560 board([4,8,1,5,7,2]).  [hyper(2,a,989,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1548 (W,wt=14): 1561 board([5,8,6,3,7,2]).  [hyper(2,a,990,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1549 (W,wt=14): 1562 board([1,8,6,3,7,2]).  [hyper(2,a,990,a,b,3,a),rewrite([13,12]),eval(50)].
+
+given #1550 (W,wt=14): 1563 board([5,8,1,3,7,2]).  [hyper(2,a,991,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1551 (W,wt=14): 1564 board([4,8,1,3,7,2]).  [hyper(2,a,991,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1552 (W,wt=14): 1565 board([5,8,6,1,7,2]).  [hyper(2,a,993,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1553 (W,wt=14): 1566 board([5,8,4,1,7,2]).  [hyper(2,a,994,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1554 (W,wt=14): 1567 board([6,8,3,1,7,2]).  [hyper(2,a,995,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1555 (W,wt=14): 1568 board([8,5,3,1,7,2]).  [hyper(2,a,996,a,b,10,a),rewrite([13,12]),eval(50)].
+
+given #1556 (W,wt=14): 1569 board([4,7,3,8,6,2]).  [hyper(2,a,997,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1557 (W,wt=14): 1570 board([4,1,3,8,6,2]).  [hyper(2,a,999,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1558 (W,wt=14): 1571 board([4,7,1,8,6,2]).  [hyper(2,a,1000,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1559 (W,wt=14): 1572 board([8,4,7,3,6,2]).  [hyper(2,a,1003,a,b,10,a),rewrite([13,12]),eval(50)].
+
+given #1560 (W,wt=14): 1573 board([1,4,7,3,6,2]).  [hyper(2,a,1003,a,b,3,a),rewrite([13,12]),eval(50)].
+
+given #1561 (W,wt=14): 1574 board([5,8,1,3,6,2]).  [hyper(2,a,1004,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1562 (W,wt=14): 1575 board([4,8,1,3,6,2]).  [hyper(2,a,1004,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1563 (W,wt=14): 1576 board([5,7,1,3,6,2]).  [hyper(2,a,1005,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1564 (W,wt=14): 1577 board([4,7,1,3,6,2]).  [hyper(2,a,1005,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1565 (W,wt=14): 1578 board([8,4,1,3,6,2]).  [hyper(2,a,1006,a,b,10,a),rewrite([13,12]),eval(50)].
+
+given #1566 (W,wt=14): 1579 board([8,5,7,1,6,2]).  [hyper(2,a,1007,a,b,10,a),rewrite([13,12]),eval(50)].
+
+given #1567 (W,wt=14): 1580 board([3,5,7,1,6,2]).  [hyper(2,a,1007,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1568 (W,wt=14): 1581 board([8,4,7,1,6,2]).  [hyper(2,a,1008,a,b,10,a),rewrite([13,12]),eval(50)].
+
+given #1569 (W,wt=14): 1582 board([8,5,3,1,6,2]).  [hyper(2,a,1011,a,b,10,a),rewrite([13,12]),eval(50)].
+
+given #1570 (W,wt=14): 1583 board([3,1,6,8,5,2]).  [hyper(2,a,1014,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1571 (W,wt=14): 1584 board([3,7,4,8,5,2]).  [hyper(2,a,1015,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1572 (W,wt=14): 1585 board([3,1,4,8,5,2]).  [hyper(2,a,1016,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1573 (W,wt=14): 1586 board([4,7,1,8,5,2]).  [hyper(2,a,1017,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1574 (W,wt=14): 1587 board([6,4,1,8,5,2]).  [hyper(2,a,1018,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1575 (W,wt=14): 1588 board([6,3,1,8,5,2]).  [hyper(2,a,1019,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1576 (W,wt=14): 1589 board([8,1,4,7,5,2]).  [hyper(2,a,1020,a,b,10,a),rewrite([13,12]),eval(50)].
+
+given #1577 (W,wt=14): 1590 board([3,1,4,7,5,2]).  [hyper(2,a,1020,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1578 (W,wt=14): 1591 board([8,4,1,7,5,2]).  [hyper(2,a,1021,a,b,10,a),rewrite([13,12]),eval(50)].
+
+given #1579 (W,wt=14): 1592 board([6,4,1,7,5,2]).  [hyper(2,a,1021,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1580 (W,wt=14): 1593 board([8,3,1,7,5,2]).  [hyper(2,a,1022,a,b,10,a),rewrite([13,12]),eval(50)].
+
+given #1581 (W,wt=14): 1594 board([6,3,1,7,5,2]).  [hyper(2,a,1022,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1582 (W,wt=14): 1595 board([4,7,1,3,5,2]).  [hyper(2,a,1025,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1583 (W,wt=14): 1596 board([8,4,1,3,5,2]).  [hyper(2,a,1026,a,b,10,a),rewrite([13,12]),eval(50)].
+
+given #1584 (W,wt=14): 1597 board([3,7,4,1,5,2]).  [hyper(2,a,1029,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1585 (W,wt=14): 1598 board([6,3,1,8,4,2]).  [hyper(2,a,1032,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1586 (W,wt=14): 1599 board([6,8,3,7,4,2]).  [hyper(2,a,1033,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1587 (W,wt=14): 1600 board([6,8,1,7,4,2]).  [hyper(2,a,1034,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1588 (W,wt=14): 1601 board([5,8,1,7,4,2]).  [hyper(2,a,1034,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1589 (W,wt=14): 1602 board([6,3,1,7,4,2]).  [hyper(2,a,1035,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1590 (W,wt=14): 1603 board([5,3,1,7,4,2]).  [hyper(2,a,1035,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1591 (W,wt=14): 1604 board([1,5,8,6,4,2]).  [hyper(2,a,1036,a,b,3,a),rewrite([13,12]),eval(50)].
+
+given #1592 (W,wt=14): 1605 board([5,3,8,6,4,2]).  [hyper(2,a,1037,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1593 (W,wt=14): 1606 board([1,3,8,6,4,2]).  [hyper(2,a,1037,a,b,3,a),rewrite([13,12]),eval(50)].
+
+given #1594 (W,wt=14): 1607 board([5,3,1,6,4,2]).  [hyper(2,a,1040,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1595 (W,wt=14): 1608 board([3,5,8,1,4,2]).  [hyper(2,a,1041,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1596 (W,wt=14): 1609 board([3,5,7,1,4,2]).  [hyper(2,a,1042,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1597 (W,wt=14): 1610 board([6,8,3,1,4,2]).  [hyper(2,a,1043,a,b,8,a),rewrite([13,12]),eval(50)].
+
+given #1598 (W,wt=14): 1611 board([2,7,3,6,8,1]).  [hyper(2,a,1045,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1599 (W,wt=14): 1612 board([5,7,2,6,8,1]).  [hyper(2,a,1046,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1600 (W,wt=14): 1613 board([3,6,2,5,8,1]).  [hyper(2,a,1050,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1601 (W,wt=14): 1614 board([7,4,2,5,8,1]).  [hyper(2,a,1051,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1602 (W,wt=14): 1615 board([5,7,2,4,8,1]).  [hyper(2,a,1053,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1603 (W,wt=14): 1616 board([3,7,2,4,8,1]).  [hyper(2,a,1053,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1604 (W,wt=14): 1617 board([4,6,8,5,7,1]).  [hyper(2,a,1057,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1605 (W,wt=14): 1618 board([4,2,8,5,7,1]).  [hyper(2,a,1058,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1606 (W,wt=14): 1619 board([4,8,3,5,7,1]).  [hyper(2,a,1059,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1607 (W,wt=14): 1620 board([4,6,3,5,7,1]).  [hyper(2,a,1060,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1608 (W,wt=14): 1621 board([5,3,8,4,7,1]).  [hyper(2,a,1063,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1609 (W,wt=14): 1622 board([5,8,6,4,7,1]).  [hyper(2,a,1064,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1610 (W,wt=14): 1623 board([2,8,6,4,7,1]).  [hyper(2,a,1064,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1611 (W,wt=14): 1624 board([5,3,6,4,7,1]).  [hyper(2,a,1065,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1612 (W,wt=14): 1625 board([5,8,2,4,7,1]).  [hyper(2,a,1066,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1613 (W,wt=14): 1626 board([4,6,8,2,7,1]).  [hyper(2,a,1067,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1614 (W,wt=14): 1627 board([4,7,5,8,6,1]).  [hyper(2,a,1071,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1615 (W,wt=14): 1628 board([4,2,5,8,6,1]).  [hyper(2,a,1072,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1616 (W,wt=14): 1629 board([4,7,3,8,6,1]).  [hyper(2,a,1073,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1617 (W,wt=14): 1630 board([3,7,2,8,6,1]).  [hyper(2,a,1074,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1618 (W,wt=14): 1631 board([7,4,2,8,6,1]).  [hyper(2,a,1075,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1619 (W,wt=14): 1632 board([5,8,2,4,6,1]).  [hyper(2,a,1076,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1620 (W,wt=14): 1633 board([3,8,2,4,6,1]).  [hyper(2,a,1076,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1621 (W,wt=14): 1634 board([5,7,2,4,6,1]).  [hyper(2,a,1077,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1622 (W,wt=14): 1635 board([3,7,2,4,6,1]).  [hyper(2,a,1077,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1623 (W,wt=14): 1636 board([4,8,5,2,6,1]).  [hyper(2,a,1078,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1624 (W,wt=14): 1637 board([4,7,5,2,6,1]).  [hyper(2,a,1079,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1625 (W,wt=14): 1638 board([7,4,6,8,5,1]).  [hyper(2,a,1080,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1626 (W,wt=14): 1639 board([2,4,6,8,5,1]).  [hyper(2,a,1080,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1627 (W,wt=14): 1640 board([7,3,6,8,5,1]).  [hyper(2,a,1081,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1628 (W,wt=14): 1641 board([3,7,2,8,5,1]).  [hyper(2,a,1082,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1629 (W,wt=14): 1642 board([7,4,2,8,5,1]).  [hyper(2,a,1083,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1630 (W,wt=14): 1643 board([8,6,2,7,5,1]).  [hyper(2,a,1084,a,b,10,a),rewrite([13,12]),eval(50)].
+
+given #1631 (W,wt=14): 1644 board([3,6,2,7,5,1]).  [hyper(2,a,1084,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1632 (W,wt=14): 1645 board([8,4,2,7,5,1]).  [hyper(2,a,1085,a,b,10,a),rewrite([13,12]),eval(50)].
+
+given #1633 (W,wt=14): 1646 board([4,6,8,2,5,1]).  [hyper(2,a,1086,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1634 (W,wt=14): 1647 board([3,6,8,2,5,1]).  [hyper(2,a,1086,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1635 (W,wt=14): 1648 board([7,3,8,2,5,1]).  [hyper(2,a,1087,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1636 (W,wt=14): 1649 board([7,3,6,2,5,1]).  [hyper(2,a,1088,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1637 (W,wt=14): 1650 board([2,8,5,7,4,1]).  [hyper(2,a,1091,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1638 (W,wt=14): 1651 board([2,8,3,7,4,1]).  [hyper(2,a,1094,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1639 (W,wt=14): 1652 board([2,6,3,7,4,1]).  [hyper(2,a,1095,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1640 (W,wt=14): 1653 board([7,3,8,6,4,1]).  [hyper(2,a,1096,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1641 (W,wt=14): 1654 board([5,3,8,6,4,1]).  [hyper(2,a,1096,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1642 (W,wt=14): 1655 board([7,2,8,6,4,1]).  [hyper(2,a,1097,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1643 (W,wt=14): 1656 board([5,2,8,6,4,1]).  [hyper(2,a,1097,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1644 (W,wt=14): 1657 board([3,6,8,2,4,1]).  [hyper(2,a,1098,a,b,5,a),rewrite([13,12]),eval(50)].
+
+given #1645 (W,wt=14): 1658 board([7,3,8,2,4,1]).  [hyper(2,a,1099,a,b,9,a),rewrite([13,12]),eval(50)].
+
+given #1646 (W,wt=14): 1659 board([2,4,6,8,3,1]).  [hyper(2,a,1103,a,b,4,a),rewrite([13,12]),eval(50)].
+
+given #1647 (W,wt=14): 1660 board([5,8,2,7,3,1]).  [hyper(2,a,1107,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1648 (W,wt=14): 1661 board([8,4,2,7,3,1]).  [hyper(2,a,1108,a,b,10,a),rewrite([13,12]),eval(50)].
+
+given #1649 (W,wt=14): 1662 board([5,2,8,6,3,1]).  [hyper(2,a,1109,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1650 (W,wt=14): 1663 board([4,2,8,6,3,1]).  [hyper(2,a,1109,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1651 (W,wt=14): 1664 board([5,7,2,6,3,1]).  [hyper(2,a,1110,a,b,7,a),rewrite([13,12]),eval(50)].
+
+given #1652 (W,wt=14): 1665 board([4,2,8,5,3,1]).  [hyper(2,a,1112,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1653 (W,wt=14): 1666 board([4,2,7,5,3,1]).  [hyper(2,a,1114,a,b,6,a),rewrite([13,12]),eval(50)].
+
+given #1654 (W,wt=16): 1667 board([3,5,7,2,4,6,8]).  [hyper(2,a,1117,a,b,5,a),rewrite([13,12]),eval(60)].
+
+given #1655 (W,wt=16): 1668 board([3,5,7,1,4,6,8]).  [hyper(2,a,1118,a,b,5,a),rewrite([13,12]),eval(60)].
+
+given #1656 (W,wt=16): 1669 board([4,7,5,3,1,6,8]).  [hyper(2,a,1124,a,b,6,a),rewrite([13,12]),eval(60)].
+
+given #1657 (W,wt=16): 1670 board([6,4,7,1,3,5,8]).  [hyper(2,a,1127,a,b,8,a),rewrite([13,12]),eval(60)].
+
+given #1658 (W,wt=16): 1671 board([6,2,7,1,3,5,8]).  [hyper(2,a,1128,a,b,8,a),rewrite([13,12]),eval(60)].
+
+given #1659 (W,wt=16): 1672 board([4,7,3,6,2,5,8]).  [hyper(2,a,1131,a,b,6,a),rewrite([13,12]),eval(60)].
+
+given #1660 (W,wt=16): 1673 board([4,7,1,6,2,5,8]).  [hyper(2,a,1132,a,b,6,a),rewrite([13,12]),eval(60)].
+
+given #1661 (W,wt=16): 1674 board([5,2,6,3,7,4,8]).  [hyper(2,a,1134,a,b,7,a),rewrite([13,12]),eval(60)].
+
+given #1662 (W,wt=16): 1675 board([5,2,6,1,7,4,8]).  [hyper(2,a,1135,a,b,7,a),rewrite([13,12]),eval(60)].
+
+given #1663 (W,wt=16): 1676 board([6,2,5,7,1,4,8]).  [hyper(2,a,1141,a,b,8,a),rewrite([13,12]),eval(60)].
+
+given #1664 (W,wt=16): 1677 board([3,6,2,7,1,4,8]).  [hyper(2,a,1142,a,b,5,a),rewrite([13,12]),eval(60)].
+
+given #1665 (W,wt=16): 1678 board([7,2,6,3,1,4,8]).  [hyper(2,a,1143,a,b,9,a),rewrite([13,12]),eval(60)].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.36 (+ 0.02) seconds: [5,7,2,6,3,1,4,8].
+% Length of proof is 23.
+% Level of proof is 10.
+% Maximum clause weight is 18.000.
+% Given clauses 1665.
+
+1 board(B) & pick(New_col) & ok(B,1,New_col) -> board([New_col:B]) # label(non_clause).  [assumption].
+2 -board(A) | -pick(B) | -ok(A,1,B) | board([B:A]).  [clausify(1)].
+3 pick(1).  [assumption].
+4 pick(2).  [assumption].
+5 pick(3).  [assumption].
+6 pick(4).  [assumption].
+7 pick(5).  [assumption].
+8 pick(6).  [assumption].
+9 pick(7).  [assumption].
+10 pick(8).  [assumption].
+11 -board([A,B,C,D,E,F,V6,V7]) # answer([A,B,C,D,E,F,V6,V7]).  [assumption].
+12 ok([],A,B) <-> $T.  [assumption].
+13 ok([A:B],C,D) <-> -(A == D) & -(A + -C == D) & -(A + C == D) & ok(B,C + 1,D).  [assumption].
+14 board([]).  [assumption].
+15 board([8]).  [hyper(2,a,14,a,b,10,a),rewrite([12])].
+25 board([4,8]).  [hyper(2,a,15,a,b,6,a),rewrite([13,12]),eval(10)].
+75 board([1,4,8]).  [hyper(2,a,25,a,b,3,a),rewrite([13,12]),eval(20)].
+226 board([3,1,4,8]).  [hyper(2,a,75,a,b,5,a),rewrite([13,12]),eval(30)].
+584 board([6,3,1,4,8]).  [hyper(2,a,226,a,b,8,a),rewrite([13,12]),eval(40)].
+1143 board([2,6,3,1,4,8]).  [hyper(2,a,584,a,b,4,a),rewrite([13,12]),eval(50)].
+1678 board([7,2,6,3,1,4,8]).  [hyper(2,a,1143,a,b,9,a),rewrite([13,12]),eval(60)].
+1979 board([5,7,2,6,3,1,4,8]).  [hyper(2,a,1678,a,b,7,a),rewrite([13,12]),eval(70)].
+1980 $F # answer([5,7,2,6,3,1,4,8]).  [resolve(1979,a,11,a)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=1665. Generated=13317. Kept=1966. proofs=1.
+Usable=1675. Sos=300. Demods=2. Limbo=0, Disabled=1. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=11351. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=1.25.
+User_CPU=0.36, System_CPU=0.02, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 1 proof.
+
+Process 25637 exit (max_proofs) Tue Nov  3 17:08:22 2009

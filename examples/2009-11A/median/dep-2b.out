@@ -1,0 +1,214 @@
+============================== Prover9 ===============================
+Prover9 (32) version 2009-11A, November 2009.
+Process 5813 was started by mccune on cleo,
+Tue Nov  3 10:07:26 2009
+The command was "/home/mccune/LADR/bin/prover9 -f dep-2b.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file dep-2b.in
+
+assign(max_seconds,30).
+assign(order,kbo).
+
+formulas(sos).
+f(x,x,y) = x # label(majority).
+f(x,y,z) = f(z,x,y) # label(2a).
+f(f(x,w,y),w,z) = f(x,w,f(y,w,z)) # label(associativity).
+end_of_list.
+
+formulas(goals).
+f(x,y,z) = f(x,z,y) # answer(2b).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 f(x,y,z) = f(x,z,y) # answer(2b) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+f(x,x,y) = x # label(majority).  [assumption].
+f(x,y,z) = f(z,x,y) # label(2a).  [assumption].
+f(f(x,y,z),y,u) = f(x,y,f(z,y,u)) # label(associativity).  [assumption].
+f(c1,c3,c2) != f(c1,c2,c3) # answer(2b).  [deny(1)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Auto_denials:  (no changes).
+
+Term ordering decisions:
+Function symbol KB weights:  c1=1. c2=1. c3=1. f=1.
+Predicate symbol precedence:  predicate_order([ = ]).
+Function symbol precedence:  function_order([ c1, c2, c3, f ]).
+Skipping inverse_order, because term ordering is KBO.
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(paramodulation).  % (positive equality literals)
+
+Auto_process settings:  (no changes).
+
+kept:      2 f(x,x,y) = x # label(majority).  [assumption].
+kept:      3 f(x,y,z) = f(z,x,y) # label(2a).  [assumption].
+           4 f(f(x,y,z),y,u) = f(x,y,f(z,y,u)) # label(associativity).  [assumption].
+kept:      5 f(x,y,f(z,y,u)) = f(y,u,f(x,y,z)).  [copy(4),rewrite([3(2,R)]),flip(a)].
+kept:      6 f(c1,c3,c2) != f(c1,c2,c3) # answer(2b).  [deny(1)].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+2 f(x,x,y) = x # label(majority).  [assumption].
+3 f(x,y,z) = f(z,x,y) # label(2a).  [assumption].
+5 f(x,y,f(z,y,u)) = f(y,u,f(x,y,z)).  [copy(4),rewrite([3(2,R)]),flip(a)].
+6 f(c1,c3,c2) != f(c1,c2,c3) # answer(2b).  [deny(1)].
+end_of_list.
+
+formulas(demodulators).
+2 f(x,x,y) = x # label(majority).  [assumption].
+3 f(x,y,z) = f(z,x,y) # label(2a).  [assumption].
+        % (lex-dep)
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.01 seconds.
+
+given #1 (I,wt=6): 2 f(x,x,y) = x # label(majority).  [assumption].
+
+given #2 (I,wt=9): 3 f(x,y,z) = f(z,x,y) # label(2a).  [assumption].
+
+given #3 (I,wt=15): 5 f(x,y,f(z,y,u)) = f(y,u,f(x,y,z)).  [copy(4),rewrite([3(2,R)]),flip(a)].
+
+given #4 (I,wt=9): 6 f(c1,c3,c2) != f(c1,c2,c3) # answer(2b).  [deny(1)].
+
+given #5 (A,wt=6): 7 f(x,y,y) = y.  [para(3(a,1),2(a,1))].
+
+given #6 (T,wt=6): 8 f(x,y,x) = x.  [para(3(a,2),2(a,1))].
+
+given #7 (T,wt=12): 19 f(x,y,f(z,x,y)) = f(z,x,y).  [para(8(a,1),5(a,1,3)),flip(a)].
+
+given #8 (T,wt=12): 21 f(x,y,f(x,y,z)) = f(y,z,x).  [para(8(a,1),5(a,2,3))].
+
+given #9 (T,wt=12): 22 f(x,f(y,z,x),z) = f(y,z,x).  [para(19(a,1),3(a,1)),rewrite([3(3)]),flip(a)].
+
+given #10 (A,wt=15): 9 f(x,f(y,x,z),u) = f(x,z,f(u,x,y)).  [para(5(a,1),3(a,1)),rewrite([3(4)]),flip(a)].
+
+given #11 (T,wt=12): 23 f(x,y,f(y,z,x)) = f(z,x,y).  [para(3(a,1),19(a,1,3))].
+
+given #12 (T,wt=15): 10 f(x,f(y,z,u),z) = f(y,z,f(u,z,x)).  [para(5(a,2),3(a,2))].
+
+given #13 (T,wt=15): 11 f(x,y,f(z,u,y)) = f(y,z,f(x,y,u)).  [para(3(a,1),5(a,1,3))].
+
+given #14 (T,wt=15): 12 f(x,y,f(z,u,x)) = f(u,x,f(z,x,y)).  [para(3(a,1),5(a,2,3)),flip(a)].
+
+given #15 (A,wt=15): 13 f(x,y,f(z,x,u)) = f(z,x,f(x,y,u)).  [para(3(a,2),5(a,1,3)),flip(a)].
+
+given #16 (T,wt=15): 14 f(x,y,f(z,y,u)) = f(y,u,f(y,z,x)).  [para(3(a,2),5(a,2,3))].
+
+given #17 (T,wt=15): 18 f(x,y,f(z,y,f(x,y,z))) = f(x,y,z).  [para(7(a,1),5(a,2))].
+
+given #18 (T,wt=15): 29 f(x,y,f(z,x,u)) = f(x,y,f(x,u,z)).  [para(5(a,1),21(a,1,3)),rewrite([28(3),9(4)]),flip(a)].
+
+given #19 (T,wt=15): 39 f(x,f(y,z,x),u) = f(x,y,f(u,x,z)).  [para(3(a,1),9(a,1,2))].
+
+given #20 (A,wt=21): 15 f(x,y,f(y,z,f(u,y,w))) = f(y,z,f(y,w,f(x,y,u))).  [para(5(a,1),5(a,1,3)),rewrite([9(6),3(5,R)])].
+
+given #21 (T,wt=15): 40 f(x,y,f(z,u,x)) = f(x,y,f(u,x,z)).  [para(3(a,1),9(a,2,3)),rewrite([9(2)]),flip(a)].
+
+given #22 (T,wt=15): 41 f(x,f(x,y,z),u) = f(x,y,f(u,x,z)).  [para(3(a,2),9(a,1,2))].
+
+given #23 (T,wt=15): 48 f(x,y,f(z,x,f(x,z,y))) = f(z,x,y).  [para(9(a,1),7(a,1)),rewrite([3(2),41(2)])].
+
+given #24 (T,wt=12): 503 f(x,y,f(x,z,y)) = f(x,y,z).  [back_rewrite(229),rewrite([462(3)])].
+
+given #25 (A,wt=21): 16 f(x,f(y,z,u),f(w,x,z)) = f(w,x,f(y,z,f(u,z,x))).  [para(5(a,2),5(a,1,3)),flip(a)].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.14 (+ 0.00) seconds: 2b.
+% Length of proof is 26.
+% Level of proof is 10.
+% Maximum clause weight is 21.000.
+% Given clauses 25.
+
+1 f(x,y,z) = f(x,z,y) # answer(2b) # label(non_clause) # label(goal).  [goal].
+2 f(x,x,y) = x # label(majority).  [assumption].
+3 f(x,y,z) = f(z,x,y) # label(2a).  [assumption].
+4 f(f(x,y,z),y,u) = f(x,y,f(z,y,u)) # label(associativity).  [assumption].
+5 f(x,y,f(z,y,u)) = f(y,u,f(x,y,z)).  [copy(4),rewrite([3(2,R)]),flip(a)].
+6 f(c1,c3,c2) != f(c1,c2,c3) # answer(2b).  [deny(1)].
+7 f(x,y,y) = y.  [para(3(a,1),2(a,1))].
+8 f(x,y,x) = x.  [para(3(a,2),2(a,1))].
+9 f(x,f(y,x,z),u) = f(x,z,f(u,x,y)).  [para(5(a,1),3(a,1)),rewrite([3(4)]),flip(a)].
+12 f(x,y,f(z,u,x)) = f(u,x,f(z,x,y)).  [para(3(a,1),5(a,2,3)),flip(a)].
+16 f(x,f(y,z,u),f(w,x,z)) = f(w,x,f(y,z,f(u,z,x))).  [para(5(a,2),5(a,1,3)),flip(a)].
+18 f(x,y,f(z,y,f(x,y,z))) = f(x,y,z).  [para(7(a,1),5(a,2))].
+19 f(x,y,f(z,x,y)) = f(z,x,y).  [para(8(a,1),5(a,1,3)),flip(a)].
+21 f(x,y,f(x,y,z)) = f(y,z,x).  [para(8(a,1),5(a,2,3))].
+23 f(x,y,f(y,z,x)) = f(z,x,y).  [para(3(a,1),19(a,1,3))].
+41 f(x,f(x,y,z),u) = f(x,y,f(u,x,z)).  [para(3(a,2),9(a,1,2))].
+48 f(x,y,f(z,x,f(x,z,y))) = f(z,x,y).  [para(9(a,1),7(a,1)),rewrite([3(2),41(2)])].
+116 f(x,y,f(z,y,f(z,x,y))) = f(z,x,y).  [para(12(a,1),7(a,1))].
+229 f(x,y,f(z,y,f(x,z,f(x,y,z)))) = f(x,y,z).  [para(18(a,1),21(a,2)),rewrite([3(5),9(5),7(5),3(4),3(4),41(4),3(3),41(3)])].
+462 f(x,y,f(z,x,f(z,y,x))) = f(z,x,y).  [para(3(a,2),48(a,1,3,3))].
+467 f(x,y,f(x,z,f(y,z,x))) = f(z,x,y).  [para(5(a,2),48(a,1,3))].
+503 f(x,y,f(x,z,y)) = f(x,y,z).  [back_rewrite(229),rewrite([462(3)])].
+505 f(x,y,f(z,y,x)) = f(z,x,y).  [back_rewrite(116),rewrite([503(2)])].
+506 f(x,y,f(y,x,z)) = f(z,x,y).  [back_rewrite(467),rewrite([505(2)])].
+592 f(x,y,z) = f(x,z,y).  [para(16(a,2),23(a,1)),rewrite([3(3),9(3),506(3),41(3),3(2),41(2),8(1),505(2),9(3),506(3)])].
+593 $F # answer(2b).  [resolve(592,a,6,a)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=25. Generated=2115. Kept=590. proofs=1.
+Usable=22. Sos=439. Demods=148. Limbo=25, Disabled=107. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=1525. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=245 (3 lex), Back_demodulated=103. Back_unit_deleted=0.
+Demod_attempts=18586. Demod_rewrites=4371.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.53.
+User_CPU=0.14, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 1 proof.
+
+Process 5813 exit (max_proofs) Tue Nov  3 10:07:26 2009

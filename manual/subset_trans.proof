@@ -1,0 +1,32 @@
+============================== prooftrans ============================
+Prover9 (32) version Apr-2006A, Apr 2006.
+Process 6075 was started by mccune on jojo.thornwood,
+Tue Apr 25 22:23:33 2006
+The command was "prover9 -f subset_trans.in".
+============================== end of head ===========================
+
+============================== end of input ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.01 (+ 0.02) seconds.
+% Length of proof is 12.
+% Level of proof is 3.
+% Maximum clause weight is 6.
+% Given clauses 6.
+
+1 - subset(x,y) | - member(z,x) | member(z,y).  [clausify].
+2 subset(x,y) | member(f1(x,y),x).  [clausify].
+3 subset(x,y) | - member(f1(x,y),y).  [clausify].
+4 subset(c1,c2).  [clausify].
+5 subset(c2,c3).  [clausify].
+6 - subset(c1,c3).  [clausify].
+15 - member(x,c1) | member(x,c2).  [resolve(4,a,1,a)].
+16 - member(x,c2) | member(x,c3).  [resolve(5,a,1,a)].
+17 member(f1(c1,c3),c1).  [resolve(6,a,2,a)].
+18 - member(f1(c1,c3),c3).  [resolve(6,a,3,a)].
+19 member(f1(c1,c3),c2).  [resolve(17,a,15,a)].
+22 $F.  [ur(16,b,18,a),unit_del(a,19)].
+
+============================== end of proof ==========================

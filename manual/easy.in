@@ -1,0 +1,33 @@
+% assign(new_constants, 1).
+
+assign(eq_defs, fold).
+
+set(restrict_denials).
+
+formulas(assumptions).
+
+% Veroff's 2-basis for BA in terms of the Sheffer stroke.
+
+  f(x,y) = f(y,x).
+  f(f(x,y),f(x,f(y,z))) = x.
+
+  f(x,f(y,f(x',z))) = f(x,y').  % extra assumption
+
+% Define a new operation (which turns out to be complement).
+% The "assign(eq_defs, fold)" above causes this definition to be
+% oriented as a rewrite rule so that the operation is introduced
+% whenever possible.
+
+x' = f(x,x).
+
+end_of_list.
+
+formulas(goals).
+
+  % Sheffer basis for Boolean Algebra
+
+  f(f(x,x),f(x,x)) = x  # label(Sheffer_1).
+  f(x,f(y,f(y,y))) = f(x,x)  # label(Sheffer_2).
+  f(f(f(y,y),x),f(f(z,z),x)) = f(f(x,f(y,z)),f(x,f(y,z)))  # label(Sheffer_3).
+
+end_of_list.

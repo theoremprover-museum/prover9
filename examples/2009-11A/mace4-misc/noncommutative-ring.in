@@ -1,0 +1,45 @@
+% Find a noncommutative ring.  To make it more interesting, assume
+% the ring has a unit.
+
+formulas(assumptions).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Ring axioms
+
+% <+,-,0> is an Abelian group:
+
+0+x=x.
+x+0=x.
+-x+x=0.
+x+ -x=0.              % the space between ops is necessary
+(x+y)+z=x+(y+z).
+x+y=y+x.
+
+% Product is associative:
+
+(x*y)*z=x*(y*z).
+
+% Left and right distributivity:
+
+x*(y+z)=(x*y)+(x*z).
+(y+z)*x=(y*x)+(z*x).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Ring lemmas
+
+- -x=x.               % the space between ops is necessary
+-0=0.
+0*x=0.
+x*0=0.
+
+% Assume the ring has a unit.
+
+1*x=x.
+x*1=x.
+
+% There are 2 noncommuting elements.
+
+a*b!=b*a.
+
+end_of_list.

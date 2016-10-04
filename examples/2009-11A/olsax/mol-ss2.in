@@ -1,0 +1,29 @@
+assign(max_seconds, 30).
+
+assign(new_constants, 1).
+
+formulas(sos).
+
+  x v (y v z) = y v (x v z).              % AJ
+  x v (x ^ y) = x.                        % B1
+  x ^ y = (x' v y')'.                     % DM
+  x'' = x.                                % CC
+  x v x' = y v y'.                        % ONE
+  x v (y ^ (x v z)) = x v (z ^ (x v y)).  % MOD
+
+  f(x,y) = x' v y'  # label(definition_sheffer).
+
+end_of_list.
+
+formulas(goals).
+
+  f(x,f(f(y,z),f(y,z))) = f(y,f(f(x,z),f(x,z)))  # answer(A_SS).
+  f(f(x,x),f(x,y)) = x                           # answer(B_SS).
+  f(x,f(x,x)) = f(y,f(y,y))                      # answer(ONE_SS).
+  f(x,f(y,f(x,f(z,z)))) = f(x,f(z,f(x,f(y,y))))  # answer(MOD_SS).
+
+  x v y = f(f(x,x),f(y,y))  # answer(DEF_J).
+  x ^ y = f(f(x,y),f(x,y))  # answer(DEF_M).
+  x' = f(x,x)               # answer(DEF_C).
+
+end_of_list.

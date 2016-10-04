@@ -1,0 +1,422 @@
+;; ============================== prooftrans ============================
+;; FOF-Prover9 (32) version 2009-11A, November 2009.
+;; Process 23612 was started by mccune on cleo,
+;; Tue Nov  3 16:59:10 2009
+;; The command was "/home/mccune/LADR/bin/fof-prover9 -f andrews.in".
+;; ============================== end of head ===========================
+
+;; BEGINNING OF PROOF OBJECT
+(
+(3 (input) (q (c2)) NIL)
+(5 (input) (or (not (q (c3))) (q v0)) NIL)
+(6 (input) (or (q (c3)) (not (q v0))) NIL)
+(7 (input) (not (q (c5))) NIL)
+(11 (instantiate 6 ((v0 . (c2)))) (or (q (c3)) (not (q (c2)))) NIL)
+(8 (resolve 11 (2) 3 ()) (q (c3)) NIL)
+(12 (instantiate 5 ((v0 . (c5)))) (or (not (q (c3))) (q (c5))) NIL)
+(9 (resolve 7 () 12 (2)) (not (q (c3))) NIL)
+(10 (resolve 9 () 8 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(4 (input) (p v0) NIL)
+(7 (input) (not (p v0)) NIL)
+(9 (instantiate 7 ((v0 . v100))) (not (p v100)) NIL)
+(10 (instantiate 4 ((v0 . v100))) (p v100) NIL)
+(8 (resolve 9 () 10 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(5 (input) (or (not (q v0)) (not (q (f2 v0)))) NIL)
+(8 (input) (q v0) NIL)
+(11 (instantiate 8 ((v0 . v100))) (q v100) NIL)
+(12 (instantiate 5 ((v0 . v100))) (or (not (q v100)) (not (q (f2 v100)))) NIL)
+(13 (resolve 11 () 12 (1)) (not (q (f2 v100))) NIL)
+(9A (instantiate 13 ((v100 . v0))) (not (q (f2 v0))) NIL)
+(14 (instantiate 8 ((v0 . (f2 v100)))) (q (f2 v100)) NIL)
+(15 (instantiate 9A ((v0 . v100))) (not (q (f2 v100))) NIL)
+(9 (resolve 14 () 15 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(4 (input) (p v0) NIL)
+(8 (input) (not (p v0)) NIL)
+(10 (instantiate 4 ((v0 . v100))) (p v100) NIL)
+(11 (instantiate 8 ((v0 . v100))) (not (p v100)) NIL)
+(9 (resolve 10 () 11 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(1 (input) (or (p (c1)) (not (p v0))) NIL)
+(2 (input) (or (not (p (c1))) (p v0)) NIL)
+(4 (input) (not (p (c2))) NIL)
+(5 (input) (p (c4)) NIL)
+(9 (instantiate 2 ((v0 . (c2)))) (or (not (p (c1))) (p (c2))) NIL)
+(6 (resolve 4 () 9 (2)) (not (p (c1))) NIL)
+(10 (instantiate 1 ((v0 . (c4)))) (or (p (c1)) (not (p (c4)))) NIL)
+(7 (resolve 10 (2) 5 ()) (p (c1)) NIL)
+(8 (resolve 7 () 6 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(3 (input) (not (q v0)) NIL)
+(6 (input) (q v0) NIL)
+(8 (instantiate 6 ((v0 . v100))) (q v100) NIL)
+(9 (instantiate 3 ((v0 . v100))) (not (q v100)) NIL)
+(7 (resolve 8 () 9 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(3 (input) (not (q v0)) NIL)
+(5 (input) (or (q (f1 v0)) (q v0)) NIL)
+(8 (instantiate 3 ((v0 . (f1 v100)))) (not (q (f1 v100))) NIL)
+(9 (instantiate 5 ((v0 . v100))) (or (q (f1 v100)) (q v100)) NIL)
+(10 (resolve 8 () 9 (1)) (q v100) NIL)
+(6A (instantiate 10 ((v100 . v0))) (q v0) NIL)
+(11 (instantiate 3 ((v0 . v100))) (not (q v100)) NIL)
+(12 (instantiate 6A ((v0 . v100))) (q v100) NIL)
+(6 (resolve 11 () 12 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(3 (input) (not (q v0)) NIL)
+(5 (input) (or (q (f1 v0)) (q v0)) NIL)
+(8 (instantiate 3 ((v0 . (f1 v100)))) (not (q (f1 v100))) NIL)
+(9 (instantiate 5 ((v0 . v100))) (or (q (f1 v100)) (q v100)) NIL)
+(10 (resolve 8 () 9 (1)) (q v100) NIL)
+(6A (instantiate 10 ((v100 . v0))) (q v0) NIL)
+(11 (instantiate 3 ((v0 . v100))) (not (q v100)) NIL)
+(12 (instantiate 6A ((v0 . v100))) (q v100) NIL)
+(6 (resolve 11 () 12 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(4 (input) (q (c1)) NIL)
+(6 (input) (or (not (q (c3))) (q v0)) NIL)
+(7 (input) (or (q (c3)) (not (q v0))) NIL)
+(9 (input) (not (q (c5))) NIL)
+(13 (instantiate 7 ((v0 . (c1)))) (or (q (c3)) (not (q (c1)))) NIL)
+(10 (resolve 13 (2) 4 ()) (q (c3)) NIL)
+(14 (instantiate 6 ((v0 . v100))) (or (not (q (c3))) (q v100)) NIL)
+(15 (resolve 10 () 14 (1)) (q v100) NIL)
+(11 (instantiate 15 ((v100 . v0))) (q v0) NIL)
+(16 (instantiate 11 ((v0 . (c5)))) (q (c5)) NIL)
+(12 (resolve 16 () 9 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(1 (input) (or (p v0) (p (f2 v0))) NIL)
+(8 (input) (not (p v0)) NIL)
+(12 (instantiate 8 ((v0 . v100))) (not (p v100)) NIL)
+(13 (instantiate 1 ((v0 . v100))) (or (p v100) (p (f2 v100))) NIL)
+(14 (resolve 12 () 13 (1)) (p (f2 v100)) NIL)
+(10A (instantiate 14 ((v100 . v0))) (p (f2 v0)) NIL)
+(15 (instantiate 8 ((v0 . (f2 v100)))) (not (p (f2 v100))) NIL)
+(16 (instantiate 10A ((v0 . v100))) (p (f2 v100)) NIL)
+(10 (resolve 15 () 16 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(6 (input) (or (not (q v0)) (not (q (f4 v0)))) NIL)
+(10 (input) (q v0) NIL)
+(13 (instantiate 10 ((v0 . v100))) (q v100) NIL)
+(14 (instantiate 6 ((v0 . v100))) (or (not (q v100)) (not (q (f4 v100)))) NIL)
+(15 (resolve 13 () 14 (1)) (not (q (f4 v100))) NIL)
+(11A (instantiate 15 ((v100 . v0))) (not (q (f4 v0))) NIL)
+(16 (instantiate 10 ((v0 . (f4 v100)))) (q (f4 v100)) NIL)
+(17 (instantiate 11A ((v0 . v100))) (not (q (f4 v100))) NIL)
+(11 (resolve 16 () 17 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(1 (input) (or (p v0) (p (f2 v0))) NIL)
+(9 (input) (not (p v0)) NIL)
+(13 (instantiate 9 ((v0 . v100))) (not (p v100)) NIL)
+(14 (instantiate 1 ((v0 . v100))) (or (p v100) (p (f2 v100))) NIL)
+(15 (resolve 13 () 14 (1)) (p (f2 v100)) NIL)
+(11A (instantiate 15 ((v100 . v0))) (p (f2 v0)) NIL)
+(16 (instantiate 9 ((v0 . (f2 v100)))) (not (p (f2 v100))) NIL)
+(17 (instantiate 11A ((v0 . v100))) (p (f2 v100)) NIL)
+(11 (resolve 16 () 17 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(2 (input) (or (not (p (f1 v0))) (not (p v0))) NIL)
+(5 (input) (p v0) NIL)
+(10 (instantiate 5 ((v0 . (f1 v100)))) (p (f1 v100)) NIL)
+(11 (instantiate 2 ((v0 . v100))) (or (not (p (f1 v100))) (not (p v100))) NIL)
+(12 (resolve 10 () 11 (1)) (not (p v100)) NIL)
+(8A (instantiate 12 ((v100 . v0))) (not (p v0)) NIL)
+(13 (instantiate 5 ((v0 . v100))) (p v100) NIL)
+(14 (instantiate 8A ((v0 . v100))) (not (p v100)) NIL)
+(8 (resolve 13 () 14 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(5 (input) (p v0) NIL)
+(8 (input) (not (p v0)) NIL)
+(10 (instantiate 5 ((v0 . v100))) (p v100) NIL)
+(11 (instantiate 8 ((v0 . v100))) (not (p v100)) NIL)
+(9 (resolve 10 () 11 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(4 (input) (not (q v0)) NIL)
+(6 (input) (or (q (f3 v0)) (q v0)) NIL)
+(9 (instantiate 4 ((v0 . (f3 v100)))) (not (q (f3 v100))) NIL)
+(10 (instantiate 6 ((v0 . v100))) (or (q (f3 v100)) (q v100)) NIL)
+(11 (resolve 9 () 10 (1)) (q v100) NIL)
+(7A (instantiate 11 ((v100 . v0))) (q v0) NIL)
+(12 (instantiate 4 ((v0 . v100))) (not (q v100)) NIL)
+(13 (instantiate 7A ((v0 . v100))) (q v100) NIL)
+(7 (resolve 12 () 13 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(4 (input) (not (q v0)) NIL)
+(6 (input) (or (q (f3 v0)) (q v0)) NIL)
+(9 (instantiate 4 ((v0 . (f3 v100)))) (not (q (f3 v100))) NIL)
+(10 (instantiate 6 ((v0 . v100))) (or (q (f3 v100)) (q v100)) NIL)
+(11 (resolve 9 () 10 (1)) (q v100) NIL)
+(7A (instantiate 11 ((v100 . v0))) (q v0) NIL)
+(12 (instantiate 4 ((v0 . v100))) (not (q v100)) NIL)
+(13 (instantiate 7A ((v0 . v100))) (q v100) NIL)
+(7 (resolve 12 () 13 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(1 (input) (or (p (c1)) (not (p v0))) NIL)
+(2 (input) (or (not (p (c1))) (p v0)) NIL)
+(4 (input) (not (p (c3))) NIL)
+(7 (input) (p (c5)) NIL)
+(12 (instantiate 2 ((v0 . (c3)))) (or (not (p (c1))) (p (c3))) NIL)
+(9 (resolve 4 () 12 (2)) (not (p (c1))) NIL)
+(13 (instantiate 1 ((v0 . (c5)))) (or (p (c1)) (not (p (c5)))) NIL)
+(10 (resolve 13 (2) 7 ()) (p (c1)) NIL)
+(11 (resolve 10 () 9 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(3 (input) (q (c2)) NIL)
+(5 (input) (or (not (q (c4))) (q v0)) NIL)
+(6 (input) (or (q (c4)) (not (q v0))) NIL)
+(8 (input) (not (q (c5))) NIL)
+(12 (instantiate 6 ((v0 . (c2)))) (or (q (c4)) (not (q (c2)))) NIL)
+(9 (resolve 12 (2) 3 ()) (q (c4)) NIL)
+(13 (instantiate 5 ((v0 . (c5)))) (or (not (q (c4))) (q (c5))) NIL)
+(10 (resolve 8 () 13 (2)) (not (q (c4))) NIL)
+(11 (resolve 10 () 9 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(1 (input) (or (p (c1)) (not (p v0))) NIL)
+(2 (input) (or (not (p (c1))) (p v0)) NIL)
+(4 (input) (not (p (c3))) NIL)
+(8 (input) (p (c4)) NIL)
+(13 (instantiate 2 ((v0 . (c3)))) (or (not (p (c1))) (p (c3))) NIL)
+(10 (resolve 13 (2) 4 ()) (not (p (c1))) NIL)
+(14 (instantiate 1 ((v0 . v100))) (or (p (c1)) (not (p v100))) NIL)
+(15 (resolve 10 () 14 (1)) (not (p v100)) NIL)
+(11 (instantiate 15 ((v100 . v0))) (not (p v0)) NIL)
+(16 (instantiate 11 ((v0 . (c4)))) (not (p (c4))) NIL)
+(12 (resolve 16 () 8 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(5 (input) (or (not (q v0)) (not (q (f2 v0)))) NIL)
+(9 (input) (q v0) NIL)
+(12 (instantiate 9 ((v0 . v100))) (q v100) NIL)
+(13 (instantiate 5 ((v0 . v100))) (or (not (q v100)) (not (q (f2 v100)))) NIL)
+(14 (resolve 12 () 13 (1)) (not (q (f2 v100))) NIL)
+(10A (instantiate 14 ((v100 . v0))) (not (q (f2 v0))) NIL)
+(15 (instantiate 9 ((v0 . (f2 v100)))) (q (f2 v100)) NIL)
+(16 (instantiate 10A ((v0 . v100))) (not (q (f2 v100))) NIL)
+(10 (resolve 15 () 16 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(3 (input) (not (q v0)) NIL)
+(5 (input) (q v0) NIL)
+(7 (instantiate 5 ((v0 . v100))) (q v100) NIL)
+(8 (instantiate 3 ((v0 . v100))) (not (q v100)) NIL)
+(6 (resolve 7 () 8 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(4 (input) (p v0) NIL)
+(5 (input) (not (p v0)) NIL)
+(7 (instantiate 5 ((v0 . v100))) (not (p v100)) NIL)
+(8 (instantiate 4 ((v0 . v100))) (p v100) NIL)
+(6 (resolve 7 () 8 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(3 (input) (not (q v0)) NIL)
+(5 (input) (or (q (f1 v0)) (q v0)) NIL)
+(8 (instantiate 3 ((v0 . (f1 v100)))) (not (q (f1 v100))) NIL)
+(9 (instantiate 5 ((v0 . v100))) (or (q (f1 v100)) (q v100)) NIL)
+(10 (resolve 8 () 9 (1)) (q v100) NIL)
+(6A (instantiate 10 ((v100 . v0))) (q v0) NIL)
+(11 (instantiate 3 ((v0 . v100))) (not (q v100)) NIL)
+(12 (instantiate 6A ((v0 . v100))) (q v100) NIL)
+(6 (resolve 11 () 12 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(3 (input) (not (q v0)) NIL)
+(5 (input) (or (q (f1 v0)) (q v0)) NIL)
+(8 (instantiate 3 ((v0 . (f1 v100)))) (not (q (f1 v100))) NIL)
+(9 (instantiate 5 ((v0 . v100))) (or (q (f1 v100)) (q v100)) NIL)
+(10 (resolve 8 () 9 (1)) (q v100) NIL)
+(6A (instantiate 10 ((v100 . v0))) (q v0) NIL)
+(11 (instantiate 3 ((v0 . v100))) (not (q v100)) NIL)
+(12 (instantiate 6A ((v0 . v100))) (q v100) NIL)
+(6 (resolve 11 () 12 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(2 (input) (or (not (p (f1 v0))) (not (p v0))) NIL)
+(5 (input) (p v0) NIL)
+(11 (instantiate 5 ((v0 . (f1 v100)))) (p (f1 v100)) NIL)
+(12 (instantiate 2 ((v0 . v100))) (or (not (p (f1 v100))) (not (p v100))) NIL)
+(13 (resolve 11 () 12 (1)) (not (p v100)) NIL)
+(9A (instantiate 13 ((v100 . v0))) (not (p v0)) NIL)
+(14 (instantiate 5 ((v0 . v100))) (p v100) NIL)
+(15 (instantiate 9A ((v0 . v100))) (not (p v100)) NIL)
+(9 (resolve 14 () 15 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(5 (input) (p v0) NIL)
+(8 (input) (not (p v0)) NIL)
+(10 (instantiate 5 ((v0 . v100))) (p v100) NIL)
+(11 (instantiate 8 ((v0 . v100))) (not (p v100)) NIL)
+(9 (resolve 10 () 11 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(2 (input) (or (not (p (f1 v0))) (not (p v0))) NIL)
+(5 (input) (p v0) NIL)
+(12 (instantiate 5 ((v0 . (f1 v100)))) (p (f1 v100)) NIL)
+(13 (instantiate 2 ((v0 . v100))) (or (not (p (f1 v100))) (not (p v100))) NIL)
+(14 (resolve 12 () 13 (1)) (not (p v100)) NIL)
+(10A (instantiate 14 ((v100 . v0))) (not (p v0)) NIL)
+(15 (instantiate 5 ((v0 . v100))) (p v100) NIL)
+(16 (instantiate 10A ((v0 . v100))) (not (p v100)) NIL)
+(10 (resolve 15 () 16 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(5 (input) (p v0) NIL)
+(9 (input) (not (p v0)) NIL)
+(11 (instantiate 5 ((v0 . v100))) (p v100) NIL)
+(12 (instantiate 9 ((v0 . v100))) (not (p v100)) NIL)
+(10 (resolve 11 () 12 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(4 (input) (not (q v0)) NIL)
+(9 (input) (q v0) NIL)
+(11 (instantiate 4 ((v0 . v100))) (not (q v100)) NIL)
+(12 (instantiate 9 ((v0 . v100))) (q v100) NIL)
+(10 (resolve 11 () 12 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(1 (input) (or (p v0) (p (f2 v0))) NIL)
+(8 (input) (not (p v0)) NIL)
+(11 (instantiate 8 ((v0 . v100))) (not (p v100)) NIL)
+(12 (instantiate 1 ((v0 . v100))) (or (p v100) (p (f2 v100))) NIL)
+(13 (resolve 11 () 12 (1)) (p (f2 v100)) NIL)
+(9A (instantiate 13 ((v100 . v0))) (p (f2 v0)) NIL)
+(14 (instantiate 8 ((v0 . (f2 v100)))) (not (p (f2 v100))) NIL)
+(15 (instantiate 9A ((v0 . v100))) (p (f2 v100)) NIL)
+(9 (resolve 14 () 15 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(4 (input) (not (q v0)) NIL)
+(6 (input) (or (q (f3 v0)) (q v0)) NIL)
+(9 (instantiate 4 ((v0 . (f3 v100)))) (not (q (f3 v100))) NIL)
+(10 (instantiate 6 ((v0 . v100))) (or (q (f3 v100)) (q v100)) NIL)
+(11 (resolve 9 () 10 (1)) (q v100) NIL)
+(7A (instantiate 11 ((v100 . v0))) (q v0) NIL)
+(12 (instantiate 4 ((v0 . v100))) (not (q v100)) NIL)
+(13 (instantiate 7A ((v0 . v100))) (q v100) NIL)
+(7 (resolve 12 () 13 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(4 (input) (not (q v0)) NIL)
+(6 (input) (or (q (f3 v0)) (q v0)) NIL)
+(9 (instantiate 4 ((v0 . (f3 v100)))) (not (q (f3 v100))) NIL)
+(10 (instantiate 6 ((v0 . v100))) (or (q (f3 v100)) (q v100)) NIL)
+(11 (resolve 9 () 10 (1)) (q v100) NIL)
+(7A (instantiate 11 ((v100 . v0))) (q v0) NIL)
+(12 (instantiate 4 ((v0 . v100))) (not (q v100)) NIL)
+(13 (instantiate 7A ((v0 . v100))) (q v100) NIL)
+(7 (resolve 12 () 13 ()) false NIL)
+)
+;; END OF PROOF OBJECT

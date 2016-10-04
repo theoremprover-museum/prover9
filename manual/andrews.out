@@ -1,0 +1,3278 @@
+============================== FOF-Prover9 ===========================
+FOF-Prover9 (32) version 2009-11A, November 2009.
+Process 25538 was started by mccune on cleo,
+Tue Nov  3 17:07:37 2009
+The command was "/home/mccune/LADR/bin/fof-prover9 -f andrews.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file andrews.in
+
+
+formulas(goals).
+((exists x all y (p(x) <-> p(y))) <-> ((exists u q(u)) <-> (all v p(v)))) <-> ((exists w all z (q(z) <-> q(w))) <-> ((exists x1 p(x1)) <-> (all x2 q(x2)))).
+end_of_list.
+
+============================== end of input ==========================
+
+% clear(auto_denials), because it is incompatiable with FOF reduction.
+
+Attempting problem reduction; original problem has <nnf_size,cnf_max> = <210,16384>.
+
+Problem reduction (0.01 sec) gives 32 independent subproblems: ( <38,8> <38,8> <37,10> <39,10> <40,8> <40,8> <39,10> <41,10> <39,10> <39,10> <38,12> <40,12> <39,10> <39,10> <38,12> <40,12> <38,8> <40,8> <39,10> <39,10> <38,8> <40,8> <39,10> <39,10> <37,10> <39,10> <38,12> <38,12> <39,10> <41,10> <40,12> <40,12> ).
+
+Max nnf_size of subproblems is 41; max cnf_max is 12.
+
+============================== FOF REDUCTION MULTISEARCH =============
+
+Subproblem 1 of 32 (negated):
+((exists x ((p(x) | (all y (- p(y)))) & (- p(x) | (all y (p(y)))))) & (exists u q(u)) & (all v p(v)) & (exists w ((- q(w) | (all z (q(z)))) & (q(w) | (all z (- q(z)))))) & (exists x1 p(x1)) & (exists x2 - q(x2))).
+
+Child search process 25539 started.
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+p(c1) | -p(x).  [assumption].
+-p(c1) | p(x).  [assumption].
+q(c2).  [assumption].
+p(x).  [assumption].
+-q(c3) | q(x).  [assumption].
+q(c3) | -q(x).  [assumption].
+p(c4).  [assumption].
+-q(c5).  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ p, q ]).
+Function symbol precedence:  function_order([ c1, c2, c3, c4, c5 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(neg_binary_resolution).  % (HNE depth_diff=0)
+  % clear(ordered_res).  % (HNE depth_diff=0)
+  % set(ur_resolution).  % (HNE depth_diff=0)
+    % set(ur_resolution) -> set(pos_ur_resolution).
+    % set(ur_resolution) -> set(neg_ur_resolution).
+
+Auto_process settings:  (no changes).
+
+kept:      1 p(c1) | -p(x).  [assumption].
+kept:      2 -p(c1) | p(x).  [assumption].
+kept:      3 q(c2).  [assumption].
+kept:      4 p(x).  [assumption].
+kept:      5 -q(c3) | q(x).  [assumption].
+kept:      6 q(c3) | -q(x).  [assumption].
+kept:      7 -q(c5).  [assumption].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+3 q(c2).  [assumption].
+4 p(x).  [assumption].
+5 -q(c3) | q(x).  [assumption].
+6 q(c3) | -q(x).  [assumption].
+7 -q(c5).  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.00 seconds.
+
+given #1 (I,wt=2): 3 q(c2).  [assumption].
+
+given #2 (I,wt=2): 4 p(x).  [assumption].
+
+given #3 (I,wt=4): 5 -q(c3) | q(x).  [assumption].
+
+given #4 (I,wt=4): 6 q(c3) | -q(x).  [assumption].
+
+given #5 (I,wt=2): 7 -q(c5).  [assumption].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 7.
+% Level of proof is 2.
+% Maximum clause weight is 4.000.
+% Given clauses 5.
+
+3 q(c2).  [assumption].
+5 -q(c3) | q(x).  [assumption].
+6 q(c3) | -q(x).  [assumption].
+7 -q(c5).  [assumption].
+8 q(c3).  [ur(6,b,3,a)].
+9 -q(c3).  [resolve(7,a,5,b)].
+10 $F.  [resolve(9,a,8,a)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=5. Generated=10. Kept=9. proofs=1.
+Usable=4. Sos=1. Demods=0. Limbo=0, Disabled=11. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=1. Back_subsumed=3.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=7.
+Megabytes=0.10.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+Exiting with 1 proof.
+
+Process 25539 exit (max_proofs) Tue Nov  3 17:07:37 2009
+
+============================== continuing FOF reduction multisearch ==
+
+Subproblem 2 of 32 (negated):
+((exists x ((p(x) | (all y (- p(y)))) & (- p(x) | (all y (p(y)))))) & (exists u q(u)) & (all v p(v)) & (exists w ((- q(w) | (all z (q(z)))) & (q(w) | (all z (- q(z)))))) & (all x1 - p(x1)) & (all x2 q(x2))).
+
+Child search process 25540 started.
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+p(c1) | -p(x).  [assumption].
+-p(c1) | p(x).  [assumption].
+q(c2).  [assumption].
+p(x).  [assumption].
+-q(c3) | q(x).  [assumption].
+q(c3) | -q(x).  [assumption].
+-p(x).  [assumption].
+q(x).  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ q, p ]).
+Function symbol precedence:  function_order([ c1, c2, c3 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(neg_binary_resolution).  % (HNE depth_diff=0)
+  % clear(ordered_res).  % (HNE depth_diff=0)
+  % set(ur_resolution).  % (HNE depth_diff=0)
+    % set(ur_resolution) -> set(pos_ur_resolution).
+    % set(ur_resolution) -> set(neg_ur_resolution).
+
+Auto_process settings:  (no changes).
+
+kept:      1 p(c1) | -p(x).  [assumption].
+kept:      2 -p(c1) | p(x).  [assumption].
+kept:      3 q(c2).  [assumption].
+kept:      4 p(x).  [assumption].
+kept:      5 -q(c3) | q(x).  [assumption].
+kept:      6 q(c3) | -q(x).  [assumption].
+kept:      7 -p(x).  [assumption].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 3.
+% Level of proof is 1.
+% Maximum clause weight is 2.000.
+% Given clauses 0.
+
+4 p(x).  [assumption].
+7 -p(x).  [assumption].
+8 $F.  [resolve(7,a,4,a)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=0. Generated=7. Kept=7. proofs=1.
+Usable=0. Sos=0. Demods=0. Limbo=6, Disabled=7. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=0. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.10.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+Exiting with 1 proof.
+
+Process 25540 exit (max_proofs) Tue Nov  3 17:07:37 2009
+
+============================== continuing FOF reduction multisearch ==
+
+Subproblem 3 of 32 (negated):
+((exists x ((p(x) | (all y (- p(y)))) & (- p(x) | (all y (p(y)))))) & (exists u q(u)) & (all v p(v)) & (all w ((- q(w) & (exists z (q(z)))) | (q(w) & (exists z (- q(z)))))) & (exists x1 p(x1)) & (all x2 q(x2))).
+
+Child search process 25541 started.
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+p(c1) | -p(x).  [assumption].
+-p(c1) | p(x).  [assumption].
+q(c2).  [assumption].
+p(x).  [assumption].
+-q(x) | -q(f2(x)).  [assumption].
+q(f1(x)) | q(x).  [assumption].
+q(f1(x)) | -q(f2(x)).  [assumption].
+p(c3).  [assumption].
+q(x).  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ p, q ]).
+Function symbol precedence:  function_order([ c1, c2, c3, f1, f2 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+kept:      1 p(c1) | -p(x).  [assumption].
+kept:      2 -p(c1) | p(x).  [assumption].
+kept:      3 q(c2).  [assumption].
+kept:      4 p(x).  [assumption].
+kept:      5 -q(x) | -q(f2(x)).  [assumption].
+kept:      6 q(f1(x)) | q(x).  [assumption].
+kept:      7 q(f1(x)) | -q(f2(x)).  [assumption].
+kept:      8 q(x).  [assumption].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 3.
+% Level of proof is 1.
+% Maximum clause weight is 5.000.
+% Given clauses 0.
+
+5 -q(x) | -q(f2(x)).  [assumption].
+8 q(x).  [assumption].
+9 $F.  [back_unit_del(5),unit_del(a,8),unit_del(b,8)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=0. Generated=10. Kept=8. proofs=1.
+Usable=0. Sos=1. Demods=0. Limbo=1, Disabled=15. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=1. Back_subsumed=5.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=1.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=9.
+Megabytes=0.10.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+Exiting with 1 proof.
+
+Process 25541 exit (max_proofs) Tue Nov  3 17:07:37 2009
+
+============================== continuing FOF reduction multisearch ==
+
+Subproblem 4 of 32 (negated):
+((exists x ((p(x) | (all y (- p(y)))) & (- p(x) | (all y (p(y)))))) & (exists u q(u)) & (all v p(v)) & (all w ((- q(w) & (exists z (q(z)))) | (q(w) & (exists z (- q(z)))))) & (all x1 - p(x1)) & (exists x2 - q(x2))).
+
+Child search process 25542 started.
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+p(c1) | -p(x).  [assumption].
+-p(c1) | p(x).  [assumption].
+q(c2).  [assumption].
+p(x).  [assumption].
+-q(x) | -q(f2(x)).  [assumption].
+q(f1(x)) | q(x).  [assumption].
+q(f1(x)) | -q(f2(x)).  [assumption].
+-p(x).  [assumption].
+-q(c3).  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ p, q ]).
+Function symbol precedence:  function_order([ c1, c2, c3, f1, f2 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+kept:      1 p(c1) | -p(x).  [assumption].
+kept:      2 -p(c1) | p(x).  [assumption].
+kept:      3 q(c2).  [assumption].
+kept:      4 p(x).  [assumption].
+kept:      5 -q(x) | -q(f2(x)).  [assumption].
+kept:      6 q(f1(x)) | q(x).  [assumption].
+kept:      7 q(f1(x)) | -q(f2(x)).  [assumption].
+           8 -p(x).  [assumption].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 3.
+% Level of proof is 1.
+% Maximum clause weight is 2.000.
+% Given clauses 0.
+
+4 p(x).  [assumption].
+8 -p(x).  [assumption].
+9 $F.  [copy(8),unit_del(a,4)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=0. Generated=8. Kept=7. proofs=1.
+Usable=0. Sos=0. Demods=0. Limbo=7, Disabled=8. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=0. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.10.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+Exiting with 1 proof.
+
+Process 25542 exit (max_proofs) Tue Nov  3 17:07:37 2009
+
+============================== continuing FOF reduction multisearch ==
+
+Subproblem 5 of 32 (negated):
+((exists x ((p(x) | (all y (- p(y)))) & (- p(x) | (all y (p(y)))))) & (all u - q(u)) & (exists v - p(v)) & (exists w ((- q(w) | (all z (q(z)))) & (q(w) | (all z (- q(z)))))) & (exists x1 p(x1)) & (exists x2 - q(x2))).
+
+Child search process 25543 started.
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+p(c1) | -p(x).  [assumption].
+-p(c1) | p(x).  [assumption].
+-q(x).  [assumption].
+-p(c2).  [assumption].
+-q(c3) | q(x).  [assumption].
+q(c3) | -q(x).  [assumption].
+p(c4).  [assumption].
+-q(c5).  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ p, q ]).
+Function symbol precedence:  function_order([ c1, c2, c3, c4, c5 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(neg_binary_resolution).  % (HNE depth_diff=0)
+  % clear(ordered_res).  % (HNE depth_diff=0)
+  % set(ur_resolution).  % (HNE depth_diff=0)
+    % set(ur_resolution) -> set(pos_ur_resolution).
+    % set(ur_resolution) -> set(neg_ur_resolution).
+
+Auto_process settings:  (no changes).
+
+kept:      1 p(c1) | -p(x).  [assumption].
+kept:      2 -p(c1) | p(x).  [assumption].
+kept:      3 -q(x).  [assumption].
+kept:      4 -p(c2).  [assumption].
+kept:      5 p(c4).  [assumption].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+1 p(c1) | -p(x).  [assumption].
+2 -p(c1) | p(x).  [assumption].
+3 -q(x).  [assumption].
+4 -p(c2).  [assumption].
+5 p(c4).  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.00 seconds.
+
+given #1 (I,wt=4): 1 p(c1) | -p(x).  [assumption].
+
+given #2 (I,wt=4): 2 -p(c1) | p(x).  [assumption].
+
+given #3 (I,wt=2): 3 -q(x).  [assumption].
+
+given #4 (I,wt=2): 4 -p(c2).  [assumption].
+
+given #5 (I,wt=2): 5 p(c4).  [assumption].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 7.
+% Level of proof is 2.
+% Maximum clause weight is 4.000.
+% Given clauses 5.
+
+1 p(c1) | -p(x).  [assumption].
+2 -p(c1) | p(x).  [assumption].
+4 -p(c2).  [assumption].
+5 p(c4).  [assumption].
+6 -p(c1).  [resolve(4,a,2,b)].
+7 p(c1).  [ur(1,b,5,a)].
+8 $F.  [resolve(7,a,6,a)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=5. Generated=11. Kept=7. proofs=1.
+Usable=4. Sos=1. Demods=0. Limbo=0, Disabled=9. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=4. Back_subsumed=1.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=3.
+Megabytes=0.10.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=1.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+Exiting with 1 proof.
+
+Process 25543 exit (max_proofs) Tue Nov  3 17:07:38 2009
+
+============================== continuing FOF reduction multisearch ==
+
+Subproblem 6 of 32 (negated):
+((exists x ((p(x) | (all y (- p(y)))) & (- p(x) | (all y (p(y)))))) & (all u - q(u)) & (exists v - p(v)) & (exists w ((- q(w) | (all z (q(z)))) & (q(w) | (all z (- q(z)))))) & (all x1 - p(x1)) & (all x2 q(x2))).
+
+Child search process 25544 started.
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+p(c1) | -p(x).  [assumption].
+-p(c1) | p(x).  [assumption].
+-q(x).  [assumption].
+-p(c2).  [assumption].
+-q(c3) | q(x).  [assumption].
+q(c3) | -q(x).  [assumption].
+-p(x).  [assumption].
+q(x).  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ q, p ]).
+Function symbol precedence:  function_order([ c1, c2, c3 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(neg_binary_resolution).  % (HNE depth_diff=0)
+  % clear(ordered_res).  % (HNE depth_diff=0)
+  % set(ur_resolution).  % (HNE depth_diff=0)
+    % set(ur_resolution) -> set(pos_ur_resolution).
+    % set(ur_resolution) -> set(neg_ur_resolution).
+
+Auto_process settings:  (no changes).
+
+kept:      1 p(c1) | -p(x).  [assumption].
+kept:      2 -p(c1) | p(x).  [assumption].
+kept:      3 -q(x).  [assumption].
+kept:      4 -p(c2).  [assumption].
+kept:      5 -p(x).  [assumption].
+kept:      6 q(x).  [assumption].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 3.
+% Level of proof is 1.
+% Maximum clause weight is 2.000.
+% Given clauses 0.
+
+3 -q(x).  [assumption].
+6 q(x).  [assumption].
+7 $F.  [resolve(6,a,3,a)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=0. Generated=8. Kept=6. proofs=1.
+Usable=0. Sos=0. Demods=0. Limbo=5, Disabled=8. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=2. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.10.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=1.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+Exiting with 1 proof.
+
+Process 25544 exit (max_proofs) Tue Nov  3 17:07:38 2009
+
+============================== continuing FOF reduction multisearch ==
+
+Subproblem 7 of 32 (negated):
+((exists x ((p(x) | (all y (- p(y)))) & (- p(x) | (all y (p(y)))))) & (all u - q(u)) & (exists v - p(v)) & (all w ((- q(w) & (exists z (q(z)))) | (q(w) & (exists z (- q(z)))))) & (exists x1 p(x1)) & (all x2 q(x2))).
+
+Child search process 25545 started.
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+p(c1) | -p(x).  [assumption].
+-p(c1) | p(x).  [assumption].
+-q(x).  [assumption].
+-p(c2).  [assumption].
+-q(x) | -q(f2(x)).  [assumption].
+q(f1(x)) | q(x).  [assumption].
+q(f1(x)) | -q(f2(x)).  [assumption].
+p(c3).  [assumption].
+q(x).  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ p, q ]).
+Function symbol precedence:  function_order([ c1, c2, c3, f1, f2 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+kept:      1 p(c1) | -p(x).  [assumption].
+kept:      2 -p(c1) | p(x).  [assumption].
+kept:      3 -q(x).  [assumption].
+kept:      4 -p(c2).  [assumption].
+           5 q(f1(x)) | q(x).  [assumption].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 3.
+% Level of proof is 1.
+% Maximum clause weight is 2.000.
+% Given clauses 0.
+
+3 -q(x).  [assumption].
+5 q(f1(x)) | q(x).  [assumption].
+6 $F.  [copy(5),unit_del(a,3),unit_del(b,3)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=0. Generated=6. Kept=4. proofs=1.
+Usable=0. Sos=0. Demods=0. Limbo=4, Disabled=6. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=1. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.10.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=1.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+Exiting with 1 proof.
+
+Process 25545 exit (max_proofs) Tue Nov  3 17:07:38 2009
+
+============================== continuing FOF reduction multisearch ==
+
+Subproblem 8 of 32 (negated):
+((exists x ((p(x) | (all y (- p(y)))) & (- p(x) | (all y (p(y)))))) & (all u - q(u)) & (exists v - p(v)) & (all w ((- q(w) & (exists z (q(z)))) | (q(w) & (exists z (- q(z)))))) & (all x1 - p(x1)) & (exists x2 - q(x2))).
+
+Child search process 25546 started.
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+p(c1) | -p(x).  [assumption].
+-p(c1) | p(x).  [assumption].
+-q(x).  [assumption].
+-p(c2).  [assumption].
+-q(x) | -q(f2(x)).  [assumption].
+q(f1(x)) | q(x).  [assumption].
+q(f1(x)) | -q(f2(x)).  [assumption].
+-p(x).  [assumption].
+-q(c3).  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ p, q ]).
+Function symbol precedence:  function_order([ c1, c2, c3, f1, f2 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+kept:      1 p(c1) | -p(x).  [assumption].
+kept:      2 -p(c1) | p(x).  [assumption].
+kept:      3 -q(x).  [assumption].
+kept:      4 -p(c2).  [assumption].
+           5 q(f1(x)) | q(x).  [assumption].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 3.
+% Level of proof is 1.
+% Maximum clause weight is 2.000.
+% Given clauses 0.
+
+3 -q(x).  [assumption].
+5 q(f1(x)) | q(x).  [assumption].
+6 $F.  [copy(5),unit_del(a,3),unit_del(b,3)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=0. Generated=6. Kept=4. proofs=1.
+Usable=0. Sos=0. Demods=0. Limbo=4, Disabled=6. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=1. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.10.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=1.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+Exiting with 1 proof.
+
+Process 25546 exit (max_proofs) Tue Nov  3 17:07:38 2009
+
+============================== continuing FOF reduction multisearch ==
+
+Subproblem 9 of 32 (negated):
+((all x ((p(x) & (exists y (- p(y)))) | (- p(x) & (exists y (p(y)))))) & (exists u q(u)) & (exists v - p(v)) & (exists w ((- q(w) | (all z (q(z)))) & (q(w) | (all z (- q(z)))))) & (exists x1 p(x1)) & (exists x2 - q(x2))).
+
+Child search process 25547 started.
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+p(x) | p(f2(x)).  [assumption].
+-p(f1(x)) | -p(x).  [assumption].
+-p(f1(x)) | p(f2(x)).  [assumption].
+q(c1).  [assumption].
+-p(c2).  [assumption].
+-q(c3) | q(x).  [assumption].
+q(c3) | -q(x).  [assumption].
+p(c4).  [assumption].
+-q(c5).  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ p, q ]).
+Function symbol precedence:  function_order([ c1, c2, c3, c4, c5, f1, f2 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+kept:      1 p(x) | p(f2(x)).  [assumption].
+kept:      2 -p(f1(x)) | -p(x).  [assumption].
+kept:      3 -p(f1(x)) | p(f2(x)).  [assumption].
+kept:      4 q(c1).  [assumption].
+kept:      5 -p(c2).  [assumption].
+kept:      6 -q(c3) | q(x).  [assumption].
+kept:      7 q(c3) | -q(x).  [assumption].
+kept:      8 p(c4).  [assumption].
+kept:      9 -q(c5).  [assumption].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+1 p(x) | p(f2(x)).  [assumption].
+2 -p(f1(x)) | -p(x).  [assumption].
+3 -p(f1(x)) | p(f2(x)).  [assumption].
+4 q(c1).  [assumption].
+5 -p(c2).  [assumption].
+6 -q(c3) | q(x).  [assumption].
+7 q(c3) | -q(x).  [assumption].
+8 p(c4).  [assumption].
+9 -q(c5).  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.00 seconds.
+
+given #1 (I,wt=5): 1 p(x) | p(f2(x)).  [assumption].
+
+given #2 (I,wt=5): 2 -p(f1(x)) | -p(x).  [assumption].
+
+given #3 (I,wt=6): 3 -p(f1(x)) | p(f2(x)).  [assumption].
+
+given #4 (I,wt=2): 4 q(c1).  [assumption].
+
+given #5 (I,wt=2): 5 -p(c2).  [assumption].
+
+given #6 (I,wt=4): 6 -q(c3) | q(x).  [assumption].
+
+given #7 (I,wt=4): 7 q(c3) | -q(x).  [assumption].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 7.
+% Level of proof is 3.
+% Maximum clause weight is 4.000.
+% Given clauses 7.
+
+4 q(c1).  [assumption].
+6 -q(c3) | q(x).  [assumption].
+7 q(c3) | -q(x).  [assumption].
+9 -q(c5).  [assumption].
+10 q(c3).  [resolve(7,b,4,a)].
+11 q(x).  [back_unit_del(6),unit_del(a,10)].
+12 $F.  [resolve(11,a,9,a)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=7. Generated=11. Kept=11. proofs=1.
+Usable=5. Sos=2. Demods=0. Limbo=1, Disabled=11. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=0. Back_subsumed=1.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=1.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=6.
+Megabytes=0.11.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=1.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+Exiting with 1 proof.
+
+Process 25547 exit (max_proofs) Tue Nov  3 17:07:38 2009
+
+============================== continuing FOF reduction multisearch ==
+
+Subproblem 10 of 32 (negated):
+((all x ((p(x) & (exists y (- p(y)))) | (- p(x) & (exists y (p(y)))))) & (exists u q(u)) & (exists v - p(v)) & (exists w ((- q(w) | (all z (q(z)))) & (q(w) | (all z (- q(z)))))) & (all x1 - p(x1)) & (all x2 q(x2))).
+
+Child search process 25548 started.
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+p(x) | p(f2(x)).  [assumption].
+-p(f1(x)) | -p(x).  [assumption].
+-p(f1(x)) | p(f2(x)).  [assumption].
+q(c1).  [assumption].
+-p(c2).  [assumption].
+-q(c3) | q(x).  [assumption].
+q(c3) | -q(x).  [assumption].
+-p(x).  [assumption].
+q(x).  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ q, p ]).
+Function symbol precedence:  function_order([ c1, c2, c3, f1, f2 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+kept:      1 p(x) | p(f2(x)).  [assumption].
+kept:      2 -p(f1(x)) | -p(x).  [assumption].
+kept:      3 -p(f1(x)) | p(f2(x)).  [assumption].
+kept:      4 q(c1).  [assumption].
+kept:      5 -p(c2).  [assumption].
+kept:      6 -q(c3) | q(x).  [assumption].
+kept:      7 q(c3) | -q(x).  [assumption].
+kept:      8 -p(x).  [assumption].
+kept:      9 q(x).  [assumption].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 3.
+% Level of proof is 1.
+% Maximum clause weight is 5.000.
+% Given clauses 0.
+
+1 p(x) | p(f2(x)).  [assumption].
+8 -p(x).  [assumption].
+10 $F.  [back_unit_del(1),unit_del(a,8),unit_del(b,8)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=0. Generated=10. Kept=9. proofs=1.
+Usable=0. Sos=3. Demods=0. Limbo=2, Disabled=13. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=0. Back_subsumed=3.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=1.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=7.
+Megabytes=0.10.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=1.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+Exiting with 1 proof.
+
+Process 25548 exit (max_proofs) Tue Nov  3 17:07:38 2009
+
+============================== continuing FOF reduction multisearch ==
+
+Subproblem 11 of 32 (negated):
+((all x ((p(x) & (exists y (- p(y)))) | (- p(x) & (exists y (p(y)))))) & (exists u q(u)) & (exists v - p(v)) & (all w ((- q(w) & (exists z (q(z)))) | (q(w) & (exists z (- q(z)))))) & (exists x1 p(x1)) & (all x2 q(x2))).
+
+Child search process 25549 started.
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+p(x) | p(f2(x)).  [assumption].
+-p(f1(x)) | -p(x).  [assumption].
+-p(f1(x)) | p(f2(x)).  [assumption].
+q(c1).  [assumption].
+-p(c2).  [assumption].
+-q(x) | -q(f4(x)).  [assumption].
+q(f3(x)) | q(x).  [assumption].
+q(f3(x)) | -q(f4(x)).  [assumption].
+p(c3).  [assumption].
+q(x).  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ q, p ]).
+Function symbol precedence:  function_order([ c1, c2, c3, f1, f2, f3, f4 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+kept:      1 p(x) | p(f2(x)).  [assumption].
+kept:      2 -p(f1(x)) | -p(x).  [assumption].
+kept:      3 -p(f1(x)) | p(f2(x)).  [assumption].
+kept:      4 q(c1).  [assumption].
+kept:      5 -p(c2).  [assumption].
+kept:      6 -q(x) | -q(f4(x)).  [assumption].
+kept:      7 q(f3(x)) | q(x).  [assumption].
+kept:      8 q(f3(x)) | -q(f4(x)).  [assumption].
+kept:      9 p(c3).  [assumption].
+kept:      10 q(x).  [assumption].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 3.
+% Level of proof is 1.
+% Maximum clause weight is 5.000.
+% Given clauses 0.
+
+6 -q(x) | -q(f4(x)).  [assumption].
+10 q(x).  [assumption].
+11 $F.  [back_unit_del(6),unit_del(a,10),unit_del(b,10)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=0. Generated=11. Kept=10. proofs=1.
+Usable=0. Sos=5. Demods=0. Limbo=1, Disabled=14. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=0. Back_subsumed=3.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=1.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=8.
+Megabytes=0.11.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=1.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+Exiting with 1 proof.
+
+Process 25549 exit (max_proofs) Tue Nov  3 17:07:38 2009
+
+============================== continuing FOF reduction multisearch ==
+
+Subproblem 12 of 32 (negated):
+((all x ((p(x) & (exists y (- p(y)))) | (- p(x) & (exists y (p(y)))))) & (exists u q(u)) & (exists v - p(v)) & (all w ((- q(w) & (exists z (q(z)))) | (q(w) & (exists z (- q(z)))))) & (all x1 - p(x1)) & (exists x2 - q(x2))).
+
+Child search process 25550 started.
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+p(x) | p(f2(x)).  [assumption].
+-p(f1(x)) | -p(x).  [assumption].
+-p(f1(x)) | p(f2(x)).  [assumption].
+q(c1).  [assumption].
+-p(c2).  [assumption].
+-q(x) | -q(f4(x)).  [assumption].
+q(f3(x)) | q(x).  [assumption].
+q(f3(x)) | -q(f4(x)).  [assumption].
+-p(x).  [assumption].
+-q(c3).  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ q, p ]).
+Function symbol precedence:  function_order([ c1, c2, c3, f1, f2, f3, f4 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+kept:      1 p(x) | p(f2(x)).  [assumption].
+kept:      2 -p(f1(x)) | -p(x).  [assumption].
+kept:      3 -p(f1(x)) | p(f2(x)).  [assumption].
+kept:      4 q(c1).  [assumption].
+kept:      5 -p(c2).  [assumption].
+kept:      6 -q(x) | -q(f4(x)).  [assumption].
+kept:      7 q(f3(x)) | q(x).  [assumption].
+kept:      8 q(f3(x)) | -q(f4(x)).  [assumption].
+kept:      9 -p(x).  [assumption].
+kept:      10 -q(c3).  [assumption].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 3.
+% Level of proof is 1.
+% Maximum clause weight is 5.000.
+% Given clauses 0.
+
+1 p(x) | p(f2(x)).  [assumption].
+9 -p(x).  [assumption].
+11 $F.  [back_unit_del(1),unit_del(a,9),unit_del(b,9)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=0. Generated=11. Kept=10. proofs=1.
+Usable=0. Sos=4. Demods=0. Limbo=2, Disabled=14. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=0. Back_subsumed=3.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=1.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=8.
+Megabytes=0.11.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=1.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+Exiting with 1 proof.
+
+Process 25550 exit (max_proofs) Tue Nov  3 17:07:38 2009
+
+============================== continuing FOF reduction multisearch ==
+
+Subproblem 13 of 32 (negated):
+((all x ((p(x) & (exists y (- p(y)))) | (- p(x) & (exists y (p(y)))))) & (all u - q(u)) & (all v p(v)) & (exists w ((- q(w) | (all z (q(z)))) & (q(w) | (all z (- q(z)))))) & (exists x1 p(x1)) & (exists x2 - q(x2))).
+
+Child search process 25551 started.
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+p(x) | p(f2(x)).  [assumption].
+-p(f1(x)) | -p(x).  [assumption].
+-p(f1(x)) | p(f2(x)).  [assumption].
+-q(x).  [assumption].
+p(x).  [assumption].
+-q(c1) | q(x).  [assumption].
+q(c1) | -q(x).  [assumption].
+p(c2).  [assumption].
+-q(c3).  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ p, q ]).
+Function symbol precedence:  function_order([ c1, c2, c3, f1, f2 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+kept:      1 p(x) | p(f2(x)).  [assumption].
+kept:      2 -p(f1(x)) | -p(x).  [assumption].
+kept:      3 -p(f1(x)) | p(f2(x)).  [assumption].
+kept:      4 -q(x).  [assumption].
+kept:      5 p(x).  [assumption].
+           6 -q(c1) | q(x).  [assumption].
+           7 q(c1) | -q(x).  [assumption].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 3.
+% Level of proof is 1.
+% Maximum clause weight is 5.000.
+% Given clauses 0.
+
+2 -p(f1(x)) | -p(x).  [assumption].
+5 p(x).  [assumption].
+8 $F.  [back_unit_del(2),unit_del(a,5),unit_del(b,5)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=0. Generated=10. Kept=5. proofs=1.
+Usable=0. Sos=1. Demods=0. Limbo=1, Disabled=12. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=4. Back_subsumed=2.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=1.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=5.
+Megabytes=0.10.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=1.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+Exiting with 1 proof.
+
+Process 25551 exit (max_proofs) Tue Nov  3 17:07:38 2009
+
+============================== continuing FOF reduction multisearch ==
+
+Subproblem 14 of 32 (negated):
+((all x ((p(x) & (exists y (- p(y)))) | (- p(x) & (exists y (p(y)))))) & (all u - q(u)) & (all v p(v)) & (exists w ((- q(w) | (all z (q(z)))) & (q(w) | (all z (- q(z)))))) & (all x1 - p(x1)) & (all x2 q(x2))).
+
+Child search process 25552 started.
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+p(x) | p(f2(x)).  [assumption].
+-p(f1(x)) | -p(x).  [assumption].
+-p(f1(x)) | p(f2(x)).  [assumption].
+-q(x).  [assumption].
+p(x).  [assumption].
+-q(c1) | q(x).  [assumption].
+q(c1) | -q(x).  [assumption].
+-p(x).  [assumption].
+q(x).  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ p, q ]).
+Function symbol precedence:  function_order([ c1, f1, f2 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+kept:      1 p(x) | p(f2(x)).  [assumption].
+kept:      2 -p(f1(x)) | -p(x).  [assumption].
+kept:      3 -p(f1(x)) | p(f2(x)).  [assumption].
+kept:      4 -q(x).  [assumption].
+kept:      5 p(x).  [assumption].
+           6 -q(c1) | q(x).  [assumption].
+           7 q(c1) | -q(x).  [assumption].
+           8 -p(x).  [assumption].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 3.
+% Level of proof is 1.
+% Maximum clause weight is 2.000.
+% Given clauses 0.
+
+5 p(x).  [assumption].
+8 -p(x).  [assumption].
+9 $F.  [copy(8),unit_del(a,5)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=0. Generated=8. Kept=5. proofs=1.
+Usable=0. Sos=0. Demods=0. Limbo=5, Disabled=8. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=2. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.10.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=1.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+Exiting with 1 proof.
+
+Process 25552 exit (max_proofs) Tue Nov  3 17:07:38 2009
+
+============================== continuing FOF reduction multisearch ==
+
+Subproblem 15 of 32 (negated):
+((all x ((p(x) & (exists y (- p(y)))) | (- p(x) & (exists y (p(y)))))) & (all u - q(u)) & (all v p(v)) & (all w ((- q(w) & (exists z (q(z)))) | (q(w) & (exists z (- q(z)))))) & (exists x1 p(x1)) & (all x2 q(x2))).
+
+Child search process 25553 started.
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+p(x) | p(f2(x)).  [assumption].
+-p(f1(x)) | -p(x).  [assumption].
+-p(f1(x)) | p(f2(x)).  [assumption].
+-q(x).  [assumption].
+p(x).  [assumption].
+-q(x) | -q(f4(x)).  [assumption].
+q(f3(x)) | q(x).  [assumption].
+q(f3(x)) | -q(f4(x)).  [assumption].
+p(c1).  [assumption].
+q(x).  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ p, q ]).
+Function symbol precedence:  function_order([ c1, f1, f2, f3, f4 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+kept:      1 p(x) | p(f2(x)).  [assumption].
+kept:      2 -p(f1(x)) | -p(x).  [assumption].
+kept:      3 -p(f1(x)) | p(f2(x)).  [assumption].
+kept:      4 -q(x).  [assumption].
+kept:      5 p(x).  [assumption].
+           6 q(f3(x)) | q(x).  [assumption].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 3.
+% Level of proof is 1.
+% Maximum clause weight is 2.000.
+% Given clauses 0.
+
+4 -q(x).  [assumption].
+6 q(f3(x)) | q(x).  [assumption].
+7 $F.  [copy(6),unit_del(a,4),unit_del(b,4)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=0. Generated=7. Kept=5. proofs=1.
+Usable=0. Sos=0. Demods=0. Limbo=5, Disabled=7. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=1. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.10.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=1.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+Exiting with 1 proof.
+
+Process 25553 exit (max_proofs) Tue Nov  3 17:07:38 2009
+
+============================== continuing FOF reduction multisearch ==
+
+Subproblem 16 of 32 (negated):
+((all x ((p(x) & (exists y (- p(y)))) | (- p(x) & (exists y (p(y)))))) & (all u - q(u)) & (all v p(v)) & (all w ((- q(w) & (exists z (q(z)))) | (q(w) & (exists z (- q(z)))))) & (all x1 - p(x1)) & (exists x2 - q(x2))).
+
+Child search process 25554 started.
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+p(x) | p(f2(x)).  [assumption].
+-p(f1(x)) | -p(x).  [assumption].
+-p(f1(x)) | p(f2(x)).  [assumption].
+-q(x).  [assumption].
+p(x).  [assumption].
+-q(x) | -q(f4(x)).  [assumption].
+q(f3(x)) | q(x).  [assumption].
+q(f3(x)) | -q(f4(x)).  [assumption].
+-p(x).  [assumption].
+-q(c1).  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ p, q ]).
+Function symbol precedence:  function_order([ c1, f1, f2, f3, f4 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+kept:      1 p(x) | p(f2(x)).  [assumption].
+kept:      2 -p(f1(x)) | -p(x).  [assumption].
+kept:      3 -p(f1(x)) | p(f2(x)).  [assumption].
+kept:      4 -q(x).  [assumption].
+kept:      5 p(x).  [assumption].
+           6 q(f3(x)) | q(x).  [assumption].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 3.
+% Level of proof is 1.
+% Maximum clause weight is 2.000.
+% Given clauses 0.
+
+4 -q(x).  [assumption].
+6 q(f3(x)) | q(x).  [assumption].
+7 $F.  [copy(6),unit_del(a,4),unit_del(b,4)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=0. Generated=7. Kept=5. proofs=1.
+Usable=0. Sos=0. Demods=0. Limbo=5, Disabled=7. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=1. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.10.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=1.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+Exiting with 1 proof.
+
+Process 25554 exit (max_proofs) Tue Nov  3 17:07:38 2009
+
+============================== continuing FOF reduction multisearch ==
+
+Subproblem 17 of 32 (negated):
+((exists x ((p(x) | (all y (- p(y)))) & (- p(x) | (all y (p(y)))))) & (exists u q(u)) & (exists v - p(v)) & (exists w ((- q(w) | (all z (q(z)))) & (q(w) | (all z (- q(z)))))) & (exists x1 p(x1)) & (all x2 q(x2))).
+
+Child search process 25555 started.
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+p(c1) | -p(x).  [assumption].
+-p(c1) | p(x).  [assumption].
+q(c2).  [assumption].
+-p(c3).  [assumption].
+-q(c4) | q(x).  [assumption].
+q(c4) | -q(x).  [assumption].
+p(c5).  [assumption].
+q(x).  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ q, p ]).
+Function symbol precedence:  function_order([ c1, c2, c3, c4, c5 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(neg_binary_resolution).  % (HNE depth_diff=0)
+  % clear(ordered_res).  % (HNE depth_diff=0)
+  % set(ur_resolution).  % (HNE depth_diff=0)
+    % set(ur_resolution) -> set(pos_ur_resolution).
+    % set(ur_resolution) -> set(neg_ur_resolution).
+
+Auto_process settings:  (no changes).
+
+kept:      1 p(c1) | -p(x).  [assumption].
+kept:      2 -p(c1) | p(x).  [assumption].
+kept:      3 q(c2).  [assumption].
+kept:      4 -p(c3).  [assumption].
+kept:      5 -q(c4) | q(x).  [assumption].
+kept:      6 q(c4) | -q(x).  [assumption].
+kept:      7 p(c5).  [assumption].
+kept:      8 q(x).  [assumption].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+1 p(c1) | -p(x).  [assumption].
+2 -p(c1) | p(x).  [assumption].
+4 -p(c3).  [assumption].
+7 p(c5).  [assumption].
+8 q(x).  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.00 seconds.
+
+given #1 (I,wt=4): 1 p(c1) | -p(x).  [assumption].
+
+given #2 (I,wt=4): 2 -p(c1) | p(x).  [assumption].
+
+given #3 (I,wt=2): 4 -p(c3).  [assumption].
+
+given #4 (I,wt=2): 7 p(c5).  [assumption].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 7.
+% Level of proof is 2.
+% Maximum clause weight is 4.000.
+% Given clauses 4.
+
+1 p(c1) | -p(x).  [assumption].
+2 -p(c1) | p(x).  [assumption].
+4 -p(c3).  [assumption].
+7 p(c5).  [assumption].
+9 -p(c1).  [resolve(4,a,2,b)].
+10 p(c1).  [ur(1,b,7,a)].
+11 $F.  [resolve(10,a,9,a)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=4. Generated=11. Kept=10. proofs=1.
+Usable=3. Sos=2. Demods=0. Limbo=0, Disabled=12. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=1. Back_subsumed=4.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=7.
+Megabytes=0.11.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=1.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+Exiting with 1 proof.
+
+Process 25555 exit (max_proofs) Tue Nov  3 17:07:38 2009
+
+============================== continuing FOF reduction multisearch ==
+
+Subproblem 18 of 32 (negated):
+((exists x ((p(x) | (all y (- p(y)))) & (- p(x) | (all y (p(y)))))) & (exists u q(u)) & (exists v - p(v)) & (exists w ((- q(w) | (all z (q(z)))) & (q(w) | (all z (- q(z)))))) & (all x1 - p(x1)) & (exists x2 - q(x2))).
+
+Child search process 25556 started.
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+p(c1) | -p(x).  [assumption].
+-p(c1) | p(x).  [assumption].
+q(c2).  [assumption].
+-p(c3).  [assumption].
+-q(c4) | q(x).  [assumption].
+q(c4) | -q(x).  [assumption].
+-p(x).  [assumption].
+-q(c5).  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ q, p ]).
+Function symbol precedence:  function_order([ c1, c2, c3, c4, c5 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(neg_binary_resolution).  % (HNE depth_diff=0)
+  % clear(ordered_res).  % (HNE depth_diff=0)
+  % set(ur_resolution).  % (HNE depth_diff=0)
+    % set(ur_resolution) -> set(pos_ur_resolution).
+    % set(ur_resolution) -> set(neg_ur_resolution).
+
+Auto_process settings:  (no changes).
+
+kept:      1 p(c1) | -p(x).  [assumption].
+kept:      2 -p(c1) | p(x).  [assumption].
+kept:      3 q(c2).  [assumption].
+kept:      4 -p(c3).  [assumption].
+kept:      5 -q(c4) | q(x).  [assumption].
+kept:      6 q(c4) | -q(x).  [assumption].
+kept:      7 -p(x).  [assumption].
+kept:      8 -q(c5).  [assumption].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+3 q(c2).  [assumption].
+5 -q(c4) | q(x).  [assumption].
+6 q(c4) | -q(x).  [assumption].
+7 -p(x).  [assumption].
+8 -q(c5).  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.00 seconds.
+
+given #1 (I,wt=2): 3 q(c2).  [assumption].
+
+given #2 (I,wt=4): 5 -q(c4) | q(x).  [assumption].
+
+given #3 (I,wt=4): 6 q(c4) | -q(x).  [assumption].
+
+given #4 (I,wt=2): 7 -p(x).  [assumption].
+
+given #5 (I,wt=2): 8 -q(c5).  [assumption].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 7.
+% Level of proof is 2.
+% Maximum clause weight is 4.000.
+% Given clauses 5.
+
+3 q(c2).  [assumption].
+5 -q(c4) | q(x).  [assumption].
+6 q(c4) | -q(x).  [assumption].
+8 -q(c5).  [assumption].
+9 q(c4).  [ur(6,b,3,a)].
+10 -q(c4).  [resolve(8,a,5,b)].
+11 $F.  [resolve(10,a,9,a)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=5. Generated=10. Kept=10. proofs=1.
+Usable=4. Sos=1. Demods=0. Limbo=0, Disabled=12. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=0. Back_subsumed=4.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=7.
+Megabytes=0.11.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=1.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+Exiting with 1 proof.
+
+Process 25556 exit (max_proofs) Tue Nov  3 17:07:38 2009
+
+============================== continuing FOF reduction multisearch ==
+
+Subproblem 19 of 32 (negated):
+((exists x ((p(x) | (all y (- p(y)))) & (- p(x) | (all y (p(y)))))) & (exists u q(u)) & (exists v - p(v)) & (all w ((- q(w) & (exists z (q(z)))) | (q(w) & (exists z (- q(z)))))) & (exists x1 p(x1)) & (exists x2 - q(x2))).
+
+Child search process 25557 started.
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+p(c1) | -p(x).  [assumption].
+-p(c1) | p(x).  [assumption].
+q(c2).  [assumption].
+-p(c3).  [assumption].
+-q(x) | -q(f2(x)).  [assumption].
+q(f1(x)) | q(x).  [assumption].
+q(f1(x)) | -q(f2(x)).  [assumption].
+p(c4).  [assumption].
+-q(c5).  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ p, q ]).
+Function symbol precedence:  function_order([ c1, c2, c3, c4, c5, f1, f2 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+kept:      1 p(c1) | -p(x).  [assumption].
+kept:      2 -p(c1) | p(x).  [assumption].
+kept:      3 q(c2).  [assumption].
+kept:      4 -p(c3).  [assumption].
+kept:      5 -q(x) | -q(f2(x)).  [assumption].
+kept:      6 q(f1(x)) | q(x).  [assumption].
+kept:      7 q(f1(x)) | -q(f2(x)).  [assumption].
+kept:      8 p(c4).  [assumption].
+kept:      9 -q(c5).  [assumption].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+1 p(c1) | -p(x).  [assumption].
+2 -p(c1) | p(x).  [assumption].
+3 q(c2).  [assumption].
+4 -p(c3).  [assumption].
+5 -q(x) | -q(f2(x)).  [assumption].
+6 q(f1(x)) | q(x).  [assumption].
+7 q(f1(x)) | -q(f2(x)).  [assumption].
+8 p(c4).  [assumption].
+9 -q(c5).  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.00 seconds.
+
+given #1 (I,wt=4): 1 p(c1) | -p(x).  [assumption].
+
+given #2 (I,wt=4): 2 -p(c1) | p(x).  [assumption].
+
+given #3 (I,wt=2): 3 q(c2).  [assumption].
+
+given #4 (I,wt=2): 4 -p(c3).  [assumption].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 7.
+% Level of proof is 3.
+% Maximum clause weight is 4.000.
+% Given clauses 4.
+
+1 p(c1) | -p(x).  [assumption].
+2 -p(c1) | p(x).  [assumption].
+4 -p(c3).  [assumption].
+8 p(c4).  [assumption].
+10 -p(c1).  [ur(2,b,4,a)].
+11 -p(x).  [back_unit_del(1),unit_del(a,10)].
+12 $F.  [resolve(11,a,8,a)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=4. Generated=11. Kept=11. proofs=1.
+Usable=2. Sos=5. Demods=0. Limbo=1, Disabled=11. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=0. Back_subsumed=1.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=1.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=6.
+Megabytes=0.11.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=1.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+Exiting with 1 proof.
+
+Process 25557 exit (max_proofs) Tue Nov  3 17:07:38 2009
+
+============================== continuing FOF reduction multisearch ==
+
+Subproblem 20 of 32 (negated):
+((exists x ((p(x) | (all y (- p(y)))) & (- p(x) | (all y (p(y)))))) & (exists u q(u)) & (exists v - p(v)) & (all w ((- q(w) & (exists z (q(z)))) | (q(w) & (exists z (- q(z)))))) & (all x1 - p(x1)) & (all x2 q(x2))).
+
+Child search process 25558 started.
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+p(c1) | -p(x).  [assumption].
+-p(c1) | p(x).  [assumption].
+q(c2).  [assumption].
+-p(c3).  [assumption].
+-q(x) | -q(f2(x)).  [assumption].
+q(f1(x)) | q(x).  [assumption].
+q(f1(x)) | -q(f2(x)).  [assumption].
+-p(x).  [assumption].
+q(x).  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ q, p ]).
+Function symbol precedence:  function_order([ c1, c2, c3, f1, f2 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+kept:      1 p(c1) | -p(x).  [assumption].
+kept:      2 -p(c1) | p(x).  [assumption].
+kept:      3 q(c2).  [assumption].
+kept:      4 -p(c3).  [assumption].
+kept:      5 -q(x) | -q(f2(x)).  [assumption].
+kept:      6 q(f1(x)) | q(x).  [assumption].
+kept:      7 q(f1(x)) | -q(f2(x)).  [assumption].
+kept:      8 -p(x).  [assumption].
+kept:      9 q(x).  [assumption].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 3.
+% Level of proof is 1.
+% Maximum clause weight is 5.000.
+% Given clauses 0.
+
+5 -q(x) | -q(f2(x)).  [assumption].
+9 q(x).  [assumption].
+10 $F.  [back_unit_del(5),unit_del(a,9),unit_del(b,9)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=0. Generated=10. Kept=9. proofs=1.
+Usable=0. Sos=1. Demods=0. Limbo=1, Disabled=16. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=0. Back_subsumed=6.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=1.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=9.
+Megabytes=0.11.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=1.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+Exiting with 1 proof.
+
+Process 25558 exit (max_proofs) Tue Nov  3 17:07:38 2009
+
+============================== continuing FOF reduction multisearch ==
+
+Subproblem 21 of 32 (negated):
+((exists x ((p(x) | (all y (- p(y)))) & (- p(x) | (all y (p(y)))))) & (all u - q(u)) & (all v p(v)) & (exists w ((- q(w) | (all z (q(z)))) & (q(w) | (all z (- q(z)))))) & (exists x1 p(x1)) & (all x2 q(x2))).
+
+Child search process 25559 started.
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+p(c1) | -p(x).  [assumption].
+-p(c1) | p(x).  [assumption].
+-q(x).  [assumption].
+p(x).  [assumption].
+-q(c2) | q(x).  [assumption].
+q(c2) | -q(x).  [assumption].
+p(c3).  [assumption].
+q(x).  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ p, q ]).
+Function symbol precedence:  function_order([ c1, c2, c3 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(neg_binary_resolution).  % (HNE depth_diff=0)
+  % clear(ordered_res).  % (HNE depth_diff=0)
+  % set(ur_resolution).  % (HNE depth_diff=0)
+    % set(ur_resolution) -> set(pos_ur_resolution).
+    % set(ur_resolution) -> set(neg_ur_resolution).
+
+Auto_process settings:  (no changes).
+
+kept:      1 p(c1) | -p(x).  [assumption].
+kept:      2 -p(c1) | p(x).  [assumption].
+kept:      3 -q(x).  [assumption].
+kept:      4 p(x).  [assumption].
+kept:      5 q(x).  [assumption].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 3.
+% Level of proof is 1.
+% Maximum clause weight is 2.000.
+% Given clauses 0.
+
+3 -q(x).  [assumption].
+5 q(x).  [assumption].
+6 $F.  [resolve(5,a,3,a)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=0. Generated=8. Kept=5. proofs=1.
+Usable=0. Sos=0. Demods=0. Limbo=4, Disabled=8. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=3. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.10.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=1.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+Exiting with 1 proof.
+
+Process 25559 exit (max_proofs) Tue Nov  3 17:07:38 2009
+
+============================== continuing FOF reduction multisearch ==
+
+Subproblem 22 of 32 (negated):
+((exists x ((p(x) | (all y (- p(y)))) & (- p(x) | (all y (p(y)))))) & (all u - q(u)) & (all v p(v)) & (exists w ((- q(w) | (all z (q(z)))) & (q(w) | (all z (- q(z)))))) & (all x1 - p(x1)) & (exists x2 - q(x2))).
+
+Child search process 25560 started.
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+p(c1) | -p(x).  [assumption].
+-p(c1) | p(x).  [assumption].
+-q(x).  [assumption].
+p(x).  [assumption].
+-q(c2) | q(x).  [assumption].
+q(c2) | -q(x).  [assumption].
+-p(x).  [assumption].
+-q(c3).  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ p, q ]).
+Function symbol precedence:  function_order([ c1, c2, c3 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(neg_binary_resolution).  % (HNE depth_diff=0)
+  % clear(ordered_res).  % (HNE depth_diff=0)
+  % set(ur_resolution).  % (HNE depth_diff=0)
+    % set(ur_resolution) -> set(pos_ur_resolution).
+    % set(ur_resolution) -> set(neg_ur_resolution).
+
+Auto_process settings:  (no changes).
+
+kept:      1 p(c1) | -p(x).  [assumption].
+kept:      2 -p(c1) | p(x).  [assumption].
+kept:      3 -q(x).  [assumption].
+kept:      4 p(x).  [assumption].
+kept:      5 -p(x).  [assumption].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 3.
+% Level of proof is 1.
+% Maximum clause weight is 2.000.
+% Given clauses 0.
+
+4 p(x).  [assumption].
+5 -p(x).  [assumption].
+6 $F.  [resolve(5,a,4,a)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=0. Generated=7. Kept=5. proofs=1.
+Usable=0. Sos=0. Demods=0. Limbo=4, Disabled=7. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=2. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.10.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=1.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+Exiting with 1 proof.
+
+Process 25560 exit (max_proofs) Tue Nov  3 17:07:38 2009
+
+============================== continuing FOF reduction multisearch ==
+
+Subproblem 23 of 32 (negated):
+((exists x ((p(x) | (all y (- p(y)))) & (- p(x) | (all y (p(y)))))) & (all u - q(u)) & (all v p(v)) & (all w ((- q(w) & (exists z (q(z)))) | (q(w) & (exists z (- q(z)))))) & (exists x1 p(x1)) & (exists x2 - q(x2))).
+
+Child search process 25561 started.
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+p(c1) | -p(x).  [assumption].
+-p(c1) | p(x).  [assumption].
+-q(x).  [assumption].
+p(x).  [assumption].
+-q(x) | -q(f2(x)).  [assumption].
+q(f1(x)) | q(x).  [assumption].
+q(f1(x)) | -q(f2(x)).  [assumption].
+p(c2).  [assumption].
+-q(c3).  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ p, q ]).
+Function symbol precedence:  function_order([ c1, c2, c3, f1, f2 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+kept:      1 p(c1) | -p(x).  [assumption].
+kept:      2 -p(c1) | p(x).  [assumption].
+kept:      3 -q(x).  [assumption].
+kept:      4 p(x).  [assumption].
+           5 q(f1(x)) | q(x).  [assumption].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 3.
+% Level of proof is 1.
+% Maximum clause weight is 2.000.
+% Given clauses 0.
+
+3 -q(x).  [assumption].
+5 q(f1(x)) | q(x).  [assumption].
+6 $F.  [copy(5),unit_del(a,3),unit_del(b,3)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=0. Generated=6. Kept=4. proofs=1.
+Usable=0. Sos=0. Demods=0. Limbo=4, Disabled=6. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=1. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.10.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=1.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+Exiting with 1 proof.
+
+Process 25561 exit (max_proofs) Tue Nov  3 17:07:38 2009
+
+============================== continuing FOF reduction multisearch ==
+
+Subproblem 24 of 32 (negated):
+((exists x ((p(x) | (all y (- p(y)))) & (- p(x) | (all y (p(y)))))) & (all u - q(u)) & (all v p(v)) & (all w ((- q(w) & (exists z (q(z)))) | (q(w) & (exists z (- q(z)))))) & (all x1 - p(x1)) & (all x2 q(x2))).
+
+Child search process 25562 started.
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+p(c1) | -p(x).  [assumption].
+-p(c1) | p(x).  [assumption].
+-q(x).  [assumption].
+p(x).  [assumption].
+-q(x) | -q(f2(x)).  [assumption].
+q(f1(x)) | q(x).  [assumption].
+q(f1(x)) | -q(f2(x)).  [assumption].
+-p(x).  [assumption].
+q(x).  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ p, q ]).
+Function symbol precedence:  function_order([ c1, f1, f2 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+kept:      1 p(c1) | -p(x).  [assumption].
+kept:      2 -p(c1) | p(x).  [assumption].
+kept:      3 -q(x).  [assumption].
+kept:      4 p(x).  [assumption].
+           5 q(f1(x)) | q(x).  [assumption].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 3.
+% Level of proof is 1.
+% Maximum clause weight is 2.000.
+% Given clauses 0.
+
+3 -q(x).  [assumption].
+5 q(f1(x)) | q(x).  [assumption].
+6 $F.  [copy(5),unit_del(a,3),unit_del(b,3)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=0. Generated=6. Kept=4. proofs=1.
+Usable=0. Sos=0. Demods=0. Limbo=4, Disabled=6. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=1. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.10.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=1.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+Exiting with 1 proof.
+
+Process 25562 exit (max_proofs) Tue Nov  3 17:07:38 2009
+
+============================== continuing FOF reduction multisearch ==
+
+Subproblem 25 of 32 (negated):
+((all x ((p(x) & (exists y (- p(y)))) | (- p(x) & (exists y (p(y)))))) & (exists u q(u)) & (all v p(v)) & (exists w ((- q(w) | (all z (q(z)))) & (q(w) | (all z (- q(z)))))) & (exists x1 p(x1)) & (all x2 q(x2))).
+
+Child search process 25563 started.
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+p(x) | p(f2(x)).  [assumption].
+-p(f1(x)) | -p(x).  [assumption].
+-p(f1(x)) | p(f2(x)).  [assumption].
+q(c1).  [assumption].
+p(x).  [assumption].
+-q(c2) | q(x).  [assumption].
+q(c2) | -q(x).  [assumption].
+p(c3).  [assumption].
+q(x).  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ p, q ]).
+Function symbol precedence:  function_order([ c1, c2, c3, f1, f2 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+kept:      1 p(x) | p(f2(x)).  [assumption].
+kept:      2 -p(f1(x)) | -p(x).  [assumption].
+kept:      3 -p(f1(x)) | p(f2(x)).  [assumption].
+kept:      4 q(c1).  [assumption].
+kept:      5 p(x).  [assumption].
+kept:      6 -q(c2) | q(x).  [assumption].
+kept:      7 q(c2) | -q(x).  [assumption].
+kept:      8 q(x).  [assumption].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 3.
+% Level of proof is 1.
+% Maximum clause weight is 5.000.
+% Given clauses 0.
+
+2 -p(f1(x)) | -p(x).  [assumption].
+5 p(x).  [assumption].
+9 $F.  [back_unit_del(2),unit_del(a,5),unit_del(b,5)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=0. Generated=10. Kept=8. proofs=1.
+Usable=0. Sos=1. Demods=0. Limbo=4, Disabled=12. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=1. Back_subsumed=2.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=1.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=5.
+Megabytes=0.11.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=1.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+Exiting with 1 proof.
+
+Process 25563 exit (max_proofs) Tue Nov  3 17:07:38 2009
+
+============================== continuing FOF reduction multisearch ==
+
+Subproblem 26 of 32 (negated):
+((all x ((p(x) & (exists y (- p(y)))) | (- p(x) & (exists y (p(y)))))) & (exists u q(u)) & (all v p(v)) & (exists w ((- q(w) | (all z (q(z)))) & (q(w) | (all z (- q(z)))))) & (all x1 - p(x1)) & (exists x2 - q(x2))).
+
+Child search process 25564 started.
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+p(x) | p(f2(x)).  [assumption].
+-p(f1(x)) | -p(x).  [assumption].
+-p(f1(x)) | p(f2(x)).  [assumption].
+q(c1).  [assumption].
+p(x).  [assumption].
+-q(c2) | q(x).  [assumption].
+q(c2) | -q(x).  [assumption].
+-p(x).  [assumption].
+-q(c3).  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ p, q ]).
+Function symbol precedence:  function_order([ c1, c2, c3, f1, f2 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+kept:      1 p(x) | p(f2(x)).  [assumption].
+kept:      2 -p(f1(x)) | -p(x).  [assumption].
+kept:      3 -p(f1(x)) | p(f2(x)).  [assumption].
+kept:      4 q(c1).  [assumption].
+kept:      5 p(x).  [assumption].
+kept:      6 -q(c2) | q(x).  [assumption].
+kept:      7 q(c2) | -q(x).  [assumption].
+           8 -p(x).  [assumption].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 3.
+% Level of proof is 1.
+% Maximum clause weight is 2.000.
+% Given clauses 0.
+
+5 p(x).  [assumption].
+8 -p(x).  [assumption].
+9 $F.  [copy(8),unit_del(a,5)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=0. Generated=8. Kept=7. proofs=1.
+Usable=0. Sos=0. Demods=0. Limbo=7, Disabled=8. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=0. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.11.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=1.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+Exiting with 1 proof.
+
+Process 25564 exit (max_proofs) Tue Nov  3 17:07:38 2009
+
+============================== continuing FOF reduction multisearch ==
+
+Subproblem 27 of 32 (negated):
+((all x ((p(x) & (exists y (- p(y)))) | (- p(x) & (exists y (p(y)))))) & (exists u q(u)) & (all v p(v)) & (all w ((- q(w) & (exists z (q(z)))) | (q(w) & (exists z (- q(z)))))) & (exists x1 p(x1)) & (exists x2 - q(x2))).
+
+Child search process 25565 started.
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+p(x) | p(f2(x)).  [assumption].
+-p(f1(x)) | -p(x).  [assumption].
+-p(f1(x)) | p(f2(x)).  [assumption].
+q(c1).  [assumption].
+p(x).  [assumption].
+-q(x) | -q(f4(x)).  [assumption].
+q(f3(x)) | q(x).  [assumption].
+q(f3(x)) | -q(f4(x)).  [assumption].
+p(c2).  [assumption].
+-q(c3).  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ p, q ]).
+Function symbol precedence:  function_order([ c1, c2, c3, f1, f2, f3, f4 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+kept:      1 p(x) | p(f2(x)).  [assumption].
+kept:      2 -p(f1(x)) | -p(x).  [assumption].
+kept:      3 -p(f1(x)) | p(f2(x)).  [assumption].
+kept:      4 q(c1).  [assumption].
+kept:      5 p(x).  [assumption].
+kept:      6 -q(x) | -q(f4(x)).  [assumption].
+kept:      7 q(f3(x)) | q(x).  [assumption].
+kept:      8 q(f3(x)) | -q(f4(x)).  [assumption].
+kept:      9 -q(c3).  [assumption].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 3.
+% Level of proof is 1.
+% Maximum clause weight is 5.000.
+% Given clauses 0.
+
+2 -p(f1(x)) | -p(x).  [assumption].
+5 p(x).  [assumption].
+10 $F.  [back_unit_del(2),unit_del(a,5),unit_del(b,5)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=0. Generated=11. Kept=9. proofs=1.
+Usable=0. Sos=1. Demods=0. Limbo=5, Disabled=13. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=1. Back_subsumed=2.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=1.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=5.
+Megabytes=0.11.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=1.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+Exiting with 1 proof.
+
+Process 25565 exit (max_proofs) Tue Nov  3 17:07:38 2009
+
+============================== continuing FOF reduction multisearch ==
+
+Subproblem 28 of 32 (negated):
+((all x ((p(x) & (exists y (- p(y)))) | (- p(x) & (exists y (p(y)))))) & (exists u q(u)) & (all v p(v)) & (all w ((- q(w) & (exists z (q(z)))) | (q(w) & (exists z (- q(z)))))) & (all x1 - p(x1)) & (all x2 q(x2))).
+
+Child search process 25566 started.
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+p(x) | p(f2(x)).  [assumption].
+-p(f1(x)) | -p(x).  [assumption].
+-p(f1(x)) | p(f2(x)).  [assumption].
+q(c1).  [assumption].
+p(x).  [assumption].
+-q(x) | -q(f4(x)).  [assumption].
+q(f3(x)) | q(x).  [assumption].
+q(f3(x)) | -q(f4(x)).  [assumption].
+-p(x).  [assumption].
+q(x).  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ q, p ]).
+Function symbol precedence:  function_order([ c1, f1, f2, f3, f4 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+kept:      1 p(x) | p(f2(x)).  [assumption].
+kept:      2 -p(f1(x)) | -p(x).  [assumption].
+kept:      3 -p(f1(x)) | p(f2(x)).  [assumption].
+kept:      4 q(c1).  [assumption].
+kept:      5 p(x).  [assumption].
+kept:      6 -q(x) | -q(f4(x)).  [assumption].
+kept:      7 q(f3(x)) | q(x).  [assumption].
+kept:      8 q(f3(x)) | -q(f4(x)).  [assumption].
+           9 -p(x).  [assumption].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 3.
+% Level of proof is 1.
+% Maximum clause weight is 2.000.
+% Given clauses 0.
+
+5 p(x).  [assumption].
+9 -p(x).  [assumption].
+10 $F.  [copy(9),unit_del(a,5)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=0. Generated=9. Kept=8. proofs=1.
+Usable=0. Sos=0. Demods=0. Limbo=8, Disabled=9. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=0. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.11.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=1.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+Exiting with 1 proof.
+
+Process 25566 exit (max_proofs) Tue Nov  3 17:07:38 2009
+
+============================== continuing FOF reduction multisearch ==
+
+Subproblem 29 of 32 (negated):
+((all x ((p(x) & (exists y (- p(y)))) | (- p(x) & (exists y (p(y)))))) & (all u - q(u)) & (exists v - p(v)) & (exists w ((- q(w) | (all z (q(z)))) & (q(w) | (all z (- q(z)))))) & (exists x1 p(x1)) & (all x2 q(x2))).
+
+Child search process 25567 started.
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+p(x) | p(f2(x)).  [assumption].
+-p(f1(x)) | -p(x).  [assumption].
+-p(f1(x)) | p(f2(x)).  [assumption].
+-q(x).  [assumption].
+-p(c1).  [assumption].
+-q(c2) | q(x).  [assumption].
+q(c2) | -q(x).  [assumption].
+p(c3).  [assumption].
+q(x).  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ p, q ]).
+Function symbol precedence:  function_order([ c1, c2, c3, f1, f2 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+kept:      1 p(x) | p(f2(x)).  [assumption].
+kept:      2 -p(f1(x)) | -p(x).  [assumption].
+kept:      3 -p(f1(x)) | p(f2(x)).  [assumption].
+kept:      4 -q(x).  [assumption].
+kept:      5 -p(c1).  [assumption].
+           6 -q(c2) | q(x).  [assumption].
+           7 q(c2) | -q(x).  [assumption].
+kept:      8 p(c3).  [assumption].
+           9 q(x).  [assumption].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 3.
+% Level of proof is 1.
+% Maximum clause weight is 2.000.
+% Given clauses 0.
+
+4 -q(x).  [assumption].
+9 q(x).  [assumption].
+10 $F.  [copy(9),unit_del(a,4)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=0. Generated=9. Kept=6. proofs=1.
+Usable=0. Sos=0. Demods=0. Limbo=6, Disabled=9. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=2. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.11.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=1.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+Exiting with 1 proof.
+
+Process 25567 exit (max_proofs) Tue Nov  3 17:07:38 2009
+
+============================== continuing FOF reduction multisearch ==
+
+Subproblem 30 of 32 (negated):
+((all x ((p(x) & (exists y (- p(y)))) | (- p(x) & (exists y (p(y)))))) & (all u - q(u)) & (exists v - p(v)) & (exists w ((- q(w) | (all z (q(z)))) & (q(w) | (all z (- q(z)))))) & (all x1 - p(x1)) & (exists x2 - q(x2))).
+
+Child search process 25568 started.
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+p(x) | p(f2(x)).  [assumption].
+-p(f1(x)) | -p(x).  [assumption].
+-p(f1(x)) | p(f2(x)).  [assumption].
+-q(x).  [assumption].
+-p(c1).  [assumption].
+-q(c2) | q(x).  [assumption].
+q(c2) | -q(x).  [assumption].
+-p(x).  [assumption].
+-q(c3).  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ p, q ]).
+Function symbol precedence:  function_order([ c1, c2, c3, f1, f2 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+kept:      1 p(x) | p(f2(x)).  [assumption].
+kept:      2 -p(f1(x)) | -p(x).  [assumption].
+kept:      3 -p(f1(x)) | p(f2(x)).  [assumption].
+kept:      4 -q(x).  [assumption].
+kept:      5 -p(c1).  [assumption].
+           6 -q(c2) | q(x).  [assumption].
+           7 q(c2) | -q(x).  [assumption].
+kept:      8 -p(x).  [assumption].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 3.
+% Level of proof is 1.
+% Maximum clause weight is 5.000.
+% Given clauses 0.
+
+1 p(x) | p(f2(x)).  [assumption].
+8 -p(x).  [assumption].
+9 $F.  [back_unit_del(1),unit_del(a,8),unit_del(b,8)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=0. Generated=10. Kept=6. proofs=1.
+Usable=0. Sos=1. Demods=0. Limbo=1, Disabled=13. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=3. Back_subsumed=3.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=1.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=5.
+Megabytes=0.11.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=1.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+Exiting with 1 proof.
+
+Process 25568 exit (max_proofs) Tue Nov  3 17:07:38 2009
+
+============================== continuing FOF reduction multisearch ==
+
+Subproblem 31 of 32 (negated):
+((all x ((p(x) & (exists y (- p(y)))) | (- p(x) & (exists y (p(y)))))) & (all u - q(u)) & (exists v - p(v)) & (all w ((- q(w) & (exists z (q(z)))) | (q(w) & (exists z (- q(z)))))) & (exists x1 p(x1)) & (exists x2 - q(x2))).
+
+Child search process 25569 started.
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+p(x) | p(f2(x)).  [assumption].
+-p(f1(x)) | -p(x).  [assumption].
+-p(f1(x)) | p(f2(x)).  [assumption].
+-q(x).  [assumption].
+-p(c1).  [assumption].
+-q(x) | -q(f4(x)).  [assumption].
+q(f3(x)) | q(x).  [assumption].
+q(f3(x)) | -q(f4(x)).  [assumption].
+p(c2).  [assumption].
+-q(c3).  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ p, q ]).
+Function symbol precedence:  function_order([ c1, c2, c3, f1, f2, f3, f4 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+kept:      1 p(x) | p(f2(x)).  [assumption].
+kept:      2 -p(f1(x)) | -p(x).  [assumption].
+kept:      3 -p(f1(x)) | p(f2(x)).  [assumption].
+kept:      4 -q(x).  [assumption].
+kept:      5 -p(c1).  [assumption].
+           6 q(f3(x)) | q(x).  [assumption].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 3.
+% Level of proof is 1.
+% Maximum clause weight is 2.000.
+% Given clauses 0.
+
+4 -q(x).  [assumption].
+6 q(f3(x)) | q(x).  [assumption].
+7 $F.  [copy(6),unit_del(a,4),unit_del(b,4)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=0. Generated=7. Kept=5. proofs=1.
+Usable=0. Sos=0. Demods=0. Limbo=5, Disabled=7. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=1. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.11.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=1.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+Exiting with 1 proof.
+
+Process 25569 exit (max_proofs) Tue Nov  3 17:07:38 2009
+
+============================== continuing FOF reduction multisearch ==
+
+Subproblem 32 of 32 (negated):
+((all x ((p(x) & (exists y (- p(y)))) | (- p(x) & (exists y (p(y)))))) & (all u - q(u)) & (exists v - p(v)) & (all w ((- q(w) & (exists z (q(z)))) | (q(w) & (exists z (- q(z)))))) & (all x1 - p(x1)) & (all x2 q(x2))).
+
+Child search process 25570 started.
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+p(x) | p(f2(x)).  [assumption].
+-p(f1(x)) | -p(x).  [assumption].
+-p(f1(x)) | p(f2(x)).  [assumption].
+-q(x).  [assumption].
+-p(c1).  [assumption].
+-q(x) | -q(f4(x)).  [assumption].
+q(f3(x)) | q(x).  [assumption].
+q(f3(x)) | -q(f4(x)).  [assumption].
+-p(x).  [assumption].
+q(x).  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ q, p ]).
+Function symbol precedence:  function_order([ c1, f1, f2, f3, f4 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+kept:      1 p(x) | p(f2(x)).  [assumption].
+kept:      2 -p(f1(x)) | -p(x).  [assumption].
+kept:      3 -p(f1(x)) | p(f2(x)).  [assumption].
+kept:      4 -q(x).  [assumption].
+kept:      5 -p(c1).  [assumption].
+           6 q(f3(x)) | q(x).  [assumption].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 3.
+% Level of proof is 1.
+% Maximum clause weight is 2.000.
+% Given clauses 0.
+
+4 -q(x).  [assumption].
+6 q(f3(x)) | q(x).  [assumption].
+7 $F.  [copy(6),unit_del(a,4),unit_del(b,4)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=0. Generated=7. Kept=5. proofs=1.
+Usable=0. Sos=0. Demods=0. Limbo=5, Disabled=7. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=1. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.11.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=1.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+Exiting with 1 proof.
+
+Process 25570 exit (max_proofs) Tue Nov  3 17:07:38 2009
+
+============================== end of multisearch ====================
+
+All 32 subproblems have been proved, so we are done.
+
+Total user_CPU=0.04, system_CPU=0.02, wall_clock=1.
+
+THEOREM PROVED
+
+Exiting.
+
+Process 25538 exit (max_proofs) Tue Nov  3 17:07:38 2009

@@ -1,0 +1,691 @@
+;; ============================== prooftrans ============================
+;; FOF-Prover9 (32) version 2009-11A, November 2009.
+;; Process 23897 was started by mccune on cleo,
+;; Tue Nov  3 16:59:14 2009
+;; The command was "/home/mccune/LADR/bin/fof-prover9 -f ALG189+1.in".
+;; ============================== end of head ===========================
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(11 (input) (= (op (e0) (e0)) (e0)) NIL)
+(36 (input) (not (= (op (op (e0) (e0)) (e0)) (e0))) NIL)
+(37A (paramod 11 (1) 36 (1 1 1)) (not (= (op (e0) (e0)) (e0))) NIL)
+(37B (paramod 11 (1) 37A (1 1)) (not (= (e0) (e0))) NIL)
+(40 (instantiate 0 ((v0 . (e0)))) (= (e0) (e0)) NIL)
+(37 (resolve 37B () 40 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(12 (input) (= (op (e0) (e1)) (e3)) NIL)
+(27 (input) (= (op (e3) (e1)) (e0)) NIL)
+(36 (input) (not (= (op (op (e0) (e1)) (e1)) (e0))) NIL)
+(37A (paramod 12 (1) 36 (1 1 1)) (not (= (op (e3) (e1)) (e0))) NIL)
+(37B (paramod 27 (1) 37A (1 1)) (not (= (e0) (e0))) NIL)
+(40 (instantiate 0 ((v0 . (e0)))) (= (e0) (e0)) NIL)
+(37 (resolve 37B () 40 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(13 (input) (= (op (e0) (e2)) (e4)) NIL)
+(33 (input) (= (op (e4) (e2)) (e0)) NIL)
+(36 (input) (not (= (op (op (e0) (e2)) (e2)) (e0))) NIL)
+(37A (paramod 13 (1) 36 (1 1 1)) (not (= (op (e4) (e2)) (e0))) NIL)
+(37B (paramod 33 (1) 37A (1 1)) (not (= (e0) (e0))) NIL)
+(40 (instantiate 0 ((v0 . (e0)))) (= (e0) (e0)) NIL)
+(37 (resolve 37B () 40 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(14 (input) (= (op (e0) (e3)) (e2)) NIL)
+(24 (input) (= (op (e2) (e3)) (e0)) NIL)
+(36 (input) (not (= (op (op (e0) (e3)) (e3)) (e0))) NIL)
+(37A (paramod 14 (1) 36 (1 1 1)) (not (= (op (e2) (e3)) (e0))) NIL)
+(37B (paramod 24 (1) 37A (1 1)) (not (= (e0) (e0))) NIL)
+(40 (instantiate 0 ((v0 . (e0)))) (= (e0) (e0)) NIL)
+(37 (resolve 37B () 40 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(15 (input) (= (op (e0) (e4)) (e1)) NIL)
+(20 (input) (= (op (e1) (e4)) (e0)) NIL)
+(36 (input) (not (= (op (op (e0) (e4)) (e4)) (e0))) NIL)
+(37A (paramod 15 (1) 36 (1 1 1)) (not (= (op (e1) (e4)) (e0))) NIL)
+(37B (paramod 20 (1) 37A (1 1)) (not (= (e0) (e0))) NIL)
+(40 (instantiate 0 ((v0 . (e0)))) (= (e0) (e0)) NIL)
+(37 (resolve 37B () 40 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(16 (input) (= (op (e1) (e0)) (e2)) NIL)
+(21 (input) (= (op (e2) (e0)) (e1)) NIL)
+(36 (input) (not (= (op (op (e1) (e0)) (e0)) (e1))) NIL)
+(37A (paramod 16 (1) 36 (1 1 1)) (not (= (op (e2) (e0)) (e1))) NIL)
+(37B (paramod 21 (1) 37A (1 1)) (not (= (e1) (e1))) NIL)
+(40 (instantiate 0 ((v0 . (e1)))) (= (e1) (e1)) NIL)
+(37 (resolve 37B () 40 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(17 (input) (= (op (e1) (e1)) (e1)) NIL)
+(36 (input) (not (= (op (op (e1) (e1)) (e1)) (e1))) NIL)
+(37A (paramod 17 (1) 36 (1 1 1)) (not (= (op (e1) (e1)) (e1))) NIL)
+(37B (paramod 17 (1) 37A (1 1)) (not (= (e1) (e1))) NIL)
+(40 (instantiate 0 ((v0 . (e1)))) (= (e1) (e1)) NIL)
+(37 (resolve 37B () 40 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(18 (input) (= (op (e1) (e2)) (e3)) NIL)
+(28 (input) (= (op (e3) (e2)) (e1)) NIL)
+(36 (input) (not (= (op (op (e1) (e2)) (e2)) (e1))) NIL)
+(37A (paramod 18 (1) 36 (1 1 1)) (not (= (op (e3) (e2)) (e1))) NIL)
+(37B (paramod 28 (1) 37A (1 1)) (not (= (e1) (e1))) NIL)
+(40 (instantiate 0 ((v0 . (e1)))) (= (e1) (e1)) NIL)
+(37 (resolve 37B () 40 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(19 (input) (= (op (e1) (e3)) (e4)) NIL)
+(34 (input) (= (op (e4) (e3)) (e1)) NIL)
+(36 (input) (not (= (op (op (e1) (e3)) (e3)) (e1))) NIL)
+(37A (paramod 19 (1) 36 (1 1 1)) (not (= (op (e4) (e3)) (e1))) NIL)
+(37B (paramod 34 (1) 37A (1 1)) (not (= (e1) (e1))) NIL)
+(40 (instantiate 0 ((v0 . (e1)))) (= (e1) (e1)) NIL)
+(37 (resolve 37B () 40 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(15 (input) (= (op (e0) (e4)) (e1)) NIL)
+(20 (input) (= (op (e1) (e4)) (e0)) NIL)
+(36 (input) (not (= (op (op (e1) (e4)) (e4)) (e1))) NIL)
+(37A (paramod 20 (1) 36 (1 1 1)) (not (= (op (e0) (e4)) (e1))) NIL)
+(37B (paramod 15 (1) 37A (1 1)) (not (= (e1) (e1))) NIL)
+(40 (instantiate 0 ((v0 . (e1)))) (= (e1) (e1)) NIL)
+(37 (resolve 37B () 40 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(16 (input) (= (op (e1) (e0)) (e2)) NIL)
+(21 (input) (= (op (e2) (e0)) (e1)) NIL)
+(36 (input) (not (= (op (op (e2) (e0)) (e0)) (e2))) NIL)
+(37A (paramod 21 (1) 36 (1 1 1)) (not (= (op (e1) (e0)) (e2))) NIL)
+(37B (paramod 16 (1) 37A (1 1)) (not (= (e2) (e2))) NIL)
+(40 (instantiate 0 ((v0 . (e2)))) (= (e2) (e2)) NIL)
+(37 (resolve 37B () 40 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(22 (input) (= (op (e2) (e1)) (e4)) NIL)
+(32 (input) (= (op (e4) (e1)) (e2)) NIL)
+(36 (input) (not (= (op (op (e2) (e1)) (e1)) (e2))) NIL)
+(37A (paramod 22 (1) 36 (1 1 1)) (not (= (op (e4) (e1)) (e2))) NIL)
+(37B (paramod 32 (1) 37A (1 1)) (not (= (e2) (e2))) NIL)
+(40 (instantiate 0 ((v0 . (e2)))) (= (e2) (e2)) NIL)
+(37 (resolve 37B () 40 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(23 (input) (= (op (e2) (e2)) (e2)) NIL)
+(36 (input) (not (= (op (op (e2) (e2)) (e2)) (e2))) NIL)
+(37A (paramod 23 (1) 36 (1 1 1)) (not (= (op (e2) (e2)) (e2))) NIL)
+(37B (paramod 23 (1) 37A (1 1)) (not (= (e2) (e2))) NIL)
+(40 (instantiate 0 ((v0 . (e2)))) (= (e2) (e2)) NIL)
+(37 (resolve 37B () 40 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(14 (input) (= (op (e0) (e3)) (e2)) NIL)
+(24 (input) (= (op (e2) (e3)) (e0)) NIL)
+(36 (input) (not (= (op (op (e2) (e3)) (e3)) (e2))) NIL)
+(37A (paramod 24 (1) 36 (1 1 1)) (not (= (op (e0) (e3)) (e2))) NIL)
+(37B (paramod 14 (1) 37A (1 1)) (not (= (e2) (e2))) NIL)
+(40 (instantiate 0 ((v0 . (e2)))) (= (e2) (e2)) NIL)
+(37 (resolve 37B () 40 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(25 (input) (= (op (e2) (e4)) (e3)) NIL)
+(30 (input) (= (op (e3) (e4)) (e2)) NIL)
+(36 (input) (not (= (op (op (e2) (e4)) (e4)) (e2))) NIL)
+(37A (paramod 25 (1) 36 (1 1 1)) (not (= (op (e3) (e4)) (e2))) NIL)
+(37B (paramod 30 (1) 37A (1 1)) (not (= (e2) (e2))) NIL)
+(40 (instantiate 0 ((v0 . (e2)))) (= (e2) (e2)) NIL)
+(37 (resolve 37B () 40 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(26 (input) (= (op (e3) (e0)) (e4)) NIL)
+(31 (input) (= (op (e4) (e0)) (e3)) NIL)
+(36 (input) (not (= (op (op (e3) (e0)) (e0)) (e3))) NIL)
+(37A (paramod 26 (1) 36 (1 1 1)) (not (= (op (e4) (e0)) (e3))) NIL)
+(37B (paramod 31 (1) 37A (1 1)) (not (= (e3) (e3))) NIL)
+(40 (instantiate 0 ((v0 . (e3)))) (= (e3) (e3)) NIL)
+(37 (resolve 37B () 40 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(12 (input) (= (op (e0) (e1)) (e3)) NIL)
+(27 (input) (= (op (e3) (e1)) (e0)) NIL)
+(36 (input) (not (= (op (op (e3) (e1)) (e1)) (e3))) NIL)
+(37A (paramod 27 (1) 36 (1 1 1)) (not (= (op (e0) (e1)) (e3))) NIL)
+(37B (paramod 12 (1) 37A (1 1)) (not (= (e3) (e3))) NIL)
+(40 (instantiate 0 ((v0 . (e3)))) (= (e3) (e3)) NIL)
+(37 (resolve 37B () 40 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(18 (input) (= (op (e1) (e2)) (e3)) NIL)
+(28 (input) (= (op (e3) (e2)) (e1)) NIL)
+(36 (input) (not (= (op (op (e3) (e2)) (e2)) (e3))) NIL)
+(37A (paramod 28 (1) 36 (1 1 1)) (not (= (op (e1) (e2)) (e3))) NIL)
+(37B (paramod 18 (1) 37A (1 1)) (not (= (e3) (e3))) NIL)
+(40 (instantiate 0 ((v0 . (e3)))) (= (e3) (e3)) NIL)
+(37 (resolve 37B () 40 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(29 (input) (= (op (e3) (e3)) (e3)) NIL)
+(36 (input) (not (= (op (op (e3) (e3)) (e3)) (e3))) NIL)
+(37A (paramod 29 (1) 36 (1 1 1)) (not (= (op (e3) (e3)) (e3))) NIL)
+(37B (paramod 29 (1) 37A (1 1)) (not (= (e3) (e3))) NIL)
+(40 (instantiate 0 ((v0 . (e3)))) (= (e3) (e3)) NIL)
+(37 (resolve 37B () 40 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(25 (input) (= (op (e2) (e4)) (e3)) NIL)
+(30 (input) (= (op (e3) (e4)) (e2)) NIL)
+(36 (input) (not (= (op (op (e3) (e4)) (e4)) (e3))) NIL)
+(37A (paramod 30 (1) 36 (1 1 1)) (not (= (op (e2) (e4)) (e3))) NIL)
+(37B (paramod 25 (1) 37A (1 1)) (not (= (e3) (e3))) NIL)
+(40 (instantiate 0 ((v0 . (e3)))) (= (e3) (e3)) NIL)
+(37 (resolve 37B () 40 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(26 (input) (= (op (e3) (e0)) (e4)) NIL)
+(31 (input) (= (op (e4) (e0)) (e3)) NIL)
+(36 (input) (not (= (op (op (e4) (e0)) (e0)) (e4))) NIL)
+(37A (paramod 31 (1) 36 (1 1 1)) (not (= (op (e3) (e0)) (e4))) NIL)
+(37B (paramod 26 (1) 37A (1 1)) (not (= (e4) (e4))) NIL)
+(40 (instantiate 0 ((v0 . (e4)))) (= (e4) (e4)) NIL)
+(37 (resolve 37B () 40 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(22 (input) (= (op (e2) (e1)) (e4)) NIL)
+(32 (input) (= (op (e4) (e1)) (e2)) NIL)
+(36 (input) (not (= (op (op (e4) (e1)) (e1)) (e4))) NIL)
+(37A (paramod 32 (1) 36 (1 1 1)) (not (= (op (e2) (e1)) (e4))) NIL)
+(37B (paramod 22 (1) 37A (1 1)) (not (= (e4) (e4))) NIL)
+(40 (instantiate 0 ((v0 . (e4)))) (= (e4) (e4)) NIL)
+(37 (resolve 37B () 40 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(13 (input) (= (op (e0) (e2)) (e4)) NIL)
+(33 (input) (= (op (e4) (e2)) (e0)) NIL)
+(36 (input) (not (= (op (op (e4) (e2)) (e2)) (e4))) NIL)
+(37A (paramod 33 (1) 36 (1 1 1)) (not (= (op (e0) (e2)) (e4))) NIL)
+(37B (paramod 13 (1) 37A (1 1)) (not (= (e4) (e4))) NIL)
+(40 (instantiate 0 ((v0 . (e4)))) (= (e4) (e4)) NIL)
+(37 (resolve 37B () 40 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(19 (input) (= (op (e1) (e3)) (e4)) NIL)
+(34 (input) (= (op (e4) (e3)) (e1)) NIL)
+(36 (input) (not (= (op (op (e4) (e3)) (e3)) (e4))) NIL)
+(37A (paramod 34 (1) 36 (1 1 1)) (not (= (op (e1) (e3)) (e4))) NIL)
+(37B (paramod 19 (1) 37A (1 1)) (not (= (e4) (e4))) NIL)
+(40 (instantiate 0 ((v0 . (e4)))) (= (e4) (e4)) NIL)
+(37 (resolve 37B () 40 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(35 (input) (= (op (e4) (e4)) (e4)) NIL)
+(36 (input) (not (= (op (op (e4) (e4)) (e4)) (e4))) NIL)
+(37A (paramod 35 (1) 36 (1 1 1)) (not (= (op (e4) (e4)) (e4))) NIL)
+(37B (paramod 35 (1) 37A (1 1)) (not (= (e4) (e4))) NIL)
+(40 (instantiate 0 ((v0 . (e4)))) (= (e4) (e4)) NIL)
+(37 (resolve 37B () 40 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(11 (input) (= (op (e0) (e0)) (e0)) NIL)
+(36 (input) (not (= (op (op (e0) (e0)) (op (e0) (e0))) (e0))) NIL)
+(37A (paramod 11 (1) 36 (1 1 1)) (not (= (op (e0) (op (e0) (e0))) (e0))) NIL)
+(37B (paramod 11 (1) 37A (1 1 2)) (not (= (op (e0) (e0)) (e0))) NIL)
+(37C (paramod 11 (1) 37B (1 1)) (not (= (e0) (e0))) NIL)
+(41 (instantiate 0 ((v0 . (e0)))) (= (e0) (e0)) NIL)
+(37 (resolve 37C () 41 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(12 (input) (= (op (e0) (e1)) (e3)) NIL)
+(16 (input) (= (op (e1) (e0)) (e2)) NIL)
+(24 (input) (= (op (e2) (e3)) (e0)) NIL)
+(36 (input) (not (= (op (op (e1) (e0)) (op (e0) (e1))) (e0))) NIL)
+(37A (paramod 16 (1) 36 (1 1 1)) (not (= (op (e2) (op (e0) (e1))) (e0))) NIL)
+(37B (paramod 12 (1) 37A (1 1 2)) (not (= (op (e2) (e3)) (e0))) NIL)
+(37C (paramod 24 (1) 37B (1 1)) (not (= (e0) (e0))) NIL)
+(41 (instantiate 0 ((v0 . (e0)))) (= (e0) (e0)) NIL)
+(37 (resolve 37C () 41 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(13 (input) (= (op (e0) (e2)) (e4)) NIL)
+(20 (input) (= (op (e1) (e4)) (e0)) NIL)
+(21 (input) (= (op (e2) (e0)) (e1)) NIL)
+(36 (input) (not (= (op (op (e2) (e0)) (op (e0) (e2))) (e0))) NIL)
+(37A (paramod 21 (1) 36 (1 1 1)) (not (= (op (e1) (op (e0) (e2))) (e0))) NIL)
+(37B (paramod 13 (1) 37A (1 1 2)) (not (= (op (e1) (e4)) (e0))) NIL)
+(37C (paramod 20 (1) 37B (1 1)) (not (= (e0) (e0))) NIL)
+(41 (instantiate 0 ((v0 . (e0)))) (= (e0) (e0)) NIL)
+(37 (resolve 37C () 41 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(14 (input) (= (op (e0) (e3)) (e2)) NIL)
+(26 (input) (= (op (e3) (e0)) (e4)) NIL)
+(33 (input) (= (op (e4) (e2)) (e0)) NIL)
+(36 (input) (not (= (op (op (e3) (e0)) (op (e0) (e3))) (e0))) NIL)
+(37A (paramod 26 (1) 36 (1 1 1)) (not (= (op (e4) (op (e0) (e3))) (e0))) NIL)
+(37B (paramod 14 (1) 37A (1 1 2)) (not (= (op (e4) (e2)) (e0))) NIL)
+(37C (paramod 33 (1) 37B (1 1)) (not (= (e0) (e0))) NIL)
+(41 (instantiate 0 ((v0 . (e0)))) (= (e0) (e0)) NIL)
+(37 (resolve 37C () 41 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(15 (input) (= (op (e0) (e4)) (e1)) NIL)
+(27 (input) (= (op (e3) (e1)) (e0)) NIL)
+(31 (input) (= (op (e4) (e0)) (e3)) NIL)
+(36 (input) (not (= (op (op (e4) (e0)) (op (e0) (e4))) (e0))) NIL)
+(37A (paramod 31 (1) 36 (1 1 1)) (not (= (op (e3) (op (e0) (e4))) (e0))) NIL)
+(37B (paramod 15 (1) 37A (1 1 2)) (not (= (op (e3) (e1)) (e0))) NIL)
+(37C (paramod 27 (1) 37B (1 1)) (not (= (e0) (e0))) NIL)
+(41 (instantiate 0 ((v0 . (e0)))) (= (e0) (e0)) NIL)
+(37 (resolve 37C () 41 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(12 (input) (= (op (e0) (e1)) (e3)) NIL)
+(16 (input) (= (op (e1) (e0)) (e2)) NIL)
+(28 (input) (= (op (e3) (e2)) (e1)) NIL)
+(36 (input) (not (= (op (op (e0) (e1)) (op (e1) (e0))) (e1))) NIL)
+(37A (paramod 12 (1) 36 (1 1 1)) (not (= (op (e3) (op (e1) (e0))) (e1))) NIL)
+(37B (paramod 16 (1) 37A (1 1 2)) (not (= (op (e3) (e2)) (e1))) NIL)
+(37C (paramod 28 (1) 37B (1 1)) (not (= (e1) (e1))) NIL)
+(41 (instantiate 0 ((v0 . (e1)))) (= (e1) (e1)) NIL)
+(37 (resolve 37C () 41 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(17 (input) (= (op (e1) (e1)) (e1)) NIL)
+(36 (input) (not (= (op (op (e1) (e1)) (op (e1) (e1))) (e1))) NIL)
+(37A (paramod 17 (1) 36 (1 1 1)) (not (= (op (e1) (op (e1) (e1))) (e1))) NIL)
+(37B (paramod 17 (1) 37A (1 1 2)) (not (= (op (e1) (e1)) (e1))) NIL)
+(37C (paramod 17 (1) 37B (1 1)) (not (= (e1) (e1))) NIL)
+(41 (instantiate 0 ((v0 . (e1)))) (= (e1) (e1)) NIL)
+(37 (resolve 37C () 41 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(18 (input) (= (op (e1) (e2)) (e3)) NIL)
+(22 (input) (= (op (e2) (e1)) (e4)) NIL)
+(34 (input) (= (op (e4) (e3)) (e1)) NIL)
+(36 (input) (not (= (op (op (e2) (e1)) (op (e1) (e2))) (e1))) NIL)
+(37A (paramod 22 (1) 36 (1 1 1)) (not (= (op (e4) (op (e1) (e2))) (e1))) NIL)
+(37B (paramod 18 (1) 37A (1 1 2)) (not (= (op (e4) (e3)) (e1))) NIL)
+(37C (paramod 34 (1) 37B (1 1)) (not (= (e1) (e1))) NIL)
+(41 (instantiate 0 ((v0 . (e1)))) (= (e1) (e1)) NIL)
+(37 (resolve 37C () 41 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(15 (input) (= (op (e0) (e4)) (e1)) NIL)
+(19 (input) (= (op (e1) (e3)) (e4)) NIL)
+(27 (input) (= (op (e3) (e1)) (e0)) NIL)
+(36 (input) (not (= (op (op (e3) (e1)) (op (e1) (e3))) (e1))) NIL)
+(37A (paramod 27 (1) 36 (1 1 1)) (not (= (op (e0) (op (e1) (e3))) (e1))) NIL)
+(37B (paramod 19 (1) 37A (1 1 2)) (not (= (op (e0) (e4)) (e1))) NIL)
+(37C (paramod 15 (1) 37B (1 1)) (not (= (e1) (e1))) NIL)
+(41 (instantiate 0 ((v0 . (e1)))) (= (e1) (e1)) NIL)
+(37 (resolve 37C () 41 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(20 (input) (= (op (e1) (e4)) (e0)) NIL)
+(21 (input) (= (op (e2) (e0)) (e1)) NIL)
+(32 (input) (= (op (e4) (e1)) (e2)) NIL)
+(36 (input) (not (= (op (op (e4) (e1)) (op (e1) (e4))) (e1))) NIL)
+(37A (paramod 32 (1) 36 (1 1 1)) (not (= (op (e2) (op (e1) (e4))) (e1))) NIL)
+(37B (paramod 20 (1) 37A (1 1 2)) (not (= (op (e2) (e0)) (e1))) NIL)
+(37C (paramod 21 (1) 37B (1 1)) (not (= (e1) (e1))) NIL)
+(41 (instantiate 0 ((v0 . (e1)))) (= (e1) (e1)) NIL)
+(37 (resolve 37C () 41 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(13 (input) (= (op (e0) (e2)) (e4)) NIL)
+(21 (input) (= (op (e2) (e0)) (e1)) NIL)
+(32 (input) (= (op (e4) (e1)) (e2)) NIL)
+(36 (input) (not (= (op (op (e0) (e2)) (op (e2) (e0))) (e2))) NIL)
+(37A (paramod 13 (1) 36 (1 1 1)) (not (= (op (e4) (op (e2) (e0))) (e2))) NIL)
+(37B (paramod 21 (1) 37A (1 1 2)) (not (= (op (e4) (e1)) (e2))) NIL)
+(37C (paramod 32 (1) 37B (1 1)) (not (= (e2) (e2))) NIL)
+(41 (instantiate 0 ((v0 . (e2)))) (= (e2) (e2)) NIL)
+(37 (resolve 37C () 41 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(18 (input) (= (op (e1) (e2)) (e3)) NIL)
+(22 (input) (= (op (e2) (e1)) (e4)) NIL)
+(30 (input) (= (op (e3) (e4)) (e2)) NIL)
+(36 (input) (not (= (op (op (e1) (e2)) (op (e2) (e1))) (e2))) NIL)
+(37A (paramod 18 (1) 36 (1 1 1)) (not (= (op (e3) (op (e2) (e1))) (e2))) NIL)
+(37B (paramod 22 (1) 37A (1 1 2)) (not (= (op (e3) (e4)) (e2))) NIL)
+(37C (paramod 30 (1) 37B (1 1)) (not (= (e2) (e2))) NIL)
+(41 (instantiate 0 ((v0 . (e2)))) (= (e2) (e2)) NIL)
+(37 (resolve 37C () 41 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(23 (input) (= (op (e2) (e2)) (e2)) NIL)
+(36 (input) (not (= (op (op (e2) (e2)) (op (e2) (e2))) (e2))) NIL)
+(37A (paramod 23 (1) 36 (1 1 1)) (not (= (op (e2) (op (e2) (e2))) (e2))) NIL)
+(37B (paramod 23 (1) 37A (1 1 2)) (not (= (op (e2) (e2)) (e2))) NIL)
+(37C (paramod 23 (1) 37B (1 1)) (not (= (e2) (e2))) NIL)
+(41 (instantiate 0 ((v0 . (e2)))) (= (e2) (e2)) NIL)
+(37 (resolve 37C () 41 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(16 (input) (= (op (e1) (e0)) (e2)) NIL)
+(24 (input) (= (op (e2) (e3)) (e0)) NIL)
+(28 (input) (= (op (e3) (e2)) (e1)) NIL)
+(36 (input) (not (= (op (op (e3) (e2)) (op (e2) (e3))) (e2))) NIL)
+(37A (paramod 28 (1) 36 (1 1 1)) (not (= (op (e1) (op (e2) (e3))) (e2))) NIL)
+(37B (paramod 24 (1) 37A (1 1 2)) (not (= (op (e1) (e0)) (e2))) NIL)
+(37C (paramod 16 (1) 37B (1 1)) (not (= (e2) (e2))) NIL)
+(41 (instantiate 0 ((v0 . (e2)))) (= (e2) (e2)) NIL)
+(37 (resolve 37C () 41 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(14 (input) (= (op (e0) (e3)) (e2)) NIL)
+(25 (input) (= (op (e2) (e4)) (e3)) NIL)
+(33 (input) (= (op (e4) (e2)) (e0)) NIL)
+(36 (input) (not (= (op (op (e4) (e2)) (op (e2) (e4))) (e2))) NIL)
+(37A (paramod 33 (1) 36 (1 1 1)) (not (= (op (e0) (op (e2) (e4))) (e2))) NIL)
+(37B (paramod 25 (1) 37A (1 1 2)) (not (= (op (e0) (e3)) (e2))) NIL)
+(37C (paramod 14 (1) 37B (1 1)) (not (= (e2) (e2))) NIL)
+(41 (instantiate 0 ((v0 . (e2)))) (= (e2) (e2)) NIL)
+(37 (resolve 37C () 41 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(14 (input) (= (op (e0) (e3)) (e2)) NIL)
+(25 (input) (= (op (e2) (e4)) (e3)) NIL)
+(26 (input) (= (op (e3) (e0)) (e4)) NIL)
+(36 (input) (not (= (op (op (e0) (e3)) (op (e3) (e0))) (e3))) NIL)
+(37A (paramod 14 (1) 36 (1 1 1)) (not (= (op (e2) (op (e3) (e0))) (e3))) NIL)
+(37B (paramod 26 (1) 37A (1 1 2)) (not (= (op (e2) (e4)) (e3))) NIL)
+(37C (paramod 25 (1) 37B (1 1)) (not (= (e3) (e3))) NIL)
+(41 (instantiate 0 ((v0 . (e3)))) (= (e3) (e3)) NIL)
+(37 (resolve 37C () 41 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(19 (input) (= (op (e1) (e3)) (e4)) NIL)
+(27 (input) (= (op (e3) (e1)) (e0)) NIL)
+(31 (input) (= (op (e4) (e0)) (e3)) NIL)
+(36 (input) (not (= (op (op (e1) (e3)) (op (e3) (e1))) (e3))) NIL)
+(37A (paramod 19 (1) 36 (1 1 1)) (not (= (op (e4) (op (e3) (e1))) (e3))) NIL)
+(37B (paramod 27 (1) 37A (1 1 2)) (not (= (op (e4) (e0)) (e3))) NIL)
+(37C (paramod 31 (1) 37B (1 1)) (not (= (e3) (e3))) NIL)
+(41 (instantiate 0 ((v0 . (e3)))) (= (e3) (e3)) NIL)
+(37 (resolve 37C () 41 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(12 (input) (= (op (e0) (e1)) (e3)) NIL)
+(24 (input) (= (op (e2) (e3)) (e0)) NIL)
+(28 (input) (= (op (e3) (e2)) (e1)) NIL)
+(36 (input) (not (= (op (op (e2) (e3)) (op (e3) (e2))) (e3))) NIL)
+(37A (paramod 24 (1) 36 (1 1 1)) (not (= (op (e0) (op (e3) (e2))) (e3))) NIL)
+(37B (paramod 28 (1) 37A (1 1 2)) (not (= (op (e0) (e1)) (e3))) NIL)
+(37C (paramod 12 (1) 37B (1 1)) (not (= (e3) (e3))) NIL)
+(41 (instantiate 0 ((v0 . (e3)))) (= (e3) (e3)) NIL)
+(37 (resolve 37C () 41 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(29 (input) (= (op (e3) (e3)) (e3)) NIL)
+(36 (input) (not (= (op (op (e3) (e3)) (op (e3) (e3))) (e3))) NIL)
+(37A (paramod 29 (1) 36 (1 1 1)) (not (= (op (e3) (op (e3) (e3))) (e3))) NIL)
+(37B (paramod 29 (1) 37A (1 1 2)) (not (= (op (e3) (e3)) (e3))) NIL)
+(37C (paramod 29 (1) 37B (1 1)) (not (= (e3) (e3))) NIL)
+(41 (instantiate 0 ((v0 . (e3)))) (= (e3) (e3)) NIL)
+(37 (resolve 37C () 41 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(18 (input) (= (op (e1) (e2)) (e3)) NIL)
+(30 (input) (= (op (e3) (e4)) (e2)) NIL)
+(34 (input) (= (op (e4) (e3)) (e1)) NIL)
+(36 (input) (not (= (op (op (e4) (e3)) (op (e3) (e4))) (e3))) NIL)
+(37A (paramod 34 (1) 36 (1 1 1)) (not (= (op (e1) (op (e3) (e4))) (e3))) NIL)
+(37B (paramod 30 (1) 37A (1 1 2)) (not (= (op (e1) (e2)) (e3))) NIL)
+(37C (paramod 18 (1) 37B (1 1)) (not (= (e3) (e3))) NIL)
+(41 (instantiate 0 ((v0 . (e3)))) (= (e3) (e3)) NIL)
+(37 (resolve 37C () 41 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(15 (input) (= (op (e0) (e4)) (e1)) NIL)
+(19 (input) (= (op (e1) (e3)) (e4)) NIL)
+(31 (input) (= (op (e4) (e0)) (e3)) NIL)
+(36 (input) (not (= (op (op (e0) (e4)) (op (e4) (e0))) (e4))) NIL)
+(37A (paramod 15 (1) 36 (1 1 1)) (not (= (op (e1) (op (e4) (e0))) (e4))) NIL)
+(37B (paramod 31 (1) 37A (1 1 2)) (not (= (op (e1) (e3)) (e4))) NIL)
+(37C (paramod 19 (1) 37B (1 1)) (not (= (e4) (e4))) NIL)
+(41 (instantiate 0 ((v0 . (e4)))) (= (e4) (e4)) NIL)
+(37 (resolve 37C () 41 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(13 (input) (= (op (e0) (e2)) (e4)) NIL)
+(20 (input) (= (op (e1) (e4)) (e0)) NIL)
+(32 (input) (= (op (e4) (e1)) (e2)) NIL)
+(36 (input) (not (= (op (op (e1) (e4)) (op (e4) (e1))) (e4))) NIL)
+(37A (paramod 20 (1) 36 (1 1 1)) (not (= (op (e0) (op (e4) (e1))) (e4))) NIL)
+(37B (paramod 32 (1) 37A (1 1 2)) (not (= (op (e0) (e2)) (e4))) NIL)
+(37C (paramod 13 (1) 37B (1 1)) (not (= (e4) (e4))) NIL)
+(41 (instantiate 0 ((v0 . (e4)))) (= (e4) (e4)) NIL)
+(37 (resolve 37C () 41 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(25 (input) (= (op (e2) (e4)) (e3)) NIL)
+(26 (input) (= (op (e3) (e0)) (e4)) NIL)
+(33 (input) (= (op (e4) (e2)) (e0)) NIL)
+(36 (input) (not (= (op (op (e2) (e4)) (op (e4) (e2))) (e4))) NIL)
+(37A (paramod 25 (1) 36 (1 1 1)) (not (= (op (e3) (op (e4) (e2))) (e4))) NIL)
+(37B (paramod 33 (1) 37A (1 1 2)) (not (= (op (e3) (e0)) (e4))) NIL)
+(37C (paramod 26 (1) 37B (1 1)) (not (= (e4) (e4))) NIL)
+(41 (instantiate 0 ((v0 . (e4)))) (= (e4) (e4)) NIL)
+(37 (resolve 37C () 41 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(22 (input) (= (op (e2) (e1)) (e4)) NIL)
+(30 (input) (= (op (e3) (e4)) (e2)) NIL)
+(34 (input) (= (op (e4) (e3)) (e1)) NIL)
+(36 (input) (not (= (op (op (e3) (e4)) (op (e4) (e3))) (e4))) NIL)
+(37A (paramod 30 (1) 36 (1 1 1)) (not (= (op (e2) (op (e4) (e3))) (e4))) NIL)
+(37B (paramod 34 (1) 37A (1 1 2)) (not (= (op (e2) (e1)) (e4))) NIL)
+(37C (paramod 22 (1) 37B (1 1)) (not (= (e4) (e4))) NIL)
+(41 (instantiate 0 ((v0 . (e4)))) (= (e4) (e4)) NIL)
+(37 (resolve 37C () 41 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(35 (input) (= (op (e4) (e4)) (e4)) NIL)
+(36 (input) (not (= (op (op (e4) (e4)) (op (e4) (e4))) (e4))) NIL)
+(37A (paramod 35 (1) 36 (1 1 1)) (not (= (op (e4) (op (e4) (e4))) (e4))) NIL)
+(37B (paramod 35 (1) 37A (1 1 2)) (not (= (op (e4) (e4)) (e4))) NIL)
+(37C (paramod 35 (1) 37B (1 1)) (not (= (e4) (e4))) NIL)
+(41 (instantiate 0 ((v0 . (e4)))) (= (e4) (e4)) NIL)
+(37 (resolve 37C () 41 ()) false NIL)
+)
+;; END OF PROOF OBJECT

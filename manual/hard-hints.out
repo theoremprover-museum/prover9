@@ -1,0 +1,589 @@
+============================== Prover9 ===============================
+Prover9 (32) version 2009-11A, November 2009.
+Process 25586 was started by mccune on cleo,
+Tue Nov  3 17:08:07 2009
+The command was "/home/mccune/LADR/bin/prover9 -f hard.in easy.hints".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file hard.in
+
+assign(eq_defs,fold).
+set(restrict_denials).
+
+formulas(assumptions).
+f(x,y) = f(y,x).
+f(f(x,y),f(x,f(y,z))) = x.
+x' = f(x,x).
+end_of_list.
+
+formulas(goals).
+f(f(x,x),f(x,x)) = x # label(Sheffer_1).
+f(x,f(y,f(y,y))) = f(x,x) # label(Sheffer_2).
+f(f(f(y,y),x),f(f(z,z),x)) = f(f(x,f(y,z)),f(x,f(y,z))) # label(Sheffer_3).
+end_of_list.
+
+% Reading from file easy.hints
+
+
+formulas(hints).
+f(f(x,x),f(x,x)) = x # label(Sheffer_1) # label(non_clause) # label(goal).
+f(f(x,y),f(x,f(y,z))) = x.
+f(x,f(y,f(x',z))) = f(x,y').
+x' = f(x,x).
+f(x,x) = x'.
+f(f(c1,c1),f(c1,c1)) != c1 # label(Sheffer_1) # answer(Sheffer_1).
+c1'' != c1 # answer(Sheffer_1).
+f(f(x,y),f(x,y')) = x.
+f(x',f(x,x')) = x.
+f(x,f(y,x)) = f(x,y').
+x'' = x.
+$F # answer(Sheffer_1).
+f(x,f(y,f(y,y))) = f(x,x) # label(Sheffer_2) # label(non_clause) # label(goal).
+f(x,y) = f(y,x).
+f(c2,f(c3,f(c3,c3))) != f(c2,c2) # label(Sheffer_2) # answer(Sheffer_2).
+f(c2,f(c3,c3')) != c2' # answer(Sheffer_2).
+f(f(x,y),f(y,f(x,z))) = y.
+f(f(x,y),f(x,f(z,y))) = x.
+f(x',f(x,y)) = x.
+f(x',f(y,x)) = x.
+f(x,f(x,y)') = f(x,y).
+f(x,f(y,x)') = f(y,x).
+f(x,f(x,y)) = f(x,y').
+f(f(x,y),f(x,y)') = f(x',f(x,y)').
+f(x',f(y,x)') = f(y',f(y,x)').
+f(x',f(x,y)') = f(x,x').
+f(x',f(y,x)') = f(x,x').
+f(x,x') = f(y,y').
+f(x,f(y,y')) = x'.
+f(f(f(x,x),y),f(f(z,z),y)) = f(f(y,f(x,z)),f(y,f(x,z))) # label(Sheffer_3) # label(non_clause) # label(goal).
+f(f(f(c4,c4),c5),f(f(c6,c6),c5)) != f(f(c5,f(c4,c6)),f(c5,f(c4,c6))) # label(Sheffer_3) # answer(Sheffer_3).
+f(f(c5,c4'),f(c5,c6')) != f(c5,f(c4,c6))' # answer(Sheffer_3).
+f(f(x,y),f(f(y,z),x)) = x.
+f(x,f(f(x,y),f(f(x,f(y,z)),u))) = f(x,y).
+f(x,f(y,f(z,x'))) = f(x,y').
+f(x,f(f(x',y),z)) = f(x,z').
+f(x,f(x',y)') = f(x,x').
+f(f(x,y),f(f(x,z),y)) = y.
+f(f(x,y),f(y,x')) = y.
+f(f(f(x,y),z),f(z,y)) = z.
+f(x',f(y,f(x,z))) = f(x',y').
+f(f(x,y),f(f(z,y),x)) = x.
+f(x,f(f(x,y),f(y,z))) = f(x,y).
+f(x,f(f(x,f(y,z)),f(f(x,z),u))) = f(x,f(y,z)).
+f(f(x,f(y,z)),f(z,x)) = x.
+f(f(x,y),f(f(y,x'),f(y,z))) = f(y,x').
+f(f(x,y'),f(x,f(f(x,y),z))) = x.
+f(f(x,y'),f(x,f(z,f(x,y)))) = x.
+f(x',f(f(x,y),z)) = f(x',z').
+f(f(x,y)',f(f(x,z),y)) = f(y,f(x,z)').
+f(x,f(f(y,x'),z)') = f(x,z).
+f(f(f(x,y),z),f(z,y)') = f(z,f(x,y)').
+f(f(x,f(y,z')),f(f(y,z),x)) = x.
+f(x,f(f(x',y)',z)) = x'.
+f(x',f(f(x,y)',z)) = x.
+f(x',f(f(y,x)',z)) = x.
+f(x',f(y,f(z,x)')) = x.
+f(x,f(y,f(z,x)')') = f(y,f(z,x)').
+f(f(x,y),f(y,z)') = f(x',f(y,z)').
+f(f(x,y)',f(z,y)') = f(z,f(x,y)').
+f(f(x,y)',f(z,y)) = f(f(x,y)',z').
+f(f(x,y)',f(x,z)') = f(f(x,y)',z).
+f(f(x,y)',z) = f(y,f(x,z)').
+f(x,f(y,z)') = f(y,f(x,z)').
+f(x',f(f(y,x),z)') = f(x',z).
+f(f(x,y),f(z,f(x,y'))') = f(z,x').
+f(x,f(y,f(x,z)')) = f(x,f(y,z)).
+f(x,f(f(x,y),z)) = f(x,f(y',z)).
+f(x,f(y,f(z,f(f(x,y),u))')) = f(x,f(z,y)).
+f(x,f(y,f(x,z))) = f(x,f(y,z')).
+f(f(x,y'),f(x,f(y,z))) = f(x,f(y,z))'.
+f(f(x,y'),f(x,z)) = f(x,f(y,z'))'.
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 f(f(x,x),f(x,x)) = x # label(Sheffer_1) # label(non_clause) # label(goal).  [goal].
+2 f(x,f(y,f(y,y))) = f(x,x) # label(Sheffer_2) # label(non_clause) # label(goal).  [goal].
+3 f(f(f(y,y),x),f(f(z,z),x)) = f(f(x,f(y,z)),f(x,f(y,z))) # label(Sheffer_3) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+f(x,y) = f(y,x).  [assumption].
+f(f(x,y),f(x,f(y,z))) = x.  [assumption].
+x' = f(x,x).  [assumption].
+f(f(c1,c1),f(c1,c1)) != c1 # label(Sheffer_1).  [deny(1)].
+f(c2,f(c3,f(c3,c3))) != f(c2,c2) # label(Sheffer_2).  [deny(2)].
+f(f(f(c4,c4),c5),f(f(c6,c6),c5)) != f(f(c5,f(c4,c6)),f(c5,f(c4,c6))) # label(Sheffer_3).  [deny(3)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+% 72 hints input.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Auto_denials:
+  % copying label Sheffer_1 to answer in negative clause
+  % copying label Sheffer_2 to answer in negative clause
+  % copying label Sheffer_3 to answer in negative clause
+  % assign(max_proofs, 3).  % (Horn set with more than one neg. clause)
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ = ]).
+Function symbol precedence:  function_order([ c1, c2, c3, c4, c5, c6, f, ' ]).
+After inverse_order:  (no changes).
+Folding symbols: '/1.
+After fold_eq: Function symbol precedence:  function_order([ c1, c2, c3, c4, c5, c6, ', f ]).
+
+Auto_inference settings:
+  % set(paramodulation).  % (positive equality literals)
+
+Auto_process settings:  (no changes).
+
+
+% Operation f is commutative; C redundancy checks enabled.
+kept:      4 f(x,y) = f(y,x).  [assumption].
+kept:      5 f(f(x,y),f(x,f(y,z))) = x.  [assumption].
+           6 x' = f(x,x).  [assumption].
+kept:      7 f(x,x) = x'.  [copy(6),flip(a)].
+           8 f(f(c1,c1),f(c1,c1)) != c1 # label(Sheffer_1) # answer(Sheffer_1).  [deny(1)].
+kept:      9 c1'' != c1 # answer(Sheffer_1).  [copy(8),rewrite([7(3),7(5),7(5)])].
+           10 f(c2,f(c3,f(c3,c3))) != f(c2,c2) # label(Sheffer_2) # answer(Sheffer_2).  [deny(2)].
+kept:      11 f(c2,f(c3,c3')) != c2' # answer(Sheffer_2).  [copy(10),rewrite([7(5),7(9)])].
+           12 f(f(f(c4,c4),c5),f(f(c6,c6),c5)) != f(f(c5,f(c4,c6)),f(c5,f(c4,c6))) # label(Sheffer_3) # answer(Sheffer_3).  [deny(3)].
+kept:      13 f(f(c5,c4'),f(c5,c6')) != f(c5,f(c4,c6))' # answer(Sheffer_3).  [copy(12),rewrite([7(3),4(4),7(7),4(8),7(20)])].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+9 c1'' != c1 # answer(Sheffer_1).  [copy(8),rewrite([7(3),7(5),7(5)])].
+11 f(c2,f(c3,c3')) != c2' # answer(Sheffer_2).  [copy(10),rewrite([7(5),7(9)])].
+13 f(f(c5,c4'),f(c5,c6')) != f(c5,f(c4,c6))' # answer(Sheffer_3).  [copy(12),rewrite([7(3),4(4),7(7),4(8),7(20)])].
+end_of_list.
+
+formulas(sos).
+4 f(x,y) = f(y,x).  [assumption].
+5 f(f(x,y),f(x,f(y,z))) = x.  [assumption].
+7 f(x,x) = x'.  [copy(6),flip(a)].
+end_of_list.
+
+formulas(demodulators).
+4 f(x,y) = f(y,x).  [assumption].
+        % (lex-dep)
+5 f(f(x,y),f(x,f(y,z))) = x.  [assumption].
+7 f(x,x) = x'.  [copy(6),flip(a)].
+end_of_list.
+
+% 65 hints (72 processed, 7 redundant).
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.01 seconds.
+
+given #1 (I,wt=7): 4 f(x,y) = f(y,x).  [assumption].
+
+given #2 (I,wt=11): 5 f(f(x,y),f(x,f(y,z))) = x.  [assumption].
+
+given #3 (I,wt=6): 7 f(x,x) = x'.  [copy(6),flip(a)].
+
+given #4 (H,wt=10): 20 f(f(x,y),f(x,y')) = x.  [para(7(a,1),5(a,1,2,2))].
+
+given #5 (H,wt=9): 26 f(x',f(x,x')) = x.  [para(7(a,1),20(a,1,1))].
+
+given #6 (H,wt=10): 22 f(f(x,y),f(y,x')) = y.  [para(4(a,1),20(a,1,1))].
+
+given #7 (H,wt=11): 14 f(f(x,y),f(y,f(x,z))) = y.  [para(4(a,1),5(a,1,1))].
+
+given #8 (H,wt=11): 15 f(f(x,y),f(x,f(z,y))) = x.  [para(4(a,1),5(a,1,2,2))].
+
+given #9 (H,wt=11): 16 f(f(x,y),f(f(y,z),x)) = x.  [para(4(a,1),5(a,1,2))].
+
+given #10 (H,wt=11): 42 f(f(x,y),f(f(x,z),y)) = y.  [para(4(a,1),14(a,1,2))].
+
+given #11 (H,wt=11): 52 f(f(f(x,y),z),f(z,y)) = z.  [para(22(a,1),14(a,1,2,2))].
+
+given #12 (H,wt=11): 54 f(f(x,y),f(f(z,y),x)) = x.  [para(4(a,1),15(a,1,2))].
+
+given #13 (H,wt=11): 76 f(f(x,f(y,z)),f(z,x)) = x.  [para(22(a,1),16(a,1,2,1))].
+
+given #14 (H,wt=13): 57 f(x,f(f(x,y),f(y,z))) = f(x,y).  [para(5(a,1),15(a,1,2)),rewrite([4(4)])].
+
+given #15 (H,wt=17): 17 f(x,f(f(x,y),f(f(x,f(y,z)),u))) = f(x,y).  [para(5(a,1),5(a,1,1))].
+
+given #16 (H,wt=19): 68 f(x,f(f(x,f(y,z)),f(f(x,z),u))) = f(x,f(y,z)).  [para(15(a,1),14(a,1,1))].
+
+given #17 (A,wt=11): 18 f(x,f(x,f(x,y))) = f(x,y).  [para(5(a,1),5(a,1,2)),rewrite([4(2),4(3)])].
+
+given #18 (H,wt=8): 212 f(x',f(x,y)) = x.  [para(18(a,1),5(a,1,2)),rewrite([7(1)])].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.03 (+ 0.00) seconds: Sheffer_1.
+% Length of proof is 11.
+% Level of proof is 4.
+% Maximum clause weight is 11.000.
+% Given clauses 18.
+
+1 f(f(x,x),f(x,x)) = x # label(Sheffer_1) # label(non_clause) # label(goal).  [goal].
+4 f(x,y) = f(y,x).  [assumption].
+5 f(f(x,y),f(x,f(y,z))) = x.  [assumption].
+6 x' = f(x,x).  [assumption].
+7 f(x,x) = x'.  [copy(6),flip(a)].
+8 f(f(c1,c1),f(c1,c1)) != c1 # label(Sheffer_1) # answer(Sheffer_1).  [deny(1)].
+9 c1'' != c1 # answer(Sheffer_1).  [copy(8),rewrite([7(3),7(5),7(5)])].
+18 f(x,f(x,f(x,y))) = f(x,y).  [para(5(a,1),5(a,1,2)),rewrite([4(2),4(3)])].
+212 f(x',f(x,y)) = x.  [para(18(a,1),5(a,1,2)),rewrite([7(1)])].
+220 x'' = x.  [para(7(a,1),212(a,1,2)),rewrite([7(3)])].
+221 $F # answer(Sheffer_1).  [resolve(220,a,9,a)].
+
+============================== end of proof ==========================
+% Redundant proof: 231 $F # answer(Sheffer_1).  [back_rewrite(9),rewrite([220(3)]),xx(a)].
+
+% Disable descendants (x means already disabled):
+ 8x 9x
+
+given #19 (H,wt=5): 220 x'' = x.  [para(7(a,1),212(a,1,2)),rewrite([7(3)])].
+
+given #20 (H,wt=8): 218 f(x',f(y,x)) = x.  [para(4(a,1),212(a,1,2))].
+
+given #21 (H,wt=10): 219 f(x,f(x,y)') = f(x,y).  [para(5(a,1),212(a,1,2)),rewrite([4(3)])].
+
+given #22 (H,wt=10): 223 f(x,f(y,x)') = f(y,x).  [para(22(a,1),212(a,1,2)),rewrite([4(3)])].
+
+given #23 (T,wt=9): 226 f(x,f(x',y)) = x'.  [para(212(a,1),15(a,1,2)),rewrite([4(3)])].
+
+given #24 (T,wt=9): 228 f(x,f(y,x')) = x'.  [para(212(a,1),76(a,1,1))].
+
+given #25 (T,wt=10): 23 f(f(x,y),f(y',x)) = x.  [para(4(a,1),20(a,1,2))].
+
+given #26 (T,wt=10): 32 f(f(x,y'),f(y,x)) = x.  [para(22(a,1),4(a,1)),flip(a)].
+
+given #27 (A,wt=16): 24 f(x,f(f(x,y),f(f(x,y'),z))) = f(x,y).  [para(20(a,1),5(a,1,1))].
+
+given #28 (T,wt=10): 33 f(f(x,y),f(x',y)) = y.  [para(4(a,1),22(a,1,2))].
+
+given #29 (T,wt=10): 49 f(f(x',y),f(y,x)) = y.  [para(26(a,1),14(a,1,2,2))].
+
+given #30 (T,wt=11): 35 f(x,f(x,f(y,x))) = f(y,x).  [para(22(a,1),5(a,1,2)),rewrite([4(2),4(3)])].
+
+given #31 (T,wt=11): 40 f(f(x,f(y,z)),f(y,x)) = x.  [para(14(a,1),4(a,1)),flip(a)].
+
+given #32 (A,wt=16): 25 f(x,f(f(x,y),f(x,f(y,z))')) = f(x,y).  [para(5(a,1),20(a,1,1))].
+
+given #33 (T,wt=10): 334 f(x,f(y,f(x,y))) = x'.  [para(40(a,1),68(a,1,2)),rewrite([7(1),4(3)]),flip(a)].
+
+given #34 (T,wt=10): 375 f(x,f(y,f(y,x))) = x'.  [para(4(a,1),334(a,1,2,2))].
+
+given #35 (T,wt=11): 41 f(f(x,y),f(y,f(z,x))) = y.  [para(4(a,1),14(a,1,2,2))].
+
+given #36 (T,wt=11): 45 f(f(f(x,y),z),f(z,x)) = z.  [para(5(a,1),14(a,1,2,2))].
+
+given #37 (A,wt=15): 28 f(x,f(f(x,y),f(x,y')')) = f(x,y).  [para(20(a,1),20(a,1,1))].
+
+given #38 (T,wt=11): 82 f(f(x,y),f(f(z,x),y)) = y.  [para(4(a,1),42(a,1,2,1))].
+
+given #39 (T,wt=13): 70 f(x,f(f(y,x),f(y,z))) = f(y,x).  [para(14(a,1),15(a,1,2)),rewrite([4(4)])].
+
+given #40 (H,wt=14): 537 f(f(x,y'),f(x,f(f(x,y),z))) = x.  [para(20(a,1),70(a,1,2,1)),rewrite([20(10)])].
+
+given #41 (H,wt=14): 563 f(f(x,y'),f(x,f(z,f(x,y)))) = x.  [para(4(a,1),537(a,1,2,2))].
+
+given #42 (T,wt=13): 72 f(x,f(f(x,y),f(z,y))) = f(x,y).  [para(15(a,1),15(a,1,2)),rewrite([4(4)])].
+
+given #43 (T,wt=13): 79 f(x,f(f(y,z),f(x,y))) = f(x,y).  [para(16(a,1),14(a,1,2)),rewrite([4(4)])].
+
+given #44 (A,wt=16): 34 f(x,f(f(y,x),f(f(x,y'),z))) = f(y,x).  [para(22(a,1),5(a,1,1))].
+
+given #45 (T,wt=13): 88 f(x,f(f(y,z),f(y,x))) = f(y,x).  [para(42(a,1),14(a,1,2)),rewrite([4(4)])].
+
+given #46 (T,wt=13): 106 f(x,f(f(y,z),f(x,z))) = f(x,z).  [para(52(a,1),42(a,1,2)),rewrite([4(4)])].
+
+given #47 (T,wt=13): 123 f(x,f(f(y,x),f(z,y))) = f(y,x).  [para(76(a,1),52(a,1,1))].
+
+given #48 (T,wt=13): 401 f(x,f(f(x,y),f(x,y)')) = x'.  [para(219(a,1),334(a,1,2,2)),rewrite([4(4)])].
+
+given #49 (A,wt=18): 36 f(x,f(f(x,y)',f(x,f(y,z)))) = f(x,f(y,z)).  [para(5(a,1),22(a,1,1)),rewrite([4(5)])].
+
+given #50 (T,wt=13): 402 f(x,f(f(y,x),f(y,x)')) = x'.  [para(223(a,1),334(a,1,2,2)),rewrite([4(4)])].
+
+given #51 (T,wt=13): 432 f(f(x,y),f(x,x')) = f(x,y)'.  [para(212(a,1),375(a,1,2,2)),rewrite([4(3)])].
+
+============================== PROOF =================================
+
+% Proof 2 at 0.18 (+ 0.01) seconds: Sheffer_2.
+% Length of proof is 35.
+% Level of proof is 11.
+% Maximum clause weight is 23.000.
+% Given clauses 51.
+
+2 f(x,f(y,f(y,y))) = f(x,x) # label(Sheffer_2) # label(non_clause) # label(goal).  [goal].
+4 f(x,y) = f(y,x).  [assumption].
+5 f(f(x,y),f(x,f(y,z))) = x.  [assumption].
+6 x' = f(x,x).  [assumption].
+7 f(x,x) = x'.  [copy(6),flip(a)].
+10 f(c2,f(c3,f(c3,c3))) != f(c2,c2) # label(Sheffer_2) # answer(Sheffer_2).  [deny(2)].
+11 f(c2,f(c3,c3')) != c2' # answer(Sheffer_2).  [copy(10),rewrite([7(5),7(9)])].
+14 f(f(x,y),f(y,f(x,z))) = y.  [para(4(a,1),5(a,1,1))].
+15 f(f(x,y),f(x,f(z,y))) = x.  [para(4(a,1),5(a,1,2,2))].
+16 f(f(x,y),f(f(y,z),x)) = x.  [para(4(a,1),5(a,1,2))].
+18 f(x,f(x,f(x,y))) = f(x,y).  [para(5(a,1),5(a,1,2)),rewrite([4(2),4(3)])].
+20 f(f(x,y),f(x,y')) = x.  [para(7(a,1),5(a,1,2,2))].
+22 f(f(x,y),f(y,x')) = y.  [para(4(a,1),20(a,1,1))].
+40 f(f(x,f(y,z)),f(y,x)) = x.  [para(14(a,1),4(a,1)),flip(a)].
+68 f(x,f(f(x,f(y,z)),f(f(x,z),u))) = f(x,f(y,z)).  [para(15(a,1),14(a,1,1))].
+76 f(f(x,f(y,z)),f(z,x)) = x.  [para(22(a,1),16(a,1,2,1))].
+212 f(x',f(x,y)) = x.  [para(18(a,1),5(a,1,2)),rewrite([7(1)])].
+218 f(x',f(y,x)) = x.  [para(4(a,1),212(a,1,2))].
+219 f(x,f(x,y)') = f(x,y).  [para(5(a,1),212(a,1,2)),rewrite([4(3)])].
+223 f(x,f(y,x)') = f(y,x).  [para(22(a,1),212(a,1,2)),rewrite([4(3)])].
+228 f(x,f(y,x')) = x'.  [para(212(a,1),76(a,1,1))].
+334 f(x,f(y,f(x,y))) = x'.  [para(40(a,1),68(a,1,2)),rewrite([7(1),4(3)]),flip(a)].
+375 f(x,f(y,f(y,x))) = x'.  [para(4(a,1),334(a,1,2,2))].
+401 f(x,f(f(x,y),f(x,y)')) = x'.  [para(219(a,1),334(a,1,2,2)),rewrite([4(4)])].
+402 f(x,f(f(y,x),f(y,x)')) = x'.  [para(223(a,1),334(a,1,2,2)),rewrite([4(4)])].
+432 f(f(x,y),f(x,x')) = f(x,y)'.  [para(212(a,1),375(a,1,2,2)),rewrite([4(3)])].
+887 f(x',f(f(x,y),f(x,y)')') = f(f(x,y),f(x,y)').  [para(401(a,1),218(a,1,2)),rewrite([4(7)])].
+890 f(f(x,x'),f(f(x,y),f(x,y)')) = f(f(x,y),f(x,y)')'.  [para(401(a,1),375(a,1,2,2)),rewrite([4(7)])].
+967 f(x',f(f(y,x),f(y,x)')') = f(f(y,x),f(y,x)').  [para(402(a,1),218(a,1,2)),rewrite([4(7)])].
+997 f(f(x,y),f(x,y)')' = f(x,x')'.  [para(432(a,1),375(a,1,2,2)),rewrite([890(7)])].
+1007 f(f(x,y),f(x,y)') = f(y',f(x,x')').  [back_rewrite(967),rewrite([997(6)]),flip(a)].
+1008 f(x',f(y,y')')' = f(y,y')'.  [back_rewrite(890),rewrite([1007(6),228(8),1007(7)]),flip(a)].
+1009 f(x',f(y,y')') = f(y,y').  [back_rewrite(887),rewrite([1007(5),1008(7),223(5),1007(6)]),flip(a)].
+1030 f(x,f(y,y')) = x'.  [back_rewrite(402),rewrite([1007(4),1009(5)])].
+1031 $F # answer(Sheffer_2).  [resolve(1030,a,11,a)].
+
+============================== end of proof ==========================
+% Redundant proof: 1036 $F # answer(Sheffer_2).  [back_rewrite(11),rewrite([1030(6)]),xx(a)].
+
+% Disable descendants (x means already disabled):
+ 10x 11x
+
+given #52 (H,wt=9): 1030 f(x,f(y,y')) = x'.  [back_rewrite(402),rewrite([1007(4),1009(5)])].
+
+given #53 (H,wt=9): 1033 f(x,x') = f(y,y').  [back_rewrite(1028),rewrite([1030(5),220(3),4(2)])].
+
+given #54 (H,wt=12): 987 f(x',f(x,y)') = f(x,x').  [para(432(a,1),16(a,1,2)),rewrite([4(3),228(3)])].
+
+given #55 (H,wt=12): 1029 f(x',f(y,x)') = f(x,x').  [back_rewrite(892),rewrite([1007(6),1009(7),434(5),1007(8),1009(9)])].
+
+given #56 (H,wt=11): 1070 f(x',f(f(y,x)',z)) = x.  [back_rewrite(1068),rewrite([1069(10),1030(4),220(2)]),flip(a)].
+
+given #57 (H,wt=11): 1071 f(x',f(f(x,y)',z)) = x.  [back_rewrite(1053),rewrite([1069(10),1030(4),220(2)]),flip(a)].
+
+given #58 (H,wt=11): 1073 f(x',f(y,f(z,x)')) = x.  [para(4(a,1),1070(a,1,2))].
+
+given #59 (H,wt=10): 1159 f(x,f(y,x)) = f(x,y').  [back_rewrite(277),rewrite([1135(5)])].
+
+given #60 (H,wt=10): 1160 f(x,f(x,y)) = f(x,y').  [back_rewrite(38),rewrite([1139(5)])].
+
+given #61 (H,wt=12): 1038 f(x,f(x',y)') = f(x,x').  [para(1030(a,1),79(a,1,2))].
+
+given #62 (H,wt=12): 1115 f(x,f(f(x',y)',z)) = x'.  [para(220(a,1),1071(a,1,1))].
+
+given #63 (H,wt=13): 1009 f(x',f(y,y')') = f(y,y').  [back_rewrite(887),rewrite([1007(5),1008(7),223(5),1007(6)]),flip(a)].
+
+given #64 (H,wt=14): 1263 f(f(x,f(y,z')),f(f(y,z),x)) = x.  [para(1160(a,1),76(a,1,1,2))].
+
+given #65 (H,wt=16): 1142 f(x,f(y,f(z,x)')') = f(y,f(z,x)').  [para(1073(a,1),218(a,1,2)),rewrite([4(5)])].
+
+given #66 (H,wt=17): 1172 f(f(x,y'),f(x,f(y,z))) = f(x,f(y,z))'.  [back_rewrite(410),rewrite([1159(4),4(5)])].
+
+given #67 (H,wt=17): 1207 f(f(x,y)',f(f(x,z),y)) = f(y,f(x,z)').  [para(42(a,1),1159(a,1,2)),rewrite([4(3),1159(3),4(8)]),flip(a)].
+
+given #68 (H,wt=17): 1232 f(f(x,y),f(f(y,x'),f(y,z))) = f(y,x').  [para(1159(a,1),70(a,1,2,1)),rewrite([1159(8)])].
+
+given #69 (T,wt=9): 1034 f(f(x,x'),y) = y'.  [back_rewrite(1017),rewrite([1030(6),220(4)])].
+
+given #70 (T,wt=11): 1035 f(x,x')' = f(y,y')'.  [back_rewrite(1010),rewrite([1030(5)])].
+
+given #71 (A,wt=17): 43 f(x,f(f(y,x),f(f(x,f(y,z)),u))) = f(y,x).  [para(14(a,1),5(a,1,1))].
+
+given #72 (T,wt=11): 1105 f(x',f(y,f(x,z)')) = x.  [para(4(a,1),1071(a,1,2))].
+
+given #73 (T,wt=12): 1039 f(x,f(y,x')') = f(x,x').  [para(1030(a,1),106(a,1,2))].
+
+given #74 (T,wt=12): 1069 f(f(x,x')',y) = f(x,x').  [para(1030(a,1),1029(a,1,2,1)),rewrite([220(5),1034(10),220(8)])].
+
+given #75 (T,wt=12): 1088 f(x,f(f(y,x')',z)) = x'.  [para(220(a,1),1070(a,1,1))].
+
+given #76 (A,wt=19): 44 f(x,f(f(x,f(y,z)),f(f(x,y),u))) = f(x,f(y,z)).  [para(5(a,1),14(a,1,1))].
+
+given #77 (T,wt=12): 1141 f(x,f(y,f(z,x')')) = x'.  [para(220(a,1),1073(a,1,1))].
+
+given #78 (T,wt=12): 1173 f(f(x,y),f(y,x)) = f(x,y)'.  [back_rewrite(407),rewrite([1159(4),220(3)])].
+
+given #79 (T,wt=12): 1296 f(x,f(y,f(x',z)')) = x'.  [para(4(a,1),1115(a,1,2))].
+
+given #80 (T,wt=12): 1306 f(x,f(y,y')') = f(y,y').  [para(220(a,1),1009(a,1,1))].
+
+given #81 (A,wt=17): 47 f(x,f(f(x,y'),f(f(x,y),z))) = f(x,y').  [para(20(a,1),14(a,1,1))].
+
+given #82 (T,wt=13): 445 f(x,f(f(y,z),f(z,x))) = f(z,x).  [para(41(a,1),76(a,1,1))].
+
+given #83 (T,wt=13): 1082 f(f(x,y)',f(x',z)) = f(x,y).  [para(52(a,1),1070(a,1,2,1,1))].
+
+given #84 (T,wt=13): 1086 f(f(x,y)',f(y',z)) = f(x,y).  [para(76(a,1),1070(a,1,2,1,1))].
+
+given #85 (T,wt=13): 1135 f(f(x,y)',f(z,x')) = f(x,y).  [para(52(a,1),1073(a,1,2,2,1))].
+
+given #86 (A,wt=17): 51 f(x,f(f(x,y'),f(f(y,x),z))) = f(x,y').  [para(22(a,1),14(a,1,1))].
+
+given #87 (H,wt=14): 1987 f(x',f(y,f(x,z))) = f(x',y').  [para(1172(a,1),51(a,1,2,2)),rewrite([1460(8)])].
+
+given #88 (H,wt=13): 2048 f(x,f(y,f(x',z))) = f(x,y').  [para(220(a,1),1987(a,1,1)),rewrite([220(6)])].
+
+given #89 (H,wt=13): 2228 f(x,f(y,z)') = f(y,f(x,z)').  [back_rewrite(2040),rewrite([2155(5),1626(5),2155(6)])].
+
+given #90 (H,wt=13): 2229 f(x,f(y,z)') = f(z,f(x,y)').  [back_rewrite(2038),rewrite([2155(5),1142(5),2155(6)])].
+
+given #91 (H,wt=13): 2329 f(x,f(y,f(z,x'))) = f(x,y').  [para(4(a,1),2048(a,1,2,2))].
+
+given #92 (H,wt=13): 2330 f(x,f(f(x',y),z)) = f(x,z').  [para(4(a,1),2048(a,1,2))].
+
+given #93 (H,wt=13): 2740 f(x,f(f(y,x'),z)') = f(x,z).  [para(52(a,1),2329(a,1,2)),flip(a)].
+
+given #94 (H,wt=14): 2030 f(x',f(f(x,y),z)) = f(x',z').  [para(4(a,1),1987(a,1,2))].
+
+given #95 (H,wt=14): 2478 f(x,f(y,f(x,z)')) = f(x,f(y,z)).  [para(2228(a,1),1160(a,1,2)),rewrite([220(7)])].
+
+============================== PROOF =================================
+
+% Proof 3 at 0.73 (+ 0.02) seconds: Sheffer_3.
+% Length of proof is 83.
+% Level of proof is 26.
+% Maximum clause weight is 28.000.
+% Given clauses 95.
+
+3 f(f(f(y,y),x),f(f(z,z),x)) = f(f(x,f(y,z)),f(x,f(y,z))) # label(Sheffer_3) # label(non_clause) # label(goal).  [goal].
+4 f(x,y) = f(y,x).  [assumption].
+5 f(f(x,y),f(x,f(y,z))) = x.  [assumption].
+6 x' = f(x,x).  [assumption].
+7 f(x,x) = x'.  [copy(6),flip(a)].
+12 f(f(f(c4,c4),c5),f(f(c6,c6),c5)) != f(f(c5,f(c4,c6)),f(c5,f(c4,c6))) # label(Sheffer_3) # answer(Sheffer_3).  [deny(3)].
+13 f(f(c5,c4'),f(c5,c6')) != f(c5,f(c4,c6))' # answer(Sheffer_3).  [copy(12),rewrite([7(3),4(4),7(7),4(8),7(20)])].
+14 f(f(x,y),f(y,f(x,z))) = y.  [para(4(a,1),5(a,1,1))].
+15 f(f(x,y),f(x,f(z,y))) = x.  [para(4(a,1),5(a,1,2,2))].
+16 f(f(x,y),f(f(y,z),x)) = x.  [para(4(a,1),5(a,1,2))].
+18 f(x,f(x,f(x,y))) = f(x,y).  [para(5(a,1),5(a,1,2)),rewrite([4(2),4(3)])].
+20 f(f(x,y),f(x,y')) = x.  [para(7(a,1),5(a,1,2,2))].
+22 f(f(x,y),f(y,x')) = y.  [para(4(a,1),20(a,1,1))].
+23 f(f(x,y),f(y',x)) = x.  [para(4(a,1),20(a,1,2))].
+32 f(f(x,y'),f(y,x)) = x.  [para(22(a,1),4(a,1)),flip(a)].
+35 f(x,f(x,f(y,x))) = f(y,x).  [para(22(a,1),5(a,1,2)),rewrite([4(2),4(3)])].
+36 f(x,f(f(x,y)',f(x,f(y,z)))) = f(x,f(y,z)).  [para(5(a,1),22(a,1,1)),rewrite([4(5)])].
+38 f(x,f(f(x,y)',f(x,y'))) = f(x,y').  [para(20(a,1),22(a,1,1)),rewrite([4(5)])].
+40 f(f(x,f(y,z)),f(y,x)) = x.  [para(14(a,1),4(a,1)),flip(a)].
+42 f(f(x,y),f(f(x,z),y)) = y.  [para(4(a,1),14(a,1,2))].
+51 f(x,f(f(x,y'),f(f(y,x),z))) = f(x,y').  [para(22(a,1),14(a,1,1))].
+52 f(f(f(x,y),z),f(z,y)) = z.  [para(22(a,1),14(a,1,2,2))].
+57 f(x,f(f(x,y),f(y,z))) = f(x,y).  [para(5(a,1),15(a,1,2)),rewrite([4(4)])].
+68 f(x,f(f(x,f(y,z)),f(f(x,z),u))) = f(x,f(y,z)).  [para(15(a,1),14(a,1,1))].
+76 f(f(x,f(y,z)),f(z,x)) = x.  [para(22(a,1),16(a,1,2,1))].
+79 f(x,f(f(y,z),f(x,y))) = f(x,y).  [para(16(a,1),14(a,1,2)),rewrite([4(4)])].
+82 f(f(x,y),f(f(z,x),y)) = y.  [para(4(a,1),42(a,1,2,1))].
+212 f(x',f(x,y)) = x.  [para(18(a,1),5(a,1,2)),rewrite([7(1)])].
+218 f(x',f(y,x)) = x.  [para(4(a,1),212(a,1,2))].
+219 f(x,f(x,y)') = f(x,y).  [para(5(a,1),212(a,1,2)),rewrite([4(3)])].
+220 x'' = x.  [para(7(a,1),212(a,1,2)),rewrite([7(3)])].
+223 f(x,f(y,x)') = f(y,x).  [para(22(a,1),212(a,1,2)),rewrite([4(3)])].
+228 f(x,f(y,x')) = x'.  [para(212(a,1),76(a,1,1))].
+229 f(x,f(f(x,y),f(z,x'))) = f(x,y).  [para(212(a,1),76(a,1,2)),rewrite([4(5)])].
+277 f(x,f(f(y,x)',f(x,y'))) = f(x,y').  [para(32(a,1),23(a,1,1))].
+334 f(x,f(y,f(x,y))) = x'.  [para(40(a,1),68(a,1,2)),rewrite([7(1),4(3)]),flip(a)].
+375 f(x,f(y,f(y,x))) = x'.  [para(4(a,1),334(a,1,2,2))].
+401 f(x,f(f(x,y),f(x,y)')) = x'.  [para(219(a,1),334(a,1,2,2)),rewrite([4(4)])].
+402 f(x,f(f(y,x),f(y,x)')) = x'.  [para(223(a,1),334(a,1,2,2)),rewrite([4(4)])].
+410 f(f(x,f(y,z)),f(x,f(y,x))) = f(x,f(y,z))'.  [para(40(a,1),334(a,1,2,2)),rewrite([4(4)])].
+432 f(f(x,y),f(x,x')) = f(x,y)'.  [para(212(a,1),375(a,1,2,2)),rewrite([4(3)])].
+434 f(f(x,y),f(y,y')) = f(x,y)'.  [para(218(a,1),375(a,1,2,2)),rewrite([4(3)])].
+713 f(f(x,y),f(x,f(f(x,y),z))) = f(x,f(f(x,y),z))'.  [para(57(a,1),79(a,1,2)),rewrite([4(3),4(6),7(7),4(7),4(9)]),flip(a)].
+887 f(x',f(f(x,y),f(x,y)')') = f(f(x,y),f(x,y)').  [para(401(a,1),218(a,1,2)),rewrite([4(7)])].
+890 f(f(x,x'),f(f(x,y),f(x,y)')) = f(f(x,y),f(x,y)')'.  [para(401(a,1),375(a,1,2,2)),rewrite([4(7)])].
+892 f(x',f(f(y,x),f(f(x,z),f(x,z)'))) = f(f(x,z),f(x,z)').  [para(401(a,1),82(a,1,1))].
+967 f(x',f(f(y,x),f(y,x)')') = f(f(y,x),f(y,x)').  [para(402(a,1),218(a,1,2)),rewrite([4(7)])].
+970 f(f(f(x,y),f(x,y)'),f(y',f(f(x,y),f(x,y)'))) = y'.  [para(402(a,1),35(a,1,2,2)),rewrite([4(10),402(16)])].
+987 f(x',f(x,y)') = f(x,x').  [para(432(a,1),16(a,1,2)),rewrite([4(3),228(3)])].
+997 f(f(x,y),f(x,y)')' = f(x,x')'.  [para(432(a,1),375(a,1,2,2)),rewrite([890(7)])].
+1007 f(f(x,y),f(x,y)') = f(y',f(x,x')').  [back_rewrite(967),rewrite([997(6)]),flip(a)].
+1008 f(x',f(y,y')')' = f(y,y')'.  [back_rewrite(890),rewrite([1007(6),228(8),1007(7)]),flip(a)].
+1009 f(x',f(y,y')') = f(y,y').  [back_rewrite(887),rewrite([1007(5),1008(7),223(5),1007(6)]),flip(a)].
+1017 f(f(x,x'),f(y',f(x,x'))) = y'.  [back_rewrite(970),rewrite([1007(4),1009(5),1007(7),1009(8)])].
+1029 f(x',f(y,x)') = f(x,x').  [back_rewrite(892),rewrite([1007(6),1009(7),434(5),1007(8),1009(9)])].
+1030 f(x,f(y,y')) = x'.  [back_rewrite(402),rewrite([1007(4),1009(5)])].
+1034 f(f(x,x'),y) = y'.  [back_rewrite(1017),rewrite([1030(6),220(4)])].
+1053 f(x',f(f(x,x')',f(x',f(f(x,y)',z)))) = f(x',f(f(x,y)',z)).  [para(987(a,1),36(a,1,2,1,1))].
+1068 f(x',f(f(x,x')',f(x',f(f(y,x)',z)))) = f(x',f(f(y,x)',z)).  [para(1029(a,1),36(a,1,2,1,1))].
+1069 f(f(x,x')',y) = f(x,x').  [para(1030(a,1),1029(a,1,2,1)),rewrite([220(5),1034(10),220(8)])].
+1070 f(x',f(f(y,x)',z)) = x.  [back_rewrite(1068),rewrite([1069(10),1030(4),220(2)]),flip(a)].
+1071 f(x',f(f(x,y)',z)) = x.  [back_rewrite(1053),rewrite([1069(10),1030(4),220(2)]),flip(a)].
+1073 f(x',f(y,f(z,x)')) = x.  [para(4(a,1),1070(a,1,2))].
+1105 f(x',f(y,f(x,z)')) = x.  [para(4(a,1),1071(a,1,2))].
+1135 f(f(x,y)',f(z,x')) = f(x,y).  [para(52(a,1),1073(a,1,2,2,1))].
+1139 f(f(x,y)',f(z,y')) = f(x,y).  [para(76(a,1),1073(a,1,2,2,1))].
+1159 f(x,f(y,x)) = f(x,y').  [back_rewrite(277),rewrite([1135(5)])].
+1160 f(x,f(x,y)) = f(x,y').  [back_rewrite(38),rewrite([1139(5)])].
+1172 f(f(x,y'),f(x,f(y,z))) = f(x,f(y,z))'.  [back_rewrite(410),rewrite([1159(4),4(5)])].
+1207 f(f(x,y)',f(f(x,z),y)) = f(y,f(x,z)').  [para(42(a,1),1159(a,1,2)),rewrite([4(3),1159(3),4(8)]),flip(a)].
+1415 f(f(x,y)',f(f(y,z),x)) = f(x,f(y,z)').  [para(4(a,1),1207(a,1,1,1))].
+1460 f(f(x,y'),f(y,z)') = f(y,z).  [para(228(a,1),1207(a,1,1,1)),rewrite([220(2),229(5)]),flip(a)].
+1626 f(x,f(y,f(x,z)')') = f(y,f(x,z)').  [para(1105(a,1),22(a,1,1)),rewrite([220(5),4(4),1160(5)])].
+1987 f(x',f(y,f(x,z))) = f(x',y').  [para(1172(a,1),51(a,1,2,2)),rewrite([1460(8)])].
+2032 f(f(x,y)',f(z,x)) = f(f(x,y)',z').  [para(5(a,1),1987(a,1,2,2))].
+2040 f(f(x,y)',f(x,z)') = f(f(x,y)',z).  [para(42(a,1),1987(a,1,2)),flip(a)].
+2051 f(f(x,y)',f(y,z)') = f(f(x,y)',z).  [para(82(a,1),1987(a,1,2)),flip(a)].
+2155 f(f(x,y)',z) = f(x,f(y,z)').  [back_rewrite(1415),rewrite([2032(5),2051(5)])].
+2228 f(x,f(y,z)') = f(y,f(x,z)').  [back_rewrite(2040),rewrite([2155(5),1626(5),2155(6)])].
+2478 f(x,f(y,f(x,z)')) = f(x,f(y,z)).  [para(2228(a,1),1160(a,1,2)),rewrite([220(7)])].
+3140 f(x,f(y,f(x,z))) = f(x,f(y,z')).  [para(1160(a,1),2478(a,1,2,2,1)),rewrite([2478(5)]),flip(a)].
+3250 f(f(x,y),f(x,z')) = f(x,f(f(x,y),z))'.  [back_rewrite(713),rewrite([3140(5)])].
+3311 $F # answer(Sheffer_3).  [back_rewrite(13),rewrite([3250(9),4(7),3140(8),220(5),4(4)]),xx(a)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=95. Generated=19519. Kept=3299. proofs=3.
+Usable=58. Sos=1063. Demods=1086. Limbo=61, Disabled=2123. Hints=72.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=16217. Back_subsumed=131.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=3094 (1 lex), Back_demodulated=1986. Back_unit_deleted=0.
+Demod_attempts=258466. Demod_rewrites=41883.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=2.69.
+User_CPU=0.73, System_CPU=0.02, Wall_clock=1.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 3 proofs.
+
+Process 25586 exit (max_proofs) Tue Nov  3 17:08:08 2009

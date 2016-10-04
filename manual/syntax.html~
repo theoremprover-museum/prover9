@@ -1,0 +1,552 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+  <title>Prover9 Manual: Clauses and Formulas</title>
+ <link rel="stylesheet" href="manual.css">
+</head>
+
+<body>
+
+<hr>
+<table width="100%">
+<tr>
+<colgroup>
+<col width="33%">
+<col width="34%">
+<col width="33%">
+</colgroup>
+<td align="left"><i>Prover9 Manual</i>
+<td align="center"><img src="prover9-5a-256t.gif">
+<td align="right"><i>Version 2009-02A</i>
+</table>
+<hr>
+
+<!-- Main content -->
+
+<h1>Clauses and Formulas</h1>
+
+The <a href="glossary.html">Glossary Page</a> contains definitions
+of <a href="glossary.html#term">term</a>,
+<a href="glossary.html#atomic formula">atomic formula</a>,
+<a href="glossary.html#literal">literal</a>, <a href="glossary.html#clause">clause</a>,
+and <a href="glossary.html#formula">formula</a> from a logical point of view.
+This page contains descriptions of how those kinds of things are parsed
+and printed, and we refer to them collectively as <i>objects</i>.
+
+<blockquote class="otter_diff">
+In Otter and in earlier versions of Prover9,
+"clauses" and "formulas" were distinct types of object,
+and "formulas" could not have free variables.
+Now, clauses are a subset of formulas.
+</blockquote>
+
+<p>
+Here are the important points about clauses and formulas.
+<ul>
+<li>
+Clauses are a subset of formulas.  All input formulas, including clauses,
+appear in a list headed by
+<tt>formulas(<font color=#D10000><i>list_name</i></font>)</tt>.
+<li>
+There is a rule for distinguishing variables from constants,
+because clauses and other formulas can have free variables
+(variables not bound by quantifiers).  The default rule
+is that variables start with (lower case) <tt>u</tt> through <tt>z</tt>.
+For example, in the formula <tt>P(a,x)</tt>, the term
+<tt>a</tt> is a constant, and
+<tt>x</tt> is a variable.
+(See also the flag <a href="syntax.html#prolog_style_variables"><tt><b>prolog_style_variables</b></tt></a>.)
+<li>
+Free variables in clauses and formulas are assumed to be universally
+quantified at the outermost level.
+<li>
+Prover9's inference rules operate on clauses.
+If non-clausal formulas are input,
+Prover9 immediately translates them clauses
+by <a href="glossary.html#NNF">NNF</a>,
+<a href="glossary.html#skolemization">Skolemization</a>,
+and <a href="glossary.html#CNF">CNF</a> conversions.
+</ul>
+
+<h2>Parsing and Printing Objects</h2>
+
+The <i>prefix standard form</i> of an object with an n-ary symbol, say <tt>f</tt>,
+at the root is 
+<pre class="my_file">
+f( <font color="#D10000"><i>argument_1, ..., argument_n</i></font> )
+</pre>
+Whitespace (spaces, tabs, newline, etc.) is accepted anywhere
+except within symbols.
+<p>
+Prover9 will accept any term or formula written
+prefix standard form.  However formulas and
+many terms can be written in more convenient ways, for example,
+"<tt>a=b | a!=c'</tt>" instead of "<tt>|(=(a,b),-(=(a,'(c))))</tt>".
+
+<p>
+Prover9 uses a general mechanism in which binary and unary symbols
+can have special parsing properties such as "infix",
+"infix-right-associated", "postfix".  In addition, each of 
+those symbols has a precedence so that many parentheses
+can be omitted.  (The mechanism is similar to those used by
+most Prolog systems.)
+
+<p>
+Many symbols have built-in parsing properties
+(see the <a href="#built_in">table below</a>),
+and the user can declare parsing properties for
+other symbols with the "op" command.
+
+<p>
+Clauses and formulas make extensive use of the built-in
+parsing properties for the equality relation and the logic connectives.
+Instead of first presenting the general mechanism,
+we will present the syntax for formulas
+under the assumption of the built-in parsing properties.
+The general mechanism is described below in the
+section <a href="#declarations">Infix, Prefix, and Postfix Declarations</a>.
+
+<h3>Symbols</h3>
+
+Symbols include variables, constants, function symbols, predicate symbols,
+logic connectives.  Symbols do not include parentheses or commas.
+
+<p>
+Prover9 recognizes several kinds of symbol.
+<ul>
+<li>An <i>ordinary symbol</i> is a (maximal) string made from the
+characters
+<tt>a</tt>-<tt>z</tt>, <tt>A</tt>-<tt>Z</tt>, <tt>0</tt>-<tt>9</tt>,
+<tt>$</tt>, and <tt>_</tt>.
+<li><a name="special_symbol"</a>A <i>special symbol</i> is a (maximal) string made from the
+<i>special characters</i>:
+<tt>{+-*/\^&lt;&gt;=`~?@&|!#';}</tt>.
+<li>A <i>quoted symbol</i> is any string enclosed in double quotes.
+<li>The <i>empty list symbol</i> is <tt>[]</tt>.  This is a special case.
+</ul>
+The reason for separating ordinary and special symbols is so that
+strings like <tt>a+b</tt>; that is, <tt>+(a,b)</tt>,
+can be written without any whitespace around the <tt>+</tt>.
+
+<p>
+A symbol cannot have both ordinary and special characters,
+for example <tt>R+</tt> (unless it is a quoted symbol).
+
+<p>
+Objects (terms or formulas) are constructed from
+symbols, parentheses, and commas.
+
+<h3>Overloaded Symbols</h3>
+
+In most cases, symbol overloading is not allowed.  For example
+a symbol cannot be both a function symbol and a predicate symbol,
+or both a constant and a binary function symbol.  There
+are a few exceptions.
+<ul>
+<li>The logic connectives can also be used as function or
+predicate symbols of the same arity.  For example,
+<tt>-</tt> is typically used as unary arithmetic minus
+well as for logical negation.
+</ul>
+
+<p>
+<blockquote class="otter_diff">
+Prover9 is much more strict about overloading symbols than Otter is.
+</blockquote>
+
+<h3>Symbols With Meaning</h3>
+
+Several symbols have built-in meaning.  These are the equality
+symbols (<tt>=</tt>, <tt>!=</tt>) and logic connectives
+(<tt>-</tt>, <tt>|</tt>, <tt>&</tt>, <tt>-&gt;</tt>, <tt>&lt;-</tt>,
+<tt>&lt;-&gt;</tt>, <tt>all</tt>, <tt>exists</tt>).  These
+symbols can be changed as described in the section
+<a href="#redeclare">Redeclaring Built-in Symbols</a>.
+(Parentheses, comma, period, and the list construction symbols
+cannot be redeclared.)
+
+<h3><a name="terms">Terms</h3>
+
+Any term can be written in prefix standard form, for example,
+<tt>f(g(x),y)</tt> and <tt>*('(x),y)</tt>.  If symbols in the
+term have parsing/printing properties (either
+<a href="#built_in">built-in</a>)
+or declared with the <tt>op</tt> command), the term can be
+written in infix/prefix/postfix form with assumed precedence,
+for example, <tt>x'*y</tt>, which represents <tt>*('(x),y)</tt> under
+the built-in parsing/printing properties.
+
+<p>
+A list notation similar to Prolog's can be used to write
+terms that represent lists.  Note that the "cons" operator
+is "<tt>:</tt>", instead of "<tt>|</tt>" as in Prolog.
+<table "border" align="center" cellpadding="5">
+<tr> <th> Term      <th> Standard Prefix Form <th> What it Is
+<tr> <td> <tt>[]</tt>        <td> <tt>$nil</tt>                             <td> the empty list
+<tr> <td> <tt>[a,b,c]</tt>   <td> <tt>$cons(a,$cons(b,$cons(c,$nil)))</tt>  <td> list of three objects
+<tr> <td> <tt>[a:b]</tt>     <td> <tt>$cons(a,b)</tt>                       <td> first, rest
+<tr> <td> <tt>[a,b:c]</tt>   <td> <tt>$cons(a,$cons(b,c))</tt>              <td> first, second, rest
+</table>
+<p>
+Lists are frequently used in Prover9 commands such as the
+<a href="input.html#lists"><tt>function_order</tt></a>
+command, and they are sometimes also used in clauses and formulas.
+
+<h3>Atomic Formulas</h3>
+
+Equality is a built-in special case.
+The binary predicate symbol <tt>=</tt>
+is usually written as an infix relation.
+The binary symbol <tt>!=</tt> is an abbreviation for "not equal";
+that is, the formula <tt>a!=b</tt> stands for <tt>-(a=b)</tt>,
+or more precisely, <tt>-(=(a,b))</tt>.
+From the semantics point of view,
+the binary predicate symbol <tt>=</tt>
+is the one and only equality symbol for the inference
+rules that use equality.
+
+<h3>Clauses</h3>
+
+The disjunction (OR) symbol is <tt>|</tt>,
+and the negation (NOT) symbol is <tt>-</tt>.
+The disjunction symbol has higher precedence than the equality symbol,
+so equations in clauses do not need parentheses.  Every clause ends
+with a period.
+Examples of clauses follow (Prover9 adds some
+extra space when printing clauses).
+<pre class="my_file">
+formulas(sos).
+    p|-q|r.
+    a=b|c!=d.
+    f(x)!=f(y)|x=y.
+end_of_list.
+</pre>
+
+<h3>Formulas</h3>
+
+<table "border" align="center" cellpadding="5">
+<tr><th>Meaning     <th>  Connective   <th>  Example
+<tr><td>negation    <td>  <tt>-</tt>   <td>  <tt>(-p)</tt>
+<tr><td>disjunction <td>  <tt>|</tt>   <td>  <tt>(p | q | r)</tt>
+<tr><td>conjunction <td>  <tt>&</tt>   <td>  <tt>(p & q & r)</tt>
+<tr><td>implication <td>  <tt>-></tt>   <td>  <tt>(p -> q)</tt>
+<tr><td>backward implication <td>  <tt><-</tt>   <td>  <tt>(p <- q)</tt>
+<tr><td>equivalence <td>  <tt><-></tt>   <td>  <tt>(p <-> q)</tt>
+<tr><td>universal quantification <td>  <tt>all</tt>   <td>  <tt>(all x all y p(x,y))</tt>
+<tr><td>existential quantification <td>  <tt>exists</tt>   <td>  <tt>(exists x exists y p(x,y))</tt>
+</table>
+
+When writing formulas, the <a href="#built_in">built-in parsing declarations</a>
+allow many parentheses to be omitted.  For example, the following two formulas
+are really the same formula.
+<pre class="my_file">
+formulas(sos).
+ all x  all y (p <->   -q  |  r &  -s)     .
+(all x (all y (p <-> ((-q) | (r & (-s)))))).
+end_of_list.
+</pre>
+
+<blockquote class="otter_diff">
+For Prover9 formulas, each quantified variable must have its own
+quantifier; Otter allows quantifiers to be omitted in a sequence
+of quantified variables with the same quantifier.  For example,
+Otter allows <tt>(all x y z p(x,y,z))</tt>, and Prover9 requires
+<tt>(all x all y all z p(x,y,z))</tt>.
+
+</blockquote>
+
+<h2><a name="declarations">Infix, Prefix, and Postfix Declarations</h2>
+
+<p>
+Several symbols are understood by Prover9 as having special
+parsing properties that determine how terms involving those
+symbols can be arranged.
+In addition, the user can declare additional symbols to have special
+parsing properties.
+
+<h3>Parsing Declarations</h3>
+
+The "op" command is used to declare parse types and precedences.
+
+<pre class="my_file">
+op( <font color="#D10000"><i>precedence</i></font>, <font color="#D10000"><i>type</i></font>, <font color="#D10000"><i>symbols(s)</i></font> ).  % declare parse type and precedence
+</pre>
+
+<ul>
+<li>1 &le; <font color="#D10000"><tt><i>precedence</i></tt></font> &le; 998.
+<li><font color="#D10000"><tt><i>type</i></tt></font> is one of
+     { <tt>infix, infix_left, infix_right, prefix, prefix_paren, postfix, postfix_paren, ordinary</tt> }.
+<li><font color="#D10000"><tt><i>symbol(s)</i></tt></font> is either a symbol or a list of symbols.
+     Each multi-character special symbol must be enclosed in double quotes.
+</ul>
+
+<blockquote class="otter_diff">
+Prover9 does not allow different symbol types with the same precedence,
+for example,
+<pre class="my_file">
+op(325, postfix, ').
+op(325, prefix, ~).
+</pre>
+This restriction prevents ambiguous strings such as <tt>~x'</tt>.
+</blockquote>
+
+<p>
+The following table shows an example of each type of parsing
+property (and ignores precedence).
+<p>
+<table "border" align="center" cellpadding="5">
+<tr><th> Type                 <th> Example      <th>  Standard Prefix  <th> Comment
+<tr><td><tt>infix</tt>        <td> <tt>a*(b*c) </tt>  <td>  <tt>*(a,*(b,c))</tt> <td> like Prolog's <tt>xfx</tt>
+<tr><td><tt>infix_left</tt>   <td> <tt>a*b*c   </tt>  <td>  <tt>*(*(a,b),c)</tt> <td> like Prolog's <tt>yfx</tt>
+<tr><td><tt>infix_right</tt>  <td> <tt>a*b*c   </tt>  <td>  <tt>*(a,*(b,c))</tt> <td> like Prolog's <tt>xfy</tt>
+<tr><td><tt>prefix</tt>       <td> <tt>--p     </tt>  <td>  <tt>-(-(p))    </tt> <td> like Prolog's <tt>fy</tt>
+<tr><td><tt>prefix_paren</tt> <td> <tt>-(-p)   </tt>  <td>  <tt>-(-(p))    </tt> <td> like Prolog's <tt>fx</tt>
+<tr><td><tt>postfix</tt>      <td> <tt>a''     </tt>  <td>  <tt>'('(a))    </tt> <td> like Prolog's <tt>yf</tt>
+<tr><td><tt>postfix_paren</tt><td> <tt>(a')'   </tt>  <td>  <tt>'('(a))    </tt> <td> like Prolog's <tt>xf</tt>
+<tr><td><tt>ordinary</tt>     <td> <tt>*(a,b)  </tt>  <td>  <tt>*(a,b)     </tt>   <td> takes away parsing properties
+</table>
+
+<p>
+Higher precedence means closer to the root of the object,
+and lower precedence means the the symbol binds more closely.
+For example, assume that the following declarations are in effect.
+<pre class="my_file">
+op(790, infix_right,  "|" ).  % disjunction in formulas or clauses
+op(780, infix_right,  "&" ).  % conjunction in formulas
+</pre>
+Then the string <tt>a & b | c</tt> is an abbreviation for <tt>(a & b) | c</tt>.
+
+<p>
+The built-in parsing declarations are shown in the following box.
+The ones with comments have built-in meanings;
+the others are for general use as function or predicate symbols.
+
+<a name="built_in">
+<pre class="my_file">
+op(810, infix_right,  "#" ).  % for attaching attributes to clauses
+	    
+op(800, infix,      "<->" ).  % equivalence in formulas
+op(800, infix,       "->" ).  % implication in formulas
+op(800, infix,       "<-" ).  % backward implication in formulas
+op(790, infix_right,  "|" ).  % disjunction in formulas or clauses
+op(780, infix_right,  "&" ).  % conjunction in formulas
+
+% Quantifiers (a special case) have precedence 750.
+	    
+op(700, infix,        "=" ).  % equal in atomic formulas
+op(700, infix,       "!=" ).  % not equal in atomic formulas
+op(700, infix,       "==" ).  
+op(700, infix,        "<" ).
+op(700, infix,       "<=" ).
+op(700, infix,        ">" ).
+op(700, infix,       ">=" ).
+	    
+op(500, infix,        "+" ).
+op(500, infix,        "*" ).
+op(500, infix,        "@" ).
+op(500, infix,        "/" ).
+op(500, infix,        "\" ).
+op(500, infix,        "^" ).
+op(500, infix,        "v" ).
+
+op(350, prefix,       "-" ).  % logical negation in formulas or clauses
+op(300, postfix,      "'" ).
+</pre>
+
+<p>
+The built-in parsing declarations can be overridden with ordinary "op"
+commands.  Be careful, however, when overriding parsing declarations
+for symbols with built-in meanings.  For example, say you wish to
+use "#" as an infix function
+symbol and give the following the declaration.
+<pre class="my_file">
+op(500, infix, "#").
+</pre>
+Then clauses with attributes might have be written with more parentheses,
+for example, as
+<pre class="my_file">
+(p(a) | q(a)) # (label(a) # label(b)).
+</pre>
+
+<p>
+If you wish to use one of the symbols with built-in parsing declarations
+as an ordinary prefix symbol, you can undo the declaration by giving
+an "op" command with type "ordinary".  The following example clears
+the parse types for two symbols.
+<pre class="my_file">
+op(ordinary, ["*","+"]).   % there is no precedence argument for type "ordinary"
+</pre>
+
+<p>
+Finally, the following example shows that parsing declarations can
+be changed anywhere in the input, with immediate effect.  This can be useful
+for example, if lists of clauses come from different sources.
+<pre class="my_file">
+op(400,infix_left,"*").  % assume left association for following clauses
+
+formulas(sos).
+  P(a * b * c).
+end_of_list.
+
+op(400,infix_right,"*"). % assume right association for following clauses
+
+formulas(sos).
+  Q(d * e * f).
+end_of_list.
+
+op(400,infix,"*").  % from here on, include all parentheses (input and output)
+</pre>
+
+An excerpt from the output of the preceding example shows how the clauses are
+printed after the last "op" command.
+<pre class="my_file">
+formulas(sos).
+P((a * b) * c).  [assumption].
+Q(d * (e * f)).  [assumption].
+end_of_list.
+</pre>
+
+<h2>Prolog-Style Variables</h2>
+
+<!-- start option prolog_style_variables -->
+<a name="prolog_style_variables">
+<pre class="my_option">
+set(prolog_style_variables).
+clear(prolog_style_variables).    % default clear
+</pre>
+
+<blockquote>
+A rule is needed for distinguishing variables from constants in
+clauses and formulas with free variables.
+If this flag is clear, variables in clauses start with
+(lower case) 'u' through 'z'.
+If this flag is set, variables in clauses start with
+(upper case) 'A' through 'Z' or '_'.
+<p>
+Prover9 decides whether symbols are constants or variables
+after it has read all of its input, so the state of the
+flag <a href="syntax.html#prolog_style_variables"><tt><b>prolog_style_variables</b></tt></a>
+at the end of the input determines the rule that is used for
+<i>all</i> formulas.
+For example, in the following input,
+<pre class="my_file">
+formulas(sos).
+  p(x,A).
+end_of_list.
+
+set(prolog_style_variables).
+
+formulas(sos).
+  q(y,B).
+end_of_list.
+</pre>
+the term <tt>x</tt> is a constant, and <tt>A</tt> is a variable.
+
+</blockquote>
+<!-- end option -->
+
+<h2><a name="redeclare">Redeclaring Built-in Symbols</h2>
+
+NOTE: Keep in mind the difference between <i>semantic</i>
+properties of symbols (e.g., logic connectives) and
+<i>parsing/printing</i> properties of symbols
+(e.g., infix with high precedence).
+Those two kinds of property are independent
+(by default, many symbols have both).
+
+<p>
+Most of the symbols with built-in meaning can be
+changed to other symbols.  The symbols that can be
+changed are shown in the following table.
+
+<p>
+<table "border" align="center" cellpadding="5">
+<tr><th>Operation                  <th>  Default Symbol
+<tr><td>true                       <td>  <tt>$T</tt>
+<tr><td>false                      <td>  <tt>$F</tt>
+<tr><td>negation                   <td>  <tt>-</tt>
+<tr><td>disjunction                <td>  <tt>|</tt>
+<tr><td>conjunction                <td>  <tt>&</tt>
+<tr><td>implication                <td>  <tt>-></tt>
+<tr><td>backward_implication       <td>  <tt><-</tt>
+<tr><td>equivalence                <td>  <tt><-></tt>
+<tr><td>universal_quantification   <td>  <tt>all</tt>
+<tr><td>existential_quantification <td>  <tt>exists</tt>
+<tr><td>equality                   <td>  <tt>=</tt>
+<tr><td>negated_equality           <td>  <tt>!=</tt>
+<tr><td>attribute                  <td>  <tt>#</tt>
+</table>
+
+<p>
+To change the symbol associated with an operation, one
+uses the following command.
+
+<pre class="my_file">
+redeclare( <font color="#D10000"><i>operation</i></font>, <font color="#D10000"><i>symbol</i></font> ).  % associate a different symbol with an operation
+</pre>
+
+For example, the following command says that "<tt>AND</tt>" will be used
+for conjunction.
+
+<pre class="my_file">
+redeclare(conjunction, AND).  % change the conjunction symbol to AND.
+</pre>
+
+As with the "<tt>op</tt>" command, if the new symbol is a
+multicharacter <a href="#special_symbol">special symbol</a>,
+it must be enclosed in double quotes, as in the following
+example.
+<pre class="my_file">
+redeclare(conjunction, "&&").  % change the conjunction symbol to &&.
+</pre>
+When in doubt, quote the symbol, because unnecessary quotes are
+ignored in the "<tt>redeclare</tt>" and "<tt>op</tt>" commands.
+
+<h3>Parsing/Printing Properties and Redeclarations</h3>
+<p>
+Many of the default symbols for the built-in operations have
+default printing/parsing properties, for example, the default
+properties for default conjunction symbol are
+
+<pre class="my_file">
+op(780, infix_right,  "&" ).  % conjunction in formulas
+</pre>
+
+When a redeclaration for such an operation occurs, the parsing/printing
+properties are copied from the old symbol to the new symbol.
+For example, when conjunction is changed to <tt>AND</tt>, the
+following is <i>automatically</i> applied.
+
+<pre class="my_file">
+op(780, infix_right,  AND ).
+</pre>
+
+If the user wishes some other printing/parsing properties for the
+new symbol, the appropriate "<tt>op</tt>" command can be placed
+after the "<tt>redeclare</tt>" command.
+
+<h3>Redeclaration Example</h3>
+
+The following example shows redeclarations of many of the operations.
+<pre class="my_job">
+prover9 -f <a href="redeclare.in">redeclare.in</a> &gt; <a href="redeclare.out">redeclare.out</a>
+</pre>
+
+<h3>Location of Redeclare Commands</h3>
+
+Most of the operations can be redeclared repeatedly throughout
+the input.  The declarations in effect when a formula is read
+will be used, ane the ones in effect at the end of the
+input will be used for all subsequent output.
+
+<p>
+<i>An exception</i>: If the operations "<tt>equality</tt>" or
+"<tt>negated_equality</tt>" are redeclared, it must be done
+before any formulas containing those symbols are read.
+
+<hr>
+Next Section:
+<a href="auto.html">Auto Modes</a>
+
+</body>
+</html>

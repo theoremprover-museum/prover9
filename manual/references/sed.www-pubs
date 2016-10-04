@@ -1,0 +1,14 @@
+s/\\begin{enumerate}/<OL>/
+s/\\end{enumerate}/<\/OL>/
+s/\\item.*/<LI>/
+s/\\newblock//
+s/{\\em \([^}]*\)}/<I>\1<\/I>/
+/{\\em/N
+s/{\\em \([^}]*\)}/<I>\1<\/I>/
+/{\\em/N
+s/{\\em \([^}]*\)}/<I>\1<\/I>/
+s/{//g
+s/}//g
+s/~/ /g
+s/\\"o/\&ouml;/g
+s/\\sc //g

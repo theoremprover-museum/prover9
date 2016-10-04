@@ -1,0 +1,53 @@
+#!/bin/csh
+
+set date=`/bin/date +"%h %d, 20%y"`;
+
+cat <<end1
+<HTML>
+<HEAD>
+<TITLE>Publications of William McCune</TITLE>
+</HEAD>
+
+<BODY>
+
+<H1>Publications of <A HREF="http://www.mcs.anl.gov/~mccune/">
+William McCune</A></H1>
+Updated $date.
+end1
+
+#-------------------
+
+echo "<HR>"
+echo "<H2>Books</H2>"
+sed -f sed.www-pubs books-ready.tex
+
+echo "<HR>"
+echo "<H2>Journal Articles and Book Chapters</H2>"
+sed -f sed.www-pubs journal-ready.tex
+
+echo "<HR>"
+echo "<H2>Refereed Conference Proceedings</H2>"
+sed -f sed.www-pubs conference-ready.tex
+
+echo "<HR>"
+echo "<H2>Preprints and Drafts</H2>"
+sed -f sed.www-pubs drafts-ready.tex
+
+echo "<HR>"
+echo "<H2>Other Papers</H2>"
+sed -f sed.www-pubs reports-ready.tex
+
+#-------------------
+
+cat <<end2
+<P>
+<I>
+These activities are projects of the
+<A HREF="http://www.mcs.anl.gov/">Mathematics and Computer Science Division</A>
+of
+<A HREF="http://www.anl.gov/">Argonne National Laboratory</A>.
+</I>
+
+</BODY>
+</HTML>
+end2

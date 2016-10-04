@@ -1,0 +1,22 @@
+#!/usr/bin/perl
+
+# This creates a PDF of Prover9's documentation, using its HTML docs and
+# the tool "htmldoc".  You must install "htmldoc" first.
+# Quick script by David A. Wheeler.
+
+# In directory with "nav.html", run as:
+#    ./setupbook < nav.html > make_book
+#    ./make_book
+# Produces file "finalbook.pdf".
+
+print "htmldoc -f finalbook.pdf --size letter -t pdf14 --webpage --duplex nav.html \\\n";
+while (<>) {
+  if (/href="([^"]+)"/)  {
+     $filename = $1;
+     if ($filename =~ /\.[Cc][Ss][Ss]/) {next;}   # Skip .css files.
+     $filename =~ s/ /\\ /;  # Protect spaces in filenames.
+     print "$1 \\\n";
+  }
+}
+print "\n";
+

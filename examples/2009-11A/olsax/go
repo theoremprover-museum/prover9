@@ -1,0 +1,33 @@
+#!/bin/csh
+
+if ($#argv != 2) then
+	echo "need 2 args: bin-directory ouput-extension"
+	exit(1)
+endif
+
+set d=$1
+set out=$2
+
+# job olsax2
+
+$d/prover9 -f olsax2.in > olsax2.$out
+
+# job omlsax2
+
+$d/prover9 -f omlsax2.in > omlsax2.$out
+
+# job mol-ss1
+
+$d/prover9 -f mol-ss1.in > mol-ss1.$out
+
+# job mol-ss2
+
+$d/prover9 -f mol-ss2.in > mol-ss2.$out
+
+# job oml-4basis
+
+$d/prover9 -f oml-4basis.in > oml-4basis.$out
+
+# job ba-4basis
+
+$d/prover9 -f ba-4basis.in > ba-4basis.$out

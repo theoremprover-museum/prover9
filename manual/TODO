@@ -1,0 +1,5 @@
+1. If lex command, assign(eq_defs, ...) is ignored.
+
+2. The user might think that assign(max_proofs, 1) overrides auto_denials.
+
+3. Change all "lex" to "predicate_order" and "function_order".

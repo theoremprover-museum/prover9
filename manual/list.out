@@ -1,0 +1,254 @@
+============================== Prover9 ===============================
+Prover9 (32) version 2009-11A, November 2009.
+Process 25638 was started by mccune on cleo,
+Tue Nov  3 17:08:22 2009
+The command was "/home/mccune/LADR/bin/prover9 -f list.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file list.in
+
+set(production).
+    % set(production) -> set(raw).
+    % set(raw) -> clear(auto).
+    % clear(auto) -> clear(auto_inference).
+    % clear(auto) -> clear(auto_setup).
+    % clear(auto_setup) -> clear(predicate_elim).
+    % clear(auto_setup) -> assign(eq_defs, pass).
+    % clear(auto) -> clear(auto_limits).
+    % clear(auto_limits) -> assign(max_weight, "1000000000000.000").
+    % clear(auto_limits) -> assign(sos_limit, -1).
+    % clear(auto) -> clear(auto_denials).
+    % clear(auto) -> clear(auto_process).
+    % set(raw) -> clear(ordered_res).
+    % set(raw) -> clear(ordered_para).
+    % set(raw) -> set(para_into_vars).
+    % set(raw) -> set(para_from_small).
+    % set(raw) -> clear(ordered_para).
+    % set(raw) -> clear(back_demod).
+    % set(raw) -> clear(cac_redundancy).
+    % set(raw) -> assign(backsub_check, 2147483647).
+    % set(raw) -> set(lightest_first).
+    % set(lightest_first) -> assign(weight_part, 1).
+    % set(lightest_first) -> assign(age_part, 0).
+    % set(lightest_first) -> assign(false_part, 0).
+    % set(lightest_first) -> assign(true_part, 0).
+    % set(lightest_first) -> assign(random_part, 0).
+    % set(raw) -> assign(literal_selection, none).
+    % set(production) -> set(eval_rewrite).
+    % set(production) -> set(hyper_resolution).
+    % set(hyper_resolution) -> set(pos_hyper_resolution).
+    % set(production) -> clear(back_subsume).
+
+formulas(demodulators).
+-member(x,[]).
+member(x,[y:z]) <-> if(x == y,$T,member(x,z)).
+subset([],x).
+subset([x:y],z) <-> member(x,z) & subset(y,z).
+is_set([]).
+is_set([x:y]) <-> -member(x,y) & is_set(y).
+set([]) = [].
+set([x:y]) = if(member(x,y),set(y),[x:set(y)]).
+append([],x) = x.
+append([x:y],z) = [x:append(y,z)].
+intersect([],x) = [].
+intersect([x:y],z) = if(member(x,z),[x:intersect(y,z)],intersect(y,z)).
+union([],x) = x.
+union([x:y],z) = if(member(x,z),union(y,z),[x:union(y,z)]).
+diff([],x) = [].
+diff([x:y],z) = if(member(x,z),diff(y,z),[x:diff(y,z)]).
+reverse(x) = rev_app(x,[]).
+rev_app([],x) = x.
+rev_app([x:y],z) = rev_app(y,[x:z]).
+quick_sort([]) = [].
+quick_sort([x:y]) = append(quick_sort(le_list(x,y)),[x:quick_sort(gt_list(x,y))]).
+le_list(z,[]) = [].
+le_list(z,[x:y]) = if(x @<= z,[x:le_list(z,y)],le_list(z,y)).
+gt_list(z,[]) = [].
+gt_list(z,[x:y]) = if(x @> z,[x:gt_list(z,y)],gt_list(z,y)).
+end_of_list.
+
+formulas(assumptions).
+Test1(2 + 3).
+Test2(reverse(union([a,b,c],[d,b,f]))).
+Test3(quick_sort([r,e,g,d,f,w,x,c,e,d,r,y,i,b,j,h,v,x,e,d,d,e,t])).
+Test4(diff([a,b,c,d,e],[c,d,e,f,g])).
+Test5(set([a,b,a,b,b,c])).
+member(b,[a,b,c]) -> Member_test_true.
+-member(b,[a,b,c]) -> Member_test_false.
+is_set([a,b,c,a,d]) -> Set_test_true.
+-is_set([a,b,c,a,d]) -> Set_test_false.
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 member(b,[a,b,c]) -> Member_test_true # label(non_clause).  [assumption].
+2 -member(b,[a,b,c]) -> Member_test_false # label(non_clause).  [assumption].
+3 is_set([a,b,c,a,d]) -> Set_test_true # label(non_clause).  [assumption].
+4 -is_set([a,b,c,a,d]) -> Set_test_false # label(non_clause).  [assumption].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+Test1(2 + 3).  [assumption].
+Test2(reverse(union([a,b,c],[d,b,f]))).  [assumption].
+Test3(quick_sort([r,e,g,d,f,x,y,c,e,d,r,z,i,b,j,h,u,y,e,d,d,e,t])).  [assumption].
+Test4(diff([a,b,c,d,e],[c,d,e,f,g])).  [assumption].
+Test5(set([a,b,a,b,b,c])).  [assumption].
+-member(b,[a,b,c]) | Member_test_true.  [clausify(1)].
+member(b,[a,b,c]) | Member_test_false.  [clausify(2)].
+-is_set([a,b,c,a,d]) | Set_test_true.  [clausify(3)].
+is_set([a,b,c,a,d]) | Set_test_false.  [clausify(4)].
+end_of_list.
+
+formulas(demodulators).
+-member(x,[]).  [assumption].
+member(x,[y:z]) <-> if(x == y,$T,member(x,z)).  [assumption].
+subset([],x).  [assumption].
+subset([x:y],z) <-> member(x,z) & subset(y,z).  [assumption].
+is_set([]).  [assumption].
+is_set([x:y]) <-> -member(x,y) & is_set(y).  [assumption].
+set([]) = [].  [assumption].
+set([x:y]) = if(member(x,y),set(y),[x:set(y)]).  [assumption].
+append([],x) = x.  [assumption].
+append([x:y],z) = [x:append(y,z)].  [assumption].
+intersect([],x) = [].  [assumption].
+intersect([x:y],z) = if(member(x,z),[x:intersect(y,z)],intersect(y,z)).  [assumption].
+union([],x) = x.  [assumption].
+union([x:y],z) = if(member(x,z),union(y,z),[x:union(y,z)]).  [assumption].
+diff([],x) = [].  [assumption].
+diff([x:y],z) = if(member(x,z),diff(y,z),[x:diff(y,z)]).  [assumption].
+reverse(x) = rev_app(x,[]).  [assumption].
+rev_app([],x) = x.  [assumption].
+rev_app([x:y],z) = rev_app(y,[x:z]).  [assumption].
+quick_sort([]) = [].  [assumption].
+quick_sort([x:y]) = append(quick_sort(le_list(x,y)),[x:quick_sort(gt_list(x,y))]).  [assumption].
+le_list(x,[]) = [].  [assumption].
+le_list(x,[y:z]) = if(y @<= x,[y:le_list(x,z)],le_list(x,z)).  [assumption].
+gt_list(x,[]) = [].  [assumption].
+gt_list(x,[y:z]) = if(y @> x,[y:gt_list(x,z)],gt_list(x,z)).  [assumption].
+end_of_list.
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ =, Member_test_false, Member_test_true, Set_test_false, Set_test_true, is_set, Test1, Test2, Test3, Test4, Test5, member, @<=, @>, subset, == ]).
+Function symbol precedence:  function_order([ $nil, b, a, c, d, e, f, g, r, 2, 3, h, i, j, t, $cons, diff, gt_list, le_list, union, append, intersect, rev_app, +, quick_sort, set, reverse ]).
+After inverse_order:  (no changes).
+
+           30 Test1(2 + 3).  [assumption].
+kept:      31 Test1(5).  [copy(30),eval(1)].
+           32 Test2(reverse(union([a,b,c],[d,b,f]))).  [assumption].
+kept:      33 Test2([f,b,d,c,a]).  [copy(32),rewrite([18,6,5,17,21,23,22]),eval(8)].
+           34 Test3(quick_sort([r,e,g,d,f,x,y,c,e,d,r,z,i,b,j,h,u,y,e,d,d,e,t])).  [assumption].
+kept:      35 Test3([x,y,y,z,u,b,c,d,d,d,d,e,e,e,e,f,g,h,i,j,r,r,t]).  [copy(34),rewrite([25,27,26,24,29,28,13,14]),eval(194)].
+           36 Test4(diff([a,b,c,d,e],[c,d,e,f,g])).  [assumption].
+kept:      37 Test4([a,b]).  [copy(36),rewrite([20,6,5,19]),eval(16)].
+           38 Test5(set([a,b,a,b,b,c])).  [assumption].
+kept:      39 Test5([a,b,c]).  [copy(38),rewrite([12,6,5,11]),eval(9)].
+           40 -member(b,[a,b,c]) | Member_test_true.  [clausify(1)].
+kept:      41 Member_test_true.  [copy(40),rewrite([6]),eval(2)].
+           42 member(b,[a,b,c]) | Member_test_false.  [clausify(2)].
+           43 -is_set([a,b,c,a,d]) | Set_test_true.  [clausify(3)].
+           44 is_set([a,b,c,a,d]) | Set_test_false.  [clausify(4)].
+kept:      45 Set_test_false.  [copy(44),rewrite([10,6]),eval(4)].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+31 Test1(5).  [copy(30),eval(1)].
+33 Test2([f,b,d,c,a]).  [copy(32),rewrite([18,6,5,17,21,23,22]),eval(8)].
+35 Test3([x,y,y,z,u,b,c,d,d,d,d,e,e,e,e,f,g,h,i,j,r,r,t]).  [copy(34),rewrite([25,27,26,24,29,28,13,14]),eval(194)].
+37 Test4([a,b]).  [copy(36),rewrite([20,6,5,19]),eval(16)].
+39 Test5([a,b,c]).  [copy(38),rewrite([12,6,5,11]),eval(9)].
+41 Member_test_true.  [copy(40),rewrite([6]),eval(2)].
+45 Set_test_false.  [copy(44),rewrite([10,6]),eval(4)].
+end_of_list.
+
+formulas(demodulators).
+5 -member(x,[]).  [assumption].
+6 member(x,[y:z]) <-> if(x == y,$T,member(x,z)).  [assumption].
+7 subset([],x).  [assumption].
+8 subset([x:y],z) <-> member(x,z) & subset(y,z).  [assumption].
+9 is_set([]).  [assumption].
+10 is_set([x:y]) <-> -member(x,y) & is_set(y).  [assumption].
+11 set([]) = [].  [assumption].
+12 set([x:y]) = if(member(x,y),set(y),[x:set(y)]).  [assumption].
+13 append([],x) = x.  [assumption].
+14 append([x:y],z) = [x:append(y,z)].  [assumption].
+15 intersect([],x) = [].  [assumption].
+16 intersect([x:y],z) = if(member(x,z),[x:intersect(y,z)],intersect(y,z)).  [assumption].
+17 union([],x) = x.  [assumption].
+18 union([x:y],z) = if(member(x,z),union(y,z),[x:union(y,z)]).  [assumption].
+19 diff([],x) = [].  [assumption].
+20 diff([x:y],z) = if(member(x,z),diff(y,z),[x:diff(y,z)]).  [assumption].
+21 reverse(x) = rev_app(x,[]).  [assumption].
+22 rev_app([],x) = x.  [assumption].
+23 rev_app([x:y],z) = rev_app(y,[x:z]).  [assumption].
+24 quick_sort([]) = [].  [assumption].
+25 quick_sort([x:y]) = append(quick_sort(le_list(x,y)),[x:quick_sort(gt_list(x,y))]).  [assumption].
+26 le_list(x,[]) = [].  [assumption].
+27 le_list(x,[y:z]) = if(y @<= x,[y:le_list(x,z)],le_list(x,z)).  [assumption].
+28 gt_list(x,[]) = [].  [assumption].
+29 gt_list(x,[y:z]) = if(y @> x,[y:gt_list(x,z)],gt_list(x,z)).  [assumption].
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.01 seconds.
+
+given #1 (I,wt=2): 31 Test1(5).  [copy(30),eval(1)].
+
+given #2 (I,wt=12): 33 Test2([f,b,d,c,a]).  [copy(32),rewrite([18,6,5,17,21,23,22]),eval(8)].
+
+given #3 (I,wt=48): 35 Test3([x,y,y,z,u,b,c,d,d,d,d,e,e,e,e,f,g,h,i,j,r,r,t]).  [copy(34),rewrite([25,27,26,24,29,28,13,14]),eval(194)].
+
+given #4 (I,wt=6): 37 Test4([a,b]).  [copy(36),rewrite([20,6,5,19]),eval(16)].
+
+given #5 (I,wt=8): 39 Test5([a,b,c]).  [copy(38),rewrite([12,6,5,11]),eval(9)].
+
+given #6 (I,wt=1): 41 Member_test_true.  [copy(40),rewrite([6]),eval(2)].
+
+given #7 (I,wt=1): 45 Set_test_false.  [copy(44),rewrite([10,6]),eval(4)].
+
+============================== STATISTICS ============================
+
+Given=7. Generated=9. Kept=7. proofs=0.
+Usable=7. Sos=0. Demods=25. Limbo=0, Disabled=9. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=2. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.04.
+User_CPU=0.01, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+SEARCH FAILED
+
+Exiting with failure.
+
+Process 25638 exit (sos_empty) Tue Nov  3 17:08:22 2009

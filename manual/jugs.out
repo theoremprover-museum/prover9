@@ -1,0 +1,217 @@
+============================== Prover9 ===============================
+Prover9 (32) version 2009-11A, November 2009.
+Process 25640 was started by mccune on cleo,
+Tue Nov  3 17:08:22 2009
+The command was "/home/mccune/LADR/bin/prover9 -f jugs.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file jugs.in
+
+set(production).
+    % set(production) -> set(raw).
+    % set(raw) -> clear(auto).
+    % clear(auto) -> clear(auto_inference).
+    % clear(auto) -> clear(auto_setup).
+    % clear(auto_setup) -> clear(predicate_elim).
+    % clear(auto_setup) -> assign(eq_defs, pass).
+    % clear(auto) -> clear(auto_limits).
+    % clear(auto_limits) -> assign(max_weight, "1000000000000.000").
+    % clear(auto_limits) -> assign(sos_limit, -1).
+    % clear(auto) -> clear(auto_denials).
+    % clear(auto) -> clear(auto_process).
+    % set(raw) -> clear(ordered_res).
+    % set(raw) -> clear(ordered_para).
+    % set(raw) -> set(para_into_vars).
+    % set(raw) -> set(para_from_small).
+    % set(raw) -> clear(ordered_para).
+    % set(raw) -> clear(back_demod).
+    % set(raw) -> clear(cac_redundancy).
+    % set(raw) -> assign(backsub_check, 2147483647).
+    % set(raw) -> set(lightest_first).
+    % set(lightest_first) -> assign(weight_part, 1).
+    % set(lightest_first) -> assign(age_part, 0).
+    % set(lightest_first) -> assign(false_part, 0).
+    % set(lightest_first) -> assign(true_part, 0).
+    % set(lightest_first) -> assign(random_part, 0).
+    % set(raw) -> assign(literal_selection, none).
+    % set(production) -> set(eval_rewrite).
+    % set(production) -> set(hyper_resolution).
+    % set(hyper_resolution) -> set(pos_hyper_resolution).
+    % set(production) -> clear(back_subsume).
+
+formulas(usable).
+J(x,y) -> J(3,y).
+J(x,y) -> J(0,y).
+J(x,y) -> J(x,4).
+J(x,y) -> J(x,0).
+J(x,y) & x + y <= 4 -> J(0,y + x).
+J(x,y) & x + y > 4 -> J(x + -(4 + -y),4).
+J(x,y) & x + y <= 3 -> J(x + y,0).
+J(x,y) & x + y > 3 -> J(3,y + -(3 + -x)).
+end_of_list.
+
+formulas(assumptions).
+J(0,0).
+end_of_list.
+
+formulas(goals).
+(exists x J(x,2)).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 J(x,y) -> J(3,y) # label(non_clause).  [assumption].
+2 J(x,y) -> J(0,y) # label(non_clause).  [assumption].
+3 J(x,y) -> J(x,4) # label(non_clause).  [assumption].
+4 J(x,y) -> J(x,0) # label(non_clause).  [assumption].
+5 J(x,y) & x + y <= 4 -> J(0,y + x) # label(non_clause).  [assumption].
+6 J(x,y) & x + y > 4 -> J(x + -(4 + -y),4) # label(non_clause).  [assumption].
+7 J(x,y) & x + y <= 3 -> J(x + y,0) # label(non_clause).  [assumption].
+8 J(x,y) & x + y > 3 -> J(3,y + -(3 + -x)) # label(non_clause).  [assumption].
+9 (exists x J(x,2)) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+-J(x,y) | J(3,y).  [clausify(1)].
+-J(x,y) | J(0,y).  [clausify(2)].
+-J(x,y) | J(x,4).  [clausify(3)].
+-J(x,y) | J(x,0).  [clausify(4)].
+-J(x,y) | -(x + y <= 4) | J(0,y + x).  [clausify(5)].
+-J(x,y) | -(x + y > 4) | J(x + -(4 + -y),4).  [clausify(6)].
+-J(x,y) | -(x + y <= 3) | J(x + y,0).  [clausify(7)].
+-J(x,y) | -(x + y > 3) | J(3,y + -(3 + -x)).  [clausify(8)].
+end_of_list.
+
+formulas(sos).
+J(0,0).  [assumption].
+-J(x,2).  [deny(9)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ J, <=, > ]).
+Function symbol precedence:  function_order([ 0, 3, 4, 2, +, - ]).
+After inverse_order:  (no changes).
+
+kept:      18 J(0,0).  [assumption].
+kept:      19 -J(x,2).  [deny(9)].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+10 -J(x,y) | J(3,y).  [clausify(1)].
+11 -J(x,y) | J(0,y).  [clausify(2)].
+12 -J(x,y) | J(x,4).  [clausify(3)].
+13 -J(x,y) | J(x,0).  [clausify(4)].
+14 -J(x,y) | -(x + y <= 4) | J(0,y + x).  [clausify(5)].
+15 -J(x,y) | -(x + y > 4) | J(x + -(4 + -y),4).  [clausify(6)].
+16 -J(x,y) | -(x + y <= 3) | J(x + y,0).  [clausify(7)].
+17 -J(x,y) | -(x + y > 3) | J(3,y + -(3 + -x)).  [clausify(8)].
+end_of_list.
+
+formulas(sos).
+18 J(0,0).  [assumption].
+19 -J(x,2).  [deny(9)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.01 seconds.
+
+given #1 (I,wt=3): 18 J(0,0).  [assumption].
+
+given #2 (I,wt=3): 19 -J(x,2).  [deny(9)].
+
+given #3 (W,wt=3): 20 J(0,4).  [hyper(12,a,18,a)].
+
+given #4 (W,wt=3): 21 J(3,0).  [hyper(10,a,18,a)].
+
+given #5 (W,wt=3): 22 J(3,1).  [hyper(17,a,20,a),eval(6)].
+
+given #6 (W,wt=3): 23 J(3,4).  [hyper(10,a,20,a)].
+
+given #7 (W,wt=3): 24 J(0,3).  [hyper(14,a,21,a),eval(3)].
+
+given #8 (W,wt=3): 25 J(0,1).  [hyper(11,a,22,a)].
+
+given #9 (W,wt=3): 26 J(3,3).  [hyper(10,a,24,a)].
+
+given #10 (W,wt=3): 27 J(1,0).  [hyper(16,a,25,a),eval(3)].
+
+given #11 (W,wt=3): 28 J(2,4).  [hyper(15,a,26,a),eval(6)].
+
+given #12 (W,wt=3): 29 J(1,4).  [hyper(12,a,27,a)].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.01 (+ 0.00) seconds.
+% Length of proof is 18.
+% Level of proof is 8.
+% Maximum clause weight is 3.000.
+% Given clauses 12.
+
+2 J(x,y) -> J(0,y) # label(non_clause).  [assumption].
+3 J(x,y) -> J(x,4) # label(non_clause).  [assumption].
+7 J(x,y) & x + y <= 3 -> J(x + y,0) # label(non_clause).  [assumption].
+8 J(x,y) & x + y > 3 -> J(3,y + -(3 + -x)) # label(non_clause).  [assumption].
+9 (exists x J(x,2)) # label(non_clause) # label(goal).  [goal].
+11 -J(x,y) | J(0,y).  [clausify(2)].
+12 -J(x,y) | J(x,4).  [clausify(3)].
+16 -J(x,y) | -(x + y <= 3) | J(x + y,0).  [clausify(7)].
+17 -J(x,y) | -(x + y > 3) | J(3,y + -(3 + -x)).  [clausify(8)].
+18 J(0,0).  [assumption].
+19 -J(x,2).  [deny(9)].
+20 J(0,4).  [hyper(12,a,18,a)].
+22 J(3,1).  [hyper(17,a,20,a),eval(6)].
+25 J(0,1).  [hyper(11,a,22,a)].
+27 J(1,0).  [hyper(16,a,25,a),eval(3)].
+29 J(1,4).  [hyper(12,a,27,a)].
+31 J(3,2).  [hyper(17,a,29,a),eval(6)].
+32 $F.  [resolve(31,a,19,a)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=12. Generated=83. Kept=14. proofs=1.
+Usable=20. Sos=1. Demods=0. Limbo=0, Disabled=2. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=69. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.04.
+User_CPU=0.01, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 1 proof.
+
+Process 25640 exit (max_proofs) Tue Nov  3 17:08:22 2009

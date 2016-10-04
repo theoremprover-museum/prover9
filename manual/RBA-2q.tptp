@@ -1,0 +1,14 @@
+
+% The LADR formulas contain function or predicate symbols
+% that are not legal TPTP symbols, and we have replaced those
+% symbols with new symbols.  Here is the list of the unaccepted
+% symbols and the corresponding replacements.
+%
+%   (arity 1)        '    '\''
+%   (arity 2)        +    '+'
+
+cnf(sos,axiom,'+'(A,B) = '+'(B,A)).
+cnf(sos,axiom,'+'('+'(A,B),C) = '+'(A,'+'(B,C))).
+cnf(sos,axiom,'\''('+'('\''('+'(A,B)),'\''('+'(A,'\''(B))))) = A).
+fof(sos,axiom,? [X0] : '+'(X0,X0) = X0).
+fof(goals,conjecture,! [X1] : ! [X2] : '+'('\''('+'(X1,'\''(X2))),'\''('+'('\''(X1),'\''(X2)))) = X2).

@@ -1,0 +1,801 @@
+============================== Prover9 ===============================
+Prover9 (32) version 2009-11A, November 2009.
+Process 25577 was started by mccune on cleo,
+Tue Nov  3 17:07:39 2009
+The command was "/home/mccune/LADR/bin/prover9 -f LT-82-2.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file LT-82-2.in
+
+assign(order,kbo).
+assign(max_weight,25).
+assign(max_seconds,3600).
+
+formulas(sos).
+x v y = y v x.
+(x v y) v z = x v (y v z).
+x ^ y = y ^ x.
+(x ^ y) ^ z = x ^ (y ^ z).
+x ^ (x v y) = x.
+x v (x ^ y) = x.
+end_of_list.
+
+formulas(sos).
+(x ^ y) v (x ^ z) = x ^ ((y ^ (x v z)) v (z ^ (x v y))) # label(H82).
+end_of_list.
+
+formulas(goals).
+x ^ (y v (x ^ z)) = x ^ (y v (z ^ ((x ^ (y v z)) v (y ^ z)))) # label(H2).
+end_of_list.
+
+list(interpretations).
+interpretation(6,[],[function(_ ^ _,[0,0,0,0,0,0,0,1,2,3,4,5,0,2,2,0,0,0,0,3,0,3,5,5,0,4,0,5,4,5,0,5,0,5,5,5]),function(_ v _,[0,1,2,3,4,5,1,1,1,1,1,1,2,1,2,1,1,1,3,1,1,3,1,3,4,1,1,1,4,4,5,1,1,3,4,5])]).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 x ^ (y v (x ^ z)) = x ^ (y v (z ^ ((x ^ (y v z)) v (y ^ z)))) # label(H2) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+x v y = y v x.  [assumption].
+(x v y) v z = x v (y v z).  [assumption].
+x ^ y = y ^ x.  [assumption].
+(x ^ y) ^ z = x ^ (y ^ z).  [assumption].
+x ^ (x v y) = x.  [assumption].
+x v (x ^ y) = x.  [assumption].
+(x ^ y) v (x ^ z) = x ^ ((y ^ (x v z)) v (z ^ (x v y))) # label(H82).  [assumption].
+c1 ^ (c2 v (c3 ^ ((c1 ^ (c2 v c3)) v (c2 ^ c3)))) != c1 ^ (c2 v (c1 ^ c3)) # label(H2).  [deny(1)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Auto_denials:
+  % copying label H2 to answer in negative clause
+
+Term ordering decisions:
+Function symbol KB weights:  c1=1. c2=1. c3=1. ^=1. v=1.
+Predicate symbol precedence:  predicate_order([ = ]).
+Function symbol precedence:  function_order([ c1, c2, c3, ^, v ]).
+Skipping inverse_order, because term ordering is KBO.
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(paramodulation).  % (positive equality literals)
+
+Auto_process settings:  (no changes).
+
+
+% Operation v is commutative; C redundancy checks enabled.
+kept:      2 x v y = y v x.  [assumption].
+kept:      3 (x v y) v z = x v (y v z).  [assumption].
+
+% Operation ^ is commutative; C redundancy checks enabled.
+kept:      4 x ^ y = y ^ x.  [assumption].
+kept:      5 (x ^ y) ^ z = x ^ (y ^ z).  [assumption].
+kept:      6 x ^ (x v y) = x.  [assumption].
+kept:      7 x v (x ^ y) = x.  [assumption].
+           8 (x ^ y) v (x ^ z) = x ^ ((y ^ (x v z)) v (z ^ (x v y))) # label(H82).  [assumption].
+kept:      9 x ^ ((y ^ (x v z)) v (z ^ (x v y))) = (x ^ y) v (x ^ z).  [copy(8),flip(a)].
+           10 c1 ^ (c2 v (c3 ^ ((c1 ^ (c2 v c3)) v (c2 ^ c3)))) != c1 ^ (c2 v (c1 ^ c3)) # label(H2) # answer(H2).  [deny(1)].
+kept:      11 c1 ^ (c2 v (c3 ^ ((c2 ^ c3) v (c1 ^ (c2 v c3))))) != c1 ^ (c2 v (c1 ^ c3)) # answer(H2).  [copy(10),rewrite([2(12)])].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+2 x v y = y v x.  [assumption].
+3 (x v y) v z = x v (y v z).  [assumption].
+4 x ^ y = y ^ x.  [assumption].
+5 (x ^ y) ^ z = x ^ (y ^ z).  [assumption].
+6 x ^ (x v y) = x.  [assumption].
+7 x v (x ^ y) = x.  [assumption].
+9 x ^ ((y ^ (x v z)) v (z ^ (x v y))) = (x ^ y) v (x ^ z) # label(false).  [copy(8),flip(a)].
+11 c1 ^ (c2 v (c3 ^ ((c2 ^ c3) v (c1 ^ (c2 v c3))))) != c1 ^ (c2 v (c1 ^ c3)) # answer(H2).  [copy(10),rewrite([2(12)])].
+end_of_list.
+
+formulas(demodulators).
+2 x v y = y v x.  [assumption].
+        % (lex-dep)
+3 (x v y) v z = x v (y v z).  [assumption].
+4 x ^ y = y ^ x.  [assumption].
+        % (lex-dep)
+5 (x ^ y) ^ z = x ^ (y ^ z).  [assumption].
+6 x ^ (x v y) = x.  [assumption].
+7 x v (x ^ y) = x.  [assumption].
+9 x ^ ((y ^ (x v z)) v (z ^ (x v y))) = (x ^ y) v (x ^ z) # label(false).  [copy(8),flip(a)].
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.01 seconds.
+
+given #1 (I,wt=7): 2 x v y = y v x.  [assumption].
+
+given #2 (I,wt=11): 3 (x v y) v z = x v (y v z).  [assumption].
+
+% Operation v is associative-commutative; CAC redundancy checks enabled.
+% back CAC tautology: 12 x v (y v z) = z v (x v y).  [para(3(a,1),2(a,1))].
+
+given #3 (I,wt=7): 4 x ^ y = y ^ x.  [assumption].
+
+given #4 (I,wt=11): 5 (x ^ y) ^ z = x ^ (y ^ z).  [assumption].
+
+% Operation ^ is associative-commutative; CAC redundancy checks enabled.
+% back CAC tautology: 14 x ^ (y ^ z) = z ^ (x ^ y).  [para(5(a,1),4(a,1))].
+
+given #5 (I,wt=7): 6 x ^ (x v y) = x.  [assumption].
+
+given #6 (I,wt=7): 7 x v (x ^ y) = x.  [assumption].
+
+given #7 (I,wt=21): 9 x ^ ((y ^ (x v z)) v (z ^ (x v y))) = (x ^ y) v (x ^ z) # label(false).  [copy(8),flip(a)].
+
+given #8 (I,wt=23): 11 c1 ^ (c2 v (c3 ^ ((c2 ^ c3) v (c1 ^ (c2 v c3))))) != c1 ^ (c2 v (c1 ^ c3)) # answer(H2).  [copy(10),rewrite([2(12)])].
+
+given #9 (A,wt=11): 13 x v (y v z) = y v (x v z).  [para(2(a,1),3(a,1,1)),rewrite([3(2)])].
+
+given #10 (F,wt=21): 26 x ^ ((y ^ (z v x)) v (z ^ (x v y))) = (x ^ y) v (x ^ z) # label(false).  [para(2(a,1),9(a,1,2,1,2))].
+
+given #11 (F,wt=21): 27 x ^ ((y ^ (x v z)) v (z ^ (y v x))) = (x ^ y) v (x ^ z) # label(false).  [para(2(a,1),9(a,1,2,2,2))].
+
+given #12 (F,wt=21): 28 x ^ ((y ^ (x v z)) v ((x v y) ^ z)) = (x ^ z) v (x ^ y) # label(false).  [para(4(a,1),9(a,1,2,1)),rewrite([2(5)])].
+
+given #13 (F,wt=21): 33 x ^ ((y ^ (z v x)) v (z ^ (y v x))) = (x ^ y) v (x ^ z) # label(false).  [para(2(a,1),26(a,1,2,2,2))].
+
+given #14 (T,wt=5): 24 x ^ x = x.  [para(7(a,1),6(a,1,2))].
+
+given #15 (T,wt=5): 25 x v x = x.  [para(6(a,1),7(a,1,2))].
+
+given #16 (T,wt=7): 16 x ^ (y v x) = x.  [para(2(a,1),6(a,1,2))].
+
+given #17 (T,wt=7): 22 x v (y ^ x) = x.  [para(4(a,1),7(a,1,2))].
+
+given #18 (A,wt=11): 15 x ^ (y ^ z) = y ^ (x ^ z).  [para(4(a,1),5(a,1,1)),rewrite([5(2)])].
+
+given #19 (F,wt=21): 34 x ^ ((y ^ (x v z)) v ((y v x) ^ z)) = (x ^ z) v (x ^ y) # label(false).  [para(4(a,1),26(a,1,2,1)),rewrite([2(5)])].
+
+given #20 (F,wt=21): 35 x ^ ((y ^ (z v x)) v ((x v y) ^ z)) = (x ^ y) v (x ^ z) # label(false).  [para(4(a,1),26(a,1,2,2))].
+
+given #21 (F,wt=21): 39 x ^ (((x v y) ^ z) v ((x v z) ^ y)) = (x ^ y) v (x ^ z) # label(false).  [para(4(a,1),28(a,1,2,1))].
+
+given #22 (F,wt=21): 44 x ^ ((y ^ (z v x)) v ((y v x) ^ z)) = (x ^ z) v (x ^ y) # label(false).  [para(4(a,1),33(a,1,2,1)),rewrite([2(5)])].
+
+given #23 (T,wt=9): 31 x ^ (y v (x v z)) = x.  [para(13(a,1),6(a,1,2))].
+
+given #24 (T,wt=9): 46 x ^ (x ^ y) = x ^ y.  [para(24(a,1),5(a,1,1)),flip(a)].
+
+given #25 (T,wt=9): 48 x ^ (y ^ x) = y ^ x.  [para(24(a,1),5(a,2,2)),rewrite([4(2)])].
+
+given #26 (T,wt=9): 55 x v (x v y) = x v y.  [para(25(a,1),3(a,1,1)),flip(a)].
+
+given #27 (A,wt=13): 17 (x v y) ^ (x v (y v z)) = x v y.  [para(3(a,1),6(a,1,2))].
+
+given #28 (F,wt=21): 83 x ^ (((x v y) ^ z) v ((z v x) ^ y)) = (x ^ y) v (x ^ z) # label(false).  [para(4(a,1),34(a,1,2,1))].
+
+given #29 (F,wt=21): 91 x ^ (((y v x) ^ z) v ((x v z) ^ y)) = (x ^ z) v (x ^ y) # label(false).  [para(4(a,1),35(a,1,2,1))].
+
+given #30 (F,wt=21): 103 x ^ (((y v x) ^ z) v ((z v x) ^ y)) = (x ^ y) v (x ^ z) # label(false).  [para(4(a,1),44(a,1,2,1))].
+
+given #31 (F,wt=25): 127 x ^ (((x v y) ^ z) v (y ^ (x v ((x v y) ^ z)))) = (x ^ z) v (x ^ y) # label(false).  [para(46(a,1),28(a,1,2,2)),rewrite([2(7),18(11)])].
+
+given #32 (T,wt=9): 57 x v (y v x) = y v x.  [para(25(a,1),3(a,2,2)),rewrite([2(2)])].
+
+given #33 (T,wt=9): 58 x ^ (y v (z v x)) = x.  [para(3(a,1),16(a,1,2))].
+
+given #34 (T,wt=9): 68 x v (y ^ (z ^ x)) = x.  [para(5(a,1),22(a,1,2))].
+
+given #35 (T,wt=9): 75 x v (y ^ (x ^ z)) = x.  [para(15(a,1),7(a,1,2))].
+
+given #36 (A,wt=11): 18 x ^ ((x v y) ^ z) = x ^ z.  [para(6(a,1),5(a,1,1)),flip(a)].
+
+given #37 (F,wt=25): 128 x ^ (((y v x) ^ z) v (y ^ (x v ((y v x) ^ z)))) = (x ^ z) v (x ^ y) # label(false).  [para(46(a,1),34(a,1,2,2)),rewrite([2(7),59(11)])].
+
+given #38 (F,wt=25): 131 x ^ ((y ^ (x v z)) v (z ^ (x v (y ^ (x v z))))) = (y ^ x) v (x ^ z) # label(false).  [para(48(a,1),28(a,1,2,2)),rewrite([2(7),74(11)])].
+
+given #39 (F,wt=25): 132 x ^ ((y ^ (z v x)) v (z ^ (x v (y ^ (z v x))))) = (y ^ x) v (x ^ z) # label(false).  [para(48(a,1),34(a,1,2,2)),rewrite([2(7),81(11)])].
+
+given #40 (F,wt=25): 153 x ^ (((y v x) ^ z) v (y ^ (x v ((x v y) ^ z)))) = (x ^ z) v (x ^ y) # label(false).  [para(2(a,1),127(a,1,2,1,1))].
+
+given #41 (T,wt=11): 20 x v ((x ^ y) v z) = x v z.  [para(7(a,1),3(a,1,1)),flip(a)].
+
+given #42 (T,wt=11): 32 x v (y v (x ^ z)) = y v x.  [para(7(a,1),13(a,1,2)),flip(a)].
+
+given #43 (T,wt=11): 59 x ^ ((y v x) ^ z) = x ^ z.  [para(16(a,1),5(a,1,1)),flip(a)].
+
+given #44 (T,wt=11): 66 x v ((y ^ x) v z) = x v z.  [para(22(a,1),3(a,1,1)),flip(a)].
+
+given #45 (A,wt=13): 19 x ^ (y ^ ((x ^ y) v z)) = x ^ y.  [para(6(a,1),5(a,1)),flip(a)].
+
+given #46 (F,wt=25): 154 x ^ (((x v y) ^ z) v (y ^ (x v ((y v x) ^ z)))) = (x ^ z) v (x ^ y) # label(false).  [para(2(a,1),127(a,1,2,2,2,2,1))].
+
+given #47 (F,wt=25): 155 x ^ ((y ^ (x v z)) v (z ^ (x v ((x v z) ^ y)))) = (x ^ y) v (x ^ z) # label(false).  [para(4(a,1),127(a,1,2,1))].
+
+given #48 (F,wt=25): 156 x ^ (((x v y) ^ z) v (y ^ (x v (z ^ (x v y))))) = (x ^ z) v (x ^ y) # label(false).  [para(4(a,1),127(a,1,2,2,2,2))].
+
+given #49 (F,wt=25): 217 x ^ ((y ^ (z v x)) v (z ^ (x v ((z v x) ^ y)))) = (x ^ y) v (x ^ z) # label(false).  [para(4(a,1),128(a,1,2,1))].
+
+given #50 (T,wt=11): 70 x v (y v (z ^ x)) = y v x.  [para(22(a,1),13(a,1,2)),flip(a)].
+
+given #51 (T,wt=11): 74 x ^ (y ^ (x v z)) = y ^ x.  [para(6(a,1),15(a,1,2)),flip(a)].
+
+given #52 (T,wt=11): 81 x ^ (y ^ (z v x)) = y ^ x.  [para(16(a,1),15(a,1,2)),flip(a)].
+
+given #53 (T,wt=11): 109 x ^ (y v (z v (x v u))) = x.  [para(3(a,1),31(a,1,2))].
+
+given #54 (A,wt=13): 21 x v (y v ((x v y) ^ z)) = x v y.  [para(7(a,1),3(a,1)),flip(a)].
+
+given #55 (F,wt=25): 218 x ^ (((y v x) ^ z) v (y ^ (x v (z ^ (y v x))))) = (x ^ z) v (x ^ y) # label(false).  [para(4(a,1),128(a,1,2,2,2,2))].
+
+given #56 (F,wt=25): 223 x ^ ((y ^ (z v x)) v (z ^ (x v (y ^ (x v z))))) = (y ^ x) v (x ^ z) # label(false).  [para(2(a,1),131(a,1,2,1,2))].
+
+given #57 (F,wt=25): 224 x ^ ((y ^ (x v z)) v (z ^ (x v (y ^ (z v x))))) = (y ^ x) v (x ^ z) # label(false).  [para(2(a,1),131(a,1,2,2,2,2,2))].
+
+given #58 (F,wt=25): 232 x ^ ((y ^ (z v x)) v (z ^ (x v ((x v z) ^ y)))) = (x ^ y) v (x ^ z) # label(false).  [para(4(a,1),153(a,1,2,1))].
+
+given #59 (T,wt=11): 164 (x v y) ^ (y v x) = x v y.  [para(57(a,1),17(a,1,2))].
+
+given #60 (T,wt=11): 165 x ^ (y v (z v (u v x))) = x.  [para(3(a,1),58(a,1,2,2))].
+
+given #61 (T,wt=11): 184 x v (y ^ (z ^ (u ^ x))) = x.  [para(5(a,1),68(a,1,2,2))].
+
+given #62 (T,wt=11): 203 x v (y ^ (z ^ (x ^ u))) = x.  [para(5(a,1),75(a,1,2))].
+
+given #63 (A,wt=13): 23 (x ^ y) v (x ^ (y ^ z)) = x ^ y.  [para(5(a,1),7(a,1,2))].
+
+given #64 (F,wt=25): 233 x ^ (((y v x) ^ z) v (y ^ (x v (z ^ (x v y))))) = (x ^ z) v (x ^ y) # label(false).  [para(4(a,1),153(a,1,2,2,2,2))].
+
+given #65 (F,wt=25): 280 x ^ ((y ^ (x v z)) v (z ^ (x v ((z v x) ^ y)))) = (x ^ y) v (x ^ z) # label(false).  [para(4(a,1),154(a,1,2,1))].
+
+given #66 (F,wt=25): 281 x ^ (((x v y) ^ z) v (y ^ (x v (z ^ (y v x))))) = (x ^ z) v (x ^ y) # label(false).  [para(4(a,1),154(a,1,2,2,2,2))].
+
+given #67 (T,wt=11): 215 (x v y) ^ (z ^ x) = z ^ x.  [para(48(a,1),18(a,2)),rewrite([130(4)])].
+
+given #68 (T,wt=11): 225 (x ^ y) v (y ^ x) = y ^ x.  [para(16(a,1),131(a,1,2,1)),rewrite([16(2),16(2),25(1)]),flip(a)].
+
+given #69 (T,wt=11): 241 (x ^ y) v (z v x) = z v x.  [para(57(a,1),20(a,2)),rewrite([161(4)])].
+
+given #70 (T,wt=11): 253 (x v y) ^ (z ^ y) = z ^ y.  [para(48(a,1),59(a,2)),rewrite([130(4)])].
+
+given #71 (A,wt=25): 29 x ^ (((y ^ (x v z)) v (z ^ (x v y))) ^ u) = ((x ^ y) v (x ^ z)) ^ u.  [para(9(a,1),5(a,1,1)),flip(a)].
+
+given #72 (T,wt=11): 263 (x ^ y) v (z v y) = z v y.  [para(57(a,1),66(a,2)),rewrite([161(4)])].
+
+given #73 (T,wt=13): 60 x ^ (y ^ (z v (x ^ y))) = x ^ y.  [para(16(a,1),5(a,1)),flip(a)].
+
+given #74 (T,wt=13): 62 (x v y) ^ (x v (z v y)) = x v y.  [para(13(a,1),16(a,1,2))].
+
+given #75 (T,wt=13): 67 x v (y v (z ^ (x v y))) = x v y.  [para(22(a,1),3(a,1)),flip(a)].
+
+given #76 (A,wt=25): 36 x ^ (((y ^ (z v x)) v (z ^ (x v y))) ^ u) = ((x ^ y) v (x ^ z)) ^ u.  [para(26(a,1),5(a,1,1)),flip(a)].
+
+given #77 (T,wt=13): 82 (x ^ y) v (x ^ (z ^ y)) = x ^ y.  [para(15(a,1),22(a,1,2))].
+
+given #78 (T,wt=13): 110 x ^ ((y v (x v z)) ^ u) = x ^ u.  [para(31(a,1),5(a,1,1)),flip(a)].
+
+given #79 (T,wt=13): 116 x v (y v (x v z)) = y v (x v z).  [para(31(a,1),22(a,1,2)),rewrite([2(3)])].
+
+given #80 (T,wt=13): 117 x ^ (y ^ (z v (x v u))) = y ^ x.  [para(31(a,1),15(a,1,2)),flip(a)].
+
+given #81 (A,wt=25): 38 x ^ (((y ^ (x v z)) v (z ^ (y v x))) ^ u) = ((x ^ y) v (x ^ z)) ^ u.  [para(27(a,1),5(a,1,1)),flip(a)].
+
+given #82 (T,wt=13): 126 x ^ (y ^ (x ^ z)) = y ^ (x ^ z).  [para(46(a,1),5(a,2,2)),rewrite([15(3),5(2)])].
+
+given #83 (T,wt=13): 130 x ^ (y ^ (z ^ x)) = y ^ (z ^ x).  [para(5(a,1),48(a,1,2)),rewrite([5(5)])].
+
+given #84 (T,wt=13): 135 (x v y) ^ (y v (x v z)) = y v x.  [para(2(a,1),17(a,1,1))].
+
+given #85 (T,wt=13): 136 (x v y) ^ (y v (z v x)) = x v y.  [para(2(a,1),17(a,1,2)),rewrite([3(3)])].
+
+given #86 (A,wt=25): 40 x ^ (((y ^ (x v z)) v ((x v y) ^ z)) ^ u) = ((x ^ z) v (x ^ y)) ^ u.  [para(28(a,1),5(a,1,1)),flip(a)].
+
+given #87 (T,wt=13): 161 x v (y v (z v x)) = y v (z v x).  [para(3(a,1),57(a,1,2)),rewrite([3(5)])].
+
+given #88 (T,wt=13): 166 x ^ ((y v (z v x)) ^ u) = x ^ u.  [para(58(a,1),5(a,1,1)),flip(a)].
+
+given #89 (T,wt=13): 176 x ^ (y ^ (z v (u v x))) = y ^ x.  [para(58(a,1),15(a,1,2)),flip(a)].
+
+given #90 (T,wt=13): 182 x v ((y ^ (z ^ x)) v u) = x v u.  [para(68(a,1),3(a,1,1)),flip(a)].
+
+given #91 (A,wt=25): 45 x ^ (((y ^ (z v x)) v (z ^ (y v x))) ^ u) = ((x ^ y) v (x ^ z)) ^ u.  [para(33(a,1),5(a,1,1)),flip(a)].
+
+given #92 (T,wt=13): 188 x v (y v (z ^ (u ^ x))) = y v x.  [para(68(a,1),13(a,1,2)),flip(a)].
+
+given #93 (T,wt=13): 200 x v ((y ^ (x ^ z)) v u) = x v u.  [para(75(a,1),3(a,1,1)),flip(a)].
+
+given #94 (T,wt=13): 204 x v (y ^ ((x ^ z) v (x ^ u))) = x.  [para(9(a,1),75(a,1,2,2))].
+
+given #95 (T,wt=13): 205 x v (y v (z ^ (x ^ u))) = y v x.  [para(75(a,1),13(a,1,2)),flip(a)].
+
+given #96 (A,wt=17): 51 x ^ ((y ^ x) v (x ^ z)) = (x ^ z) v (x ^ y).  [back_rewrite(41),rewrite([46(2)]),flip(a)].
+
+given #97 (T,wt=13): 221 x ^ ((y ^ z) v (y ^ x)) = x ^ y.  [para(22(a,1),128(a,1,2,1,1)),rewrite([22(5),51(6),55(6),5(5),54(4),5(6),4(8),48(8),2(8),23(8)])].
+
+given #98 (T,wt=13): 228 x v (y ^ ((z ^ x) v (x ^ u))) = x.  [para(131(a,1),75(a,1,2,2))].
+
+given #99 (T,wt=13): 230 x ^ ((y ^ x) v (z ^ y)) = x ^ y.  [para(22(a,1),132(a,1,2,1,2)),rewrite([22(5),69(6),57(6),5(5),159(4),4(8),48(8),2(8),22(8)])].
+
+given #100 (T,wt=13): 269 x ^ (y ^ ((y ^ x) v z)) = x ^ y.  [para(4(a,1),19(a,1,2,2,1))].
+
+given #101 (A,wt=17): 54 x ^ ((x ^ y) v (x ^ z)) = (x ^ y) v (x ^ z).  [back_rewrite(50),rewrite([52(5)])].
+
+given #102 (T,wt=13): 288 (x ^ y) v (z ^ (y ^ x)) = y ^ x.  [para(68(a,1),155(a,2)),rewrite([75(3),75(6),7(5),4(4),126(4),229(5)])].
+
+given #103 (T,wt=13): 303 x ^ ((y ^ x) v (y ^ z)) = x ^ y.  [para(9(a,1),74(a,1,2)),rewrite([5(6),212(5),74(7)])].
+
+given #104 (T,wt=13): 314 x ^ (y ^ (z v (y ^ x))) = y ^ x.  [back_rewrite(106),rewrite([304(5),126(5)])].
+
+given #105 (T,wt=13): 333 x ^ (y v (z v (u v (x v w)))) = x.  [para(3(a,1),109(a,1,2,2))].
+
+given #106 (A,wt=17): 69 x ^ ((y ^ x) v (z ^ x)) = (x ^ y) v (z ^ x).  [para(22(a,1),9(a,1,2,1,2)),rewrite([5(4),6(3),48(7)])].
+
+given #107 (T,wt=13): 348 x v (y v ((y v x) ^ z)) = x v y.  [para(2(a,1),21(a,1,2,2,1))].
+
+given #108 (T,wt=13): 369 x v (y v (z ^ (y v x))) = x v y.  [para(164(a,1),68(a,1,2,2)),rewrite([3(4)])].
+
+given #109 (T,wt=13): 370 x ^ (y v (z v (u v (w v x)))) = x.  [para(3(a,1),165(a,1,2,2,2))].
+
+given #110 (T,wt=13): 393 x v (y ^ (z ^ (u ^ (w ^ x)))) = x.  [para(5(a,1),184(a,1,2,2,2))].
+
+given #111 (A,wt=25): 76 x ^ (y ^ ((z ^ (x v u)) v (u ^ (x v z)))) = y ^ ((x ^ z) v (x ^ u)).  [para(9(a,1),15(a,1,2)),flip(a)].
+
+given #112 (T,wt=13): 406 x v (y ^ (z ^ (u ^ (x ^ w)))) = x.  [para(184(a,1),20(a,1,2)),rewrite([7(2)]),flip(a)].
+
+given #113 (T,wt=13): 433 (x ^ y) v (y ^ (x ^ z)) = y ^ x.  [para(4(a,1),23(a,1,1))].
+
+given #114 (T,wt=13): 434 (x ^ y) v (y ^ (z ^ x)) = x ^ y.  [para(4(a,1),23(a,1,2)),rewrite([5(3)])].
+
+given #115 (T,wt=13): 454 (x v (y v z)) ^ (u ^ y) = u ^ y.  [para(13(a,1),215(a,1,1))].
+
+given #116 (A,wt=25): 77 x ^ (y ^ ((z ^ (u v x)) v (u ^ (x v z)))) = y ^ ((x ^ z) v (x ^ u)).  [para(26(a,1),15(a,1,2)),flip(a)].
+
+given #117 (T,wt=13): 481 (x ^ (y ^ z)) v (u v y) = u v y.  [para(15(a,1),241(a,1,1))].
+
+given #118 (T,wt=13): 495 (x v (y v z)) ^ (u ^ z) = u ^ z.  [para(3(a,1),253(a,1,1))].
+
+given #119 (T,wt=13): 509 (x v y) ^ (z v (y v x)) = x v y.  [para(164(a,1),253(a,1,2)),rewrite([4(4),164(7)])].
+
+given #120 (T,wt=13): 514 x v (((x ^ y) v (x ^ z)) ^ u) = x.  [para(29(a,1),7(a,1,2))].
+
+given #121 (A,wt=25): 78 x ^ (y ^ ((z ^ (x v u)) v (u ^ (z v x)))) = y ^ ((x ^ z) v (x ^ u)).  [para(27(a,1),15(a,1,2)),flip(a)].
+
+given #122 (T,wt=13): 536 (x ^ (y ^ z)) v (u v z) = u v z.  [para(5(a,1),263(a,1,1))].
+
+given #123 (T,wt=13): 849 x v (y ^ ((x ^ z) v (u ^ x))) = x.  [para(4(a,1),204(a,1,2,2,2))].
+
+given #124 (T,wt=13): 905 x ^ ((y ^ z) v (z ^ x)) = x ^ z.  [para(4(a,1),221(a,1,2,1))].
+
+given #125 (T,wt=13): 906 x ^ ((y ^ z) v (x ^ y)) = x ^ y.  [para(4(a,1),221(a,1,2,2))].
+
+given #126 (A,wt=25): 79 x ^ (y ^ ((z ^ (x v u)) v ((x v z) ^ u))) = y ^ ((x ^ u) v (x ^ z)).  [para(28(a,1),15(a,1,2)),flip(a)].
+
+given #127 (T,wt=13): 944 x v (y ^ ((z ^ x) v (u ^ x))) = x.  [para(4(a,1),228(a,1,2,2,2))].
+
+given #128 (T,wt=13): 945 x v (((y ^ x) v (x ^ z)) ^ u) = x.  [para(4(a,1),228(a,1,2))].
+
+given #129 (T,wt=13): 978 x ^ ((x ^ y) v (z ^ y)) = x ^ y.  [para(4(a,1),230(a,1,2,1))].
+
+given #130 (T,wt=13): 1086 x ^ ((x ^ y) v (y ^ z)) = x ^ y.  [para(4(a,1),303(a,1,2,1))].
+
+given #131 (A,wt=25): 80 x ^ (y ^ ((z ^ (u v x)) v (u ^ (z v x)))) = y ^ ((x ^ z) v (x ^ u)).  [para(33(a,1),15(a,1,2)),flip(a)].
+
+given #132 (T,wt=13): 1505 x v (((x ^ y) v (z ^ x)) ^ u) = x.  [para(4(a,1),514(a,1,2,1,2))].
+
+given #133 (T,wt=13): 1600 x ^ ((y ^ z) v (x ^ z)) = x ^ z.  [para(4(a,1),905(a,1,2,2))].
+
+given #134 (T,wt=13): 1675 x v (((y ^ x) v (z ^ x)) ^ u) = x.  [para(4(a,1),944(a,1,2))].
+
+given #135 (T,wt=15): 108 (x v y) ^ (z v (x v (y v u))) = x v y.  [para(3(a,1),31(a,1,2,2))].
+
+given #136 (A,wt=25): 84 x ^ (((y ^ (x v z)) v ((y v x) ^ z)) ^ u) = ((x ^ z) v (x ^ y)) ^ u.  [para(34(a,1),5(a,1,1)),flip(a)].
+
+given #137 (T,wt=15): 111 x ^ (y ^ (z v ((x ^ y) v u))) = x ^ y.  [para(31(a,1),5(a,1)),flip(a)].
+
+given #138 (T,wt=15): 140 (x v y) ^ (x v (z v (y v u))) = x v y.  [para(13(a,1),17(a,1,2,2))].
+
+given #139 (T,wt=15): 167 x ^ (y ^ (z v (u v (x ^ y)))) = x ^ y.  [para(58(a,1),5(a,1)),flip(a)].
+
+given #140 (T,wt=15): 170 (x v y) ^ (z v (x v (u v y))) = x v y.  [para(13(a,1),58(a,1,2,2))].
+
+given #141 (A,wt=25): 90 x ^ (y ^ ((z ^ (x v u)) v ((z v x) ^ u))) = y ^ ((x ^ u) v (x ^ z)).  [para(34(a,1),15(a,1,2)),flip(a)].
+
+given #142 (T,wt=15): 183 x v (y v (z ^ (u ^ (x v y)))) = x v y.  [para(68(a,1),3(a,1)),flip(a)].
+
+given #143 (T,wt=15): 192 (x ^ y) v (z ^ (x ^ (u ^ y))) = x ^ y.  [para(15(a,1),68(a,1,2,2))].
+
+given #144 (T,wt=15): 201 x v (y v (z ^ ((x v y) ^ u))) = x v y.  [para(75(a,1),3(a,1)),flip(a)].
+
+given #145 (T,wt=15): 202 (x ^ y) v (z ^ (x ^ (y ^ u))) = x ^ y.  [para(5(a,1),75(a,1,2,2))].
+
+given #146 (A,wt=25): 92 x ^ (((y ^ (z v x)) v ((x v y) ^ z)) ^ u) = ((x ^ y) v (x ^ z)) ^ u.  [para(35(a,1),5(a,1,1)),flip(a)].
+
+given #147 (T,wt=15): 213 (x ^ y) v ((x v z) ^ y) = (x v z) ^ y.  [para(18(a,1),22(a,1,2)),rewrite([2(4)])].
+
+given #148 (T,wt=15): 214 x ^ (y ^ ((x v z) ^ u)) = y ^ (x ^ u).  [para(18(a,1),15(a,1,2)),flip(a)].
+
+given #149 (T,wt=15): 219 x ^ ((y ^ x) v ((y v x) ^ (x v z))) = x.  [para(6(a,1),128(a,2,1)),rewrite([115(8),13(8),2(7),213(7),7(8)])].
+
+given #150 (T,wt=15): 220 x ^ ((y ^ x) v ((y v x) ^ (z v x))) = x.  [para(16(a,1),128(a,2,1)),rewrite([173(8),13(8),2(7),213(7),7(8)])].
+
+given #151 (A,wt=25): 97 x ^ (y ^ ((z ^ (u v x)) v ((x v z) ^ u))) = y ^ ((x ^ z) v (x ^ u)).  [para(35(a,1),15(a,1,2)),flip(a)].
+
+given #152 (T,wt=15): 239 x v (y v ((x ^ z) v u)) = y v (x v u).  [para(20(a,1),13(a,1,2)),flip(a)].
+
+given #153 (T,wt=15): 240 (x v y) ^ ((x ^ z) v y) = (x ^ z) v y.  [para(20(a,1),16(a,1,2)),rewrite([4(4)])].
+
+given #154 (T,wt=15): 244 x v (y v (z v (x ^ u))) = y v (z v x).  [para(3(a,1),32(a,1,2)),rewrite([3(6)])].
+
+given #155 (T,wt=15): 246 (x v y) ^ (x v (y ^ z)) = x v (y ^ z).  [para(32(a,1),16(a,1,2)),rewrite([4(4)])].
+
+given #156 (A,wt=25): 98 x ^ ((((x v y) ^ z) v ((x v z) ^ y)) ^ u) = ((x ^ y) v (x ^ z)) ^ u.  [para(39(a,1),5(a,1,1)),flip(a)].
+
+given #157 (T,wt=15): 251 (x ^ y) v ((z v x) ^ y) = (z v x) ^ y.  [para(59(a,1),22(a,1,2)),rewrite([2(4)])].
+
+given #158 (T,wt=15): 252 x ^ (y ^ ((z v x) ^ u)) = y ^ (x ^ u).  [para(59(a,1),15(a,1,2)),flip(a)].
+
+given #159 (T,wt=15): 258 x ^ ((y ^ x) v ((x v y) ^ (x v z))) = x.  [back_rewrite(157),rewrite([251(7)])].
+
+given #160 (T,wt=13): 2410 x ^ (((x v y) ^ (x v z)) v u) = x.  [para(258(a,1),215(a,1,2)),rewrite([2394(5),4(5),2394(10),74(9),4(7),6(7)])].
+
+given #161 (A,wt=25): 102 x ^ (y ^ (((x v z) ^ u) v ((x v u) ^ z))) = y ^ ((x ^ z) v (x ^ u)).  [para(39(a,1),15(a,1,2)),flip(a)].
+
+given #162 (T,wt=13): 2412 x ^ (y v ((x v z) ^ (x v u))) = x.  [para(258(a,1),253(a,1,2)),rewrite([2394(5),4(5),2394(10),74(9),4(7),6(7)])].
+
+given #163 (T,wt=13): 2439 x ^ (((y v x) ^ (x v z)) v u) = x.  [para(2(a,1),2410(a,1,2,1,1))].
+
+given #164 (T,wt=13): 2440 x ^ (((x v y) ^ (z v x)) v u) = x.  [para(2(a,1),2410(a,1,2,1,2))].
+
+given #165 (T,wt=13): 2484 x ^ (y v ((z v x) ^ (x v u))) = x.  [para(2(a,1),2412(a,1,2,2,1))].
+
+given #166 (A,wt=25): 104 x ^ (((y ^ (z v x)) v ((y v x) ^ z)) ^ u) = ((x ^ z) v (x ^ y)) ^ u.  [para(44(a,1),5(a,1,1)),flip(a)].
+
+given #167 (T,wt=13): 2485 x ^ (y v ((x v z) ^ (u v x))) = x.  [para(2(a,1),2412(a,1,2,2,2))].
+
+given #168 (T,wt=13): 2515 x ^ (((y v x) ^ (z v x)) v u) = x.  [para(2(a,1),2439(a,1,2,1,2))].
+
+given #169 (T,wt=13): 2593 x ^ (y v ((z v x) ^ (u v x))) = x.  [para(2(a,1),2484(a,1,2,2,2))].
+
+given #170 (T,wt=15): 260 x v (y v ((z ^ x) v u)) = y v (x v u).  [para(66(a,1),13(a,1,2)),flip(a)].
+
+given #171 (A,wt=25): 107 x ^ (y ^ ((z ^ (u v x)) v ((z v x) ^ u))) = y ^ ((x ^ u) v (x ^ z)).  [para(44(a,1),15(a,1,2)),flip(a)].
+
+given #172 (T,wt=15): 261 (x v y) ^ ((z ^ x) v y) = (z ^ x) v y.  [para(66(a,1),16(a,1,2)),rewrite([4(4)])].
+
+given #173 (T,wt=15): 276 x ^ (y ^ (((x v z) ^ y) v u)) = x ^ y.  [para(19(a,1),18(a,1,2)),rewrite([18(3)]),flip(a)].
+
+given #174 (T,wt=15): 278 x ^ (y ^ (((z v x) ^ y) v u)) = x ^ y.  [para(19(a,1),59(a,1,2)),rewrite([59(3)]),flip(a)].
+
+given #175 (T,wt=15): 292 x v (y v (z v (u ^ x))) = y v (z v x).  [para(3(a,1),70(a,1,2)),rewrite([3(6)])].
+
+given #176 (A,wt=19): 113 (x v y) ^ (x v (z ^ (x v y))) = x v ((x v y) ^ z).  [para(31(a,1),26(a,1,2,1)),rewrite([2(3),55(3),4(7),6(7)])].
+
+given #177 (T,wt=15): 293 (x v y) ^ (x v (z ^ y)) = x v (z ^ y).  [para(70(a,1),16(a,1,2)),rewrite([4(4)])].
+
+given #178 (T,wt=15): 302 x ^ (y ^ (z ^ (x v u))) = y ^ (z ^ x).  [para(5(a,1),74(a,1,2)),rewrite([5(6)])].
+
+given #179 (T,wt=15): 304 (x ^ y) v (x ^ (y v z)) = x ^ (y v z).  [para(74(a,1),22(a,1,2)),rewrite([2(4)])].
+
+given #180 (T,wt=15): 316 x ^ (y ^ (z ^ (u v x))) = y ^ (z ^ x).  [para(5(a,1),81(a,1,2)),rewrite([5(6)])].
+
+given #181 (A,wt=19): 121 (x v y) ^ (x v ((x v y) ^ z)) = x v ((x v y) ^ z).  [para(31(a,1),35(a,1,2,1)),rewrite([2(3),55(3),4(7),6(7)])].
+
+given #182 (T,wt=15): 318 (x ^ y) v (x ^ (z v y)) = x ^ (z v y).  [para(81(a,1),22(a,1,2)),rewrite([2(4)])].
+
+given #183 (T,wt=13): 3105 x v ((y v x) ^ (y v z)) = x v y.  [para(135(a,1),318(a,1,2)),rewrite([2(5),3(5),2093(4),135(8)])].
+
+given #184 (T,wt=13): 3142 x v ((x v y) ^ (y v z)) = x v y.  [para(2(a,1),3105(a,1,2,1))].
+
+given #185 (T,wt=13): 3143 x v ((y v x) ^ (z v y)) = x v y.  [para(2(a,1),3105(a,1,2,2))].
+
+given #186 (A,wt=19): 137 (x v (y v z)) ^ (x v (y v (z v u))) = x v (y v z).  [para(3(a,1),17(a,1,1)),rewrite([3(5),3(8)])].
+
+given #187 (T,wt=13): 3147 x v ((y v z) ^ (y v x)) = x v y.  [para(4(a,1),3105(a,1,2))].
+
+given #188 (T,wt=13): 3193 x v ((x v y) ^ (z v y)) = x v y.  [para(2(a,1),3142(a,1,2,2))].
+
+given #189 (T,wt=13): 3197 x v ((y v z) ^ (x v y)) = x v y.  [para(4(a,1),3142(a,1,2))].
+
+given #190 (T,wt=13): 3223 x v ((y v z) ^ (z v x)) = x v z.  [para(4(a,1),3143(a,1,2))].
+
+given #191 (A,wt=17): 138 (x v y) ^ ((x v (y v z)) ^ u) = (x v y) ^ u.  [para(17(a,1),5(a,1,1)),flip(a)].
+
+given #192 (T,wt=13): 3357 x v ((y v z) ^ (x v z)) = x v z.  [para(4(a,1),3193(a,1,2))].
+
+given #193 (T,wt=15): 334 x ^ ((y v (z v (x v u))) ^ w) = x ^ w.  [para(109(a,1),5(a,1,1)),flip(a)].
+
+given #194 (T,wt=15): 341 x ^ (y ^ (z v (u v (x v w)))) = y ^ x.  [para(109(a,1),15(a,1,2)),flip(a)].
+
+given #195 (T,wt=15): 353 x v (y v (((x ^ z) v y) ^ u)) = x v y.  [para(21(a,1),20(a,1,2)),rewrite([20(3)]),flip(a)].
+
+given #196 (A,wt=19): 139 (x v (y v z)) ^ (y v (x v (z v u))) = y v (x v z).  [para(13(a,1),17(a,1,1)),rewrite([3(4)])].
+
+given #197 (T,wt=15): 355 x v (y v (((z ^ x) v y) ^ u)) = x v y.  [para(21(a,1),66(a,1,2)),rewrite([66(3)]),flip(a)].
+
+given #198 (T,wt=15): 359 (x ^ y) v (y ^ (x v z)) = y ^ (x v z).  [para(31(a,1),223(a,1,2,2,2,2)),rewrite([3(2),6(3),313(5)]),flip(a)].
+
+given #199 (T,wt=15): 360 (x ^ y) v (y ^ (z v x)) = y ^ (z v x).  [para(58(a,1),223(a,1,2,2,2,2)),rewrite([3(2),31(3),331(5)]),flip(a)].
+
+given #200 (T,wt=15): 364 (x v y) ^ ((y v x) ^ z) = (x v y) ^ z.  [para(164(a,1),5(a,1,1)),flip(a)].
+
+given #201 (A,wt=17): 142 (x v y) ^ (z ^ (x v (y v u))) = z ^ (x v y).  [para(17(a,1),15(a,1,2)),flip(a)].
+
+given #202 (T,wt=15): 365 (x v y) ^ (z ^ (y v x)) = z ^ (y v x).  [para(164(a,1),5(a,2,2)),rewrite([4(4)])].
+
+given #203 (T,wt=15): 371 x ^ ((y v (z v (u v x))) ^ w) = x ^ w.  [para(165(a,1),5(a,1,1)),flip(a)].
+
+given #204 (T,wt=15): 378 x ^ (y ^ (z v (u v (w v x)))) = y ^ x.  [para(165(a,1),15(a,1,2)),flip(a)].
+
+given #205 (T,wt=15): 391 x v ((y ^ (z ^ (u ^ x))) v w) = x v w.  [para(184(a,1),3(a,1,1)),flip(a)].
+
+given #206 (A,wt=25): 143 x ^ ((((x v y) ^ z) v ((z v x) ^ y)) ^ u) = ((x ^ y) v (x ^ z)) ^ u.  [para(83(a,1),5(a,1,1)),flip(a)].
+
+given #207 (T,wt=15): 395 x v (y v (z ^ (u ^ (w ^ x)))) = y v x.  [para(184(a,1),13(a,1,2)),flip(a)].
+
+given #208 (T,wt=15): 414 x v (y v (z ^ (u ^ (y v x)))) = x v y.  [para(164(a,1),184(a,1,2,2,2)),rewrite([3(5)])].
+
+given #209 (T,wt=15): 417 x v ((y ^ (z ^ (x ^ u))) v w) = x v w.  [para(203(a,1),3(a,1,1)),flip(a)].
+
+given #210 (T,wt=15): 421 x v (y ^ (z ^ ((x ^ u) v (x ^ w)))) = x.  [para(9(a,1),203(a,1,2,2,2))].
+
+given #211 (A,wt=25): 147 x ^ (y ^ (((x v z) ^ u) v ((u v x) ^ z))) = y ^ ((x ^ z) v (x ^ u)).  [para(83(a,1),15(a,1,2)),flip(a)].
+
+given #212 (T,wt=15): 422 x v (y v (z ^ (u ^ (x ^ w)))) = y v x.  [para(203(a,1),13(a,1,2)),flip(a)].
+
+given #213 (T,wt=15): 425 x v (y ^ (z ^ ((u ^ x) v (x ^ w)))) = x.  [para(131(a,1),203(a,1,2,2,2))].
+
+given #214 (T,wt=15): 428 (x ^ y) v (z ^ (y ^ (x ^ u))) = y ^ x.  [para(203(a,1),155(a,2)),rewrite([5(2),75(4),5(3),5(6),75(8),7(6),4(5),126(5),229(6)])].
+
+given #215 (T,wt=15): 431 (x ^ y) v (z ^ (u ^ (y ^ x))) = y ^ x.  [back_rewrite(411),rewrite([424(6)])].
+
+given #216 (A,wt=25): 149 x ^ ((((y v x) ^ z) v ((x v z) ^ y)) ^ u) = ((x ^ z) v (x ^ y)) ^ u.  [para(91(a,1),5(a,1,1)),flip(a)].
+
+given #217 (T,wt=15): 439 (x ^ y) v (x ^ (z ^ (y ^ u))) = x ^ y.  [para(15(a,1),23(a,1,2,2))].
+
+given #218 (T,wt=15): 450 (x v y) ^ (z ^ (x ^ u)) = z ^ (x ^ u).  [para(215(a,1),5(a,1,1)),rewrite([5(2),5(5)]),flip(a)].
+
+given #219 (T,wt=15): 451 (x v y) ^ (z ^ (u ^ x)) = z ^ (u ^ x).  [para(5(a,1),215(a,1,2)),rewrite([5(6)])].
+
+given #220 (T,wt=15): 464 x ^ (y ^ ((x ^ (y v z)) v u)) = x ^ y.  [para(74(a,1),215(a,1,2)),rewrite([4(5),5(5),74(8)])].
+
+given #221 (A,wt=25): 150 x ^ (y ^ (((z v x) ^ u) v ((x v u) ^ z))) = y ^ ((x ^ u) v (x ^ z)).  [para(91(a,1),15(a,1,2)),flip(a)].
+
+given #222 (T,wt=15): 465 x ^ (y ^ ((x ^ (z v y)) v u)) = x ^ y.  [para(81(a,1),215(a,1,2)),rewrite([4(5),5(5),81(8)])].
+
+given #223 (T,wt=15): 467 (x ^ y) v ((y v z) ^ x) = (y v z) ^ x.  [para(215(a,1),23(a,1,2)),rewrite([2(4)])].
+
+given #224 (T,wt=15): 468 (x ^ y) v ((y ^ x) v z) = (y ^ x) v z.  [para(225(a,1),3(a,1,1)),flip(a)].
+
+given #225 (T,wt=15): 469 (x ^ y) v (z v (y ^ x)) = z v (x ^ y).  [para(225(a,1),3(a,2,2)),rewrite([2(4)])].
+
+given #226 (A,wt=25): 151 x ^ ((((y v x) ^ z) v ((z v x) ^ y)) ^ u) = ((x ^ y) v (x ^ z)) ^ u.  [para(103(a,1),5(a,1,1)),flip(a)].
+
+given #227 (T,wt=15): 474 x ^ (y ^ (z v (u v (y ^ x)))) = x ^ y.  [para(225(a,1),109(a,1,2,2,2)),rewrite([5(5)])].
+
+given #228 (T,wt=15): 475 (x ^ y) v (z v (x v u)) = z v (x v u).  [para(241(a,1),3(a,1,1)),rewrite([3(2),3(5)]),flip(a)].
+
+given #229 (T,wt=15): 476 (x ^ y) v (z v (u v x)) = z v (u v x).  [para(3(a,1),241(a,1,2)),rewrite([3(6)])].
+
+given #230 (T,wt=15): 486 (x v y) ^ ((y ^ z) v x) = (y ^ z) v x.  [para(241(a,1),17(a,1,2)),rewrite([4(4)])].
+
+given #231 (A,wt=25): 152 x ^ (y ^ (((z v x) ^ u) v ((u v x) ^ z))) = y ^ ((x ^ z) v (x ^ u)).  [para(103(a,1),15(a,1,2)),flip(a)].
+
+given #232 (T,wt=15): 490 x v (y v ((x v (y ^ z)) ^ u)) = x v y.  [para(32(a,1),241(a,1,2)),rewrite([2(5),3(5),32(8)])].
+
+given #233 (T,wt=15): 491 x v (y v ((x v (z ^ y)) ^ u)) = x v y.  [para(70(a,1),241(a,1,2)),rewrite([2(5),3(5),70(8)])].
+
+given #234 (T,wt=15): 493 (x v y) ^ (z ^ (y ^ u)) = z ^ (y ^ u).  [para(241(a,1),215(a,1,1))].
+
+given #235 (T,wt=15): 494 (x ^ y) v (z v (y v u)) = z v (y v u).  [para(215(a,1),241(a,1,1))].
+
+given #236 (A,wt=17): 159 x ^ ((x ^ y) v (z ^ x)) = (x ^ y) v (z ^ x).  [para(22(a,1),127(a,1,2,1,1)),rewrite([22(4),7(4),4(3),48(3),48(7)])].
+
+given #237 (T,wt=15): 496 (x v y) ^ (z ^ (u ^ y)) = z ^ (u ^ y).  [para(5(a,1),253(a,1,2)),rewrite([5(6)])].
+
+given #238 (T,wt=15): 499 x ^ (y ^ (z v ((x v u) ^ y))) = x ^ y.  [para(18(a,1),253(a,1,2)),rewrite([4(5),5(5),18(8)])].
+
+given #239 (T,wt=15): 502 x ^ (y ^ (z v ((u v x) ^ y))) = x ^ y.  [para(59(a,1),253(a,1,2)),rewrite([4(5),5(5),59(8)])].
+
+given #240 (T,wt=15): 506 x ^ (y ^ (z v (x ^ (y v u)))) = x ^ y.  [para(74(a,1),253(a,1,2)),rewrite([4(5),5(5),74(8)])].
+
+given #241 (A,wt=19): 162 (x v y) ^ (y v (z ^ (x v y))) = y v ((x v y) ^ z).  [para(57(a,1),26(a,1,2,1,2)),rewrite([3(5),31(6),2(4),4(9),16(9),2(8)])].
+
+given #242 (T,wt=15): 507 x ^ (y ^ (z v (x ^ (u v y)))) = x ^ y.  [para(81(a,1),253(a,1,2)),rewrite([4(5),5(5),81(8)])].
+
+given #243 (T,wt=15): 512 (x ^ y) v ((z v y) ^ x) = (z v y) ^ x.  [para(253(a,1),23(a,1,2)),rewrite([2(4)])].
+
+given #244 (T,wt=15): 513 (x ^ y) v (z v (u v y)) = z v (u v y).  [para(253(a,1),241(a,1,1))].
+
+given #245 (T,wt=15): 521 x v (y ^ (((x ^ z) v (x ^ u)) ^ w)) = x.  [para(29(a,1),75(a,1,2,2))].
+
+given #246 (A,wt=19): 163 (x v y) ^ (y v ((x v y) ^ z)) = y v ((x v y) ^ z).  [para(57(a,1),34(a,1,2,2,1)),rewrite([3(3),31(4),4(9),16(9),2(8)])].
+
+given #247 (T,wt=15): 540 (x v y) ^ ((z ^ y) v x) = (z ^ y) v x.  [para(263(a,1),17(a,1,2)),rewrite([4(4)])].
+
+given #248 (T,wt=15): 542 x v (y v (z ^ ((x ^ u) v y))) = x v y.  [para(20(a,1),263(a,1,2)),rewrite([2(5),3(5),20(8)])].
+
+given #249 (T,wt=15): 543 x v (y v (z ^ (x v (y ^ u)))) = x v y.  [para(32(a,1),263(a,1,2)),rewrite([2(5),3(5),32(8)])].
+
+given #250 (T,wt=15): 545 x v (y v (z ^ ((u ^ x) v y))) = x v y.  [para(66(a,1),263(a,1,2)),rewrite([2(5),3(5),66(8)])].
+
+given #251 (A,wt=21): 185 x ^ ((y ^ x) v (z ^ (u ^ x))) = (x ^ y) v (z ^ (u ^ x)).  [para(68(a,1),9(a,1,2,1,2)),rewrite([5(5),5(4),6(3),130(9)])].
+
+given #252 (T,wt=15): 547 x v (y v (z ^ (x v (u ^ y)))) = x v y.  [para(70(a,1),263(a,1,2)),rewrite([2(5),3(5),70(8)])].
+
+given #253 (T,wt=15): 564 (x v y) ^ (x v (z v (u v y))) = x v y.  [para(3(a,1),62(a,1,2,2))].
+
+given #254 (T,wt=15): 596 (x ^ y) v (x ^ (z ^ (u ^ y))) = x ^ y.  [para(5(a,1),82(a,1,2,2))].
+
+given #255 (T,wt=15): 633 x ^ (y v (z v (u v (w v (x v v5))))) = x.  [para(165(a,1),110(a,1,2)),rewrite([31(3)]),flip(a)].
+
+given #256 (A,wt=21): 186 x ^ ((y ^ (z ^ x)) v (u ^ x)) = (y ^ (z ^ x)) v (x ^ u).  [para(68(a,1),9(a,1,2,2,2)),rewrite([5(4),5(3),6(2),130(8)])].
+
+given #257 (T,wt=15): 638 (x v (y v (z v u))) ^ (w ^ z) = w ^ z.  [para(253(a,1),110(a,2)),rewrite([3(3),496(7)])].
+
+given #258 (T,wt=15): 667 (x v (y v (z v u))) ^ (w ^ u) = w ^ u.  [para(165(a,1),130(a,1,2,2)),rewrite([165(9)])].
+
+given #259 (T,wt=15): 673 (x v y) ^ (y v (z v (x v u))) = y v x.  [para(13(a,1),135(a,1,2,2))].
+
+given #260 (T,wt=15): 678 (x v y) ^ (z v (y v (x v u))) = x v y.  [para(135(a,1),110(a,2)),rewrite([3(3),674(8),4(5)])].
+
+given #261 (A,wt=21): 191 x ^ ((y ^ (z ^ x)) v (x ^ u)) = (x ^ u) v (y ^ (z ^ x)).  [para(68(a,1),28(a,1,2,2,1)),rewrite([5(4),5(3),6(2),130(9)])].
+
+given #262 (T,wt=15): 680 (x v y) ^ (y v (z v (u v x))) = x v y.  [para(3(a,1),136(a,1,2,2))].
+
+given #263 (T,wt=15): 698 (x v y) ^ (z v (y v (u v x))) = x v y.  [para(136(a,1),253(a,1,2)),rewrite([4(5),136(9)])].
+
+given #264 (T,wt=15): 715 (x ^ (y ^ (z ^ u))) v (w v u) = w v u.  [para(184(a,1),161(a,1,2,2)),rewrite([184(9)])].
+
+given #265 (T,wt=15): 716 (x ^ (y ^ (z ^ u))) v (w v z) = w v z.  [para(203(a,1),161(a,1,2,2)),rewrite([203(9)])].
+
+given #266 (A,wt=17): 195 x v (y v (z v (u ^ (x v y)))) = x v (y v z).  [para(17(a,1),68(a,1,2,2)),rewrite([3(5),3(4)])].
+
+given #267 (T,wt=15): 730 x ^ (y v (z v (u v (w v (v5 v x))))) = x.  [para(165(a,1),166(a,1,2)),rewrite([58(3)]),flip(a)].
+
+given #268 (T,wt=15): 778 x v (y ^ (z ^ (u ^ (w ^ (v5 ^ x))))) = x.  [para(184(a,1),182(a,1,2)),rewrite([68(3)]),flip(a)].
+
+given #269 (T,wt=15): 779 x v (y ^ (z ^ (u ^ (w ^ (x ^ v5))))) = x.  [para(203(a,1),182(a,1,2)),rewrite([68(3),5(3),5(2)]),flip(a)].
+
+given #270 (T,wt=15): 854 x v (y ^ ((z ^ (x ^ u)) v (x ^ w))) = x.  [para(15(a,1),204(a,1,2,2,1))].
+
+given #271 (A,wt=21): 197 x ^ ((x ^ y) v (z ^ (u ^ x))) = (x ^ y) v (z ^ (u ^ x)).  [para(68(a,1),127(a,1,2,1,1)),rewrite([68(6),7(5),4(4),130(4),130(9)])].
+
+given #272 (T,wt=15): 855 x v (y ^ ((x ^ z) v (u ^ (x ^ w)))) = x.  [para(15(a,1),204(a,1,2,2,2))].
+
+given #273 (T,wt=15): 869 x v (y ^ ((z ^ (u ^ x)) v (x ^ w))) = x.  [para(130(a,1),204(a,1,2,2,1))].
+
+given #274 (T,wt=15): 870 x v (y ^ ((x ^ z) v (u ^ (w ^ x)))) = x.  [para(130(a,1),204(a,1,2,2,2))].
+
+given #275 (T,wt=15): 911 x ^ ((y ^ (z ^ u)) v (z ^ x)) = x ^ z.  [para(15(a,1),221(a,1,2,1))].
+
+given #276 (A,wt=21): 210 x ^ ((x ^ y) v (z ^ (x ^ u))) = (x ^ y) v (z ^ (x ^ u)).  [para(75(a,1),127(a,1,2,1,1)),rewrite([75(6),7(5),4(4),126(4),126(9)])].
+
+given #277 (T,wt=15): 914 x ^ ((y ^ z) v (y ^ (x v u))) = x ^ y.  [para(221(a,1),18(a,1,2)),rewrite([18(3)]),flip(a)].
+
+given #278 (T,wt=15): 918 x ^ ((y ^ z) v (y ^ (u v x))) = x ^ y.  [para(221(a,1),59(a,1,2)),rewrite([59(3)]),flip(a)].
+
+given #279 (T,wt=15): 934 x ^ ((y ^ (z ^ u)) v (u ^ x)) = x ^ u.  [para(130(a,1),221(a,1,2,1))].
+
+given #280 (T,wt=15): 951 x v (y ^ ((z ^ x) v (u ^ (x ^ w)))) = x.  [para(15(a,1),228(a,1,2,2,2))].
+
+given #281 (A,wt=17): 211 x ^ (y ^ (((x ^ y) v z) ^ u)) = x ^ (y ^ u).  [para(18(a,1),5(a,1)),rewrite([5(2)]),flip(a)].
+
+given #282 (T,wt=15): 967 x v (y ^ (((z ^ x) v (x ^ u)) ^ w)) = x.  [para(228(a,1),241(a,1,2)),rewrite([5(5),2(6),228(11)])].
+
+given #283 (T,wt=15): 972 x v (y ^ ((z ^ x) v (u ^ (w ^ x)))) = x.  [para(130(a,1),228(a,1,2,2,2))].
+
+given #284 (T,wt=15): 982 x ^ ((y ^ x) v (z ^ (u ^ y))) = x ^ y.  [para(5(a,1),230(a,1,2,2))].
+
+given #285 (T,wt=15): 983 x ^ (y v ((y v z) ^ x)) = x ^ (y v z).  [para(6(a,1),230(a,1,2,2)),rewrite([2(3)])].
+
+given #286 (A,wt=19): 212 (x v y) ^ ((x ^ z) v (x ^ u)) = (x ^ z) v (x ^ u).  [para(9(a,1),18(a,2)),rewrite([76(8)])].
+
+given #287 (F,wt=19): 7466 x ^ ((x ^ y) v (z ^ (x v y))) = (x ^ z) v (x ^ y) # label(false).  [para(9(a,1),983(a,2)),rewrite([4(8),9(8),13(6),2(5),3742(6)])].
+
+given #288 (F,wt=19): 7467 x ^ ((x ^ y) v (z ^ (y v x))) = (x ^ z) v (x ^ y) # label(false).  [para(26(a,1),983(a,2)),rewrite([4(8),26(8),13(6),2(5),3796(6)])].
+
+============================== PROOF =================================
+
+% Proof 1 at 12.21 (+ 0.05) seconds: H2.
+% Length of proof is 45.
+% Level of proof is 9.
+% Maximum clause weight is 25.000.
+% Given clauses 288.
+
+1 x ^ (y v (x ^ z)) = x ^ (y v (z ^ ((x ^ (y v z)) v (y ^ z)))) # label(H2) # label(non_clause) # label(goal).  [goal].
+2 x v y = y v x.  [assumption].
+3 (x v y) v z = x v (y v z).  [assumption].
+4 x ^ y = y ^ x.  [assumption].
+5 (x ^ y) ^ z = x ^ (y ^ z).  [assumption].
+6 x ^ (x v y) = x.  [assumption].
+7 x v (x ^ y) = x.  [assumption].
+8 (x ^ y) v (x ^ z) = x ^ ((y ^ (x v z)) v (z ^ (x v y))) # label(H82).  [assumption].
+9 x ^ ((y ^ (x v z)) v (z ^ (x v y))) = (x ^ y) v (x ^ z) # label(false).  [copy(8),flip(a)].
+10 c1 ^ (c2 v (c3 ^ ((c1 ^ (c2 v c3)) v (c2 ^ c3)))) != c1 ^ (c2 v (c1 ^ c3)) # label(H2) # answer(H2).  [deny(1)].
+11 c1 ^ (c2 v (c3 ^ ((c2 ^ c3) v (c1 ^ (c2 v c3))))) != c1 ^ (c2 v (c1 ^ c3)) # answer(H2).  [copy(10),rewrite([2(12)])].
+13 x v (y v z) = y v (x v z).  [para(2(a,1),3(a,1,1)),rewrite([3(2)])].
+15 x ^ (y ^ z) = y ^ (x ^ z).  [para(4(a,1),5(a,1,1)),rewrite([5(2)])].
+16 x ^ (y v x) = x.  [para(2(a,1),6(a,1,2))].
+18 x ^ ((x v y) ^ z) = x ^ z.  [para(6(a,1),5(a,1,1)),flip(a)].
+22 x v (y ^ x) = x.  [para(4(a,1),7(a,1,2))].
+24 x ^ x = x.  [para(7(a,1),6(a,1,2))].
+25 x v x = x.  [para(6(a,1),7(a,1,2))].
+26 x ^ ((y ^ (z v x)) v (z ^ (x v y))) = (x ^ y) v (x ^ z) # label(false).  [para(2(a,1),9(a,1,2,1,2))].
+28 x ^ ((y ^ (x v z)) v ((x v y) ^ z)) = (x ^ z) v (x ^ y) # label(false).  [para(4(a,1),9(a,1,2,1)),rewrite([2(5)])].
+31 x ^ (y v (x v z)) = x.  [para(13(a,1),6(a,1,2))].
+32 x v (y v (x ^ z)) = y v x.  [para(7(a,1),13(a,1,2)),flip(a)].
+34 x ^ ((y ^ (x v z)) v ((y v x) ^ z)) = (x ^ z) v (x ^ y) # label(false).  [para(4(a,1),26(a,1,2,1)),rewrite([2(5)])].
+46 x ^ (x ^ y) = x ^ y.  [para(24(a,1),5(a,1,1)),flip(a)].
+48 x ^ (y ^ x) = y ^ x.  [para(24(a,1),5(a,2,2)),rewrite([4(2)])].
+57 x v (y v x) = y v x.  [para(25(a,1),3(a,2,2)),rewrite([2(2)])].
+58 x ^ (y v (z v x)) = x.  [para(3(a,1),16(a,1,2))].
+69 x ^ ((y ^ x) v (z ^ x)) = (x ^ y) v (z ^ x).  [para(22(a,1),9(a,1,2,1,2)),rewrite([5(4),6(3),48(7)])].
+74 x ^ (y ^ (x v z)) = y ^ x.  [para(6(a,1),15(a,1,2)),flip(a)].
+81 x ^ (y ^ (z v x)) = y ^ x.  [para(16(a,1),15(a,1,2)),flip(a)].
+127 x ^ (((x v y) ^ z) v (y ^ (x v ((x v y) ^ z)))) = (x ^ z) v (x ^ y) # label(false).  [para(46(a,1),28(a,1,2,2)),rewrite([2(7),18(11)])].
+131 x ^ ((y ^ (x v z)) v (z ^ (x v (y ^ (x v z))))) = (y ^ x) v (x ^ z) # label(false).  [para(48(a,1),28(a,1,2,2)),rewrite([2(7),74(11)])].
+132 x ^ ((y ^ (z v x)) v (z ^ (x v (y ^ (z v x))))) = (y ^ x) v (x ^ z) # label(false).  [para(48(a,1),34(a,1,2,2)),rewrite([2(7),81(11)])].
+159 x ^ ((x ^ y) v (z ^ x)) = (x ^ y) v (z ^ x).  [para(22(a,1),127(a,1,2,1,1)),rewrite([22(4),7(4),4(3),48(3),48(7)])].
+168 x ^ (y v ((z v y) ^ (x v y))) = (x ^ y) v (x ^ (z v y)).  [para(58(a,1),9(a,1,2,1))].
+223 x ^ ((y ^ (z v x)) v (z ^ (x v (y ^ (x v z))))) = (y ^ x) v (x ^ z) # label(false).  [para(2(a,1),131(a,1,2,1,2))].
+230 x ^ ((y ^ x) v (z ^ y)) = x ^ y.  [para(22(a,1),132(a,1,2,1,2)),rewrite([22(5),69(6),57(6),5(5),159(4),4(8),48(8),2(8),22(8)])].
+318 (x ^ y) v (x ^ (z v y)) = x ^ (z v y).  [para(81(a,1),22(a,1,2)),rewrite([2(4)])].
+331 x ^ (y v ((z v y) ^ (x v y))) = x ^ (z v y).  [back_rewrite(168),rewrite([318(9)])].
+360 (x ^ y) v (y ^ (z v x)) = y ^ (z v x).  [para(58(a,1),223(a,1,2,2,2,2)),rewrite([3(2),31(3),331(5)]),flip(a)].
+983 x ^ (y v ((y v z) ^ x)) = x ^ (y v z).  [para(6(a,1),230(a,1,2,2)),rewrite([2(3)])].
+3796 (x ^ y) v (z v (y ^ (u v x))) = z v (y ^ (u v x)).  [para(360(a,1),13(a,1,2)),flip(a)].
+7467 x ^ ((x ^ y) v (z ^ (y v x))) = (x ^ z) v (x ^ y) # label(false).  [para(26(a,1),983(a,2)),rewrite([4(8),26(8),13(6),2(5),3796(6)])].
+7628 x ^ ((y ^ x) v (z ^ (y v x))) = (x ^ z) v (x ^ y).  [para(4(a,1),7467(a,1,2,1))].
+7634 $F # answer(H2).  [back_rewrite(11),rewrite([7628(13),4(5),4(8),32(10),2(6)]),xx(a)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=288. Generated=172640. Kept=7630. proofs=1.
+Usable=284. Sos=6661. Demods=6951. Limbo=6, Disabled=687. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=50191.
+Forward_subsumed=114818. Back_subsumed=212.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=7629 (6 lex), Back_demodulated=465. Back_unit_deleted=0.
+Demod_attempts=3555313. Demod_rewrites=614472.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=7.47.
+User_CPU=12.21, System_CPU=0.05, Wall_clock=12.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 1 proof.
+
+Process 25577 exit (max_proofs) Tue Nov  3 17:07:51 2009

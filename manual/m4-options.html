@@ -1,0 +1,297 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+  <title>Prover9 Manual: Mace4 Options</title>
+ <link rel="stylesheet" href="manual.css">
+</head>
+
+<body>
+
+<hr>
+<table width="100%">
+<tr>
+<colgroup>
+<col width="33%">
+<col width="34%">
+<col width="33%">
+</colgroup>
+<td align="left"><i>Prover9 Manual</i>
+<td align="center"><img src="prover9-5a-256t.gif">
+<td align="right"><i>Version 2009-11A</i>
+</table>
+<hr>
+
+<!-- Main content -->
+
+<h1>Mace4 Options</h1>
+
+Mace4 accepts <tt>set</tt>, <tt>clear</tt>, and <tt>assign</tt>
+commands in the input file.  Several of these are in common with
+Prover9 (e.g., <tt>assign(max_seconds, 30)</tt>), but most
+are specifically for Mace4.
+
+<p>
+If Mace4 is called with the command-line option <tt>-c</tt>
+(compatability mode), it will ignore any <tt>set</tt>, <tt>clear</tt>,
+and <tt>assign</tt> that it does not recognize, assuming they
+are meant for some other program (Prover9).
+
+<p>
+Most Mace4 options can be specified on the command line instead
+of in the input file.
+When Mace4 options are specified on the command line, single-character
+codes are used.  For example, the command-line option
+<tt>-t 30</tt> means the same as <tt>assign(max_second, 30)</tt>
+in the input file.  If an option is given in <i>both</i> places,
+the one on the command line takes precedence.
+Command-line options for Boolean-valued options (flags)
+always take an argument: 1 means "set", and 0 means "clear".
+For example, <tt>-V 1</tt> means <tt>set(prolog_style_vaiables</tt>,
+and <tt>-V 0</tt> means <tt>clear(prolog_style_variables)</tt>.
+
+<p>
+The command "<tt>mace4 -help</tt>" shows the correspondence between
+the command-line codes and the option names, and it shows the default
+values.
+
+<h2>Symbol Ordering</h2>
+
+Like Prover9, Mace4 accepts <tt>function_order</tt> and
+<tt>relation_order</tt> commands that specify an order on the
+symbols in the problem.  The syntax of the commands is the
+<a href="term-order.html#lex_command">same as in Prover9</a>, for example,
+<pre class="my_file">
+predicate_order([=, <=, P, Q]).          % = &lt; P &lt; Q
+function_order([a, b, c, +, *, h, g]).   % a &lt; b &lt; c &lt; + &lt; * &lt; h &lt; g
+</pre>
+Mace4's the default symbol order is the
+<a href="term-order.html#default_lex">same as Prover9's</a>.
+As in Prover9, function symbols are always less than predicate symbols.
+<p>
+The symbol order can have a big effect on the time it takes to find
+a model or exhaust a domain size, because it determines the order in which
+Mace4 tries to fill in the function and relation tables.  Unfortunately,
+we do not know of any general-purpose heuristics for selecting a
+good symbol order.  If Mace4 takes too long to go through a particular
+domain size, we suggest trying a different symbol order.
+
+<h2>Option Listing</h2>
+
+<h3>Basic Options</h3>
+
+<pre class="my_file">
+assign(start_size, <i>n</i>).  % default <i>n</i>=2, range [2 .. <tt>INT_MAX</tt>]  % command-line -n <i>n</i>
+</pre>
+<pre class="my_file">
+assign(end_size, <i>n</i>).  % default <i>n</i>=-1, range [-1 .. <tt>INT_MAX</tt>]  % command-line -N <i>n</i>
+</pre>
+<pre class="my_file">
+assign(increment, <i>n</i>).  % default <i>n</i>=1, range [1 .. <tt>INT_MAX</tt>]  % command-line -i <i>n</i>
+</pre>
+
+These three parameter work together to determine the domain sizes
+to be searched.  The search starts for structures of size
+<tt>start_size</tt>; if that search fails, 
+the size is incremented, and another search starts.  This continues
+up through the value <tt>end_size</tt> (or until some other limit
+terminates the process).  If <tt>end_size</tt> is -1, there is no limit.
+(Also see the <tt>iterate</tt> parameter below.)
+
+<p>
+For example, the command-line options "<tt>-n 5 -N 11 -i 2</tt>"
+say to try domain sizes 5,7,9,11.
+
+<pre class="my_file">
+assign(domain_size, <i>n</i>).  % default <i>n</i>=0, range [0 .. <tt>INT_MAX</tt>]  % command-line -n <i>n</i>
+</pre>
+This parameter says to search <i>only</i> the given size.
+This (meta-) parameter works simply by making the following changes.
+<pre>
+  assign(domain_size, <i>n</i>) -> assign(start_size, <i>n</i>).
+  assign(domain_size, <i>n</i>) -> assign(end_size, <i>n</i>).
+</pre>
+
+<pre class="my_file">
+assign(iterate, <i>string</i>).  % default <i>string</i>=all, range [all,evens,odds,primes,nonprimes]
+</pre>
+The <tt>iterate</tt> parameter can be used to add an additional constraint
+to the domain sizes.  It can be used together with the <tt>increment</tt>
+parameter.  The <tt>iterate</tt> parameter cannot be specified on the
+command line.
+
+<pre class="my_file">
+assign(max_models, <i>n</i>).  % default <i>n</i>=1, range [-1 .. <tt>INT_MAX</tt>]  % command-line -m <i>n</i>
+</pre>
+The parameter <tt>max_models</tt> says to stop searching when the <i>n</i>-th structure has been found.
+A value of -1 means there is no limit.
+
+<pre class="my_file">
+assign(max_seconds, <i>n</i>).  % default <i>n</i>=-1, range [-1 .. <tt>INT_MAX</tt>]  % command-line -t <i>n</i>
+</pre>
+The parameter
+<a href="limits.html#max_seconds"><tt><b>max_seconds</b></tt></a>
+says to stop searching after <i>n</i> seconds.
+A value of -1 means there is no limit.
+
+<pre class="my_file">
+assign(max_seconds_per, <i>n</i>).  % default <i>n</i>=-1, range [-1 .. <tt>INT_MAX</tt>]  % command-line -s <i>n</i>
+</pre>
+The parameter allows at most <i>n</i> seconds for each domain size.
+The parameter <a href="limits.html#max_seconds"><tt><b>max_seconds</b></tt></a> can be used (together  with <tt>max_seconds_per</tt>)
+to given an overall time limit.
+A value of -1 means there is no limit.
+
+<pre class="my_file">
+assign(max_megs, <i>n</i>).  % default <i>n</i>=200, range [-1 .. <tt>INT_MAX</tt>]  % command-line -b <i>n</i>
+</pre>
+The parameter <a href="limits.html#max_megs"><tt><b>max_megs</b></tt></a>
+says to stop searching when (about) <i>n</i> megabytes of memory have been used.
+A value of -1 means there is no limit.
+
+<pre class="my_file">
+set(prolog_style_variables).                       % command-line -V 1
+clear(prolog_style_variables).    % default clear  % command-line -V 0
+</pre>
+
+A rule is needed for distinguishing variables from constants in
+clauses and formulas with free variables.
+If this flag is clear, variables start with
+(lower case) 'u' through 'z'.
+If this flag is set, variables in clauses start with
+(upper case) 'A' through 'Z' or '_'.
+
+<pre class="my_file">
+set(print_models).      % default set    % command-line -P 1
+clear(print_models).                     % command-line -P 0
+</pre>
+
+If this flag is set, all structures that are found are printed
+in "standard" form, which means they are suitable as
+input to other LADR programs such as
+<a href="m4-isofilter.html">isofilter</a> and
+<a href="m4-interpforma.html">interpformat</a>.
+
+<pre class="my_file">
+set(print_models_tabular).                       % command-line -p 1
+clear(print_models_tabular).    % default clear  % command-line -p 0
+</pre>
+If this flag is set, and if  is clear,
+all structures that are found are printed in a tabular form.
+If both <tt>print_models</tt> and <tt>print_models_standard</tt>
+are set, the last one in the input takes effect.
+
+<pre class="my_file">
+set(integer_ring).                       % command-line -R 1
+clear(integer_ring).    % default clear  % command-line -R 0
+</pre>
+If this flag is set, a ring structure is is applied to the search.
+The operations {+,-,*} are assumed to be the ring of integers
+(mod domain_size).  This method puts a tight constraint on
+the search, allowing much larger structures to be investigated.
+Here is an example.
+
+<pre class="my_job">
+mace4 -f <a href="ring41.in">ring41.in</a> &gt; <a href="ring41.out">ring41.out</a>
+</pre>
+
+For further information on the <tt>integer_ring</tt> flag, see
+<a href="http://www.cs.unm.edu/~mccune/slides/award-2004.pdf">
+slides from a workshop presentation</a>.
+
+<pre class="my_file">
+set(order_domain).
+clear(order_domain).        % default clear
+</pre>
+
+If this flag is set, the relations <tt>&lt;</tt> and <tt>&lt;=</tt>
+are fixed as order relations on the domain in the obvious way.
+
+<pre class="my_file">
+set(arithmetic).
+clear(arithmetic).        % default clear
+</pre>
+
+If this flag is set, several function and relation symbols understood
+by Mace4 as operations and relations on the integers, and evaluation
+of terms involving those symbols occurs during the search for models.
+See the page <a href="m4-arithmetic.html">Arithmetic for Mace4</a>.
+
+<pre class="my_file">
+set(verbose).                       % command-line -v 1
+clear(verbose).    % default clear  % command-line -v 0
+</pre>
+
+If the <tt>verbose</tt> flag is set, the output file receives
+information about the search, including the initial partial model (the
+part of the model that can be determined before backtracking starts)
+and timing and other statistics for each domain size. (It does not
+give a trace of the backtracking, so it does not consume a lot of file
+space.)
+
+<pre class="my_file">
+set(trace).                       % command-line -T 1
+clear(trace).    % default clear  % command-line -T 0
+</pre>
+
+If the <tt>trace</tt> flag is set, detailed information about the
+search, including a trace of all assignments and backtracking, is
+printed to the standard output.  <i>This flag causes a lot of output, so
+it should be used only on small searches</i>.
+
+<h3>Advanced Options</h3>
+
+These options are used for experimentation with search methods.
+They can be ignored by nearly all users.  For descriptions of
+most of these options, see the original Mace4 manual
+[<a href="references.html#McCune-Mace4">McCune-Mace4</a>]
+(<a href="http://www.cs.unm.edu/~mccune/prover9/mace4.pdf">PDF)</a>.
+
+<pre class="my_file">
+set(lnh).      % default set    % command-line -L 1
+clear(lnh).                     % command-line -L 0
+</pre>
+
+<pre class="my_file">
+assign(selection_order, <i>n</i>).  % default <i>n</i>=2, range [0 .. 2]  % command-line -O <i>n</i>
+</pre>
+
+<pre class="my_file">
+assign(selection_measure, <i>n</i>).  % default <i>n</i>=4, range [0 .. 4]  % command-line -M <i>n</i>
+</pre>
+
+<pre class="my_file">
+set(negprop).      % default set    % command-line -G 1
+clear(negprop).                     % command-line -G 0
+</pre>
+
+<pre class="my_file">
+set(neg_assign).      % default set    % command-line -H 1
+clear(neg_assign).                     % command-line -H 0
+</pre>
+
+<pre class="my_file">
+set(neg_assign_near).      % default set    % command-line -I 1
+clear(neg_assign_near).                     % command-line -I 0
+</pre>
+
+<pre class="my_file">
+set(neg_elim).      % default set    % command-line -J 1
+clear(neg_elim).                     % command-line -J 0
+</pre>
+
+<pre class="my_file">
+set(neg_elim_near).      % default set    % command-line -K 1
+clear(neg_elim_near).                     % command-line -K 0
+</pre>
+
+<pre class="my_file">
+set(skolems_last).                       % command-line -S 1
+clear(skolems_last).    % default clear  % command-line -S 0
+</pre>
+
+<hr>
+Next Section:
+<a href="m4-arithmetic.html">Interpformat</a>
+
+</body>
+</html>

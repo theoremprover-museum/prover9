@@ -1,0 +1,398 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+  <title>Prover9 Manual: Production Mode</title>
+ <link rel="stylesheet" href="manual.css">
+</head>
+
+<body>
+
+
+<hr>
+<table width="100%">
+<tr>
+<colgroup>
+<col width="33%">
+<col width="34%">
+<col width="33%">
+</colgroup>
+<td align="left"><i>Prover9 Manual</i>
+<td align="center"><img src="prover9-5a-256t.gif">
+<td align="right"><i>Version 2009-11A</i>
+</table>
+<hr>
+
+<!-- Main content -->
+
+<h1>Production Mode</h1>
+
+Prover9's <i>production mode</i> allows for <i>state-space searches</i>.
+That is, it starts with 
+<ul>
+<li> one or more initial states,
+<li> a set of production rules that lead from one state to the next, and
+<li> one or more goal states.
+</ul>
+
+<p>
+The production mode is implemented by using Prover9's hyperreolution
+inference rule.  Also, an enhanced form of rewriting (demodulation)
+is used, including
+<ul>
+<li> evaluable functions and relations (implicit rules), such as
+integer arithmetic and Boolean operations;
+<li> conditional rewrite rules which can apply to atomic formulas as
+well as to terms.
+</ul>
+The rewriting is applied to the (instantiated) antecedents of the
+production rules as well as to the consequents.
+<p>
+The production mode is enabled by setting the following flag.
+<!-- start option auto -->
+<a name="auto">
+<pre class="my_option">
+set(production).
+clear(production).  % default clear
+</pre>
+
+<blockquote>
+The only direct effect
+of setting  this flag is that it changes several options as follows.
+<pre>
+  set(production) -> set(raw).
+  set(produtcion) -> set(hyper_resolution).
+  set(produtcion) -> set(eval_rewrite).
+  set(produtcion) -> clear(back_subsume).
+</pre>
+</blockquote>
+<!-- end option -->
+<p>
+The <tt>raw</tt> option, which cancels many of the default Prover9
+settings, is used because the production mode is quite different
+and more limited in nature from the ordinary mode of Prover9.
+
+<p>
+Here is a simple example which uses evaluable arithmetic operations (but no
+explicit rewrite rules).
+
+<pre class="my_job">
+prover9 -f <a href="jugs.in">jugs.in</a> &gt; <a href="jugs.out">jugs.out</a>
+</pre>
+
+And here are two simple examples that use explicit rewrite rules.
+
+<pre class="my_job">
+prover9 -f <a href="cabbages.in">cabbages.in</a> &gt; <a href="cabbages.out">cabbages.out</a>
+</pre>
+
+<pre class="my_job">
+prover9 -f <a href="queens3.in">queens3.in</a> &gt; <a href="queens3.out">queens3.out</a>
+</pre>
+
+Here is a more complex example.
+
+<pre class="my_job">
+prover9 -f <a href="2inverter.in">2inverter.in</a> &gt; <a href="2inverter.out">2inverter.out</a>
+</pre>
+
+The following job shows examples of several list-processing functions.
+
+<pre class="my_job">
+prover9 -f <a href="list.in">list.in</a> &gt; <a href="list.out">list.out</a>
+</pre>
+
+<h2>Evaluable Operations</h2>
+
+See the page <a href="syntax.html#built_in">Clauses and Formulas</a>
+for the built-in parsing/printing declarations for these operations.
+
+<p>
+<table "border" align="center" cellpadding="5">
+<caption>Functions on Integers</caption>
+<tr><th>Operation  <th>  Comment
+<tr><td><tt>+  </tt><td> integer sum
+<tr><td><tt>-  </tt><td> integer negation (unary only) (used also for Boolean negation)
+<tr><td><tt>/  </tt><td> integer division
+<tr><td><tt>mod</tt><td> modulus
+<tr><td><tt>abs</tt><td> integer absolute value
+<tr><td><tt>min</tt><td> integer minimum (binary)
+<tr><td><tt>max</tt><td> integer maximum (binary)
+</table>
+
+<p>
+<table "border" align="center" cellpadding="5">
+<caption>Relations on Integers</caption>
+<tr><th>Operation  <th>  Comment
+<tr><td><tt><</tt>  <td> less than
+<tr><td><tt><=</tt> <td> less or equal
+<tr><td><tt>></tt>  <td> greater than
+<tr><td><tt>>=</tt> <td> greater or equal
+<tr><td><tt>==</tt> <td> equal (used also for non-integers)
+<tr><td><tt>!==</tt><td> not equal (used also for non-integers)
+</table>
+
+<p>
+<table "border" align="center" cellpadding="5">
+<caption>Properties and Relations on Terms</caption>
+<tr><th>Operation  <th>  Comment
+<tr><td><tt>variable</tt> <td> is the term a variable?
+<tr><td><tt>constant</tt> <td> is the term a constant (includes integers)?
+<tr><td><tt>ground </tt>  <td> is the term variable-free?
+<tr><td><tt>@<</tt>       <td> lexically less than
+<tr><td><tt>@<=</tt>      <td> lexically less or equal
+<tr><td><tt>@></tt>       <td> lexically greater than
+<tr><td><tt>@>=</tt>      <td> lexically greater or equal
+<tr><td><tt>==</tt>       <td> identical (used also for integers)
+<tr><td><tt>!==</tt>      <td> not identical (used also for integers)
+</table>
+
+<p>
+<table "border" align="center" cellpadding="5">
+<caption>Logic Operations</caption>
+<tr><th>Operation  <th>  Comment
+<tr><td><tt>&</tt>  <td> conjunction
+<tr><td><tt>&&</tt> <td> conjunction* (<a href="#double">see below</a>)
+<tr><td><tt>|</tt>  <td> disjunction
+<tr><td><tt>||</tt> <td> disjunction* (<a href="#double">see below</a>)
+<tr><td><tt>-</tt>  <td> negation (used also for integers)
+</table>
+
+<p>
+<table "border" align="center" cellpadding="5">
+<caption>Conditional Expressions</caption>
+<tr><th>Operation  <th>  Comment
+<tr><td><tt>if</tt>  <td> <tt>if(condition, then_part, else_part)</tt><br>
+           (see Section <a href="#conditional">Conditional Expressions)</a>
+</table>
+<p>
+<a name="double"></a>
+*The double forms of the conjunction and disjunction operations
+(<tt>&&</tt> and <tt>||</tt>) are logically the same as the single
+forms (<tt>&</tt> and <tt>|</tt>); the double forms are used to
+prevent expansion of production rules.  For example,
+if a production rule is written as
+<pre class="my_file">
+P & (Q1 | Q2) -> R.
+</pre>
+it will be expanded to the pair of clauses
+<pre class="my_file">
+P & Q1 -> R.
+P & Q2 -> R.
+</pre>
+by the clausification process.  If Q1 and Q2 are evaluable,
+it is usually more efficient use the original form of the rule;
+using the double form of the disjunction operator prevents expansion:
+<pre class="my_file">
+P & (Q1 || Q2) -> R.
+</pre>
+The double forms never have to be used in rewrite rules.
+
+<h2>Enhanced Rewrite Rules for Production Mode</h2>
+
+Ordinary Prover9 rewrite rules (demodulators) are always equations,
+which are used to rewrite terms.  When in production mode, Prover9
+can use enhanced rewrite rules, which can be conditional and which can
+rewrite atomic formulas as well as terms.
+
+<p>
+<i>Equational rules</i> rewrite terms, and <i>equivalence rules</i>
+rewrite atomic formulas.  Either kind of rule can have conditions.
+
+<p>
+Many of the following examples use terms that are lists.  Recall that
+lists are built from a binary constructor function <tt>$cons</tt>
+and well-formed lists are terminated with <tt>$nil</tt>.
+The term <tt>[a:b]</tt> abbreviates <tt>$cons(a,b)</tt>, and the term
+<tt>[a,b,c]</tt> abbreviates <tt>$cons(a,$cons(b,$cons(c,$nil)))</tt>.
+
+<h3>Equational Rules</h3>
+
+Equational rules have one of the following forms.
+<pre class="my_file">
+<i>alpha</i> = <i>beta</i>.    % unconditional
+<i>condition</i> -> <i>alpha</i> = <i>beta</i>.
+<i>alpha</i> = <i>beta</i> <- <i>condition</i>.
+</pre>
+In each case, an instance of <tt><i>alpha</i></tt> is rewritten
+to the corresponding instance of <tt><i>beta</i></tt> if the
+corresponding instance of the <tt><i>condition</i></tt> 
+(if present) rewrites to <tt>$T</tt> (true).
+
+<p>
+For example, the following three rewrite rules constitute a
+function that takes a term <tt>z</tt> and a list of terms, and returns
+the sublist of terms that are lexically greater than <tt>z</tt>.
+
+<pre class="my_file">
+gt_list(z,[]) = [].
+x @>  z -> gt_list(z,[x:y]) = [x:gt_list(z,y)].
+x @<= z -> gt_list(z,[x:y]) = gt_list(z,y).
+</pre>
+
+(These rewrite rules can be used to build a quicksort function,
+see <a href="list.in">list.in</a>.)
+
+<h3>Equivalence Rules</h3>
+
+Equivalence rules rewrite atomic formulas.  The forms are similar to
+equational rules, but they have <tt><-></tt> instead of <tt>=</tt> .
+
+<pre class="my_file">
+<i>alpha</i> <-> <i>beta</i>.    % unconditional
+<i>condition</i> -> (<i>alpha</i> <-> <i>beta</i>).
+(<i>alpha</i> <-> <i>beta</i>) <- <i>condition</i>.
+</pre>
+
+<p>
+For example, the following three rules constitues a membership
+relation for lists.
+
+<pre class="my_file">
+member(x,[]) <-> $F.
+x  == y  -> (member(x,[y:z]) <-> $T).
+x !== y  -> (member(x,[y:z]) <-> member(x,z)).
+</pre>
+
+In equivalence rules the <tt><i>alpha</i></tt> expression must be
+an atomic formula, but the <tt><i>beta</i></tt> expression can
+be a non-atomic formula involving disjunction, conjunction, and negation.
+For example, the following pair of rules implements a subset
+relation on lists.
+
+<pre class="my_file">
+subset([], x) <-> $T.
+subset([x:y], z) <-> member(x,z) & subset(y,z).
+</pre>
+
+If the <tt><i>beta</i></tt> expression of an equivalence rule
+is <tt>$T</tt> or <tt>$F</tt>, the rule can be abbreviated in
+the obvious way.  For example, the membership relation shown above
+can be abbreviated as follows.
+
+<pre class="my_file">
+-member(x,[]).
+x  == y  -> member(x,[y:z]).
+x !== y  -> (member(x,[y:z]) <-> member(x,z)).
+</pre>
+
+
+<h3>Beware of the Distinction between Function and Relation Symbols (Terms and Atomic Formulas)</h3>
+
+<a name="conditional"></a>
+<h3>Conditional Expressions (If-expressions)</h3>
+
+Many rewrite rules can be written more conveniently with conditional
+<i>expressions</i> than with conditional <i>rules</i>.  A conditional
+expression has the following form.
+<pre class="my_file">
+if(<i>condition</i>, <i>then_part</i>, <i>else_part</i>)
+</pre>
+When evaluating a conditional expression,
+<ul>
+<li> if the <i>condition</i> evaluates to <tt>$T</tt>, the value of the
+expression is <i>then_part</i>;
+<li> if the <i>condition</i> evaluates to <tt>$F</tt>, the value of the
+expression is <i>else_part</i>;
+<li> if the <i>condition</i> evaluates to neither <tt>$T</tt> nor <tt>$F</tt>,
+the "<tt>if</tt>" expression is not evaluated (but the <i>then_part</i> and
+the <i>else_part</i> are evaluated);  in this case, the result will contain
+an if-expression, indicating that something is probably wrong with it.
+</ul>
+
+The <i>condition</i> of an if-expression must be an evaluable
+formula (Boolean-valued object).
+If the if-expression occurs in the context of a term,
+the <i>then_part</i> and the <i>else_part</i> must also be terms.
+If the if-expression occurs in the context of a formula,
+the <i>then_part</i> and the <i>else_part</i> must also be formulas.
+
+<p>
+Here are two examples of rules containing if-expressions.
+The membership relation has the if-expression in the context
+of a formula, and the intersection function has it in the
+context of a term.
+
+<pre class="my_file">
+-member(x,[]).
+member(x,[y:z]) <-> if(x == y, $T, member(x,z)).
+
+intersect([], x) = [].
+intersect([x:y],z) = if(member(x,z),[x:intersect(y,z)],intersect(y,z)).
+</pre>
+
+<h2>Hyperresolution in Production Mode</h2>
+
+The hyperresolution inference rule is used when Prover9 is in production mode.
+Recall that in hyperresolution all of the negative literals of the nucleus
+(antecedents of the production rule) must be operated on so that the
+result is a positive clause.  In production mode, the negative literals
+(antecedents) are partitioned into <i>resolvable</i> literals
+and <i>evaluable</i> literals.  Consider the production rule
+in one of the examples given above.
+
+<pre class="my_file">
+J(x, y) & (x+y <= 4) -> J(0, y+x).           % empty the small jug into the big jug
+</pre>
+
+The first antecedent is resolvable, because it is headed by the state predicate
+<tt>J</tt>, and the second is evalable, because it is headed by a built-in
+evaluable operation.
+
+<p>
+An antecedent can also be evaluable if it is headed by a <i>defined</i>
+evaluable operation; that is, there is an equivalence rewrite rule to
+evaluate it.  Consider the production rule from 8-Queens example
+above (assume set(prolog_style_variables)).
+<pre class="my_file">
+board(B) & pick(New_col) & ok(B, 1, New_col) -> board([New_col:B]).
+</pre>
+The first two antecedents are resolvable:
+the first takes a state, and the second picks a column to try to fill in.
+The third antecedent is evaluable, because there are equivalence
+rule to evaluate it (in this case, it checks whether a state transition
+can take place).
+
+<pre class="my_file">
+formulas(demodulators).
+
+ok([], X, Y) <-> $T.
+
+ok([H:T], Rows_back, New_col) <->
+	-(H == New_col) &
+	-(H + -Rows_back == New_col) &
+	-(H + Rows_back == New_col) &
+	ok(T, Rows_back+1, New_col).
+
+end_of_list.
+</pre>
+
+<h2>Justifications in Production Mode</h2>
+
+When Prover9 is in production mode, clause justifications for
+hyperresolution are similar to those in ordinary mode, but
+justifications for rewriting (demodulation) is different,
+and there is a new kind of justfication for evaluation.
+<p>
+In ordinary mode, Prover9 shows the <i>sequence</i> of rewrite
+steps, with data on where the rewrite occurred and the direction
+of the rewrite.  In production mode, Prover9 simply shows
+the <i>set</i> of rules that were applied.  This difference is because
+in production mode, there can be extremely long sequences of
+rewrites.
+<p>
+When evaluation of a built-in evaluable operation occurs,
+Prover9 simply reports the number of evaluation steps.
+Consider a clause from the 8-Queens example above:
+
+<pre class="my_file">
+board([6,3,1,4,8]).  [hyper(2,a,226,a,b,8,a),rewrite([13,12]),eval(40)].
+</pre>
+The justification shows the two resolution steps, rewriting
+with two rules, and 40 evaluations with built-in operations.
+
+<hr>
+Next Section:
+<a href="advanced.html">Advanced Features</a>
+
+</body>
+</html>

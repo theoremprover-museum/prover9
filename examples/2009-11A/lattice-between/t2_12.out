@@ -1,0 +1,411 @@
+============================== Prover9 ===============================
+Prover9 (32) version 2009-11A, November 2009.
+Process 5134 was started by mccune on cleo,
+Tue Nov  3 09:45:23 2009
+The command was "/home/mccune/LADR/bin/prover9 -f head.in t2_12.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file head.in
+
+assign(max_seconds,60).
+set(expand_relational_defs).
+
+formulas(assumptions).
+x ^ y = y ^ x # label("commutativity_meet").
+x v y = y v x # label("commutativity_join").
+(x ^ y) ^ z = x ^ (y ^ z) # label("associativity_meet").
+(x v y) v z = x v (y v z) # label("associativity_join").
+(x v y) ^ x = x # label("absorption_1").
+(x ^ y) v x = x # label("absorption_2").
+end_of_list.
+
+formulas(assumptions).
+(all x all y (x <= y <-> x ^ y = x)).
+(all x all y all z (A(x,y,z) <-> x <= y & y <= z | z <= y & y <= x)).
+(all x all y all z (B(x,y,z) <-> (x ^ y) v (y ^ z) = y & (x v y) ^ (y v z) = y)).
+(all x all y all z (C(x,y,z) <-> (x ^ y) v (y ^ z) = y & (x ^ z) v y = y)).
+(all x all y all z (CS(x,y,z) <-> (x v y) ^ (y v z) = y & (x v z) ^ y = y)).
+(all x all y all z (D(x,y,z) <-> x ^ z <= y & y <= x v z)).
+end_of_list.
+
+% Reading from file t2_12.in
+
+
+formulas(assumptions).
+x <= y | y <= x.
+end_of_list.
+
+formulas(goals).
+D(x,y,z) -> A(x,y,z).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== EXPAND RELATIONAL DEFINITIONS =========
+
+% Relational Definitions:
+1 (all x all y (x <= y <-> x ^ y = x)).  [assumption].
+2 (all x all y all z (A(x,y,z) <-> x <= y & y <= z | z <= y & y <= x)).  [assumption].
+3 (all x all y all z (B(x,y,z) <-> (x ^ y) v (y ^ z) = y & (x v y) ^ (y v z) = y)).  [assumption].
+4 (all x all y all z (C(x,y,z) <-> (x ^ y) v (y ^ z) = y & (x ^ z) v y = y)).  [assumption].
+5 (all x all y all z (CS(x,y,z) <-> (x v y) ^ (y v z) = y & (x v z) ^ y = y)).  [assumption].
+6 (all x all y all z (D(x,y,z) <-> x ^ z <= y & y <= x v z)).  [assumption].
+
+% Relational Definitions, Expanded:
+7 (all x0 all x1 all z (A(x0,x1,z) <-> x0 ^ x1 = x0 & x1 ^ z = x1 | z ^ x1 = z & x1 ^ x0 = x1)).  [expand_def(2,1)].
+8 (all x2 all x3 all z (D(x2,x3,z) <-> (x2 ^ z) ^ x3 = x2 ^ z & x3 ^ (x2 v z) = x3)).  [expand_def(6,1)].
+
+% Formulas Being Expanded:
+6 (all x all y all z (D(x,y,z) <-> x ^ z <= y & y <= x v z)).  [assumption].
+2 (all x all y all z (A(x,y,z) <-> x <= y & y <= z | z <= y & y <= x)).  [assumption].
+9 x <= y | y <= x.  [assumption].
+10 D(x,y,z) -> A(x,y,z).  [goal].
+11 D(x,y,z) -> x ^ y = x & y ^ z = y | z ^ y = z & y ^ x = y.  [expand_def(10,7)].
+
+============================== end of expand relational definitions ==
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+12 (x ^ z) ^ y = x ^ z & y ^ (x v z) = y -> x ^ y = x & y ^ z = y | z ^ y = z & y ^ x = y # label(non_clause) # label(goal).  [expand_def(11,8)].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+x ^ y = x | y ^ x = y.  [expand_def(9,1)].
+(x ^ y) v x = x # label("absorption_2").  [assumption].
+(x v y) ^ x = x # label("absorption_1").  [assumption].
+(x v y) v z = x v (y v z) # label("associativity_join").  [assumption].
+(x ^ y) ^ z = x ^ (y ^ z) # label("associativity_meet").  [assumption].
+x v y = y v x # label("commutativity_join").  [assumption].
+x ^ y = y ^ x # label("commutativity_meet").  [assumption].
+(c1 ^ c2) ^ c3 = c1 ^ c2.  [deny(12)].
+c3 ^ (c1 v c2) = c3.  [deny(12)].
+c1 ^ c3 != c1 | c3 ^ c2 != c3.  [deny(12)].
+c2 ^ c3 != c2 | c3 ^ c1 != c3.  [deny(12)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Auto_denials:  (non-Horn, no changes).
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ = ]).
+Function symbol precedence:  function_order([ c1, c2, c3, ^, v ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(paramodulation).  % (positive equality literals)
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+kept:      13 x ^ y = x | y ^ x = y.  [expand_def(9,1)].
+kept:      14 (x ^ y) v x = x # label("absorption_2").  [assumption].
+kept:      15 (x v y) ^ x = x # label("absorption_1").  [assumption].
+kept:      16 (x v y) v z = x v (y v z) # label("associativity_join").  [assumption].
+kept:      17 (x ^ y) ^ z = x ^ (y ^ z) # label("associativity_meet").  [assumption].
+
+% Operation v is commutative; C redundancy checks enabled.
+kept:      18 x v y = y v x # label("commutativity_join").  [assumption].
+
+% Operation ^ is commutative; C redundancy checks enabled.
+kept:      19 x ^ y = y ^ x # label("commutativity_meet").  [assumption].
+           20 (c1 ^ c2) ^ c3 = c1 ^ c2.  [deny(12)].
+kept:      21 c3 ^ (c1 ^ c2) = c1 ^ c2.  [copy(20),rewrite([19(5)])].
+kept:      22 c3 ^ (c1 v c2) = c3.  [deny(12)].
+           23 c1 ^ c3 != c1 | c3 ^ c2 != c3.  [deny(12)].
+kept:      24 c1 ^ c3 != c1 | c2 ^ c3 != c3.  [copy(23),rewrite([19(8)])].
+           25 c2 ^ c3 != c2 | c3 ^ c1 != c3.  [deny(12)].
+kept:      26 c2 ^ c3 != c2 | c1 ^ c3 != c3.  [copy(25),rewrite([19(8)])].
+kept:      27 x ^ x = x.  [factor(13,a,b)].
+kept:      28 x v (x ^ y) = x.  [back_rewrite(14),rewrite([18(2)])].
+kept:      29 x ^ (x v y) = x.  [back_rewrite(15),rewrite([19(2)])].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+13 x ^ y = x | y ^ x = y.  [expand_def(9,1)].
+16 (x v y) v z = x v (y v z) # label("associativity_join").  [assumption].
+17 (x ^ y) ^ z = x ^ (y ^ z) # label("associativity_meet").  [assumption].
+18 x v y = y v x # label("commutativity_join").  [assumption].
+19 x ^ y = y ^ x # label("commutativity_meet").  [assumption].
+21 c3 ^ (c1 ^ c2) = c1 ^ c2.  [copy(20),rewrite([19(5)])].
+22 c3 ^ (c1 v c2) = c3.  [deny(12)].
+24 c1 ^ c3 != c1 | c2 ^ c3 != c3.  [copy(23),rewrite([19(8)])].
+26 c2 ^ c3 != c2 | c1 ^ c3 != c3.  [copy(25),rewrite([19(8)])].
+27 x ^ x = x.  [factor(13,a,b)].
+28 x v (x ^ y) = x.  [back_rewrite(14),rewrite([18(2)])].
+29 x ^ (x v y) = x.  [back_rewrite(15),rewrite([19(2)])].
+end_of_list.
+
+formulas(demodulators).
+16 (x v y) v z = x v (y v z) # label("associativity_join").  [assumption].
+17 (x ^ y) ^ z = x ^ (y ^ z) # label("associativity_meet").  [assumption].
+18 x v y = y v x # label("commutativity_join").  [assumption].
+        % (lex-dep)
+19 x ^ y = y ^ x # label("commutativity_meet").  [assumption].
+        % (lex-dep)
+21 c3 ^ (c1 ^ c2) = c1 ^ c2.  [copy(20),rewrite([19(5)])].
+22 c3 ^ (c1 v c2) = c3.  [deny(12)].
+27 x ^ x = x.  [factor(13,a,b)].
+28 x v (x ^ y) = x.  [back_rewrite(14),rewrite([18(2)])].
+29 x ^ (x v y) = x.  [back_rewrite(15),rewrite([19(2)])].
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.01 seconds.
+
+given #1 (I,wt=10): 13 x ^ y = x | y ^ x = y.  [expand_def(9,1)].
+
+given #2 (I,wt=11): 16 (x v y) v z = x v (y v z) # label("associativity_join").  [assumption].
+
+given #3 (I,wt=11): 17 (x ^ y) ^ z = x ^ (y ^ z) # label("associativity_meet").  [assumption].
+
+given #4 (I,wt=7): 18 x v y = y v x # label("commutativity_join").  [assumption].
+
+% Operation v is associative-commutative; CAC redundancy checks enabled.
+
+given #5 (I,wt=7): 19 x ^ y = y ^ x # label("commutativity_meet").  [assumption].
+
+% Operation ^ is associative-commutative; CAC redundancy checks enabled.
+
+given #6 (I,wt=7): 22 c3 ^ (c1 v c2) = c3.  [deny(12)].
+
+given #7 (I,wt=10): 24 c1 ^ c3 != c1 | c2 ^ c3 != c3.  [copy(23),rewrite([19(8)])].
+
+given #8 (I,wt=10): 26 c2 ^ c3 != c2 | c1 ^ c3 != c3.  [copy(25),rewrite([19(8)])].
+
+given #9 (I,wt=5): 27 x ^ x = x.  [factor(13,a,b)].
+
+given #10 (I,wt=7): 28 x v (x ^ y) = x.  [back_rewrite(14),rewrite([18(2)])].
+
+given #11 (I,wt=7): 29 x ^ (x v y) = x.  [back_rewrite(15),rewrite([19(2)])].
+
+given #12 (A,wt=16): 30 x ^ (y ^ z) = x ^ y | z ^ (x ^ y) = z.  [para(17(a,1),13(a,1))].
+
+given #13 (T,wt=5): 49 x v x = x.  [para(27(a,1),28(a,1,2))].
+
+given #14 (T,wt=7): 47 x v (y ^ x) = x.  [para(19(a,1),28(a,1,2))].
+
+given #15 (T,wt=7): 53 x ^ (y v x) = x.  [para(18(a,1),29(a,1,2))].
+
+given #16 (T,wt=9): 36 c1 ^ (c2 ^ c3) = c1 ^ c2.  [back_rewrite(21),rewrite([35(5),19(4)])].
+
+given #17 (A,wt=14): 31 x ^ y = x | y ^ (x ^ z) = y ^ z.  [para(13(a,1),17(a,1,1)),flip(b)].
+
+given #18 (T,wt=9): 40 x ^ (x ^ y) = x ^ y.  [para(27(a,1),17(a,1,1)),flip(a)].
+
+given #19 (T,wt=9): 42 x ^ (y ^ x) = y ^ x.  [para(27(a,1),17(a,2,2)),rewrite([19(2)])].
+
+given #20 (T,wt=9): 73 x v (x v y) = x v y.  [para(49(a,1),16(a,1,1)),flip(a)].
+
+given #21 (T,wt=9): 75 x v (y v x) = y v x.  [para(49(a,1),16(a,2,2)),rewrite([18(2)])].
+
+given #22 (A,wt=14): 32 x ^ y = x | z ^ (y ^ x) = z ^ y.  [para(13(a,1),17(a,2,2)),rewrite([17(4)])].
+
+given #23 (T,wt=9): 79 x v (y ^ (z ^ x)) = x.  [para(17(a,1),47(a,1,2))].
+
+given #24 (T,wt=7): 183 c3 v (c1 ^ c2) = c3.  [para(36(a,1),79(a,1,2))].
+
+given #25 (T,wt=9): 80 c1 v (c2 v c3) = c1 v c2.  [para(22(a,1),47(a,1,2)),rewrite([18(5),33(5),18(4)])].
+
+given #26 (T,wt=9): 83 x ^ (y v (z v x)) = x.  [para(16(a,1),53(a,1,2))].
+
+given #27 (A,wt=11): 33 x v (y v z) = y v (x v z).  [para(18(a,1),16(a,1,1)),rewrite([16(2)])].
+
+given #28 (T,wt=9): 177 x v (y ^ (x ^ z)) = x.  [para(19(a,1),79(a,1,2,2))].
+
+given #29 (T,wt=9): 201 x ^ (y v (x v z)) = x.  [para(18(a,1),83(a,1,2,2))].
+
+given #30 (T,wt=10): 34 x ^ y = y | x ^ y = x.  [para(19(a,1),13(a,1))].
+
+given #31 (T,wt=10): 39 c1 ^ c3 != c3 | c2 ^ c3 = c3.  [resolve(26,a,13,b),rewrite([19(8)])].
+
+given #32 (A,wt=11): 35 x ^ (y ^ z) = y ^ (x ^ z).  [para(19(a,1),17(a,1,1)),rewrite([17(2)])].
+
+given #33 (T,wt=10): 76 x ^ y = x | x v y = x.  [para(13(a,1),47(a,1,2))].
+
+given #34 (T,wt=10): 190 c1 ^ c2 = c2 | c1 v c3 = c3.  [para(13(a,1),183(a,1,2)),rewrite([19(3),18(8)])].
+
+given #35 (T,wt=10): 230 c2 ^ c3 = c2 | c1 ^ c3 != c1.  [resolve(34,a,24,b)].
+
+given #36 (T,wt=10): 231 x ^ y = y | y ^ x = x.  [para(34(b,1),19(a,1)),flip(b)].
+
+given #37 (A,wt=11): 37 c3 ^ ((c1 v c2) ^ x) = c3 ^ x.  [para(22(a,1),17(a,1,1)),flip(a)].
+
+given #38 (T,wt=9): 311 c3 ^ (c1 v (c2 v x)) = c3.  [para(29(a,1),37(a,1,2)),rewrite([22(5),16(6)]),flip(a)].
+
+given #39 (T,wt=9): 315 c3 ^ (x v (c1 v c2)) = c3.  [para(53(a,1),37(a,1,2)),rewrite([22(5)]),flip(a)].
+
+given #40 (T,wt=9): 333 c3 ^ (c1 v (x v c2)) = c3.  [para(18(a,1),311(a,1,2,2))].
+
+given #41 (T,wt=10): 237 x ^ y = y | y v x = y.  [para(34(b,1),47(a,1,2))].
+
+given #42 (A,wt=13): 38 c2 ^ c3 = c3 | c1 ^ c3 != c1 | c3 != c2.  [para(13(a,1),24(b,1)),rewrite([19(3)]),flip(c)].
+
+given #43 (T,wt=10): 248 c1 ^ c2 = c1 | c2 v c3 = c3.  [para(34(a,1),183(a,1,2)),rewrite([18(8)])].
+
+given #44 (T,wt=10): 250 c2 ^ c3 = c3 | c1 ^ c3 = c1.  [resolve(39,a,34,a)].
+
+given #45 (T,wt=10): 284 x ^ y = x | y v x = x.  [para(76(b,1),18(a,1)),flip(b)].
+
+given #46 (T,wt=10): 285 c1 ^ c2 = c1 | c1 ^ c3 = c3.  [para(76(b,1),22(a,1,2)),rewrite([19(8)])].
+
+given #47 (A,wt=11): 44 x v ((x ^ y) v z) = x v z.  [para(28(a,1),16(a,1,1)),flip(a)].
+
+given #48 (T,wt=10): 291 c1 ^ c2 = c2 | c1 ^ c3 = c1.  [para(190(b,1),29(a,1,2))].
+
+given #49 (T,wt=10): 294 c2 ^ c3 = c2 | c1 ^ c3 = c3.  [resolve(230,b,34,b)].
+
+given #50 (T,wt=10): 361 x ^ y = y | x v y = y.  [para(237(b,1),18(a,1)),flip(b)].
+
+given #51 (T,wt=10): 373 c1 ^ c2 = c1 | c2 ^ c3 = c2.  [para(248(b,1),29(a,1,2))].
+
+given #52 (A,wt=13): 45 x v (y v ((x v y) ^ z)) = x v y.  [para(28(a,1),16(a,1)),flip(a)].
+
+given #53 (T,wt=10): 380 c1 ^ c3 = c1 | c2 v c3 = c2.  [para(250(a,1),28(a,1,2))].
+
+given #54 (T,wt=10): 389 c1 ^ c3 = c1 | c1 ^ c2 = c3.  [factor(386,a,b),rewrite([19(9),35(10),36(10)])].
+
+given #55 (T,wt=10): 393 c1 ^ c2 = c2 | c2 ^ c3 = c3.  [para(284(b,1),22(a,1,2)),rewrite([19(3),19(8)])].
+
+given #56 (T,wt=10): 402 c1 ^ c2 = c1 | c2 ^ c3 = c3.  [resolve(285,b,39,a)].
+
+given #57 (A,wt=13): 46 (x ^ y) v (x ^ (y ^ z)) = x ^ y.  [para(17(a,1),28(a,1,2))].
+
+given #58 (T,wt=8): 509 c1 ^ c2 = c1 | c3 = c2.  [para(402(b,1),373(b,1)),merge(b)].
+
+given #59 (T,wt=8): 533 c3 = c2 | c1 v c2 = c2.  [para(509(a,1),47(a,1,2)),rewrite([18(6)])].
+
+given #60 (T,wt=8): 538 c3 = c2 | c1 v c3 = c3.  [para(509(a,1),183(a,1,2)),rewrite([18(6)])].
+
+given #61 (T,wt=8): 542 c3 = c2 | c2 ^ c3 = c3.  [para(533(b,1),22(a,1,2)),rewrite([19(6)])].
+
+given #62 (A,wt=13): 50 (x v y) ^ (x v (y v z)) = x v y.  [para(16(a,1),29(a,1,2))].
+
+given #63 (T,wt=8): 549 c3 = c2 | c1 ^ c3 = c1.  [para(538(b,1),29(a,1,2))].
+
+given #64 (T,wt=8): 552 c3 = c2 | c1 ^ c3 != c1.  [resolve(542,b,24,b)].
+
+given #65 (T,wt=3): 597 c3 = c2.  [resolve(552,b,549,b),merge(b)].
+
+given #66 (T,wt=7): 621 c1 ^ (c2 v x) = c1.  [back_unit_del(601),unit_del(b,619)].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.09 (+ 0.00) seconds.
+% Length of proof is 53.
+% Level of proof is 17.
+% Maximum clause weight is 12.000.
+% Given clauses 66.
+
+1 (all x all y (x <= y <-> x ^ y = x)) # label(non_clause).  [assumption].
+2 (all x all y all z (A(x,y,z) <-> x <= y & y <= z | z <= y & y <= x)) # label(non_clause).  [assumption].
+6 (all x all y all z (D(x,y,z) <-> x ^ z <= y & y <= x v z)) # label(non_clause).  [assumption].
+7 (all x0 all x1 all z (A(x0,x1,z) <-> x0 ^ x1 = x0 & x1 ^ z = x1 | z ^ x1 = z & x1 ^ x0 = x1)) # label(non_clause).  [expand_def(2,1)].
+8 (all x2 all x3 all z (D(x2,x3,z) <-> (x2 ^ z) ^ x3 = x2 ^ z & x3 ^ (x2 v z) = x3)) # label(non_clause).  [expand_def(6,1)].
+9 x <= y | y <= x # label(non_clause).  [assumption].
+10 D(x,y,z) -> A(x,y,z) # label(non_clause).  [goal].
+11 D(x,y,z) -> x ^ y = x & y ^ z = y | z ^ y = z & y ^ x = y # label(non_clause).  [expand_def(10,7)].
+12 (x ^ z) ^ y = x ^ z & y ^ (x v z) = y -> x ^ y = x & y ^ z = y | z ^ y = z & y ^ x = y # label(non_clause) # label(goal).  [expand_def(11,8)].
+13 x ^ y = x | y ^ x = y.  [expand_def(9,1)].
+14 (x ^ y) v x = x # label("absorption_2").  [assumption].
+15 (x v y) ^ x = x # label("absorption_1").  [assumption].
+16 (x v y) v z = x v (y v z) # label("associativity_join").  [assumption].
+17 (x ^ y) ^ z = x ^ (y ^ z) # label("associativity_meet").  [assumption].
+18 x v y = y v x # label("commutativity_join").  [assumption].
+19 x ^ y = y ^ x # label("commutativity_meet").  [assumption].
+20 (c1 ^ c2) ^ c3 = c1 ^ c2.  [deny(12)].
+21 c3 ^ (c1 ^ c2) = c1 ^ c2.  [copy(20),rewrite([19(5)])].
+22 c3 ^ (c1 v c2) = c3.  [deny(12)].
+23 c1 ^ c3 != c1 | c3 ^ c2 != c3.  [deny(12)].
+24 c1 ^ c3 != c1 | c2 ^ c3 != c3.  [copy(23),rewrite([19(8)])].
+25 c2 ^ c3 != c2 | c3 ^ c1 != c3.  [deny(12)].
+26 c2 ^ c3 != c2 | c1 ^ c3 != c3.  [copy(25),rewrite([19(8)])].
+27 x ^ x = x.  [factor(13,a,b)].
+28 x v (x ^ y) = x.  [back_rewrite(14),rewrite([18(2)])].
+29 x ^ (x v y) = x.  [back_rewrite(15),rewrite([19(2)])].
+34 x ^ y = y | x ^ y = x.  [para(19(a,1),13(a,1))].
+35 x ^ (y ^ z) = y ^ (x ^ z).  [para(19(a,1),17(a,1,1)),rewrite([17(2)])].
+36 c1 ^ (c2 ^ c3) = c1 ^ c2.  [back_rewrite(21),rewrite([35(5),19(4)])].
+37 c3 ^ ((c1 v c2) ^ x) = c3 ^ x.  [para(22(a,1),17(a,1,1)),flip(a)].
+39 c1 ^ c3 != c3 | c2 ^ c3 = c3.  [resolve(26,a,13,b),rewrite([19(8)])].
+47 x v (y ^ x) = x.  [para(19(a,1),28(a,1,2))].
+76 x ^ y = x | x v y = x.  [para(13(a,1),47(a,1,2))].
+79 x v (y ^ (z ^ x)) = x.  [para(17(a,1),47(a,1,2))].
+183 c3 v (c1 ^ c2) = c3.  [para(36(a,1),79(a,1,2))].
+248 c1 ^ c2 = c1 | c2 v c3 = c3.  [para(34(a,1),183(a,1,2)),rewrite([18(8)])].
+285 c1 ^ c2 = c1 | c1 ^ c3 = c3.  [para(76(b,1),22(a,1,2)),rewrite([19(8)])].
+311 c3 ^ (c1 v (c2 v x)) = c3.  [para(29(a,1),37(a,1,2)),rewrite([22(5),16(6)]),flip(a)].
+340 c1 ^ (c2 v x) = c1 | c1 ^ c3 = c3.  [para(76(b,1),311(a,1,2)),rewrite([19(9)])].
+373 c1 ^ c2 = c1 | c2 ^ c3 = c2.  [para(248(b,1),29(a,1,2))].
+402 c1 ^ c2 = c1 | c2 ^ c3 = c3.  [resolve(285,b,39,a)].
+509 c1 ^ c2 = c1 | c3 = c2.  [para(402(b,1),373(b,1)),merge(b)].
+533 c3 = c2 | c1 v c2 = c2.  [para(509(a,1),47(a,1,2)),rewrite([18(6)])].
+538 c3 = c2 | c1 v c3 = c3.  [para(509(a,1),183(a,1,2)),rewrite([18(6)])].
+542 c3 = c2 | c2 ^ c3 = c3.  [para(533(b,1),22(a,1,2)),rewrite([19(6)])].
+549 c3 = c2 | c1 ^ c3 = c1.  [para(538(b,1),29(a,1,2))].
+552 c3 = c2 | c1 ^ c3 != c1.  [resolve(542,b,24,b)].
+597 c3 = c2.  [resolve(552,b,549,b),merge(b)].
+601 c1 ^ (c2 v x) = c1 | c1 ^ c2 = c2.  [back_rewrite(340),rewrite([597(8),597(10)])].
+619 c1 ^ c2 != c2.  [back_rewrite(26),rewrite([597(2),27(3),597(5),597(7)]),xx(a)].
+620 c1 ^ c2 != c1.  [back_rewrite(24),rewrite([597(2),597(7),27(8),597(7)]),xx(b)].
+621 c1 ^ (c2 v x) = c1.  [back_unit_del(601),unit_del(b,619)].
+625 $F.  [para(28(a,1),621(a,1,2)),unit_del(a,620)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=66. Generated=2870. Kept=609. proofs=1.
+Usable=36. Sos=262. Demods=99. Limbo=2, Disabled=320. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=2260. Back_subsumed=67.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=150 (4 lex), Back_demodulated=239. Back_unit_deleted=3.
+Demod_attempts=29302. Demod_rewrites=3609.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=16177. Nonunit_bsub_feature_tests=7346.
+Megabytes=0.48.
+User_CPU=0.09, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 1 proof.
+
+Process 5134 exit (max_proofs) Tue Nov  3 09:45:23 2009

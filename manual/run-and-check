@@ -1,0 +1,28 @@
+#!/bin/csh
+
+if ($#argv != 1) then
+        echo "need 1 arg: bin-directory"
+        exit(1)
+endif
+
+set bin=$1
+set dir=checked-jobs
+
+if -e checked-jobs/andrews.out then
+    /bin/rm checked-jobs/*
+endif
+
+set outs=`grep '>' go | sed 's/.*> //'`
+
+/bin/mv $outs checked-jobs
+
+./go $bin
+
+cd checked-jobs
+
+foreach i ($outs)
+    diff $i ../$i > $i.diffs
+    if -z $i.diffs /bin/rm $i.diffs
+end
+
+echo "See the files $dir/*.diffs"

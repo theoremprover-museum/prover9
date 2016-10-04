@@ -1,0 +1,82 @@
+#!/bin/csh
+
+if ($#argv != 1) then
+	echo "need 1 arg: bin-directory"
+	exit(1)
+endif
+
+set d=$1
+
+$d/fof-prover9 -f andrews.in > andrews.out
+$d/prover9 -f andrews.in > andrews.out2
+$d/prover9 -f subset_trans.in > subset_trans.out
+$d/prover9 < subset_trans.in > subset_trans.out2
+$d/prover9 -f subset.in trans.in > subset_trans.out3
+$d/prover9 -t 10 -f subset_trans.in > subset_trans.out4
+$d/prover9 -f subset_trans_expand.in > subset_trans_expand.out
+$d/prover9 -f LT-82-2.in > LT-82-2.out
+$d/prover9 -f weight_test.in | grep 'given #' > weight_test.out
+$d/prover9 -f x2.in > x2.prover9.out
+$d/prover9 -f olsax.in > olsax.out
+
+$d/prover9 -f redeclare.in > redeclare.out
+
+$d/prover9 -f hard.in > hard.out
+$d/prover9 -f easy.in > easy.out
+$d/prooftrans hints -f easy.out > easy.hints
+$d/prover9 -f hard.in easy.hints > hard-hints.out
+
+$d/mace4 -c -f x2.in > x2.mace4.out
+$d/mace4 -N10 -f LT-82-2-interp.in > LT-82-2-interp.out
+$d/mace4 -f ring41.in > ring41.out
+
+$d/prooftrans -f subset_trans.out > subset_trans.proof1
+$d/prooftrans renumber -f subset_trans.out > subset_trans.proof2
+$d/prooftrans parents_only -f subset_trans.out > subset_trans.proof3
+$d/prooftrans expand -f subset_trans.out > subset_trans.proof4
+$d/prooftrans xml -f subset_trans.out > subset_trans.proof5.xml
+$d/prooftrans ivy -f subset_trans.out > subset_trans.proof6
+$d/prooftrans hints -f subset_trans.out > subset_trans.proof7
+$d/prooftrans hints -label "job8" -f subset_trans.out > subset_trans.proof8
+
+$d/interpformat standard -f x2.mace4.out > x2.standard
+$d/interpformat standard2 -f x2.mace4.out > x2.standard2
+$d/interpformat portable -f x2.mace4.out > x2.portable
+$d/interpformat tabular -f x2.mace4.out > x2.tabular
+$d/interpformat raw -f x2.mace4.out > x2.raw
+$d/interpformat cooked -f x2.mace4.out > x2.cooked
+$d/interpformat xml -f x2.mace4.out > x2.xml
+$d/interpformat tex -f x2.mace4.out > x2.tex
+$d/mace4 -c -f LT-port.in | $d/interpformat portable > LT-port.out
+
+$d/clausefilter non-MOL-OML.interps false_in_all < MOL-cand.296 > MOL-cand.238
+$d/clausetester uc-18.interps < uc-hunt.clauses > uc-hunt.out
+$d/interpfilter assoc-comm.clauses all_true < qg4.interps > qg4-ac.interps
+$d/mace4 -N6 -m -1 -f BA2.in | $d/interpformat standard > BA2.interps 
+$d/isofilter < BA2.interps > BA2.interps2
+$d/isofilter ignore_constants < BA2.interps > BA2.interps3
+$d/mace4 -N6 -m -1 -f MOL.in | $d/interpformat standard > MOL.interps 
+$d/isofilter check '^ v' output '^ v' < MOL.interps > MOL.interps2
+$d/isofilter ignore_constants wrap < BA2.interps > BA2.interps4
+$d/mace4 -N6 -m -1 -f BA2.in | $d/interpformat standard | $d/isofilter ignore_constants wrap > BA2.interps5
+$d/rewriter group.demods < group-terms.in > group-terms.out
+$d/rewriter bool-ring.demods < bool-ring.in > bool-ring.out
+$d/rewriter BA-Sheffer.demods < BA4.in > BA4.out
+
+$d/tptp_to_ladr < PUZ031-1.tptp > PUZ031-1.in
+$d/prover9 -f PUZ031-1.in > PUZ031-1.out
+$d/tptp_to_ladr < PUZ031-1.tptp | $d/prover9 > PUZ031-1.out2
+$d/ladr_to_tptp < RBA-2.in > RBA-2.tptp
+$d/ladr_to_tptp -q < RBA-2.in > RBA-2q.tptp
+
+$d/mace4 -n8 -f queens1.in > queens1.out
+$d/mace4 -n8 -f queens2.in > queens2.out
+$d/mace4 -f kenken6.in > kenken6.out
+$d/mace4 -f send-money.in > send-money.out
+$d/mace4 -f zebra2.in > zebra2.out
+
+$d/prover9 -f queens3.in > queens3.out
+$d/prover9 -f list.in > list.out
+$d/prover9 -f cabbages.in > cabbages.out
+$d/prover9 -f jugs.in > jugs.out
+$d/prover9 -f 2inverter.in > 2inverter.out

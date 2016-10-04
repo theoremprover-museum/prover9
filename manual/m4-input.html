@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+  <title>Prover9 Manual: Mace4 Input</title>
+ <link rel="stylesheet" href="manual.css">
+</head>
+
+<body>
+
+<hr>
+<table width="100%">
+<tr>
+<colgroup>
+<col width="33%">
+<col width="34%">
+<col width="33%">
+</colgroup>
+<td align="left"><i>Prover9 Manual</i>
+<td align="center"><img src="prover9-5a-256t.gif">
+<td align="right"><i>Version 2009-11A</i>
+</table>
+<hr>
+
+<!-- Main content -->
+
+<h1>Mace4 Input</h1>
+
+Mace4 has been designed so that it accepts most Prover9 input files.
+This allows users to prepare one input file which can be used
+by Prover9 (to search for proofs) and by Mace4 (to search for
+counterexamples).
+
+<h2>Mace4 Options</h2>
+
+Mace4 and Prover9 accept different sets of flags and parameters.
+In order to use the same input files for both programs, we let Mace4
+take its options from the command line instead of from
+the input file.  If Mace4 is given a Prover9 input file,
+along with the command-line option <tt>-c</tt>, it will ignore any 
+unrecognized (e.g., Prover9) options in the input file.
+
+The Mace4 options are described on the
+<a href="m4-options.html">next page</a>.
+
+<h2>Formulas (including Clauses)</h2>
+
+Mace4 accepts the same formulas and clauses as Prover9.
+See the page <a href="syntax.html">Prover9 Clauses and Formulas</a>.
+
+<h3><i>A Caveat: Domain Elements</i></h3>
+
+<blockquote class="otter_diff">
+In one important case, formulas have different meanings
+in Prover9 and Mace4:
+</blockquote>
+
+If a formula contains constants that
+are natural-numbers, {0,1,...}, Mace4 assumes they
+are members of the domain of some structure, that is,
+they are distinct objects; in effect, Mace4 operates under the
+assumptions 0 &ne; 1, 0 &ne; 2, ... .
+<p>
+To Prover9, natural numbers are just ordinary constants.
+For example, to Prover9 the statement 0=1 is satisfiable,
+and to Mace4 it is unsatisfiable.
+<p>
+Because Mace4 assumes that natural-number constants are
+members of the domain, if a formula contains a natural
+number that is out of range (&ge; <i>n</i>), when searching
+for a structure of size <i>n</i>), Mace4 will terminate its
+search for size <i>n</i> (and continue with larger sizes if
+the specification says to do so).
+<p>
+<i>An Exception.</i>  When the flag <tt>arithmetic</tt> is set,
+natural numbers outside of {0,1,...,n-1} can occur.
+
+<h2>Lists of Formulas (including Clauses)</h2>
+
+Prover9 accepts a fixed set of lists of formulas (e.g.,
+<tt>assumptions</tt>,
+<tt>usable</tt>,
+<tt>goals</tt>,
+<tt>hints</tt>).
+<p>
+Mace4 accepts any lists of formulas.
+All are treated
+as ordinary formulas <i>except the following two lists</i>.
+<ul>
+<li><tt>formulas(hints)</tt>.  These are intended to help
+Prover9 find proofs and are ignored by Mace4.
+<li><tt>formulas(goals)</tt>.  These are negated by Mace4, just as
+they are by Prover9.
+</ul>
+
+<h3><tt>formulas(goals)</tt></h3>
+Prover9 has several restrictions on the goals it accepts
+(see <a href="goals.html">Prover9 Goals and Denials</a>),
+and Mace4 has the same restrictions.  Mace4 negates
+goals and translates them to clauses in the same way
+as Prover9.  (The term "goal" might seem to be bad
+teminology for Mace4 users, because Mace4 does not prove theorems;
+however, one can think of Mace4 as searching for a counterexample
+to the goal.)
+<p>
+When there are multiple goals, Mace handles them the same
+as Prover9.  For example, consider the following goals.
+<pre class="my_file">
+formulas(goals).
+  x * y = y * x              # label(commutativity).
+  (x * y) * z = x * (y * z)  # label(associativity).
+end_of_list.
+</pre>
+Logically, this is a disjunction: Prover9 gives a proof
+if either goal is proved, and Mace4 gives a counterexample
+if both are falsified.  In particular, this pair of goals
+is equivalent (for both Prover9 and Mace4) to the
+following pair of assumptions.
+<pre class="my_file">
+formulas(assumptions).
+  exists x exists y (x * y != y * x).
+  exists x exists y exists z (x * y) * z != x * (y * z).
+end_of_list.
+</pre>
+
+<h2>Distinct Objects</h2>
+
+Mace4 accepts a shorthand method for stating that sets of objects
+are distinct.  Here is an example of two sets of distinct objects.
+
+<pre class="my_file">
+list(distinct).
+[a,b,c].     % equivalent to (a!=b & a!=c & b!=c).
+[d,e,f(a)].  % equivalent to (d!=e & d!=f(a) & e!=f(a)).
+end_of_list.
+</pre>
+
+Although <tt>list(distinct)</tt> will probably be used mostly for
+constants and other ground terms, terms with variables can occur.
+
+<hr>
+Next Section:
+<a href="m4-options.html">Mace4 Options</a>
+
+</body>
+</html>

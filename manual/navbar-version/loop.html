@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+  <title>Prover9 Manual: The Inference Loop</title>
+ <link rel="stylesheet" href="manual.css">
+</head>
+
+<body>
+
+<!-- Site navigation menu -->
+
+<ul class="navbar">
+  <li><a href="index.html">Introduction</a>
+  <li><a href="install.html">Installation</a>
+  <li><a href="running.html">Running Prover9</a>
+  <li><a href="input.html">Input Files</a>
+  <li><a href="syntax.html">Clauses & Formulas</a>
+  <li>Search Prep
+  <ul class="navbar2">
+    <li><a href="auto.html">Auto Modes</a>
+    <li><a href="term-order.html">Term Ordering</a>
+    <li><a href="more-prep.html">More Prep</a>
+    <li><a href="limits.html">Search Limits</a>
+  </ul>
+  <li>Inference
+  <ul class="navbar2">
+    <li><a href="loop.html">The Loop</a>
+    <li><a href="select.html">Select Given</a>
+    <li><a href="inf-rules.html">Inference Rules</a>
+    <li><a href="process-inf.html">Process Inferred</a>
+  </ul>
+  <li><a href="output.html">Output Files</a>
+  <li>More Features
+  <ul class="navbar2">
+    <li><a href="weight.html">Weighting</a>
+    <li><a href="attributes.html">Attributes</a>
+    <li><a href="actions.html">Actions</a>
+    <li><a href="fof-reduction.html">FOF Reduction</a>
+    <li><a href="goals.html">Goals</a>
+    <li><a href="hints.html">Hints</a>
+    <li><a href="semantics.html">Semantics</a>
+  </ul>
+  <li>Related Programs
+  <ul class="navbar2">
+    <li><a href="prooftrans.html">Prooftrans</a>
+    <li><a href="mace4.html">Mace4</a>
+  </ul>
+  <li>Ending
+  <ul class="navbar2">
+    <li><a href="options.html">All Options</a>
+    <li><a href="glossary.html">Glossary</a>
+    <li><a href="manual-index.html">Index</a>
+    <li><a href="references.html">References</a>
+  </ul>
+</ul>
+
+<div class="header">Prover9 Manual Version June-2006</div>
+
+<!-- Main content -->
+
+<h1>Prover9 Manual: The Inference Loop</h1>
+
+The <i>main loop</i> for inferring and processing clauses
+and searching for a proof is sometimes called the <i>given
+clause algorithm</i>.
+It operates mainly on the <tt>sos</tt> and <tt>usable</tt> lists.
+
+<pre class="my_code">
+While the sos list is not empty:
+    1. <a href="select.html">Select a given clause</a> from sos and move it to the usable list;
+    2. <a href="inf-rules.html">Infer new clauses</a> using the inference rules in effect;
+       each new clause must have the given clause as one of its
+       parents and members of the usable list as its other parents;
+    3. <a href="process-inf.html">process each new clause</a>;
+    4. append new clauses that pass the retention tests to the sos list.
+end of while loop.
+</pre>
+
+<h2>Two Frequently Asked Questions</h2>
+
+<blockquote>
+<i>At some point in the search,
+Prover9 has all of the clauses needed to make an important
+inference, and one of the potential parents is selected as
+the given clause.  But Prover9 fails to make the inference.
+Why is that?</i>
+</blockquote>
+
+<blockquote>
+<i>Why do all parents have to be in the <tt>usable</tt> list?</i>
+</blockquote>
+
+The answer to both questions is the same, and it has to do
+with redundancy.  Assume 
+<ul>
+<li>clause <i>C</i> can be inferred from clauses
+<i>A</i> and <i>B</i>;
+<li>both <i>A</i> and <i>B</i> are in the
+<tt>sos</tt> list; and
+<li><i>A</i> is selected first.
+</ul>
+According to the algorithm, <i>C</i> is not derived
+until <i>B</i> has also been selected.
+Otherwise, <i>C</i> would be derived twice from
+<i>A</i> and <i>B</i>.
+
+<h2>Variations of the Loop</h2>
+
+<p>
+There are two common versions of the given clause algorithm
+that differ in how newly inferred clauses are processed, in
+particular, what clauses can operate on (rewrite, simplify)
+newly generated clauses.
+
+<p>
+In the <i>Otter loop</i>, which Prover9 uses, clauses in
+the <tt>sos</tt> list can operate on new clauses.
+In the <i>Discount loop</i>, clauses in the <tt>sos</tt>
+list (also called the <i>passive list</i>) cannot operate on
+new clauses.  The tradeoff between the two versions is
+straightforward --- the Otter loop spends more time
+simplifying new clauses with the possible benefit of
+making an important simplification sooner.  Some
+experimental analysis of the tradeoff has been done
+[<a href="references.html#Voronkov-loop">Voronkov-loop???</a>].
+
+</body>
+</html>

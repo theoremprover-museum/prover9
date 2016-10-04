@@ -1,0 +1,9 @@
+/p->.*init_flag/s/", */ /
+/p->.*init_flag/s/);.*//
+/p->.*init_flag/s/.*("//
+
+/p->.*init_parm/s/", */ /
+/p->.*init_parm/s/,.*//
+/p->.*init_parm/s/.*("//
+
+

@@ -1,0 +1,54 @@
+#!/bin/csh
+
+if ($#argv != 2) then
+	echo "need 2 args: bin-directory ouput-extension"
+	exit(1)
+endif
+
+set d=$1
+set out=$2
+
+# job LT
+
+$d/mace4 -N12 -f LT-interp.in | $d/get_interps | $d/isofilter ignore_constants wrap > LT-interp.$out
+
+# job LT-interp
+
+$d/prover9 -f LT.in LT-interp.$out > LT.$out
+
+# job LT-base
+
+$d/prover9 -t 7200 -f LT.in > LT-base.$out
+
+# job BA2
+
+$d/mace4 -n6 -m -1 -f BA2-interp.in | $d/get_interps | $d/isofilter ignore_constants wrap > BA2-interp.$out
+
+# job BA2-interp
+
+$d/prover9 -f BA2.in BA2-interp.$out > BA2.$out
+
+# job BA2-base
+
+$d/prover9 -f BA2.in > BA2-base.$out
+
+# job MOL-A-interp
+
+$d/mace4 -n8 -m -1 -f MOL-A-interp.in | $d/get_interps | $d/isofilter ignore_constants wrap > MOL-A-interp.$out
+
+# job MOL-A
+
+$d/prover9 -f MOL-A.in MOL-A-interp.$out > MOL-A.$out
+
+# job MOL-M-interp
+
+$d/mace4 -n10 -m -1 -f MOL-M-interp.in | $d/get_interps | $d/isofilter ignore_constants wrap > MOL-M-interp.$out
+
+# job MOL-M
+
+$d/prover9 -f MOL-M.in MOL-M-interp.$out > MOL-M.$out
+
+# job MOL-base
+
+$d/prover9 -f MOL-base.in > MOL-base.$out
+

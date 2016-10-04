@@ -1,0 +1,10 @@
+<!-- start option ?? -->
+<a name="??">
+<pre class="my_option">
+assign(??, <i>string</i>).  % default <i>string</i>=??, range [??]
+</pre>
+
+<blockquote>
+</blockquote>
+<!-- end option -->
+

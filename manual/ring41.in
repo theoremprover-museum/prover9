@@ -1,0 +1,39 @@
+
+assign(iterate, primes).
+
+% The following fixes [+,-,*] as the ring of integers (mod domain_size).
+
+set(integer_ring).
+
+formulas(assumptions).
+
+% Assume that f and g have a ring structure.
+
+g(x) = M * x.
+f(x,y) = (H * x) + (K * y).
+
+% Denial of associativity.
+
+f(f(a,b),c) != f(a,f(b,c)).
+
+end_of_list.
+
+formulas(assumptions).
+
+% Each of these equations was a candidate for being a single axiom
+% for group theory.
+%
+% We can show that each has a nonassociative model (and therefore
+% is not a single axiom) by using ring structures.
+%
+% The sizes required for these examples range from 11 to 41.
+
+% f(f(g(f(y,g(z))),x),f(f(g(f(z,x)),z),y)) = z.  % candidate 1
+% f(f(x,f(g(x),z)),f(g(f(f(y,x),g(x))),y)) = z.  % candidate 64
+% f(f(f(x,x),g(x)),g(f(g(f(y,z)),f(y,x)))) = z.  % candidate 30
+  g(f(g(f(y,f(x,z))),f(y,f(f(x,x),g(x))))) = z.  % candidate 107
+% g(f(g(f(x,f(y,z))),f(f(f(g(x),x),x),y))) = z.  % candidate 60
+% f(f(y,g(f(z,y))),f(f(z,g(f(x,g(z)))),x)) = z.  % candidate 68
+% f(f(x,y),f(y,g(f(f(g(f(g(x),z)),y),y)))) = z.  % candidate 11
+
+end_of_list.

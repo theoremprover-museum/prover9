@@ -1,0 +1,32 @@
+;; ============================== prooftrans ============================
+;; Prover9 (32) version 2009-11A, November 2009.
+;; Process 25572 was started by mccune on cleo,
+;; Tue Nov  3 17:07:39 2009
+;; The command was "/home/mccune/LADR/bin/prover9 -f subset_trans.in".
+;; ============================== end of head ===========================
+
+;; BEGINNING OF PROOF OBJECT
+(
+(3 (input) (or (subset v0 v1) (member (f1 v0 v1) v0)) NIL)
+(4 (input) (or (not (subset v0 v1)) (or (not (member v2 v0)) (member v2 v1))) NIL)
+(5 (input) (or (subset v0 v1) (not (member (f1 v0 v1) v1))) NIL)
+(6 (input) (subset (c1) (c2)) NIL)
+(7 (input) (subset (c2) (c3)) NIL)
+(8 (input) (not (subset (c1) (c3))) NIL)
+(20 (instantiate 4 ((v0 . (c1)) (v1 . (c2)) (v2 . v102))) (or (not (subset (c1) (c2))) (or (not (member v102 (c1))) (member v102 (c2)))) NIL)
+(21 (resolve 6 () 20 (1)) (or (not (member v102 (c1))) (member v102 (c2))) NIL)
+(11 (instantiate 21 ((v102 . v0))) (or (not (member v0 (c1))) (member v0 (c2))) NIL)
+(22 (instantiate 4 ((v0 . (c2)) (v1 . (c3)) (v2 . v102))) (or (not (subset (c2) (c3))) (or (not (member v102 (c2))) (member v102 (c3)))) NIL)
+(23 (resolve 7 () 22 (1)) (or (not (member v102 (c2))) (member v102 (c3))) NIL)
+(12 (instantiate 23 ((v102 . v0))) (or (not (member v0 (c2))) (member v0 (c3))) NIL)
+(24 (instantiate 3 ((v0 . (c1)) (v1 . (c3)))) (or (subset (c1) (c3)) (member (f1 (c1) (c3)) (c1))) NIL)
+(13 (resolve 8 () 24 (1)) (member (f1 (c1) (c3)) (c1)) NIL)
+(25 (instantiate 5 ((v0 . (c1)) (v1 . (c3)))) (or (subset (c1) (c3)) (not (member (f1 (c1) (c3)) (c3)))) NIL)
+(14 (resolve 8 () 25 (1)) (not (member (f1 (c1) (c3)) (c3))) NIL)
+(26 (instantiate 11 ((v0 . (f1 (c1) (c3))))) (or (not (member (f1 (c1) (c3)) (c1))) (member (f1 (c1) (c3)) (c2))) NIL)
+(15 (resolve 13 () 26 (1)) (member (f1 (c1) (c3)) (c2)) NIL)
+(27 (instantiate 12 ((v0 . (f1 (c1) (c3))))) (or (not (member (f1 (c1) (c3)) (c2))) (member (f1 (c1) (c3)) (c3))) NIL)
+(18A (resolve 27 (2) 14 ()) (not (member (f1 (c1) (c3)) (c2))) NIL)
+(18 (resolve 15 () 18A ()) false NIL)
+)
+;; END OF PROOF OBJECT

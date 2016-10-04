@@ -1,0 +1,18 @@
+clear(auto).
+clear(process_initial_sos).
+
+assign(constant_weight, 50).
+
+list(weights).
+
+  weight(a) = 3.
+  weight(x * y) = (weight(x) * weight(y)) + 4.
+
+end_of_list.
+
+formulas(sos).
+
+  p(a).
+  p(a * b).
+
+end_of_list.

@@ -1,0 +1,218 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+  <title>Prover9 Manual: Input Files</title>
+ <link rel="stylesheet" href="manual.css">
+</head>
+
+<body>
+
+<!-- Site navigation menu -->
+
+<ul class="navbar">
+  <li><a href="index.html">Introduction</a>
+  <li><a href="install.html">Installation</a>
+  <li><a href="running.html">Running Prover9</a>
+  <li><a href="input.html">Input Files</a>
+  <li><a href="syntax.html">Clauses & Formulas</a>
+  <li>Search Prep
+  <ul class="navbar2">
+    <li><a href="auto.html">Auto Modes</a>
+    <li><a href="term-order.html">Term Ordering</a>
+    <li><a href="more-prep.html">More Prep</a>
+    <li><a href="limits.html">Search Limits</a>
+  </ul>
+  <li>Inference
+  <ul class="navbar2">
+    <li><a href="loop.html">The Loop</a>
+    <li><a href="select.html">Select Given</a>
+    <li><a href="inf-rules.html">Inference Rules</a>
+    <li><a href="process-inf.html">Process Inferred</a>
+  </ul>
+  <li><a href="output.html">Output Files</a>
+  <li>More Features
+  <ul class="navbar2">
+    <li><a href="weight.html">Weighting</a>
+    <li><a href="attributes.html">Attributes</a>
+    <li><a href="actions.html">Actions</a>
+    <li><a href="fof-reduction.html">FOF Reduction</a>
+    <li><a href="goals.html">Goals</a>
+    <li><a href="hints.html">Hints</a>
+    <li><a href="semantics.html">Semantics</a>
+  </ul>
+  <li>Related Programs
+  <ul class="navbar2">
+    <li><a href="prooftrans.html">Prooftrans</a>
+    <li><a href="mace4.html">Mace4</a>
+  </ul>
+  <li>Ending
+  <ul class="navbar2">
+    <li><a href="options.html">All Options</a>
+    <li><a href="glossary.html">Glossary</a>
+    <li><a href="manual-index.html">Index</a>
+    <li><a href="references.html">References</a>
+  </ul>
+</ul>
+
+<div class="header">Prover9 Manual Version June-2006</div>
+
+<!-- Main content -->
+
+<h1>Prover9 Input Files</h1>
+
+Prover9 takes its input from one or more (usually one) files.
+If there is more than one input file, lists of objects
+(clauses, formulas, weighting rules, etc.) cannot be
+split across more than one file.
+The page <a href="running.html">Running Prover9</a>
+shows how to specify the files in the commands to run Prover9.
+
+<p>
+The difference between clauses and formulas is a frequent
+source of confusion for Prover9 (and Otter) users.
+The page <a href="syntax.html">Clauses and Formulas</a>
+describes the differences.
+For now, simply note that clauses and formulas are different
+types of objects; either or both can be used to state the
+logical specification of the problem.
+
+<h2>Comments and Whitespace</h2>
+
+Everything from the first % (percent sign) on a line through the
+end of the line is treated as a comment and ignored.  In particular,
+comments are not echoed to the output file.  (Clauses can have
+<a href="attributes.html">label attributes</a> which can serve as
+different kind of comment which <i>does</i> appear in the output file.)
+
+<p>
+Whitespace (spaces, newlines, tabs, etc.) is optional in most
+situations.  The important exception is that whitespace is
+required around some operations in clauses and formulas
+(see the page <a href="syntax.html">Clauses and Formulas</a>).
+
+<h2>A Simple Example</h2>
+
+The most basic kind of input file consists of list of clauses named
+"<tt>sos</tt>" representing the negation of the conjecture, as in
+the following example.
+<pre class="my_file">
+clauses(sos).   % clauses to be placed in the sos list
+  -man(x) | mortal(x).
+  man(george).
+  -mortal(george).
+end_of_list.
+</pre>
+Prover9 will take the clauses, use its automatic mode to 
+decide on the inference rules, and then search for a refutation.
+
+<p>
+The preceding example can also be stated in a positive
+form by usine the <a href="goals.html"><tt>goals</tt> list</a>, as follows.
+<pre class="my_file">
+clauses(sos).   % clauses to be placed in the sos list
+  -man(x) | mortal(x).
+  man(george).
+end_of_list.
+
+clauses(goals).  % positive units to be negated and placed in the sos list
+  mortal(george).
+end_of_list.
+</pre>
+
+<p>
+A third way of stating the conjecture uses formulas instead of clauses.
+Note that a clause without variables is also a formula, with the same meaning.
+<pre class="my_file">
+formulas(sos).   % formulas to be translated to clauses and placed in the sos list
+  all x (man(x) -> mortal(x)).
+  man(george).
+end_of_list.
+
+formulas(goals).  % formulas to be negated, translated to clauses, placed in sos
+  mortal(george).
+end_of_list.
+</pre>
+
+The searches for the the three preceding inputs should all be similar,
+but they are not guaranteed to be identical, because clause order
+and symbols may be different.
+
+<h2>Types of Input</h2>
+
+Prover9 input consists of lists of objects (clauses, formulas, or terms)
+and commands.
+
+<h3>Lists of Objects</h3>
+
+Lists of objects start with a type (<tt>clauses</tt>, <tt>formulas</tt>,
+or <tt>terms</tt>) and name (<tt>sos</tt>, <tt>goals</tt>, <tt>weights</tt>, etc.),
+and end with <tt>end_of_list</tt>.  The following display show an example
+of each type of accepted list, with one object in each list.
+
+<pre class="my_file">
+clauses(sos).           p(x).     end_of_list.   % heavily used
+clauses(goals).         p(x).     end_of_list.   % must be positive units (see <a href="goals.html">Goals</a>)
+clauses(usable).        p(x).     end_of_list.   % seldom used
+clauses(demodulators).  f(x)=x.   end_of_list.   % seldom used, must be equalities
+clauses(hints).         p(x).     end_of_list.   % should be used more often  (see <a href="hints.html">Hints</a>)
+
+formulas(sos).          all x p(x).   end_of_list.   % heavily used
+formulas(goals).        all x p(x).   end_of_list.   % at most one formula (see <a href="goals.html">Goals</a>)
+formulas(usable).       all x p(x).   end_of_list.   % seldom used
+
+terms(weights).         weight(a) = 10.                         end_of_list. % see <a href="weight.html">Weighting</a>
+terms(kb_weights).      a = 3.                                  end_of_list. % see <a href="term-order.html">Term Ordering</a>
+terms(actions).         given = 100 -> set(print_kept).         end_of_list. % see <a href="actions.html">Actions</a>
+terms(interpretations). interpretation(2,[],[relation(p,[1])]). end_of_list. % see <a href="semantics.html">Semantics</a>
+</pre>
+If the input contains morethan one list of a particular type/name, the lists
+are simply concatenated by Prover9 as they are read.
+
+<h3>Commands</h3>
+
+Eight types of command are accepted.  Here is an example of each.
+
+<pre class="my_file">
+op(400, infix_right, [+, --]). % declare parse precedence and type (see <a href="syntax.html">Clauses and Formulas</a>)
+
+set(fof_reduction).            % set a flag
+
+clear(auto_inference).         % clear a flag
+
+assign(sos_limit, 20000).      % integer parameter
+
+assign(stats, some).           % string parameter
+
+assoc_comm(*).                 % not currently used
+
+commutative(g).                % not currently used
+
+lex([0,1,a,b,f,g,*,+]).        % symbol precedence (see <a href="term-order.html">Term Ordering</a>)
+
+skolem([a,b,f,g]).             % declare symbols to be Skolem function (rarely used)
+</pre>
+
+<h2>Order of Commands and Lists of Objects</h2>
+
+For the most part, the order of things in the input file(s) is irrelevant.
+For example, commands can usually be mixed with lists of objects.
+The situations in which order matters are listed here.
+
+<ul>
+<li>The <tt>op(precedence, type, symbols)</tt> commands must occur
+before any clauses or formulas that contain the affected symbols.
+<li>The command <tt>set(<a href="syntax.html#prolog_style_variables"><tt><b>prolog_style_variables</b></tt></a>)</tt> must occur before any
+clauses lists.
+<li>Some of the flags and parameters alter other flags and parameters.
+The alterations can be undone by placing the appropriate command
+after the command that alters.  The output file clearly shows
+what happens in these cases.
+</ul>
+
+Note that changing the order of clauses or formulas within a list,
+changing the order of literals in a clause,
+or changing the order of subformulas in a formula
+can change the search, occasionally in profound ways.
+
+</body>
+</html>

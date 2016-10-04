@@ -1,0 +1,19 @@
+% The formula below is a theorem of the equivalential calculus.
+% We can show that it is not a single axiom, because e(x,x) does not
+% follow.
+
+
+% set(verbose).
+
+formulas(assumptions).
+
+  -P(e(x,y)) | -P(x) | P(y) # label(condensed_detachment).
+  P(e(e(x,y),e(e(y,z),e(z,x)))).
+
+end_of_list.
+
+formulas(goals).
+
+  P(e(x,x)) # label(reflexivity).
+
+end_of_list.

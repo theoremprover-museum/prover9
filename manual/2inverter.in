@@ -1,0 +1,98 @@
+% The 2-inverter puzzle.
+%
+% The problem is to build a combinational circuit with 3 inputs
+% and 3 outputs, such that the outputs negate the inputs; we can
+% use as many AND and OR gates as we wish, but at most 2 NOT gates.
+%
+% The clause P(function, inversion_list) represents a wire, whose
+% state is a function of the inputs, and which depends on negated
+% wires listed in inversion_list.
+%
+% The initial clauses are
+%
+%   P([0,0,0,0,1,1,1,1], v).  % input 1
+%   P([0,0,1,1,0,0,1,1], v).  % input 2
+%   P([0,1,0,1,0,1,0,1], v).  % input 3
+%
+% which represent the three input wires. The goal formula is
+%
+%   exists v (P([1,1,1,1,0,0,0,0], v) & 
+%             P([1,1,0,0,1,1,0,0], v) & 
+%             P([1,0,1,0,1,0,1,0], v)).
+%
+% That is, the three output functions with unifiable (consistent) inversion lists.
+%
+% The inversion lists are tricky: each has a variable as its tail, which
+% means that two lists unify iff on is an initial sublist of the other.
+% Two wires can be input to an OR or AND gate if their inversion lists
+% are unifiable.  (Note this means that the second NOT gate must depend
+% on the first.)
+%
+% For example, P(01000110,[11111000,11001110|x]) means that we
+% can acheive the function 01000110 with a circuit in which 11111000 and
+% 11001110 are inverted.
+%
+% If a proof is found, the corresponding circuit can be constructed by
+% going through the proof; each step represents a gate, and the parent
+% lists show how to connect the wires.
+%
+% The inversion lists are due to Steve Winker and is documented in
+% "Automated Reasoning: Introduction and Applications" by Wos et al.
+% This formulation does not use the "reversion" heuristic of Winker's
+% formulation.
+%
+
+set(production).
+assign(max_weight, 55).  % to eliminate functions with more than 2 inversions
+
+formulas(usable).
+
+% Rules for building circuits.
+-P(x, v) | -P(y, v) | P(bit_and(x,y), v).
+-P(x, v) | -P(y, v) | P(bit_or(x,y), v).
+-P(x, v) | P(bit_not(x), append_inversion(v,x)).
+end_of_list.
+
+formulas(assumptions).
+P([0,0,0,0,1,1,1,1], v).  % input 1
+P([0,0,1,1,0,0,1,1], v).  % input 2
+P([0,1,0,1,0,1,0,1], v).  % input 3
+end_of_list.
+
+formulas(goals).
+exists v (P([1,1,1,1,0,0,0,0], v) & 
+          P([1,1,0,0,1,1,0,0], v) & 
+          P([1,0,1,0,1,0,1,0], v)).
+end_of_list.
+
+formulas(demodulators).
+
+bit_and([],[]) = [].
+bit_and([1:y1],[x:y2]) = [x:bit_and(y1,y2)].
+bit_and([x:y1],[1:y2]) = [x:bit_and(y1,y2)].
+bit_and([0:y1],[x:y2]) = [0:bit_and(y1,y2)].
+bit_and([x:y1],[0:y2]) = [0:bit_and(y1,y2)].
+
+bit_or([],[]) = [].
+bit_or([1:y1],[x:y2]) = [1:bit_or(y1,y2)].
+bit_or([x:y1],[1:y2]) = [1:bit_or(y1,y2)].
+bit_or([0:y1],[x:y2]) = [x:bit_or(y1,y2)].
+bit_or([x:y1],[0:y2]) = [x:bit_or(y1,y2)].
+
+bit_not([]) = [].
+bit_not([0:y]) = [1:bit_not(y)].
+bit_not([1:y]) = [0:bit_not(y)].
+
+append_inversion([x1:x2],y) = [x1:append_inversion(x2,y)].
+variable(x) -> append_inversion(x,y) = [y:x].
+
+end_of_list.
+
+% The following causes components of potential solutions to be used immediately.
+
+list(weights).
+weight(P([1,1,1,1,0,0,0,0], v)) = 0.
+weight(P([1,1,0,0,1,1,0,0], v)) = 0.
+weight(P([1,0,1,0,1,0,1,0], v)) = 0.
+end_of_list.
+

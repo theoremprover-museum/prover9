@@ -1,0 +1,39 @@
+% This is a problem about an ordering relation.  See the e-mail below.
+
+formulas(assumptions).
+
+all x exists y (x < y).
+all x all y (x < y -> -(y < x)).
+all x all y (x < y -> (exists z (x < z & z < y))).
+
+end_of_list.
+
+% Here is the source of this problem
+
+% From: Stefan Kauer <kauer@minet.uni-jena.de>
+% Date: Fri, 08 Jan 1999 15:27:29 +0100
+% To: mccune@mcs.anl.gov
+% 
+% Dear Prof. McCune,
+% 
+% I found the following problem: the following 3 axioms for a relation <
+% are given:
+%       1. all x exists y: x < y
+%       2. all x y: x < y => not y < x 
+%       3. all x y: x < y => exists z: x < z and z < y
+% 
+% One has to find a finite model. It is surprising and not obvious, that a
+% finite model exists, and it is not at all to find easily (at least for
+% me, may be for you). Since I sometimes work with OTTER, I remembered
+% MACE and tried to formulate and solve this problem with MACE, but
+% unfortunately was able to do it. 
+% Is it possible to formulate and solve this problem with MACE and how?
+% 
+% This problem was posed as an exercise in a very small german
+% mathematical magazin by Dr. Waldmann, a former colleague of mine, who
+% works now at another university. We both agree that the smallest model
+% has seven elements.
+% 
+% Sincerely yours
+% 
+% Stefan Kauer

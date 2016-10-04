@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+  <title>Prover9 Manual: Arithmetic for Mace4</title>
+ <link rel="stylesheet" href="manual.css">
+</head>
+
+<body>
+
+<hr>
+<table width="100%">
+<tr>
+<colgroup>
+<col width="33%">
+<col width="34%">
+<col width="33%">
+</colgroup>
+<td align="left"><i>Prover9 Manual</i>
+<td align="center"><img src="prover9-5a-256t.gif">
+<td align="right"><i>Version 2009-11A</i>
+</table>
+<hr>
+
+<!-- Main content -->
+
+<h1>Arithmetic for Mace4</h1>
+
+The command <tt>set(arithmetic)</tt> builds some integer arithmetic
+into Mace4.
+It tells Mace4 to interpret several function and predicate symbols
+as operations and relations over the integers.
+<p>
+The following tables list the supported symbols for integer arithmetic.
+
+<table align="center" cellspacing="20">
+<tr><th>Operations <th>Relations
+<tr><td>
+<table "border" cellpadding="5">
+<tr><th>Symbol        <th>  Meaning
+<tr><td><tt>+</tt>    <td>  Sum
+<tr><td><tt>*</tt>    <td>  Product
+<tr><td><tt>-</tt>    <td>  Negation (unary only)
+<tr><td><tt>/</tt>    <td>  Integer Division
+<tr><td><tt>mod</tt>  <td>  Modulus Operator*
+<tr><td><tt>min</tt>  <td>  Minimum
+<tr><td><tt>max</tt>  <td>  Maximum
+<tr><td><tt>abs</tt>  <td>  Absolute Value
+<tr><td><tt>domain_size</tt>  <td>  Current Domain Size (a constant)
+</table>
+<td valign="top">
+<table "border"  cellpadding="5">
+<tr><th>Symbol        <th>  Meaning
+<tr><td><tt>=</tt>    <td>  Equal
+<tr><td><tt><</tt>    <td>  Less than
+<tr><td><tt><=</tt>   <td>  Less than or equal
+<tr><td><tt>></tt>    <td>  Greater than
+<tr><td><tt>>=</tt>   <td>  Greater than or equal
+</table>
+</table>
+
+*The modulus operation is different from C's remainder operation "%"
+when either of the operands is negative.  In fact, C's "%"
+operation is not defined for negative operands.  In Mace4,
+<tt>(-14 mod 5) = 1</tt>, <tt>(14 mod -5) = -1</tt>, and
+<tt>(-14 mod -5) = -4</tt>. 
+
+<p>
+Note that <tt>-</tt> cannot be used as a binary subtraction operation
+(because LADR does not allow arity-overloading of symbols).  Instead of
+<tt>x-y</tt>, one must write <tt>x+ -y</tt>.
+
+<p>
+Recall that when Mace4 is searching for a model of size <i>n</i>,
+it is using the set {0,1,...,<i>n</i>-1} as the underlying domain
+of the model.  When <tt>set(arithmetic)</tt> is in effect,
+the integer operations and relations are applied to the elements
+of the domain.  However, when evaluating integer expressions,
+Mace4 is free to go outside of the domain, including negative integers.
+For example, the constraint <tt>A+ -B = C+ -D</tt> has <tt>A=C=1, B=D=3</tt>
+as a solution (among many others), and the constraint <tt>A + B = 10</tt>
+is valid for domain sizes less than 10.
+
+<p>
+However, when assigning possible values to uninterpreted functions
+and constants (e.g., unknowns <tt>A</tt> and <tt>B</tt>), Mace4
+will use members of the domain only.  For example,
+given the constraint <tt>A + B = 10</tt> with a domain size of 8, Mace4
+will not give the solution <tt>A=9, B=1</tt>.
+
+<h2>Division by Zero</h2>
+
+Mace4 cannot simply fail (i.e., backtrack and try other values) when
+it comes to an expression involving division (or mod) by zero,
+because such expressions can be valid and lead to solutions.
+<p>
+Case 1: some other subexpression validates a formula; for example,
+<tt>3/0 = 2 | 1+4=5</tt> is valid.
+<p>
+Case 2: instances of <tt>x = x</tt>; for example, <tt>3/0 = 3/0</tt>
+is valid.  Given an arithmetic equality <tt>alpha = beta</tt>
+involving division by zero, Mace4 will simplify it by using ring
+theory identities, and if <tt>simplify(alpha)</tt> is identical to
+<tt>simplify(beta)</tt>, the equation evaluates to TRUE.  The
+simplification procedure is
+<i>not</i> guaranteed to produce a unique canonical form such that
+the simplified expressions are identical if <tt>alpha = beta</tt>.
+Thus, Mace4 can be incompelte for constraints involving division
+by zero; that is, it might say that there are no solutions when
+there are valid solutions.
+However, we believe that Mace4 is sound; that is, all solutions
+that it gives are valid.
+
+<h2>Arithmetic Changes Parse/Print Properties</h2>
+
+When <tt>set(arithmetic)</tt> is in effect, Mace4 automatically
+changes the parse/print properties of the arithmetic operations
+so that arithmetic expressions can be written in a more conventional
+way.  The properties are changed as follows.
+<pre class="my_file">
+  op(490, infix_right, "+").
+  op(470, infix_right, "*").
+  op(460, infix, "/").
+  op(460, infix, "mod").
+  op(390, prefix, "-").
+</pre>
+These declarations allow, for example, the expression <tt>(a * (b * c)) + (d + e)</tt>
+to be written as <tt>a * b * c + d + e</tt>.  When in doubt, include parentheses
+and observe how Mace4 echoes the formulas in the output file.
+
+<h2>Examples</h2>
+
+<pre class="my_job">
+mace4 -n8 -f <a href="queens1.in">queens1.in</a> &gt; <a href="queens1.out">queens1.out</a>
+</pre>
+
+<pre class="my_job">
+mace4 -n8 -f <a href="queens2.in">queens2.in</a> &gt; <a href="queens2.out">queens2.out</a>
+</pre>
+
+<pre class="my_job">
+mace4 -f <a href="send-money.in">send-money.in</a> &gt; <a href="send-money.out">send-money.out</a>
+</pre>
+
+<pre class="my_job">
+mace4 -f <a href="zebra2.in">zebra2.in</a> &gt; <a href="zebra2.out">zebra2.out</a>
+</pre>
+
+<pre class="my_job">
+mace4 -f <a href="kenken6.in">kenken6.in</a> &gt; <a href="kenken6.out">kenken6.out</a>
+</pre>
+
+<hr>
+Next Section:
+<a href="m4-interpformat.html">Interpformat</a>
+
+</body>
+</html>

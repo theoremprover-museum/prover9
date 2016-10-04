@@ -1,0 +1,33 @@
+x ^ (y v (z ^ (x v u))) = x ^ (y v (z ^ (x v (z ^ u)))) # label(H1).  %  1  2  7 10 11 13 14 15 17
+x ^ (y v (x ^ z)) = x ^ (y v (z ^ ((x ^ (y v z)) v (y ^ z)))) # label(H2).  %  1  4  6  7  8  9 10 11 12 13 14 15 16 17 18
+x ^ (y v (x ^ z)) = x ^ (y v (z ^ (y v (x ^ (z v (x ^ y)))))) # label(H3).  %  1  4  6  7  8  9 10 11 12 13 14 15 16 17 18
+(x ^ y) v (x ^ z) = x ^ ((x ^ y) v ((x ^ z) v (y ^ (x v z)))) # label(H18).  %  1  4  6  7  9 10 11 13 15 16 17 18
+x ^ (y v (z ^ (x v u))) = x ^ (y v (z ^ (x v (z ^ (y v u))))) # label(H50).  %  1  6  7  9 10 11 13 14 15 17
+x ^ (y v (z ^ (x v u))) = x ^ (y v ((x ^ z) v (z ^ u))) # label(H51).  %  1  7 10 11 13 14 15 17
+x v (y ^ (x v z)) = x v (y ^ (z v (x ^ (z v y)))) # label(H55).  %  2  5  6  7  8  9 10 12 13 14 15 16 17 18
+x ^ (y v z) = x ^ (y v ((x v y) ^ (z v (x ^ y)))) # label(H58).  %  2  5  6  7  8  9 10 12 13 14 15 16 17 18
+x ^ (y v z) = x ^ (y v (x ^ (z v (x ^ (y v (x ^ z)))))) # label(H64).  %  2  6  7  8  9 10 11 12 13 14 15 17
+x ^ (y v z) = x ^ (y v (x ^ (z v (x ^ y)))) # label(H68).  %  2  6  7  8  9 10 12 13 14 15 17
+x ^ (y v z) = (x ^ (z v (x ^ y))) v (x ^ (y v (x ^ z))) # label(H69).  %  2  6  7  8  9 10 12 13 14 15 17
+x ^ (y v (z ^ (y v u))) = x ^ (y v (z ^ (u v (x ^ y)))) # label(H76).  %  6  7  8  9 10 13 14 15 17
+x ^ (y v (z ^ (x v u))) = x ^ ((x ^ (y v (x ^ z))) v (z ^ u)) # label(H79).  %  7 10 13 14 15 17
+(x ^ y) v (x ^ z) = x ^ ((x ^ y) v (z ^ (x v (y ^ (x v z))))) # label(H80).  %  1  3  4  6  7  8  9 10 11 13 15 16 17 18
+(x ^ y) v (x ^ z) = x ^ ((y ^ (x v z)) v (z ^ (x v y))) # label(H82).  %  1  4  6  7  9 10 11 13 15 17
+% interp 1 models 8 of 15 clauses.
+% interp 2 models 6 of 15 clauses.
+% interp 3 models 1 of 15 clauses.
+% interp 4 models 5 of 15 clauses.
+% interp 5 models 2 of 15 clauses.
+% interp 6 models 12 of 15 clauses.
+% interp 7 models 15 of 15 clauses.
+% interp 8 models 9 of 15 clauses.
+% interp 9 models 12 of 15 clauses.
+% interp 10 models 15 of 15 clauses.
+% interp 11 models 9 of 15 clauses.
+% interp 12 models 7 of 15 clauses.
+% interp 13 models 15 of 15 clauses.
+% interp 14 models 12 of 15 clauses.
+% interp 15 models 15 of 15 clauses.
+% interp 16 models 6 of 15 clauses.
+% interp 17 models 15 of 15 clauses.
+% interp 18 models 6 of 15 clauses.

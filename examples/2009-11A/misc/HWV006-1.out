@@ -1,0 +1,872 @@
+============================== Prover9 ===============================
+Prover9 (32) version 2009-11A, November 2009.
+Process 4532 was started by mccune on cleo,
+Tue Nov  3 09:39:06 2009
+The command was "/home/mccune/LADR/bin/prover9 -f HWV006-1.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file HWV006-1.in
+
+assign(max_seconds,30).
+set(prolog_style_variables).
+
+formulas(sos).
+-p9(X1,c16) | p1(f12(c5,f19(X1)),f11(c13,f17(X1))).
+-p2(f12(c5,X1),c4) | -p9(X1,c15) | p2(f11(c5,X1),c5) | -p6(X1,c7).
+p1(f12(c22,X1),f12(c5,f18(X1))) | -p9(X1,c16).
+p9(f25(X1),c16) | -p9(X1,c23).
+-p3(c4,c5).
+-p9(X1,c16) | p1(f12(c5,f18(X1)),f11(c5,f19(X1))).
+p1(f12(c21,X1),f12(c5,f17(X1))) | -p9(X1,c16).
+-p9(X1,c23) | p1(f11(c5,X1),f11(c5,f25(X1))).
+-p6(X2,c7) | -p2(f11(X1,X2),c5) | -p9(X2,c14) | p2(f12(c5,X2),c5).
+-p2(f12(c5,X1),c4) | -p9(X1,c14) | p2(f11(c5,X1),c4) | -p6(X1,c7).
+p2(f11(c13,X1),c4) | -p2(f12(c5,X1),c4) | p2(f11(c5,X1),c4) | -p6(X1,c7) | -p9(X1,c10).
+p1(f12(c21,X1),f12(c21,f25(X1))) | -p9(X1,c23).
+p6(X2,c7) | -p9(X2,X1) | p6(X2,c8).
+-p1(X1,X2) | p2(X2,X3) | -p2(X1,X3).
+-p6(X1,c8) | -p6(X1,c7).
+p2(X2,X3) | -p1(X2,X1) | -p2(X1,X3).
+-p9(X1,c16) | p9(f19(X1),c15).
+p2(f11(c5,X1),c5) | -p2(f12(c5,X1),c5) | -p6(X1,c7) | p2(f11(c13,X1),c5) | -p9(X1,c14).
+p2(f12(c5,X1),c5) | -p9(X1,c10) | -p6(X1,c7) | -p2(f11(c5,X1),c5) | -p2(f11(c13,X1),c5).
+p1(f11(c5,X1),f11(c5,f20(X1))) | -p9(X1,c16).
+p9(f24(X1),c16) | -p9(X1,c23).
+-p9(X1,c16) | p1(f12(c5,f20(X1)),f11(c5,f17(X1))).
+p1(f12(c21,f24(X1)),f11(c13,f25(X1))) | -p9(X1,c23).
+p1(f11(c13,X1),f11(c5,f24(X1))) | -p9(X1,c23).
+p1(f12(c22,f24(X1)),f11(c13,f20(X1))) | -p9(X1,c23).
+-p9(X1,c10) | -p2(f12(c5,X1),c5) | -p6(X1,c7) | p2(f11(c5,X1),c5).
+p1(f12(c22,X1),f12(c5,f20(X1))) | -p9(X1,c23).
+-p3(c5,c4).
+-p6(X1,c7) | -p9(X1,c10) | -p2(f12(c5,X1),c5) | p2(f11(c13,X1),c5).
+-p2(f12(c5,X1),c4) | p2(f11(c13,X1),c4) | -p6(X1,c7) | -p9(X1,c14).
+p2(f11(c5,X1),c4) | -p2(f12(c5,X1),c5) | -p6(X1,c7) | -p9(X1,c15).
+-p9(X1,c16) | p1(f11(c13,X1),f11(c13,f20(X1))).
+-p2(f11(c13,X1),c4) | -p9(X1,c14) | p2(f12(c5,X1),c4) | -p2(f11(c5,X1),c4) | -p6(X1,c7).
+p1(f11(c5,X1),f11(c5,f18(X1))) | -p9(X1,c16).
+p9(f17(X1),c10) | -p9(X1,c16).
+p1(f11(c22,X1),f11(c13,f24(X1))) | -p9(X1,c23).
+-p9(X1,c16) | p1(f11(c13,X1),f11(c13,f18(X1))).
+p3(X2,X3) | -p2(X1,X3) | -p2(X1,X2).
+-p9(X1,c23) | p9(f20(X1),c14).
+p2(f12(c5,X2),c4) | -p9(X2,c10) | -p2(f11(X1,X2),c4) | -p6(X2,c7).
+-p9(X1,c23) | p1(f12(c22,f25(X1)),f11(c5,f20(X1))).
+p2(f12(c5,X1),c5) | -p6(X1,c7) | -p9(X1,c15) | -p2(f11(c5,X1),c4).
+p9(f20(X1),c14) | -p9(X1,c16).
+-p2(f11(c5,X1),c5) | p2(f12(c5,X1),c4) | -p9(X1,c15) | -p6(X1,c7).
+p9(f18(X1),c10) | -p9(X1,c16).
+-p6(f19(f24(c26)),c8).
+-p6(f17(f24(c26)),c8).
+-p6(f18(f25(c26)),c8).
+-p6(f18(f24(c26)),c8).
+-p6(f17(f25(c26)),c8) | -p6(f20(c26),c8).
+p2(f12(c21,c26),c5).
+p2(f11(c13,c26),c4).
+p2(f11(c22,c26),c5).
+p2(f11(c5,c26),c5).
+-p6(f20(f24(c26)),c8).
+p9(c26,c23).
+-p6(f19(f25(c26)),c8) | -p6(f20(c26),c8).
+p2(f12(c22,c26),c4).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+-p9(A,c16) | p1(f12(c5,f19(A)),f11(c13,f17(A))).  [assumption].
+-p2(f12(c5,A),c4) | -p9(A,c15) | p2(f11(c5,A),c5) | -p6(A,c7).  [assumption].
+p1(f12(c22,A),f12(c5,f18(A))) | -p9(A,c16).  [assumption].
+p9(f25(A),c16) | -p9(A,c23).  [assumption].
+-p3(c4,c5).  [assumption].
+-p9(A,c16) | p1(f12(c5,f18(A)),f11(c5,f19(A))).  [assumption].
+p1(f12(c21,A),f12(c5,f17(A))) | -p9(A,c16).  [assumption].
+-p9(A,c23) | p1(f11(c5,A),f11(c5,f25(A))).  [assumption].
+-p6(A,c7) | -p2(f11(B,A),c5) | -p9(A,c14) | p2(f12(c5,A),c5).  [assumption].
+-p2(f12(c5,A),c4) | -p9(A,c14) | p2(f11(c5,A),c4) | -p6(A,c7).  [assumption].
+p2(f11(c13,A),c4) | -p2(f12(c5,A),c4) | p2(f11(c5,A),c4) | -p6(A,c7) | -p9(A,c10).  [assumption].
+p1(f12(c21,A),f12(c21,f25(A))) | -p9(A,c23).  [assumption].
+p6(A,c7) | -p9(A,B) | p6(A,c8).  [assumption].
+-p1(A,B) | p2(B,C) | -p2(A,C).  [assumption].
+-p6(A,c8) | -p6(A,c7).  [assumption].
+p2(A,B) | -p1(A,C) | -p2(C,B).  [assumption].
+-p9(A,c16) | p9(f19(A),c15).  [assumption].
+p2(f11(c5,A),c5) | -p2(f12(c5,A),c5) | -p6(A,c7) | p2(f11(c13,A),c5) | -p9(A,c14).  [assumption].
+p2(f12(c5,A),c5) | -p9(A,c10) | -p6(A,c7) | -p2(f11(c5,A),c5) | -p2(f11(c13,A),c5).  [assumption].
+p1(f11(c5,A),f11(c5,f20(A))) | -p9(A,c16).  [assumption].
+p9(f24(A),c16) | -p9(A,c23).  [assumption].
+-p9(A,c16) | p1(f12(c5,f20(A)),f11(c5,f17(A))).  [assumption].
+p1(f12(c21,f24(A)),f11(c13,f25(A))) | -p9(A,c23).  [assumption].
+p1(f11(c13,A),f11(c5,f24(A))) | -p9(A,c23).  [assumption].
+p1(f12(c22,f24(A)),f11(c13,f20(A))) | -p9(A,c23).  [assumption].
+-p9(A,c10) | -p2(f12(c5,A),c5) | -p6(A,c7) | p2(f11(c5,A),c5).  [assumption].
+p1(f12(c22,A),f12(c5,f20(A))) | -p9(A,c23).  [assumption].
+-p3(c5,c4).  [assumption].
+-p6(A,c7) | -p9(A,c10) | -p2(f12(c5,A),c5) | p2(f11(c13,A),c5).  [assumption].
+-p2(f12(c5,A),c4) | p2(f11(c13,A),c4) | -p6(A,c7) | -p9(A,c14).  [assumption].
+p2(f11(c5,A),c4) | -p2(f12(c5,A),c5) | -p6(A,c7) | -p9(A,c15).  [assumption].
+-p9(A,c16) | p1(f11(c13,A),f11(c13,f20(A))).  [assumption].
+-p2(f11(c13,A),c4) | -p9(A,c14) | p2(f12(c5,A),c4) | -p2(f11(c5,A),c4) | -p6(A,c7).  [assumption].
+p1(f11(c5,A),f11(c5,f18(A))) | -p9(A,c16).  [assumption].
+p9(f17(A),c10) | -p9(A,c16).  [assumption].
+p1(f11(c22,A),f11(c13,f24(A))) | -p9(A,c23).  [assumption].
+-p9(A,c16) | p1(f11(c13,A),f11(c13,f18(A))).  [assumption].
+p3(A,B) | -p2(C,B) | -p2(C,A).  [assumption].
+-p9(A,c23) | p9(f20(A),c14).  [assumption].
+p2(f12(c5,A),c4) | -p9(A,c10) | -p2(f11(B,A),c4) | -p6(A,c7).  [assumption].
+-p9(A,c23) | p1(f12(c22,f25(A)),f11(c5,f20(A))).  [assumption].
+p2(f12(c5,A),c5) | -p6(A,c7) | -p9(A,c15) | -p2(f11(c5,A),c4).  [assumption].
+p9(f20(A),c14) | -p9(A,c16).  [assumption].
+-p2(f11(c5,A),c5) | p2(f12(c5,A),c4) | -p9(A,c15) | -p6(A,c7).  [assumption].
+p9(f18(A),c10) | -p9(A,c16).  [assumption].
+-p6(f19(f24(c26)),c8).  [assumption].
+-p6(f17(f24(c26)),c8).  [assumption].
+-p6(f18(f25(c26)),c8).  [assumption].
+-p6(f18(f24(c26)),c8).  [assumption].
+-p6(f17(f25(c26)),c8) | -p6(f20(c26),c8).  [assumption].
+p2(f12(c21,c26),c5).  [assumption].
+p2(f11(c13,c26),c4).  [assumption].
+p2(f11(c22,c26),c5).  [assumption].
+p2(f11(c5,c26),c5).  [assumption].
+-p6(f20(f24(c26)),c8).  [assumption].
+p9(c26,c23).  [assumption].
+-p6(f19(f25(c26)),c8) | -p6(f20(c26),c8).  [assumption].
+p2(f12(c22,c26),c4).  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+Eliminating p1/2
+1 -p1(A,B) | p2(B,C) | -p2(A,C).  [assumption].
+2 -p9(A,c16) | p1(f12(c5,f19(A)),f11(c13,f17(A))).  [assumption].
+3 p1(f12(c22,A),f12(c5,f18(A))) | -p9(A,c16).  [assumption].
+4 -p9(A,c16) | p1(f12(c5,f18(A)),f11(c5,f19(A))).  [assumption].
+5 p1(f12(c21,A),f12(c5,f17(A))) | -p9(A,c16).  [assumption].
+6 -p9(A,c23) | p1(f11(c5,A),f11(c5,f25(A))).  [assumption].
+7 p1(f12(c21,A),f12(c21,f25(A))) | -p9(A,c23).  [assumption].
+Derived: p2(f11(c13,f17(A)),B) | -p2(f12(c5,f19(A)),B) | -p9(A,c16).  [resolve(1,a,2,b)].
+Derived: p2(f12(c5,f18(A)),B) | -p2(f12(c22,A),B) | -p9(A,c16).  [resolve(1,a,3,a)].
+Derived: p2(f11(c5,f19(A)),B) | -p2(f12(c5,f18(A)),B) | -p9(A,c16).  [resolve(1,a,4,b)].
+Derived: p2(f12(c5,f17(A)),B) | -p2(f12(c21,A),B) | -p9(A,c16).  [resolve(1,a,5,a)].
+Derived: p2(f11(c5,f25(A)),B) | -p2(f11(c5,A),B) | -p9(A,c23).  [resolve(1,a,6,b)].
+Derived: p2(f12(c21,f25(A)),B) | -p2(f12(c21,A),B) | -p9(A,c23).  [resolve(1,a,7,a)].
+8 p2(A,B) | -p1(A,C) | -p2(C,B).  [assumption].
+Derived: p2(f12(c5,f19(A)),B) | -p2(f11(c13,f17(A)),B) | -p9(A,c16).  [resolve(8,b,2,b)].
+Derived: p2(f12(c22,A),B) | -p2(f12(c5,f18(A)),B) | -p9(A,c16).  [resolve(8,b,3,a)].
+Derived: p2(f12(c5,f18(A)),B) | -p2(f11(c5,f19(A)),B) | -p9(A,c16).  [resolve(8,b,4,b)].
+Derived: p2(f12(c21,A),B) | -p2(f12(c5,f17(A)),B) | -p9(A,c16).  [resolve(8,b,5,a)].
+Derived: p2(f11(c5,A),B) | -p2(f11(c5,f25(A)),B) | -p9(A,c23).  [resolve(8,b,6,b)].
+Derived: p2(f12(c21,A),B) | -p2(f12(c21,f25(A)),B) | -p9(A,c23).  [resolve(8,b,7,a)].
+9 p1(f11(c5,A),f11(c5,f20(A))) | -p9(A,c16).  [assumption].
+Derived: -p9(A,c16) | p2(f11(c5,f20(A)),B) | -p2(f11(c5,A),B).  [resolve(9,a,1,a)].
+Derived: -p9(A,c16) | p2(f11(c5,A),B) | -p2(f11(c5,f20(A)),B).  [resolve(9,a,8,b)].
+10 -p9(A,c16) | p1(f12(c5,f20(A)),f11(c5,f17(A))).  [assumption].
+Derived: -p9(A,c16) | p2(f11(c5,f17(A)),B) | -p2(f12(c5,f20(A)),B).  [resolve(10,b,1,a)].
+Derived: -p9(A,c16) | p2(f12(c5,f20(A)),B) | -p2(f11(c5,f17(A)),B).  [resolve(10,b,8,b)].
+11 p1(f12(c21,f24(A)),f11(c13,f25(A))) | -p9(A,c23).  [assumption].
+Derived: -p9(A,c23) | p2(f11(c13,f25(A)),B) | -p2(f12(c21,f24(A)),B).  [resolve(11,a,1,a)].
+Derived: -p9(A,c23) | p2(f12(c21,f24(A)),B) | -p2(f11(c13,f25(A)),B).  [resolve(11,a,8,b)].
+12 p1(f11(c13,A),f11(c5,f24(A))) | -p9(A,c23).  [assumption].
+Derived: -p9(A,c23) | p2(f11(c5,f24(A)),B) | -p2(f11(c13,A),B).  [resolve(12,a,1,a)].
+Derived: -p9(A,c23) | p2(f11(c13,A),B) | -p2(f11(c5,f24(A)),B).  [resolve(12,a,8,b)].
+13 p1(f12(c22,f24(A)),f11(c13,f20(A))) | -p9(A,c23).  [assumption].
+Derived: -p9(A,c23) | p2(f11(c13,f20(A)),B) | -p2(f12(c22,f24(A)),B).  [resolve(13,a,1,a)].
+Derived: -p9(A,c23) | p2(f12(c22,f24(A)),B) | -p2(f11(c13,f20(A)),B).  [resolve(13,a,8,b)].
+14 p1(f12(c22,A),f12(c5,f20(A))) | -p9(A,c23).  [assumption].
+Derived: -p9(A,c23) | p2(f12(c5,f20(A)),B) | -p2(f12(c22,A),B).  [resolve(14,a,1,a)].
+Derived: -p9(A,c23) | p2(f12(c22,A),B) | -p2(f12(c5,f20(A)),B).  [resolve(14,a,8,b)].
+15 -p9(A,c16) | p1(f11(c13,A),f11(c13,f20(A))).  [assumption].
+Derived: -p9(A,c16) | p2(f11(c13,f20(A)),B) | -p2(f11(c13,A),B).  [resolve(15,b,1,a)].
+Derived: -p9(A,c16) | p2(f11(c13,A),B) | -p2(f11(c13,f20(A)),B).  [resolve(15,b,8,b)].
+16 p1(f11(c5,A),f11(c5,f18(A))) | -p9(A,c16).  [assumption].
+Derived: -p9(A,c16) | p2(f11(c5,f18(A)),B) | -p2(f11(c5,A),B).  [resolve(16,a,1,a)].
+Derived: -p9(A,c16) | p2(f11(c5,A),B) | -p2(f11(c5,f18(A)),B).  [resolve(16,a,8,b)].
+17 p1(f11(c22,A),f11(c13,f24(A))) | -p9(A,c23).  [assumption].
+Derived: -p9(A,c23) | p2(f11(c13,f24(A)),B) | -p2(f11(c22,A),B).  [resolve(17,a,1,a)].
+Derived: -p9(A,c23) | p2(f11(c22,A),B) | -p2(f11(c13,f24(A)),B).  [resolve(17,a,8,b)].
+18 -p9(A,c16) | p1(f11(c13,A),f11(c13,f18(A))).  [assumption].
+Derived: -p9(A,c16) | p2(f11(c13,f18(A)),B) | -p2(f11(c13,A),B).  [resolve(18,b,1,a)].
+Derived: -p9(A,c16) | p2(f11(c13,A),B) | -p2(f11(c13,f18(A)),B).  [resolve(18,b,8,b)].
+19 -p9(A,c23) | p1(f12(c22,f25(A)),f11(c5,f20(A))).  [assumption].
+Derived: -p9(A,c23) | p2(f11(c5,f20(A)),B) | -p2(f12(c22,f25(A)),B).  [resolve(19,b,1,a)].
+Derived: -p9(A,c23) | p2(f12(c22,f25(A)),B) | -p2(f11(c5,f20(A)),B).  [resolve(19,b,8,b)].
+
+Eliminating p3/2
+20 p3(A,B) | -p2(C,B) | -p2(C,A).  [assumption].
+21 -p3(c4,c5).  [assumption].
+22 -p3(c5,c4).  [assumption].
+Derived: -p2(A,c5) | -p2(A,c4).  [resolve(20,a,21,a)].
+
+============================== end predicate elimination =============
+
+Auto_denials:  (non-Horn, no changes).
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ p2, p9, p6 ]).
+Function symbol precedence:  function_order([ c5, c13, c16, c23, c4, c7, c22, c21, c10, c14, c26, c15, c8, f11, f12, f20, f18, f24, f25, f17, f19 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+kept:      23 -p2(f12(c5,A),c4) | -p9(A,c15) | p2(f11(c5,A),c5) | -p6(A,c7).  [assumption].
+kept:      24 p9(f25(A),c16) | -p9(A,c23).  [assumption].
+kept:      25 -p6(A,c7) | -p2(f11(B,A),c5) | -p9(A,c14) | p2(f12(c5,A),c5).  [assumption].
+kept:      26 -p2(f12(c5,A),c4) | -p9(A,c14) | p2(f11(c5,A),c4) | -p6(A,c7).  [assumption].
+kept:      27 p2(f11(c13,A),c4) | -p2(f12(c5,A),c4) | p2(f11(c5,A),c4) | -p6(A,c7) | -p9(A,c10).  [assumption].
+kept:      28 p6(A,c7) | -p9(A,B) | p6(A,c8).  [assumption].
+kept:      29 -p6(A,c8) | -p6(A,c7).  [assumption].
+kept:      30 -p9(A,c16) | p9(f19(A),c15).  [assumption].
+kept:      31 p2(f11(c5,A),c5) | -p2(f12(c5,A),c5) | -p6(A,c7) | p2(f11(c13,A),c5) | -p9(A,c14).  [assumption].
+kept:      32 p2(f12(c5,A),c5) | -p9(A,c10) | -p6(A,c7) | -p2(f11(c5,A),c5) | -p2(f11(c13,A),c5).  [assumption].
+kept:      33 p9(f24(A),c16) | -p9(A,c23).  [assumption].
+kept:      34 -p9(A,c10) | -p2(f12(c5,A),c5) | -p6(A,c7) | p2(f11(c5,A),c5).  [assumption].
+kept:      35 -p6(A,c7) | -p9(A,c10) | -p2(f12(c5,A),c5) | p2(f11(c13,A),c5).  [assumption].
+kept:      36 -p2(f12(c5,A),c4) | p2(f11(c13,A),c4) | -p6(A,c7) | -p9(A,c14).  [assumption].
+kept:      37 p2(f11(c5,A),c4) | -p2(f12(c5,A),c5) | -p6(A,c7) | -p9(A,c15).  [assumption].
+kept:      38 -p2(f11(c13,A),c4) | -p9(A,c14) | p2(f12(c5,A),c4) | -p2(f11(c5,A),c4) | -p6(A,c7).  [assumption].
+kept:      39 p9(f17(A),c10) | -p9(A,c16).  [assumption].
+kept:      40 -p9(A,c23) | p9(f20(A),c14).  [assumption].
+kept:      41 p2(f12(c5,A),c4) | -p9(A,c10) | -p2(f11(B,A),c4) | -p6(A,c7).  [assumption].
+kept:      42 p2(f12(c5,A),c5) | -p6(A,c7) | -p9(A,c15) | -p2(f11(c5,A),c4).  [assumption].
+kept:      43 p9(f20(A),c14) | -p9(A,c16).  [assumption].
+kept:      44 -p2(f11(c5,A),c5) | p2(f12(c5,A),c4) | -p9(A,c15) | -p6(A,c7).  [assumption].
+kept:      45 p9(f18(A),c10) | -p9(A,c16).  [assumption].
+kept:      46 -p6(f19(f24(c26)),c8).  [assumption].
+kept:      47 -p6(f17(f24(c26)),c8).  [assumption].
+kept:      48 -p6(f18(f25(c26)),c8).  [assumption].
+kept:      49 -p6(f18(f24(c26)),c8).  [assumption].
+kept:      50 -p6(f17(f25(c26)),c8) | -p6(f20(c26),c8).  [assumption].
+kept:      51 p2(f12(c21,c26),c5).  [assumption].
+kept:      52 p2(f11(c13,c26),c4).  [assumption].
+kept:      53 p2(f11(c22,c26),c5).  [assumption].
+kept:      54 p2(f11(c5,c26),c5).  [assumption].
+kept:      55 -p6(f20(f24(c26)),c8).  [assumption].
+kept:      56 p9(c26,c23).  [assumption].
+kept:      57 -p6(f19(f25(c26)),c8) | -p6(f20(c26),c8).  [assumption].
+kept:      58 p2(f12(c22,c26),c4).  [assumption].
+kept:      59 p2(f11(c13,f17(A)),B) | -p2(f12(c5,f19(A)),B) | -p9(A,c16).  [resolve(1,a,2,b)].
+kept:      60 p2(f12(c5,f18(A)),B) | -p2(f12(c22,A),B) | -p9(A,c16).  [resolve(1,a,3,a)].
+kept:      61 p2(f11(c5,f19(A)),B) | -p2(f12(c5,f18(A)),B) | -p9(A,c16).  [resolve(1,a,4,b)].
+kept:      62 p2(f12(c5,f17(A)),B) | -p2(f12(c21,A),B) | -p9(A,c16).  [resolve(1,a,5,a)].
+kept:      63 p2(f11(c5,f25(A)),B) | -p2(f11(c5,A),B) | -p9(A,c23).  [resolve(1,a,6,b)].
+kept:      64 p2(f12(c21,f25(A)),B) | -p2(f12(c21,A),B) | -p9(A,c23).  [resolve(1,a,7,a)].
+kept:      65 p2(f12(c5,f19(A)),B) | -p2(f11(c13,f17(A)),B) | -p9(A,c16).  [resolve(8,b,2,b)].
+kept:      66 p2(f12(c22,A),B) | -p2(f12(c5,f18(A)),B) | -p9(A,c16).  [resolve(8,b,3,a)].
+kept:      67 p2(f12(c5,f18(A)),B) | -p2(f11(c5,f19(A)),B) | -p9(A,c16).  [resolve(8,b,4,b)].
+kept:      68 p2(f12(c21,A),B) | -p2(f12(c5,f17(A)),B) | -p9(A,c16).  [resolve(8,b,5,a)].
+kept:      69 p2(f11(c5,A),B) | -p2(f11(c5,f25(A)),B) | -p9(A,c23).  [resolve(8,b,6,b)].
+kept:      70 p2(f12(c21,A),B) | -p2(f12(c21,f25(A)),B) | -p9(A,c23).  [resolve(8,b,7,a)].
+kept:      71 -p9(A,c16) | p2(f11(c5,f20(A)),B) | -p2(f11(c5,A),B).  [resolve(9,a,1,a)].
+kept:      72 -p9(A,c16) | p2(f11(c5,A),B) | -p2(f11(c5,f20(A)),B).  [resolve(9,a,8,b)].
+kept:      73 -p9(A,c16) | p2(f11(c5,f17(A)),B) | -p2(f12(c5,f20(A)),B).  [resolve(10,b,1,a)].
+kept:      74 -p9(A,c16) | p2(f12(c5,f20(A)),B) | -p2(f11(c5,f17(A)),B).  [resolve(10,b,8,b)].
+kept:      75 -p9(A,c23) | p2(f11(c13,f25(A)),B) | -p2(f12(c21,f24(A)),B).  [resolve(11,a,1,a)].
+kept:      76 -p9(A,c23) | p2(f12(c21,f24(A)),B) | -p2(f11(c13,f25(A)),B).  [resolve(11,a,8,b)].
+kept:      77 -p9(A,c23) | p2(f11(c5,f24(A)),B) | -p2(f11(c13,A),B).  [resolve(12,a,1,a)].
+kept:      78 -p9(A,c23) | p2(f11(c13,A),B) | -p2(f11(c5,f24(A)),B).  [resolve(12,a,8,b)].
+kept:      79 -p9(A,c23) | p2(f11(c13,f20(A)),B) | -p2(f12(c22,f24(A)),B).  [resolve(13,a,1,a)].
+kept:      80 -p9(A,c23) | p2(f12(c22,f24(A)),B) | -p2(f11(c13,f20(A)),B).  [resolve(13,a,8,b)].
+kept:      81 -p9(A,c23) | p2(f12(c5,f20(A)),B) | -p2(f12(c22,A),B).  [resolve(14,a,1,a)].
+kept:      82 -p9(A,c23) | p2(f12(c22,A),B) | -p2(f12(c5,f20(A)),B).  [resolve(14,a,8,b)].
+kept:      83 -p9(A,c16) | p2(f11(c13,f20(A)),B) | -p2(f11(c13,A),B).  [resolve(15,b,1,a)].
+kept:      84 -p9(A,c16) | p2(f11(c13,A),B) | -p2(f11(c13,f20(A)),B).  [resolve(15,b,8,b)].
+kept:      85 -p9(A,c16) | p2(f11(c5,f18(A)),B) | -p2(f11(c5,A),B).  [resolve(16,a,1,a)].
+kept:      86 -p9(A,c16) | p2(f11(c5,A),B) | -p2(f11(c5,f18(A)),B).  [resolve(16,a,8,b)].
+kept:      87 -p9(A,c23) | p2(f11(c13,f24(A)),B) | -p2(f11(c22,A),B).  [resolve(17,a,1,a)].
+kept:      88 -p9(A,c23) | p2(f11(c22,A),B) | -p2(f11(c13,f24(A)),B).  [resolve(17,a,8,b)].
+kept:      89 -p9(A,c16) | p2(f11(c13,f18(A)),B) | -p2(f11(c13,A),B).  [resolve(18,b,1,a)].
+kept:      90 -p9(A,c16) | p2(f11(c13,A),B) | -p2(f11(c13,f18(A)),B).  [resolve(18,b,8,b)].
+kept:      91 -p9(A,c23) | p2(f11(c5,f20(A)),B) | -p2(f12(c22,f25(A)),B).  [resolve(19,b,1,a)].
+kept:      92 -p9(A,c23) | p2(f12(c22,f25(A)),B) | -p2(f11(c5,f20(A)),B).  [resolve(19,b,8,b)].
+kept:      93 -p2(A,c5) | -p2(A,c4).  [resolve(20,a,21,a)].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+23 -p2(f12(c5,A),c4) | -p9(A,c15) | p2(f11(c5,A),c5) | -p6(A,c7).  [assumption].
+24 p9(f25(A),c16) | -p9(A,c23).  [assumption].
+25 -p6(A,c7) | -p2(f11(B,A),c5) | -p9(A,c14) | p2(f12(c5,A),c5).  [assumption].
+26 -p2(f12(c5,A),c4) | -p9(A,c14) | p2(f11(c5,A),c4) | -p6(A,c7).  [assumption].
+27 p2(f11(c13,A),c4) | -p2(f12(c5,A),c4) | p2(f11(c5,A),c4) | -p6(A,c7) | -p9(A,c10).  [assumption].
+28 p6(A,c7) | -p9(A,B) | p6(A,c8).  [assumption].
+29 -p6(A,c8) | -p6(A,c7).  [assumption].
+30 -p9(A,c16) | p9(f19(A),c15).  [assumption].
+31 p2(f11(c5,A),c5) | -p2(f12(c5,A),c5) | -p6(A,c7) | p2(f11(c13,A),c5) | -p9(A,c14).  [assumption].
+32 p2(f12(c5,A),c5) | -p9(A,c10) | -p6(A,c7) | -p2(f11(c5,A),c5) | -p2(f11(c13,A),c5).  [assumption].
+33 p9(f24(A),c16) | -p9(A,c23).  [assumption].
+34 -p9(A,c10) | -p2(f12(c5,A),c5) | -p6(A,c7) | p2(f11(c5,A),c5).  [assumption].
+35 -p6(A,c7) | -p9(A,c10) | -p2(f12(c5,A),c5) | p2(f11(c13,A),c5).  [assumption].
+36 -p2(f12(c5,A),c4) | p2(f11(c13,A),c4) | -p6(A,c7) | -p9(A,c14).  [assumption].
+37 p2(f11(c5,A),c4) | -p2(f12(c5,A),c5) | -p6(A,c7) | -p9(A,c15).  [assumption].
+38 -p2(f11(c13,A),c4) | -p9(A,c14) | p2(f12(c5,A),c4) | -p2(f11(c5,A),c4) | -p6(A,c7).  [assumption].
+39 p9(f17(A),c10) | -p9(A,c16).  [assumption].
+40 -p9(A,c23) | p9(f20(A),c14).  [assumption].
+41 p2(f12(c5,A),c4) | -p9(A,c10) | -p2(f11(B,A),c4) | -p6(A,c7).  [assumption].
+42 p2(f12(c5,A),c5) | -p6(A,c7) | -p9(A,c15) | -p2(f11(c5,A),c4).  [assumption].
+43 p9(f20(A),c14) | -p9(A,c16).  [assumption].
+44 -p2(f11(c5,A),c5) | p2(f12(c5,A),c4) | -p9(A,c15) | -p6(A,c7).  [assumption].
+45 p9(f18(A),c10) | -p9(A,c16).  [assumption].
+46 -p6(f19(f24(c26)),c8).  [assumption].
+47 -p6(f17(f24(c26)),c8).  [assumption].
+48 -p6(f18(f25(c26)),c8).  [assumption].
+49 -p6(f18(f24(c26)),c8).  [assumption].
+50 -p6(f17(f25(c26)),c8) | -p6(f20(c26),c8).  [assumption].
+51 p2(f12(c21,c26),c5).  [assumption].
+52 p2(f11(c13,c26),c4).  [assumption].
+53 p2(f11(c22,c26),c5).  [assumption].
+54 p2(f11(c5,c26),c5).  [assumption].
+55 -p6(f20(f24(c26)),c8).  [assumption].
+56 p9(c26,c23).  [assumption].
+57 -p6(f19(f25(c26)),c8) | -p6(f20(c26),c8).  [assumption].
+58 p2(f12(c22,c26),c4).  [assumption].
+59 p2(f11(c13,f17(A)),B) | -p2(f12(c5,f19(A)),B) | -p9(A,c16).  [resolve(1,a,2,b)].
+60 p2(f12(c5,f18(A)),B) | -p2(f12(c22,A),B) | -p9(A,c16).  [resolve(1,a,3,a)].
+61 p2(f11(c5,f19(A)),B) | -p2(f12(c5,f18(A)),B) | -p9(A,c16).  [resolve(1,a,4,b)].
+62 p2(f12(c5,f17(A)),B) | -p2(f12(c21,A),B) | -p9(A,c16).  [resolve(1,a,5,a)].
+63 p2(f11(c5,f25(A)),B) | -p2(f11(c5,A),B) | -p9(A,c23).  [resolve(1,a,6,b)].
+64 p2(f12(c21,f25(A)),B) | -p2(f12(c21,A),B) | -p9(A,c23).  [resolve(1,a,7,a)].
+65 p2(f12(c5,f19(A)),B) | -p2(f11(c13,f17(A)),B) | -p9(A,c16).  [resolve(8,b,2,b)].
+66 p2(f12(c22,A),B) | -p2(f12(c5,f18(A)),B) | -p9(A,c16).  [resolve(8,b,3,a)].
+67 p2(f12(c5,f18(A)),B) | -p2(f11(c5,f19(A)),B) | -p9(A,c16).  [resolve(8,b,4,b)].
+68 p2(f12(c21,A),B) | -p2(f12(c5,f17(A)),B) | -p9(A,c16).  [resolve(8,b,5,a)].
+69 p2(f11(c5,A),B) | -p2(f11(c5,f25(A)),B) | -p9(A,c23).  [resolve(8,b,6,b)].
+70 p2(f12(c21,A),B) | -p2(f12(c21,f25(A)),B) | -p9(A,c23).  [resolve(8,b,7,a)].
+71 -p9(A,c16) | p2(f11(c5,f20(A)),B) | -p2(f11(c5,A),B).  [resolve(9,a,1,a)].
+72 -p9(A,c16) | p2(f11(c5,A),B) | -p2(f11(c5,f20(A)),B).  [resolve(9,a,8,b)].
+73 -p9(A,c16) | p2(f11(c5,f17(A)),B) | -p2(f12(c5,f20(A)),B).  [resolve(10,b,1,a)].
+74 -p9(A,c16) | p2(f12(c5,f20(A)),B) | -p2(f11(c5,f17(A)),B).  [resolve(10,b,8,b)].
+75 -p9(A,c23) | p2(f11(c13,f25(A)),B) | -p2(f12(c21,f24(A)),B).  [resolve(11,a,1,a)].
+76 -p9(A,c23) | p2(f12(c21,f24(A)),B) | -p2(f11(c13,f25(A)),B).  [resolve(11,a,8,b)].
+77 -p9(A,c23) | p2(f11(c5,f24(A)),B) | -p2(f11(c13,A),B).  [resolve(12,a,1,a)].
+78 -p9(A,c23) | p2(f11(c13,A),B) | -p2(f11(c5,f24(A)),B).  [resolve(12,a,8,b)].
+79 -p9(A,c23) | p2(f11(c13,f20(A)),B) | -p2(f12(c22,f24(A)),B).  [resolve(13,a,1,a)].
+80 -p9(A,c23) | p2(f12(c22,f24(A)),B) | -p2(f11(c13,f20(A)),B).  [resolve(13,a,8,b)].
+81 -p9(A,c23) | p2(f12(c5,f20(A)),B) | -p2(f12(c22,A),B).  [resolve(14,a,1,a)].
+82 -p9(A,c23) | p2(f12(c22,A),B) | -p2(f12(c5,f20(A)),B).  [resolve(14,a,8,b)].
+83 -p9(A,c16) | p2(f11(c13,f20(A)),B) | -p2(f11(c13,A),B).  [resolve(15,b,1,a)].
+84 -p9(A,c16) | p2(f11(c13,A),B) | -p2(f11(c13,f20(A)),B).  [resolve(15,b,8,b)].
+85 -p9(A,c16) | p2(f11(c5,f18(A)),B) | -p2(f11(c5,A),B).  [resolve(16,a,1,a)].
+86 -p9(A,c16) | p2(f11(c5,A),B) | -p2(f11(c5,f18(A)),B).  [resolve(16,a,8,b)].
+87 -p9(A,c23) | p2(f11(c13,f24(A)),B) | -p2(f11(c22,A),B).  [resolve(17,a,1,a)].
+88 -p9(A,c23) | p2(f11(c22,A),B) | -p2(f11(c13,f24(A)),B).  [resolve(17,a,8,b)].
+89 -p9(A,c16) | p2(f11(c13,f18(A)),B) | -p2(f11(c13,A),B).  [resolve(18,b,1,a)].
+90 -p9(A,c16) | p2(f11(c13,A),B) | -p2(f11(c13,f18(A)),B).  [resolve(18,b,8,b)].
+91 -p9(A,c23) | p2(f11(c5,f20(A)),B) | -p2(f12(c22,f25(A)),B).  [resolve(19,b,1,a)].
+92 -p9(A,c23) | p2(f12(c22,f25(A)),B) | -p2(f11(c5,f20(A)),B).  [resolve(19,b,8,b)].
+93 -p2(A,c5) | -p2(A,c4).  [resolve(20,a,21,a)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.02 seconds.
+
+given #1 (I,wt=16): 23 -p2(f12(c5,A),c4) | -p9(A,c15) | p2(f11(c5,A),c5) | -p6(A,c7).  [assumption].
+
+given #2 (I,wt=7): 24 p9(f25(A),c16) | -p9(A,c23).  [assumption].
+
+given #3 (I,wt=16): 25 -p6(A,c7) | -p2(f11(B,A),c5) | -p9(A,c14) | p2(f12(c5,A),c5).  [assumption].
+
+given #4 (I,wt=16): 26 -p2(f12(c5,A),c4) | -p9(A,c14) | p2(f11(c5,A),c4) | -p6(A,c7).  [assumption].
+
+given #5 (I,wt=21): 27 p2(f11(c13,A),c4) | -p2(f12(c5,A),c4) | p2(f11(c5,A),c4) | -p6(A,c7) | -p9(A,c10).  [assumption].
+
+given #6 (I,wt=9): 28 p6(A,c7) | -p9(A,B) | p6(A,c8).  [assumption].
+
+given #7 (I,wt=6): 29 -p6(A,c8) | -p6(A,c7).  [assumption].
+
+given #8 (I,wt=7): 30 -p9(A,c16) | p9(f19(A),c15).  [assumption].
+
+given #9 (I,wt=21): 31 p2(f11(c5,A),c5) | -p2(f12(c5,A),c5) | -p6(A,c7) | p2(f11(c13,A),c5) | -p9(A,c14).  [assumption].
+
+given #10 (I,wt=21): 32 p2(f12(c5,A),c5) | -p9(A,c10) | -p6(A,c7) | -p2(f11(c5,A),c5) | -p2(f11(c13,A),c5).  [assumption].
+
+given #11 (I,wt=7): 33 p9(f24(A),c16) | -p9(A,c23).  [assumption].
+
+given #12 (I,wt=16): 34 -p9(A,c10) | -p2(f12(c5,A),c5) | -p6(A,c7) | p2(f11(c5,A),c5).  [assumption].
+
+given #13 (I,wt=16): 35 -p6(A,c7) | -p9(A,c10) | -p2(f12(c5,A),c5) | p2(f11(c13,A),c5).  [assumption].
+
+given #14 (I,wt=16): 36 -p2(f12(c5,A),c4) | p2(f11(c13,A),c4) | -p6(A,c7) | -p9(A,c14).  [assumption].
+
+given #15 (I,wt=16): 37 p2(f11(c5,A),c4) | -p2(f12(c5,A),c5) | -p6(A,c7) | -p9(A,c15).  [assumption].
+
+given #16 (I,wt=21): 38 -p2(f11(c13,A),c4) | -p9(A,c14) | p2(f12(c5,A),c4) | -p2(f11(c5,A),c4) | -p6(A,c7).  [assumption].
+
+given #17 (I,wt=7): 39 p9(f17(A),c10) | -p9(A,c16).  [assumption].
+
+given #18 (I,wt=7): 40 -p9(A,c23) | p9(f20(A),c14).  [assumption].
+
+given #19 (I,wt=16): 41 p2(f12(c5,A),c4) | -p9(A,c10) | -p2(f11(B,A),c4) | -p6(A,c7).  [assumption].
+
+given #20 (I,wt=16): 42 p2(f12(c5,A),c5) | -p6(A,c7) | -p9(A,c15) | -p2(f11(c5,A),c4).  [assumption].
+
+given #21 (I,wt=7): 43 p9(f20(A),c14) | -p9(A,c16).  [assumption].
+
+given #22 (I,wt=16): 44 -p2(f11(c5,A),c5) | p2(f12(c5,A),c4) | -p9(A,c15) | -p6(A,c7).  [assumption].
+
+given #23 (I,wt=7): 45 p9(f18(A),c10) | -p9(A,c16).  [assumption].
+
+given #24 (I,wt=5): 46 -p6(f19(f24(c26)),c8).  [assumption].
+
+given #25 (I,wt=5): 47 -p6(f17(f24(c26)),c8).  [assumption].
+
+given #26 (I,wt=5): 48 -p6(f18(f25(c26)),c8).  [assumption].
+
+given #27 (I,wt=5): 49 -p6(f18(f24(c26)),c8).  [assumption].
+
+given #28 (I,wt=9): 50 -p6(f17(f25(c26)),c8) | -p6(f20(c26),c8).  [assumption].
+
+given #29 (I,wt=5): 51 p2(f12(c21,c26),c5).  [assumption].
+
+given #30 (I,wt=5): 52 p2(f11(c13,c26),c4).  [assumption].
+
+given #31 (I,wt=5): 53 p2(f11(c22,c26),c5).  [assumption].
+
+given #32 (I,wt=5): 54 p2(f11(c5,c26),c5).  [assumption].
+
+given #33 (I,wt=5): 55 -p6(f20(f24(c26)),c8).  [assumption].
+
+given #34 (I,wt=3): 56 p9(c26,c23).  [assumption].
+
+given #35 (I,wt=9): 57 -p6(f19(f25(c26)),c8) | -p6(f20(c26),c8).  [assumption].
+
+given #36 (I,wt=5): 58 p2(f12(c22,c26),c4).  [assumption].
+
+given #37 (I,wt=15): 59 p2(f11(c13,f17(A)),B) | -p2(f12(c5,f19(A)),B) | -p9(A,c16).  [resolve(1,a,2,b)].
+
+given #38 (I,wt=14): 60 p2(f12(c5,f18(A)),B) | -p2(f12(c22,A),B) | -p9(A,c16).  [resolve(1,a,3,a)].
+
+given #39 (I,wt=15): 61 p2(f11(c5,f19(A)),B) | -p2(f12(c5,f18(A)),B) | -p9(A,c16).  [resolve(1,a,4,b)].
+
+given #40 (I,wt=14): 62 p2(f12(c5,f17(A)),B) | -p2(f12(c21,A),B) | -p9(A,c16).  [resolve(1,a,5,a)].
+
+given #41 (I,wt=14): 63 p2(f11(c5,f25(A)),B) | -p2(f11(c5,A),B) | -p9(A,c23).  [resolve(1,a,6,b)].
+
+given #42 (I,wt=14): 64 p2(f12(c21,f25(A)),B) | -p2(f12(c21,A),B) | -p9(A,c23).  [resolve(1,a,7,a)].
+
+given #43 (I,wt=15): 65 p2(f12(c5,f19(A)),B) | -p2(f11(c13,f17(A)),B) | -p9(A,c16).  [resolve(8,b,2,b)].
+
+given #44 (I,wt=14): 66 p2(f12(c22,A),B) | -p2(f12(c5,f18(A)),B) | -p9(A,c16).  [resolve(8,b,3,a)].
+
+given #45 (I,wt=15): 67 p2(f12(c5,f18(A)),B) | -p2(f11(c5,f19(A)),B) | -p9(A,c16).  [resolve(8,b,4,b)].
+
+given #46 (I,wt=14): 68 p2(f12(c21,A),B) | -p2(f12(c5,f17(A)),B) | -p9(A,c16).  [resolve(8,b,5,a)].
+
+given #47 (I,wt=14): 69 p2(f11(c5,A),B) | -p2(f11(c5,f25(A)),B) | -p9(A,c23).  [resolve(8,b,6,b)].
+
+given #48 (I,wt=14): 70 p2(f12(c21,A),B) | -p2(f12(c21,f25(A)),B) | -p9(A,c23).  [resolve(8,b,7,a)].
+
+given #49 (I,wt=14): 71 -p9(A,c16) | p2(f11(c5,f20(A)),B) | -p2(f11(c5,A),B).  [resolve(9,a,1,a)].
+
+given #50 (I,wt=14): 72 -p9(A,c16) | p2(f11(c5,A),B) | -p2(f11(c5,f20(A)),B).  [resolve(9,a,8,b)].
+
+given #51 (I,wt=15): 73 -p9(A,c16) | p2(f11(c5,f17(A)),B) | -p2(f12(c5,f20(A)),B).  [resolve(10,b,1,a)].
+
+given #52 (I,wt=15): 74 -p9(A,c16) | p2(f12(c5,f20(A)),B) | -p2(f11(c5,f17(A)),B).  [resolve(10,b,8,b)].
+
+given #53 (I,wt=15): 75 -p9(A,c23) | p2(f11(c13,f25(A)),B) | -p2(f12(c21,f24(A)),B).  [resolve(11,a,1,a)].
+
+given #54 (I,wt=15): 76 -p9(A,c23) | p2(f12(c21,f24(A)),B) | -p2(f11(c13,f25(A)),B).  [resolve(11,a,8,b)].
+
+given #55 (I,wt=14): 77 -p9(A,c23) | p2(f11(c5,f24(A)),B) | -p2(f11(c13,A),B).  [resolve(12,a,1,a)].
+
+given #56 (I,wt=14): 78 -p9(A,c23) | p2(f11(c13,A),B) | -p2(f11(c5,f24(A)),B).  [resolve(12,a,8,b)].
+
+given #57 (I,wt=15): 79 -p9(A,c23) | p2(f11(c13,f20(A)),B) | -p2(f12(c22,f24(A)),B).  [resolve(13,a,1,a)].
+
+given #58 (I,wt=15): 80 -p9(A,c23) | p2(f12(c22,f24(A)),B) | -p2(f11(c13,f20(A)),B).  [resolve(13,a,8,b)].
+
+given #59 (I,wt=14): 81 -p9(A,c23) | p2(f12(c5,f20(A)),B) | -p2(f12(c22,A),B).  [resolve(14,a,1,a)].
+
+given #60 (I,wt=14): 82 -p9(A,c23) | p2(f12(c22,A),B) | -p2(f12(c5,f20(A)),B).  [resolve(14,a,8,b)].
+
+given #61 (I,wt=14): 83 -p9(A,c16) | p2(f11(c13,f20(A)),B) | -p2(f11(c13,A),B).  [resolve(15,b,1,a)].
+
+given #62 (I,wt=14): 84 -p9(A,c16) | p2(f11(c13,A),B) | -p2(f11(c13,f20(A)),B).  [resolve(15,b,8,b)].
+
+given #63 (I,wt=14): 85 -p9(A,c16) | p2(f11(c5,f18(A)),B) | -p2(f11(c5,A),B).  [resolve(16,a,1,a)].
+
+given #64 (I,wt=14): 86 -p9(A,c16) | p2(f11(c5,A),B) | -p2(f11(c5,f18(A)),B).  [resolve(16,a,8,b)].
+
+given #65 (I,wt=14): 87 -p9(A,c23) | p2(f11(c13,f24(A)),B) | -p2(f11(c22,A),B).  [resolve(17,a,1,a)].
+
+given #66 (I,wt=14): 88 -p9(A,c23) | p2(f11(c22,A),B) | -p2(f11(c13,f24(A)),B).  [resolve(17,a,8,b)].
+
+given #67 (I,wt=14): 89 -p9(A,c16) | p2(f11(c13,f18(A)),B) | -p2(f11(c13,A),B).  [resolve(18,b,1,a)].
+
+given #68 (I,wt=14): 90 -p9(A,c16) | p2(f11(c13,A),B) | -p2(f11(c13,f18(A)),B).  [resolve(18,b,8,b)].
+
+given #69 (I,wt=15): 91 -p9(A,c23) | p2(f11(c5,f20(A)),B) | -p2(f12(c22,f25(A)),B).  [resolve(19,b,1,a)].
+
+given #70 (I,wt=15): 92 -p9(A,c23) | p2(f12(c22,f25(A)),B) | -p2(f11(c5,f20(A)),B).  [resolve(19,b,8,b)].
+
+given #71 (I,wt=6): 93 -p2(A,c5) | -p2(A,c4).  [resolve(20,a,21,a)].
+
+given #72 (A,wt=4): 94 p9(f20(c26),c14).  [resolve(56,a,40,a)].
+
+given #73 (F,wt=5): 114 -p2(f12(c22,c26),c5).  [resolve(93,b,58,a)].
+
+given #74 (F,wt=5): 115 -p2(f11(c13,c26),c5).  [resolve(93,b,52,a)].
+
+given #75 (F,wt=5): 116 -p2(f11(c5,c26),c4).  [ur(93,a,54,a)].
+
+given #76 (F,wt=5): 117 -p2(f11(c22,c26),c4).  [ur(93,a,53,a)].
+
+given #77 (T,wt=4): 95 p9(f24(c26),c16).  [resolve(56,a,33,b)].
+
+given #78 (T,wt=4): 97 p9(f25(c26),c16).  [resolve(56,a,24,b)].
+
+given #79 (T,wt=5): 142 p9(f18(f24(c26)),c10).  [resolve(95,a,45,b)].
+
+given #80 (T,wt=5): 143 p9(f20(f24(c26)),c14).  [resolve(95,a,43,b)].
+
+given #81 (A,wt=6): 96 p6(c26,c7) | p6(c26,c8).  [resolve(56,a,28,b)].
+
+given #82 (F,wt=5): 118 -p2(f12(c21,c26),c4).  [ur(93,a,51,a)].
+
+given #83 (F,wt=6): 120 -p2(f12(c5,f20(c26)),c5).  [ur(82,a,56,a,b,114,a)].
+
+given #84 (F,wt=6): 121 -p2(f11(c5,f24(c26)),c5).  [ur(78,a,56,a,b,115,a)].
+
+given #85 (F,wt=6): 122 -p2(f11(c5,f25(c26)),c4).  [ur(69,a,116,a,c,56,a)].
+
+given #86 (T,wt=5): 144 p9(f17(f24(c26)),c10).  [resolve(95,a,39,b)].
+
+given #87 (T,wt=5): 145 p9(f19(f24(c26)),c15).  [resolve(95,a,30,a)].
+
+given #88 (T,wt=5): 165 p9(f18(f25(c26)),c10).  [resolve(97,a,45,b)].
+
+given #89 (T,wt=5): 166 p9(f20(f25(c26)),c14).  [resolve(97,a,43,b)].
+
+given #90 (A,wt=11): 98 p2(f11(c5,f25(c26)),A) | -p2(f11(c5,c26),A).  [resolve(63,c,56,a)].
+
+given #91 (F,wt=6): 123 -p2(f11(c13,f24(c26)),c4).  [ur(88,a,56,a,b,117,a)].
+
+given #92 (F,wt=6): 172 -p2(f12(c21,f25(c26)),c4).  [ur(70,a,118,a,c,56,a)].
+
+given #93 (F,wt=7): 173 -p2(f11(c5,f18(f24(c26))),c5).  [ur(86,a,95,a,b,121,a)].
+
+given #94 (F,wt=7): 174 -p2(f11(c5,f20(f24(c26))),c5).  [ur(72,a,95,a,b,121,a)].
+
+given #95 (T,wt=5): 167 p9(f17(f25(c26)),c10).  [resolve(97,a,39,b)].
+
+given #96 (T,wt=5): 168 p9(f19(f25(c26)),c15).  [resolve(97,a,30,a)].
+
+given #97 (T,wt=5): 170 p6(f18(f24(c26)),c7).  [resolve(142,a,28,b),unit_del(b,49)].
+
+given #98 (T,wt=5): 171 p6(f20(f24(c26)),c7).  [resolve(143,a,28,b),unit_del(b,55)].
+
+given #99 (A,wt=11): 99 p2(f12(c21,f25(c26)),A) | -p2(f12(c21,c26),A).  [resolve(64,c,56,a)].
+
+given #100 (F,wt=7): 175 -p2(f11(c5,f18(f25(c26))),c4).  [ur(86,a,97,a,b,122,a)].
+
+given #101 (F,wt=7): 176 -p2(f11(c5,f20(f25(c26))),c4).  [ur(72,a,97,a,b,122,a)].
+
+given #102 (F,wt=7): 182 -p2(f11(c13,f18(f24(c26))),c4).  [ur(90,a,95,a,b,123,a)].
+
+given #103 (F,wt=7): 183 -p2(f11(c13,f20(f24(c26))),c4).  [ur(84,a,95,a,b,123,a)].
+
+given #104 (T,wt=5): 177 p6(f17(f24(c26)),c7).  [resolve(144,a,28,b),unit_del(b,47)].
+
+given #105 (T,wt=5): 178 p6(f19(f24(c26)),c7).  [resolve(145,a,28,b),unit_del(b,46)].
+
+given #106 (T,wt=5): 179 p6(f18(f25(c26)),c7).  [resolve(165,a,28,b),unit_del(b,48)].
+
+given #107 (T,wt=6): 181 p2(f11(c5,f25(c26)),c5).  [resolve(98,b,54,a)].
+
+given #108 (A,wt=11): 100 p2(f11(c5,c26),A) | -p2(f11(c5,f25(c26)),A).  [resolve(69,c,56,a)].
+
+given #109 (F,wt=7): 184 -p2(f12(c5,f17(f25(c26))),c4).  [ur(68,a,172,a,c,97,a)].
+
+given #110 (F,wt=7): 192 -p2(f12(c5,f18(f24(c26))),c5).  [resolve(170,a,34,c),unit_del(a,142),unit_del(c,173)].
+
+given #111 (F,wt=6): 245 -p2(f12(c22,f24(c26)),c5).  [ur(60,a,192,a,c,95,a)].
+
+given #112 (F,wt=6): 251 -p2(f11(c13,f20(c26)),c5).  [ur(80,a,56,a,b,245,a)].
+
+given #113 (T,wt=6): 206 p2(f12(c21,f25(c26)),c5).  [resolve(99,b,51,a)].
+
+given #114 (T,wt=8): 119 p6(f20(c26),c7) | p6(f20(c26),c8).  [resolve(94,a,28,b)].
+
+given #115 (T,wt=8): 146 p6(f24(c26),c7) | p6(f24(c26),c8).  [resolve(95,a,28,b)].
+
+given #116 (T,wt=8): 169 p6(f25(c26),c7) | p6(f25(c26),c8).  [resolve(97,a,28,b)].
+
+given #117 (A,wt=11): 101 p2(f12(c21,c26),A) | -p2(f12(c21,f25(c26)),A).  [resolve(70,c,56,a)].
+
+given #118 (F,wt=7): 200 -p2(f12(c5,f20(f24(c26))),c4).  [resolve(171,a,36,c),unit_del(b,183),unit_del(c,143)].
+
+given #119 (F,wt=7): 244 -p2(f11(c5,f19(f24(c26))),c5).  [ur(67,a,192,a,c,95,a)].
+
+given #120 (F,wt=7): 246 -p2(f12(c5,f19(f24(c26))),c4).  [back_unit_del(232),unit_del(b,244)].
+
+given #121 (F,wt=7): 257 -p2(f12(c5,f17(f24(c26))),c4).  [back_unit_del(254),unit_del(a,256)].
+
+given #122 (T,wt=10): 180 p6(f20(f25(c26)),c7) | p6(f20(f25(c26)),c8).  [resolve(166,a,28,b)].
+
+given #123 (T,wt=10): 185 p6(f17(f25(c26)),c7) | p6(f17(f25(c26)),c8).  [resolve(167,a,28,b)].
+
+given #124 (T,wt=9): 261 p6(f17(f25(c26)),c7) | -p6(f20(c26),c8).  [resolve(185,b,50,a)].
+
+given #125 (T,wt=9): 262 p6(f17(f25(c26)),c7) | p6(f20(c26),c7).  [resolve(261,b,119,b)].
+
+given #126 (A,wt=12): 102 p2(f11(c13,f25(c26)),A) | -p2(f12(c21,f24(c26)),A).  [resolve(75,a,56,a)].
+
+given #127 (F,wt=6): 260 -p2(f12(c21,f24(c26)),c4).  [ur(62,a,257,a,c,95,a)].
+
+given #128 (F,wt=6): 271 -p2(f11(c13,f25(c26)),c4).  [ur(76,a,56,a,b,260,a)].
+
+given #129 (F,wt=7): 258 -p2(f11(A,f17(f24(c26))),c4).  [back_unit_del(209),unit_del(a,257)].
+
+given #130 (F,wt=7): 273 -p2(f11(c13,f20(f25(c26))),c4).  [ur(84,a,97,a,b,271,a)].
+
+given #131 (T,wt=10): 186 p6(f19(f25(c26)),c7) | p6(f19(f25(c26)),c8).  [resolve(168,a,28,b)].
+
+given #132 (T,wt=9): 277 p6(f19(f25(c26)),c7) | -p6(f20(c26),c8).  [resolve(186,b,57,a)].
+
+given #133 (T,wt=9): 278 p6(f19(f25(c26)),c7) | p6(f20(c26),c7).  [resolve(277,b,119,b)].
+
+given #134 (T,wt=11): 104 p2(f11(c5,f24(c26)),A) | -p2(f11(c13,c26),A).  [resolve(77,a,56,a)].
+
+given #135 (A,wt=12): 103 p2(f12(c21,f24(c26)),A) | -p2(f11(c13,f25(c26)),A).  [resolve(76,a,56,a)].
+
+given #136 (F,wt=7): 274 -p2(f12(c5,f18(f25(c26))),c4).  [back_unit_del(240),unit_del(a,272)].
+
+given #137 (F,wt=6): 295 -p2(f12(c22,f25(c26)),c4).  [ur(60,a,274,a,c,97,a)].
+
+given #138 (F,wt=6): 299 -p2(f11(c5,f20(c26)),c4).  [ur(92,a,56,a,b,295,a)].
+
+given #139 (F,wt=7): 275 -p2(f11(A,f18(f25(c26))),c4).  [back_unit_del(234),unit_del(a,274)].
+
+given #140 (T,wt=6): 293 p2(f11(c5,f24(c26)),c4).  [resolve(104,b,52,a)].
+
+given #141 (T,wt=11): 105 p2(f11(c13,c26),A) | -p2(f11(c5,f24(c26)),A).  [resolve(78,a,56,a)].
+
+given #142 (T,wt=11): 108 p2(f12(c5,f20(c26)),A) | -p2(f12(c22,c26),A).  [resolve(81,a,56,a)].
+
+given #143 (T,wt=6): 300 p2(f12(c5,f20(c26)),c4).  [resolve(108,b,58,a)].
+
+given #144 (A,wt=12): 106 p2(f11(c13,f20(c26)),A) | -p2(f12(c22,f24(c26)),A).  [resolve(79,a,56,a)].
+
+given #145 (F,wt=4): 301 -p6(f20(c26),c7).  [ur(26,a,300,a,b,94,a,c,299,a)].
+
+given #146 (F,wt=5): 321 -p6(f19(f25(c26)),c8).  [back_unit_del(57),unit_del(b,319)].
+
+given #147 (F,wt=5): 322 -p6(f17(f25(c26)),c8).  [back_unit_del(50),unit_del(b,319)].
+
+given #148 (F,wt=7): 294 -p2(f11(c5,f19(f25(c26))),c4).  [ur(67,a,274,a,c,97,a)].
+
+given #149 (T,wt=4): 319 p6(f20(c26),c8).  [back_unit_del(119),unit_del(a,301)].
+
+given #150 (T,wt=5): 310 p6(f19(f25(c26)),c7).  [back_unit_del(278),unit_del(b,301)].
+
+given #151 (T,wt=5): 318 p6(f17(f25(c26)),c7).  [back_unit_del(262),unit_del(b,301)].
+
+given #152 (T,wt=11): 109 p2(f12(c22,c26),A) | -p2(f12(c5,f20(c26)),A).  [resolve(82,a,56,a)].
+
+given #153 (A,wt=12): 107 p2(f12(c22,f24(c26)),A) | -p2(f11(c13,f20(c26)),A).  [resolve(80,a,56,a)].
+
+given #154 (F,wt=7): 302 -p2(f12(c5,f19(f25(c26))),c5).  [back_unit_del(298),unit_del(a,301)].
+
+given #155 (F,wt=7): 316 -p2(f11(A,f17(f25(c26))),c4).  [back_unit_del(265),unit_del(a,301)].
+
+given #156 (F,wt=7): 323 -p2(f11(c13,f17(f25(c26))),c5).  [ur(65,a,302,a,c,97,a)].
+
+given #157 (F,wt=7): 324 -p2(f12(c5,f17(f25(c26))),c5).  [back_unit_del(314),unit_del(b,323)].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.04 (+ 0.00) seconds.
+% Length of proof is 125.
+% Level of proof is 20.
+% Maximum clause weight is 21.000.
+% Given clauses 157.
+
+1 -p1(A,B) | p2(B,C) | -p2(A,C).  [assumption].
+2 -p9(A,c16) | p1(f12(c5,f19(A)),f11(c13,f17(A))).  [assumption].
+3 p1(f12(c22,A),f12(c5,f18(A))) | -p9(A,c16).  [assumption].
+4 -p9(A,c16) | p1(f12(c5,f18(A)),f11(c5,f19(A))).  [assumption].
+5 p1(f12(c21,A),f12(c5,f17(A))) | -p9(A,c16).  [assumption].
+6 -p9(A,c23) | p1(f11(c5,A),f11(c5,f25(A))).  [assumption].
+7 p1(f12(c21,A),f12(c21,f25(A))) | -p9(A,c23).  [assumption].
+8 p2(A,B) | -p1(A,C) | -p2(C,B).  [assumption].
+10 -p9(A,c16) | p1(f12(c5,f20(A)),f11(c5,f17(A))).  [assumption].
+11 p1(f12(c21,f24(A)),f11(c13,f25(A))) | -p9(A,c23).  [assumption].
+12 p1(f11(c13,A),f11(c5,f24(A))) | -p9(A,c23).  [assumption].
+14 p1(f12(c22,A),f12(c5,f20(A))) | -p9(A,c23).  [assumption].
+15 -p9(A,c16) | p1(f11(c13,A),f11(c13,f20(A))).  [assumption].
+16 p1(f11(c5,A),f11(c5,f18(A))) | -p9(A,c16).  [assumption].
+17 p1(f11(c22,A),f11(c13,f24(A))) | -p9(A,c23).  [assumption].
+18 -p9(A,c16) | p1(f11(c13,A),f11(c13,f18(A))).  [assumption].
+19 -p9(A,c23) | p1(f12(c22,f25(A)),f11(c5,f20(A))).  [assumption].
+20 p3(A,B) | -p2(C,B) | -p2(C,A).  [assumption].
+21 -p3(c4,c5).  [assumption].
+23 -p2(f12(c5,A),c4) | -p9(A,c15) | p2(f11(c5,A),c5) | -p6(A,c7).  [assumption].
+24 p9(f25(A),c16) | -p9(A,c23).  [assumption].
+26 -p2(f12(c5,A),c4) | -p9(A,c14) | p2(f11(c5,A),c4) | -p6(A,c7).  [assumption].
+27 p2(f11(c13,A),c4) | -p2(f12(c5,A),c4) | p2(f11(c5,A),c4) | -p6(A,c7) | -p9(A,c10).  [assumption].
+28 p6(A,c7) | -p9(A,B) | p6(A,c8).  [assumption].
+30 -p9(A,c16) | p9(f19(A),c15).  [assumption].
+33 p9(f24(A),c16) | -p9(A,c23).  [assumption].
+34 -p9(A,c10) | -p2(f12(c5,A),c5) | -p6(A,c7) | p2(f11(c5,A),c5).  [assumption].
+35 -p6(A,c7) | -p9(A,c10) | -p2(f12(c5,A),c5) | p2(f11(c13,A),c5).  [assumption].
+36 -p2(f12(c5,A),c4) | p2(f11(c13,A),c4) | -p6(A,c7) | -p9(A,c14).  [assumption].
+37 p2(f11(c5,A),c4) | -p2(f12(c5,A),c5) | -p6(A,c7) | -p9(A,c15).  [assumption].
+39 p9(f17(A),c10) | -p9(A,c16).  [assumption].
+40 -p9(A,c23) | p9(f20(A),c14).  [assumption].
+43 p9(f20(A),c14) | -p9(A,c16).  [assumption].
+45 p9(f18(A),c10) | -p9(A,c16).  [assumption].
+46 -p6(f19(f24(c26)),c8).  [assumption].
+47 -p6(f17(f24(c26)),c8).  [assumption].
+48 -p6(f18(f25(c26)),c8).  [assumption].
+49 -p6(f18(f24(c26)),c8).  [assumption].
+50 -p6(f17(f25(c26)),c8) | -p6(f20(c26),c8).  [assumption].
+51 p2(f12(c21,c26),c5).  [assumption].
+52 p2(f11(c13,c26),c4).  [assumption].
+53 p2(f11(c22,c26),c5).  [assumption].
+54 p2(f11(c5,c26),c5).  [assumption].
+55 -p6(f20(f24(c26)),c8).  [assumption].
+56 p9(c26,c23).  [assumption].
+57 -p6(f19(f25(c26)),c8) | -p6(f20(c26),c8).  [assumption].
+58 p2(f12(c22,c26),c4).  [assumption].
+60 p2(f12(c5,f18(A)),B) | -p2(f12(c22,A),B) | -p9(A,c16).  [resolve(1,a,3,a)].
+62 p2(f12(c5,f17(A)),B) | -p2(f12(c21,A),B) | -p9(A,c16).  [resolve(1,a,5,a)].
+64 p2(f12(c21,f25(A)),B) | -p2(f12(c21,A),B) | -p9(A,c23).  [resolve(1,a,7,a)].
+65 p2(f12(c5,f19(A)),B) | -p2(f11(c13,f17(A)),B) | -p9(A,c16).  [resolve(8,b,2,b)].
+67 p2(f12(c5,f18(A)),B) | -p2(f11(c5,f19(A)),B) | -p9(A,c16).  [resolve(8,b,4,b)].
+69 p2(f11(c5,A),B) | -p2(f11(c5,f25(A)),B) | -p9(A,c23).  [resolve(8,b,6,b)].
+74 -p9(A,c16) | p2(f12(c5,f20(A)),B) | -p2(f11(c5,f17(A)),B).  [resolve(10,b,8,b)].
+76 -p9(A,c23) | p2(f12(c21,f24(A)),B) | -p2(f11(c13,f25(A)),B).  [resolve(11,a,8,b)].
+78 -p9(A,c23) | p2(f11(c13,A),B) | -p2(f11(c5,f24(A)),B).  [resolve(12,a,8,b)].
+81 -p9(A,c23) | p2(f12(c5,f20(A)),B) | -p2(f12(c22,A),B).  [resolve(14,a,1,a)].
+84 -p9(A,c16) | p2(f11(c13,A),B) | -p2(f11(c13,f20(A)),B).  [resolve(15,b,8,b)].
+86 -p9(A,c16) | p2(f11(c5,A),B) | -p2(f11(c5,f18(A)),B).  [resolve(16,a,8,b)].
+88 -p9(A,c23) | p2(f11(c22,A),B) | -p2(f11(c13,f24(A)),B).  [resolve(17,a,8,b)].
+90 -p9(A,c16) | p2(f11(c13,A),B) | -p2(f11(c13,f18(A)),B).  [resolve(18,b,8,b)].
+92 -p9(A,c23) | p2(f12(c22,f25(A)),B) | -p2(f11(c5,f20(A)),B).  [resolve(19,b,8,b)].
+93 -p2(A,c5) | -p2(A,c4).  [resolve(20,a,21,a)].
+94 p9(f20(c26),c14).  [resolve(56,a,40,a)].
+95 p9(f24(c26),c16).  [resolve(56,a,33,b)].
+97 p9(f25(c26),c16).  [resolve(56,a,24,b)].
+99 p2(f12(c21,f25(c26)),A) | -p2(f12(c21,c26),A).  [resolve(64,c,56,a)].
+108 p2(f12(c5,f20(c26)),A) | -p2(f12(c22,c26),A).  [resolve(81,a,56,a)].
+115 -p2(f11(c13,c26),c5).  [resolve(93,b,52,a)].
+116 -p2(f11(c5,c26),c4).  [ur(93,a,54,a)].
+117 -p2(f11(c22,c26),c4).  [ur(93,a,53,a)].
+119 p6(f20(c26),c7) | p6(f20(c26),c8).  [resolve(94,a,28,b)].
+121 -p2(f11(c5,f24(c26)),c5).  [ur(78,a,56,a,b,115,a)].
+122 -p2(f11(c5,f25(c26)),c4).  [ur(69,a,116,a,c,56,a)].
+123 -p2(f11(c13,f24(c26)),c4).  [ur(88,a,56,a,b,117,a)].
+142 p9(f18(f24(c26)),c10).  [resolve(95,a,45,b)].
+143 p9(f20(f24(c26)),c14).  [resolve(95,a,43,b)].
+144 p9(f17(f24(c26)),c10).  [resolve(95,a,39,b)].
+145 p9(f19(f24(c26)),c15).  [resolve(95,a,30,a)].
+165 p9(f18(f25(c26)),c10).  [resolve(97,a,45,b)].
+167 p9(f17(f25(c26)),c10).  [resolve(97,a,39,b)].
+168 p9(f19(f25(c26)),c15).  [resolve(97,a,30,a)].
+170 p6(f18(f24(c26)),c7).  [resolve(142,a,28,b),unit_del(b,49)].
+171 p6(f20(f24(c26)),c7).  [resolve(143,a,28,b),unit_del(b,55)].
+173 -p2(f11(c5,f18(f24(c26))),c5).  [ur(86,a,95,a,b,121,a)].
+175 -p2(f11(c5,f18(f25(c26))),c4).  [ur(86,a,97,a,b,122,a)].
+177 p6(f17(f24(c26)),c7).  [resolve(144,a,28,b),unit_del(b,47)].
+178 p6(f19(f24(c26)),c7).  [resolve(145,a,28,b),unit_del(b,46)].
+179 p6(f18(f25(c26)),c7).  [resolve(165,a,28,b),unit_del(b,48)].
+183 -p2(f11(c13,f20(f24(c26))),c4).  [ur(84,a,95,a,b,123,a)].
+185 p6(f17(f25(c26)),c7) | p6(f17(f25(c26)),c8).  [resolve(167,a,28,b)].
+186 p6(f19(f25(c26)),c7) | p6(f19(f25(c26)),c8).  [resolve(168,a,28,b)].
+192 -p2(f12(c5,f18(f24(c26))),c5).  [resolve(170,a,34,c),unit_del(a,142),unit_del(c,173)].
+200 -p2(f12(c5,f20(f24(c26))),c4).  [resolve(171,a,36,c),unit_del(b,183),unit_del(c,143)].
+206 p2(f12(c21,f25(c26)),c5).  [resolve(99,b,51,a)].
+215 p2(f11(c13,f17(f24(c26))),c4) | -p2(f12(c5,f17(f24(c26))),c4) | p2(f11(c5,f17(f24(c26))),c4).  [resolve(177,a,27,d),unit_del(d,144)].
+232 -p2(f12(c5,f19(f24(c26))),c4) | p2(f11(c5,f19(f24(c26))),c5).  [resolve(178,a,23,d),unit_del(b,145)].
+240 p2(f11(c13,f18(f25(c26))),c4) | -p2(f12(c5,f18(f25(c26))),c4).  [resolve(179,a,27,d),unit_del(c,175),unit_del(d,165)].
+244 -p2(f11(c5,f19(f24(c26))),c5).  [ur(67,a,192,a,c,95,a)].
+246 -p2(f12(c5,f19(f24(c26))),c4).  [back_unit_del(232),unit_del(b,244)].
+252 -p2(f11(c5,f17(f24(c26))),c4).  [ur(74,a,95,a,b,200,a)].
+254 p2(f11(c13,f17(f24(c26))),c4) | -p2(f12(c5,f17(f24(c26))),c4).  [back_unit_del(215),unit_del(c,252)].
+256 -p2(f11(c13,f17(f24(c26))),c4).  [ur(65,a,246,a,c,95,a)].
+257 -p2(f12(c5,f17(f24(c26))),c4).  [back_unit_del(254),unit_del(a,256)].
+260 -p2(f12(c21,f24(c26)),c4).  [ur(62,a,257,a,c,95,a)].
+261 p6(f17(f25(c26)),c7) | -p6(f20(c26),c8).  [resolve(185,b,50,a)].
+262 p6(f17(f25(c26)),c7) | p6(f20(c26),c7).  [resolve(261,b,119,b)].
+267 p6(f20(c26),c7) | -p2(f12(c5,f17(f25(c26))),c5) | p2(f11(c13,f17(f25(c26))),c5).  [resolve(262,a,35,a),unit_del(b,167)].
+271 -p2(f11(c13,f25(c26)),c4).  [ur(76,a,56,a,b,260,a)].
+272 -p2(f11(c13,f18(f25(c26))),c4).  [ur(90,a,97,a,b,271,a)].
+274 -p2(f12(c5,f18(f25(c26))),c4).  [back_unit_del(240),unit_del(a,272)].
+277 p6(f19(f25(c26)),c7) | -p6(f20(c26),c8).  [resolve(186,b,57,a)].
+278 p6(f19(f25(c26)),c7) | p6(f20(c26),c7).  [resolve(277,b,119,b)].
+283 p6(f20(c26),c7) | p2(f11(c5,f19(f25(c26))),c4) | -p2(f12(c5,f19(f25(c26))),c5).  [resolve(278,a,37,c),unit_del(d,168)].
+294 -p2(f11(c5,f19(f25(c26))),c4).  [ur(67,a,274,a,c,97,a)].
+295 -p2(f12(c22,f25(c26)),c4).  [ur(60,a,274,a,c,97,a)].
+298 p6(f20(c26),c7) | -p2(f12(c5,f19(f25(c26))),c5).  [back_unit_del(283),unit_del(b,294)].
+299 -p2(f11(c5,f20(c26)),c4).  [ur(92,a,56,a,b,295,a)].
+300 p2(f12(c5,f20(c26)),c4).  [resolve(108,b,58,a)].
+301 -p6(f20(c26),c7).  [ur(26,a,300,a,b,94,a,c,299,a)].
+302 -p2(f12(c5,f19(f25(c26))),c5).  [back_unit_del(298),unit_del(a,301)].
+314 -p2(f12(c5,f17(f25(c26))),c5) | p2(f11(c13,f17(f25(c26))),c5).  [back_unit_del(267),unit_del(a,301)].
+323 -p2(f11(c13,f17(f25(c26))),c5).  [ur(65,a,302,a,c,97,a)].
+324 -p2(f12(c5,f17(f25(c26))),c5).  [back_unit_del(314),unit_del(b,323)].
+330 $F.  [ur(62,a,324,a,c,97,a),unit_del(a,206)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=157. Generated=440. Kept=307. proofs=1.
+Usable=147. Sos=78. Demods=0. Limbo=0, Disabled=175. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=132. Back_subsumed=38.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=44.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=44. Nonunit_bsub_feature_tests=268.
+Megabytes=0.39.
+User_CPU=0.04, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 1 proof.
+
+Process 4532 exit (max_proofs) Tue Nov  3 09:39:06 2009

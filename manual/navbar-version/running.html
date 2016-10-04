@@ -1,0 +1,199 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+  <title>Prover9 Manual: Running Prover9</title>
+ <link rel="stylesheet" href="manual.css">
+</head>
+
+<body>
+
+<!-- Site navigation menu -->
+
+<ul class="navbar">
+  <li><a href="index.html">Introduction</a>
+  <li><a href="install.html">Installation</a>
+  <li><a href="running.html">Running Prover9</a>
+  <li><a href="input.html">Input Files</a>
+  <li><a href="syntax.html">Clauses & Formulas</a>
+  <li>Search Prep
+  <ul class="navbar2">
+    <li><a href="auto.html">Auto Modes</a>
+    <li><a href="term-order.html">Term Ordering</a>
+    <li><a href="more-prep.html">More Prep</a>
+    <li><a href="limits.html">Search Limits</a>
+  </ul>
+  <li>Inference
+  <ul class="navbar2">
+    <li><a href="loop.html">The Loop</a>
+    <li><a href="select.html">Select Given</a>
+    <li><a href="inf-rules.html">Inference Rules</a>
+    <li><a href="process-inf.html">Process Inferred</a>
+  </ul>
+  <li><a href="output.html">Output Files</a>
+  <li>More Features
+  <ul class="navbar2">
+    <li><a href="weight.html">Weighting</a>
+    <li><a href="attributes.html">Attributes</a>
+    <li><a href="actions.html">Actions</a>
+    <li><a href="fof-reduction.html">FOF Reduction</a>
+    <li><a href="goals.html">Goals</a>
+    <li><a href="hints.html">Hints</a>
+    <li><a href="semantics.html">Semantics</a>
+  </ul>
+  <li>Related Programs
+  <ul class="navbar2">
+    <li><a href="prooftrans.html">Prooftrans</a>
+    <li><a href="mace4.html">Mace4</a>
+  </ul>
+  <li>Ending
+  <ul class="navbar2">
+    <li><a href="options.html">All Options</a>
+    <li><a href="glossary.html">Glossary</a>
+    <li><a href="manual-index.html">Index</a>
+    <li><a href="references.html">References</a>
+  </ul>
+</ul>
+
+<div class="header">Prover9 Manual Version June-2006</div>
+
+<!-- Main content -->
+
+<h1>Running Prover9</h1>
+
+The standard way of running Prover9 is to (1) prepare an input file
+containing the logical specification of a conjecture and the
+search parameters, (2) issue a command that runs Prover9 on the
+input file and produces an output file, (3) look at the output, and
+(4) maybe run Prover9 again with different search parameters.
+
+<p>
+A graphical user interface (GUI) for Prover9 is under development,
+but it is not described in this manual.
+Nearly all of the information in this manual applies also
+when using the GUI.
+
+<h2>An Input File</h2>
+
+Here is an input file; assume it is named <tt>subset_trans.in</tt>.
+<br />
+(Use a plain text editor, not a word processor, to create input files.)
+
+<pre class="my_file">
+formulas(sos).
+  all x all y (subset(x,y) <-> (all z (member(z,x) -> member(z,y)))).
+end_of_list.
+
+formulas(goals).
+  all x all y all z (subset(x,y) & subset(y,z) -> subset(x,z)).
+end_of_list.
+</pre>
+
+<h2>A Basic Prover9 Command</h2>
+
+Here is a command to run Prover9 on the preceding file and
+send the output to a file called <tt>subset_trans.out</tt>.
+<br />
+
+<pre class="my_job">
+prover9 -f <a href="subset_trans.in">subset_trans.in</a> &gt; <a href="subset_trans.out">subset_trans.out</a>
+</pre>
+
+When you run the preceding command, a message like the following should
+appear immediately on your screen.
+<pre class="my_screen">
+-------- Proof 1 -------- 
+THEOREM PROVED
+------ process 3666 exit (max_proofs) ------
+</pre>
+The output file <a href="subset_trans.out">subset_trans.out</a> 
+should contain the proof (and a lot of other information about the job).
+</p>
+
+<h2>Taking Input from Standard Input</h2>
+
+<p>
+Prover9 jobs can be run in a slightly different way, taking input from
+"standard input" instead of a named file, as follows.
+<pre class="my_job">
+prover9 &lt; <a href="subset_trans.in">subset_trans.in</a> &gt; <a href="subset_trans.out2">subset_trans.out2</a>
+</pre>
+The disadvantage of using this method is that the name of the input
+file is not given in the output file.
+</p>
+
+<h2>More Than One Input File</h2>
+
+<p>
+The input can occur in more than one file:
+<pre class="my_job">
+prover9 -f <a href="subset.in">subset.in</a> <a href="trans.in">trans.in</a> &gt; <a href="subset_trans.out3">subset_trans.out3</a>
+</pre>
+All arguments after the "<tt>-f</tt>" are taken as input filenames,
+and there can be as many as you like.
+When multiple filnames are given on the command line,
+a list of objects (clauses, formulas, or terms)
+cannot be split across more than one file.
+
+<h2>Time Limit on the Command Line</h2>
+
+Prover9 also accepts a time limit, in seconds, on the command line.
+The following command limits the job to about 10 seconds.
+<pre class="my_job">
+prover9 -t 10 -f <a href="subset_trans.in">subset_trans.in</a> &gt; <a href="subset_trans.out4">subset_trans.out4</a>
+</pre>
+If "<tt>-t</tt>" and "<tt>-f</tt>" are both in the command, the "<tt>-t</tt>" must occur first.
+
+<h2>Getting Statistics During the Search</h2>
+
+<i>This section applies to Unix-like systems only.</i>
+
+<p>
+If a Prover9 process is running in the background, one can tell it
+to send search statistics (without killing the job) to the output file
+sending a "USR1" signal to the process.  For example,
+<pre class="my_job">
+% prover9 -f p3a.in > p3a.outb &
+    [1] 31613
+% kill -USR1 31613
+    A report (17.75 seconds) has been sent to the output.
+</pre>
+
+<h2>Calling Prover9 From Another Program</h2>
+
+<p>
+If Prover9 is called from another program (e.g., a shell script,
+a Perl script, or a Python script), Prover9's exit codes can
+tell the other program the reason Prover9 terminates.  The following
+table shows the exit codes.
+
+<table "border" celpadding="5" align="center">
+<tr><th>Exit Code<th>Reason for Termination</tr>
+<tr>
+<td>0   (MAX_PROOFS) <td>The specified number of proofs (<a href="limits.html#max_proofs"><tt><b>max_proofs</b></tt></a>) was found.
+<tr>
+<td>1   (FATAL) <td>A fatal error occurred (user's syntax error or Prover9's bug).
+<tr>
+<td>2   (SOS_EMPTY) <td>Prover9 ran out of things to do (sos list exhausted).
+<tr>
+<td>3   (MAX_MEGS) <td>The <a href="limits.html#max_megs"><tt><b>max_megs</b></tt></a> (memory limit) parameter was exceeded.
+<tr>
+<td>4   (MAX_SECONDS) <td>The <a href="limits.html#max_seconds"><tt><b>max_seconds</b></tt></a> parameter was exceeded.
+<tr>
+<td>5   (MAX_GIVEN) <td>The <a href="limits.html#max_given"><tt><b>max_given</b></tt></a> parameter was exceeded.
+<tr>
+<td>6   (MAX_KEPT) <td>The <a href="limits.html#max_kept"><tt><b>max_kept</b></tt></a> parameter was exceeded.
+<tr>
+<td>7   (ACTION) <td>A Prover9 <a href="actions.html">action</a> terminated the search.
+<tr>
+<td>101 (SIGINT) <td>Prover9 received an interrupt signal.
+<tr>
+<td>102 (SIGSEGV) <td>Prover9 crashed, most probably due to a bug.
+</table>
+
+<p>
+The calling program will probably want to look in Prover9's output,
+for example, to extract a proof.  See the page on
+<a href="output.html">Prover9 output files</a>.
+
+</body>
+</html>

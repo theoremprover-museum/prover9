@@ -1,0 +1,1334 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE proofs SYSTEM "proof3.dtd">
+
+<?xml-stylesheet type="text/xsl" href="proof3.xsl"?>
+
+<proofs number_of_proofs="1">
+
+<source>wang2.out</source>
+
+<heading><![CDATA[
+Prover9 (32) version 2009-11A, November 2009.
+Process 5140 was started by mccune on cleo,
+Tue Nov  3 09:45:44 2009
+The command was "/home/mccune/LADR/bin/prover9 -f wang.in wang2.in".
+]]></heading>
+
+<proof number="1" length="91" max_count="19">
+
+<comments><![CDATA[
+% Proof 1 at 1.58 (+ 0.04) seconds.
+% Length of proof is 91.
+% Level of proof is 37.
+% Maximum clause weight is 19.000.
+% Given clauses 2942.
+
+]]></comments>
+
+  <clause id="1" type="assumption">
+    <literal><![CDATA[
+      x == m
+    ]]></literal>
+    <literal><![CDATA[
+      p(x,m)
+    ]]></literal>
+    <literal><![CDATA[
+      y == m
+    ]]></literal>
+    <literal><![CDATA[
+      y == x
+    ]]></literal>
+    <literal><![CDATA[
+      -p(x,y)
+    ]]></literal>
+    <literal><![CDATA[
+      -p(y,x)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="3" type="assumption">
+    <literal><![CDATA[
+      x == k
+    ]]></literal>
+    <literal><![CDATA[
+      x == m
+    ]]></literal>
+    <literal><![CDATA[
+      x == b
+    ]]></literal>
+    <literal><![CDATA[
+      -p(x,k)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="4" type="assumption">
+    <literal><![CDATA[
+      x == m
+    ]]></literal>
+    <literal><![CDATA[
+      -p(x,m)
+    ]]></literal>
+    <literal><![CDATA[
+      -(f(x) == m)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="5" type="assumption">
+    <literal><![CDATA[
+      x == m
+    ]]></literal>
+    <literal><![CDATA[
+      -p(x,m)
+    ]]></literal>
+    <literal><![CDATA[
+      -(f(x) == x)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="6" type="assumption">
+    <literal><![CDATA[
+      x == m
+    ]]></literal>
+    <literal><![CDATA[
+      -p(x,m)
+    ]]></literal>
+    <literal><![CDATA[
+      p(x,f(x))
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="7" type="assumption">
+    <literal><![CDATA[
+      x == m
+    ]]></literal>
+    <literal><![CDATA[
+      -p(x,m)
+    ]]></literal>
+    <literal><![CDATA[
+      p(f(x),x)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="9" type="assumption">
+    <literal><![CDATA[
+      x == b
+    ]]></literal>
+    <literal><![CDATA[
+      p(x,b)
+    ]]></literal>
+    <literal><![CDATA[
+      -(g(x) == x)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="10" type="assumption">
+    <literal><![CDATA[
+      x == b
+    ]]></literal>
+    <literal><![CDATA[
+      p(x,b)
+    ]]></literal>
+    <literal><![CDATA[
+      p(x,g(x))
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="11" type="assumption">
+    <literal><![CDATA[
+      x == b
+    ]]></literal>
+    <literal><![CDATA[
+      p(x,b)
+    ]]></literal>
+    <literal><![CDATA[
+      p(g(x),x)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="12" type="assumption">
+    <literal><![CDATA[
+      x == k
+    ]]></literal>
+    <literal><![CDATA[
+      -(x == m)
+    ]]></literal>
+    <literal><![CDATA[
+      p(x,k)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="13" type="assumption">
+    <literal><![CDATA[
+      x == k
+    ]]></literal>
+    <literal><![CDATA[
+      -(x == b)
+    ]]></literal>
+    <literal><![CDATA[
+      p(x,k)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="14" type="assumption">
+    <literal><![CDATA[
+      x == x
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="15" type="assumption">
+    <literal><![CDATA[
+      -(x == y)
+    ]]></literal>
+    <literal><![CDATA[
+      y == x
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="16" type="assumption">
+    <literal><![CDATA[
+      -(x == y)
+    ]]></literal>
+    <literal><![CDATA[
+      -(y == z)
+    ]]></literal>
+    <literal><![CDATA[
+      x == z
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="17" type="assumption">
+    <literal><![CDATA[
+      -(x == y)
+    ]]></literal>
+    <literal><![CDATA[
+      -p(x,z)
+    ]]></literal>
+    <literal><![CDATA[
+      p(y,z)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="18" type="assumption">
+    <literal><![CDATA[
+      -(x == y)
+    ]]></literal>
+    <literal><![CDATA[
+      -p(z,x)
+    ]]></literal>
+    <literal><![CDATA[
+      p(z,y)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="19" type="assumption">
+    <literal><![CDATA[
+      -(x == y)
+    ]]></literal>
+    <literal><![CDATA[
+      f(x) == f(y)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="21" type="assumption">
+    <literal><![CDATA[
+      -(m == b)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="22" type="assumption">
+    <literal><![CDATA[
+      b == k
+    ]]></literal>
+    <literal><![CDATA[
+      k == m
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="23" type="assumption">
+    <literal><![CDATA[
+      x == j
+    ]]></literal>
+    <literal><![CDATA[
+      -p(x,j)
+    ]]></literal>
+    <literal><![CDATA[
+      x == k
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="24" type="assumption">
+    <literal><![CDATA[
+      x == j
+    ]]></literal>
+    <literal><![CDATA[
+      p(x,j)
+    ]]></literal>
+    <literal><![CDATA[
+      -(x == k)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="36">
+    <literal><![CDATA[
+      b == k
+    ]]></literal>
+    <literal><![CDATA[
+      p(b,k)
+    ]]></literal>
+    <justification jstring="[resolve(14,a,13,b)].">
+      <j1 rule="resolve" parents="14 13"/>
+    </justification>
+  </clause>
+
+  <clause id="37">
+    <literal><![CDATA[
+      m == k
+    ]]></literal>
+    <literal><![CDATA[
+      p(m,k)
+    ]]></literal>
+    <justification jstring="[resolve(14,a,12,b)].">
+      <j1 rule="resolve" parents="14 12"/>
+    </justification>
+  </clause>
+
+  <clause id="41">
+    <literal><![CDATA[
+      -(g(x) == y)
+    ]]></literal>
+    <literal><![CDATA[
+      p(x,y)
+    ]]></literal>
+    <literal><![CDATA[
+      x == b
+    ]]></literal>
+    <literal><![CDATA[
+      p(x,b)
+    ]]></literal>
+    <justification jstring="[resolve(18,b,10,c)].">
+      <j1 rule="resolve" parents="18 10"/>
+    </justification>
+  </clause>
+
+  <clause id="42">
+    <literal><![CDATA[
+      -(b == m)
+    ]]></literal>
+    <justification jstring="[ur(15,b,21,a)].">
+      <j1 rule="ur" parents="15 21"/>
+    </justification>
+  </clause>
+
+  <clause id="45">
+    <literal><![CDATA[
+      b == k
+    ]]></literal>
+    <literal><![CDATA[
+      -(x == k)
+    ]]></literal>
+    <literal><![CDATA[
+      x == m
+    ]]></literal>
+    <justification jstring="[resolve(22,b,16,b)].">
+      <j1 rule="resolve" parents="22 16"/>
+    </justification>
+  </clause>
+
+  <clause id="47">
+    <literal><![CDATA[
+      b == k
+    ]]></literal>
+    <literal><![CDATA[
+      m == k
+    ]]></literal>
+    <justification jstring="[resolve(22,b,15,a)].">
+      <j1 rule="resolve" parents="22 15"/>
+    </justification>
+  </clause>
+
+  <clause id="48">
+    <literal><![CDATA[
+      g(j) == j
+    ]]></literal>
+    <literal><![CDATA[
+      g(j) == k
+    ]]></literal>
+    <literal><![CDATA[
+      j == b
+    ]]></literal>
+    <literal><![CDATA[
+      p(j,b)
+    ]]></literal>
+    <justification jstring="[resolve(23,b,11,c)].">
+      <j1 rule="resolve" parents="23 11"/>
+    </justification>
+  </clause>
+
+  <clause id="49">
+    <literal><![CDATA[
+      k == j
+    ]]></literal>
+    <literal><![CDATA[
+      p(k,j)
+    ]]></literal>
+    <justification jstring="[resolve(24,c,14,a)].">
+      <j1 rule="resolve" parents="24 14"/>
+    </justification>
+  </clause>
+
+  <clause id="51">
+    <literal><![CDATA[
+      b == k
+    ]]></literal>
+    <literal><![CDATA[
+      -(k == x)
+    ]]></literal>
+    <literal><![CDATA[
+      p(b,x)
+    ]]></literal>
+    <justification jstring="[resolve(36,b,18,b)].">
+      <j1 rule="resolve" parents="36 18"/>
+    </justification>
+  </clause>
+
+  <clause id="53">
+    <literal><![CDATA[
+      m == k
+    ]]></literal>
+    <literal><![CDATA[
+      -(k == x)
+    ]]></literal>
+    <literal><![CDATA[
+      p(m,x)
+    ]]></literal>
+    <justification jstring="[resolve(37,b,18,b)].">
+      <j1 rule="resolve" parents="37 18"/>
+    </justification>
+  </clause>
+
+  <clause id="62">
+    <literal><![CDATA[
+      k == j
+    ]]></literal>
+    <literal><![CDATA[
+      -(j == x)
+    ]]></literal>
+    <literal><![CDATA[
+      p(k,x)
+    ]]></literal>
+    <justification jstring="[resolve(49,b,18,b)].">
+      <j1 rule="resolve" parents="49 18"/>
+    </justification>
+  </clause>
+
+  <clause id="63">
+    <literal><![CDATA[
+      k == j
+    ]]></literal>
+    <literal><![CDATA[
+      -(k == x)
+    ]]></literal>
+    <literal><![CDATA[
+      p(x,j)
+    ]]></literal>
+    <justification jstring="[resolve(49,b,17,b)].">
+      <j1 rule="resolve" parents="49 17"/>
+    </justification>
+  </clause>
+
+  <clause id="86">
+    <literal><![CDATA[
+      b == k
+    ]]></literal>
+    <literal><![CDATA[
+      p(b,m)
+    ]]></literal>
+    <justification jstring="[resolve(51,b,22,b),merge(c)].">
+      <j1 rule="resolve" parents="51 22"/>
+      <j2 rule="merge"/>
+    </justification>
+  </clause>
+
+  <clause id="89">
+    <literal><![CDATA[
+      b == k
+    ]]></literal>
+    <literal><![CDATA[
+      p(f(b),b)
+    ]]></literal>
+    <justification jstring="[resolve(86,b,7,b),unit_del(b,42)].">
+      <j1 rule="resolve" parents="86 7"/>
+      <j2 rule="unit_del" parents="42"/>
+    </justification>
+  </clause>
+
+  <clause id="90">
+    <literal><![CDATA[
+      b == k
+    ]]></literal>
+    <literal><![CDATA[
+      p(b,f(b))
+    ]]></literal>
+    <justification jstring="[resolve(86,b,6,b),unit_del(b,42)].">
+      <j1 rule="resolve" parents="86 6"/>
+      <j2 rule="unit_del" parents="42"/>
+    </justification>
+  </clause>
+
+  <clause id="91">
+    <literal><![CDATA[
+      b == k
+    ]]></literal>
+    <literal><![CDATA[
+      -(f(b) == b)
+    ]]></literal>
+    <justification jstring="[resolve(86,b,5,b),unit_del(b,42)].">
+      <j1 rule="resolve" parents="86 5"/>
+      <j2 rule="unit_del" parents="42"/>
+    </justification>
+  </clause>
+
+  <clause id="92">
+    <literal><![CDATA[
+      b == k
+    ]]></literal>
+    <literal><![CDATA[
+      -(f(b) == m)
+    ]]></literal>
+    <justification jstring="[resolve(86,b,4,b),unit_del(b,42)].">
+      <j1 rule="resolve" parents="86 4"/>
+      <j2 rule="unit_del" parents="42"/>
+    </justification>
+  </clause>
+
+  <clause id="102">
+    <literal><![CDATA[
+      b == k
+    ]]></literal>
+    <literal><![CDATA[
+      f(b) == m
+    ]]></literal>
+    <literal><![CDATA[
+      p(f(b),m)
+    ]]></literal>
+    <literal><![CDATA[
+      b == f(b)
+    ]]></literal>
+    <literal><![CDATA[
+      -p(b,f(b))
+    ]]></literal>
+    <justification jstring="[resolve(89,b,1,e),unit_del(d,42)].">
+      <j1 rule="resolve" parents="89 1"/>
+      <j2 rule="unit_del" parents="42"/>
+    </justification>
+  </clause>
+
+  <clause id="216">
+    <literal><![CDATA[
+      g(j) == j
+    ]]></literal>
+    <literal><![CDATA[
+      g(j) == k
+    ]]></literal>
+    <literal><![CDATA[
+      j == b
+    ]]></literal>
+    <literal><![CDATA[
+      -(b == x)
+    ]]></literal>
+    <literal><![CDATA[
+      p(j,x)
+    ]]></literal>
+    <justification jstring="[resolve(48,d,18,b)].">
+      <j1 rule="resolve" parents="48 18"/>
+    </justification>
+  </clause>
+
+  <clause id="396">
+    <literal><![CDATA[
+      b == k
+    ]]></literal>
+    <literal><![CDATA[
+      f(b) == m
+    ]]></literal>
+    <literal><![CDATA[
+      p(f(b),m)
+    ]]></literal>
+    <literal><![CDATA[
+      b == f(b)
+    ]]></literal>
+    <justification jstring="[resolve(102,e,90,b),merge(e)].">
+      <j1 rule="resolve" parents="102 90"/>
+      <j2 rule="merge"/>
+    </justification>
+  </clause>
+
+  <clause id="668">
+    <literal><![CDATA[
+      b == k
+    ]]></literal>
+    <literal><![CDATA[
+      f(b) == m
+    ]]></literal>
+    <literal><![CDATA[
+      b == f(b)
+    ]]></literal>
+    <literal><![CDATA[
+      -(m == x)
+    ]]></literal>
+    <literal><![CDATA[
+      p(f(b),x)
+    ]]></literal>
+    <justification jstring="[resolve(396,c,18,b)].">
+      <j1 rule="resolve" parents="396 18"/>
+    </justification>
+  </clause>
+
+  <clause id="1398">
+    <literal><![CDATA[
+      b == k
+    ]]></literal>
+    <literal><![CDATA[
+      f(b) == m
+    ]]></literal>
+    <literal><![CDATA[
+      b == f(b)
+    ]]></literal>
+    <literal><![CDATA[
+      p(f(b),k)
+    ]]></literal>
+    <justification jstring="[resolve(668,d,47,b),merge(e)].">
+      <j1 rule="resolve" parents="668 47"/>
+      <j2 rule="merge"/>
+    </justification>
+  </clause>
+
+  <clause id="1403">
+    <literal><![CDATA[
+      b == k
+    ]]></literal>
+    <literal><![CDATA[
+      f(b) == m
+    ]]></literal>
+    <literal><![CDATA[
+      b == f(b)
+    ]]></literal>
+    <literal><![CDATA[
+      f(b) == k
+    ]]></literal>
+    <literal><![CDATA[
+      f(b) == b
+    ]]></literal>
+    <justification jstring="[resolve(1398,d,3,d),merge(e)].">
+      <j1 rule="resolve" parents="1398 3"/>
+      <j2 rule="merge"/>
+    </justification>
+  </clause>
+
+  <clause id="3016">
+    <literal><![CDATA[
+      b == k
+    ]]></literal>
+    <literal><![CDATA[
+      f(b) == m
+    ]]></literal>
+    <literal><![CDATA[
+      b == f(b)
+    ]]></literal>
+    <literal><![CDATA[
+      f(b) == b
+    ]]></literal>
+    <justification jstring="[resolve(1403,d,45,b),merge(e),merge(f)].">
+      <j1 rule="resolve" parents="1403 45"/>
+      <j2 rule="merge"/>
+      <j2 rule="merge"/>
+    </justification>
+  </clause>
+
+  <clause id="3024">
+    <literal><![CDATA[
+      b == k
+    ]]></literal>
+    <literal><![CDATA[
+      b == f(b)
+    ]]></literal>
+    <literal><![CDATA[
+      f(b) == b
+    ]]></literal>
+    <justification jstring="[resolve(3016,b,92,b),merge(d)].">
+      <j1 rule="resolve" parents="3016 92"/>
+      <j2 rule="merge"/>
+    </justification>
+  </clause>
+
+  <clause id="3026">
+    <literal><![CDATA[
+      b == k
+    ]]></literal>
+    <literal><![CDATA[
+      b == f(b)
+    ]]></literal>
+    <justification jstring="[resolve(3024,c,91,b),merge(c)].">
+      <j1 rule="resolve" parents="3024 91"/>
+      <j2 rule="merge"/>
+    </justification>
+  </clause>
+
+  <clause id="3038">
+    <literal><![CDATA[
+      b == k
+    ]]></literal>
+    <literal><![CDATA[
+      f(b) == b
+    ]]></literal>
+    <justification jstring="[resolve(3026,b,15,a)].">
+      <j1 rule="resolve" parents="3026 15"/>
+    </justification>
+  </clause>
+
+  <clause id="3055">
+    <literal><![CDATA[
+      b == k
+    ]]></literal>
+    <justification jstring="[resolve(3038,b,91,b),merge(b)].">
+      <j1 rule="resolve" parents="3038 91"/>
+      <j2 rule="merge"/>
+    </justification>
+  </clause>
+
+  <clause id="3056">
+    <literal><![CDATA[
+      g(j) == j
+    ]]></literal>
+    <literal><![CDATA[
+      g(j) == k
+    ]]></literal>
+    <literal><![CDATA[
+      j == b
+    ]]></literal>
+    <literal><![CDATA[
+      p(j,k)
+    ]]></literal>
+    <justification jstring="[resolve(3055,a,216,d)].">
+      <j1 rule="resolve" parents="3055 216"/>
+    </justification>
+  </clause>
+
+  <clause id="3060">
+    <literal><![CDATA[
+      f(b) == f(k)
+    ]]></literal>
+    <justification jstring="[resolve(3055,a,19,a)].">
+      <j1 rule="resolve" parents="3055 19"/>
+    </justification>
+  </clause>
+
+  <clause id="3061">
+    <literal><![CDATA[
+      -(x == b)
+    ]]></literal>
+    <literal><![CDATA[
+      x == k
+    ]]></literal>
+    <justification jstring="[resolve(3055,a,16,b)].">
+      <j1 rule="resolve" parents="3055 16"/>
+    </justification>
+  </clause>
+
+  <clause id="3063">
+    <literal><![CDATA[
+      k == b
+    ]]></literal>
+    <justification jstring="[resolve(3055,a,15,a)].">
+      <j1 rule="resolve" parents="3055 15"/>
+    </justification>
+  </clause>
+
+  <clause id="3064">
+    <literal><![CDATA[
+      -(k == m)
+    ]]></literal>
+    <justification jstring="[ur(16,a,3055,a,c,42,a)].">
+      <j1 rule="ur" parents="16 3055 42"/>
+    </justification>
+  </clause>
+
+  <clause id="3067">
+    <literal><![CDATA[
+      k == j
+    ]]></literal>
+    <literal><![CDATA[
+      p(b,j)
+    ]]></literal>
+    <justification jstring="[resolve(3063,a,63,b)].">
+      <j1 rule="resolve" parents="3063 63"/>
+    </justification>
+  </clause>
+
+  <clause id="3071">
+    <literal><![CDATA[
+      -(x == k)
+    ]]></literal>
+    <literal><![CDATA[
+      x == b
+    ]]></literal>
+    <justification jstring="[resolve(3063,a,16,b)].">
+      <j1 rule="resolve" parents="3063 16"/>
+    </justification>
+  </clause>
+
+  <clause id="3073">
+    <literal><![CDATA[
+      -(m == k)
+    ]]></literal>
+    <justification jstring="[ur(16,b,3063,a,c,21,a)].">
+      <j1 rule="ur" parents="16 3063 21"/>
+    </justification>
+  </clause>
+
+  <clause id="3076">
+    <literal><![CDATA[
+      -(k == x)
+    ]]></literal>
+    <literal><![CDATA[
+      p(m,x)
+    ]]></literal>
+    <justification jstring="[back_unit_del(53),unit_del(a,3073)].">
+      <j1 rule="back_unit_del" parents="53"/>
+      <j2 rule="unit_del" parents="3073"/>
+    </justification>
+  </clause>
+
+  <clause id="3096">
+    <literal><![CDATA[
+      -(f(k) == x)
+    ]]></literal>
+    <literal><![CDATA[
+      f(b) == x
+    ]]></literal>
+    <justification jstring="[resolve(3060,a,16,a)].">
+      <j1 rule="resolve" parents="3060 16"/>
+    </justification>
+  </clause>
+
+  <clause id="3118">
+    <literal><![CDATA[
+      k == j
+    ]]></literal>
+    <literal><![CDATA[
+      -(j == x)
+    ]]></literal>
+    <literal><![CDATA[
+      p(b,x)
+    ]]></literal>
+    <justification jstring="[resolve(3067,b,18,b)].">
+      <j1 rule="resolve" parents="3067 18"/>
+    </justification>
+  </clause>
+
+  <clause id="4148">
+    <literal><![CDATA[
+      g(j) == j
+    ]]></literal>
+    <literal><![CDATA[
+      g(j) == k
+    ]]></literal>
+    <literal><![CDATA[
+      j == b
+    ]]></literal>
+    <literal><![CDATA[
+      j == k
+    ]]></literal>
+    <literal><![CDATA[
+      j == m
+    ]]></literal>
+    <justification jstring="[resolve(3056,d,3,d),merge(f)].">
+      <j1 rule="resolve" parents="3056 3"/>
+      <j2 rule="merge"/>
+    </justification>
+  </clause>
+
+  <clause id="5337">
+    <literal><![CDATA[
+      g(j) == k
+    ]]></literal>
+    <literal><![CDATA[
+      j == b
+    ]]></literal>
+    <literal><![CDATA[
+      j == k
+    ]]></literal>
+    <literal><![CDATA[
+      j == m
+    ]]></literal>
+    <literal><![CDATA[
+      p(j,b)
+    ]]></literal>
+    <justification jstring="[resolve(4148,a,9,c),merge(e)].">
+      <j1 rule="resolve" parents="4148 9"/>
+      <j2 rule="merge"/>
+    </justification>
+  </clause>
+
+  <clause id="5341">
+    <literal><![CDATA[
+      g(j) == k
+    ]]></literal>
+    <literal><![CDATA[
+      j == b
+    ]]></literal>
+    <literal><![CDATA[
+      j == k
+    ]]></literal>
+    <literal><![CDATA[
+      j == m
+    ]]></literal>
+    <literal><![CDATA[
+      -(b == x)
+    ]]></literal>
+    <literal><![CDATA[
+      p(j,x)
+    ]]></literal>
+    <justification jstring="[resolve(5337,e,18,b)].">
+      <j1 rule="resolve" parents="5337 18"/>
+    </justification>
+  </clause>
+
+  <clause id="8033">
+    <literal><![CDATA[
+      g(j) == k
+    ]]></literal>
+    <literal><![CDATA[
+      j == b
+    ]]></literal>
+    <literal><![CDATA[
+      j == k
+    ]]></literal>
+    <literal><![CDATA[
+      j == m
+    ]]></literal>
+    <literal><![CDATA[
+      p(j,k)
+    ]]></literal>
+    <justification jstring="[resolve(5341,e,3055,a)].">
+      <j1 rule="resolve" parents="5341 3055"/>
+    </justification>
+  </clause>
+
+  <clause id="8039">
+    <literal><![CDATA[
+      g(j) == k
+    ]]></literal>
+    <literal><![CDATA[
+      j == b
+    ]]></literal>
+    <literal><![CDATA[
+      j == k
+    ]]></literal>
+    <literal><![CDATA[
+      j == m
+    ]]></literal>
+    <justification jstring="[resolve(8033,e,3,d),merge(e),merge(f),merge(g)].">
+      <j1 rule="resolve" parents="8033 3"/>
+      <j2 rule="merge"/>
+      <j2 rule="merge"/>
+      <j2 rule="merge"/>
+    </justification>
+  </clause>
+
+  <clause id="8041">
+    <literal><![CDATA[
+      j == b
+    ]]></literal>
+    <literal><![CDATA[
+      j == k
+    ]]></literal>
+    <literal><![CDATA[
+      j == m
+    ]]></literal>
+    <literal><![CDATA[
+      g(j) == b
+    ]]></literal>
+    <justification jstring="[resolve(8039,a,3071,a)].">
+      <j1 rule="resolve" parents="8039 3071"/>
+    </justification>
+  </clause>
+
+  <clause id="8285">
+    <literal><![CDATA[
+      j == b
+    ]]></literal>
+    <literal><![CDATA[
+      j == k
+    ]]></literal>
+    <literal><![CDATA[
+      j == m
+    ]]></literal>
+    <literal><![CDATA[
+      p(j,b)
+    ]]></literal>
+    <justification jstring="[resolve(8041,d,41,a),merge(e),merge(f)].">
+      <j1 rule="resolve" parents="8041 41"/>
+      <j2 rule="merge"/>
+      <j2 rule="merge"/>
+    </justification>
+  </clause>
+
+  <clause id="8293">
+    <literal><![CDATA[
+      j == b
+    ]]></literal>
+    <literal><![CDATA[
+      j == k
+    ]]></literal>
+    <literal><![CDATA[
+      j == m
+    ]]></literal>
+    <literal><![CDATA[
+      -(b == x)
+    ]]></literal>
+    <literal><![CDATA[
+      p(j,x)
+    ]]></literal>
+    <justification jstring="[resolve(8285,d,18,b)].">
+      <j1 rule="resolve" parents="8285 18"/>
+    </justification>
+  </clause>
+
+  <clause id="9513">
+    <literal><![CDATA[
+      j == b
+    ]]></literal>
+    <literal><![CDATA[
+      j == k
+    ]]></literal>
+    <literal><![CDATA[
+      j == m
+    ]]></literal>
+    <literal><![CDATA[
+      p(j,k)
+    ]]></literal>
+    <justification jstring="[resolve(8293,d,3055,a)].">
+      <j1 rule="resolve" parents="8293 3055"/>
+    </justification>
+  </clause>
+
+  <clause id="9519">
+    <literal><![CDATA[
+      j == b
+    ]]></literal>
+    <literal><![CDATA[
+      j == k
+    ]]></literal>
+    <literal><![CDATA[
+      j == m
+    ]]></literal>
+    <justification jstring="[resolve(9513,d,3,d),merge(d),merge(e),merge(f)].">
+      <j1 rule="resolve" parents="9513 3"/>
+      <j2 rule="merge"/>
+      <j2 rule="merge"/>
+      <j2 rule="merge"/>
+    </justification>
+  </clause>
+
+  <clause id="9528">
+    <literal><![CDATA[
+      j == b
+    ]]></literal>
+    <literal><![CDATA[
+      j == m
+    ]]></literal>
+    <justification jstring="[resolve(9519,b,3071,a),merge(c)].">
+      <j1 rule="resolve" parents="9519 3071"/>
+      <j2 rule="merge"/>
+    </justification>
+  </clause>
+
+  <clause id="9532">
+    <literal><![CDATA[
+      j == b
+    ]]></literal>
+    <literal><![CDATA[
+      k == j
+    ]]></literal>
+    <literal><![CDATA[
+      p(b,m)
+    ]]></literal>
+    <justification jstring="[resolve(9528,b,3118,b)].">
+      <j1 rule="resolve" parents="9528 3118"/>
+    </justification>
+  </clause>
+
+  <clause id="9534">
+    <literal><![CDATA[
+      j == b
+    ]]></literal>
+    <literal><![CDATA[
+      k == j
+    ]]></literal>
+    <literal><![CDATA[
+      p(k,m)
+    ]]></literal>
+    <justification jstring="[resolve(9528,b,62,b)].">
+      <j1 rule="resolve" parents="9528 62"/>
+    </justification>
+  </clause>
+
+  <clause id="9541">
+    <literal><![CDATA[
+      j == b
+    ]]></literal>
+    <literal><![CDATA[
+      m == j
+    ]]></literal>
+    <justification jstring="[resolve(9528,b,15,a)].">
+      <j1 rule="resolve" parents="9528 15"/>
+    </justification>
+  </clause>
+
+  <clause id="9548">
+    <literal><![CDATA[
+      m == j
+    ]]></literal>
+    <literal><![CDATA[
+      j == k
+    ]]></literal>
+    <justification jstring="[resolve(9541,a,3061,a)].">
+      <j1 rule="resolve" parents="9541 3061"/>
+    </justification>
+  </clause>
+
+  <clause id="9563">
+    <literal><![CDATA[
+      m == j
+    ]]></literal>
+    <literal><![CDATA[
+      k == j
+    ]]></literal>
+    <justification jstring="[resolve(9548,b,15,a)].">
+      <j1 rule="resolve" parents="9548 15"/>
+    </justification>
+  </clause>
+
+  <clause id="9577">
+    <literal><![CDATA[
+      m == j
+    ]]></literal>
+    <literal><![CDATA[
+      p(m,j)
+    ]]></literal>
+    <justification jstring="[resolve(9563,b,3076,a)].">
+      <j1 rule="resolve" parents="9563 3076"/>
+    </justification>
+  </clause>
+
+  <clause id="9594">
+    <literal><![CDATA[
+      m == j
+    ]]></literal>
+    <justification jstring="[resolve(9577,b,23,b),merge(b),unit_del(b,3073)].">
+      <j1 rule="resolve" parents="9577 23"/>
+      <j2 rule="merge"/>
+      <j2 rule="unit_del" parents="3073"/>
+    </justification>
+  </clause>
+
+  <clause id="9604">
+    <literal><![CDATA[
+      -(j == k)
+    ]]></literal>
+    <justification jstring="[ur(16,a,9594,a,c,3073,a)].">
+      <j1 rule="ur" parents="16 9594 3073"/>
+    </justification>
+  </clause>
+
+  <clause id="9605">
+    <literal><![CDATA[
+      -(j == b)
+    ]]></literal>
+    <justification jstring="[ur(16,a,9594,a,c,21,a)].">
+      <j1 rule="ur" parents="16 9594 21"/>
+    </justification>
+  </clause>
+
+  <clause id="9613">
+    <literal><![CDATA[
+      k == j
+    ]]></literal>
+    <literal><![CDATA[
+      p(k,m)
+    ]]></literal>
+    <justification jstring="[back_unit_del(9534),unit_del(a,9605)].">
+      <j1 rule="back_unit_del" parents="9534"/>
+      <j2 rule="unit_del" parents="9605"/>
+    </justification>
+  </clause>
+
+  <clause id="9614">
+    <literal><![CDATA[
+      k == j
+    ]]></literal>
+    <literal><![CDATA[
+      p(b,m)
+    ]]></literal>
+    <justification jstring="[back_unit_del(9532),unit_del(a,9605)].">
+      <j1 rule="back_unit_del" parents="9532"/>
+      <j2 rule="unit_del" parents="9605"/>
+    </justification>
+  </clause>
+
+  <clause id="9778">
+    <literal><![CDATA[
+      -(k == j)
+    ]]></literal>
+    <justification jstring="[ur(15,b,9604,a)].">
+      <j1 rule="ur" parents="15 9604"/>
+    </justification>
+  </clause>
+
+  <clause id="9806">
+    <literal><![CDATA[
+      p(b,m)
+    ]]></literal>
+    <justification jstring="[back_unit_del(9614),unit_del(a,9778)].">
+      <j1 rule="back_unit_del" parents="9614"/>
+      <j2 rule="unit_del" parents="9778"/>
+    </justification>
+  </clause>
+
+  <clause id="9807">
+    <literal><![CDATA[
+      p(k,m)
+    ]]></literal>
+    <justification jstring="[back_unit_del(9613),unit_del(a,9778)].">
+      <j1 rule="back_unit_del" parents="9613"/>
+      <j2 rule="unit_del" parents="9778"/>
+    </justification>
+  </clause>
+
+  <clause id="9865">
+    <literal><![CDATA[
+      -(f(b) == b)
+    ]]></literal>
+    <justification jstring="[resolve(9806,a,5,b),unit_del(a,42)].">
+      <j1 rule="resolve" parents="9806 5"/>
+      <j2 rule="unit_del" parents="42"/>
+    </justification>
+  </clause>
+
+  <clause id="9901">
+    <literal><![CDATA[
+      p(f(k),k)
+    ]]></literal>
+    <justification jstring="[resolve(9807,a,7,b),unit_del(a,3064)].">
+      <j1 rule="resolve" parents="9807 7"/>
+      <j2 rule="unit_del" parents="3064"/>
+    </justification>
+  </clause>
+
+  <clause id="9903">
+    <literal><![CDATA[
+      -(f(k) == k)
+    ]]></literal>
+    <justification jstring="[resolve(9807,a,5,b),unit_del(a,3064)].">
+      <j1 rule="resolve" parents="9807 5"/>
+      <j2 rule="unit_del" parents="3064"/>
+    </justification>
+  </clause>
+
+  <clause id="9904">
+    <literal><![CDATA[
+      -(f(k) == m)
+    ]]></literal>
+    <justification jstring="[resolve(9807,a,4,b),unit_del(a,3064)].">
+      <j1 rule="resolve" parents="9807 4"/>
+      <j2 rule="unit_del" parents="3064"/>
+    </justification>
+  </clause>
+
+  <clause id="9937">
+    <literal><![CDATA[
+      -(f(k) == b)
+    ]]></literal>
+    <justification jstring="[ur(3096,b,9865,a)].">
+      <j1 rule="ur" parents="3096 9865"/>
+    </justification>
+  </clause>
+
+  <clause id="10012">
+    <literal><![CDATA[
+      $F
+    ]]></literal>
+    <justification jstring="[ur(3,a,9903,a,b,9904,a,c,9937,a),unit_del(a,9901)].">
+      <j1 rule="ur" parents="3 9903 9904 9937"/>
+      <j2 rule="unit_del" parents="9901"/>
+    </justification>
+  </clause>
+
+</proof>
+
+</proofs>

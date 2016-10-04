@@ -1,0 +1,162 @@
+============================== Prover9 ===============================
+Prover9 (32) version 2009-11A, November 2009.
+Process 25576 was started by mccune on cleo,
+Tue Nov  3 17:07:39 2009
+The command was "/home/mccune/LADR/bin/prover9 -f subset_trans_expand.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file subset_trans_expand.in
+
+set(expand_relational_defs).
+
+formulas(assumptions).
+(all x all y (subset(x,y) <-> (all z (member(z,x) -> member(z,y))))).
+end_of_list.
+
+formulas(goals).
+(all x all y all z (subset(x,y) & subset(y,z) -> subset(x,z))).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== EXPAND RELATIONAL DEFINITIONS =========
+
+% Relational Definitions:
+1 (all x all y (subset(x,y) <-> (all z (member(z,x) -> member(z,y))))).  [assumption].
+
+% Formulas Being Expanded:
+2 (all x all y all z (subset(x,y) & subset(y,z) -> subset(x,z))).  [goal].
+
+============================== end of expand relational definitions ==
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+3 (all x0 all x1 all x2 ((all z (member(z,x0) -> member(z,x1))) & (all z (member(z,x1) -> member(z,x2))) -> (all z (member(z,x0) -> member(z,x2))))) # label(non_clause) # label(goal).  [expand_def(2,1)].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+-member(x,c1) | member(x,c2).  [deny(3)].
+-member(x,c2) | member(x,c3).  [deny(3)].
+member(c4,c1).  [deny(3)].
+-member(c4,c3).  [deny(3)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Auto_denials:  (no changes).
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ member ]).
+Function symbol precedence:  function_order([ c1, c2, c3, c4 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(neg_binary_resolution).  % (HNE depth_diff=0)
+  % clear(ordered_res).  % (HNE depth_diff=0)
+  % set(ur_resolution).  % (HNE depth_diff=0)
+    % set(ur_resolution) -> set(pos_ur_resolution).
+    % set(ur_resolution) -> set(neg_ur_resolution).
+
+Auto_process settings:  (no changes).
+
+kept:      4 -member(x,c1) | member(x,c2).  [deny(3)].
+kept:      5 -member(x,c2) | member(x,c3).  [deny(3)].
+kept:      6 member(c4,c1).  [deny(3)].
+kept:      7 -member(c4,c3).  [deny(3)].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+4 -member(x,c1) | member(x,c2).  [deny(3)].
+5 -member(x,c2) | member(x,c3).  [deny(3)].
+6 member(c4,c1).  [deny(3)].
+7 -member(c4,c3).  [deny(3)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.00 seconds.
+
+given #1 (I,wt=6): 4 -member(x,c1) | member(x,c2).  [deny(3)].
+
+given #2 (I,wt=6): 5 -member(x,c2) | member(x,c3).  [deny(3)].
+
+given #3 (I,wt=3): 6 member(c4,c1).  [deny(3)].
+
+given #4 (I,wt=3): 7 -member(c4,c3).  [deny(3)].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 10.
+% Level of proof is 4.
+% Maximum clause weight is 6.000.
+% Given clauses 4.
+
+1 (all x all y (subset(x,y) <-> (all z (member(z,x) -> member(z,y))))) # label(non_clause).  [assumption].
+2 (all x all y all z (subset(x,y) & subset(y,z) -> subset(x,z))) # label(non_clause).  [goal].
+3 (all x0 all x1 all x2 ((all z (member(z,x0) -> member(z,x1))) & (all z (member(z,x1) -> member(z,x2))) -> (all z (member(z,x0) -> member(z,x2))))) # label(non_clause) # label(goal).  [expand_def(2,1)].
+4 -member(x,c1) | member(x,c2).  [deny(3)].
+5 -member(x,c2) | member(x,c3).  [deny(3)].
+6 member(c4,c1).  [deny(3)].
+7 -member(c4,c3).  [deny(3)].
+8 member(c4,c2).  [ur(4,a,6,a)].
+9 -member(c4,c2).  [resolve(7,a,5,b)].
+10 $F.  [resolve(9,a,8,a)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=4. Generated=6. Kept=6. proofs=1.
+Usable=4. Sos=1. Demods=0. Limbo=0, Disabled=4. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=0. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=2.
+Megabytes=0.03.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 1 proof.
+
+Process 25576 exit (max_proofs) Tue Nov  3 17:07:39 2009

@@ -1,0 +1,282 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+  <title>Prover9 Manual: Prooftrans</title>
+ <link rel="stylesheet" href="manual.css">
+</head>
+
+<body>
+
+<!-- Site navigation menu -->
+
+<ul class="navbar">
+  <li><a href="index.html">Introduction</a>
+  <li><a href="install.html">Installation</a>
+  <li><a href="running.html">Running Prover9</a>
+  <li><a href="input.html">Input Files</a>
+  <li><a href="syntax.html">Clauses & Formulas</a>
+  <li>Search Prep
+  <ul class="navbar2">
+    <li><a href="auto.html">Auto Modes</a>
+    <li><a href="term-order.html">Term Ordering</a>
+    <li><a href="more-prep.html">More Prep</a>
+    <li><a href="limits.html">Search Limits</a>
+  </ul>
+  <li>Inference
+  <ul class="navbar2">
+    <li><a href="loop.html">The Loop</a>
+    <li><a href="select.html">Select Given</a>
+    <li><a href="inf-rules.html">Inference Rules</a>
+    <li><a href="process-inf.html">Process Inferred</a>
+  </ul>
+  <li><a href="output.html">Output Files</a>
+  <li>More Features
+  <ul class="navbar2">
+    <li><a href="weight.html">Weighting</a>
+    <li><a href="attributes.html">Attributes</a>
+    <li><a href="actions.html">Actions</a>
+    <li><a href="fof-reduction.html">FOF Reduction</a>
+    <li><a href="goals.html">Goals</a>
+    <li><a href="hints.html">Hints</a>
+    <li><a href="semantics.html">Semantics</a>
+  </ul>
+  <li>Related Programs
+  <ul class="navbar2">
+    <li><a href="prooftrans.html">Prooftrans</a>
+    <li><a href="mace4.html">Mace4</a>
+  </ul>
+  <li>Ending
+  <ul class="navbar2">
+    <li><a href="options.html">All Options</a>
+    <li><a href="glossary.html">Glossary</a>
+    <li><a href="manual-index.html">Index</a>
+    <li><a href="references.html">References</a>
+  </ul>
+</ul>
+
+<div class="header">Prover9 Manual Version June-2006</div>
+
+<!-- Main content -->
+
+<h1>Prooftrans</h1>
+
+When Prover9 proves a theorem, it sends the proof to its output
+file in a standard form.  The standard form contains, for each step,
+<a href="output.html#just">justifications</a>
+with enough detail to reconstruct or check the
+proof without any search.
+
+<p>
+<i>An Exception</i>:  Prover9 proofs start with clauses.  If the
+theorem was given to Prover9 as (non-clausal) formulas,
+the original formulas and the <g>clausification</g> steps are not
+included in the printed proofs; the proofs start with the
+clauses produced by clausification, and those clauses have
+the justification "clausify" instead of "input".  See the
+proof in following example
+<pre class="my_job">
+prover9 -f <a href="subset_trans.in">subset_trans.in</a> &gt; <a href="subset_trans.out">subset_trans.out</a>
+</pre>
+
+<p>
+Prooftrans can extract proofs from Prover9 output files
+and transform them in various ways, including the following.
+<ul>
+<li>No transformation,
+<li>renumber steps,
+<li>simplify justifications,
+<li>expand all steps, turning secondary justifications into explicit steps,
+<li>produce proofs in XML,
+<li>produce proofs for checking by the IVY proof checker, and
+<li>produce hints for guiding subsequent searches.
+</ul>
+
+<p>
+Prooftrans is part of the LADR/Prover9/Mace4 package.  When
+the package is installed, the Prooftrans program should be
+in the same directory as Prover9 and Mace4.
+
+<h2>Using Prooftrans</h2>
+
+The Prover9 output file containing the proof(s) is usually given to
+Prooftrans with the argument "<tt>-f &lt;filename&gt;</tt>".
+If there is no "<tt>-f &lt;filename&gt;</tt>" argument, Prooftrans
+takes its input from the standard input.
+
+<p>
+The arguments that tell Prooftrans what to do with the proof(s)
+are described in the following sections, using the output
+file <a href="subset_trans.out">subset_trans.out</a>
+as a running example.
+
+<p>
+If there is more than one proof in the file, the transformations
+will be applied to each proof.  The <tt>hints</tt> transformation
+collects all of the clauses in the proof(s) into one list of
+hints.  The other transformations produce one proof for each
+proof in the input file.
+
+<p>
+Here is a synopsis of the Prooftrans command; the arguments in
+square brackets are optional.
+<pre class="my_job">
+prooftrans [parents_only] [expand] [renumber] [-f <font color="red"><i>file</i></font>]
+prooftrans xml            [expand] [renumber] [-f <font color="red"><i>file</i></font>]
+prooftrans ivy                                [-f <font color="red"><i>file</i></font>]
+prooftrans hints [-label <font color="red"><i>label</i></font>] [expand]    [-f <font color="red"><i>file</i></font>]
+</pre>
+
+Note that more than one transformation can be applied in several cases.
+
+<p>
+Unfortunately, the output of Prooftrans usually cannot be used
+as the input to another Prooftrans job, because Prooftrans
+expects its input to have specific keywords and standard-form proofs.
+
+<hr>
+<h3>No Transformation</h3>
+
+If no additional argument is given, Prooftrans simply extracts
+the proof from the Prover9 output file.
+
+<pre class="my_job">
+prooftrans -f <a href="subset_trans.out">subset_trans.out</a> &gt; <a href="subset_trans.proof1">subset_trans.proof1</a>
+</pre>
+
+<hr>
+<h3>Renumber the Steps</h3>
+
+The argument <tt>renumber</tt> tells Prooftrans to renumber the
+steps of each proof consecutively, starting with step 1.
+The <tt>expand</tt>, <tt>parents_only</tt>, and <tt>xml</tt>
+transformations can be used with the <tt>renumber</tt> transformation.
+
+<pre class="my_job">
+prooftrans renumber -f <a href="subset_trans.out">subset_trans.out</a> &gt; <a href="subset_trans.proof2">subset_trans.proof2</a>
+</pre>
+
+<hr>
+<h3>Simplify Justifications</h3>
+
+The argument <tt>parents_only</tt> tells Prooftrans list only
+the parents in the justifications, not the details about inference
+rules or positions.
+The <tt>expand</tt> and <tt>renumber</tt> transformations can be
+used with the <tt>parents_only</tt> transformation.
+
+<pre class="my_job">
+prooftrans parents_only -f <a href="subset_trans.out">subset_trans.out</a> &gt; <a href="subset_trans.proof3">subset_trans.proof3</a>
+</pre>
+
+<hr>
+<h3>Expand Steps</h3>
+
+The argument <tt>expand</tt> tells Prooftrans to produce more
+detailed proofs in which
+<ul>
+<li>all hyper- and UR-resolution steps are replaced with binary resolution steps,
+<li>all demodulation sequences are replaced with paramodulation steps, and
+<li>all unit deletion simplifications are replaced with resolution steps.
+</ul>
+
+<i>Note to author: this is a bad example, because only one step gets expanded.</i>
+
+<pre class="my_job">
+prooftrans expand -f <a href="subset_trans.out">subset_trans.out</a> &gt; <a href="subset_trans.proof4">subset_trans.proof4</a>
+</pre>
+
+Note that when a step is expanded (step 22 in this example), the
+new steps are identified by appending 'A', 'B', etc. to the number
+of the original step.
+
+<p>
+The <tt>renumber</tt>, <tt>parents_only</tt>, and <tt>hints</tt>
+transformations can be used with the <tt>expand</tt> transformation.
+
+<hr>
+<h3>XML Proofs</h3>
+
+The options <tt>xml</tt> or <tt>XML</tt> tell Prooftrans to
+produce proofs in XML.  The options <tt>expand</tt> and
+<tt>renumber</tt> can be used with the XML transformation.
+
+<pre class="my_job">
+prooftrans xml -f <a href="subset_trans.out">subset_trans.out</a> &gt; <a href="subset_trans.proof5.xml">subset_trans.proof5.xml</a>
+</pre>
+
+The preceding output is displayed by your browser not as XML, but as
+some transformation of the XML, because the XML refers to an XML stylesheet,
+telling the browser how to transform the XML into HTML.
+
+<p>
+To see the XML source, click "View -> Page Source" (or something like that) in your
+browser while viewing the proof.
+
+<p>
+Here is the <a href="proof3.dtd">DTD for Prover9 XML proofs</a>.
+(If you get an error, click "View -> Page Source".)
+
+<hr>
+<h3>IVY Proofs</h3>
+
+The options <tt>ivy</tt> or <tt>IVY</tt> tell Prooftrans to
+produce very detailed proofs that can be checked with the
+<a href="http://www.mcs.anl.gov/~mccune/papers/IVY">
+Ivy proof checker</a>.
+
+<pre class="my_job">
+prooftrans ivy -f <a href="subset_trans.out">subset_trans.out</a> &gt; <a href="subset_trans.proof6">subset_trans.proof6</a>
+</pre>
+
+<p>
+Ivy proofs have a only 5 types of step:
+<tt>input</tt>,
+<tt>propositional</tt>,
+<tt>new_symbol</tt>,
+<tt>flip</tt>,
+<tt>instantiate</tt>,
+<tt>resolve</tt>, and
+<tt>paramod</tt>.
+
+The <tt>resolve</tt> and <tt>paramod</tt> do not involve unification;
+instances are generated first as separate steps, and then
+<tt>resolve</tt> or <tt>paramod</tt> are applied to identical
+atomic formulas or terms.
+<p>
+The Ivy proof checker cannot check steps justified by <tt>new_symbol</tt>.
+
+<hr>
+<h3>Proofs to Hints</h3>
+
+The option <tt>hints</tt> tells Prooftrans to
+take all of the proofs in the file and produce
+one list of hints that can be given to Prover9
+to guide subsequent searches for related
+conjectures.
+
+<pre class="my_job">
+prooftrans hints -f <a href="subset_trans.out">subset_trans.out</a> &gt; <a href="subset_trans.proof7">subset_trans.proof7</a>
+</pre>
+
+If there is more than one proof in the file, the proofs
+will probably share many steps.  The list of hints
+that Prooftrans produces will be the union of the
+steps in the proofs; that is, the duplicate steps
+will be removed.
+
+<p>
+The <tt>expand</tt> transformation can be used with the
+<tt>hints</tt> transformation.
+
+<p>
+Note that the hints clauses that are produced have label attributes
+consisting of a unique integer identifiers.  A string, say "job8" can be
+prepended to each identifier with the arguments <tt>-label "job8"</tt>
+as in the following example.
+
+<pre class="my_job">
+prooftrans hints -label "job8" -f <a href="subset_trans.out">subset_trans.out</a> &gt; <a href="subset_trans.proof8">subset_trans.proof8</a>
+</pre>
+
+</body>
+</html>

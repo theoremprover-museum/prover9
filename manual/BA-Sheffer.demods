@@ -1,0 +1,13 @@
+% Note that writing a basis of a variety to another set of operations
+% does not necessarily give a basis for the variety in the other
+% set of operations.
+
+formulas(demodulators).
+
+  % Meet, join, and complementation in terms of the Sheffer Stroke.
+
+  x v y = f(f(x,x),f(y,y)).
+  x ^ y = f(f(x,y),f(x,y)).
+  x' = f(x,x).
+
+end_of_list.

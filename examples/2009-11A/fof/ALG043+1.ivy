@@ -1,0 +1,110 @@
+;; ============================== prooftrans ============================
+;; FOF-Prover9 (32) version 2009-11A, November 2009.
+;; Process 23888 was started by mccune on cleo,
+;; Tue Nov  3 16:59:14 2009
+;; The command was "/home/mccune/LADR/bin/fof-prover9 -f ALG043+1.in".
+;; ============================== end of head ===========================
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(7 (input) (= (op (e0) (e0)) (e0)) NIL)
+(23 (input) (= (unit) (e0)) NIL)
+(24 (input) (not (= (op (unit) (e0)) (e0))) NIL)
+(25A (paramod 23 (1) 24 (1 1 1)) (not (= (op (e0) (e0)) (e0))) NIL)
+(25B (paramod 7 (1) 25A (1 1)) (not (= (e0) (e0))) NIL)
+(28 (instantiate 0 ((v0 . (e0)))) (= (e0) (e0)) NIL)
+(25 (resolve 25B () 28 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(7 (input) (= (op (e0) (e0)) (e0)) NIL)
+(23 (input) (= (unit) (e0)) NIL)
+(24 (input) (not (= (op (e0) (unit)) (e0))) NIL)
+(25A (paramod 23 (1) 24 (1 1 2)) (not (= (op (e0) (e0)) (e0))) NIL)
+(25B (paramod 7 (1) 25A (1 1)) (not (= (e0) (e0))) NIL)
+(28 (instantiate 0 ((v0 . (e0)))) (= (e0) (e0)) NIL)
+(25 (resolve 25B () 28 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(8 (input) (= (op (e0) (e1)) (e1)) NIL)
+(23 (input) (= (unit) (e0)) NIL)
+(24 (input) (not (= (op (unit) (e1)) (e1))) NIL)
+(25A (paramod 23 (1) 24 (1 1 1)) (not (= (op (e0) (e1)) (e1))) NIL)
+(25B (paramod 8 (1) 25A (1 1)) (not (= (e1) (e1))) NIL)
+(28 (instantiate 0 ((v0 . (e1)))) (= (e1) (e1)) NIL)
+(25 (resolve 25B () 28 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(11 (input) (= (op (e1) (e0)) (e1)) NIL)
+(23 (input) (= (unit) (e0)) NIL)
+(24 (input) (not (= (op (e1) (unit)) (e1))) NIL)
+(25A (paramod 23 (1) 24 (1 1 2)) (not (= (op (e1) (e0)) (e1))) NIL)
+(25B (paramod 11 (1) 25A (1 1)) (not (= (e1) (e1))) NIL)
+(28 (instantiate 0 ((v0 . (e1)))) (= (e1) (e1)) NIL)
+(25 (resolve 25B () 28 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(9 (input) (= (op (e0) (e2)) (e2)) NIL)
+(23 (input) (= (unit) (e0)) NIL)
+(24 (input) (not (= (op (unit) (e2)) (e2))) NIL)
+(25A (paramod 23 (1) 24 (1 1 1)) (not (= (op (e0) (e2)) (e2))) NIL)
+(25B (paramod 9 (1) 25A (1 1)) (not (= (e2) (e2))) NIL)
+(28 (instantiate 0 ((v0 . (e2)))) (= (e2) (e2)) NIL)
+(25 (resolve 25B () 28 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(15 (input) (= (op (e2) (e0)) (e2)) NIL)
+(23 (input) (= (unit) (e0)) NIL)
+(24 (input) (not (= (op (e2) (unit)) (e2))) NIL)
+(25A (paramod 23 (1) 24 (1 1 2)) (not (= (op (e2) (e0)) (e2))) NIL)
+(25B (paramod 15 (1) 25A (1 1)) (not (= (e2) (e2))) NIL)
+(28 (instantiate 0 ((v0 . (e2)))) (= (e2) (e2)) NIL)
+(25 (resolve 25B () 28 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(10 (input) (= (op (e0) (e3)) (e3)) NIL)
+(23 (input) (= (unit) (e0)) NIL)
+(24 (input) (not (= (op (unit) (e3)) (e3))) NIL)
+(25A (paramod 23 (1) 24 (1 1 1)) (not (= (op (e0) (e3)) (e3))) NIL)
+(25B (paramod 10 (1) 25A (1 1)) (not (= (e3) (e3))) NIL)
+(28 (instantiate 0 ((v0 . (e3)))) (= (e3) (e3)) NIL)
+(25 (resolve 25B () 28 ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(0 (input) (= v0 v0) NIL)
+(19 (input) (= (op (e3) (e0)) (e3)) NIL)
+(23 (input) (= (unit) (e0)) NIL)
+(24 (input) (not (= (op (e3) (unit)) (e3))) NIL)
+(25A (paramod 23 (1) 24 (1 1 2)) (not (= (op (e3) (e0)) (e3))) NIL)
+(25B (paramod 19 (1) 25A (1 1)) (not (= (e3) (e3))) NIL)
+(28 (instantiate 0 ((v0 . (e3)))) (= (e3) (e3)) NIL)
+(25 (resolve 25B () 28 ()) false NIL)
+)
+;; END OF PROOF OBJECT

@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE proofs SYSTEM "proof3.dtd">
+
+<?xml-stylesheet type="text/xsl" href="proof3.xsl"?>
+
+<proofs number_of_proofs="2">
+
+<source>SET593+3.out</source>
+
+<heading><![CDATA[
+FOF-Prover9 (32) version 2009-11A, November 2009.
+Process 23966 was started by mccune on cleo,
+Tue Nov  3 16:59:16 2009
+The command was "/home/mccune/LADR/bin/fof-prover9 -f SET593+3.in".
+]]></heading>
+
+<proof number="1" length="15" max_count="11">
+
+<comments><![CDATA[
+% Proof 1 at 0.01 (+ 0.00) seconds.
+% Length of proof is 15.
+% Level of proof is 4.
+% Maximum clause weight is 11.000.
+% Given clauses 43.
+
+]]></comments>
+
+  <clause id="3" type="assumption">
+    <literal><![CDATA[
+      member(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      member(A,C)
+    ]]></literal>
+    <literal><![CDATA[
+      -member(A,union(B,C))
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="5" type="assumption">
+    <literal><![CDATA[
+      member(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -member(A,difference(B,C))
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="6" type="assumption">
+    <literal><![CDATA[
+      -member(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -member(A,difference(C,B))
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="7" type="assumption">
+    <literal><![CDATA[
+      subset(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      member(f1(A,B),A)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="8" type="assumption">
+    <literal><![CDATA[
+      subset(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -member(f1(A,B),B)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="9" type="assumption">
+    <literal><![CDATA[
+      -member(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      member(A,C)
+    ]]></literal>
+    <literal><![CDATA[
+      -subset(B,C)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="28" type="assumption">
+    <literal><![CDATA[
+      subset(c1,union(c2,c3))
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="29" type="assumption">
+    <literal><![CDATA[
+      -subset(difference(c1,c2),c3)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="55">
+    <literal><![CDATA[
+      -member(A,c1)
+    ]]></literal>
+    <literal><![CDATA[
+      member(A,union(c2,c3))
+    ]]></literal>
+    <justification jstring="[resolve(28,a,9,c)].">
+      <j1 rule="resolve" parents="28 9"/>
+    </justification>
+  </clause>
+
+  <clause id="56">
+    <literal><![CDATA[
+      member(f1(difference(c1,c2),c3),difference(c1,c2))
+    ]]></literal>
+    <justification jstring="[resolve(29,a,7,a)].">
+      <j1 rule="resolve" parents="29 7"/>
+    </justification>
+  </clause>
+
+  <clause id="57">
+    <literal><![CDATA[
+      -member(f1(difference(c1,c2),c3),c3)
+    ]]></literal>
+    <justification jstring="[ur(8,a,29,a)].">
+      <j1 rule="ur" parents="8 29"/>
+    </justification>
+  </clause>
+
+  <clause id="89">
+    <literal><![CDATA[
+      -member(f1(difference(c1,c2),c3),c2)
+    ]]></literal>
+    <justification jstring="[resolve(56,a,6,b)].">
+      <j1 rule="resolve" parents="56 6"/>
+    </justification>
+  </clause>
+
+  <clause id="90">
+    <literal><![CDATA[
+      member(f1(difference(c1,c2),c3),c1)
+    ]]></literal>
+    <justification jstring="[resolve(56,a,5,b)].">
+      <j1 rule="resolve" parents="56 5"/>
+    </justification>
+  </clause>
+
+  <clause id="106">
+    <literal><![CDATA[
+      member(f1(difference(c1,c2),c3),union(c2,c3))
+    ]]></literal>
+    <justification jstring="[resolve(90,a,55,a)].">
+      <j1 rule="resolve" parents="90 55"/>
+    </justification>
+  </clause>
+
+  <clause id="148">
+    <literal><![CDATA[
+      $F
+    ]]></literal>
+    <justification jstring="[resolve(106,a,3,c),unit_del(a,89),unit_del(b,57)].">
+      <j1 rule="resolve" parents="106 3"/>
+      <j2 rule="unit_del" parents="89"/>
+      <j2 rule="unit_del" parents="57"/>
+    </justification>
+  </clause>
+
+</proof>
+
+<proof number="2" length="15" max_count="11">
+
+<comments><![CDATA[
+% Proof 1 at 0.01 (+ 0.00) seconds.
+% Length of proof is 15.
+% Level of proof is 4.
+% Maximum clause weight is 11.000.
+% Given clauses 43.
+
+]]></comments>
+
+  <clause id="3" type="assumption">
+    <literal><![CDATA[
+      member(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      member(A,C)
+    ]]></literal>
+    <literal><![CDATA[
+      -member(A,union(B,C))
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="5" type="assumption">
+    <literal><![CDATA[
+      member(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -member(A,difference(B,C))
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="6" type="assumption">
+    <literal><![CDATA[
+      -member(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -member(A,difference(C,B))
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="7" type="assumption">
+    <literal><![CDATA[
+      subset(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      member(f1(A,B),A)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="8" type="assumption">
+    <literal><![CDATA[
+      subset(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      -member(f1(A,B),B)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="9" type="assumption">
+    <literal><![CDATA[
+      -member(A,B)
+    ]]></literal>
+    <literal><![CDATA[
+      member(A,C)
+    ]]></literal>
+    <literal><![CDATA[
+      -subset(B,C)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="28" type="assumption">
+    <literal><![CDATA[
+      subset(c1,union(c2,c3))
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="29" type="assumption">
+    <literal><![CDATA[
+      -subset(difference(c1,c3),c2)
+    ]]></literal>
+    <justification jstring="[assumption].">
+      <j1 rule="assumption"/>
+    </justification>
+  </clause>
+
+  <clause id="55">
+    <literal><![CDATA[
+      -member(A,c1)
+    ]]></literal>
+    <literal><![CDATA[
+      member(A,union(c2,c3))
+    ]]></literal>
+    <justification jstring="[resolve(28,a,9,c)].">
+      <j1 rule="resolve" parents="28 9"/>
+    </justification>
+  </clause>
+
+  <clause id="56">
+    <literal><![CDATA[
+      member(f1(difference(c1,c3),c2),difference(c1,c3))
+    ]]></literal>
+    <justification jstring="[resolve(29,a,7,a)].">
+      <j1 rule="resolve" parents="29 7"/>
+    </justification>
+  </clause>
+
+  <clause id="57">
+    <literal><![CDATA[
+      -member(f1(difference(c1,c3),c2),c2)
+    ]]></literal>
+    <justification jstring="[ur(8,a,29,a)].">
+      <j1 rule="ur" parents="8 29"/>
+    </justification>
+  </clause>
+
+  <clause id="89">
+    <literal><![CDATA[
+      -member(f1(difference(c1,c3),c2),c3)
+    ]]></literal>
+    <justification jstring="[resolve(56,a,6,b)].">
+      <j1 rule="resolve" parents="56 6"/>
+    </justification>
+  </clause>
+
+  <clause id="90">
+    <literal><![CDATA[
+      member(f1(difference(c1,c3),c2),c1)
+    ]]></literal>
+    <justification jstring="[resolve(56,a,5,b)].">
+      <j1 rule="resolve" parents="56 5"/>
+    </justification>
+  </clause>
+
+  <clause id="106">
+    <literal><![CDATA[
+      member(f1(difference(c1,c3),c2),union(c2,c3))
+    ]]></literal>
+    <justification jstring="[resolve(90,a,55,a)].">
+      <j1 rule="resolve" parents="90 55"/>
+    </justification>
+  </clause>
+
+  <clause id="148">
+    <literal><![CDATA[
+      $F
+    ]]></literal>
+    <justification jstring="[resolve(106,a,3,c),unit_del(a,57),unit_del(b,89)].">
+      <j1 rule="resolve" parents="106 3"/>
+      <j2 rule="unit_del" parents="57"/>
+      <j2 rule="unit_del" parents="89"/>
+    </justification>
+  </clause>
+
+</proof>
+
+</proofs>

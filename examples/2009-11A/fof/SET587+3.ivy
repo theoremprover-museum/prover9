@@ -1,0 +1,66 @@
+;; ============================== prooftrans ============================
+;; FOF-Prover9 (32) version 2009-11A, November 2009.
+;; Process 23963 was started by mccune on cleo,
+;; Tue Nov  3 16:59:16 2009
+;; The command was "/home/mccune/LADR/bin/fof-prover9 -f SET587+3.in".
+;; ============================== end of head ===========================
+
+;; BEGINNING OF PROOF OBJECT
+(
+(7 (input) (or (member v0 (difference v1 v2)) (or (not (member v0 v1)) (member v0 v2))) NIL)
+(10 (input) (not (member v0 (empty_set))) NIL)
+(11 (input) (or (subset v0 v1) (member (f3 v0 v1) v0)) NIL)
+(12 (input) (or (subset v0 v1) (not (member (f3 v0 v1) v1))) NIL)
+(35 (input) (= (difference (c1) (c2)) (empty_set)) NIL)
+(36 (flip 35 ()) (= (empty_set) (difference (c1) (c2))) NIL)
+(37 (input) (not (subset (c1) (c2))) NIL)
+(43 (paramod 36 (1) 10 (1 2)) (not (member v0 (difference (c1) (c2)))) NIL)
+(120 (instantiate 11 ((v0 . (c1)) (v1 . (c2)))) (or (subset (c1) (c2)) (member (f3 (c1) (c2)) (c1))) NIL)
+(79 (resolve 37 () 120 (1)) (member (f3 (c1) (c2)) (c1)) NIL)
+(121 (instantiate 12 ((v0 . (c1)) (v1 . (c2)))) (or (subset (c1) (c2)) (not (member (f3 (c1) (c2)) (c2)))) NIL)
+(81 (resolve 121 (1) 37 ()) (not (member (f3 (c1) (c2)) (c2))) NIL)
+(122 (instantiate 7 ((v0 . v100) (v1 . (c1)) (v2 . (c2)))) (or (member v100 (difference (c1) (c2))) (or (not (member v100 (c1))) (member v100 (c2)))) NIL)
+(123 (instantiate 43 ((v0 . v100))) (not (member v100 (difference (c1) (c2)))) NIL)
+(124 (resolve 122 (1) 123 ()) (or (not (member v100 (c1))) (member v100 (c2))) NIL)
+(117A (instantiate 124 ((v100 . v0))) (or (not (member v0 (c1))) (member v0 (c2))) NIL)
+(125 (instantiate 117A ((v0 . (f3 (c1) (c2))))) (or (not (member (f3 (c1) (c2)) (c1))) (member (f3 (c1) (c2)) (c2))) NIL)
+(117B (resolve 125 (2) 81 ()) (not (member (f3 (c1) (c2)) (c1))) NIL)
+(117 (resolve 79 () 117B ()) false NIL)
+)
+;; END OF PROOF OBJECT
+
+;; BEGINNING OF PROOF OBJECT
+(
+(4 (input) (or (member (f1 v0 v1) v0) (or (member (f2 v0 v1) v1) (= v1 v0))) NIL)
+(8 (input) (or (member v0 v1) (not (member v0 (difference v1 v2)))) NIL)
+(9 (input) (or (not (member v0 v1)) (not (member v0 (difference v2 v1)))) NIL)
+(10 (input) (not (member v0 (empty_set))) NIL)
+(13 (input) (or (not (member v0 v1)) (or (member v0 v2) (not (subset v1 v2)))) NIL)
+(35 (input) (not (= (difference (c1) (c2)) (empty_set))) NIL)
+(36 (input) (subset (c1) (c2)) NIL)
+(234 (instantiate 8 ((v0 . (f2 v100 (difference v1 v2))))) (or (member (f2 v100 (difference v1 v2)) v1) (not (member (f2 v100 (difference v1 v2)) (difference v1 v2)))) NIL)
+(235 (instantiate 4 ((v0 . v100) (v1 . (difference v1 v2)))) (or (member (f1 v100 (difference v1 v2)) v100) (or (member (f2 v100 (difference v1 v2)) (difference v1 v2)) (= (difference v1 v2) v100))) NIL)
+(236 (resolve 234 (2) 235 (2 1)) (or (member (f2 v100 (difference v1 v2)) v1) (or (member (f1 v100 (difference v1 v2)) v100) (= (difference v1 v2) v100))) NIL)
+(43 (instantiate 236 ((v100 . v0))) (or (member (f2 v0 (difference v1 v2)) v1) (or (member (f1 v0 (difference v1 v2)) v0) (= (difference v1 v2) v0))) NIL)
+(237 (instantiate 9 ((v0 . (f2 v100 (difference v2 v1))))) (or (not (member (f2 v100 (difference v2 v1)) v1)) (not (member (f2 v100 (difference v2 v1)) (difference v2 v1)))) NIL)
+(238 (instantiate 4 ((v0 . v100) (v1 . (difference v2 v1)))) (or (member (f1 v100 (difference v2 v1)) v100) (or (member (f2 v100 (difference v2 v1)) (difference v2 v1)) (= (difference v2 v1) v100))) NIL)
+(239 (resolve 237 (2) 238 (2 1)) (or (not (member (f2 v100 (difference v2 v1)) v1)) (or (member (f1 v100 (difference v2 v1)) v100) (= (difference v2 v1) v100))) NIL)
+(44 (instantiate 239 ((v100 . v0) (v2 . v1) (v1 . v2))) (or (not (member (f2 v0 (difference v1 v2)) v2)) (or (member (f1 v0 (difference v1 v2)) v0) (= (difference v1 v2) v0))) NIL)
+(240 (instantiate 13 ((v0 . v100) (v1 . (c1)) (v2 . (c2)))) (or (not (member v100 (c1))) (or (member v100 (c2)) (not (subset (c1) (c2))))) NIL)
+(241 (resolve 36 () 240 (2 2)) (or (not (member v100 (c1))) (member v100 (c2))) NIL)
+(81 (instantiate 241 ((v100 . v0))) (or (not (member v0 (c1))) (member v0 (c2))) NIL)
+(242 (instantiate 44 ((v0 . (empty_set)))) (or (not (member (f2 (empty_set) (difference v1 v2)) v2)) (or (member (f1 (empty_set) (difference v1 v2)) (empty_set)) (= (difference v1 v2) (empty_set)))) NIL)
+(243 (instantiate 10 ((v0 . (f1 (empty_set) (difference v1 v2))))) (not (member (f1 (empty_set) (difference v1 v2)) (empty_set))) NIL)
+(244 (resolve 242 (2 1) 243 ()) (or (not (member (f2 (empty_set) (difference v1 v2)) v2)) (= (difference v1 v2) (empty_set))) NIL)
+(227A (instantiate 244 ((v1 . v0) (v2 . v1))) (or (not (member (f2 (empty_set) (difference v0 v1)) v1)) (= (difference v0 v1) (empty_set))) NIL)
+(245 (instantiate 227A ((v0 . (c1)) (v1 . (c2)))) (or (not (member (f2 (empty_set) (difference (c1) (c2))) (c2))) (= (difference (c1) (c2)) (empty_set))) NIL)
+(227 (resolve 245 (2) 35 ()) (not (member (f2 (empty_set) (difference (c1) (c2))) (c2))) NIL)
+(246 (instantiate 81 ((v0 . (f2 (empty_set) (difference (c1) (c2)))))) (or (not (member (f2 (empty_set) (difference (c1) (c2))) (c1))) (member (f2 (empty_set) (difference (c1) (c2))) (c2))) NIL)
+(228 (resolve 246 (2) 227 ()) (not (member (f2 (empty_set) (difference (c1) (c2))) (c1))) NIL)
+(247 (instantiate 43 ((v0 . (empty_set)) (v1 . (c1)) (v2 . (c2)))) (or (member (f2 (empty_set) (difference (c1) (c2))) (c1)) (or (member (f1 (empty_set) (difference (c1) (c2))) (empty_set)) (= (difference (c1) (c2)) (empty_set)))) NIL)
+(230A (resolve 228 () 247 (1)) (or (member (f1 (empty_set) (difference (c1) (c2))) (empty_set)) (= (difference (c1) (c2)) (empty_set))) NIL)
+(248 (instantiate 10 ((v0 . (f1 (empty_set) (difference (c1) (c2)))))) (not (member (f1 (empty_set) (difference (c1) (c2))) (empty_set))) NIL)
+(230B (resolve 248 () 230A (1)) (= (difference (c1) (c2)) (empty_set)) NIL)
+(230 (resolve 35 () 230B ()) false NIL)
+)
+;; END OF PROOF OBJECT

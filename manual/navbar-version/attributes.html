@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+  <title>Prover9 Manual: Attributes</title>
+ <link rel="stylesheet" href="manual.css">
+</head>
+
+<body>
+
+<!-- Site navigation menu -->
+
+<ul class="navbar">
+  <li><a href="index.html">Introduction</a>
+  <li><a href="install.html">Installation</a>
+  <li><a href="running.html">Running Prover9</a>
+  <li><a href="input.html">Input Files</a>
+  <li><a href="syntax.html">Clauses & Formulas</a>
+  <li>Search Prep
+  <ul class="navbar2">
+    <li><a href="auto.html">Auto Modes</a>
+    <li><a href="term-order.html">Term Ordering</a>
+    <li><a href="more-prep.html">More Prep</a>
+    <li><a href="limits.html">Search Limits</a>
+  </ul>
+  <li>Inference
+  <ul class="navbar2">
+    <li><a href="loop.html">The Loop</a>
+    <li><a href="select.html">Select Given</a>
+    <li><a href="inf-rules.html">Inference Rules</a>
+    <li><a href="process-inf.html">Process Inferred</a>
+  </ul>
+  <li><a href="output.html">Output Files</a>
+  <li>More Features
+  <ul class="navbar2">
+    <li><a href="weight.html">Weighting</a>
+    <li><a href="attributes.html">Attributes</a>
+    <li><a href="actions.html">Actions</a>
+    <li><a href="fof-reduction.html">FOF Reduction</a>
+    <li><a href="goals.html">Goals</a>
+    <li><a href="hints.html">Hints</a>
+    <li><a href="semantics.html">Semantics</a>
+  </ul>
+  <li>Related Programs
+  <ul class="navbar2">
+    <li><a href="prooftrans.html">Prooftrans</a>
+    <li><a href="mace4.html">Mace4</a>
+  </ul>
+  <li>Ending
+  <ul class="navbar2">
+    <li><a href="options.html">All Options</a>
+    <li><a href="glossary.html">Glossary</a>
+    <li><a href="manual-index.html">Index</a>
+    <li><a href="references.html">References</a>
+  </ul>
+</ul>
+
+<div class="header">Prover9 Manual Version June-2006</div>
+
+<!-- Main content -->
+
+<h1>Attributes</h1>
+
+Several kinds of attribute can be attached to input clauses
+with the <tt>#</tt> operator, for example,
+
+<pre class="my_file">
+x * y = y * x              # label(commutativity).
+x * c != e                 # answer(x) # label("the denial").
+-p(c) | -q(c)              # answer("here it is").
+a * b != b * a             # action(in_proof -> exit) # answer(commutativity).
+x * (y * z) = y * (x * z)  # bsub_hint_wt(500).
+</pre>
+
+Each attribute has a data type of string, integer, or term.
+A string attribute is really just a term attribute that is
+a constant.  If a string attribute is not a legal constant,
+it can be enclosed in double quotes to make it so.
+
+<p>
+The accepted attributes are shown in the following table.
+
+<p>
+<table "border" align="center" cellpadding="5">
+<tr>
+<th>Name              <th> Type     <th> Inheritable  <th> Purpose
+<tr>
+<td>label             <td> string   <td> No           <td> Comment
+<tr>
+<td>answer            <td> term     <td> Yes          <td> Record substitutions and what has been proved
+<tr>
+<td>action            <td> term     <td> No           <td> Triggers action when clause is used
+<!--
+<tr>
+<td>action2           <td> term     <td> Yes          <td> Triggers action when clause is used
+-->
+<tr>
+<td>bsub_hint_add_wt  <td> integer  <td> No           <td> Used for hints
+<tr>
+<td>bsub_hint_wt      <td> integer  <td> No           <td> Used for hints
+</table>
+
+<p>
+Inheritable attributes are passed from parent to child during most
+inference rules.
+
+<h2>Label Attributes</h2>
+
+Label attributes are simply comments that can be attached to input clauses,
+including hint clauses.
+
+<h2>Answer Attributes</h2>
+
+Answer attributes are essentially answer literals.  They are inherited
+during application of inference rules, and if they contain
+variables, the variables are instantiated by the substitution
+used in the inference.
+<p>
+Answer attributes (like all other attributes) contain exactly
+one argument.  If you wish to record substitutions for more
+than one variable, you must use a term that contains all of the
+variables, for example, a list, as in the following clause.
+<pre class="my_file">
+-p(c,x,y,z)  # answer([x,y,z]).
+</pre>
+
+<h2>Action Attributes</h2>
+
+Action attributes cause various things to happen when
+clauses are used in various ways.
+See the <a href="actions.html">section on Actions</a>.
+<!--
+<p>
+The only difference between <tt>action</tt> and <tt>action2</tt> attributes
+is that <tt>action2</tt> attributes are inherited during inferences.
+-->
+
+<h2>Bsub_hint_wt and Bsub_hint_add_wt Attributes</h2>
+
+The hint attributes are attached to hint clauses, and they are used
+to override the settings of the corresponding parameters.
+That is, if a hint matches
+a clause, and if the hint has a <a href="hints.html#bsub_hint_wt"><tt><b>bsub_hint_wt</b></tt></a> attribute, the value
+of the attribute is used to calculate the weight of the clause instead
+of the ordinary <a href="hints.html#bsub_hint_wt"><tt><b>bsub_hint_wt</b></tt></a> parameter.
+
+</body>
+</html>

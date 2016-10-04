@@ -1,0 +1,33 @@
+set(prolog_style_variables).
+
+formulas(assumptions).
+animal(X) | -wolf(X) # label(wolf_is_an_animal) # label(axiom).
+animal(X) | -fox(X) # label(fox_is_an_animal) # label(axiom).
+animal(X) | -bird(X) # label(bird_is_an_animal) # label(axiom).
+animal(X) | -caterpillar(X) # label(caterpillar_is_an_animal) # label(axiom).
+animal(X) | -snail(X) # label(snail_is_an_animal) # label(axiom).
+wolf(a_wolf) # label(there_is_a_wolf) # label(axiom).
+fox(a_fox) # label(there_is_a_fox) # label(axiom).
+bird(a_bird) # label(there_is_a_bird) # label(axiom).
+caterpillar(a_caterpillar) # label(there_is_a_caterpillar) # label(axiom).
+snail(a_snail) # label(there_is_a_snail) # label(axiom).
+grain(a_grain) # label(there_is_a_grain) # label(axiom).
+plant(X) | -grain(X) # label(grain_is_a_plant) # label(axiom).
+eats(Animal,Plant) | eats(Animal,Small_animal) | -animal(Animal) | -plant(Plant) | -animal(Small_animal) | -plant(Other_plant) | -much_smaller(Small_animal,Animal) | -eats(Small_animal,Other_plant) # label(eating_habits) # label(axiom).
+much_smaller(Catapillar,Bird) | -caterpillar(Catapillar) | -bird(Bird) # label(caterpillar_smaller_than_bird) # label(axiom).
+much_smaller(Snail,Bird) | -snail(Snail) | -bird(Bird) # label(snail_smaller_than_bird) # label(axiom).
+much_smaller(Bird,Fox) | -bird(Bird) | -fox(Fox) # label(bird_smaller_than_fox) # label(axiom).
+much_smaller(Fox,Wolf) | -fox(Fox) | -wolf(Wolf) # label(fox_smaller_than_wolf) # label(axiom).
+-wolf(Wolf) | -fox(Fox) | -eats(Wolf,Fox) # label(wolf_dont_eat_fox) # label(axiom).
+-wolf(Wolf) | -grain(Grain) | -eats(Wolf,Grain) # label(wolf_dont_eat_grain) # label(axiom).
+eats(Bird,Catapillar) | -bird(Bird) | -caterpillar(Catapillar) # label(bird_eats_caterpillar) # label(axiom).
+-bird(Bird) | -snail(Snail) | -eats(Bird,Snail) # label(bird_dont_eat_snail) # label(axiom).
+plant(caterpillar_food_of(Catapillar)) | -caterpillar(Catapillar) # label(caterpillar_food_is_a_plant) # label(axiom).
+eats(Catapillar,caterpillar_food_of(Catapillar)) | -caterpillar(Catapillar) # label(caterpillar_eats_caterpillar_food) # label(axiom).
+plant(snail_food_of(Snail)) | -snail(Snail) # label(snail_food_is_a_plant) # label(axiom).
+eats(Snail,snail_food_of(Snail)) | -snail(Snail) # label(snail_eats_snail_food) # label(axiom).
+-animal(Animal) | -animal(Grain_eater) | -grain(Grain) | -eats(Animal,Grain_eater) | -eats(Grain_eater,Grain) # label(prove_the_animal_exists) # label(negated_conjecture).
+end_of_list.
+
+formulas(goals).
+end_of_list.

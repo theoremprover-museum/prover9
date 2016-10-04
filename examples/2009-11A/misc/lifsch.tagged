@@ -1,0 +1,150 @@
+============================== prooftrans ============================
+Prover9 (32) version 2008-05A, May 2008.
+Process 12539 was started by mccune on cleo,
+Wed May  7 11:30:50 2008
+The command was "/home/mccune/LADR/bin/prover9 -f lifsch.in".
+============================== end of head ===========================
+
+============================== end of input ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.33 (+ 0.00) seconds.
+% Length of proof is 32.
+% Level of proof is 22.
+% Maximum clause weight is 34.
+% Given clauses 101.
+
+c 1  (exists x exists y all z exists u exists w ((-p(z,z) | p(x,x) | -s(u,x)) & (s(x,z) | -s(z,u) | q(w,w)) & (q(y,z) | -q(z,w) | s(y,y)))) # label(non_clause) # label(goal)
+i goal
+e
+c 5  p(f1(x,y),f1(x,y)) | -s(x,f1(x,y)) | -s(y,y)
+i deny
+p 1
+e
+c 7  p(f1(x,y),f1(x,y)) | s(f1(x,y),z) | q(f1(x,y),u)
+i deny
+p 1
+e
+c 13  -p(x,x) | -s(x,f1(x,y)) | -s(y,y)
+i deny
+p 1
+e
+c 15  -p(x,x) | s(f1(x,y),z) | q(f1(x,y),u)
+i deny
+p 1
+e
+c 22  s(x,y) | -s(y,f1(y,z)) | -s(z,z)
+i deny
+p 1
+e
+c 26  s(x,y) | -q(z,z) | -q(u,f1(y,u))
+i deny
+p 1
+e
+c 49  -s(f1(x,y),f1(f1(x,y),z)) | -s(z,z) | -s(x,f1(x,y)) | -s(y,y)
+i resolve
+p 13
+p 5
+e
+c 68  s(f1(f1(x,y),z),u) | q(f1(f1(x,y),z),w) | s(f1(x,y),v5) | q(f1(x,y),v6)
+i resolve
+p 15
+p 7
+e
+c 100  -s(f1(x,y),f1(f1(x,y),y)) | -s(y,y) | -s(x,f1(x,y))
+i factor(49,b,d)
+e
+c 196  s(f1(f1(x,y),z),u) | s(f1(x,y),w) | q(f1(x,y),v5) | s(v6,v7) | -q(v8,v8)
+i resolve
+p 68
+p 26
+e
+c 243  s(f1(f1(x,y),z),u) | s(f1(x,y),w) | q(f1(x,y),v5) | -q(v6,v6)
+i factor(196,a,d)
+e
+c 1199  s(f1(f1(x,y),z),u) | s(f1(x,y),w) | q(f1(x,y),v5) | s(f1(f1(v6,v7),v8),v9) | s(f1(v6,v7),v10) | q(f1(v6,v7),v11)
+i resolve
+p 243
+p 68
+e
+c 1207  s(f1(f1(x,y),z),u) | s(f1(x,y),w) | q(f1(x,y),v5) | s(f1(x,y),v6) | q(f1(x,y),v7)
+i factor(1199,a,d)
+e
+c 1210  s(f1(f1(x,y),z),u) | s(f1(x,y),w) | q(f1(x,y),v5) | q(f1(x,y),v6)
+i factor(1207,b,d)
+e
+c 1212  s(f1(f1(x,y),z),u) | s(f1(x,y),w) | q(f1(x,y),v5)
+i factor(1210,c,d)
+e
+c 1248  s(f1(f1(x,y),z),u) | s(f1(x,y),w) | s(v5,v6) | -q(v7,v7)
+i resolve
+p 1212
+p 26
+e
+c 1262  s(f1(f1(x,y),z),u) | s(f1(x,y),w) | -q(v5,v5)
+i factor(1248,a,c)
+e
+c 1268  s(f1(f1(x,y),z),u) | s(f1(x,y),w) | s(f1(f1(v5,v6),v7),v8) | s(f1(v5,v6),v9)
+i resolve
+p 1262
+p 1212
+e
+c 1269  s(f1(f1(x,y),z),u) | s(f1(x,y),w) | s(f1(x,y),v5)
+i factor(1268,a,c)
+e
+c 1270  s(f1(f1(x,y),z),u) | s(f1(x,y),w)
+i factor(1269,b,c)
+e
+c 1273  s(f1(x,y),z) | -s(u,u) | -s(f1(x,y),f1(f1(x,y),u))
+i resolve
+p 1270
+p 100
+e
+c 1289  s(f1(x,y),z) | s(u,f1(f1(x,y),w)) | -s(v5,v5)
+i resolve
+p 1270
+p 22
+e
+c 1313  s(f1(x,y),f1(f1(x,y),z)) | -s(u,u)
+i factor(1289,a,b)
+e
+c 1320  s(f1(x,y),f1(f1(x,y),z)) | s(f1(u,w),v5)
+i resolve
+p 1313
+p 1270
+e
+c 1322  s(f1(x,y),f1(f1(x,y),z))
+i factor(1320,a,b)
+e
+c 1333  s(f1(x,y),z) | -s(u,u)
+i back_unit_del
+p 1273
+i unit_del(c,1322)
+e
+c 1334  -s(x,x) | -s(y,f1(y,x))
+i back_unit_del
+p 100
+i unit_del(a,1322)
+e
+c 1346  s(f1(x,y),z) | s(f1(u,w),v5)
+i resolve
+p 1333
+p 1270
+e
+c 1348  s(f1(x,y),z)
+i factor(1346,a,b)
+e
+c 1349  -s(x,x)
+i resolve
+p 1348
+p 1334
+e
+c 1350  $F
+i resolve
+p 1349
+p 1348
+e
+
+============================== end of proof ==========================

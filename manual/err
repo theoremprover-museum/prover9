@@ -1,0 +1,321 @@
+-------- Proof 1 -------- 
+
+------ process 1478 exit (max_proofs) ------
+-------- Proof 1 -------- 
+
+------ process 1479 exit (max_proofs) ------
+-------- Proof 1 -------- 
+
+------ process 1480 exit (max_proofs) ------
+-------- Proof 1 -------- 
+
+------ process 1481 exit (max_proofs) ------
+-------- Proof 1 -------- 
+
+------ process 1482 exit (max_proofs) ------
+-------- Proof 1 -------- 
+
+------ process 1483 exit (max_proofs) ------
+-------- Proof 1 -------- 
+
+------ process 1484 exit (max_proofs) ------
+-------- Proof 1 -------- 
+
+------ process 1485 exit (max_proofs) ------
+-------- Proof 1 -------- 
+
+------ process 1486 exit (max_proofs) ------
+-------- Proof 1 -------- 
+
+------ process 1487 exit (max_proofs) ------
+-------- Proof 1 -------- 
+
+------ process 1488 exit (max_proofs) ------
+-------- Proof 1 -------- 
+
+------ process 1489 exit (max_proofs) ------
+-------- Proof 1 -------- 
+
+------ process 1490 exit (max_proofs) ------
+-------- Proof 1 -------- 
+
+------ process 1491 exit (max_proofs) ------
+-------- Proof 1 -------- 
+
+------ process 1492 exit (max_proofs) ------
+-------- Proof 1 -------- 
+
+------ process 1493 exit (max_proofs) ------
+-------- Proof 1 -------- 
+
+------ process 1494 exit (max_proofs) ------
+-------- Proof 1 -------- 
+
+------ process 1495 exit (max_proofs) ------
+-------- Proof 1 -------- 
+
+------ process 1496 exit (max_proofs) ------
+-------- Proof 1 -------- 
+
+------ process 1497 exit (max_proofs) ------
+-------- Proof 1 -------- 
+
+------ process 1498 exit (max_proofs) ------
+-------- Proof 1 -------- 
+
+------ process 1499 exit (max_proofs) ------
+-------- Proof 1 -------- 
+
+------ process 1500 exit (max_proofs) ------
+-------- Proof 1 -------- 
+
+------ process 1501 exit (max_proofs) ------
+-------- Proof 1 -------- 
+
+------ process 1502 exit (max_proofs) ------
+-------- Proof 1 -------- 
+
+------ process 1503 exit (max_proofs) ------
+-------- Proof 1 -------- 
+
+------ process 1504 exit (max_proofs) ------
+-------- Proof 1 -------- 
+
+------ process 1505 exit (max_proofs) ------
+-------- Proof 1 -------- 
+
+------ process 1506 exit (max_proofs) ------
+-------- Proof 1 -------- 
+
+------ process 1507 exit (max_proofs) ------
+-------- Proof 1 -------- 
+
+------ process 1508 exit (max_proofs) ------
+-------- Proof 1 -------- 
+
+------ process 1509 exit (max_proofs) ------
+
+THEOREM PROVED
+
+------ process 1477 exit (max_proofs) ------
+-------- Proof 1 -------- 
+
+THEOREM PROVED
+
+------ process 1510 exit (max_proofs) ------
+-------- Proof 1 -------- 
+
+THEOREM PROVED
+
+------ process 1511 exit (max_proofs) ------
+-------- Proof 1 -------- 
+
+THEOREM PROVED
+
+------ process 1512 exit (max_proofs) ------
+-------- Proof 1 -------- 
+
+THEOREM PROVED
+
+------ process 1513 exit (max_proofs) ------
+-------- Proof 1 -------- 
+
+THEOREM PROVED
+
+------ process 1514 exit (max_proofs) ------
+-------- Proof 1 -------- 
+
+THEOREM PROVED
+
+------ process 1515 exit (max_proofs) ------
+-------- Proof 1 -------- H2.
+
+THEOREM PROVED
+
+------ process 1516 exit (max_proofs) ------
+
+WARNING: clear(process_initial_sos) is not well tested.
+We usually recommend against using it.
+
+SEARCH FAILED
+
+------ process 1521 exit (sos_empty) ------
+
+SEARCH FAILED
+
+------ process 1523 exit (sos_empty) ------
+-------- Proof 1 -------- absorb.
+-------- Proof 2 -------- one.
+-------- Proof 3 -------- combined.
+-------- Proof 4 -------- assoc.
+
+THEOREM PROVED
+
+------ process 1524 exit (max_proofs) ------
+-------- Proof 1 -------- right_cancellation.
+
+THEOREM PROVED
+
+------ process 1527 exit (max_proofs) ------
+-------- Proof 1 -------- Sheffer_1.
+-------- Proof 2 -------- Sheffer_2.
+-------- Proof 3 -------- Sheffer_3.
+
+THEOREM PROVED
+
+------ process 1528 exit (max_proofs) ------
+-------- Proof 1 -------- Sheffer_1.
+-------- Proof 2 -------- Sheffer_2.
+-------- Proof 3 -------- Sheffer_3.
+
+THEOREM PROVED
+
+------ process 1530 exit (max_proofs) ------
+-------- Proof 1 -------- Sheffer_1.
+-------- Proof 2 -------- Sheffer_2.
+-------- Proof 3 -------- Sheffer_3.
+
+THEOREM PROVED
+
+------ process 1533 exit (max_proofs) ------
+
+=== Mace4 starting on domain size 2. ===
+
+=== Mace4 starting on domain size 3. ===
+
+=== Mace4 starting on domain size 4. ===
+
+=== Mace4 starting on domain size 5. ===
+
+=== Mace4 starting on domain size 6. ===
+
+------ process 1534 exit (max_models) ------
+
+=== Mace4 starting on domain size 2. ===
+
+=== Mace4 starting on domain size 3. ===
+
+=== Mace4 starting on domain size 4. ===
+
+=== Mace4 starting on domain size 5. ===
+
+=== Mace4 starting on domain size 6. ===
+
+------ process 1535 exit (max_models) ------
+
+=== Mace4 starting on domain size 2. ===
+
+=== Mace4 starting on domain size 3. ===
+
+=== Mace4 starting on domain size 5. ===
+
+=== Mace4 starting on domain size 7. ===
+
+=== Mace4 starting on domain size 11. ===
+
+=== Mace4 starting on domain size 13. ===
+
+=== Mace4 starting on domain size 17. ===
+
+=== Mace4 starting on domain size 19. ===
+
+------ process 1536 exit (max_models) ------
+
+=== Mace4 starting on domain size 2. ===
+
+=== Mace4 starting on domain size 3. ===
+
+=== Mace4 starting on domain size 4. ===
+
+------ process 1554 exit (max_models) ------
+
+=== Mace4 starting on domain size 2. ===
+
+=== Mace4 starting on domain size 3. ===
+
+=== Mace4 starting on domain size 4. ===
+
+=== Mace4 starting on domain size 5. ===
+
+=== Mace4 starting on domain size 6. ===
+
+------ process 1560 exit (all_models) ------
+
+=== Mace4 starting on domain size 2. ===
+
+=== Mace4 starting on domain size 3. ===
+
+=== Mace4 starting on domain size 4. ===
+
+=== Mace4 starting on domain size 5. ===
+
+=== Mace4 starting on domain size 6. ===
+
+------ process 1564 exit (all_models) ------
+
+=== Mace4 starting on domain size 2. ===
+
+=== Mace4 starting on domain size 3. ===
+
+=== Mace4 starting on domain size 4. ===
+
+=== Mace4 starting on domain size 5. ===
+
+=== Mace4 starting on domain size 6. ===
+
+------ process 1568 exit (all_models) ------
+-------- Proof 1 -------- 
+
+THEOREM PROVED
+
+------ process 1575 exit (max_proofs) ------
+-------- Proof 1 -------- 
+
+THEOREM PROVED
+
+------ process 1577 exit (max_proofs) ------
+
+=== Mace4 starting on domain size 8. ===
+
+------ process 1580 exit (max_models) ------
+
+=== Mace4 starting on domain size 8. ===
+
+------ process 1581 exit (max_models) ------
+
+=== Mace4 starting on domain size 6. ===
+
+------ process 1582 exit (all_models) ------
+
+=== Mace4 starting on domain size 10. ===
+
+------ process 1583 exit (max_models) ------
+
+=== Mace4 starting on domain size 5. ===
+
+------ process 1585 exit (max_models) ------
+-------- Proof 1 -------- [5,7,2,6,3,1,4,8].
+
+THEOREM PROVED
+
+------ process 1586 exit (max_proofs) ------
+
+SEARCH FAILED
+
+------ process 1587 exit (sos_empty) ------
+-------- Proof 1 -------- goat # none # wolf # goat # cabbage # none # goat.
+
+THEOREM PROVED
+
+------ process 1588 exit (max_proofs) ------
+-------- Proof 1 -------- 
+
+THEOREM PROVED
+
+------ process 1589 exit (max_proofs) ------
+-------- Proof 1 -------- 
+
+THEOREM PROVED
+
+------ process 1590 exit (max_proofs) ------
+See the files checked-jobs/*.diffs

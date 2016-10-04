@@ -1,0 +1,30 @@
+;; ============================== prooftrans ============================
+;; Prover9 (32) version 2009-11A, November 2009.
+;; Process 4527 was started by mccune on cleo,
+;; Tue Nov  3 09:39:04 2009
+;; The command was "/home/mccune/LADR/bin/prover9 -f w_sk.in".
+;; ============================== end of head ===========================
+
+;; BEGINNING OF PROOF OBJECT
+(
+(2 (input) (= (a (a (a (S) v0) v1) v2) (a (a v0 v2) (a v1 v2))) NIL)
+(3 (input) (= (a (a (K) v0) v1) v0) NIL)
+(4 (input) (not (= (a (a v0 (f1 v0)) (f2 v0)) (a (a (f1 v0) (f2 v0)) (f2 v0)))) NIL)
+(5 (flip 4 ()) (not (= (a (a (f1 v0) (f2 v0)) (f2 v0)) (a (a v0 (f1 v0)) (f2 v0)))) NIL)
+(57 (instantiate 3 ((v0 . v102) (v1 . (a v101 v102)))) (= (a (a (K) v102) (a v101 v102)) v102) NIL)
+(58 (instantiate 2 ((v0 . (K)) (v1 . v101) (v2 . v102))) (= (a (a (a (S) (K)) v101) v102) (a (a (K) v102) (a v101 v102))) NIL)
+(59 (paramod 57 (1) 58 (2)) (= (a (a (a (S) (K)) v101) v102) v102) NIL)
+(14 (instantiate 59 ((v101 . v0) (v102 . v1))) (= (a (a (a (S) (K)) v0) v1) v1) NIL)
+(60 (instantiate 2 ((v2 . (f1 (a (a (S) v0) v1))))) (= (a (a (a (S) v0) v1) (f1 (a (a (S) v0) v1))) (a (a v0 (f1 (a (a (S) v0) v1))) (a v1 (f1 (a (a (S) v0) v1))))) NIL)
+(61 (instantiate 5 ((v0 . (a (a (S) v0) v1)))) (not (= (a (a (f1 (a (a (S) v0) v1)) (f2 (a (a (S) v0) v1))) (f2 (a (a (S) v0) v1))) (a (a (a (a (S) v0) v1) (f1 (a (a (S) v0) v1))) (f2 (a (a (S) v0) v1))))) NIL)
+(15 (paramod 60 (1) 61 (1 2 1)) (not (= (a (a (f1 (a (a (S) v0) v1)) (f2 (a (a (S) v0) v1))) (f2 (a (a (S) v0) v1))) (a (a (a v0 (f1 (a (a (S) v0) v1))) (a v1 (f1 (a (a (S) v0) v1)))) (f2 (a (a (S) v0) v1))))) NIL)
+(62 (instantiate 14 ((v1 . v102))) (= (a (a (a (S) (K)) v0) v102) v102) NIL)
+(63 (instantiate 2 ((v0 . v100) (v1 . (a (a (S) (K)) v0)) (v2 . v102))) (= (a (a (a (S) v100) (a (a (S) (K)) v0)) v102) (a (a v100 v102) (a (a (a (S) (K)) v0) v102))) NIL)
+(64 (paramod 62 (1) 63 (2 2)) (= (a (a (a (S) v100) (a (a (S) (K)) v0)) v102) (a (a v100 v102) v102)) NIL)
+(55 (instantiate 64 ((v100 . v0) (v0 . v1) (v102 . v2))) (= (a (a (a (S) v0) (a (a (S) (K)) v1)) v2) (a (a v0 v2) v2)) NIL)
+(65 (instantiate 55 ((v0 . (f1 (a (a (S) (S)) (a (S) (K))))) (v1 . (f1 (a (a (S) (S)) (a (S) (K))))) (v2 . (f2 (a (a (S) (S)) (a (S) (K))))))) (= (a (a (a (S) (f1 (a (a (S) (S)) (a (S) (K))))) (a (a (S) (K)) (f1 (a (a (S) (S)) (a (S) (K)))))) (f2 (a (a (S) (S)) (a (S) (K))))) (a (a (f1 (a (a (S) (S)) (a (S) (K)))) (f2 (a (a (S) (S)) (a (S) (K))))) (f2 (a (a (S) (S)) (a (S) (K)))))) NIL)
+(66 (instantiate 15 ((v0 . (S)) (v1 . (a (S) (K))))) (not (= (a (a (f1 (a (a (S) (S)) (a (S) (K)))) (f2 (a (a (S) (S)) (a (S) (K))))) (f2 (a (a (S) (S)) (a (S) (K))))) (a (a (a (S) (f1 (a (a (S) (S)) (a (S) (K))))) (a (a (S) (K)) (f1 (a (a (S) (S)) (a (S) (K)))))) (f2 (a (a (S) (S)) (a (S) (K))))))) NIL)
+(67 (flip 66 ()) (not (= (a (a (a (S) (f1 (a (a (S) (S)) (a (S) (K))))) (a (a (S) (K)) (f1 (a (a (S) (S)) (a (S) (K)))))) (f2 (a (a (S) (S)) (a (S) (K))))) (a (a (f1 (a (a (S) (S)) (a (S) (K)))) (f2 (a (a (S) (S)) (a (S) (K))))) (f2 (a (a (S) (S)) (a (S) (K))))))) NIL)
+(56 (resolve 65 () 67 ()) false NIL)
+)
+;; END OF PROOF OBJECT

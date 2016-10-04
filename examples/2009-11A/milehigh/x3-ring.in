@@ -1,0 +1,29 @@
+assign(max_seconds, 30).
+
+assign(order, kbo).
+
+formulas(sos).
+
+% Ring Theory (associative)
+
+  x + 0 = x.
+  x + (-x) = 0.
+  (x + y) + z = x + (y + z).
+  x + y = y + x.
+
+  x * (y + z) = (x * y) + (x * z).
+  (x + z) * y = (x * y) + (z * y).
+
+  (x * y) * z = x * (y * z).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  x * (x * x) = x # label("hypothesis x^3=x").
+
+end_of_list.
+
+formulas(goals).
+
+  x * y = y * x # label(commutativity).
+
+end_of_list.

@@ -1,0 +1,109 @@
+============================== Mace4 =================================
+Mace4 (32) version 2009-11A, November 2009.
+Process 4326 was started by mccune on cleo,
+Tue Nov  3 09:38:46 2009
+The command was "/home/mccune/LADR/bin/mace4 -f cl_ql.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file cl_ql.in
+
+
+formulas(assumptions).
+a(a(L,x),y) = a(x,a(y,y)).
+a(a(a(Q,x),y),z) = a(y,a(x,z)).
+end_of_list.
+
+formulas(goals).
+(exists Q all x a(Q,x) = a(x,a(Q,x))) # label(fixed_point_combinator).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 (exists Q all x a(Q,x) = a(x,a(Q,x))) # label(fixed_point_combinator) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== CLAUSES FOR SEARCH ====================
+
+formulas(mace4_clauses).
+a(a(L,x),y) = a(x,a(y,y)).
+a(a(a(Q,x),y),z) = a(y,a(x,z)).
+a(x,f1(x)) != a(f1(x),a(x,f1(x))) # label(fixed_point_combinator).
+end_of_list.
+
+============================== end of clauses for search =============
+
+% There are no natural numbers in the input.
+
+============================== DOMAIN SIZE 2 =========================
+
+============================== STATISTICS ============================
+
+For domain size 2.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.01 seconds).
+Ground clauses: seen=14, kept=14.
+Selections=20, assignments=39, propagations=29, current_models=0.
+Rewrite_terms=374, rewrite_bools=32, indexes=111.
+Rules_from_neg_clauses=14, cross_offs=14.
+
+============================== end of statistics =====================
+
+============================== DOMAIN SIZE 3 =========================
+
+============================== STATISTICS ============================
+
+For domain size 3.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.01 seconds).
+Ground clauses: seen=39, kept=39.
+Selections=137, assignments=406, propagations=613, current_models=0.
+Rewrite_terms=9606, rewrite_bools=1080, indexes=3055.
+Rules_from_neg_clauses=75, cross_offs=303.
+
+============================== end of statistics =====================
+
+============================== DOMAIN SIZE 4 =========================
+
+============================== MODEL =================================
+
+interpretation( 4, [number=1, seconds=0], [
+
+        function(L, [ 0 ]),
+
+        function(Q, [ 0 ]),
+
+        function(f1(_), [ 1, 0, 0, 1 ]),
+
+        function(a(_,_), [
+			   0, 1, 1, 0,
+			   3, 2, 2, 3,
+			   3, 2, 2, 3,
+			   0, 1, 1, 0 ])
+]).
+
+============================== end of model ==========================
+
+============================== STATISTICS ============================
+
+For domain size 4.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.01 seconds).
+Ground clauses: seen=84, kept=84.
+Selections=19, assignments=51, propagations=75, current_models=1.
+Rewrite_terms=1841, rewrite_bools=171, indexes=542.
+Rules_from_neg_clauses=5, cross_offs=28.
+
+============================== end of statistics =====================
+
+User_CPU=0.01, System_CPU=0.00, Wall_clock=0.
+
+Exiting with 1 model.
+
+Process 4326 exit (max_models) Tue Nov  3 09:38:46 2009
+The process finished Tue Nov  3 09:38:46 2009

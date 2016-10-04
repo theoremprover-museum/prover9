@@ -1,0 +1,2 @@
+s/INT_MAX/<tt>INT_MAX<\/tt>/g
+s/INT_MIN/<tt>INT_MIN<\/tt>/g

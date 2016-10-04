@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+  <title>Prover9 Manual: Input Files</title>
+ <link rel="stylesheet" href="manual.css">
+</head>
+
+<body>
+
+
+<hr>
+<table width="100%">
+<tr>
+<colgroup>
+<col width="33%">
+<col width="34%">
+<col width="33%">
+</colgroup>
+<td align="left"><i>Prover9 Manual</i>
+<td align="center"><img src="prover9-5a-256t.gif">
+<td align="right"><i>Version 2009-11A</i>
+</table>
+<hr>
+
+<!-- Main content -->
+
+<h1>Prover9 Input Files</h1>
+
+Prover9 takes its input from one or more (usually one) files.
+If there is more than one input file, lists of objects
+(formulas, weighting rules, etc.) cannot be
+split across more than one file.
+The page <a href="running.html">Running Prover9</a>
+shows how to specify the files in the commands to run Prover9.
+
+<h2>Comments and Whitespace</h2>
+
+There are two kinds of comment:
+
+<ul>
+<li><i>Line comment</i>.  If the first '<tt>%</tt>' (percent sign) on a line
+is not the start of a block comment ('<tt>%BEGIN</tt>'), everything from that symbol
+through the end of the line is ignored.
+<li><i>Block comment</i>.  If the parser sees the string '<tt>%BEGIN</tt>',
+that is not in a line comment,
+it will ignore everything up through the next occurrence of '<tt>END%</tt>'.
+Line breaks are irrelevant.  If there is no '<tt>END%</tt>', the rest of
+the file is ignored, without causing an error.
+</ul>
+
+<p>
+Comments are not echoed to the output file.  Clauses can have
+<a href="attributes.html">label attributes</a> which can serve as
+different kind of comment which <i>does</i> appear in the output file.
+
+<p>
+Whitespace (spaces, newlines, tabs, etc.) is optional in most
+places.  The important exception is that whitespace is
+required around some operations in clauses and formulas
+(see the page <a href="syntax.html">Clauses and Formulas</a>).
+
+<h2>A Simple Example</h2>
+
+The most basic kind of input file consists of list of <a href="glossary.html#clause">clauses</a> named
+"<tt>sos</tt>" representing the negation of the conjecture, as in
+the following example.
+<pre class="my_file">
+formulas(sos).           % clauses to be placed in the sos list
+  -man(x) | mortal(x).
+  man(george).
+  -mortal(george).
+end_of_list.
+</pre>
+Prover9 will take the clauses, use its automatic mode to 
+decide on the inference rules, and then search for a refutation.
+
+<p>
+The preceding example can also be stated in a more natural
+way by using a non-clausal formula for the man-implies-mortal rule and the
+<a href="goals.html"><tt>goals</tt> list</a> for the conclusion, as follows.
+<pre class="my_file">
+formulas(assumptions).   % synonym for formulas(sos).
+  man(x) -> mortal(x).   % <a href="glossary.html#">open formula</a> with <a href="glossary.html#">free variable</a> x
+  man(george).
+end_of_list.
+
+formulas(goals).         % to be negated and placed in the sos list
+  mortal(george).
+end_of_list.
+</pre>
+Prover9 will transform the formulas in this input to
+the same clauses as in the basic input above before
+starting the search for a refutation.
+
+<blockquote class="otter_diff">
+In Otter and in earlier versions of Prover9,
+"clauses" and "formulas" were distinct types of object,
+and formulas could not have free variables.
+Now, clauses are a subset of formulas, and Prover9 decides
+which formulas are non-clausal and takes the appropriate
+actions to transform them to clauses.
+</blockquote>
+
+<h2><a name="lists">Types of Input</a></h2>
+
+Prover9 input consists of lists of objects (formulas or terms)
+and commands.
+
+<h3>Lists of Objects</h3>
+
+Lists of objects start with a type (<tt>formulas</tt> or <tt>terms</tt>)
+and name (<tt>sos</tt>, <tt>goals</tt>, <tt>weights</tt>, etc.),
+and end with <tt>end_of_list</tt>.  The following display show an example
+of each type of accepted list, with one object in each list.
+
+<pre class="my_file">
+formulas(sos).           p(x).     end_of_list.   % the primary input list
+formulas(assumptions).   p(x).     end_of_list.   % synonym for formulas(sos)
+formulas(goals).         p(x).     end_of_list.   % some restrictions (see <a href="goals.html">Goals</a>)
+formulas(usable).        p(x).     end_of_list.   % seldom used
+formulas(demodulators).  f(x)=x.   end_of_list.   % seldom used, must be equalities
+formulas(hints).         p(x).     end_of_list.   % should be used more often  (see <a href="hints.html">Hints</a>)
+
+list(weights).         weight(a) = 10.                         end_of_list. % see <a href="weight.html">Weighting</a>
+list(kbo_weights).     a = 3.                                  end_of_list. % see <a href="term-order.html">Term Ordering</a>
+list(actions).         given = 100 -> set(print_kept).         end_of_list. % see <a href="actions.html">Actions</a>
+list(interpretations). interpretation(2,[],[relation(p,[1])]). end_of_list. % see <a href="semantics.html">Semantics</a>
+</pre>
+If the input contains more than one list of a particular type/name, the lists
+are simply concatenated by Prover9 as they are read.
+
+<h3>Commands</h3>
+
+Eleven types of command are accepted.  Here is an example of each.
+
+<pre class="my_file">
+op(400, infix_right, ["+", "--"]). % declare parse precedence and type (see <a href="syntax.html#declarations">Clauses and Formulas</a>)
+
+redeclare(negation, "~"]).         % change the negation symbol (see <a href="syntax.html#redeclare">Clauses and Formulas</a>)
+
+set(print_kept).                   % set a flag
+
+clear(auto_inference).             % clear a flag
+
+assign(max_weight, 40).            % integer parameter
+
+assign(stats, some).               % string parameter
+
+assoc_comm(*).                     % not currently used for Prover9
+
+commutative(g).                    % not currently used for Prover9
+
+predicate_order([=,<=,P,Q).        % predicate symbol precedence (see <a href="term-order.html">Term Ordering</a>)
+
+function_order([0,1,a,b,f,g,*,+]). % function symbol precedence (see <a href="term-order.html">Term Ordering</a>)
+
+lex([0,1,a,b,f,g,*,+]).            % synonym for "function_order"
+
+skolem([a,b,f,g]).                 % declare symbols to be Skolem functions (rarely used)
+</pre>
+
+<h2>Order of Commands and Lists of Objects</h2>
+
+For the most part, the order of things in the input file(s) is irrelevant.
+For example, commands can usually be mixed with lists of objects.
+The situations in which order matters are listed here.
+
+<ul>
+<li>The <tt>op(precedence, type, symbols)</tt> commands must occur
+before any clauses or formulas that contain the affected symbols.
+<li>Some of the flags and parameters alter other flags and parameters.
+The alterations can be undone by placing the appropriate command
+after the command that alters.  The output file clearly shows
+what happens in these cases.
+</ul>
+
+Note that changing the order of clauses or formulas within a list,
+changing the order of literals in a clause,
+or changing the order of subformulas in a formula
+can change the search, occasionally in substantial ways.
+
+<h2>Conditional Inclusion</h2>
+
+Many input files can be used for multiple programs (e.g., Prover9 and Mace4).
+The following construct says to include the enclosed input
+for the given program only.
+
+<pre class="my_file">
+if(<font color="#D10000"><i>program-name</i></font>).
+   <font color="#D10000"><i>... conditionally-included input ...</i></font>
+end_if.
+</pre>
+
+For example, to specify that Mace4 and Prover9 have different time limits,
+one can write
+<pre class="my_file">
+if(Mace4).
+  assign(max_seconds, 30).
+end_if.
+
+if(Prover9).
+  assign(max_seconds, 3600).
+end_if.
+</pre>
+
+The conditional-inclusion construct cannot occur within a list of
+objects (formulas, weighting rules, etc.).
+
+<hr>
+Next Section:
+<a href="syntax.html">Clauses & Formulas</a>
+
+</body>
+</html>

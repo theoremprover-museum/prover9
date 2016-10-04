@@ -1,0 +1,17 @@
+% Ternary Boolean Algebra.  Independence of axiom 2.
+
+formulas(assumptions).
+
+  f(f(v,w,x),y,f(v,w,z)) = f(v,w,f(x,y,z)).
+% f(y,x,x) = x.  % We're showing that this axiom is independent.
+  f(x,x,y) = x.
+  f(g(y),y,x) = x.
+  f(x,y,g(y)) = x.
+
+end_of_list.
+
+formulas(goals).
+
+  f(y,x,x) = x.
+
+end_of_list.

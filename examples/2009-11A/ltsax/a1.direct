@@ -1,0 +1,404 @@
+============================== directproof ===========================
+Prover9 (32) version Dec-2007, Dec 2007.
+Process 16110 was started by mccune on cleo,
+Thu Dec 13 11:03:27 2007
+The command was "/home/mccune/bin/prover9 -f a1.in".
+============================== end of head ===========================
+
+============================== end of input ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 1 at 0.99 (+ 0.01) seconds: McKenzie_2.
+% Length of proof is 43.
+% Level of proof is 20.
+% Maximum clause weight is 89.
+% Given clauses 94.
+
+1 x ^ (y v (x v z)) = x # answer(McKenzie_2) # label(non_clause) # label(goal).  [goal].
+2 (((x v y) ^ y) v (((z ^ (y v y)) v (u ^ y)) ^ w)) ^ (v5 v ((v6 v y) ^ (y v v7))) = y # label(A1).  [assumption].
+3 c4 ^ (c5 v (c4 v c6)) != c4 # answer(McKenzie_2).  [deny(1)].
+4 (((x v ((y v z) ^ (z v u))) ^ ((y v z) ^ (z v u))) v ((z v (w ^ ((y v z) ^ (z v u)))) ^ v5)) ^ (v6 v ((v7 v ((y v z) ^ (z v u))) ^ (((y v z) ^ (z v u)) v v8))) = (y v z) ^ (z v u).  [para(2(a,1),2(a,1,1,2,1,1))].
+5 (((x v y) ^ y) v (y v y)) ^ (z v ((u v y) ^ (y v w))) = y.  [para(2(a,1),2(a,1,1,2))].
+6 (((x v ((y v ((z v u) ^ u)) ^ (((z v u) ^ u) v w))) ^ ((y v ((z v u) ^ u)) ^ (((z v u) ^ u) v w))) v u) ^ (v5 v ((v6 v ((y v ((z v u) ^ u)) ^ (((z v u) ^ u) v w))) ^ (((y v ((z v u) ^ u)) ^ (((z v u) ^ u) v w)) v v7))) = (y v ((z v u) ^ u)) ^ (((z v u) ^ u) v w).  [para(2(a,1),4(a,1,1,2))].
+7 (((x v y) ^ ((((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w))))) v (((y v y) v (v5 ^ ((((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w)))))) ^ v6)) ^ (v7 v ((v8 v ((((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w))))) ^ (((((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w)))) v v9))) = (((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w))).  [para(5(a,1),4(a,1,1,1,1,2))].
+8 (((x v y) ^ y) v (((y v y) v (v5 ^ ((((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w)))))) ^ v6)) ^ (v7 v ((v8 v ((((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w))))) ^ (((((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w)))) v v9))) = (((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w))).  [para(5(a,1),7(a,1,1,1,2))].
+9 (((x v y) ^ y) v (((y v y) v (v5 ^ y)) ^ v6)) ^ (v7 v ((v8 v ((((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w))))) ^ (((((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w)))) v v9))) = (((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w))).  [para(5(a,1),8(a,1,1,2,1,2,2))].
+10 (((x v y) ^ y) v (((y v y) v (v5 ^ y)) ^ v6)) ^ (v7 v ((v8 v y) ^ (((((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w)))) v v9))) = (((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w))).  [para(5(a,1),9(a,1,2,2,1,2))].
+11 (((x v y) ^ y) v (((y v y) v (v5 ^ y)) ^ v6)) ^ (v7 v ((v8 v y) ^ (y v v9))) = (((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w))).  [para(5(a,1),10(a,1,2,2,2,1))].
+12 (((x v y) ^ y) v (((y v y) v (z ^ y)) ^ u)) ^ (w v ((v5 v y) ^ (y v v6))) = y.  [para(5(a,1),11(a,2))].
+13 (((x v (y v y)) ^ (y v y)) v ((y v y) v (y v y))) ^ (z v y) = y v y.  [para(5(a,1),5(a,1,2,2))].
+14 (((x v y) ^ ((((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6))))) v (((((y v y) v (u ^ y)) ^ w) v (v7 ^ ((((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6)))))) ^ v8)) ^ (v9 v ((v10 v ((((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6))))) ^ (((((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6)))) v v11))) = (((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6))).  [para(12(a,1),4(a,1,1,1,1,2))].
+15 (((x v y) ^ y) v (((((y v y) v (u ^ y)) ^ w) v (v7 ^ ((((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6)))))) ^ v8)) ^ (v9 v ((v10 v ((((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6))))) ^ (((((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6)))) v v11))) = (((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6))).  [para(12(a,1),14(a,1,1,1,2))].
+16 (((x v y) ^ y) v (((((y v y) v (u ^ y)) ^ w) v (v7 ^ y)) ^ v8)) ^ (v9 v ((v10 v ((((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6))))) ^ (((((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6)))) v v11))) = (((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6))).  [para(12(a,1),15(a,1,1,2,1,2,2))].
+17 (((x v y) ^ y) v (((((y v y) v (u ^ y)) ^ w) v (v7 ^ y)) ^ v8)) ^ (v9 v ((v10 v y) ^ (((((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6)))) v v11))) = (((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6))).  [para(12(a,1),16(a,1,2,2,1,2))].
+18 (((x v y) ^ y) v (((((y v y) v (u ^ y)) ^ w) v (v7 ^ y)) ^ v8)) ^ (v9 v ((v10 v y) ^ (y v v11))) = (((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6))).  [para(12(a,1),17(a,1,2,2,2,1))].
+19 (((x v y) ^ y) v (((((y v y) v (z ^ y)) ^ u) v (w ^ y)) ^ v5)) ^ (v6 v ((v7 v y) ^ (y v v8))) = y.  [para(12(a,1),18(a,2))].
+20 (((x v y) ^ y) v (z ^ y)) ^ (u v ((w v y) ^ (y v v5))) = y.  [para(2(a,1),19(a,1,1,2))].
+21 (((x v (y v y)) ^ (y v y)) v (z ^ (y v y))) ^ (u v y) = y v y.  [para(5(a,1),20(a,1,2,2))].
+22 (((x v (y ^ z)) ^ (y ^ z)) v (u ^ (y ^ z))) ^ (w v z) = y ^ z.  [para(20(a,1),20(a,1,2,2))].
+23 (((x v (y v y)) ^ (y v y)) v (y v y)) ^ (z v y) = y v y.  [para(13(a,1),21(a,1,1,2))].
+24 (((x v (y v y)) ^ (y v y)) v (z ^ y)) ^ (u v y) = y v y.  [para(22(a,1),21(a,1,1,2))].
+25 (((x v y) ^ ((((z v y) ^ y) v ((u v y) ^ y)) ^ (((u v y) ^ y) v ((w v y) ^ (y v v5))))) v y) ^ (v6 v ((v7 v ((((z v y) ^ y) v ((u v y) ^ y)) ^ (((u v y) ^ y) v ((w v y) ^ (y v v5))))) ^ (((((z v y) ^ y) v ((u v y) ^ y)) ^ (((u v y) ^ y) v ((w v y) ^ (y v v5)))) v v8))) = (((z v y) ^ y) v ((u v y) ^ y)) ^ (((u v y) ^ y) v ((w v y) ^ (y v v5))).  [para(20(a,1),6(a,1,1,1,1,2))].
+26 (((x v y) ^ y) v y) ^ (v6 v ((v7 v ((((z v y) ^ y) v ((u v y) ^ y)) ^ (((u v y) ^ y) v ((w v y) ^ (y v v5))))) ^ (((((z v y) ^ y) v ((u v y) ^ y)) ^ (((u v y) ^ y) v ((w v y) ^ (y v v5)))) v v8))) = (((z v y) ^ y) v ((u v y) ^ y)) ^ (((u v y) ^ y) v ((w v y) ^ (y v v5))).  [para(20(a,1),25(a,1,1,1,2))].
+27 (((x v y) ^ y) v y) ^ (v6 v ((v7 v y) ^ (((((z v y) ^ y) v ((u v y) ^ y)) ^ (((u v y) ^ y) v ((w v y) ^ (y v v5)))) v v8))) = (((z v y) ^ y) v ((u v y) ^ y)) ^ (((u v y) ^ y) v ((w v y) ^ (y v v5))).  [para(20(a,1),26(a,1,2,2,1,2))].
+28 (((x v y) ^ y) v y) ^ (v6 v ((v7 v y) ^ (y v v8))) = (((z v y) ^ y) v ((u v y) ^ y)) ^ (((u v y) ^ y) v ((w v y) ^ (y v v5))).  [para(20(a,1),27(a,1,2,2,2,1))].
+29 (((x v y) ^ y) v y) ^ (z v ((u v y) ^ (y v w))) = y.  [para(20(a,1),28(a,2))].
+30 (((x v y) ^ y) v (y v y)) ^ (z v y) = y.  [para(29(a,1),5(a,1,2,2))].
+31 (((x v y) ^ y) v (z ^ y)) ^ (u v y) = y.  [para(29(a,1),20(a,1,2,2))].
+32 (((x v (y ^ z)) ^ (y ^ z)) v (y ^ z)) ^ (u v z) = y ^ z.  [para(20(a,1),29(a,1,2,2))].
+33 ((x v x) v (x v x)) ^ (y v ((z v (x v x)) ^ ((x v x) v u))) = x v x.  [para(23(a,1),29(a,1,1,1))].
+34 (((x v y) ^ y) v y) ^ (z v y) = y.  [para(29(a,1),29(a,1,2,2))].
+35 (x v (x v x)) ^ (y v x) = x v x.  [para(30(a,1),23(a,1,1,1))].
+36 ((x v x) v ((x v x) v (x v x))) ^ (y v (x v x)) = x v x.  [para(23(a,1),30(a,1,1,1))].
+37 (x v x) v (x v x) = x v x.  [para(35(a,1),36(a,1))].
+38 (x v (y ^ x)) ^ (z v x) = x v x.  [para(30(a,1),24(a,1,1,1))].
+39 (x v x) ^ (y v ((z v (x v x)) ^ ((x v x) v u))) = x v x.  [para(37(a,1),33(a,1,1))].
+40 (((x v y) ^ ((((z v y) ^ y) v y) ^ (u v y))) v ((((z v y) ^ y) v y) ^ (u v y))) ^ (w v (u v y)) = (((z v y) ^ y) v y) ^ (u v y).  [para(34(a,1),32(a,1,1,1,1,2))].
+41 (((x v y) ^ y) v ((((z v y) ^ y) v y) ^ (u v y))) ^ (w v (u v y)) = (((z v y) ^ y) v y) ^ (u v y).  [para(34(a,1),40(a,1,1,1,2))].
+42 (((x v y) ^ y) v y) ^ (w v (u v y)) = (((z v y) ^ y) v y) ^ (u v y).  [para(34(a,1),41(a,1,1,2))].
+43 (((x v y) ^ y) v y) ^ (z v (u v y)) = y.  [para(34(a,1),42(a,2))].
+44 (x v x) ^ (y v ((x v x) ^ ((x v x) v z))) = x v x.  [para(37(a,1),39(a,1,2,2,1))].
+45 (((x v y) ^ y) v ((x v y) ^ y)) ^ (z v y) = ((x v y) ^ y) v ((x v y) ^ y).  [para(20(a,1),44(a,1,2,2))].
+46 y = ((x v y) ^ y) v ((x v y) ^ y).  [para(31(a,1),45(a,1))].
+47 ((x v y) ^ y) v ((x v y) ^ y) = y.  [copy(46),flip(a)].
+48 (((x v y) ^ y) v ((x v y) ^ y)) ^ (z v y) = ((x v y) ^ y) v ((x v y) ^ y).  [para(31(a,1),44(a,1,2,2))].
+49 y ^ (z v y) = ((x v y) ^ y) v ((x v y) ^ y).  [para(47(a,1),48(a,1,1))].
+50 x ^ (y v x) = x.  [para(47(a,1),49(a,2))].
+51 ((x v y) ^ y) v y = y.  [para(50(a,1),43(a,1))].
+52 (x ^ y) ^ (z v y) = x ^ y.  [para(51(a,1),32(a,1,1))].
+53 (((x v y) ^ y) v (y v y)) ^ (z v (y ^ (y v u))) = y.  [para(51(a,1),5(a,1,2,2,1))].
+54 (x v (y ^ x)) ^ x = x v x.  [para(51(a,1),38(a,1,2))].
+55 (x v x) ^ ((x v x) ^ ((x v x) v y)) = x v x.  [para(51(a,1),44(a,1,2))].
+56 x ^ x = x.  [para(51(a,1),50(a,1,2))].
+57 (x ^ x) v x = x.  [para(51(a,1),51(a,1,1,1))].
+58 x v x = x.  [para(56(a,1),57(a,1,1))].
+59 x ^ ((x v x) ^ ((x v x) v y)) = x v x.  [para(58(a,1),55(a,1,1))].
+60 x ^ (x ^ ((x v x) v y)) = x v x.  [para(58(a,1),59(a,1,2,1))].
+61 x ^ (x ^ (x v y)) = x v x.  [para(58(a,1),60(a,1,2,2,1))].
+62 x ^ (x ^ (x v y)) = x.  [para(58(a,1),61(a,2))].
+63 (x v (y ^ x)) ^ x = x.  [para(58(a,1),54(a,2))].
+64 (((x v y) ^ y) v y) ^ (z v (y ^ (y v u))) = y.  [para(58(a,1),53(a,1,1,2))].
+65 x ^ (y v (x ^ (x v z))) = x.  [para(51(a,1),64(a,1,1))].
+66 (x v (y ^ x)) ^ (z v x) = x.  [para(58(a,1),38(a,2))].
+67 (x v (y ^ x)) ^ x = x v (y ^ x).  [para(66(a,1),62(a,1,2))].
+68 x = x v (y ^ x).  [para(63(a,1),67(a,1))].
+69 x v (y ^ x) = x.  [copy(68),flip(a)].
+70 x ^ (x v y) = x.  [para(69(a,1),65(a,1,2))].
+71 x ^ (y v (x v z)) = x ^ (x v z).  [para(70(a,1),52(a,1,1))].
+72 x ^ (y v (x v z)) = x.  [para(70(a,1),71(a,2))].
+73 $F # answer(McKenzie_2).  [resolve(72,a,3,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 2 at 0.99 (+ 0.01) seconds: McKenzie_4.
+% Length of proof is 43.
+% Level of proof is 20.
+% Maximum clause weight is 89.
+% Given clauses 98.
+
+1 ((x v y) ^ (y v z)) ^ y = y # answer(McKenzie_4) # label(non_clause) # label(goal).  [goal].
+2 (((x v y) ^ y) v (((z ^ (y v y)) v (u ^ y)) ^ w)) ^ (v5 v ((v6 v y) ^ (y v v7))) = y # label(A1).  [assumption].
+3 ((c10 v c11) ^ (c11 v c12)) ^ c11 != c11 # answer(McKenzie_4).  [deny(1)].
+4 (((x v ((y v z) ^ (z v u))) ^ ((y v z) ^ (z v u))) v ((z v (w ^ ((y v z) ^ (z v u)))) ^ v5)) ^ (v6 v ((v7 v ((y v z) ^ (z v u))) ^ (((y v z) ^ (z v u)) v v8))) = (y v z) ^ (z v u).  [para(2(a,1),2(a,1,1,2,1,1))].
+5 (((x v y) ^ y) v (y v y)) ^ (z v ((u v y) ^ (y v w))) = y.  [para(2(a,1),2(a,1,1,2))].
+6 (((x v ((y v ((z v u) ^ u)) ^ (((z v u) ^ u) v w))) ^ ((y v ((z v u) ^ u)) ^ (((z v u) ^ u) v w))) v u) ^ (v5 v ((v6 v ((y v ((z v u) ^ u)) ^ (((z v u) ^ u) v w))) ^ (((y v ((z v u) ^ u)) ^ (((z v u) ^ u) v w)) v v7))) = (y v ((z v u) ^ u)) ^ (((z v u) ^ u) v w).  [para(2(a,1),4(a,1,1,2))].
+7 (((x v y) ^ ((((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w))))) v (((y v y) v (v5 ^ ((((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w)))))) ^ v6)) ^ (v7 v ((v8 v ((((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w))))) ^ (((((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w)))) v v9))) = (((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w))).  [para(5(a,1),4(a,1,1,1,1,2))].
+8 (((x v y) ^ y) v (((y v y) v (v5 ^ ((((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w)))))) ^ v6)) ^ (v7 v ((v8 v ((((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w))))) ^ (((((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w)))) v v9))) = (((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w))).  [para(5(a,1),7(a,1,1,1,2))].
+9 (((x v y) ^ y) v (((y v y) v (v5 ^ y)) ^ v6)) ^ (v7 v ((v8 v ((((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w))))) ^ (((((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w)))) v v9))) = (((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w))).  [para(5(a,1),8(a,1,1,2,1,2,2))].
+10 (((x v y) ^ y) v (((y v y) v (v5 ^ y)) ^ v6)) ^ (v7 v ((v8 v y) ^ (((((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w)))) v v9))) = (((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w))).  [para(5(a,1),9(a,1,2,2,1,2))].
+11 (((x v y) ^ y) v (((y v y) v (v5 ^ y)) ^ v6)) ^ (v7 v ((v8 v y) ^ (y v v9))) = (((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w))).  [para(5(a,1),10(a,1,2,2,2,1))].
+12 (((x v y) ^ y) v (((y v y) v (z ^ y)) ^ u)) ^ (w v ((v5 v y) ^ (y v v6))) = y.  [para(5(a,1),11(a,2))].
+13 (((x v (y v y)) ^ (y v y)) v ((y v y) v (y v y))) ^ (z v y) = y v y.  [para(5(a,1),5(a,1,2,2))].
+14 (((x v y) ^ ((((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6))))) v (((((y v y) v (u ^ y)) ^ w) v (v7 ^ ((((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6)))))) ^ v8)) ^ (v9 v ((v10 v ((((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6))))) ^ (((((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6)))) v v11))) = (((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6))).  [para(12(a,1),4(a,1,1,1,1,2))].
+15 (((x v y) ^ y) v (((((y v y) v (u ^ y)) ^ w) v (v7 ^ ((((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6)))))) ^ v8)) ^ (v9 v ((v10 v ((((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6))))) ^ (((((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6)))) v v11))) = (((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6))).  [para(12(a,1),14(a,1,1,1,2))].
+16 (((x v y) ^ y) v (((((y v y) v (u ^ y)) ^ w) v (v7 ^ y)) ^ v8)) ^ (v9 v ((v10 v ((((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6))))) ^ (((((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6)))) v v11))) = (((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6))).  [para(12(a,1),15(a,1,1,2,1,2,2))].
+17 (((x v y) ^ y) v (((((y v y) v (u ^ y)) ^ w) v (v7 ^ y)) ^ v8)) ^ (v9 v ((v10 v y) ^ (((((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6)))) v v11))) = (((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6))).  [para(12(a,1),16(a,1,2,2,1,2))].
+18 (((x v y) ^ y) v (((((y v y) v (u ^ y)) ^ w) v (v7 ^ y)) ^ v8)) ^ (v9 v ((v10 v y) ^ (y v v11))) = (((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6))).  [para(12(a,1),17(a,1,2,2,2,1))].
+19 (((x v y) ^ y) v (((((y v y) v (z ^ y)) ^ u) v (w ^ y)) ^ v5)) ^ (v6 v ((v7 v y) ^ (y v v8))) = y.  [para(12(a,1),18(a,2))].
+20 (((x v y) ^ y) v (z ^ y)) ^ (u v ((w v y) ^ (y v v5))) = y.  [para(2(a,1),19(a,1,1,2))].
+21 (((x v (y v y)) ^ (y v y)) v (z ^ (y v y))) ^ (u v y) = y v y.  [para(5(a,1),20(a,1,2,2))].
+22 (((x v (y ^ z)) ^ (y ^ z)) v (u ^ (y ^ z))) ^ (w v z) = y ^ z.  [para(20(a,1),20(a,1,2,2))].
+23 (((x v (y v y)) ^ (y v y)) v (y v y)) ^ (z v y) = y v y.  [para(13(a,1),21(a,1,1,2))].
+24 (((x v (y v y)) ^ (y v y)) v (z ^ y)) ^ (u v y) = y v y.  [para(22(a,1),21(a,1,1,2))].
+25 (((x v y) ^ ((((z v y) ^ y) v ((u v y) ^ y)) ^ (((u v y) ^ y) v ((w v y) ^ (y v v5))))) v y) ^ (v6 v ((v7 v ((((z v y) ^ y) v ((u v y) ^ y)) ^ (((u v y) ^ y) v ((w v y) ^ (y v v5))))) ^ (((((z v y) ^ y) v ((u v y) ^ y)) ^ (((u v y) ^ y) v ((w v y) ^ (y v v5)))) v v8))) = (((z v y) ^ y) v ((u v y) ^ y)) ^ (((u v y) ^ y) v ((w v y) ^ (y v v5))).  [para(20(a,1),6(a,1,1,1,1,2))].
+26 (((x v y) ^ y) v y) ^ (v6 v ((v7 v ((((z v y) ^ y) v ((u v y) ^ y)) ^ (((u v y) ^ y) v ((w v y) ^ (y v v5))))) ^ (((((z v y) ^ y) v ((u v y) ^ y)) ^ (((u v y) ^ y) v ((w v y) ^ (y v v5)))) v v8))) = (((z v y) ^ y) v ((u v y) ^ y)) ^ (((u v y) ^ y) v ((w v y) ^ (y v v5))).  [para(20(a,1),25(a,1,1,1,2))].
+27 (((x v y) ^ y) v y) ^ (v6 v ((v7 v y) ^ (((((z v y) ^ y) v ((u v y) ^ y)) ^ (((u v y) ^ y) v ((w v y) ^ (y v v5)))) v v8))) = (((z v y) ^ y) v ((u v y) ^ y)) ^ (((u v y) ^ y) v ((w v y) ^ (y v v5))).  [para(20(a,1),26(a,1,2,2,1,2))].
+28 (((x v y) ^ y) v y) ^ (v6 v ((v7 v y) ^ (y v v8))) = (((z v y) ^ y) v ((u v y) ^ y)) ^ (((u v y) ^ y) v ((w v y) ^ (y v v5))).  [para(20(a,1),27(a,1,2,2,2,1))].
+29 (((x v y) ^ y) v y) ^ (z v ((u v y) ^ (y v w))) = y.  [para(20(a,1),28(a,2))].
+30 (((x v y) ^ y) v (y v y)) ^ (z v y) = y.  [para(29(a,1),5(a,1,2,2))].
+31 (((x v y) ^ y) v (z ^ y)) ^ (u v y) = y.  [para(29(a,1),20(a,1,2,2))].
+32 (((x v (y ^ z)) ^ (y ^ z)) v (y ^ z)) ^ (u v z) = y ^ z.  [para(20(a,1),29(a,1,2,2))].
+33 ((x v x) v (x v x)) ^ (y v ((z v (x v x)) ^ ((x v x) v u))) = x v x.  [para(23(a,1),29(a,1,1,1))].
+34 (((x v y) ^ y) v y) ^ (z v y) = y.  [para(29(a,1),29(a,1,2,2))].
+35 (x v (x v x)) ^ (y v x) = x v x.  [para(30(a,1),23(a,1,1,1))].
+36 ((x v x) v ((x v x) v (x v x))) ^ (y v (x v x)) = x v x.  [para(23(a,1),30(a,1,1,1))].
+37 (x v x) v (x v x) = x v x.  [para(35(a,1),36(a,1))].
+38 (x v (y ^ x)) ^ (z v x) = x v x.  [para(30(a,1),24(a,1,1,1))].
+39 (x v x) ^ (y v ((z v (x v x)) ^ ((x v x) v u))) = x v x.  [para(37(a,1),33(a,1,1))].
+40 (((x v y) ^ ((((z v y) ^ y) v y) ^ (u v y))) v ((((z v y) ^ y) v y) ^ (u v y))) ^ (w v (u v y)) = (((z v y) ^ y) v y) ^ (u v y).  [para(34(a,1),32(a,1,1,1,1,2))].
+41 (((x v y) ^ y) v ((((z v y) ^ y) v y) ^ (u v y))) ^ (w v (u v y)) = (((z v y) ^ y) v y) ^ (u v y).  [para(34(a,1),40(a,1,1,1,2))].
+42 (((x v y) ^ y) v y) ^ (w v (u v y)) = (((z v y) ^ y) v y) ^ (u v y).  [para(34(a,1),41(a,1,1,2))].
+43 (((x v y) ^ y) v y) ^ (z v (u v y)) = y.  [para(34(a,1),42(a,2))].
+44 (x v x) ^ (y v ((x v x) ^ ((x v x) v z))) = x v x.  [para(37(a,1),39(a,1,2,2,1))].
+45 (((x v y) ^ y) v ((x v y) ^ y)) ^ (z v y) = ((x v y) ^ y) v ((x v y) ^ y).  [para(20(a,1),44(a,1,2,2))].
+46 y = ((x v y) ^ y) v ((x v y) ^ y).  [para(31(a,1),45(a,1))].
+47 ((x v y) ^ y) v ((x v y) ^ y) = y.  [copy(46),flip(a)].
+48 (((x v y) ^ y) v ((x v y) ^ y)) ^ (z v y) = ((x v y) ^ y) v ((x v y) ^ y).  [para(31(a,1),44(a,1,2,2))].
+49 y ^ (z v y) = ((x v y) ^ y) v ((x v y) ^ y).  [para(47(a,1),48(a,1,1))].
+50 x ^ (y v x) = x.  [para(47(a,1),49(a,2))].
+51 ((x v y) ^ y) v y = y.  [para(50(a,1),43(a,1))].
+52 (((x v y) ^ y) v (y v y)) ^ ((z v y) ^ (y v u)) = y.  [para(51(a,1),5(a,1,2))].
+53 (x v (y ^ x)) ^ x = x v x.  [para(51(a,1),38(a,1,2))].
+54 (x v x) ^ ((x v x) ^ ((x v x) v y)) = x v x.  [para(51(a,1),44(a,1,2))].
+55 x ^ x = x.  [para(51(a,1),50(a,1,2))].
+56 (x ^ x) v x = x.  [para(51(a,1),51(a,1,1,1))].
+57 x v x = x.  [para(55(a,1),56(a,1,1))].
+58 x ^ ((x v x) ^ ((x v x) v y)) = x v x.  [para(57(a,1),54(a,1,1))].
+59 x ^ (x ^ ((x v x) v y)) = x v x.  [para(57(a,1),58(a,1,2,1))].
+60 x ^ (x ^ (x v y)) = x v x.  [para(57(a,1),59(a,1,2,2,1))].
+61 x ^ (x ^ (x v y)) = x.  [para(57(a,1),60(a,2))].
+62 (x v (y ^ x)) ^ x = x.  [para(57(a,1),53(a,2))].
+63 (((x v y) ^ y) v y) ^ ((z v y) ^ (y v u)) = y.  [para(57(a,1),52(a,1,1,2))].
+64 x ^ ((y v x) ^ (x v z)) = x.  [para(51(a,1),63(a,1,1))].
+65 (x v y) ^ y = y.  [para(57(a,1),47(a,1))].
+66 (x v (y ^ x)) ^ (z v x) = x.  [para(57(a,1),38(a,2))].
+67 (x v (y ^ x)) ^ x = x v (y ^ x).  [para(66(a,1),61(a,1,2))].
+68 x = x v (y ^ x).  [para(62(a,1),67(a,1))].
+69 x v (y ^ x) = x.  [copy(68),flip(a)].
+70 x ^ (y ^ x) = y ^ x.  [para(69(a,1),65(a,1,1))].
+71 ((x v y) ^ (y v z)) ^ y = y ^ ((x v y) ^ (y v z)).  [para(64(a,1),70(a,1,2))].
+72 ((x v y) ^ (y v z)) ^ y = y.  [para(64(a,1),71(a,2))].
+73 $F # answer(McKenzie_4).  [resolve(72,a,3,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 3 at 1.02 (+ 0.01) seconds: McKenzie_1.
+% Length of proof is 50.
+% Level of proof is 22.
+% Maximum clause weight is 89.
+% Given clauses 115.
+
+1 x v (y ^ (x ^ z)) = x # answer(McKenzie_1) # label(non_clause) # label(goal).  [goal].
+2 (((x v y) ^ y) v (((z ^ (y v y)) v (u ^ y)) ^ w)) ^ (v5 v ((v6 v y) ^ (y v v7))) = y # label(A1).  [assumption].
+3 c1 v (c2 ^ (c1 ^ c3)) != c1 # answer(McKenzie_1).  [deny(1)].
+4 (((x v ((y v z) ^ (z v u))) ^ ((y v z) ^ (z v u))) v ((z v (w ^ ((y v z) ^ (z v u)))) ^ v5)) ^ (v6 v ((v7 v ((y v z) ^ (z v u))) ^ (((y v z) ^ (z v u)) v v8))) = (y v z) ^ (z v u).  [para(2(a,1),2(a,1,1,2,1,1))].
+5 (((x v y) ^ y) v (y v y)) ^ (z v ((u v y) ^ (y v w))) = y.  [para(2(a,1),2(a,1,1,2))].
+6 (((x v ((y v ((z v u) ^ u)) ^ (((z v u) ^ u) v w))) ^ ((y v ((z v u) ^ u)) ^ (((z v u) ^ u) v w))) v u) ^ (v5 v ((v6 v ((y v ((z v u) ^ u)) ^ (((z v u) ^ u) v w))) ^ (((y v ((z v u) ^ u)) ^ (((z v u) ^ u) v w)) v v7))) = (y v ((z v u) ^ u)) ^ (((z v u) ^ u) v w).  [para(2(a,1),4(a,1,1,2))].
+7 (((x v y) ^ ((((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w))))) v (((y v y) v (v5 ^ ((((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w)))))) ^ v6)) ^ (v7 v ((v8 v ((((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w))))) ^ (((((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w)))) v v9))) = (((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w))).  [para(5(a,1),4(a,1,1,1,1,2))].
+8 (((x v y) ^ y) v (((y v y) v (v5 ^ ((((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w)))))) ^ v6)) ^ (v7 v ((v8 v ((((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w))))) ^ (((((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w)))) v v9))) = (((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w))).  [para(5(a,1),7(a,1,1,1,2))].
+9 (((x v y) ^ y) v (((y v y) v (v5 ^ y)) ^ v6)) ^ (v7 v ((v8 v ((((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w))))) ^ (((((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w)))) v v9))) = (((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w))).  [para(5(a,1),8(a,1,1,2,1,2,2))].
+10 (((x v y) ^ y) v (((y v y) v (v5 ^ y)) ^ v6)) ^ (v7 v ((v8 v y) ^ (((((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w)))) v v9))) = (((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w))).  [para(5(a,1),9(a,1,2,2,1,2))].
+11 (((x v y) ^ y) v (((y v y) v (v5 ^ y)) ^ v6)) ^ (v7 v ((v8 v y) ^ (y v v9))) = (((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w))).  [para(5(a,1),10(a,1,2,2,2,1))].
+12 (((x v y) ^ y) v (((y v y) v (z ^ y)) ^ u)) ^ (w v ((v5 v y) ^ (y v v6))) = y.  [para(5(a,1),11(a,2))].
+13 (((x v (y v y)) ^ (y v y)) v ((y v y) v (y v y))) ^ (z v y) = y v y.  [para(5(a,1),5(a,1,2,2))].
+14 (((x v (((y v y) v (z ^ y)) ^ u)) ^ (((y v y) v (z ^ y)) ^ u)) v (((w ^ ((((y v y) v (z ^ y)) ^ u) v (((y v y) v (z ^ y)) ^ u))) v (v5 ^ (((y v y) v (z ^ y)) ^ u))) ^ v6)) ^ (v7 v y) = ((y v y) v (z ^ y)) ^ u.  [para(12(a,1),2(a,1,2,2))].
+15 (((x v y) ^ ((((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6))))) v (((((y v y) v (u ^ y)) ^ w) v (v7 ^ ((((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6)))))) ^ v8)) ^ (v9 v ((v10 v ((((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6))))) ^ (((((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6)))) v v11))) = (((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6))).  [para(12(a,1),4(a,1,1,1,1,2))].
+16 (((x v y) ^ y) v (((((y v y) v (u ^ y)) ^ w) v (v7 ^ ((((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6)))))) ^ v8)) ^ (v9 v ((v10 v ((((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6))))) ^ (((((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6)))) v v11))) = (((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6))).  [para(12(a,1),15(a,1,1,1,2))].
+17 (((x v y) ^ y) v (((((y v y) v (u ^ y)) ^ w) v (v7 ^ y)) ^ v8)) ^ (v9 v ((v10 v ((((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6))))) ^ (((((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6)))) v v11))) = (((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6))).  [para(12(a,1),16(a,1,1,2,1,2,2))].
+18 (((x v y) ^ y) v (((((y v y) v (u ^ y)) ^ w) v (v7 ^ y)) ^ v8)) ^ (v9 v ((v10 v y) ^ (((((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6)))) v v11))) = (((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6))).  [para(12(a,1),17(a,1,2,2,1,2))].
+19 (((x v y) ^ y) v (((((y v y) v (u ^ y)) ^ w) v (v7 ^ y)) ^ v8)) ^ (v9 v ((v10 v y) ^ (y v v11))) = (((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6))).  [para(12(a,1),18(a,1,2,2,2,1))].
+20 (((x v y) ^ y) v (((((y v y) v (z ^ y)) ^ u) v (w ^ y)) ^ v5)) ^ (v6 v ((v7 v y) ^ (y v v8))) = y.  [para(12(a,1),19(a,2))].
+21 (((x v y) ^ y) v (z ^ y)) ^ (u v ((w v y) ^ (y v v5))) = y.  [para(2(a,1),20(a,1,1,2))].
+22 (((x v (y v y)) ^ (y v y)) v (z ^ (y v y))) ^ (u v y) = y v y.  [para(5(a,1),21(a,1,2,2))].
+23 (((x v (y ^ z)) ^ (y ^ z)) v (u ^ (y ^ z))) ^ (w v z) = y ^ z.  [para(21(a,1),21(a,1,2,2))].
+24 (((x v (y v y)) ^ (y v y)) v (y v y)) ^ (z v y) = y v y.  [para(13(a,1),22(a,1,1,2))].
+25 (((x v (y v y)) ^ (y v y)) v (z ^ y)) ^ (u v y) = y v y.  [para(23(a,1),22(a,1,1,2))].
+26 (((x v y) ^ ((((z v y) ^ y) v ((u v y) ^ y)) ^ (((u v y) ^ y) v ((w v y) ^ (y v v5))))) v y) ^ (v6 v ((v7 v ((((z v y) ^ y) v ((u v y) ^ y)) ^ (((u v y) ^ y) v ((w v y) ^ (y v v5))))) ^ (((((z v y) ^ y) v ((u v y) ^ y)) ^ (((u v y) ^ y) v ((w v y) ^ (y v v5)))) v v8))) = (((z v y) ^ y) v ((u v y) ^ y)) ^ (((u v y) ^ y) v ((w v y) ^ (y v v5))).  [para(21(a,1),6(a,1,1,1,1,2))].
+27 (((x v y) ^ y) v y) ^ (v6 v ((v7 v ((((z v y) ^ y) v ((u v y) ^ y)) ^ (((u v y) ^ y) v ((w v y) ^ (y v v5))))) ^ (((((z v y) ^ y) v ((u v y) ^ y)) ^ (((u v y) ^ y) v ((w v y) ^ (y v v5)))) v v8))) = (((z v y) ^ y) v ((u v y) ^ y)) ^ (((u v y) ^ y) v ((w v y) ^ (y v v5))).  [para(21(a,1),26(a,1,1,1,2))].
+28 (((x v y) ^ y) v y) ^ (v6 v ((v7 v y) ^ (((((z v y) ^ y) v ((u v y) ^ y)) ^ (((u v y) ^ y) v ((w v y) ^ (y v v5)))) v v8))) = (((z v y) ^ y) v ((u v y) ^ y)) ^ (((u v y) ^ y) v ((w v y) ^ (y v v5))).  [para(21(a,1),27(a,1,2,2,1,2))].
+29 (((x v y) ^ y) v y) ^ (v6 v ((v7 v y) ^ (y v v8))) = (((z v y) ^ y) v ((u v y) ^ y)) ^ (((u v y) ^ y) v ((w v y) ^ (y v v5))).  [para(21(a,1),28(a,1,2,2,2,1))].
+30 (((x v y) ^ y) v y) ^ (z v ((u v y) ^ (y v w))) = y.  [para(21(a,1),29(a,2))].
+31 (((x v y) ^ y) v (y v y)) ^ (z v y) = y.  [para(30(a,1),5(a,1,2,2))].
+32 (((x v y) ^ y) v (z ^ y)) ^ (u v y) = y.  [para(30(a,1),21(a,1,2,2))].
+33 (((x v (y ^ z)) ^ (y ^ z)) v (y ^ z)) ^ (u v z) = y ^ z.  [para(21(a,1),30(a,1,2,2))].
+34 ((x v x) v (x v x)) ^ (y v ((z v (x v x)) ^ ((x v x) v u))) = x v x.  [para(24(a,1),30(a,1,1,1))].
+35 (((x v y) ^ y) v y) ^ (z v y) = y.  [para(30(a,1),30(a,1,2,2))].
+36 (x v (y ^ (x v x))) ^ (z v x) = x v x.  [para(31(a,1),22(a,1,1,1))].
+37 (x v (x v x)) ^ (y v x) = x v x.  [para(31(a,1),24(a,1,1,1))].
+38 ((x v x) v ((x v x) v (x v x))) ^ (y v (x v x)) = x v x.  [para(24(a,1),31(a,1,1,1))].
+39 (x v x) v (x v x) = x v x.  [para(37(a,1),38(a,1))].
+40 (x v (y ^ x)) ^ (z v x) = x v x.  [para(31(a,1),25(a,1,1,1))].
+41 (x v x) ^ (y v ((z v (x v x)) ^ ((x v x) v u))) = x v x.  [para(39(a,1),34(a,1,1))].
+42 (x v (((x v x) v (y ^ x)) ^ z)) ^ (u v x) = x v x.  [para(14(a,1),36(a,1,1,2))].
+43 (((x v (((y v y) v (z ^ y)) ^ u)) ^ (((y v y) v (z ^ y)) ^ u)) v ((w ^ ((((y v y) v (z ^ y)) ^ u) v (((y v y) v (z ^ y)) ^ u))) v (w ^ ((((y v y) v (z ^ y)) ^ u) v (((y v y) v (z ^ y)) ^ u))))) ^ (v5 v y) = ((y v y) v (z ^ y)) ^ u.  [para(42(a,1),14(a,1,1,2))].
+44 (((x v y) ^ ((((z v y) ^ y) v y) ^ (u v y))) v ((((z v y) ^ y) v y) ^ (u v y))) ^ (w v (u v y)) = (((z v y) ^ y) v y) ^ (u v y).  [para(35(a,1),33(a,1,1,1,1,2))].
+45 (((x v y) ^ y) v ((((z v y) ^ y) v y) ^ (u v y))) ^ (w v (u v y)) = (((z v y) ^ y) v y) ^ (u v y).  [para(35(a,1),44(a,1,1,1,2))].
+46 (((x v y) ^ y) v y) ^ (w v (u v y)) = (((z v y) ^ y) v y) ^ (u v y).  [para(35(a,1),45(a,1,1,2))].
+47 (((x v y) ^ y) v y) ^ (z v (u v y)) = y.  [para(35(a,1),46(a,2))].
+48 (x v x) ^ (y v ((x v x) ^ ((x v x) v z))) = x v x.  [para(39(a,1),41(a,1,2,2,1))].
+49 (((x v y) ^ y) v ((x v y) ^ y)) ^ (z v y) = ((x v y) ^ y) v ((x v y) ^ y).  [para(21(a,1),48(a,1,2,2))].
+50 y = ((x v y) ^ y) v ((x v y) ^ y).  [para(32(a,1),49(a,1))].
+51 ((x v y) ^ y) v ((x v y) ^ y) = y.  [copy(50),flip(a)].
+52 (((x v y) ^ y) v ((x v y) ^ y)) ^ (z v y) = ((x v y) ^ y) v ((x v y) ^ y).  [para(32(a,1),48(a,1,2,2))].
+53 y ^ (z v y) = ((x v y) ^ y) v ((x v y) ^ y).  [para(51(a,1),52(a,1,1))].
+54 x ^ (y v x) = x.  [para(51(a,1),53(a,2))].
+55 ((x v y) ^ y) v y = y.  [para(54(a,1),47(a,1))].
+56 (x ^ y) ^ (z v y) = x ^ y.  [para(55(a,1),33(a,1,1))].
+57 (x v (y ^ x)) ^ x = x v x.  [para(55(a,1),40(a,1,2))].
+58 (x v x) ^ ((x v x) ^ ((x v x) v y)) = x v x.  [para(55(a,1),48(a,1,2))].
+59 x ^ x = x.  [para(55(a,1),54(a,1,2))].
+60 (x ^ x) v x = x.  [para(55(a,1),55(a,1,1,1))].
+61 x v x = x.  [para(59(a,1),60(a,1,1))].
+62 x ^ ((x v x) ^ ((x v x) v y)) = x v x.  [para(61(a,1),58(a,1,1))].
+63 x ^ (x ^ ((x v x) v y)) = x v x.  [para(61(a,1),62(a,1,2,1))].
+64 x ^ (x ^ (x v y)) = x v x.  [para(61(a,1),63(a,1,2,2,1))].
+65 x ^ (x ^ (x v y)) = x.  [para(61(a,1),64(a,2))].
+66 (x v (y ^ x)) ^ x = x.  [para(61(a,1),57(a,2))].
+67 (x v y) ^ y = y.  [para(61(a,1),51(a,1))].
+68 (((x v ((y v (z ^ y)) ^ u)) ^ (((y v y) v (z ^ y)) ^ u)) v ((w ^ ((((y v y) v (z ^ y)) ^ u) v (((y v y) v (z ^ y)) ^ u))) v (w ^ ((((y v y) v (z ^ y)) ^ u) v (((y v y) v (z ^ y)) ^ u))))) ^ (v5 v y) = ((y v y) v (z ^ y)) ^ u.  [para(61(a,1),43(a,1,1,1,1,2,1,1))].
+69 (((x v ((y v (z ^ y)) ^ u)) ^ ((y v (z ^ y)) ^ u)) v ((w ^ ((((y v y) v (z ^ y)) ^ u) v (((y v y) v (z ^ y)) ^ u))) v (w ^ ((((y v y) v (z ^ y)) ^ u) v (((y v y) v (z ^ y)) ^ u))))) ^ (v5 v y) = ((y v y) v (z ^ y)) ^ u.  [para(61(a,1),68(a,1,1,1,2,1,1))].
+70 (((y v (z ^ y)) ^ u) v ((w ^ ((((y v y) v (z ^ y)) ^ u) v (((y v y) v (z ^ y)) ^ u))) v (w ^ ((((y v y) v (z ^ y)) ^ u) v (((y v y) v (z ^ y)) ^ u))))) ^ (v5 v y) = ((y v y) v (z ^ y)) ^ u.  [para(67(a,1),69(a,1,1,1))].
+71 (((y v (z ^ y)) ^ u) v ((w ^ (((y v (z ^ y)) ^ u) v (((y v y) v (z ^ y)) ^ u))) v (w ^ ((((y v y) v (z ^ y)) ^ u) v (((y v y) v (z ^ y)) ^ u))))) ^ (v5 v y) = ((y v y) v (z ^ y)) ^ u.  [para(61(a,1),70(a,1,1,2,1,2,1,1,1))].
+72 (((y v (z ^ y)) ^ u) v ((w ^ (((y v (z ^ y)) ^ u) v ((y v (z ^ y)) ^ u))) v (w ^ ((((y v y) v (z ^ y)) ^ u) v (((y v y) v (z ^ y)) ^ u))))) ^ (v5 v y) = ((y v y) v (z ^ y)) ^ u.  [para(61(a,1),71(a,1,1,2,1,2,2,1,1))].
+73 (((y v (z ^ y)) ^ u) v ((w ^ ((y v (z ^ y)) ^ u)) v (w ^ ((((y v y) v (z ^ y)) ^ u) v (((y v y) v (z ^ y)) ^ u))))) ^ (v5 v y) = ((y v y) v (z ^ y)) ^ u.  [para(61(a,1),72(a,1,1,2,1,2))].
+74 (((y v (z ^ y)) ^ u) v ((w ^ ((y v (z ^ y)) ^ u)) v (w ^ (((y v (z ^ y)) ^ u) v (((y v y) v (z ^ y)) ^ u))))) ^ (v5 v y) = ((y v y) v (z ^ y)) ^ u.  [para(61(a,1),73(a,1,1,2,2,2,1,1,1))].
+75 (((y v (z ^ y)) ^ u) v ((w ^ ((y v (z ^ y)) ^ u)) v (w ^ (((y v (z ^ y)) ^ u) v ((y v (z ^ y)) ^ u))))) ^ (v5 v y) = ((y v y) v (z ^ y)) ^ u.  [para(61(a,1),74(a,1,1,2,2,2,2,1,1))].
+76 (((y v (z ^ y)) ^ u) v ((w ^ ((y v (z ^ y)) ^ u)) v (w ^ ((y v (z ^ y)) ^ u)))) ^ (v5 v y) = ((y v y) v (z ^ y)) ^ u.  [para(61(a,1),75(a,1,1,2,2,2))].
+77 (((y v (z ^ y)) ^ u) v (w ^ ((y v (z ^ y)) ^ u))) ^ (v5 v y) = ((y v y) v (z ^ y)) ^ u.  [para(61(a,1),76(a,1,1,2))].
+78 (((x v (y ^ x)) ^ z) v (u ^ ((x v (y ^ x)) ^ z))) ^ (w v x) = (x v (y ^ x)) ^ z.  [para(61(a,1),77(a,2,1,1))].
+79 (x v (y ^ x)) ^ (z v x) = x.  [para(61(a,1),40(a,2))].
+80 (x v (y ^ x)) ^ x = x v (y ^ x).  [para(79(a,1),65(a,1,2))].
+81 x = x v (y ^ x).  [para(66(a,1),80(a,1))].
+82 x v (y ^ x) = x.  [copy(81),flip(a)].
+83 ((x ^ z) v (u ^ ((x v (y ^ x)) ^ z))) ^ (w v x) = (x v (y ^ x)) ^ z.  [para(82(a,1),78(a,1,1,1,1))].
+84 ((x ^ z) v (u ^ (x ^ z))) ^ (w v x) = (x v (y ^ x)) ^ z.  [para(82(a,1),83(a,1,1,2,2,1))].
+85 (x ^ z) ^ (w v x) = (x v (y ^ x)) ^ z.  [para(82(a,1),84(a,1,1))].
+86 (x ^ y) ^ (z v x) = x ^ y.  [para(82(a,1),85(a,2,1))].
+87 (x v y) v (z ^ y) = x v y.  [para(56(a,1),82(a,1,2))].
+88 (x ^ y) ^ x = x ^ y.  [para(61(a,1),86(a,1,2))].
+89 x v (x ^ y) = x.  [para(88(a,1),82(a,1,2))].
+90 x v (y ^ (x ^ z)) = x v (x ^ z).  [para(89(a,1),87(a,1,1))].
+91 x v (y ^ (x ^ z)) = x.  [para(89(a,1),90(a,2))].
+92 $F # answer(McKenzie_1).  [resolve(91,a,3,a)].
+
+============================== end of proof ==========================
+
+============================== PROOF =================================
+
+% -------- Comments from original proof --------
+% Proof 4 at 1.70 (+ 0.01) seconds: McKenzie_3.
+% Length of proof is 61.
+% Level of proof is 24.
+% Maximum clause weight is 89.
+% Given clauses 206.
+
+1 ((x ^ y) v (y ^ z)) v y = y # answer(McKenzie_3) # label(non_clause) # label(goal).  [goal].
+2 (((x v y) ^ y) v (((z ^ (y v y)) v (u ^ y)) ^ w)) ^ (v5 v ((v6 v y) ^ (y v v7))) = y # label(A1).  [assumption].
+3 ((c7 ^ c8) v (c8 ^ c9)) v c8 != c8 # answer(McKenzie_3).  [deny(1)].
+4 (((x v ((y v z) ^ (z v u))) ^ ((y v z) ^ (z v u))) v ((z v (w ^ ((y v z) ^ (z v u)))) ^ v5)) ^ (v6 v ((v7 v ((y v z) ^ (z v u))) ^ (((y v z) ^ (z v u)) v v8))) = (y v z) ^ (z v u).  [para(2(a,1),2(a,1,1,2,1,1))].
+5 (((x v y) ^ y) v (y v y)) ^ (z v ((u v y) ^ (y v w))) = y.  [para(2(a,1),2(a,1,1,2))].
+6 (((x v (((y ^ (z v z)) v (u ^ z)) ^ w)) ^ (((y ^ (z v z)) v (u ^ z)) ^ w)) v (((v5 ^ ((((y ^ (z v z)) v (u ^ z)) ^ w) v (((y ^ (z v z)) v (u ^ z)) ^ w))) v (v6 ^ (((y ^ (z v z)) v (u ^ z)) ^ w))) ^ v7)) ^ (v8 v z) = ((y ^ (z v z)) v (u ^ z)) ^ w.  [para(2(a,1),2(a,1,2,2))].
+7 (((x v ((y v ((z v u) ^ u)) ^ (((z v u) ^ u) v w))) ^ ((y v ((z v u) ^ u)) ^ (((z v u) ^ u) v w))) v u) ^ (v5 v ((v6 v ((y v ((z v u) ^ u)) ^ (((z v u) ^ u) v w))) ^ (((y v ((z v u) ^ u)) ^ (((z v u) ^ u) v w)) v v7))) = (y v ((z v u) ^ u)) ^ (((z v u) ^ u) v w).  [para(2(a,1),4(a,1,1,2))].
+8 (((x v y) ^ ((((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w))))) v (((y v y) v (v5 ^ ((((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w)))))) ^ v6)) ^ (v7 v ((v8 v ((((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w))))) ^ (((((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w)))) v v9))) = (((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w))).  [para(5(a,1),4(a,1,1,1,1,2))].
+9 (((x v y) ^ y) v (((y v y) v (v5 ^ ((((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w)))))) ^ v6)) ^ (v7 v ((v8 v ((((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w))))) ^ (((((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w)))) v v9))) = (((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w))).  [para(5(a,1),8(a,1,1,1,2))].
+10 (((x v y) ^ y) v (((y v y) v (v5 ^ y)) ^ v6)) ^ (v7 v ((v8 v ((((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w))))) ^ (((((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w)))) v v9))) = (((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w))).  [para(5(a,1),9(a,1,1,2,1,2,2))].
+11 (((x v y) ^ y) v (((y v y) v (v5 ^ y)) ^ v6)) ^ (v7 v ((v8 v y) ^ (((((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w)))) v v9))) = (((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w))).  [para(5(a,1),10(a,1,2,2,1,2))].
+12 (((x v y) ^ y) v (((y v y) v (v5 ^ y)) ^ v6)) ^ (v7 v ((v8 v y) ^ (y v v9))) = (((z v y) ^ y) v (y v y)) ^ ((y v y) v ((u v y) ^ (y v w))).  [para(5(a,1),11(a,1,2,2,2,1))].
+13 (((x v y) ^ y) v (((y v y) v (z ^ y)) ^ u)) ^ (w v ((v5 v y) ^ (y v v6))) = y.  [para(5(a,1),12(a,2))].
+14 (((x v (y v y)) ^ (y v y)) v ((y v y) v (y v y))) ^ (z v y) = y v y.  [para(5(a,1),5(a,1,2,2))].
+15 (((x v (((y v y) v (z ^ y)) ^ u)) ^ (((y v y) v (z ^ y)) ^ u)) v (((w ^ ((((y v y) v (z ^ y)) ^ u) v (((y v y) v (z ^ y)) ^ u))) v (v5 ^ (((y v y) v (z ^ y)) ^ u))) ^ v6)) ^ (v7 v y) = ((y v y) v (z ^ y)) ^ u.  [para(13(a,1),2(a,1,2,2))].
+16 (((x v y) ^ ((((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6))))) v (((((y v y) v (u ^ y)) ^ w) v (v7 ^ ((((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6)))))) ^ v8)) ^ (v9 v ((v10 v ((((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6))))) ^ (((((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6)))) v v11))) = (((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6))).  [para(13(a,1),4(a,1,1,1,1,2))].
+17 (((x v y) ^ y) v (((((y v y) v (u ^ y)) ^ w) v (v7 ^ ((((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6)))))) ^ v8)) ^ (v9 v ((v10 v ((((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6))))) ^ (((((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6)))) v v11))) = (((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6))).  [para(13(a,1),16(a,1,1,1,2))].
+18 (((x v y) ^ y) v (((((y v y) v (u ^ y)) ^ w) v (v7 ^ y)) ^ v8)) ^ (v9 v ((v10 v ((((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6))))) ^ (((((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6)))) v v11))) = (((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6))).  [para(13(a,1),17(a,1,1,2,1,2,2))].
+19 (((x v y) ^ y) v (((((y v y) v (u ^ y)) ^ w) v (v7 ^ y)) ^ v8)) ^ (v9 v ((v10 v y) ^ (((((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6)))) v v11))) = (((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6))).  [para(13(a,1),18(a,1,2,2,1,2))].
+20 (((x v y) ^ y) v (((((y v y) v (u ^ y)) ^ w) v (v7 ^ y)) ^ v8)) ^ (v9 v ((v10 v y) ^ (y v v11))) = (((z v y) ^ y) v (((y v y) v (u ^ y)) ^ w)) ^ ((((y v y) v (u ^ y)) ^ w) v ((v5 v y) ^ (y v v6))).  [para(13(a,1),19(a,1,2,2,2,1))].
+21 (((x v y) ^ y) v (((((y v y) v (z ^ y)) ^ u) v (w ^ y)) ^ v5)) ^ (v6 v ((v7 v y) ^ (y v v8))) = y.  [para(13(a,1),20(a,2))].
+22 (((x v y) ^ y) v (z ^ y)) ^ (u v ((w v y) ^ (y v v5))) = y.  [para(2(a,1),21(a,1,1,2))].
+23 (((x v (y v y)) ^ (y v y)) v (z ^ (y v y))) ^ (u v y) = y v y.  [para(5(a,1),22(a,1,2,2))].
+24 (((x v (y ^ z)) ^ (y ^ z)) v (u ^ (y ^ z))) ^ (w v z) = y ^ z.  [para(22(a,1),22(a,1,2,2))].
+25 (((x v (y v y)) ^ (y v y)) v (y v y)) ^ (z v y) = y v y.  [para(14(a,1),23(a,1,1,2))].
+26 ((x v x) v (y ^ (x v x))) ^ (z v x) = x v x.  [para(25(a,1),23(a,1,1,1))].
+27 ((x v x) v (((y ^ (x v x)) v (z ^ x)) ^ u)) ^ (w v x) = x v x.  [para(6(a,1),26(a,1,1,2))].
+28 (((x v (y v y)) ^ (y v y)) v (z ^ y)) ^ (u v y) = y v y.  [para(24(a,1),23(a,1,1,2))].
+29 ((x v x) v (((y ^ x) v (z ^ x)) ^ u)) ^ (w v x) = x v x.  [para(24(a,1),27(a,1,1,2,1,1))].
+30 (((x v y) ^ ((((z v y) ^ y) v ((u v y) ^ y)) ^ (((u v y) ^ y) v ((w v y) ^ (y v v5))))) v y) ^ (v6 v ((v7 v ((((z v y) ^ y) v ((u v y) ^ y)) ^ (((u v y) ^ y) v ((w v y) ^ (y v v5))))) ^ (((((z v y) ^ y) v ((u v y) ^ y)) ^ (((u v y) ^ y) v ((w v y) ^ (y v v5)))) v v8))) = (((z v y) ^ y) v ((u v y) ^ y)) ^ (((u v y) ^ y) v ((w v y) ^ (y v v5))).  [para(22(a,1),7(a,1,1,1,1,2))].
+31 (((x v y) ^ y) v y) ^ (v6 v ((v7 v ((((z v y) ^ y) v ((u v y) ^ y)) ^ (((u v y) ^ y) v ((w v y) ^ (y v v5))))) ^ (((((z v y) ^ y) v ((u v y) ^ y)) ^ (((u v y) ^ y) v ((w v y) ^ (y v v5)))) v v8))) = (((z v y) ^ y) v ((u v y) ^ y)) ^ (((u v y) ^ y) v ((w v y) ^ (y v v5))).  [para(22(a,1),30(a,1,1,1,2))].
+32 (((x v y) ^ y) v y) ^ (v6 v ((v7 v y) ^ (((((z v y) ^ y) v ((u v y) ^ y)) ^ (((u v y) ^ y) v ((w v y) ^ (y v v5)))) v v8))) = (((z v y) ^ y) v ((u v y) ^ y)) ^ (((u v y) ^ y) v ((w v y) ^ (y v v5))).  [para(22(a,1),31(a,1,2,2,1,2))].
+33 (((x v y) ^ y) v y) ^ (v6 v ((v7 v y) ^ (y v v8))) = (((z v y) ^ y) v ((u v y) ^ y)) ^ (((u v y) ^ y) v ((w v y) ^ (y v v5))).  [para(22(a,1),32(a,1,2,2,2,1))].
+34 (((x v y) ^ y) v y) ^ (z v ((u v y) ^ (y v w))) = y.  [para(22(a,1),33(a,2))].
+35 (((x v y) ^ y) v (y v y)) ^ (z v y) = y.  [para(34(a,1),5(a,1,2,2))].
+36 (((x v y) ^ y) v (z ^ y)) ^ (u v y) = y.  [para(34(a,1),22(a,1,2,2))].
+37 (((x v (y ^ z)) ^ (y ^ z)) v (y ^ z)) ^ (u v z) = y ^ z.  [para(22(a,1),34(a,1,2,2))].
+38 ((x v x) v (x v x)) ^ (y v ((z v (x v x)) ^ ((x v x) v u))) = x v x.  [para(25(a,1),34(a,1,1,1))].
+39 (((x v y) ^ y) v y) ^ (z v y) = y.  [para(34(a,1),34(a,1,2,2))].
+40 (x v (y ^ (x v x))) ^ (z v x) = x v x.  [para(35(a,1),23(a,1,1,1))].
+41 (x v (x v x)) ^ (y v x) = x v x.  [para(35(a,1),25(a,1,1,1))].
+42 ((x v x) v ((x v x) v (x v x))) ^ (y v (x v x)) = x v x.  [para(25(a,1),35(a,1,1,1))].
+43 (x v x) v (x v x) = x v x.  [para(41(a,1),42(a,1))].
+44 (x v (y ^ x)) ^ (z v x) = x v x.  [para(35(a,1),28(a,1,1,1))].
+45 (x v x) ^ (y v ((z v (x v x)) ^ ((x v x) v u))) = x v x.  [para(43(a,1),38(a,1,1))].
+46 (x v (((x v x) v (y ^ x)) ^ z)) ^ (u v x) = x v x.  [para(15(a,1),40(a,1,1,2))].
+47 (((x v (((y v y) v (z ^ y)) ^ u)) ^ (((y v y) v (z ^ y)) ^ u)) v ((w ^ ((((y v y) v (z ^ y)) ^ u) v (((y v y) v (z ^ y)) ^ u))) v (w ^ ((((y v y) v (z ^ y)) ^ u) v (((y v y) v (z ^ y)) ^ u))))) ^ (v5 v y) = ((y v y) v (z ^ y)) ^ u.  [para(46(a,1),15(a,1,1,2))].
+48 (((x v y) ^ ((((z v y) ^ y) v y) ^ (u v y))) v ((((z v y) ^ y) v y) ^ (u v y))) ^ (w v (u v y)) = (((z v y) ^ y) v y) ^ (u v y).  [para(39(a,1),37(a,1,1,1,1,2))].
+49 (((x v y) ^ y) v ((((z v y) ^ y) v y) ^ (u v y))) ^ (w v (u v y)) = (((z v y) ^ y) v y) ^ (u v y).  [para(39(a,1),48(a,1,1,1,2))].
+50 (((x v y) ^ y) v y) ^ (w v (u v y)) = (((z v y) ^ y) v y) ^ (u v y).  [para(39(a,1),49(a,1,1,2))].
+51 (((x v y) ^ y) v y) ^ (z v (u v y)) = y.  [para(39(a,1),50(a,2))].
+52 (x v x) ^ (y v ((x v x) ^ ((x v x) v z))) = x v x.  [para(43(a,1),45(a,1,2,2,1))].
+53 (((x v y) ^ y) v ((x v y) ^ y)) ^ (z v y) = ((x v y) ^ y) v ((x v y) ^ y).  [para(22(a,1),52(a,1,2,2))].
+54 y = ((x v y) ^ y) v ((x v y) ^ y).  [para(36(a,1),53(a,1))].
+55 ((x v y) ^ y) v ((x v y) ^ y) = y.  [copy(54),flip(a)].
+56 (((x v y) ^ y) v ((x v y) ^ y)) ^ (z v y) = ((x v y) ^ y) v ((x v y) ^ y).  [para(36(a,1),52(a,1,2,2))].
+57 y ^ (z v y) = ((x v y) ^ y) v ((x v y) ^ y).  [para(55(a,1),56(a,1,1))].
+58 x ^ (y v x) = x.  [para(55(a,1),57(a,2))].
+59 ((x v x) v ((y ^ x) v (z ^ x))) ^ (u v x) = x v x.  [para(58(a,1),29(a,1,1,2))].
+60 ((x v y) ^ y) v y = y.  [para(58(a,1),51(a,1))].
+61 (((x v y) ^ y) v (y v y)) ^ (z v (y ^ (y v u))) = y.  [para(60(a,1),5(a,1,2,2,1))].
+62 (x v (y ^ x)) ^ x = x v x.  [para(60(a,1),44(a,1,2))].
+63 (x v x) ^ ((x v x) ^ ((x v x) v y)) = x v x.  [para(60(a,1),52(a,1,2))].
+64 x ^ x = x.  [para(60(a,1),58(a,1,2))].
+65 (x ^ x) v x = x.  [para(60(a,1),60(a,1,1,1))].
+66 x v x = x.  [para(64(a,1),65(a,1,1))].
+67 x ^ ((x v x) ^ ((x v x) v y)) = x v x.  [para(66(a,1),63(a,1,1))].
+68 x ^ (x ^ ((x v x) v y)) = x v x.  [para(66(a,1),67(a,1,2,1))].
+69 x ^ (x ^ (x v y)) = x v x.  [para(66(a,1),68(a,1,2,2,1))].
+70 x ^ (x ^ (x v y)) = x.  [para(66(a,1),69(a,2))].
+71 (x v (y ^ x)) ^ x = x.  [para(66(a,1),62(a,2))].
+72 (((x v y) ^ y) v y) ^ (z v (y ^ (y v u))) = y.  [para(66(a,1),61(a,1,1,2))].
+73 x ^ (y v (x ^ (x v z))) = x.  [para(60(a,1),72(a,1,1))].
+74 (x v ((y ^ x) v (z ^ x))) ^ (u v x) = x v x.  [para(66(a,1),59(a,1,1,1))].
+75 (x v ((y ^ x) v (z ^ x))) ^ (u v x) = x.  [para(66(a,1),74(a,2))].
+76 (x v y) ^ y = y.  [para(66(a,1),55(a,1))].
+77 (((x v ((y v (z ^ y)) ^ u)) ^ (((y v y) v (z ^ y)) ^ u)) v ((w ^ ((((y v y) v (z ^ y)) ^ u) v (((y v y) v (z ^ y)) ^ u))) v (w ^ ((((y v y) v (z ^ y)) ^ u) v (((y v y) v (z ^ y)) ^ u))))) ^ (v5 v y) = ((y v y) v (z ^ y)) ^ u.  [para(66(a,1),47(a,1,1,1,1,2,1,1))].
+78 (((x v ((y v (z ^ y)) ^ u)) ^ ((y v (z ^ y)) ^ u)) v ((w ^ ((((y v y) v (z ^ y)) ^ u) v (((y v y) v (z ^ y)) ^ u))) v (w ^ ((((y v y) v (z ^ y)) ^ u) v (((y v y) v (z ^ y)) ^ u))))) ^ (v5 v y) = ((y v y) v (z ^ y)) ^ u.  [para(66(a,1),77(a,1,1,1,2,1,1))].
+79 (((y v (z ^ y)) ^ u) v ((w ^ ((((y v y) v (z ^ y)) ^ u) v (((y v y) v (z ^ y)) ^ u))) v (w ^ ((((y v y) v (z ^ y)) ^ u) v (((y v y) v (z ^ y)) ^ u))))) ^ (v5 v y) = ((y v y) v (z ^ y)) ^ u.  [para(76(a,1),78(a,1,1,1))].
+80 (((y v (z ^ y)) ^ u) v ((w ^ (((y v (z ^ y)) ^ u) v (((y v y) v (z ^ y)) ^ u))) v (w ^ ((((y v y) v (z ^ y)) ^ u) v (((y v y) v (z ^ y)) ^ u))))) ^ (v5 v y) = ((y v y) v (z ^ y)) ^ u.  [para(66(a,1),79(a,1,1,2,1,2,1,1,1))].
+81 (((y v (z ^ y)) ^ u) v ((w ^ (((y v (z ^ y)) ^ u) v ((y v (z ^ y)) ^ u))) v (w ^ ((((y v y) v (z ^ y)) ^ u) v (((y v y) v (z ^ y)) ^ u))))) ^ (v5 v y) = ((y v y) v (z ^ y)) ^ u.  [para(66(a,1),80(a,1,1,2,1,2,2,1,1))].
+82 (((y v (z ^ y)) ^ u) v ((w ^ ((y v (z ^ y)) ^ u)) v (w ^ ((((y v y) v (z ^ y)) ^ u) v (((y v y) v (z ^ y)) ^ u))))) ^ (v5 v y) = ((y v y) v (z ^ y)) ^ u.  [para(66(a,1),81(a,1,1,2,1,2))].
+83 (((y v (z ^ y)) ^ u) v ((w ^ ((y v (z ^ y)) ^ u)) v (w ^ (((y v (z ^ y)) ^ u) v (((y v y) v (z ^ y)) ^ u))))) ^ (v5 v y) = ((y v y) v (z ^ y)) ^ u.  [para(66(a,1),82(a,1,1,2,2,2,1,1,1))].
+84 (((y v (z ^ y)) ^ u) v ((w ^ ((y v (z ^ y)) ^ u)) v (w ^ (((y v (z ^ y)) ^ u) v ((y v (z ^ y)) ^ u))))) ^ (v5 v y) = ((y v y) v (z ^ y)) ^ u.  [para(66(a,1),83(a,1,1,2,2,2,2,1,1))].
+85 (((y v (z ^ y)) ^ u) v ((w ^ ((y v (z ^ y)) ^ u)) v (w ^ ((y v (z ^ y)) ^ u)))) ^ (v5 v y) = ((y v y) v (z ^ y)) ^ u.  [para(66(a,1),84(a,1,1,2,2,2))].
+86 (((y v (z ^ y)) ^ u) v (w ^ ((y v (z ^ y)) ^ u))) ^ (v5 v y) = ((y v y) v (z ^ y)) ^ u.  [para(66(a,1),85(a,1,1,2))].
+87 (((x v (y ^ x)) ^ z) v (u ^ ((x v (y ^ x)) ^ z))) ^ (w v x) = (x v (y ^ x)) ^ z.  [para(66(a,1),86(a,2,1,1))].
+88 (x v (y ^ x)) ^ (z v x) = x.  [para(66(a,1),44(a,2))].
+89 (x v (y ^ x)) ^ x = x v (y ^ x).  [para(88(a,1),70(a,1,2))].
+90 x = x v (y ^ x).  [para(71(a,1),89(a,1))].
+91 x v (y ^ x) = x.  [copy(90),flip(a)].
+92 ((x ^ z) v (u ^ ((x v (y ^ x)) ^ z))) ^ (w v x) = (x v (y ^ x)) ^ z.  [para(91(a,1),87(a,1,1,1,1))].
+93 ((x ^ z) v (u ^ (x ^ z))) ^ (w v x) = (x v (y ^ x)) ^ z.  [para(91(a,1),92(a,1,1,2,2,1))].
+94 (x ^ z) ^ (w v x) = (x v (y ^ x)) ^ z.  [para(91(a,1),93(a,1,1))].
+95 (x ^ y) ^ (z v x) = x ^ y.  [para(91(a,1),94(a,2,1))].
+96 x ^ (x v y) = x.  [para(91(a,1),73(a,1,2))].
+97 (x ^ y) ^ x = x ^ y.  [para(66(a,1),95(a,1,2))].
+98 x = x v ((y ^ x) v (z ^ x)).  [para(75(a,1),96(a,1))].
+99 x v ((y ^ x) v (z ^ x)) = x.  [copy(98),flip(a)].
+100 x v ((y ^ x) v x) = x.  [para(64(a,1),99(a,1,2,2))].
+101 x v ((y ^ x) v (x ^ z)) = x.  [para(97(a,1),99(a,1,2,2))].
+102 ((x ^ y) v y) ^ y = (x ^ y) v y.  [para(100(a,1),58(a,1,2))].
+103 y = (x ^ y) v y.  [para(76(a,1),102(a,1))].
+104 (x ^ y) v y = y.  [copy(103),flip(a)].
+105 x v (y v x) = y v x.  [para(58(a,1),104(a,1,1))].
+106 ((x ^ y) v (y ^ z)) v y = y v ((x ^ y) v (y ^ z)).  [para(101(a,1),105(a,1,2))].
+107 ((x ^ y) v (y ^ z)) v y = y.  [para(101(a,1),106(a,2))].
+108 $F # answer(McKenzie_3).  [resolve(107,a,3,a)].
+
+============================== end of proof ==========================
+
+% Directproof did 0 transformation(s) on 4 proof(s).

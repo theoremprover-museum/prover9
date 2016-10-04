@@ -1,0 +1,24 @@
+util/options-make > temp
+
+  This extracts all of the options from the various html files
+  and sends them to stdout.  These should be placed in the
+  file options.html.
+
+  It also installs links back to the option defs.
+
+  It also creates a file sed.option-refs that can be used to
+  create links to the option defs wherever the option name
+  is enclosed in <tt></tt>.
+
+    rewrite-files sed.option-refs *.html
+
+-------------------------
+
+util/glossary.py  glossary.html
+
+  This creates a file sed.glossary that can be used to create
+  links to the glossary for each term enclosed in <g></g>.
+
+    rewrite-files sed.glossary *.html
+
+  

@@ -1,0 +1,190 @@
+============================== Prover9 ===============================
+Prover9 (32) version 2009-11A, November 2009.
+Process 5095 was started by mccune on cleo,
+Tue Nov  3 09:41:54 2009
+The command was "/home/mccune/LADR/bin/prover9 -f cs.in AN.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file cs.in
+
+assign(max_seconds,30).
+op(450,infix,@).
+op(400,infix_right,*).
+assign(new_constants,1).
+assign(max_weight,25).
+
+formulas(sos).
+x * y != x * z | y = z.
+y * x != z * x | y = z.
+(x * y) * z = x * y * z.
+y * x * (x @ y) = x * y.
+end_of_list.
+
+% Reading from file AN.in
+
+
+formulas(sos).
+(x @ y) @ z = u @ (v @ w).
+end_of_list.
+
+formulas(sos).
+(A @ B) * C != C * (A @ B) # answer(N).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+x * y != x * z | y = z.  [assumption].
+x * y != z * y | x = z.  [assumption].
+(x * y) * z = x * y * z.  [assumption].
+x * y * (y @ x) = y * x.  [assumption].
+(x @ y) @ z = u @ (w @ v5).  [assumption].
+(A @ B) * C != C * (A @ B) # answer(N).  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Auto_denials:  (no changes).
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ = ]).
+Function symbol precedence:  function_order([ A, B, C, *, @ ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(paramodulation).  % (positive equality literals)
+  % set(hyper_resolution).  % (nonunit Horn with equality)
+    % set(hyper_resolution) -> set(pos_hyper_resolution).
+  % set(neg_ur_resolution).  % (nonunit Horn with equality)
+  % assign(para_lit_limit, 2).  % (nonunit Horn with equality)
+
+Auto_process settings:  (no changes).
+
+kept:      1 x * y != x * z | y = z.  [assumption].
+kept:      2 x * y != z * y | x = z.  [assumption].
+kept:      3 (x * y) * z = x * y * z.  [assumption].
+kept:      4 x * y * (y @ x) = y * x.  [assumption].
+kept:      5 (x @ y) @ z = u @ (w @ v5).  [assumption].
+kept:      6 (A @ B) * C != C * (A @ B) # answer(N).  [assumption].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+1 x * y != x * z | y = z.  [assumption].
+2 x * y != z * y | x = z.  [assumption].
+3 (x * y) * z = x * y * z.  [assumption].
+4 x * y * (y @ x) = y * x.  [assumption].
+5 (x @ y) @ z = u @ (w @ v5).  [assumption].
+6 (A @ B) * C != C * (A @ B) # answer(N).  [assumption].
+end_of_list.
+
+formulas(demodulators).
+3 (x * y) * z = x * y * z.  [assumption].
+4 x * y * (y @ x) = y * x.  [assumption].
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.01 seconds.
+
+given #1 (I,wt=10): 1 x * y != x * z | y = z.  [assumption].
+
+given #2 (I,wt=10): 2 x * y != z * y | x = z.  [assumption].
+
+given #3 (I,wt=11): 3 (x * y) * z = x * y * z.  [assumption].
+
+given #4 (I,wt=11): 4 x * y * (y @ x) = y * x.  [assumption].
+
+given #5 (I,wt=11): 5 (x @ y) @ z = u @ (w @ v5).  [assumption].
+
+given #6 (I,wt=11): 6 (A @ B) * C != C * (A @ B) # answer(N).  [assumption].
+
+given #7 (A,wt=14): 7 x * y * z != x * y * u | z = u.  [para(3(a,1),1(a,1)),rewrite([3(4)])].
+
+given #8 (F,wt=15): 20 (A @ B) * C * x != C * (A @ B) * x # answer(N).  [ur(2,b,6,a),rewrite([3(6),3(12)])].
+
+given #9 (F,wt=15): 21 x * (A @ B) * C != x * C * (A @ B) # answer(N).  [ur(1,b,6,a)].
+
+given #10 (F,wt=17): 29 C * (A @ B) * (C @ (A @ B)) != C * (A @ B) # answer(N).  [para(4(a,1),20(a,1)),flip(a)].
+
+given #11 (F,wt=17): 31 (A @ B) * C * ((A @ B) @ C) != (A @ B) * C # answer(N).  [para(4(a,1),20(a,2))].
+
+given #12 (T,wt=7): 9 x * (x @ x) = x.  [hyper(1,a,4,a)].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.01 (+ 0.00) seconds: N.
+% Length of proof is 11.
+% Level of proof is 3.
+% Maximum clause weight is 19.000.
+% Given clauses 12.
+
+1 x * y != x * z | y = z.  [assumption].
+2 x * y != z * y | x = z.  [assumption].
+3 (x * y) * z = x * y * z.  [assumption].
+4 x * y * (y @ x) = y * x.  [assumption].
+5 (x @ y) @ z = u @ (w @ v5).  [assumption].
+6 (A @ B) * C != C * (A @ B) # answer(N).  [assumption].
+9 x * (x @ x) = x.  [hyper(1,a,4,a)].
+17 (x @ y) * z * ((u @ w) @ v5) = z * (x @ y).  [para(5(a,2),4(a,1,2,2))].
+20 (A @ B) * C * x != C * (A @ B) * x # answer(N).  [ur(2,b,6,a),rewrite([3(6),3(12)])].
+50 (A @ B) * C * ((A @ B) @ (A @ B)) != C * (A @ B) # answer(N).  [para(9(a,1),20(a,2,2))].
+51 $F # answer(N).  [resolve(50,a,17,a)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=12. Generated=110. Kept=50. proofs=1.
+Usable=12. Sos=28. Demods=10. Limbo=9, Disabled=6. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=60. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=10 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=1221. Demod_rewrites=74.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=63. Nonunit_bsub_feature_tests=16.
+Megabytes=0.09.
+User_CPU=0.01, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 1 proof.
+
+Process 5095 exit (max_proofs) Tue Nov  3 09:41:54 2009

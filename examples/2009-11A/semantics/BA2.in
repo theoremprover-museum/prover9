@@ -1,0 +1,26 @@
+assign(max_seconds, 120).
+
+set(lex_order_vars).
+set(restrict_denials).
+assign(new_constants, 1).
+
+formulas(sos).
+
+% Veroff's 2-basis for BA in terms of the Sheffer stroke.
+
+f(x,y) = f(y,x)           # label(commutativity).
+f(f(x,y),f(x,f(y,z))) = x # label(Veroff_2).
+
+end_of_list.
+
+formulas(goals).
+
+% Previously known BA Sheffer 3-basis.
+
+f(f(x,x),f(x,x)) = x
+        & f(x,f(y,f(y,y))) = f(x,x)
+        & f(f(f(y,y),x),f(f(z,z),x)) = f(f(x,f(y,z)),f(x,f(y,z)))
+        # answer("Sheffer").
+
+end_of_list.
+
